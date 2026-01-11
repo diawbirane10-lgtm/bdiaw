@@ -1,3 +1,5 @@
+import { Download, ExternalLink } from "lucide-react";
+
 const ProjectsSection = () => {
   const projects = [
     {
@@ -24,10 +26,11 @@ const ProjectsSection = () => {
     {
       title: "Énergie Houlomotrice",
       subtitle: "Conversion et Injection Réseau par Commande Vectorielle",
-      description: "Étude et conception d'un système de récupération de l'énergie des vagues avec génératrice PMSG et commande FOC.",
-      details: "Projet encadré | MATLAB/Simulink",
+      description: "Étude et conception d'un système de récupération de l'énergie des vagues avec génératrice PMSG et commande FOC. Projet pluridisciplinaire combinant mécanique des fluides, électrotechnique et automatique.",
+      details: "Technologies : MATLAB/Simulink | Encadré par Pr. Moulay Rachid DOUIRI",
       status: "Terminé",
-      statusType: "progress" as const,
+      statusType: "completed" as const,
+      pdfLink: "/documents/projet-houlomotrice.pdf",
     },
   ];
 
@@ -38,12 +41,14 @@ const ProjectsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
-            <article key={index} className="card-project">
+            <article key={index} className="card-project flex flex-col">
               {/* Status Badge */}
               <div className="mb-4">
                 <span
                   className={`badge-status ${
-                    project.statusType === "progress"
+                    project.statusType === "completed"
+                      ? "badge-status-completed"
+                      : project.statusType === "progress"
                       ? "badge-status-progress"
                       : "badge-status-upcoming"
                   }`}
@@ -65,13 +70,13 @@ const ProjectsSection = () => {
               )}
 
               {/* Description */}
-              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+              <p className="text-muted-foreground text-sm mb-4 leading-relaxed flex-grow">
                 {project.description}
               </p>
 
               {/* Details */}
               {project.details && (
-                <p className="text-xs text-muted-foreground border-t border-border pt-3 mt-auto">
+                <p className="text-xs text-muted-foreground border-t border-border pt-3">
                   {project.details}
                   {project.progress && (
                     <span className="ml-2 text-primary font-medium">
@@ -79,6 +84,22 @@ const ProjectsSection = () => {
                     </span>
                   )}
                 </p>
+              )}
+
+              {/* PDF Download Link */}
+              {project.pdfLink && (
+                <div className="mt-4 pt-3 border-t border-border">
+                  <a
+                    href={project.pdfLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200"
+                  >
+                    <Download size={16} />
+                    Télécharger le rapport (PDF)
+                    <ExternalLink size={14} />
+                  </a>
+                </div>
               )}
             </article>
           ))}

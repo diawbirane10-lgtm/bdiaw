@@ -16,7 +16,7 @@ const Footer = () => {
           {/* Contact Links */}
           <div className="flex items-center gap-6">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/birane-diaw-b83b47374"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-background/80 hover:text-background transition-colors duration-200"
@@ -26,12 +26,12 @@ const Footer = () => {
               <span className="text-sm">LinkedIn</span>
             </a>
             <a
-              href="mailto:birane.diaw@example.com"
+              href="mailto:diawbirane10@gmail.com"
               className="flex items-center gap-2 text-background/80 hover:text-background transition-colors duration-200"
               aria-label="Email"
             >
               <Mail size={20} />
-              <span className="text-sm">Email</span>
+              <span className="text-sm">diawbirane10@gmail.com</span>
             </a>
           </div>
         </div>
