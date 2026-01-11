@@ -1,4 +1,4 @@
-import { Download, ExternalLink } from "lucide-react";
+import { Download, ExternalLink, Rocket, Clock, CheckCircle } from "lucide-react";
 
 const ProjectsSection = () => {
   const projects = [
@@ -7,6 +7,7 @@ const ProjectsSection = () => {
       description: "Conception d'un système intelligent pour l'habitat intégrant capteurs, actionneurs et contrôle automatisé.",
       status: "En cours",
       statusType: "progress" as const,
+      icon: "🏠",
     },
     {
       title: "Supervision SCADA PV Intelligent",
@@ -14,6 +15,7 @@ const ProjectsSection = () => {
       description: "Développement d'un système de supervision pour panneaux photovoltaïques avec suivi solaire dual-axis.",
       status: "À venir",
       statusType: "upcoming" as const,
+      icon: "☀️",
     },
     {
       title: "Chaîne de Conditionnement Analogique (Piezo)",
@@ -22,6 +24,7 @@ const ProjectsSection = () => {
       progress: "15%",
       status: "En cours",
       statusType: "progress" as const,
+      icon: "📊",
     },
     {
       title: "Énergie Houlomotrice",
@@ -31,21 +34,45 @@ const ProjectsSection = () => {
       status: "Terminé",
       statusType: "completed" as const,
       pdfLink: "/documents/projet-houlomotrice.pdf",
+      icon: "🌊",
     },
   ];
 
+  const getStatusIcon = (statusType: string) => {
+    switch (statusType) {
+      case "completed":
+        return <CheckCircle className="w-3 h-3" />;
+      case "progress":
+        return <Clock className="w-3 h-3" />;
+      default:
+        return <Rocket className="w-3 h-3" />;
+    }
+  };
+
   return (
-    <section id="projets" className="section-padding bg-background">
-      <div className="section-container">
-        <h2 className="heading-section">Réalisations</h2>
+    <section id="projets" className="section-padding bg-background relative">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-1/3 h-full opacity-5 pointer-events-none"
+        style={{
+          background: 'linear-gradient(135deg, hsl(var(--spidey-red)) 0%, transparent 50%)',
+        }}
+      />
+      
+      <div className="section-container relative z-10">
+        <h2 className="heading-section text-center">
+          <span className="text-secondary">{`{`}</span>
+          {" "}Réalisations{" "}
+          <span className="text-secondary">{`}`}</span>
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <article key={index} className="card-project flex flex-col">
-              {/* Status Badge */}
-              <div className="mb-4">
+              {/* Header with emoji and status */}
+              <div className="flex items-start justify-between mb-4">
+                <span className="text-3xl">{project.icon}</span>
                 <span
-                  className={`badge-status ${
+                  className={`badge-status flex items-center gap-1 ${
                     project.statusType === "completed"
                       ? "badge-status-completed"
                       : project.statusType === "progress"
@@ -53,37 +80,38 @@ const ProjectsSection = () => {
                       : "badge-status-upcoming"
                   }`}
                 >
+                  {getStatusIcon(project.statusType)}
                   {project.status}
                 </span>
               </div>
 
               {/* Title */}
-              <h3 className="text-lg font-semibold text-foreground mb-2">
+              <h3 className="text-lg font-display font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                 {project.title}
               </h3>
 
               {/* Subtitle */}
               {project.subtitle && (
-                <p className="text-sm font-medium text-primary mb-2">
+                <p className="text-sm font-semibold text-secondary mb-3">
                   {project.subtitle}
                 </p>
               )}
 
               {/* Description */}
-              <p className="text-muted-foreground text-sm mb-4 leading-relaxed flex-grow">
+              <p className="text-muted-foreground text-sm mb-4 leading-relaxed flex-grow font-body">
                 {project.description}
               </p>
 
               {/* Details */}
               {project.details && (
-                <p className="text-xs text-muted-foreground border-t border-border pt-3">
-                  {project.details}
+                <div className="text-xs text-muted-foreground border-t border-border pt-3 font-body">
+                  <span className="text-primary">▸</span> {project.details}
                   {project.progress && (
-                    <span className="ml-2 text-primary font-medium">
+                    <span className="ml-2 text-secondary font-semibold">
                       • Avancement : {project.progress}
                     </span>
                   )}
-                </p>
+                </div>
               )}
 
               {/* PDF Download Link */}
@@ -93,9 +121,9 @@ const ProjectsSection = () => {
                     href={project.pdfLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200"
+                    className="inline-flex items-center gap-2 text-sm font-display font-semibold text-primary hover:text-spidey-glow transition-colors duration-200 group"
                   >
-                    <Download size={16} />
+                    <Download size={16} className="group-hover:animate-bounce" />
                     Télécharger le rapport (PDF)
                     <ExternalLink size={14} />
                   </a>

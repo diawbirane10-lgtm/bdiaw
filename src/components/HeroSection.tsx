@@ -1,43 +1,66 @@
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Zap } from "lucide-react";
+import spidermanWebBg from "@/assets/spiderman-web-bg.png";
 
 const HeroSection = () => {
   return (
     <section
       id="accueil"
-      className="min-h-screen flex items-center pt-[72px] bg-background"
+      className="min-h-screen flex items-center pt-[72px] bg-background relative overflow-hidden"
     >
-      <div className="section-container w-full">
-        <div className="max-w-3xl">
-          {/* Subtitle */}
-          <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm">
-            Portfolio Ingénieur
-          </p>
+      {/* Spider-Man Web Background */}
+      <div 
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage: `url(${spidermanWebBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
+      
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-spidey-dark/50" />
 
-          {/* Name */}
-          <h1 className="heading-primary text-4xl lg:text-5xl xl:text-6xl mb-6">
-            Birane Diaw
+      <div className="section-container w-full relative z-10">
+        <div className="max-w-3xl">
+          {/* Glitch-style subtitle */}
+          <div className="flex items-center gap-2 mb-6">
+            <Zap className="w-5 h-5 text-primary animate-pulse" />
+            <p className="text-primary font-display font-medium tracking-[0.3em] uppercase text-sm glow-text">
+              Portfolio Ingénieur
+            </p>
+          </div>
+
+          {/* Name with glow effect */}
+          <h1 className="font-display text-5xl lg:text-6xl xl:text-7xl font-black mb-6 tracking-tight">
+            <span className="text-foreground">Birane</span>{" "}
+            <span className="text-primary glow-text">Diaw</span>
           </h1>
 
-          {/* Role */}
-          <h2 className="text-xl lg:text-2xl text-foreground font-medium mb-4">
-            Génie Électrique, spécialité IEEA
+          {/* Role with colored accent */}
+          <h2 className="text-xl lg:text-2xl font-display font-semibold mb-4">
+            <span className="text-foreground">Génie Électrique</span>
+            <span className="text-secondary glow-text-blue">, spécialité IEEA</span>
           </h2>
-          <p className="text-muted-foreground text-sm mb-2">
+          
+          <p className="text-muted-foreground text-sm mb-2 font-body tracking-wide">
             (Informatique, Électronique, Électrotechnique, Automatique)
           </p>
 
           {/* Institution */}
-          <p className="text-lg text-muted-foreground mb-8">
-            Étudiant à la FST Marrakech, Université Cadi Ayyad
+          <p className="text-lg text-muted-foreground mb-10 font-body">
+            Étudiant à la <span className="text-secondary">FST Marrakech</span>, Université Cadi Ayyad
           </p>
 
-          {/* CTA Button */}
+          {/* CTA Button - Cyber style */}
           <a
             href="#projets"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 font-medium hover:bg-primary/90 transition-colors duration-200"
+            className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 font-display font-bold uppercase tracking-wider hover:bg-primary/90 transition-all duration-300 pulse-glow group"
+            style={{
+              clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))',
+            }}
           >
             Mes Projets
-            <ArrowDown size={18} />
+            <ArrowDown size={20} className="group-hover:translate-y-1 transition-transform" />
           </a>
         </div>
       </div>
