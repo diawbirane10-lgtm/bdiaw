@@ -52,16 +52,19 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        spidey: {
-          red: "hsl(var(--spidey-red))",
-          blue: "hsl(var(--spidey-blue))",
-          dark: "hsl(var(--spidey-dark))",
-          glow: "hsl(var(--spidey-glow))",
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
         },
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          dark: "hsl(var(--navy-dark))",
+        },
+        champagne: "hsl(var(--champagne))",
       },
       fontFamily: {
-        display: ["Orbitron", "sans-serif"],
-        body: ["Rajdhani", "sans-serif"],
+        display: ["Playfair Display", "serif"],
+        body: ["Montserrat", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

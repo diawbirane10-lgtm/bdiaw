@@ -1,21 +1,16 @@
-import { Code, Cpu, Settings, Wrench } from "lucide-react";
-
 const SkillsSection = () => {
   const skillCategories = [
     {
       title: "Logiciels & Outils",
-      icon: Wrench,
       skills: ["LTSpice", "MATLAB/Simulink", "VS Code", "Antigravity", "LabVIEW"],
     },
     {
       title: "Programmation",
-      icon: Code,
       skills: ["Python", "C", "Assembly"],
       note: "Niveau Intermédiaire",
     },
     {
       title: "Domaines d'Expertise",
-      icon: Cpu,
       skills: [
         "Électronique Analogique",
         "Électronique Numérique",
@@ -26,7 +21,6 @@ const SkillsSection = () => {
     },
     {
       title: "Compétences Techniques",
-      icon: Settings,
       skills: [
         "Commande Vectorielle (FOC)",
         "Systèmes SCADA",
@@ -37,50 +31,39 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="competences" className="section-padding section-alt relative">
-      {/* Subtle web pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none" 
-        style={{
-          backgroundImage: `radial-gradient(circle at 50% 50%, hsl(var(--spidey-red)) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px',
-        }}
-      />
-      
-      <div className="section-container relative z-10">
-        <h2 className="heading-section text-center">
-          <span className="text-primary">&lt;</span>
-          Compétences Techniques
-          <span className="text-primary">/&gt;</span>
-        </h2>
+    <section id="competences" className="section-padding section-alt">
+      <div className="section-container">
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <p className="text-primary font-body font-medium tracking-[0.3em] uppercase text-xs mb-4">
+            Expertise
+          </p>
+          <h2 className="font-display text-3xl lg:text-4xl font-medium text-foreground tracking-wide">
+            Compétences Techniques
+          </h2>
+          <div className="elegant-divider mt-6" />
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {skillCategories.map((category) => {
-            const IconComponent = category.icon;
-            return (
-              <div key={category.title} className="group">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="p-2 bg-primary/10 border border-primary/30 rounded-sm group-hover:bg-primary/20 transition-colors">
-                    <IconComponent className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-display font-semibold text-foreground">
-                    {category.title}
-                  </h3>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  {category.skills.map((skill) => (
-                    <span key={skill} className="skill-tag">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-                {category.note && (
-                  <p className="text-sm text-muted-foreground mt-4 italic font-body">
-                    ⚡ {category.note}
-                  </p>
-                )}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+          {skillCategories.map((category) => (
+            <div key={category.title} className="group">
+              <h3 className="text-lg font-display font-medium text-foreground mb-6 tracking-wide">
+                {category.title}
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {category.skills.map((skill) => (
+                  <span key={skill} className="skill-tag">
+                    {skill}
+                  </span>
+                ))}
               </div>
-            );
-          })}
+              {category.note && (
+                <p className="text-sm text-muted-foreground mt-5 font-body italic">
+                  {category.note}
+                </p>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>

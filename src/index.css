@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,44 +6,45 @@
 
 @layer base {
   :root {
-    /* Spider-Man Dark Theme */
-    --background: 220 20% 6%;
-    --foreground: 0 0% 95%;
+    /* Kingsman Elegant Dark Theme */
+    --background: 220 25% 8%;
+    --foreground: 45 30% 95%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 0 0% 95%;
+    --card: 220 20% 12%;
+    --card-foreground: 45 30% 95%;
 
-    --popover: 220 18% 10%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 45 30% 95%;
 
-    /* Spider-Man Red */
-    --primary: 0 85% 50%;
-    --primary-foreground: 0 0% 100%;
+    /* Kingsman Gold */
+    --primary: 42 75% 55%;
+    --primary-foreground: 220 25% 8%;
 
-    /* Spider-Man Blue */
-    --secondary: 220 90% 55%;
-    --secondary-foreground: 0 0% 100%;
+    /* Kingsman Navy */
+    --secondary: 220 45% 25%;
+    --secondary-foreground: 45 30% 95%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 15% 55%;
 
-    --accent: 220 90% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 42 60% 45%;
+    --accent-foreground: 220 25% 8%;
 
-    --destructive: 0 85% 50%;
+    --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 15% 20%;
     --input: 220 15% 15%;
-    --ring: 0 85% 50%;
+    --ring: 42 75% 55%;
 
-    --radius: 0.5rem;
+    --radius: 0rem;
 
-    /* Custom Spidey colors */
-    --spidey-red: 0 85% 50%;
-    --spidey-blue: 220 90% 55%;
-    --spidey-dark: 220 20% 8%;
-    --spidey-glow: 0 100% 60%;
+    /* Kingsman custom colors */
+    --gold: 42 75% 55%;
+    --gold-light: 42 80% 70%;
+    --navy: 220 45% 25%;
+    --navy-dark: 220 35% 15%;
+    --champagne: 45 30% 85%;
   }
 
   * {
@@ -62,11 +63,11 @@
 @layer components {
   /* Container */
   .section-container {
-    @apply max-w-6xl mx-auto px-6 lg:px-8;
+    @apply max-w-5xl mx-auto px-6 lg:px-8;
   }
 
   .section-padding {
-    @apply py-20 lg:py-28;
+    @apply py-24 lg:py-32;
   }
 
   .section-alt {
@@ -75,106 +76,94 @@
 
   /* Typography */
   .heading-primary {
-    @apply font-display font-bold text-foreground tracking-tight;
+    @apply font-display font-medium text-foreground tracking-wide;
   }
 
   .heading-section {
-    @apply font-display text-2xl lg:text-3xl font-bold text-foreground mb-12;
+    @apply font-display text-2xl lg:text-3xl font-medium text-foreground mb-16 tracking-wide;
   }
 
-  /* Navigation */
+  /* Navigation - Elegant underline */
   .nav-link {
-    @apply text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300 uppercase tracking-wider;
+    @apply text-sm font-body font-medium text-muted-foreground hover:text-primary transition-all duration-500 uppercase tracking-[0.2em] relative;
   }
 
-  /* Cards - Cyber style */
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-500;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Cards - Clean elegant style */
   .card-project {
-    @apply bg-card p-6 border border-border transition-all duration-300 relative overflow-hidden;
-    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+    @apply bg-card p-8 border border-border transition-all duration-500 relative;
   }
 
   .card-project::before {
     content: '';
-    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
-    background: linear-gradient(135deg, hsl(var(--spidey-red) / 0.1), hsl(var(--spidey-blue) / 0.1));
+    @apply absolute top-0 left-0 w-0 h-px bg-primary transition-all duration-500;
   }
 
   .card-project:hover::before {
-    @apply opacity-100;
+    @apply w-full;
   }
 
   .card-project:hover {
-    @apply border-primary shadow-lg;
-    box-shadow: 0 0 30px hsl(var(--spidey-red) / 0.3), 0 0 60px hsl(var(--spidey-blue) / 0.1);
+    @apply border-primary/30;
   }
 
-  /* Skills tag - Cyber style */
+  /* Skills tag - Refined style */
   .skill-tag {
-    @apply inline-block px-4 py-2 text-sm font-medium bg-muted text-foreground border border-border transition-all duration-300;
-    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    @apply inline-block px-5 py-2.5 text-sm font-body font-medium bg-transparent text-foreground border border-border transition-all duration-300;
   }
 
   .skill-tag:hover {
     @apply border-primary text-primary;
-    box-shadow: 0 0 15px hsl(var(--spidey-red) / 0.4);
   }
 
-  /* Status badges */
+  /* Status badges - Elegant */
   .badge-status {
-    @apply inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider;
+    @apply inline-block px-4 py-1.5 text-xs font-body font-medium uppercase tracking-[0.15em];
   }
 
   .badge-status-progress {
-    @apply bg-secondary/20 text-secondary border border-secondary/50;
+    @apply bg-secondary/30 text-champagne border border-secondary/50;
   }
 
   .badge-status-upcoming {
-    @apply bg-muted text-muted-foreground border border-border;
+    @apply bg-muted/50 text-muted-foreground border border-border;
   }
 
   .badge-status-completed {
-    @apply bg-primary/20 text-primary border border-primary/50;
+    @apply bg-primary/10 text-primary border border-primary/30;
   }
 
-  /* Glowing text effect */
-  .glow-text {
-    text-shadow: 0 0 10px hsl(var(--spidey-red) / 0.8), 0 0 20px hsl(var(--spidey-red) / 0.5), 0 0 40px hsl(var(--spidey-red) / 0.3);
+  /* Elegant divider */
+  .elegant-divider {
+    @apply w-16 h-px bg-primary mx-auto;
   }
 
-  .glow-text-blue {
-    text-shadow: 0 0 10px hsl(var(--spidey-blue) / 0.8), 0 0 20px hsl(var(--spidey-blue) / 0.5), 0 0 40px hsl(var(--spidey-blue) / 0.3);
+  /* Gold text */
+  .text-gold {
+    color: hsl(var(--gold));
   }
 
-  /* Web pattern overlay */
-  .web-pattern {
-    background-image: 
-      radial-gradient(circle at center, transparent 0%, hsl(var(--background)) 70%);
+  /* Subtle hover lift */
+  .hover-lift {
+    @apply transition-transform duration-500;
   }
 
-  /* Animated border */
-  .animated-border {
-    position: relative;
-  }
-
-  .animated-border::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, hsl(var(--spidey-red)), hsl(var(--spidey-blue)));
-    transition: width 0.3s ease;
-  }
-
-  .animated-border:hover::after {
-    width: 100%;
+  .hover-lift:hover {
+    @apply -translate-y-1;
   }
 }
 
-/* Custom scrollbar */
+/* Elegant scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -182,24 +171,32 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, hsl(var(--spidey-red)), hsl(var(--spidey-blue)));
-  border-radius: 4px;
+  background: hsl(var(--gold) / 0.3);
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary));
+  background: hsl(var(--gold) / 0.5);
 }
 
-/* Animations */
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px hsl(var(--spidey-red) / 0.4);
+/* Smooth fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  50% {
-    box-shadow: 0 0 40px hsl(var(--spidey-red) / 0.6), 0 0 60px hsl(var(--spidey-blue) / 0.3);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Selection color */
+::selection {
+  background: hsl(var(--gold) / 0.3);
+  color: hsl(var(--foreground));
 }

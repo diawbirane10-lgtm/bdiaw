@@ -1,66 +1,50 @@
-import { ArrowDown, Zap } from "lucide-react";
-import spidermanWebBg from "@/assets/spiderman-web-bg.png";
+import { ArrowDown } from "lucide-react";
 
 const HeroSection = () => {
   return (
     <section
       id="accueil"
-      className="min-h-screen flex items-center pt-[72px] bg-background relative overflow-hidden"
+      className="min-h-screen flex items-center pt-20 bg-background relative"
     >
-      {/* Spider-Man Web Background */}
-      <div 
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: `url(${spidermanWebBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-      
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-spidey-dark/50" />
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/20 to-transparent" />
 
       <div className="section-container w-full relative z-10">
-        <div className="max-w-3xl">
-          {/* Glitch-style subtitle */}
-          <div className="flex items-center gap-2 mb-6">
-            <Zap className="w-5 h-5 text-primary animate-pulse" />
-            <p className="text-primary font-display font-medium tracking-[0.3em] uppercase text-sm glow-text">
-              Portfolio Ingénieur
-            </p>
-          </div>
+        <div className="max-w-2xl">
+          {/* Elegant subtitle */}
+          <p className="text-primary font-body font-medium tracking-[0.3em] uppercase text-sm mb-8">
+            Portfolio
+          </p>
 
-          {/* Name with glow effect */}
-          <h1 className="font-display text-5xl lg:text-6xl xl:text-7xl font-black mb-6 tracking-tight">
-            <span className="text-foreground">Birane</span>{" "}
-            <span className="text-primary glow-text">Diaw</span>
+          {/* Name with elegant styling */}
+          <h1 className="font-display text-5xl lg:text-6xl xl:text-7xl font-medium mb-8 tracking-wide text-foreground">
+            Birane Diaw
           </h1>
 
-          {/* Role with colored accent */}
-          <h2 className="text-xl lg:text-2xl font-display font-semibold mb-4">
-            <span className="text-foreground">Génie Électrique</span>
-            <span className="text-secondary glow-text-blue">, spécialité IEEA</span>
+          {/* Elegant divider */}
+          <div className="w-20 h-px bg-primary mb-8" />
+
+          {/* Role */}
+          <h2 className="text-xl lg:text-2xl font-body font-light mb-4 text-foreground/90 tracking-wide">
+            Génie Électrique, spécialité IEEA
           </h2>
           
-          <p className="text-muted-foreground text-sm mb-2 font-body tracking-wide">
-            (Informatique, Électronique, Électrotechnique, Automatique)
+          <p className="text-muted-foreground text-sm mb-3 font-body tracking-wide">
+            Informatique, Électronique, Électrotechnique, Automatique
           </p>
 
           {/* Institution */}
-          <p className="text-lg text-muted-foreground mb-10 font-body">
-            Étudiant à la <span className="text-secondary">FST Marrakech</span>, Université Cadi Ayyad
+          <p className="text-lg text-muted-foreground mb-12 font-body font-light">
+            FST Marrakech — Université Cadi Ayyad
           </p>
 
-          {/* CTA Button - Cyber style */}
+          {/* CTA Button - Elegant style */}
           <a
             href="#projets"
-            className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 font-display font-bold uppercase tracking-wider hover:bg-primary/90 transition-all duration-300 pulse-glow group"
-            style={{
-              clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))',
-            }}
+            className="inline-flex items-center gap-4 border border-primary text-primary px-8 py-4 font-body font-medium uppercase tracking-[0.2em] text-sm hover:bg-primary hover:text-primary-foreground transition-all duration-500 group"
           >
-            Mes Projets
-            <ArrowDown size={20} className="group-hover:translate-y-1 transition-transform" />
+            Découvrir mes projets
+            <ArrowDown size={16} className="group-hover:translate-y-1 transition-transform duration-300" />
           </a>
         </div>
       </div>
