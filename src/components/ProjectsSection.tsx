@@ -37,89 +37,67 @@ const ProjectsSection = () => {
 
   const getStatusIcon = (statusType: string) => {
     switch (statusType) {
-      case "completed":
-        return <CheckCircle className="w-3 h-3" />;
-      case "progress":
-        return <Clock className="w-3 h-3" />;
-      default:
-        return <Sparkles className="w-3 h-3" />;
+      case "completed": return <CheckCircle className="w-3.5 h-3.5" />;
+      case "progress": return <Clock className="w-3.5 h-3.5" />;
+      default: return <Sparkles className="w-3.5 h-3.5" />;
     }
   };
 
   return (
     <section id="projets" className="section-padding bg-background">
       <div className="section-container">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <p className="text-primary font-body font-medium tracking-[0.3em] uppercase text-xs mb-4">
-            Portfolio
-          </p>
-          <h2 className="font-display text-3xl lg:text-4xl font-medium text-foreground tracking-wide">
-            Réalisations
-          </h2>
-          <div className="elegant-divider mt-6" />
+        <div className="section-header">
+          <span className="section-label">Réalisations</span>
+          <h2 className="section-title">Projets</h2>
+          <div className="section-divider" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <article key={index} className="card-project hover-lift flex flex-col">
-              {/* Status badge */}
-              <div className="flex items-center justify-between mb-6">
-                <span
-                  className={`badge-status flex items-center gap-2 ${
-                    project.statusType === "completed"
-                      ? "badge-status-completed"
-                      : project.statusType === "progress"
-                      ? "badge-status-progress"
-                      : "badge-status-upcoming"
-                  }`}
-                >
+              <div className="mb-5">
+                <span className={`badge-status ${
+                  project.statusType === "completed" ? "badge-status-completed"
+                    : project.statusType === "progress" ? "badge-status-progress"
+                    : "badge-status-upcoming"
+                }`}>
                   {getStatusIcon(project.statusType)}
                   {project.status}
                 </span>
               </div>
 
-              {/* Title */}
-              <h3 className="text-xl font-display font-medium text-foreground mb-3 tracking-wide">
+              <h3 className="text-lg font-display text-foreground mb-2">
                 {project.title}
               </h3>
 
-              {/* Subtitle */}
               {project.subtitle && (
-                <p className="text-sm font-body text-primary mb-4">
-                  {project.subtitle}
-                </p>
+                <p className="text-sm font-body text-primary/70 mb-3">{project.subtitle}</p>
               )}
 
-              {/* Description */}
-              <p className="text-muted-foreground text-sm mb-6 leading-relaxed font-body flex-grow">
+              <p className="text-sm text-muted-foreground mb-5 leading-relaxed font-body flex-grow">
                 {project.description}
               </p>
 
-              {/* Details */}
               {project.details && (
                 <div className="text-xs text-muted-foreground border-t border-border pt-4 font-body">
                   {project.details}
                   {project.progress && (
-                    <span className="ml-2 text-primary font-medium">
-                      — Avancement : {project.progress}
-                    </span>
+                    <span className="ml-2 text-primary font-semibold">— {project.progress}</span>
                   )}
                 </div>
               )}
 
-              {/* PDF Download Link */}
               {project.pdfLink && (
-                <div className="mt-6 pt-4 border-t border-border">
+                <div className="mt-5 pt-4 border-t border-border">
                   <a
                     href={project.pdfLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 text-sm font-body font-medium text-primary hover:text-gold-light transition-colors duration-300 group"
+                    className="inline-flex items-center gap-2 text-sm font-body font-medium text-primary hover:text-accent transition-colors duration-300"
                   >
-                    <Download size={16} />
+                    <Download size={15} />
                     Télécharger le rapport
-                    <ExternalLink size={14} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+                    <ExternalLink size={13} className="opacity-50" />
                   </a>
                 </div>
               )}

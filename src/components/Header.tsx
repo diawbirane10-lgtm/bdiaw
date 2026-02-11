@@ -6,49 +6,41 @@ const Header = () => {
 
   const navItems = [
     { label: "Accueil", href: "#accueil" },
+    { label: "Formation", href: "#formation" },
+    { label: "Expérience", href: "#experience" },
     { label: "Compétences", href: "#competences" },
     { label: "Projets", href: "#projets" },
     { label: "Contact", href: "#contact" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/50">
       <div className="section-container">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo / Name */}
-          <a href="#accueil" className="group">
-            <span className="font-display text-xl tracking-wide text-foreground group-hover:text-primary transition-colors duration-500">
-              Birane Diaw
-            </span>
+        <div className="flex items-center justify-between h-16">
+          <a href="#accueil" className="font-display text-lg text-foreground hover:text-primary transition-colors duration-300">
+            B. Diaw
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="nav-link py-2"
-              >
+              <a key={item.href} href={item.href} className="nav-link py-2">
                 {item.label}
               </a>
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors duration-300"
+            className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-6 border-t border-border/50">
-            <div className="flex flex-col gap-6">
+          <nav className="lg:hidden py-4 border-t border-border/50">
+            <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <a
                   key={item.href}

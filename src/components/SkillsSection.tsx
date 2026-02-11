@@ -1,69 +1,74 @@
 const SkillsSection = () => {
   const skillCategories = [
     {
-      title: "Logiciels & Outils",
-      skills: ["LTSpice", "MATLAB/Simulink", "VS Code", "Antigravity", "LabVIEW"],
+      title: "Automatique & Systèmes Industriels",
+      skills: ["Analyse fonctionnelle", "GRAFCET", "Logique séquentielle", "Automatisation"],
     },
     {
-      title: "Programmation",
-      skills: ["Python", "C", "Assembly"],
-      note: "Niveau Intermédiaire",
+      title: "Instrumentation & Mesures",
+      skills: ["Capteurs", "Chaîne de mesure", "Acquisition de données", "Interprétation de résultats"],
     },
     {
-      title: "Domaines d'Expertise",
-      skills: [
-        "Électronique Analogique",
-        "Électronique Numérique",
-        "Électrotechnique",
-        "Automatique",
-        "Traitement du Signal",
-      ],
+      title: "Électronique",
+      skills: ["Analogique", "Numérique", "Lecture de schémas", "Simulation de circuits"],
     },
     {
-      title: "Compétences Techniques",
-      skills: [
-        "Commande Vectorielle (FOC)",
-        "Systèmes SCADA",
-        "Énergies Renouvelables",
-        "Simulation Numérique",
-      ],
+      title: "Électrotechnique",
+      skills: ["Câblage", "Mesures", "Sécurité électrique", "Commande vectorielle (FOC)"],
     },
+    {
+      title: "Modélisation & Simulation",
+      skills: ["MATLAB/Simulink", "LTspice", "Tinkercad", "Grafcet Studio"],
+    },
+    {
+      title: "Programmation & Logiciels",
+      skills: ["Python (POO)", "C", "VS Code", "Microsoft Office", "NotebookLM"],
+    },
+  ];
+
+  const languages = [
+    { lang: "Français", level: "Courant / Technique" },
+    { lang: "Anglais", level: "Bon niveau" },
+    { lang: "Wolof", level: "Maternel" },
   ];
 
   return (
     <section id="competences" className="section-padding section-alt">
       <div className="section-container">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <p className="text-primary font-body font-medium tracking-[0.3em] uppercase text-xs mb-4">
-            Expertise
-          </p>
-          <h2 className="font-display text-3xl lg:text-4xl font-medium text-foreground tracking-wide">
-            Compétences Techniques
-          </h2>
-          <div className="elegant-divider mt-6" />
+        <div className="section-header">
+          <span className="section-label">Expertise</span>
+          <h2 className="section-title">Compétences Techniques</h2>
+          <div className="section-divider" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category) => (
-            <div key={category.title} className="group">
-              <h3 className="text-lg font-display font-medium text-foreground mb-6 tracking-wide">
+            <div key={category.title}>
+              <h3 className="text-sm font-body font-semibold text-primary mb-4 tracking-wide uppercase">
                 {category.title}
               </h3>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <span key={skill} className="skill-tag">
-                    {skill}
-                  </span>
+                  <span key={skill} className="skill-tag">{skill}</span>
                 ))}
               </div>
-              {category.note && (
-                <p className="text-sm text-muted-foreground mt-5 font-body italic">
-                  {category.note}
-                </p>
-              )}
             </div>
           ))}
+        </div>
+
+        {/* Languages */}
+        <div className="mt-14 pt-10 border-t border-border">
+          <h3 className="text-sm font-body font-semibold text-primary mb-6 tracking-wide uppercase">
+            Langues
+          </h3>
+          <div className="flex flex-wrap gap-6">
+            {languages.map((l) => (
+              <div key={l.lang} className="flex items-center gap-2">
+                <span className="font-body font-medium text-foreground text-sm">{l.lang}</span>
+                <span className="text-xs text-muted-foreground font-body">— {l.level}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
