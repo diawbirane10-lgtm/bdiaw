@@ -1,10 +1,22 @@
-import { Award } from "lucide-react";
+import { Award, Download, ExternalLink } from "lucide-react";
 
 const CertificationsSection = () => {
   const certifications = [
-    { title: "Coding With Python", issuer: "GOMYCODE" },
-    { title: "Introduction to PLC and Industrial Automation", issuer: "LinkedIn Learning" },
-    { title: "Electronics Foundations : Fundamentals", issuer: "LinkedIn Learning" },
+    {
+      title: "Coding With Python",
+      issuer: "GOMYCODE",
+      justificatif: "/documents/certif_python_gomycode.jpeg",
+    },
+    {
+      title: "Introduction to PLC and Industrial Automation",
+      issuer: "LinkedIn Learning",
+      justificatif: "/documents/linkedin_learning_plc.pdf",
+    },
+    {
+      title: "Electronics Foundations : Fundamentals",
+      issuer: "LinkedIn Learning",
+      justificatif: "/documents/linkedin_learning_certificate.pdf",
+    },
   ];
 
   return (
@@ -21,12 +33,22 @@ const CertificationsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {certifications.map((cert, i) => (
-            <div key={i} className="card-elegant text-center hover-lift">
+            <div key={i} className="card-elegant hover-lift flex flex-col">
               <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <Award className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-display text-base text-foreground mb-2">{cert.title}</h3>
-              <p className="text-xs text-muted-foreground font-body">{cert.issuer}</p>
+              <h3 className="font-display text-base text-foreground mb-2 text-center">{cert.title}</h3>
+              <p className="text-xs text-muted-foreground font-body text-center mb-4 flex-grow">{cert.issuer}</p>
+              <a
+                href={cert.justificatif}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 text-xs font-body font-medium text-primary hover:text-accent transition-colors duration-300 pt-4 border-t border-border"
+              >
+                <Download size={13} />
+                Justificatif
+                <ExternalLink size={11} className="opacity-50" />
+              </a>
             </div>
           ))}
         </div>
