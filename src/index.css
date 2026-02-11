@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,45 +6,40 @@
 
 @layer base {
   :root {
-    /* Kingsman Elegant Dark Theme */
-    --background: 220 25% 8%;
-    --foreground: 45 30% 95%;
+    /* Professional Dark Academic Theme */
+    --background: 222 30% 6%;
+    --foreground: 210 20% 92%;
 
-    --card: 220 20% 12%;
-    --card-foreground: 45 30% 95%;
+    --card: 222 25% 10%;
+    --card-foreground: 210 20% 92%;
 
-    --popover: 220 20% 12%;
-    --popover-foreground: 45 30% 95%;
+    --popover: 222 25% 10%;
+    --popover-foreground: 210 20% 92%;
 
-    /* Kingsman Gold */
-    --primary: 42 75% 55%;
-    --primary-foreground: 220 25% 8%;
+    /* Accent - Refined Steel Blue */
+    --primary: 210 60% 55%;
+    --primary-foreground: 222 30% 6%;
 
-    /* Kingsman Navy */
-    --secondary: 220 45% 25%;
-    --secondary-foreground: 45 30% 95%;
+    /* Deep Navy */
+    --secondary: 222 35% 18%;
+    --secondary-foreground: 210 20% 92%;
 
-    --muted: 220 20% 18%;
-    --muted-foreground: 220 15% 55%;
+    --muted: 222 20% 14%;
+    --muted-foreground: 215 15% 50%;
 
-    --accent: 42 60% 45%;
-    --accent-foreground: 220 25% 8%;
+    --accent: 38 70% 55%;
+    --accent-foreground: 222 30% 6%;
 
     --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 15%;
-    --ring: 42 75% 55%;
+    --border: 222 15% 16%;
+    --input: 222 15% 13%;
+    --ring: 210 60% 55%;
 
-    --radius: 0rem;
+    --radius: 0.5rem;
 
-    /* Kingsman custom colors */
-    --gold: 42 75% 55%;
-    --gold-light: 42 80% 70%;
-    --navy: 220 45% 25%;
-    --navy-dark: 220 35% 15%;
-    --champagne: 45 30% 85%;
+    --highlight: 38 70% 55%;
   }
 
   * {
@@ -61,76 +56,70 @@
 }
 
 @layer components {
-  /* Container */
   .section-container {
     @apply max-w-5xl mx-auto px-6 lg:px-8;
   }
 
   .section-padding {
-    @apply py-24 lg:py-32;
+    @apply py-20 lg:py-28;
   }
 
   .section-alt {
     @apply bg-card;
   }
 
-  /* Typography */
-  .heading-primary {
-    @apply font-display font-medium text-foreground tracking-wide;
+  /* Section Header */
+  .section-header {
+    @apply mb-14;
   }
 
-  .heading-section {
-    @apply font-display text-2xl lg:text-3xl font-medium text-foreground mb-16 tracking-wide;
+  .section-label {
+    @apply text-primary font-body font-semibold tracking-[0.2em] uppercase text-xs mb-3 block;
   }
 
-  /* Navigation - Elegant underline */
+  .section-title {
+    @apply font-display text-3xl lg:text-4xl text-foreground;
+  }
+
+  .section-divider {
+    @apply w-12 h-0.5 bg-primary mt-5;
+  }
+
+  /* Navigation */
   .nav-link {
-    @apply text-sm font-body font-medium text-muted-foreground hover:text-primary transition-all duration-500 uppercase tracking-[0.2em] relative;
+    @apply text-sm font-body font-medium text-muted-foreground hover:text-primary transition-colors duration-300 tracking-wide relative;
   }
 
   .nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-500;
+    @apply absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-300;
   }
 
   .nav-link:hover::after {
     @apply w-full;
   }
 
-  /* Cards - Clean elegant style */
+  /* Cards */
+  .card-elegant {
+    @apply bg-card p-7 rounded-lg border border-border hover:border-primary/30 transition-all duration-300;
+  }
+
   .card-project {
-    @apply bg-card p-8 border border-border transition-all duration-500 relative;
+    @apply card-elegant;
   }
 
-  .card-project::before {
-    content: '';
-    @apply absolute top-0 left-0 w-0 h-px bg-primary transition-all duration-500;
-  }
-
-  .card-project:hover::before {
-    @apply w-full;
-  }
-
-  .card-project:hover {
-    @apply border-primary/30;
-  }
-
-  /* Skills tag - Refined style */
+  /* Skills */
   .skill-tag {
-    @apply inline-block px-5 py-2.5 text-sm font-body font-medium bg-transparent text-foreground border border-border transition-all duration-300;
+    @apply inline-block px-4 py-2 text-sm font-body font-medium bg-muted/50 text-foreground/80 rounded-md border border-border hover:border-primary/40 hover:text-primary transition-all duration-300;
   }
 
-  .skill-tag:hover {
-    @apply border-primary text-primary;
-  }
-
-  /* Status badges - Elegant */
+  /* Status badges */
   .badge-status {
-    @apply inline-block px-4 py-1.5 text-xs font-body font-medium uppercase tracking-[0.15em];
+    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-body font-semibold uppercase tracking-wider rounded-full;
   }
 
   .badge-status-progress {
-    @apply bg-secondary/30 text-champagne border border-secondary/50;
+    @apply bg-primary/10 text-primary border border-primary/20;
   }
 
   .badge-status-upcoming {
@@ -138,22 +127,34 @@
   }
 
   .badge-status-completed {
-    @apply bg-primary/10 text-primary border border-primary/30;
+    @apply bg-accent/10 text-accent border border-accent/20;
   }
 
-  /* Elegant divider */
-  .elegant-divider {
-    @apply w-16 h-px bg-primary mx-auto;
+  /* Timeline */
+  .timeline-item {
+    @apply relative pl-8 pb-10 border-l-2 border-border last:pb-0;
   }
 
-  /* Gold text */
-  .text-gold {
-    color: hsl(var(--gold));
+  .timeline-item::before {
+    content: '';
+    @apply absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-primary;
   }
 
-  /* Subtle hover lift */
+  .timeline-date {
+    @apply text-xs font-body font-semibold text-primary tracking-wider uppercase mb-2;
+  }
+
+  .timeline-title {
+    @apply text-lg font-display text-foreground mb-1;
+  }
+
+  .timeline-subtitle {
+    @apply text-sm font-body text-muted-foreground mb-3;
+  }
+
+  /* Hover lift */
   .hover-lift {
-    @apply transition-transform duration-500;
+    @apply transition-transform duration-300;
   }
 
   .hover-lift:hover {
@@ -161,9 +162,9 @@
   }
 }
 
-/* Elegant scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -171,32 +172,26 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--gold) / 0.3);
-  border-radius: 0;
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--gold) / 0.5);
+  background: hsl(var(--primary) / 0.5);
 }
 
-/* Smooth fade animation */
+/* Selection */
+::selection {
+  background: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+/* Smooth fade */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-/* Selection color */
-::selection {
-  background: hsl(var(--gold) / 0.3);
-  color: hsl(var(--foreground));
+  animation: fadeIn 0.6s ease-out forwards;
 }

@@ -1,53 +1,67 @@
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-card border-t border-border py-16">
+    <footer id="contact" className="section-padding section-alt border-t border-border">
       <div className="section-container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-10">
-          {/* Name and role */}
-          <div className="text-center md:text-left">
-            <p className="font-display text-2xl text-foreground tracking-wide mb-2">
-              Birane Diaw
-            </p>
-            <p className="text-sm text-muted-foreground font-body tracking-wide">
-              Génie Électrique, spécialité IEEA
-            </p>
-            <p className="text-xs text-muted-foreground font-body mt-1">
-              FST Marrakech — Université Cadi Ayyad
-            </p>
-          </div>
-
-          {/* Contact Links */}
-          <div className="flex items-center gap-8">
-            <a
-              href="https://www.linkedin.com/in/birane-diaw-b83b47374"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={18} />
-              <span className="text-sm font-body tracking-wide">LinkedIn</span>
-            </a>
-            <a
-              href="mailto:diawbirane10@gmail.com"
-              className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group"
-              aria-label="Email"
-            >
-              <Mail size={18} />
-              <span className="text-sm font-body tracking-wide hidden sm:inline">diawbirane10@gmail.com</span>
-            </a>
-          </div>
+        <div className="section-header">
+          <span className="section-label">Contact</span>
+          <h2 className="section-title">Me Contacter</h2>
+          <div className="section-divider" />
         </div>
 
-        {/* Elegant divider */}
-        <div className="elegant-divider my-10" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+          <a
+            href="mailto:diawbirane10@gmail.com"
+            className="card-elegant flex items-center gap-4 hover-lift group"
+          >
+            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+              <Mail className="w-5 h-5 text-primary" />
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground font-body mb-0.5">Email</p>
+              <p className="text-sm font-body font-medium text-foreground group-hover:text-primary transition-colors">
+                diawbirane10@gmail.com
+              </p>
+            </div>
+          </a>
 
-        {/* Bottom Bar */}
-        <div className="text-center">
-          <p className="text-xs text-muted-foreground font-body tracking-wide">
-            © {new Date().getFullYear()} Birane Diaw — Manners Maketh Man
+          <a
+            href="tel:+212669148524"
+            className="card-elegant flex items-center gap-4 hover-lift group"
+          >
+            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+              <Phone className="w-5 h-5 text-primary" />
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground font-body mb-0.5">Téléphone</p>
+              <p className="text-sm font-body font-medium text-foreground group-hover:text-primary transition-colors">
+                +212 669 148 524
+              </p>
+            </div>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/birane-diaw-b83b47374"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card-elegant flex items-center gap-4 hover-lift group"
+          >
+            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+              <Linkedin className="w-5 h-5 text-primary" />
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground font-body mb-0.5">LinkedIn</p>
+              <p className="text-sm font-body font-medium text-foreground group-hover:text-primary transition-colors">
+                Birane Diaw
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div className="text-center pt-8 border-t border-border">
+          <p className="text-xs text-muted-foreground font-body">
+            © {new Date().getFullYear()} Birane Diaw — Marrakech, Maroc
           </p>
         </div>
       </div>
