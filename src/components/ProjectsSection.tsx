@@ -1,13 +1,26 @@
-import { Download, ExternalLink, Clock, CheckCircle, Sparkles, Rocket } from "lucide-react";
+import { Download, ExternalLink, Clock, CheckCircle, Sparkles } from "lucide-react";
 
 const ProjectsSection = () => {
   const projects = [
     {
-      title: "Supervision SCADA PV Intelligent",
-      subtitle: "Jumeau Numérique & Double Tracking",
-      description: "Développement d'un système de supervision pour panneaux photovoltaïques avec suivi solaire dual-axis.",
+      title: "Simulation & Contrôle d'Attitude d'un Nano-Satellite (1U)",
+      subtitle: "Mini-Projet CubeSat — ADCS",
+      description: "Simulation de l'ADCS d'un CubeSat 1U : stabilisation post-déploiement (detumbling), pointage nadir, et visualisation 3D de la dynamique 6DOF.",
+      details: "MATLAB/Simulink • Aerospace Blockset • Control System Toolbox • PID",
       status: "À venir",
       statusType: "upcoming" as const,
+      pdfLink: "/documents/FicheTech_Projet1.pdf",
+      pdfLabel: "Fiche technique",
+    },
+    {
+      title: "Conception PCB : Système de Gestion de Puissance (EPS)",
+      subtitle: "Mini-Projet CubeSat — EPS",
+      description: "Conception du module EPS d'un CubeSat 1U : conversion Buck (3.3V/5.0V), protection électrique, format PC/104, et dossier de fabrication Gerber.",
+      details: "KiCad 9.0 • Eeschema • Pcbnew • Norme IPC-2221 • Gerber X2",
+      status: "À venir",
+      statusType: "upcoming" as const,
+      pdfLink: "/documents/FicheTech_Projet2.pdf",
+      pdfLabel: "Fiche technique",
     },
     {
       title: "Chaîne de Conditionnement Analogique",
@@ -26,6 +39,7 @@ const ProjectsSection = () => {
       status: "Terminé",
       statusType: "completed" as const,
       pdfLink: "/documents/projet-houlomotrice.pdf",
+      pdfLabel: "Télécharger le rapport",
     },
     {
       title: "TPs Électronique Analogique",
@@ -41,21 +55,6 @@ const ProjectsSection = () => {
         { label: "TP4 — Transistor BJT", href: "/documents/CR_EA_TP4.pdf" },
         { label: "TP5 — JFET", href: "/documents/CR_EA_TP5.pdf" },
       ],
-    },
-  ];
-
-  const miniProjets = [
-    {
-      title: "Simulation & Contrôle d'Attitude d'un Nano-Satellite (1U)",
-      description: "Simulation de l'ADCS d'un CubeSat 1U : stabilisation post-déploiement (detumbling), pointage nadir, et visualisation 3D de la dynamique 6DOF.",
-      details: "MATLAB/Simulink • Aerospace Blockset • Control System Toolbox • PID",
-      pdfLink: "/documents/FicheTech_Projet1.pdf",
-    },
-    {
-      title: "Conception PCB : Système de Gestion de Puissance (EPS)",
-      description: "Conception du module EPS d'un CubeSat 1U : conversion Buck (3.3V/5.0V), protection électrique, format PC/104, et dossier de fabrication Gerber.",
-      details: "KiCad 9.0 • Eeschema • Pcbnew • Norme IPC-2221 • Gerber X2",
-      pdfLink: "/documents/FicheTech_Projet2.pdf",
     },
   ];
 
@@ -120,7 +119,7 @@ const ProjectsSection = () => {
                     className="inline-flex items-center gap-2 text-sm font-body font-medium text-primary hover:text-accent transition-colors duration-300"
                   >
                     <Download size={15} />
-                    Télécharger le rapport
+                    {project.pdfLabel || "Télécharger le rapport"}
                     <ExternalLink size={13} className="opacity-50" />
                   </a>
                 </div>
@@ -145,49 +144,6 @@ const ProjectsSection = () => {
               )}
             </article>
           ))}
-        </div>
-
-        {/* Mini-Projets CubeSat */}
-        <div className="mt-16">
-          <div className="flex items-center gap-3 mb-8">
-            <Rocket className="w-5 h-5 text-primary" />
-            <h3 className="text-lg font-display text-foreground">Mini-Projets CubeSat</h3>
-            <span className="badge-status badge-status-upcoming">
-              <Sparkles className="w-3.5 h-3.5" />
-              À venir
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {miniProjets.map((projet, index) => (
-              <article key={index} className="card-project hover-lift flex flex-col border-l-2 border-primary/30">
-                <h3 className="text-base font-display text-foreground mb-2">
-                  {projet.title}
-                </h3>
-
-                <p className="text-sm text-muted-foreground mb-5 leading-relaxed font-body flex-grow">
-                  {projet.description}
-                </p>
-
-                <div className="text-xs text-muted-foreground border-t border-border pt-4 font-body">
-                  {projet.details}
-                </div>
-
-                <div className="mt-5 pt-4 border-t border-border">
-                  <a
-                    href={projet.pdfLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-body font-medium text-primary hover:text-accent transition-colors duration-300"
-                  >
-                    <Download size={15} />
-                    Fiche technique
-                    <ExternalLink size={13} className="opacity-50" />
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
         </div>
       </div>
     </section>
