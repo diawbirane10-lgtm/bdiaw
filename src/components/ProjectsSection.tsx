@@ -33,6 +33,21 @@ const ProjectsSection = () => {
       statusType: "completed" as const,
       pdfLink: "/documents/projet-houlomotrice.pdf",
     },
+    {
+      title: "TPs Électronique Analogique",
+      subtitle: "Simulations LTSpice — Pr. Ahmad Chitnalah",
+      description: "Série de 5 travaux pratiques couvrant les circuits RLC, diodes, Zener, transistor bipolaire (2N2222) et JFET (2N3819). Simulations réalisées sur LTSpice avant application en laboratoire.",
+      details: "LTSpice • Circuit RLC • Diodes • Zener • Transistor BJT • JFET",
+      status: "Terminé",
+      statusType: "completed" as const,
+      pdfLinks: [
+        { label: "TP1 — Circuit RLC", href: "/documents/CR_EA_TP1.pdf" },
+        { label: "TP2 — Diodes", href: "/documents/CR_EA_TP2.pdf" },
+        { label: "TP3 — Diode Zener", href: "/documents/CR_EA_TP3.pdf" },
+        { label: "TP4 — Transistor BJT", href: "/documents/CR_EA_TP4.pdf" },
+        { label: "TP5 — JFET", href: "/documents/CR_EA_TP5.pdf" },
+      ],
+    },
   ];
 
   const getStatusIcon = (statusType: string) => {
@@ -99,6 +114,24 @@ const ProjectsSection = () => {
                     Télécharger le rapport
                     <ExternalLink size={13} className="opacity-50" />
                   </a>
+                </div>
+              )}
+
+              {project.pdfLinks && (
+                <div className="mt-5 pt-4 border-t border-border flex flex-col gap-2">
+                  {project.pdfLinks.map((link, i) => (
+                    <a
+                      key={i}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-body font-medium text-primary hover:text-accent transition-colors duration-300"
+                    >
+                      <Download size={14} />
+                      {link.label}
+                      <ExternalLink size={12} className="opacity-50" />
+                    </a>
+                  ))}
                 </div>
               )}
             </article>
