@@ -58,7 +58,7 @@ const ProjectsSection = () => {
     },
     {
       title: "TPs Traitement du Signal",
-      subtitle: "Analyse spectrale & filtrage — MATLAB",
+      subtitle: "Analyse spectrale & filtrage — Pr. Fouad Sefyani",
       description: "Série de 4 travaux pratiques couvrant les fondamentaux du traitement du signal : analyse fréquentielle, transformée de Fourier, filtrage numérique et applications.",
       details: "MATLAB • FFT • Filtrage • Analyse spectrale • Signaux numériques",
       status: "Terminé",
@@ -159,6 +159,10 @@ const ProjectsSection = () => {
             </article>
           ))}
         </div>
+
+        <p className="mt-8 text-sm text-muted-foreground/70 font-body italic text-center">
+          Note : Les comptes rendus des TPs d'Électrotechnique, d'Automatique et d'Informatique Industrielle ont été rédigés sur feuille et ne sont pas disponibles au format numérique.
+        </p>
       </div>
     </section>
   );
