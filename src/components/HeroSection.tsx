@@ -17,7 +17,7 @@ const HeroSection = () => {
           <div className="section-divider mb-8" />
 
           <h2 className="text-xl lg:text-2xl font-body font-light mb-3 text-foreground/90 tracking-wide">
-            Étudiant en Licence IEEA
+            Étudiant en Génie Électrique
           </h2>
 
           <p className="text-muted-foreground text-sm mb-2 font-body leading-relaxed max-w-lg">
