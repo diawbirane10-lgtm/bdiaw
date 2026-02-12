@@ -56,6 +56,20 @@ const ProjectsSection = () => {
         { label: "TP5 — JFET", href: "/documents/CR_EA_TP5.pdf" },
       ],
     },
+    {
+      title: "TPs Traitement du Signal",
+      subtitle: "Analyse spectrale & filtrage — MATLAB",
+      description: "Série de 4 travaux pratiques couvrant les fondamentaux du traitement du signal : analyse fréquentielle, transformée de Fourier, filtrage numérique et applications.",
+      details: "MATLAB • FFT • Filtrage • Analyse spectrale • Signaux numériques",
+      status: "Terminé",
+      statusType: "completed" as const,
+      pdfLinks: [
+        { label: "TP1 — Introduction", href: "/documents/CR_TS_TP1.docx" },
+        { label: "TP2 — Analyse fréquentielle", href: "/documents/CR_TS_TP2.pdf" },
+        { label: "TP3 — Filtrage", href: "/documents/CR_TS_TP3.pdf" },
+        { label: "TP4 — Applications", href: "/documents/CR_TS_TP4.pdf" },
+      ],
+    },
   ];
 
   const getStatusIcon = (statusType: string) => {
