@@ -55,7 +55,7 @@ export default {
         highlight: "hsl(var(--highlight))",
       },
       fontFamily: {
-        display: ["DM Serif Display", "serif"],
+        display: ["Plus Jakarta Sans", "sans-serif"],
         body: ["Inter", "sans-serif"],
       },
       borderRadius: {

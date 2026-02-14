@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,40 +6,40 @@
 
 @layer base {
   :root {
-    /* Professional Dark Academic Theme */
-    --background: 222 30% 6%;
-    --foreground: 210 20% 92%;
+    /* Clean Professional Light Theme */
+    --background: 0 0% 99%;
+    --foreground: 220 20% 14%;
 
-    --card: 222 25% 10%;
-    --card-foreground: 210 20% 92%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 14%;
 
-    --popover: 222 25% 10%;
-    --popover-foreground: 210 20% 92%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 14%;
 
-    /* Accent - Refined Steel Blue */
-    --primary: 210 60% 55%;
-    --primary-foreground: 222 30% 6%;
+    /* Professional Deep Blue */
+    --primary: 220 65% 42%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Deep Navy */
-    --secondary: 222 35% 18%;
-    --secondary-foreground: 210 20% 92%;
+    /* Light Gray */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 20% 14%;
 
-    --muted: 222 20% 14%;
-    --muted-foreground: 215 15% 50%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 46%;
 
-    --accent: 38 70% 55%;
-    --accent-foreground: 222 30% 6%;
+    --accent: 220 14% 93%;
+    --accent-foreground: 220 20% 14%;
 
-    --destructive: 0 65% 50%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 222 15% 16%;
-    --input: 222 15% 13%;
-    --ring: 210 60% 55%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 65% 42%;
 
-    --radius: 0.5rem;
+    --radius: 0.625rem;
 
-    --highlight: 38 70% 55%;
+    --highlight: 220 65% 42%;
   }
 
   * {
@@ -65,34 +65,33 @@
   }
 
   .section-alt {
-    @apply bg-card;
+    @apply bg-secondary;
   }
 
-  /* Section Header */
   .section-header {
     @apply mb-14;
   }
 
   .section-label {
-    @apply text-primary font-body font-semibold tracking-[0.2em] uppercase text-xs mb-3 block;
+    @apply text-primary font-body font-semibold tracking-[0.15em] uppercase text-xs mb-3 block;
   }
 
   .section-title {
-    @apply font-display text-3xl lg:text-4xl text-foreground;
+    @apply font-display text-3xl lg:text-4xl text-foreground font-bold;
   }
 
   .section-divider {
-    @apply w-12 h-0.5 bg-primary mt-5;
+    @apply w-10 h-0.5 bg-primary mt-5 rounded-full;
   }
 
   /* Navigation */
   .nav-link {
-    @apply text-sm font-body font-medium text-muted-foreground hover:text-primary transition-colors duration-300 tracking-wide relative;
+    @apply text-sm font-body font-medium text-muted-foreground hover:text-primary transition-colors duration-200 tracking-wide relative;
   }
 
   .nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-300;
+    @apply absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-200;
   }
 
   .nav-link:hover::after {
@@ -101,7 +100,7 @@
 
   /* Cards */
   .card-elegant {
-    @apply bg-card p-7 rounded-lg border border-border hover:border-primary/30 transition-all duration-300;
+    @apply bg-card p-7 rounded-xl border border-border hover:border-primary/25 hover:shadow-md transition-all duration-200;
   }
 
   .card-project {
@@ -110,7 +109,7 @@
 
   /* Skills */
   .skill-tag {
-    @apply inline-block px-4 py-2 text-sm font-body font-medium bg-muted/50 text-foreground/80 rounded-md border border-border hover:border-primary/40 hover:text-primary transition-all duration-300;
+    @apply inline-block px-4 py-2 text-sm font-body font-medium bg-secondary text-foreground/80 rounded-lg border border-border hover:border-primary/30 hover:text-primary transition-all duration-200;
   }
 
   /* Status badges */
@@ -119,15 +118,15 @@
   }
 
   .badge-status-progress {
-    @apply bg-primary/10 text-primary border border-primary/20;
+    @apply bg-blue-50 text-blue-600 border border-blue-200;
   }
 
   .badge-status-upcoming {
-    @apply bg-muted/50 text-muted-foreground border border-border;
+    @apply bg-secondary text-muted-foreground border border-border;
   }
 
   .badge-status-completed {
-    @apply bg-accent/10 text-accent border border-accent/20;
+    @apply bg-emerald-50 text-emerald-600 border border-emerald-200;
   }
 
   /* Timeline */
@@ -145,7 +144,7 @@
   }
 
   .timeline-title {
-    @apply text-lg font-display text-foreground mb-1;
+    @apply text-lg font-display font-bold text-foreground mb-1;
   }
 
   .timeline-subtitle {
@@ -154,11 +153,11 @@
 
   /* Hover lift */
   .hover-lift {
-    @apply transition-transform duration-300;
+    @apply transition-all duration-200;
   }
 
   .hover-lift:hover {
-    @apply -translate-y-1;
+    @apply -translate-y-0.5 shadow-lg shadow-primary/5;
   }
 }
 
@@ -172,26 +171,26 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary) / 0.3);
+  background: hsl(var(--muted-foreground) / 0.2);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.5);
+  background: hsl(var(--muted-foreground) / 0.35);
 }
 
 /* Selection */
 ::selection {
-  background: hsl(var(--primary) / 0.3);
+  background: hsl(var(--primary) / 0.12);
   color: hsl(var(--foreground));
 }
 
 /* Smooth fade */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.6s ease-out forwards;
+  animation: fadeIn 0.5s ease-out forwards;
 }
