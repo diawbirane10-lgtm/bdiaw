@@ -18,7 +18,7 @@ const SkillsSection = () => {
     },
     {
       title: "Modélisation & Simulation",
-      skills: ["MATLAB/Simulink", "LTspice", "Tinkercad", "Grafcet Studio"],
+      skills: ["MATLAB/Simulink", "LTspice", "Tinkercad", "Grafcet Studio", "OpenSCAD"],
     },
     {
       title: "Programmation & Logiciels",
