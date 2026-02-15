@@ -5,49 +5,60 @@ const ProjectsSection = () => {
     {
       title: "Simulation & Contrôle d'Attitude d'un Nano-Satellite (1U)",
       subtitle: "Mini-Projet CubeSat — ADCS",
-      description: "Simulation de l'ADCS d'un CubeSat 1U : stabilisation post-déploiement (detumbling), pointage nadir, et visualisation 3D de la dynamique 6DOF.",
-      details: "MATLAB/Simulink • Aerospace Blockset • Control System Toolbox • PID",
       status: "À venir",
       statusType: "upcoming" as const,
+      contexte: "Dans le cadre d'un mini-projet académique autour de la technologie CubeSat, simulation du système de contrôle d'attitude (ADCS) d'un nano-satellite 1U.",
+      objectif: "Stabiliser le satellite après déploiement (detumbling), assurer un pointage nadir, et visualiser la dynamique 6DOF en 3D.",
+      contribution: "Modélisation complète du système ADCS, implémentation des lois de commande PID, et visualisation 3D de la dynamique orbitale.",
+      outils: ["MATLAB/Simulink", "Aerospace Blockset", "Control System Toolbox", "PID Tuner"],
       pdfLink: "/documents/FicheTech_Projet1.pdf",
       pdfLabel: "Fiche technique",
     },
     {
       title: "Conception PCB : Système de Gestion de Puissance (EPS)",
       subtitle: "Mini-Projet CubeSat — EPS",
-      description: "Conception du module EPS d'un CubeSat 1U : conversion Buck (3.3V/5.0V), protection électrique, format PC/104, et dossier de fabrication Gerber.",
-      details: "KiCad 9.0 • Eeschema • Pcbnew • Norme IPC-2221 • Gerber X2",
       status: "À venir",
       statusType: "upcoming" as const,
+      contexte: "Second volet du projet CubeSat, centré sur l'alimentation électrique embarquée au format PC/104.",
+      objectif: "Concevoir le module EPS avec conversion Buck (3.3V/5.0V), protections électriques, et générer le dossier de fabrication Gerber.",
+      contribution: "Schéma électrique complet sous Eeschema, routage PCB sous Pcbnew, vérification DRC/ERC, et export Gerber X2.",
+      outils: ["KiCad 9.0", "Eeschema", "Pcbnew", "Norme IPC-2221", "Gerber X2"],
       pdfLink: "/documents/FicheTech_Projet2.pdf",
       pdfLabel: "Fiche technique",
     },
     {
       title: "Chaîne de Conditionnement Analogique",
       subtitle: "Capteur Piézoélectrique",
-      description: "Modélisation d'une chaîne de conditionnement pour capteur piézoélectrique destiné à la surveillance vibratoire.",
-      details: "MATLAB Simulink, LTspice",
-      progress: "15%",
       status: "En cours",
       statusType: "progress" as const,
+      progress: "15%",
+      contexte: "Projet de modélisation d'une chaîne de conditionnement pour capteur piézoélectrique, dans un contexte de surveillance vibratoire industrielle.",
+      objectif: "Concevoir et simuler une chaîne complète : amplification de charge, filtrage, et mise en forme du signal vibratoire.",
+      contribution: "Modélisation du capteur et des étages d'amplification, simulation fonctionnelle et analyse des performances.",
+      outils: ["MATLAB/Simulink", "LTspice"],
     },
     {
       title: "Énergie Houlomotrice",
       subtitle: "Conversion et Injection Réseau par Commande Vectorielle",
-      description: "Étude et conception d'un système de récupération de l'énergie des vagues avec génératrice PMSG et commande FOC.",
-      details: "MATLAB/Simulink • Encadré par Pr. Moulay Rachid DOUIRI",
       status: "Terminé",
       statusType: "completed" as const,
+      contexte: "Projet de fin de semestre sur les énergies marines renouvelables, encadré par Pr. Moulay Rachid DOUIRI.",
+      objectif: "Étudier et simuler un système de récupération de l'énergie des vagues avec génératrice PMSG et injection réseau via commande FOC.",
+      contribution: "Modélisation de la chaîne complète (vagues → mécanique → PMSG → convertisseurs → réseau), implémentation de la commande vectorielle, et analyse des performances.",
+      outils: ["MATLAB/Simulink", "Simscape Electrical", "Control System Toolbox"],
+      resultats: "Injection réseau stable avec THD < 5%, suivi de couple performant, et validation des courbes de puissance.",
       pdfLink: "/documents/projet-houlomotrice.pdf",
       pdfLabel: "Télécharger le rapport",
     },
     {
       title: "TPs Électronique Analogique",
       subtitle: "Simulations LTSpice — Pr. Ahmad Chitnalah",
-      description: "Série de 5 travaux pratiques couvrant les circuits RLC, diodes, Zener, transistor bipolaire (2N2222) et JFET (2N3819). Simulations réalisées sur LTSpice avant application en laboratoire.",
-      details: "LTSpice • Circuit RLC • Diodes • Zener • Transistor BJT • JFET",
       status: "Terminé",
       statusType: "completed" as const,
+      contexte: "Série de 5 travaux pratiques en électronique analogique, combinant simulation et manipulation en laboratoire.",
+      objectif: "Maîtriser le comportement des composants fondamentaux (RLC, diodes, transistors) par la simulation puis la validation expérimentale.",
+      contribution: "Réalisation des simulations LTSpice, mesures en laboratoire, rédaction des comptes rendus avec analyse comparative simulation/expérimental.",
+      outils: ["LTSpice", "Oscilloscope", "Générateur de signaux", "Multimètre"],
       pdfLinks: [
         { label: "TP1 — Circuit RLC", href: "/documents/CR_EA_TP1.pdf" },
         { label: "TP2 — Diodes", href: "/documents/CR_EA_TP2.pdf" },
@@ -59,10 +70,12 @@ const ProjectsSection = () => {
     {
       title: "TPs Traitement du Signal",
       subtitle: "Analyse spectrale & filtrage — Pr. Fouad Sefyani",
-      description: "Série de 4 travaux pratiques couvrant les fondamentaux du traitement du signal : analyse fréquentielle, transformée de Fourier, filtrage numérique et applications.",
-      details: "MATLAB • FFT • Filtrage • Analyse spectrale • Signaux numériques",
       status: "Terminé",
       statusType: "completed" as const,
+      contexte: "Série de 4 travaux pratiques sur les fondamentaux du traitement numérique du signal.",
+      objectif: "Comprendre et appliquer les outils d'analyse fréquentielle, la transformée de Fourier et les techniques de filtrage numérique.",
+      contribution: "Implémentation MATLAB des algorithmes FFT, conception de filtres numériques, analyse spectrale de signaux réels, et rédaction des rapports.",
+      outils: ["MATLAB", "FFT", "Filtrage numérique", "Analyse spectrale"],
       pdfLinks: [
         { label: "TP1 — Introduction", href: "/documents/CR_TS_TP1.docx" },
         { label: "TP2 — Analyse fréquentielle", href: "/documents/CR_TS_TP2.pdf" },
@@ -100,6 +113,7 @@ const ProjectsSection = () => {
                 }`}>
                   {getStatusIcon(project.statusType)}
                   {project.status}
+                  {project.progress && <span className="ml-1 font-semibold">— {project.progress}</span>}
                 </span>
               </div>
 
@@ -108,24 +122,41 @@ const ProjectsSection = () => {
               </h3>
 
               {project.subtitle && (
-                <p className="text-sm font-body text-primary/70 mb-3">{project.subtitle}</p>
+                <p className="text-sm font-body text-primary/70 mb-4">{project.subtitle}</p>
               )}
 
-              <p className="text-sm text-muted-foreground mb-5 leading-relaxed font-body flex-grow">
-                {project.description}
-              </p>
-
-              {project.details && (
-                <div className="text-xs text-muted-foreground border-t border-border pt-4 font-body">
-                  {project.details}
-                  {project.progress && (
-                    <span className="ml-2 text-primary font-semibold">— {project.progress}</span>
-                  )}
+              <div className="space-y-3 text-sm font-body text-muted-foreground leading-relaxed flex-grow">
+                <div>
+                  <span className="font-semibold text-foreground/80">Contexte :</span>{" "}
+                  {project.contexte}
                 </div>
-              )}
+                <div>
+                  <span className="font-semibold text-foreground/80">Objectif :</span>{" "}
+                  {project.objectif}
+                </div>
+                <div>
+                  <span className="font-semibold text-foreground/80">Contribution :</span>{" "}
+                  {project.contribution}
+                </div>
+                {project.resultats && (
+                  <div>
+                    <span className="font-semibold text-foreground/80">Résultats :</span>{" "}
+                    {project.resultats}
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-4 pt-4 border-t border-border">
+                <span className="text-xs font-semibold text-foreground/60 uppercase tracking-wide">Outils :</span>
+                <div className="flex flex-wrap gap-1.5 mt-2">
+                  {project.outils.map((outil) => (
+                    <span key={outil} className="skill-tag text-xs">{outil}</span>
+                  ))}
+                </div>
+              </div>
 
               {project.pdfLink && (
-                <div className="mt-5 pt-4 border-t border-border">
+                <div className="mt-4 pt-4 border-t border-border">
                   <a
                     href={project.pdfLink}
                     target="_blank"
@@ -140,7 +171,7 @@ const ProjectsSection = () => {
               )}
 
               {project.pdfLinks && (
-                <div className="mt-5 pt-4 border-t border-border flex flex-col gap-2">
+                <div className="mt-4 pt-4 border-t border-border flex flex-col gap-2">
                   {project.pdfLinks.map((link, i) => (
                     <a
                       key={i}
