@@ -60,7 +60,7 @@ const HeroSection = () => {
               Étudiant en Génie Électrique, spécialité IEEA (Informatique Industrielle, Électronique, Électrotechnique et Automatique), 
               je me spécialise dans la conception de systèmes embarqués, le contrôle-commande et l'instrumentation industrielle. 
               Mon parcours allie une solide formation théorique à une expérience terrain acquise lors de deux stages chez 
-              <span className="font-semibold text-foreground"> SAE SARL</span>, où j'ai participé à des projets de mise en service haute tension
+              <span className="font-semibold text-foreground"> S4E SARL</span>, où j'ai participé à des projets de mise en service haute tension
               et de dimensionnement électrique sur des sites industriels au Sénégal, au Mali et en Mauritanie.
             </p>
             <p className="text-muted-foreground text-sm font-body leading-relaxed">
@@ -74,7 +74,7 @@ const HeroSection = () => {
           <div className="flex flex-col gap-4">
             {[
               { value: "L3", label: "Licence IEEA" },
-              { value: "2×", label: "Stages terrain (SAE SARL)" },
+              { value: "2×", label: "Stages terrain (S4E SARL)" },
               { value: "3", label: "Certifications" },
               { value: "6+", label: "Projets techniques" },
             ].map((stat, i) => (
