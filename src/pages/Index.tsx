@@ -4,16 +4,25 @@ import SkillsSection from "@/components/SkillsSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
       <main>
-        <HeroSection />
-        <SkillsSection />
-        <CertificationsSection />
-        <ProjectsSection />
+        <ScrollReveal>
+          <HeroSection />
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <SkillsSection />
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <CertificationsSection />
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <ProjectsSection />
+        </ScrollReveal>
       </main>
       <Footer />
     </div>
