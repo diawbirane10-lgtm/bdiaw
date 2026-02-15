@@ -5,7 +5,7 @@ const ExperienceSection = () => {
     {
       period: "Juil — Août 2024",
       title: "Stagiaire — Ingénierie Électrique",
-      company: "SAE SARL, Dakar",
+      company: "S4E SARL, Dakar",
       project: "Centrale hydroélectrique de Manantali (Mali)",
       tasks: [
         "Mise en situation terrain et découverte du cycle de mise en service (HT) : participation aux tests et relevés de mesures",
@@ -16,7 +16,7 @@ const ExperienceSection = () => {
     {
       period: "Juil — Août 2023",
       title: "Stagiaire — Assistant Technique",
-      company: "SAE SARL, Dakar",
+      company: "S4E SARL, Dakar",
       project: "Sites HT (Mauritanie, Sénégal, Mali)",
       tasks: [
         "Découverte du milieu professionnel (sites HT) : accompagnement des équipes lors des inspections",
