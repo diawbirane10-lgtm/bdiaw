@@ -24,6 +24,10 @@ const SkillsSection = () => {
       title: "Programmation & Logiciels",
       skills: ["Python (POO)", "C", "VS Code", "Microsoft Office", "NotebookLM"],
     },
+    {
+      title: "Outils IA",
+      skills: ["Gemini / ChatGPT — rédaction technique, assistance au prototypage, revue de code & documentation"],
+    },
   ];
 
   const languages = [
