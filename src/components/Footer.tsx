@@ -1,12 +1,15 @@
 import { Linkedin, Mail, Phone } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer id="contact" className="section-padding section-alt border-t border-border">
       <div className="section-container">
         <div className="section-header">
-          <span className="section-label">Contact</span>
-          <h2 className="section-title">Me Contacter</h2>
+          <span className="section-label">{t("footer.label")}</span>
+          <h2 className="section-title">{t("footer.title")}</h2>
           <div className="section-divider" />
         </div>
 
@@ -19,7 +22,7 @@ const Footer = () => {
               <Mail className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground font-body mb-0.5">Email</p>
+              <p className="text-xs text-muted-foreground font-body mb-0.5">{t("footer.email")}</p>
               <p className="text-sm font-body font-medium text-foreground group-hover:text-primary transition-colors">
                 diawbirane10@gmail.com
               </p>
@@ -34,7 +37,7 @@ const Footer = () => {
               <Phone className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground font-body mb-0.5">Téléphone</p>
+              <p className="text-xs text-muted-foreground font-body mb-0.5">{t("footer.phone")}</p>
               <p className="text-sm font-body font-medium text-foreground group-hover:text-primary transition-colors">
                 +212 669 148 524
               </p>
@@ -61,7 +64,7 @@ const Footer = () => {
 
         <div className="text-center pt-8 border-t border-border">
           <p className="text-xs text-muted-foreground font-body">
-            © {new Date().getFullYear()} Birane Diaw — Marrakech, Maroc
+            {t("footer.copyright").replace("{year}", new Date().getFullYear().toString())}
           </p>
         </div>
       </div>

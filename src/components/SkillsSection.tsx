@@ -1,31 +1,35 @@
+import { useLanguage } from "@/i18n/LanguageContext";
+
 const SkillsSection = () => {
+  const { t } = useLanguage();
+
   const skillCategories = [
     {
-      title: "Automatique & Systèmes Industriels",
+      title: t("skills.cat1"),
       skills: ["Analyse fonctionnelle", "GRAFCET", "Logique séquentielle", "Automatisation"],
     },
     {
-      title: "Instrumentation & Mesures",
+      title: t("skills.cat2"),
       skills: ["Capteurs", "Chaîne de mesure", "Acquisition de données", "Interprétation de résultats"],
     },
     {
-      title: "Électronique",
+      title: t("skills.cat3"),
       skills: ["Analogique", "Numérique", "Lecture de schémas", "Simulation de circuits"],
     },
     {
-      title: "Électrotechnique",
+      title: t("skills.cat4"),
       skills: ["Câblage", "Mesures", "Sécurité électrique", "Commande vectorielle (FOC)"],
     },
     {
-      title: "Modélisation & Simulation",
+      title: t("skills.cat5"),
       skills: ["MATLAB/Simulink", "LTspice", "Tinkercad", "Grafcet Studio", "OpenSCAD"],
     },
     {
-      title: "Programmation & Logiciels",
+      title: t("skills.cat6"),
       skills: ["Python (POO)", "C", "VS Code", "Microsoft Office", "NotebookLM"],
     },
     {
-      title: "IA & Productivité",
+      title: t("skills.cat7"),
       skills: [
         "Google Gemini — rédaction technique & reformulation",
         "Synthèse de résultats",
@@ -36,17 +40,17 @@ const SkillsSection = () => {
   ];
 
   const languages = [
-    { lang: "Français", level: "Courant / Technique" },
-    { lang: "Anglais", level: "Bon niveau" },
-    { lang: "Wolof", level: "Maternel" },
+    { lang: t("skills.lang.fr"), level: t("skills.lang.fr.level") },
+    { lang: t("skills.lang.en"), level: t("skills.lang.en.level") },
+    { lang: t("skills.lang.wo"), level: t("skills.lang.wo.level") },
   ];
 
   return (
     <section id="competences" className="section-padding section-alt">
       <div className="section-container">
         <div className="section-header">
-          <span className="section-label">Expertise</span>
-          <h2 className="section-title">Compétences Techniques</h2>
+          <span className="section-label">{t("skills.label")}</span>
+          <h2 className="section-title">{t("skills.title")}</h2>
           <div className="section-divider" />
         </div>
 
@@ -65,10 +69,9 @@ const SkillsSection = () => {
           ))}
         </div>
 
-        {/* Languages */}
         <div className="mt-14 pt-10 border-t border-border">
           <h3 className="text-sm font-body font-semibold text-primary mb-6 tracking-wide uppercase">
-            Langues
+            {t("skills.languages")}
           </h3>
           <div className="flex flex-wrap gap-6">
             {languages.map((l) => (

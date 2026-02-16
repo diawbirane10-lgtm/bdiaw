@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const navItems = [
-    { label: "Accueil", href: "#accueil" },
-    { label: "Compétences", href: "#competences" },
-    { label: "Projets", href: "#projets" },
-    { label: "Contact", href: "#contact" },
+    { label: t("nav.home"), href: "#accueil" },
+    { label: t("nav.skills"), href: "#competences" },
+    { label: t("nav.projects"), href: "#projets" },
+    { label: t("nav.contact"), href: "#contact" },
   ];
 
   return (
@@ -25,15 +28,19 @@ const Header = () => {
                 {item.label}
               </a>
             ))}
+            <LanguageSwitcher />
           </nav>
 
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          <div className="flex items-center gap-2 lg:hidden">
+            <LanguageSwitcher />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 text-foreground hover:text-primary transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
 
         {isMenuOpen && (
