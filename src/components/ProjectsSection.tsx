@@ -1,11 +1,13 @@
 import { Download, ExternalLink, Clock, CheckCircle, Sparkles } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const ProjectsSection = () => {
+  const { t } = useLanguage();
+
   const projects = [
     {
       title: "Simulation & Contrôle d'Attitude d'un Nano-Satellite (1U)",
       subtitle: "Mini-Projet CubeSat — ADCS",
-      status: "À venir",
       statusType: "upcoming" as const,
       contexte: "Dans le cadre d'un mini-projet académique autour de la technologie CubeSat, simulation du système de contrôle d'attitude (ADCS) d'un nano-satellite 1U.",
       objectif: "Stabiliser le satellite après déploiement (detumbling), assurer un pointage nadir, et visualiser la dynamique 6DOF en 3D.",
@@ -17,7 +19,6 @@ const ProjectsSection = () => {
     {
       title: "Conception PCB : Système de Gestion de Puissance (EPS)",
       subtitle: "Mini-Projet CubeSat — EPS",
-      status: "À venir",
       statusType: "upcoming" as const,
       contexte: "Second volet du projet CubeSat, centré sur l'alimentation électrique embarquée au format PC/104.",
       objectif: "Concevoir le module EPS avec conversion Buck (3.3V/5.0V), protections électriques, et générer le dossier de fabrication Gerber.",
@@ -29,7 +30,6 @@ const ProjectsSection = () => {
     {
       title: "Chaîne de Conditionnement Analogique",
       subtitle: "Capteur Piézoélectrique",
-      status: "En cours",
       statusType: "progress" as const,
       progress: "15%",
       contexte: "Projet de modélisation d'une chaîne de conditionnement pour capteur piézoélectrique, dans un contexte de surveillance vibratoire industrielle.",
@@ -40,7 +40,6 @@ const ProjectsSection = () => {
     {
       title: "Énergie Houlomotrice",
       subtitle: "Conversion et Injection Réseau par Commande Vectorielle",
-      status: "Terminé",
       statusType: "completed" as const,
       contexte: "Projet de fin de semestre sur les énergies marines renouvelables, encadré par Pr. Moulay Rachid DOUIRI.",
       objectif: "Étudier et simuler un système de récupération de l'énergie des vagues avec génératrice PMSG et injection réseau via commande FOC.",
@@ -53,7 +52,6 @@ const ProjectsSection = () => {
     {
       title: "TPs Électronique Analogique",
       subtitle: "Simulations LTSpice — Pr. Ahmad Chitnalah",
-      status: "Terminé",
       statusType: "completed" as const,
       contexte: "Série de 5 travaux pratiques en électronique analogique, combinant simulation et manipulation en laboratoire.",
       objectif: "Maîtriser le comportement des composants fondamentaux (RLC, diodes, transistors) par la simulation puis la validation expérimentale.",
@@ -70,7 +68,6 @@ const ProjectsSection = () => {
     {
       title: "TPs Traitement du Signal",
       subtitle: "Analyse spectrale & filtrage — Pr. Fouad Sefyani",
-      status: "Terminé",
       statusType: "completed" as const,
       contexte: "Série de 4 travaux pratiques sur les fondamentaux du traitement numérique du signal.",
       objectif: "Comprendre et appliquer les outils d'analyse fréquentielle, la transformée de Fourier et les techniques de filtrage numérique.",
@@ -93,12 +90,20 @@ const ProjectsSection = () => {
     }
   };
 
+  const getStatusLabel = (statusType: string) => {
+    switch (statusType) {
+      case "completed": return t("proj.status.completed");
+      case "progress": return t("proj.status.progress");
+      default: return t("proj.status.upcoming");
+    }
+  };
+
   return (
     <section id="projets" className="section-padding bg-background">
       <div className="section-container">
         <div className="section-header">
-          <span className="section-label">Réalisations</span>
-          <h2 className="section-title">Projets</h2>
+          <span className="section-label">{t("proj.label")}</span>
+          <h2 className="section-title">{t("proj.title")}</h2>
           <div className="section-divider" />
         </div>
 
@@ -112,7 +117,7 @@ const ProjectsSection = () => {
                     : "badge-status-upcoming"
                 }`}>
                   {getStatusIcon(project.statusType)}
-                  {project.status}
+                  {getStatusLabel(project.statusType)}
                   {project.progress && <span className="ml-1 font-semibold">— {project.progress}</span>}
                 </span>
               </div>
@@ -127,27 +132,27 @@ const ProjectsSection = () => {
 
               <div className="space-y-3 text-sm font-body text-muted-foreground leading-relaxed flex-grow">
                 <div>
-                  <span className="font-semibold text-foreground/80">Contexte :</span>{" "}
+                  <span className="font-semibold text-foreground/80">{t("proj.context")} :</span>{" "}
                   {project.contexte}
                 </div>
                 <div>
-                  <span className="font-semibold text-foreground/80">Objectif :</span>{" "}
+                  <span className="font-semibold text-foreground/80">{t("proj.objective")} :</span>{" "}
                   {project.objectif}
                 </div>
                 <div>
-                  <span className="font-semibold text-foreground/80">Contribution :</span>{" "}
+                  <span className="font-semibold text-foreground/80">{t("proj.contribution")} :</span>{" "}
                   {project.contribution}
                 </div>
                 {project.resultats && (
                   <div>
-                    <span className="font-semibold text-foreground/80">Résultats :</span>{" "}
+                    <span className="font-semibold text-foreground/80">{t("proj.results")} :</span>{" "}
                     {project.resultats}
                   </div>
                 )}
               </div>
 
               <div className="mt-4 pt-4 border-t border-border">
-                <span className="text-xs font-semibold text-foreground/60 uppercase tracking-wide">Outils :</span>
+                <span className="text-xs font-semibold text-foreground/60 uppercase tracking-wide">{t("proj.tools")} :</span>
                 <div className="flex flex-wrap gap-1.5 mt-2">
                   {project.outils.map((outil) => (
                     <span key={outil} className="skill-tag text-xs">{outil}</span>
@@ -164,7 +169,7 @@ const ProjectsSection = () => {
                     className="inline-flex items-center gap-2 text-sm font-body font-medium text-primary hover:text-accent transition-colors duration-300"
                   >
                     <Download size={15} />
-                    {project.pdfLabel || "Télécharger le rapport"}
+                    {project.pdfLabel || t("proj.download")}
                     <ExternalLink size={13} className="opacity-50" />
                   </a>
                 </div>
@@ -192,7 +197,7 @@ const ProjectsSection = () => {
         </div>
 
         <p className="mt-8 text-sm text-muted-foreground/70 font-body italic text-center">
-          Note : Les comptes rendus des TPs d'Électrotechnique, d'Automatique et d'Informatique Industrielle ont été rédigés sur feuille et ne sont pas disponibles au format numérique.
+          {t("proj.note")}
         </p>
       </div>
     </section>

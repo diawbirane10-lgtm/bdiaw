@@ -1,6 +1,9 @@
 import { Award, Download, ExternalLink } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const CertificationsSection = () => {
+  const { t } = useLanguage();
+
   const certifications = [
     {
       title: "Coding With Python",
@@ -23,10 +26,10 @@ const CertificationsSection = () => {
     <section id="certifications" className="section-padding bg-background">
       <div className="section-container">
         <div className="section-header">
-          <span className="section-label">Validation</span>
+          <span className="section-label">{t("cert.label")}</span>
           <h2 className="section-title flex items-center gap-3">
             <Award className="w-8 h-8 text-primary" />
-            Certifications
+            {t("cert.title")}
           </h2>
           <div className="section-divider" />
         </div>
@@ -46,7 +49,7 @@ const CertificationsSection = () => {
                 className="inline-flex items-center justify-center gap-2 text-xs font-body font-medium text-primary hover:text-accent transition-colors duration-300 pt-4 border-t border-border"
               >
                 <Download size={13} />
-                Justificatif
+                {t("cert.proof")}
                 <ExternalLink size={11} className="opacity-50" />
               </a>
             </div>
