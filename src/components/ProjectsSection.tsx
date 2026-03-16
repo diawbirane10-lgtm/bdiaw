@@ -98,7 +98,7 @@ const ProjectsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
-            <article key={index} className="card-project hover-lift flex flex-col">
+            <article key={index} className="card-project hover-lift flex flex-col group">
               <div className="mb-5 flex items-center gap-3 flex-wrap">
                 <span className={`badge-status ${
                   project.statusType === "completed" ? "badge-status-completed"
@@ -116,37 +116,37 @@ const ProjectsSection = () => {
                 )}
               </div>
 
-              <h3 className="text-lg font-display text-foreground mb-2">
+              <h3 className="text-lg font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                 {t(project.titleKey)}
               </h3>
 
               {project.subtitleKey && (
-                <p className="text-sm font-body text-primary/70 mb-4">{t(project.subtitleKey)}</p>
+                <p className="text-sm font-body text-primary/60 mb-4">{t(project.subtitleKey)}</p>
               )}
 
               <div className="space-y-3 text-sm font-body text-muted-foreground leading-relaxed flex-grow">
                 <div>
-                  <span className="font-semibold text-foreground/80">{t("proj.context")} :</span>{" "}
+                  <span className="font-semibold text-foreground/70">{t("proj.context")} :</span>{" "}
                   {t(project.contexteKey)}
                 </div>
                 <div>
-                  <span className="font-semibold text-foreground/80">{t("proj.objective")} :</span>{" "}
+                  <span className="font-semibold text-foreground/70">{t("proj.objective")} :</span>{" "}
                   {t(project.objectifKey)}
                 </div>
                 <div>
-                  <span className="font-semibold text-foreground/80">{t("proj.contribution")} :</span>{" "}
+                  <span className="font-semibold text-foreground/70">{t("proj.contribution")} :</span>{" "}
                   {t(project.contributionKey)}
                 </div>
                 {project.resultatsKey && (
                   <div>
-                    <span className="font-semibold text-foreground/80">{t("proj.results")} :</span>{" "}
+                    <span className="font-semibold text-foreground/70">{t("proj.results")} :</span>{" "}
                     {t(project.resultatsKey)}
                   </div>
                 )}
               </div>
 
-              <div className="mt-4 pt-4 border-t border-border">
-                <span className="text-xs font-semibold text-foreground/60 uppercase tracking-wide">{t("proj.tools")} :</span>
+              <div className="mt-5 pt-5 border-t border-border/40">
+                <span className="text-xs font-semibold text-muted-foreground/60 uppercase tracking-widest">{t("proj.tools")} :</span>
                 <div className="flex flex-wrap gap-1.5 mt-2">
                   {project.outils.map((outil) => (
                     <span key={outil} className="skill-tag text-xs">{outil}</span>
@@ -155,7 +155,7 @@ const ProjectsSection = () => {
               </div>
 
               {project.pdfLink && (
-                <div className="mt-4 pt-4 border-t border-border">
+                <div className="mt-4 pt-4 border-t border-border/40">
                   <a
                     href={project.pdfLink}
                     target="_blank"
@@ -164,13 +164,13 @@ const ProjectsSection = () => {
                   >
                     <Download size={15} />
                     {project.pdfLabelKey ? t(project.pdfLabelKey) : t("proj.download")}
-                    <ExternalLink size={13} className="opacity-50" />
+                    <ExternalLink size={13} className="opacity-40" />
                   </a>
                 </div>
               )}
 
               {project.pdfLinks && (
-                <div className="mt-4 pt-4 border-t border-border flex flex-col gap-2">
+                <div className="mt-4 pt-4 border-t border-border/40 flex flex-col gap-2">
                   {project.pdfLinks.map((link, i) => (
                     <a
                       key={i}
@@ -181,7 +181,7 @@ const ProjectsSection = () => {
                     >
                       <Download size={14} />
                       {t(link.labelKey)}
-                      <ExternalLink size={12} className="opacity-50" />
+                      <ExternalLink size={12} className="opacity-40" />
                     </a>
                   ))}
                 </div>
@@ -190,7 +190,7 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        <p className="mt-8 text-sm text-muted-foreground/70 font-body italic text-center">
+        <p className="mt-10 text-sm text-muted-foreground/50 font-body italic text-center">
           {t("proj.note")}
         </p>
       </div>

@@ -28,7 +28,7 @@ const LanguageSwitcher = () => {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
-        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-body font-medium text-muted-foreground hover:text-primary hover:bg-secondary border border-border transition-all duration-200"
+        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-body font-medium text-muted-foreground hover:text-primary hover:bg-secondary border border-border/50 transition-all duration-300"
         aria-label="Change language"
       >
         <Globe size={15} />
@@ -36,7 +36,7 @@ const LanguageSwitcher = () => {
       </button>
 
       {open && (
-        <div className="absolute right-0 rtl:right-auto rtl:left-0 top-full mt-2 bg-card border border-border rounded-xl shadow-lg overflow-hidden min-w-[140px] z-50">
+        <div className="absolute right-0 rtl:right-auto rtl:left-0 top-full mt-2 bg-card border border-border/60 rounded-xl shadow-2xl shadow-black/30 overflow-hidden min-w-[140px] z-50">
           {languages.map((l) => (
             <button
               key={l.code}
@@ -44,7 +44,7 @@ const LanguageSwitcher = () => {
                 setLang(l.code);
                 setOpen(false);
               }}
-              className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-sm font-body transition-colors duration-150 ${
+              className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-sm font-body transition-colors duration-200 ${
                 l.code === lang
                   ? "bg-primary/10 text-primary font-semibold"
                   : "text-foreground hover:bg-secondary"

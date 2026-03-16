@@ -6,40 +6,39 @@
 
 @layer base {
   :root {
-    /* Clean Professional Light Theme */
-    --background: 0 0% 99%;
-    --foreground: 220 20% 14%;
+    /* Sophisticated Dark Professional Theme */
+    --background: 225 25% 8%;
+    --foreground: 220 15% 88%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 20% 14%;
+    --card: 225 20% 12%;
+    --card-foreground: 220 15% 88%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 14%;
+    --popover: 225 20% 12%;
+    --popover-foreground: 220 15% 88%;
 
-    /* Professional Deep Blue */
-    --primary: 220 65% 42%;
-    --primary-foreground: 0 0% 100%;
+    /* Refined Cyan-Blue Accent */
+    --primary: 200 80% 55%;
+    --primary-foreground: 225 25% 8%;
 
-    /* Light Gray */
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 20% 14%;
+    --secondary: 225 18% 14%;
+    --secondary-foreground: 220 15% 85%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 225 15% 16%;
+    --muted-foreground: 220 10% 50%;
 
-    --accent: 220 14% 93%;
-    --accent-foreground: 220 20% 14%;
+    --accent: 200 60% 45%;
+    --accent-foreground: 220 15% 92%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 220 65% 42%;
+    --border: 225 15% 18%;
+    --input: 225 15% 18%;
+    --ring: 200 80% 55%;
 
-    --radius: 0.625rem;
+    --radius: 0.75rem;
 
-    --highlight: 220 65% 42%;
+    --highlight: 200 80% 55%;
   }
 
   * {
@@ -57,23 +56,23 @@
 
 @layer components {
   .section-container {
-    @apply max-w-5xl mx-auto px-6 lg:px-8;
+    @apply max-w-6xl mx-auto px-6 lg:px-8;
   }
 
   .section-padding {
-    @apply py-20 lg:py-28;
+    @apply py-24 lg:py-32;
   }
 
   .section-alt {
-    @apply bg-secondary;
+    background: linear-gradient(180deg, hsl(225 20% 10%) 0%, hsl(225 25% 8%) 100%);
   }
 
   .section-header {
-    @apply mb-14;
+    @apply mb-16;
   }
 
   .section-label {
-    @apply text-primary font-body font-semibold tracking-[0.15em] uppercase text-xs mb-3 block;
+    @apply text-primary font-body font-semibold tracking-[0.2em] uppercase text-xs mb-4 block;
   }
 
   .section-title {
@@ -81,17 +80,17 @@
   }
 
   .section-divider {
-    @apply w-10 h-0.5 bg-primary mt-5 rounded-full;
+    @apply w-12 h-0.5 bg-primary/60 mt-6 rounded-full;
   }
 
   /* Navigation */
   .nav-link {
-    @apply text-sm font-body font-medium text-muted-foreground hover:text-primary transition-colors duration-200 tracking-wide relative;
+    @apply text-sm font-body font-medium text-muted-foreground hover:text-primary transition-colors duration-300 tracking-wider uppercase relative;
   }
 
   .nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-200;
+    @apply absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-300;
   }
 
   .nav-link:hover::after {
@@ -100,7 +99,12 @@
 
   /* Cards */
   .card-elegant {
-    @apply bg-card p-7 rounded-xl border border-border hover:border-primary/25 hover:shadow-md transition-all duration-200;
+    @apply bg-card p-7 rounded-xl border border-border/60 hover:border-primary/30 transition-all duration-300;
+    box-shadow: 0 4px 24px -8px hsl(225 25% 4% / 0.5);
+  }
+
+  .card-elegant:hover {
+    box-shadow: 0 8px 32px -8px hsl(200 80% 55% / 0.08);
   }
 
   .card-project {
@@ -109,24 +113,24 @@
 
   /* Skills */
   .skill-tag {
-    @apply inline-block px-4 py-2 text-sm font-body font-medium bg-secondary text-foreground/80 rounded-lg border border-border hover:border-primary/30 hover:text-primary transition-all duration-200;
+    @apply inline-block px-4 py-2 text-sm font-body font-medium bg-secondary text-foreground/75 rounded-lg border border-border/60 hover:border-primary/40 hover:text-primary transition-all duration-300;
   }
 
   /* Status badges */
   .badge-status {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-body font-semibold uppercase tracking-wider rounded-full;
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-body font-semibold uppercase tracking-wider rounded-full;
   }
 
   .badge-status-progress {
-    @apply bg-blue-50 text-blue-600 border border-blue-200;
+    @apply bg-primary/10 text-primary border border-primary/25;
   }
 
   .badge-status-upcoming {
-    @apply bg-secondary text-muted-foreground border border-border;
+    @apply bg-secondary text-muted-foreground border border-border/60;
   }
 
   .badge-status-completed {
-    @apply bg-emerald-50 text-emerald-600 border border-emerald-200;
+    @apply bg-emerald-500/10 text-emerald-400 border border-emerald-500/25;
   }
 
   /* Timeline */
@@ -153,11 +157,11 @@
 
   /* Hover lift */
   .hover-lift {
-    @apply transition-all duration-200;
+    @apply transition-all duration-300;
   }
 
   .hover-lift:hover {
-    @apply -translate-y-0.5 shadow-lg shadow-primary/5;
+    @apply -translate-y-1;
   }
 }
 
@@ -181,16 +185,21 @@
 
 /* Selection */
 ::selection {
-  background: hsl(var(--primary) / 0.12);
+  background: hsl(var(--primary) / 0.2);
   color: hsl(var(--foreground));
 }
 
 /* Smooth fade */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Glow effect for hero */
+.glow-subtle {
+  text-shadow: 0 0 40px hsl(200 80% 55% / 0.15);
 }
