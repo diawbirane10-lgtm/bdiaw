@@ -186,6 +186,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.download": "Download report",
     "proj.note": "Note: Lab reports for Electrical Engineering, Automation and Industrial Computing were handwritten and are not available in digital format.",
 
+    // New Project - Gearbox Fault Detection
+    "proj.new.title": "Railway Gearbox Fault Detection",
+    "proj.new.subtitle": "Vibration Analysis & Automatic Classification — MATLAB",
+    "proj.new.contexte": "Personal predictive maintenance project applied to the railway domain.",
+    "proj.new.objectif": "Building a complete pipeline in MATLAB: synthetic vibration signal generation (healthy state, bearing fault, worn gear), temporal and frequency feature extraction (RMS, kurtosis, FFT, envelope), then automatic SVM classification.",
+    "proj.new.contribution": "Full implementation of the vibration analysis pipeline, from feature extraction to SVM classification. Approach inspired by industrial methods such as MARAIL.",
+
     // Project 1 - CubeSat ADCS
     "proj.1.title": "Nano-Satellite (1U) Attitude Control & Simulation",
     "proj.1.subtitle": "CubeSat Mini-Project — ADCS",
