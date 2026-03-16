@@ -6,7 +6,7 @@ const SkillsSection = () => {
   const skillCategories = [
     {
       title: t("skills.cat1"),
-      skills: ["Analyse fonctionnelle", "GRAFCET", "Logique séquentielle", "Automatisation"],
+      skills: ["Analyse fonctionnelle", "GRAFCET", "Ladder", "Logique séquentielle", "Automatisation"],
     },
     {
       title: t("skills.cat2"),
