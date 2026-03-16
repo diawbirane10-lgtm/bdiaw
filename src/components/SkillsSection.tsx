@@ -6,7 +6,7 @@ const SkillsSection = () => {
   const skillCategories = [
     {
       title: t("skills.cat1"),
-      skills: ["Analyse fonctionnelle", "GRAFCET", "Logique séquentielle", "Automatisation"],
+      skills: ["Analyse fonctionnelle", "GRAFCET", "Ladder", "Logique séquentielle", "Automatisation"],
     },
     {
       title: t("skills.cat2"),
@@ -22,7 +22,7 @@ const SkillsSection = () => {
     },
     {
       title: t("skills.cat5"),
-      skills: ["MATLAB/Simulink", "LTspice", "Tinkercad", "Grafcet Studio", "OpenSCAD"],
+      skills: ["MATLAB/Simulink", "LTspice", "Tinkercad", "SIMATIC Manager (Siemens)", "OpenSCAD"],
     },
     {
       title: t("skills.cat6"),
