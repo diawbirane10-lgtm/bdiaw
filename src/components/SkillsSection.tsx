@@ -22,7 +22,7 @@ const SkillsSection = () => {
     },
     {
       title: t("skills.cat5"),
-      skills: ["MATLAB/Simulink", "LTspice", "Tinkercad", "Grafcet Studio", "OpenSCAD"],
+      skills: ["MATLAB/Simulink", "LTspice", "Tinkercad", "SIMATIC Manager (Siemens)", "OpenSCAD"],
     },
     {
       title: t("skills.cat6"),
