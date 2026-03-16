@@ -1,10 +1,20 @@
-import { Download, ExternalLink, Clock, CheckCircle, Sparkles } from "lucide-react";
+import { Download, ExternalLink, Clock, CheckCircle, Sparkles, Calendar } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const ProjectsSection = () => {
   const { t } = useLanguage();
 
   const projects = [
+    {
+      titleKey: "proj.new.title",
+      subtitleKey: "proj.new.subtitle",
+      statusType: "progress" as const,
+      date: "Mars 2026",
+      contexteKey: "proj.new.contexte",
+      objectifKey: "proj.new.objectif",
+      contributionKey: "proj.new.contribution",
+      outils: ["MATLAB", "Simulink", "Signal Processing", "Machine Learning", "SVM", "Maintenance Prédictive", "Ferroviaire"],
+    },
     {
       titleKey: "proj.1.title",
       subtitleKey: "proj.1.subtitle",
@@ -15,27 +25,6 @@ const ProjectsSection = () => {
       outils: ["MATLAB/Simulink", "Aerospace Blockset", "Control System Toolbox", "PID Tuner"],
       pdfLink: "/documents/FicheTech_Projet1.pdf",
       pdfLabelKey: "proj.1.pdfLabel",
-    },
-    {
-      titleKey: "proj.2.title",
-      subtitleKey: "proj.2.subtitle",
-      statusType: "upcoming" as const,
-      contexteKey: "proj.2.contexte",
-      objectifKey: "proj.2.objectif",
-      contributionKey: "proj.2.contribution",
-      outils: ["KiCad 9.0", "Eeschema", "Pcbnew", "Norme IPC-2221", "Gerber X2"],
-      pdfLink: "/documents/FicheTech_Projet2.pdf",
-      pdfLabelKey: "proj.2.pdfLabel",
-    },
-    {
-      titleKey: "proj.3.title",
-      subtitleKey: "proj.3.subtitle",
-      statusType: "progress" as const,
-      progress: "15%",
-      contexteKey: "proj.3.contexte",
-      objectifKey: "proj.3.objectif",
-      contributionKey: "proj.3.contribution",
-      outils: ["MATLAB/Simulink", "LTspice"],
     },
     {
       titleKey: "proj.4.title",
@@ -110,7 +99,7 @@ const ProjectsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <article key={index} className="card-project hover-lift flex flex-col">
-              <div className="mb-5">
+              <div className="mb-5 flex items-center gap-3 flex-wrap">
                 <span className={`badge-status ${
                   project.statusType === "completed" ? "badge-status-completed"
                     : project.statusType === "progress" ? "badge-status-progress"
@@ -118,8 +107,13 @@ const ProjectsSection = () => {
                 }`}>
                   {getStatusIcon(project.statusType)}
                   {getStatusLabel(project.statusType)}
-                  {project.progress && <span className="ml-1 font-semibold">— {project.progress}</span>}
                 </span>
+                {project.date && (
+                  <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                    <Calendar className="w-3 h-3" />
+                    {project.date}
+                  </span>
+                )}
               </div>
 
               <h3 className="text-lg font-display text-foreground mb-2">
