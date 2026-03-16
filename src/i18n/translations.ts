@@ -59,6 +59,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.download": "Télécharger le rapport",
     "proj.note": "Note : Les comptes rendus des TPs d'Électrotechnique, d'Automatique et d'Informatique Industrielle ont été rédigés sur feuille et ne sont pas disponibles au format numérique.",
 
+    // New Project - Gearbox Fault Detection
+    "proj.new.title": "Détection de défauts sur boîte de vitesses ferroviaire",
+    "proj.new.subtitle": "Analyse vibratoire et classification automatique — MATLAB",
+    "proj.new.contexte": "Projet personnel de maintenance prédictive appliquée au domaine ferroviaire.",
+    "proj.new.objectif": "Construction d'un pipeline complet sous MATLAB : génération de signaux vibratoires synthétiques (état sain, défaut roulement, engrenage usé), extraction de descripteurs temporels et fréquentiels (RMS, kurtosis, FFT, enveloppe), puis classification automatique par SVM.",
+    "proj.new.contribution": "Implémentation complète du pipeline d'analyse vibratoire, de l'extraction de features à la classification SVM. Approche inspirée des méthodes industrielles de type MARAIL.",
+
     // Project 1 - CubeSat ADCS
     "proj.1.title": "Simulation & Contrôle d'Attitude d'un Nano-Satellite (1U)",
     "proj.1.subtitle": "Mini-Projet CubeSat — ADCS",
