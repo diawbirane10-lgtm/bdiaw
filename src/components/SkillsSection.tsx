@@ -54,10 +54,10 @@ const SkillsSection = () => {
           <div className="section-divider" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {skillCategories.map((category) => (
-            <div key={category.title}>
-              <h3 className="text-sm font-body font-semibold text-primary mb-4 tracking-wide uppercase">
+            <div key={category.title} className="group">
+              <h3 className="text-xs font-body font-semibold text-primary mb-5 tracking-widest uppercase">
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -69,15 +69,17 @@ const SkillsSection = () => {
           ))}
         </div>
 
-        <div className="mt-14 pt-10 border-t border-border">
-          <h3 className="text-sm font-body font-semibold text-primary mb-6 tracking-wide uppercase">
+        <div className="mt-16 pt-12 border-t border-border/40">
+          <h3 className="text-xs font-body font-semibold text-primary mb-6 tracking-widest uppercase">
             {t("skills.languages")}
           </h3>
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap gap-8">
             {languages.map((l) => (
-              <div key={l.lang} className="flex items-center gap-2">
+              <div key={l.lang} className="flex items-center gap-3">
                 <span className="font-body font-medium text-foreground text-sm">{l.lang}</span>
-                <span className="text-xs text-muted-foreground font-body">— {l.level}</span>
+                <span className="text-xs text-muted-foreground font-body px-2 py-0.5 rounded-full bg-secondary border border-border/40">
+                  {l.level}
+                </span>
               </div>
             ))}
           </div>
