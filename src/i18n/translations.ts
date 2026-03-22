@@ -65,6 +65,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.contexte": "Projet personnel de maintenance prédictive appliquée au domaine ferroviaire.",
     "proj.new.objectif": "Construction d'un pipeline complet sous MATLAB : génération de signaux vibratoires synthétiques (état sain, défaut roulement, engrenage usé), extraction de descripteurs temporels et fréquentiels (RMS, kurtosis, FFT, enveloppe), puis classification automatique par SVM.",
     "proj.new.contribution": "Implémentation complète du pipeline d'analyse vibratoire, de l'extraction de features à la classification SVM.",
+    "proj.new.rapport": "Rapport préliminaire",
+    "proj.new.fiche": "Fiche technique",
 
     // Project 1 - CubeSat ADCS
     "proj.1.title": "Simulation & Contrôle d'Attitude d'un Nano-Satellite (1U)",
