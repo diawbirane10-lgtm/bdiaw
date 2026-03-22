@@ -14,6 +14,10 @@ const ProjectsSection = () => {
       objectifKey: "proj.new.objectif",
       contributionKey: "proj.new.contribution",
       outils: ["MATLAB", "Simulink", "Signal Processing", "Machine Learning", "SVM", "Maintenance Prédictive", "Ferroviaire"],
+      pdfLinks: [
+        { labelKey: "proj.new.rapport", href: "/documents/rapport_prelim_defauts.pdf" },
+        { labelKey: "proj.new.fiche", href: "/documents/fiche_tech_defauts.pdf" },
+      ],
     },
     {
       titleKey: "proj.1.title",
