@@ -318,7 +318,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.subtitle": "تحليل اهتزازي وتصنيف تلقائي — MATLAB",
     "proj.new.contexte": "مشروع شخصي للصيانة التنبؤية مطبق على المجال الحديدي.",
     "proj.new.objectif": "بناء خط أنابيب كامل في MATLAB: توليد إشارات اهتزازية اصطناعية (حالة سليمة، عطل محمل، تروس بالية)، استخراج واصفات زمنية وترددية (RMS، kurtosis، FFT، المغلف)، ثم تصنيف تلقائي بـ SVM.",
-    "proj.new.contribution": "تنفيذ كامل لخط أنابيب تحليل الاهتزازات، من استخراج الميزات إلى تصنيف SVM. نهج مستوحى من الأساليب الصناعية مثل MARAIL.",
+    "proj.new.contribution": "تنفيذ كامل لخط أنابيب تحليل الاهتزازات، من استخراج الميزات إلى تصنيف SVM.",
 
     // Project 1 - CubeSat ADCS
     "proj.1.title": "محاكاة والتحكم في توجيه قمر صناعي نانوي (1U)",
