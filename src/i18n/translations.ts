@@ -64,7 +64,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.subtitle": "Analyse vibratoire et classification automatique — MATLAB",
     "proj.new.contexte": "Projet personnel de maintenance prédictive appliquée au domaine ferroviaire.",
     "proj.new.objectif": "Construction d'un pipeline complet sous MATLAB : génération de signaux vibratoires synthétiques (état sain, défaut roulement, engrenage usé), extraction de descripteurs temporels et fréquentiels (RMS, kurtosis, FFT, enveloppe), puis classification automatique par SVM.",
-    "proj.new.contribution": "Implémentation complète du pipeline d'analyse vibratoire, de l'extraction de features à la classification SVM. Approche inspirée des méthodes industrielles de type MARAIL.",
+    "proj.new.contribution": "Implémentation complète du pipeline d'analyse vibratoire, de l'extraction de features à la classification SVM.",
 
     // Project 1 - CubeSat ADCS
     "proj.1.title": "Simulation & Contrôle d'Attitude d'un Nano-Satellite (1U)",
@@ -191,7 +191,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.subtitle": "Vibration Analysis & Automatic Classification — MATLAB",
     "proj.new.contexte": "Personal predictive maintenance project applied to the railway domain.",
     "proj.new.objectif": "Building a complete pipeline in MATLAB: synthetic vibration signal generation (healthy state, bearing fault, worn gear), temporal and frequency feature extraction (RMS, kurtosis, FFT, envelope), then automatic SVM classification.",
-    "proj.new.contribution": "Full implementation of the vibration analysis pipeline, from feature extraction to SVM classification. Approach inspired by industrial methods such as MARAIL.",
+    "proj.new.contribution": "Full implementation of the vibration analysis pipeline, from feature extraction to SVM classification.",
 
     // Project 1 - CubeSat ADCS
     "proj.1.title": "Nano-Satellite (1U) Attitude Control & Simulation",
@@ -318,7 +318,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.subtitle": "تحليل اهتزازي وتصنيف تلقائي — MATLAB",
     "proj.new.contexte": "مشروع شخصي للصيانة التنبؤية مطبق على المجال الحديدي.",
     "proj.new.objectif": "بناء خط أنابيب كامل في MATLAB: توليد إشارات اهتزازية اصطناعية (حالة سليمة، عطل محمل، تروس بالية)، استخراج واصفات زمنية وترددية (RMS، kurtosis، FFT، المغلف)، ثم تصنيف تلقائي بـ SVM.",
-    "proj.new.contribution": "تنفيذ كامل لخط أنابيب تحليل الاهتزازات، من استخراج الميزات إلى تصنيف SVM. نهج مستوحى من الأساليب الصناعية مثل MARAIL.",
+    "proj.new.contribution": "تنفيذ كامل لخط أنابيب تحليل الاهتزازات، من استخراج الميزات إلى تصنيف SVM.",
 
     // Project 1 - CubeSat ADCS
     "proj.1.title": "محاكاة والتحكم في توجيه قمر صناعي نانوي (1U)",
