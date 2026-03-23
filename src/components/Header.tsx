@@ -9,7 +9,7 @@ const Header = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 50);
+    const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
@@ -23,45 +23,45 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/40"
+          ? "bg-card/90 backdrop-blur-lg border-b border-border shadow-sm"
           : "bg-transparent"
       }`}
     >
       <div className="section-container">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           <a
             href="#accueil"
-            className="font-display text-lg font-bold text-foreground hover:text-primary transition-colors duration-300 tracking-tight"
+            className="font-body text-base font-bold text-foreground tracking-tight"
           >
-            B. DIAW<span className="text-primary">.</span>
+            B. Diaw
           </a>
 
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="nav-link py-2">
+              <a key={item.href} href={item.href} className="nav-link">
                 {item.label}
               </a>
             ))}
             <LanguageSwitcher />
           </nav>
 
-          <div className="flex items-center gap-3 lg:hidden">
+          <div className="flex items-center gap-2 md:hidden">
             <LanguageSwitcher />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-foreground hover:text-primary transition-colors"
+              className="p-2 text-foreground"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
 
         {isMenuOpen && (
-          <nav className="lg:hidden py-6 border-t border-border/40">
-            <div className="flex flex-col gap-5">
+          <nav className="md:hidden py-4 border-t border-border">
+            <div className="flex flex-col gap-3">
               {navItems.map((item) => (
                 <a
                   key={item.href}

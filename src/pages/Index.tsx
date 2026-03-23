@@ -13,16 +13,14 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <main>
+        <HeroSection />
         <ScrollReveal>
-          <HeroSection />
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
           <ProjectsSection />
         </ScrollReveal>
-        <ScrollReveal delay={0.1}>
+        <ScrollReveal delay={0.05}>
           <SkillsSection />
         </ScrollReveal>
-        <ScrollReveal delay={0.1}>
+        <ScrollReveal delay={0.05}>
           <CertificationsSection />
         </ScrollReveal>
       </main>

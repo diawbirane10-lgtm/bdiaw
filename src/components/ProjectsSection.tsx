@@ -1,4 +1,4 @@
-import { Download, ExternalLink, Clock, CheckCircle, Sparkles, Calendar } from "lucide-react";
+import { Download, ExternalLink, Clock, CheckCircle, Sparkles, Calendar, Folder } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const ProjectsSection = () => {
@@ -77,9 +77,9 @@ const ProjectsSection = () => {
 
   const getStatusIcon = (statusType: string) => {
     switch (statusType) {
-      case "completed": return <CheckCircle className="w-3.5 h-3.5" />;
-      case "progress": return <Clock className="w-3.5 h-3.5" />;
-      default: return <Sparkles className="w-3.5 h-3.5" />;
+      case "completed": return <CheckCircle className="w-3 h-3" />;
+      case "progress": return <Clock className="w-3 h-3" />;
+      default: return <Sparkles className="w-3 h-3" />;
     }
   };
 
@@ -92,7 +92,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projets" className="section-padding bg-background">
+    <section id="projets" className="section-padding bg-secondary/40">
       <div className="section-container">
         <div className="section-header">
           <span className="section-label">{t("proj.label")}</span>
@@ -100,10 +100,15 @@ const ProjectsSection = () => {
           <div className="section-divider" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {projects.map((project, index) => (
             <article key={index} className="card-project hover-lift flex flex-col group">
-              <div className="mb-5 flex items-center gap-3 flex-wrap">
+              {/* Header with icon placeholder */}
+              <div className="w-full h-32 rounded-lg bg-secondary flex items-center justify-center mb-5">
+                <Folder className="w-10 h-10 text-muted-foreground/30" />
+              </div>
+
+              <div className="mb-4 flex items-center gap-2 flex-wrap">
                 <span className={`badge-status ${
                   project.statusType === "completed" ? "badge-status-completed"
                     : project.statusType === "progress" ? "badge-status-progress"
@@ -120,72 +125,71 @@ const ProjectsSection = () => {
                 )}
               </div>
 
-              <h3 className="text-lg font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+              <h3 className="text-base font-body font-semibold text-foreground mb-1.5 group-hover:text-primary transition-colors duration-200">
                 {t(project.titleKey)}
               </h3>
 
               {project.subtitleKey && (
-                <p className="text-sm font-body text-primary/60 mb-4">{t(project.subtitleKey)}</p>
+                <p className="text-xs font-body text-muted-foreground mb-4">{t(project.subtitleKey)}</p>
               )}
 
-              <div className="space-y-3 text-sm font-body text-muted-foreground leading-relaxed flex-grow">
+              <div className="space-y-2 text-sm font-body text-muted-foreground leading-relaxed flex-grow">
                 <div>
-                  <span className="font-semibold text-foreground/70">{t("proj.context")} :</span>{" "}
+                  <span className="font-semibold text-foreground/80">{t("proj.context")} :</span>{" "}
                   {t(project.contexteKey)}
                 </div>
                 <div>
-                  <span className="font-semibold text-foreground/70">{t("proj.objective")} :</span>{" "}
+                  <span className="font-semibold text-foreground/80">{t("proj.objective")} :</span>{" "}
                   {t(project.objectifKey)}
                 </div>
                 <div>
-                  <span className="font-semibold text-foreground/70">{t("proj.contribution")} :</span>{" "}
+                  <span className="font-semibold text-foreground/80">{t("proj.contribution")} :</span>{" "}
                   {t(project.contributionKey)}
                 </div>
                 {project.resultatsKey && (
                   <div>
-                    <span className="font-semibold text-foreground/70">{t("proj.results")} :</span>{" "}
+                    <span className="font-semibold text-foreground/80">{t("proj.results")} :</span>{" "}
                     {t(project.resultatsKey)}
                   </div>
                 )}
               </div>
 
-              <div className="mt-5 pt-5 border-t border-border/40">
-                <span className="text-xs font-semibold text-muted-foreground/60 uppercase tracking-widest">{t("proj.tools")} :</span>
-                <div className="flex flex-wrap gap-1.5 mt-2">
+              <div className="mt-4 pt-4 border-t border-border">
+                <div className="flex flex-wrap gap-1.5">
                   {project.outils.map((outil) => (
-                    <span key={outil} className="skill-tag text-xs">{outil}</span>
+                    <span key={outil} className="skill-tag text-[11px]">{outil}</span>
                   ))}
                 </div>
               </div>
 
               {project.pdfLink && (
-                <div className="mt-4 pt-4 border-t border-border/40">
+                <div className="mt-3 pt-3 border-t border-border">
                   <a
                     href={project.pdfLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-body font-medium text-primary hover:text-accent transition-colors duration-300"
+                    className="inline-flex items-center gap-1.5 text-xs font-body font-medium text-primary hover:underline"
                   >
-                    <Download size={15} />
+                    <Download size={13} />
                     {project.pdfLabelKey ? t(project.pdfLabelKey) : t("proj.download")}
-                    <ExternalLink size={13} className="opacity-40" />
+                    <ExternalLink size={11} className="opacity-40" />
                   </a>
                 </div>
               )}
 
               {project.pdfLinks && (
-                <div className="mt-4 pt-4 border-t border-border/40 flex flex-col gap-2">
+                <div className="mt-3 pt-3 border-t border-border flex flex-col gap-1.5">
                   {project.pdfLinks.map((link, i) => (
                     <a
                       key={i}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-body font-medium text-primary hover:text-accent transition-colors duration-300"
+                      className="inline-flex items-center gap-1.5 text-xs font-body font-medium text-primary hover:underline"
                     >
-                      <Download size={14} />
+                      <Download size={12} />
                       {t(link.labelKey)}
-                      <ExternalLink size={12} className="opacity-40" />
+                      <ExternalLink size={10} className="opacity-40" />
                     </a>
                   ))}
                 </div>
@@ -194,7 +198,7 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        <p className="mt-10 text-sm text-muted-foreground/50 font-body italic text-center">
+        <p className="mt-8 text-xs text-muted-foreground font-body italic text-center">
           {t("proj.note")}
         </p>
       </div>
