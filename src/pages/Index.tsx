@@ -5,8 +5,10 @@ import CertificationsSection from "@/components/CertificationsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useVisitTracker } from "@/hooks/useVisitTracker";
 
 const Index = () => {
+  useVisitTracker();
   return (
     <div className="min-h-screen">
       <Header />
