@@ -131,6 +131,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.title": "Me Contacter",
     "footer.email": "Email",
     "footer.phone": "Téléphone",
+    "footer.call": "Appel téléphonique",
     "footer.copyright": "© {year} Birane Diaw — Marrakech, Maroc",
   },
   en: {
@@ -263,6 +264,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.title": "Get in Touch",
     "footer.email": "Email",
     "footer.phone": "Phone",
+    "footer.call": "Phone call",
     "footer.copyright": "© {year} Birane Diaw — Marrakech, Morocco",
   },
   ar: {
@@ -395,6 +397,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.title": "تواصل معي",
     "footer.email": "البريد الإلكتروني",
     "footer.phone": "الهاتف",
+    "footer.call": "مكالمة هاتفية",
     "footer.copyright": "© {year} بيران دياو — مراكش، المغرب",
   },
 };
