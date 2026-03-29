@@ -103,7 +103,7 @@ const HeroSection = () => {
           {[
             { value: "L3", label: t("hero.stat.licence") },
             { value: "2×", label: t("hero.stat.stages") },
-            { value: "3", label: t("hero.stat.certifications") },
+            { value: "4", label: t("hero.stat.certifications") },
             { value: "6+", label: t("hero.stat.projects") },
           ].map((stat, i) => (
             <div key={i}>
