@@ -47,6 +47,10 @@ export const translations: Record<Lang, Record<string, string>> = {
     "cert.label": "Validation",
     "cert.title": "Certifications",
     "cert.proof": "Justificatif",
+    "cert.efset.desc": "Test standardisé évaluant les compétences en anglais (lecture, écoute, écriture, expression orale). Score obtenu : 71/100 — niveau C2 (Proficient) selon le CECRL. Lecture : 75 (C2), Écoute : 54 (B2), Écriture : 97 (C2), Expression orale : 56 (B2).",
+    "cert.python.desc": "Formation intensive en programmation Python couvrant les fondamentaux du langage, les structures de données, la programmation orientée objet et les applications pratiques.",
+    "cert.plc.desc": "Formation en ligne sur les automates programmables industriels (API/PLC), leur architecture, leur programmation (Ladder, Structured Text) et leur rôle dans l'automatisation industrielle.",
+    "cert.electronics.desc": "Formation couvrant les fondamentaux de l'électronique : composants passifs et actifs, circuits de base, analyse de signaux et principes de conception électronique.",
 
     // Projects
     "proj.label": "Réalisations",
@@ -180,6 +184,10 @@ export const translations: Record<Lang, Record<string, string>> = {
     "cert.label": "Validation",
     "cert.title": "Certifications",
     "cert.proof": "Certificate",
+    "cert.efset.desc": "Standardized test assessing English proficiency (reading, listening, writing, speaking). Score: 71/100 — C2 Proficient level (CEFR). Reading: 75 (C2), Listening: 54 (B2), Writing: 97 (C2), Speaking: 56 (B2).",
+    "cert.python.desc": "Intensive Python programming course covering language fundamentals, data structures, object-oriented programming and practical applications.",
+    "cert.plc.desc": "Online course on Programmable Logic Controllers (PLCs), their architecture, programming (Ladder, Structured Text) and role in industrial automation.",
+    "cert.electronics.desc": "Course covering electronics fundamentals: passive and active components, basic circuits, signal analysis and electronic design principles.",
 
     // Projects
     "proj.label": "Achievements",
@@ -313,6 +321,10 @@ export const translations: Record<Lang, Record<string, string>> = {
     "cert.label": "التحقق",
     "cert.title": "الشهادات",
     "cert.proof": "الشهادة",
+    "cert.efset.desc": "اختبار موحد لتقييم الكفاءة في اللغة الإنجليزية (القراءة، الاستماع، الكتابة، التحدث). النتيجة: 71/100 — مستوى C2 (متقن) حسب الإطار الأوروبي المرجعي. القراءة: 75 (C2)، الاستماع: 54 (B2)، الكتابة: 97 (C2)، التحدث: 56 (B2).",
+    "cert.python.desc": "تكوين مكثف في برمجة Python يغطي أساسيات اللغة وهياكل البيانات والبرمجة الكائنية والتطبيقات العملية.",
+    "cert.plc.desc": "تكوين عبر الإنترنت حول المتحكمات المنطقية القابلة للبرمجة (PLC)، بنيتها، برمجتها (Ladder، Structured Text) ودورها في الأتمتة الصناعية.",
+    "cert.electronics.desc": "تكوين يغطي أساسيات الإلكترونيات: المكونات السلبية والنشطة، الدوائر الأساسية، تحليل الإشارات ومبادئ التصميم الإلكتروني.",
 
     // Projects
     "proj.label": "الإنجازات",
