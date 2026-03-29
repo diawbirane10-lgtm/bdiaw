@@ -20,6 +20,11 @@ const CertificationsSection = () => {
       issuer: "LinkedIn Learning",
       justificatif: "/documents/linkedin_learning_certificate.pdf",
     },
+    {
+      title: "EF SET English Certificate — C1 Advanced (62/100)",
+      issuer: "EF Education First",
+      justificatif: "/documents/ef_set_certificate.pdf",
+    },
   ];
 
   return (
