@@ -8,42 +8,37 @@ const SkillsSection = () => {
     {
       title: t("skills.cat1"),
       icon: <Cpu size={18} />,
-      skills: ["Analyse fonctionnelle", "GRAFCET", "Ladder", "Logique séquentielle", "Automatisation"],
+      skills: [t("skills.s1.1"), t("skills.s1.2"), t("skills.s1.3"), t("skills.s1.4"), t("skills.s1.5")],
     },
     {
       title: t("skills.cat2"),
       icon: <Gauge size={18} />,
-      skills: ["Capteurs", "Chaîne de mesure", "Acquisition de données", "Interprétation de résultats"],
+      skills: [t("skills.s2.1"), t("skills.s2.2"), t("skills.s2.3"), t("skills.s2.4")],
     },
     {
       title: t("skills.cat3"),
       icon: <CircuitBoard size={18} />,
-      skills: ["Analogique", "Numérique", "Lecture de schémas", "Simulation de circuits"],
+      skills: [t("skills.s3.1"), t("skills.s3.2"), t("skills.s3.3"), t("skills.s3.4")],
     },
     {
       title: t("skills.cat4"),
       icon: <Zap size={18} />,
-      skills: ["Câblage", "Mesures", "Sécurité électrique", "Commande vectorielle (FOC)"],
+      skills: [t("skills.s4.1"), t("skills.s4.2"), t("skills.s4.3"), t("skills.s4.4")],
     },
     {
       title: t("skills.cat5"),
       icon: <Monitor size={18} />,
-      skills: ["MATLAB/Simulink", "LTspice", "Tinkercad", "SIMATIC Manager (Siemens)", "OpenSCAD"],
+      skills: [t("skills.s5.1"), t("skills.s5.2"), t("skills.s5.3"), t("skills.s5.4"), t("skills.s5.5")],
     },
     {
       title: t("skills.cat6"),
       icon: <Code size={18} />,
-      skills: ["Python (POO)", "C", "VS Code", "Microsoft Office", "NotebookLM"],
+      skills: [t("skills.s6.1"), t("skills.s6.2"), t("skills.s6.3"), t("skills.s6.4"), t("skills.s6.5")],
     },
     {
       title: t("skills.cat7"),
       icon: <Sparkles size={18} />,
-      skills: [
-        "Google Gemini — rédaction technique & reformulation",
-        "Synthèse de résultats",
-        "Prototypage rapide",
-        "Génération de snippets de code",
-      ],
+      skills: [t("skills.s7.1"), t("skills.s7.2"), t("skills.s7.3"), t("skills.s7.4")],
     },
   ];
 
