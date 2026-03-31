@@ -1,6 +1,7 @@
 import { Linkedin, Mail, Phone, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useState, useRef, useEffect } from "react";
+import ContactForm from "./ContactForm";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -100,7 +101,9 @@ const Footer = () => {
           </a>
         </div>
 
-        <div className="text-center pt-6 border-t border-border">
+        <ContactForm />
+
+        <div className="text-center pt-6 border-t border-border mt-12">
           <p className="text-xs text-muted-foreground font-body">
             {t("footer.copyright").replace("{year}", new Date().getFullYear().toString())}
           </p>

@@ -168,6 +168,22 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.phone": "Téléphone",
     "footer.call": "Appel téléphonique",
     "footer.copyright": "© {year} Birane Diaw — Marrakech, Maroc",
+
+    // Contact Form
+    "contact.form.heading": "Envie de me contacter ? C'est par ici !",
+    "contact.form.subheading": "Remplissez le formulaire ci-dessous et je vous répondrai dès que possible.",
+    "contact.form.firstName": "Prénom",
+    "contact.form.firstNamePh": "Votre prénom",
+    "contact.form.lastName": "Nom",
+    "contact.form.lastNamePh": "Votre nom",
+    "contact.form.email": "Email",
+    "contact.form.emailPh": "votre@email.com",
+    "contact.form.message": "Message",
+    "contact.form.messagePh": "Votre message...",
+    "contact.form.submit": "Envoyer",
+    "contact.form.sending": "Envoi...",
+    "contact.form.sent": "Message envoyé !",
+    "contact.form.error": "Erreur, réessayer",
   },
   en: {
     // Nav
@@ -336,6 +352,22 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.phone": "Phone",
     "footer.call": "Phone call",
     "footer.copyright": "© {year} Birane Diaw — Marrakech, Morocco",
+
+    // Contact Form
+    "contact.form.heading": "Want to reach out? Here you go!",
+    "contact.form.subheading": "Fill in the form below and I'll get back to you as soon as possible.",
+    "contact.form.firstName": "First name",
+    "contact.form.firstNamePh": "Your first name",
+    "contact.form.lastName": "Last name",
+    "contact.form.lastNamePh": "Your last name",
+    "contact.form.email": "Email",
+    "contact.form.emailPh": "your@email.com",
+    "contact.form.message": "Message",
+    "contact.form.messagePh": "Your message...",
+    "contact.form.submit": "Send",
+    "contact.form.sending": "Sending...",
+    "contact.form.sent": "Message sent!",
+    "contact.form.error": "Error, try again",
   },
   ar: {
     // Nav
@@ -504,5 +536,21 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.phone": "الهاتف",
     "footer.call": "مكالمة هاتفية",
     "footer.copyright": "© {year} بيران دياو — مراكش، المغرب",
+
+    // Contact Form
+    "contact.form.heading": "تريد التواصل؟ تفضل!",
+    "contact.form.subheading": "املأ النموذج أدناه وسأرد عليك في أقرب وقت ممكن.",
+    "contact.form.firstName": "الاسم الأول",
+    "contact.form.firstNamePh": "اسمك الأول",
+    "contact.form.lastName": "اسم العائلة",
+    "contact.form.lastNamePh": "اسم عائلتك",
+    "contact.form.email": "البريد الإلكتروني",
+    "contact.form.emailPh": "بريدك@الإلكتروني.com",
+    "contact.form.message": "الرسالة",
+    "contact.form.messagePh": "رسالتك...",
+    "contact.form.submit": "إرسال",
+    "contact.form.sending": "جارٍ الإرسال...",
+    "contact.form.sent": "تم إرسال الرسالة!",
+    "contact.form.error": "خطأ، حاول مرة أخرى",
   },
 };
