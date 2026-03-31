@@ -1,7 +1,7 @@
 import { Linkedin, Mail, Phone, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useState, useRef, useEffect } from "react";
-import ContactForm from "./ContactForm";
+
 
 const Footer = () => {
   const { t } = useLanguage();
