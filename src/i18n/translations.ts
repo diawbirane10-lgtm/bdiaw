@@ -169,7 +169,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.call": "Appel téléphonique",
     "footer.copyright": "© {year} Birane Diaw — Marrakech, Maroc",
 
-    // Contact Form
+    // Contact Form (legacy)
     "contact.form.heading": "Envie de me contacter ? C'est par ici !",
     "contact.form.subheading": "Remplissez le formulaire ci-dessous et je vous répondrai dès que possible.",
     "contact.form.firstName": "Prénom",
@@ -184,6 +184,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "contact.form.sending": "Envoi...",
     "contact.form.sent": "Message envoyé !",
     "contact.form.error": "Erreur, réessayer",
+
+    // Testimonials
+    "testimonials.label": "Témoignages",
+    "testimonials.title": "Ce Qu'on Dit de Moi",
+    "testimonial.1.name": "Pr. Moulay Rachid Douiri",
+    "testimonial.1.role": "Encadrant académique — FST Marrakech",
+    "testimonial.1.text": "Birane a fait preuve d'une grande rigueur et d'une curiosité technique remarquable lors du projet sur l'énergie houlomotrice. Sa maîtrise de MATLAB/Simulink et sa capacité à modéliser des systèmes complexes sont impressionnantes pour un étudiant de son niveau.",
+    "testimonial.2.name": "M. Moussa Diaw",
+    "testimonial.2.role": "Directeur Technique — S4E SARL",
+    "testimonial.2.text": "Lors de ses deux stages, Birane a démontré un professionnalisme et une autonomie exemplaires sur le terrain. Il a su s'adapter rapidement aux contraintes des sites industriels haute tension au Sénégal et en Mauritanie.",
+    "testimonial.3.name": "Pr. Ahmad Chitnalah",
+    "testimonial.3.role": "Professeur d'Électronique — FST Marrakech",
+    "testimonial.3.text": "Un étudiant sérieux et méthodique. Ses comptes rendus de TP en électronique analogique se distinguaient par la qualité de l'analyse comparative entre simulation et résultats expérimentaux.",
   },
   en: {
     // Nav
