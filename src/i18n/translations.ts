@@ -168,6 +168,22 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.phone": "Téléphone",
     "footer.call": "Appel téléphonique",
     "footer.copyright": "© {year} Birane Diaw — Marrakech, Maroc",
+
+    // Contact Form
+    "contact.form.heading": "Envie de me contacter ? C'est par ici !",
+    "contact.form.subheading": "Remplissez le formulaire ci-dessous et je vous répondrai dès que possible.",
+    "contact.form.firstName": "Prénom",
+    "contact.form.firstNamePh": "Votre prénom",
+    "contact.form.lastName": "Nom",
+    "contact.form.lastNamePh": "Votre nom",
+    "contact.form.email": "Email",
+    "contact.form.emailPh": "votre@email.com",
+    "contact.form.message": "Message",
+    "contact.form.messagePh": "Votre message...",
+    "contact.form.submit": "Envoyer",
+    "contact.form.sending": "Envoi...",
+    "contact.form.sent": "Message envoyé !",
+    "contact.form.error": "Erreur, réessayer",
   },
   en: {
     // Nav
