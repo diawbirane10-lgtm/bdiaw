@@ -101,7 +101,9 @@ const Footer = () => {
           </a>
         </div>
 
-        <div className="text-center pt-6 border-t border-border">
+        <ContactForm />
+
+        <div className="text-center pt-6 border-t border-border mt-12">
           <p className="text-xs text-muted-foreground font-body">
             {t("footer.copyright").replace("{year}", new Date().getFullYear().toString())}
           </p>
