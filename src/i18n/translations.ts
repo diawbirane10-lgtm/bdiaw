@@ -352,6 +352,22 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.phone": "Phone",
     "footer.call": "Phone call",
     "footer.copyright": "© {year} Birane Diaw — Marrakech, Morocco",
+
+    // Contact Form
+    "contact.form.heading": "Want to reach out? Here you go!",
+    "contact.form.subheading": "Fill in the form below and I'll get back to you as soon as possible.",
+    "contact.form.firstName": "First name",
+    "contact.form.firstNamePh": "Your first name",
+    "contact.form.lastName": "Last name",
+    "contact.form.lastNamePh": "Your last name",
+    "contact.form.email": "Email",
+    "contact.form.emailPh": "your@email.com",
+    "contact.form.message": "Message",
+    "contact.form.messagePh": "Your message...",
+    "contact.form.submit": "Send",
+    "contact.form.sending": "Sending...",
+    "contact.form.sent": "Message sent!",
+    "contact.form.error": "Error, try again",
   },
   ar: {
     // Nav
