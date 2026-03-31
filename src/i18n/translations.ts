@@ -366,7 +366,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.call": "Phone call",
     "footer.copyright": "© {year} Birane Diaw — Marrakech, Morocco",
 
-    // Contact Form
+    // Contact Form (legacy)
     "contact.form.heading": "Want to reach out? Here you go!",
     "contact.form.subheading": "Fill in the form below and I'll get back to you as soon as possible.",
     "contact.form.firstName": "First name",
@@ -381,6 +381,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "contact.form.sending": "Sending...",
     "contact.form.sent": "Message sent!",
     "contact.form.error": "Error, try again",
+
+    // Testimonials
+    "testimonials.label": "Testimonials",
+    "testimonials.title": "What People Say",
+    "testimonial.1.name": "Prof. Moulay Rachid Douiri",
+    "testimonial.1.role": "Academic Supervisor — FST Marrakech",
+    "testimonial.1.text": "Birane showed remarkable rigor and technical curiosity during the wave energy project. His proficiency in MATLAB/Simulink and ability to model complex systems are impressive for a student at his level.",
+    "testimonial.2.name": "M. Moussa Diaw",
+    "testimonial.2.role": "Technical Director — S4E SARL",
+    "testimonial.2.text": "During his two internships, Birane demonstrated exemplary professionalism and autonomy in the field. He quickly adapted to the constraints of high-voltage industrial sites in Senegal and Mauritania.",
+    "testimonial.3.name": "Prof. Ahmad Chitnalah",
+    "testimonial.3.role": "Electronics Professor — FST Marrakech",
+    "testimonial.3.text": "A serious and methodical student. His analog electronics lab reports stood out for the quality of comparative analysis between simulation and experimental results.",
   },
   ar: {
     // Nav
