@@ -45,6 +45,7 @@ const Header = () => {
                 {item.label}
               </a>
             ))}
+            <ThemeToggle />
             <LanguageSwitcher />
           </nav>
 
