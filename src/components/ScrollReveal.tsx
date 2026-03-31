@@ -9,7 +9,7 @@ interface ScrollRevealProps {
   direction?: Direction;
 }
 
-const variants: Record<Direction, { hidden: object; visible: object }> = {
+const variants: Record<Direction, Variants> = {
   up: {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
