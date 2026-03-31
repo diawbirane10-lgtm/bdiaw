@@ -563,7 +563,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.call": "مكالمة هاتفية",
     "footer.copyright": "© {year} بيران دياو — مراكش، المغرب",
 
-    // Contact Form
+    // Contact Form (legacy)
     "contact.form.heading": "تريد التواصل؟ تفضل!",
     "contact.form.subheading": "املأ النموذج أدناه وسأرد عليك في أقرب وقت ممكن.",
     "contact.form.firstName": "الاسم الأول",
@@ -578,5 +578,18 @@ export const translations: Record<Lang, Record<string, string>> = {
     "contact.form.sending": "جارٍ الإرسال...",
     "contact.form.sent": "تم إرسال الرسالة!",
     "contact.form.error": "خطأ، حاول مرة أخرى",
+
+    // Testimonials
+    "testimonials.label": "الشهادات",
+    "testimonials.title": "ما يقولون عني",
+    "testimonial.1.name": "أ.د. مولاي رشيد الدويري",
+    "testimonial.1.role": "مشرف أكاديمي — كلية العلوم والتقنيات بمراكش",
+    "testimonial.1.text": "أظهر بيران دقة كبيرة وفضولاً تقنياً ملحوظاً خلال مشروع طاقة الأمواج. إتقانه لـ MATLAB/Simulink وقدرته على نمذجة الأنظمة المعقدة مثيرة للإعجاب بالنسبة لطالب في مستواه.",
+    "testimonial.2.name": "م. موسى دياو",
+    "testimonial.2.role": "المدير التقني — S4E SARL",
+    "testimonial.2.text": "خلال تدريبيه، أظهر بيران احترافية واستقلالية مثاليتين في الميدان. تكيف بسرعة مع قيود المواقع الصناعية ذات الجهد العالي في السنغال وموريتانيا.",
+    "testimonial.3.name": "أ.د. أحمد شتنالح",
+    "testimonial.3.role": "أستاذ الإلكترونيات — كلية العلوم والتقنيات بمراكش",
+    "testimonial.3.text": "طالب جاد ومنهجي. تميزت تقاريره في أعمال الإلكترونيات التناظرية بجودة التحليل المقارن بين المحاكاة والنتائج التجريبية.",
   },
 };
