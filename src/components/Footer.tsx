@@ -101,7 +101,7 @@ const Footer = () => {
           </a>
         </div>
 
-        <ContactForm />
+        
 
         <div className="text-center pt-6 border-t border-border mt-12">
           <p className="text-xs text-muted-foreground font-body">
