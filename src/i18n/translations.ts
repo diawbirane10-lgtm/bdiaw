@@ -536,5 +536,21 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.phone": "الهاتف",
     "footer.call": "مكالمة هاتفية",
     "footer.copyright": "© {year} بيران دياو — مراكش، المغرب",
+
+    // Contact Form
+    "contact.form.heading": "تريد التواصل؟ تفضل!",
+    "contact.form.subheading": "املأ النموذج أدناه وسأرد عليك في أقرب وقت ممكن.",
+    "contact.form.firstName": "الاسم الأول",
+    "contact.form.firstNamePh": "اسمك الأول",
+    "contact.form.lastName": "اسم العائلة",
+    "contact.form.lastNamePh": "اسم عائلتك",
+    "contact.form.email": "البريد الإلكتروني",
+    "contact.form.emailPh": "بريدك@الإلكتروني.com",
+    "contact.form.message": "الرسالة",
+    "contact.form.messagePh": "رسالتك...",
+    "contact.form.submit": "إرسال",
+    "contact.form.sending": "جارٍ الإرسال...",
+    "contact.form.sent": "تم إرسال الرسالة!",
+    "contact.form.error": "خطأ، حاول مرة أخرى",
   },
 };
