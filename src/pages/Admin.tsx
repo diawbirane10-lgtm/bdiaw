@@ -1,8 +1,18 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Eye, Calendar, Monitor, Globe, TrendingUp, Lock } from "lucide-react";
+import { Eye, Calendar, Monitor, Globe, TrendingUp, Lock, Trash2, MessageSquare } from "lucide-react";
+import { toast } from "sonner";
 
 const ADMIN_PASSWORD = "bdiaw2026"; // Change this to your preferred password
+
+interface Testimonial {
+  id: string;
+  first_name: string;
+  last_name: string;
+  title: string;
+  message: string;
+  created_at: string;
+}
 
 const Admin = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -16,6 +26,7 @@ const Admin = () => {
   });
   const [recentVisits, setRecentVisits] = useState<any[]>([]);
   const [dailyData, setDailyData] = useState<{ date: string; count: number }[]>([]);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(true);
 
   const handleLogin = (e: React.FormEvent) => {
