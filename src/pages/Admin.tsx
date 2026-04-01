@@ -1,8 +1,18 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Eye, Calendar, Monitor, Globe, TrendingUp, Lock } from "lucide-react";
+import { Eye, Calendar, Monitor, Globe, TrendingUp, Lock, Trash2, MessageSquare } from "lucide-react";
+import { toast } from "sonner";
 
 const ADMIN_PASSWORD = "bdiaw2026"; // Change this to your preferred password
+
+interface Testimonial {
+  id: string;
+  first_name: string;
+  last_name: string;
+  title: string;
+  message: string;
+  created_at: string;
+}
 
 const Admin = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -16,6 +26,7 @@ const Admin = () => {
   });
   const [recentVisits, setRecentVisits] = useState<any[]>([]);
   const [dailyData, setDailyData] = useState<{ date: string; count: number }[]>([]);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(true);
 
   const handleLogin = (e: React.FormEvent) => {
@@ -84,8 +95,27 @@ const Admin = () => {
       setLoading(false);
     };
 
+    const fetchTestimonials = async () => {
+      const { data } = await supabase
+        .from("testimonials")
+        .select("*")
+        .order("created_at", { ascending: false });
+      if (data) setTestimonials(data);
+    };
+
     fetchStats();
+    fetchTestimonials();
   }, [authenticated]);
+
+  const deleteTestimonial = async (id: string) => {
+    const { error } = await supabase.from("testimonials").delete().eq("id", id);
+    if (error) {
+      toast.error("Erreur lors de la suppression");
+    } else {
+      setTestimonials((prev) => prev.filter((t) => t.id !== id));
+      toast.success("Témoignage supprimé");
+    }
+  };
 
   if (!authenticated) {
     return (
@@ -214,6 +244,41 @@ const Admin = () => {
                   </tbody>
                 </table>
               </div>
+            </div>
+
+            {/* Testimonials Management */}
+            <div className="card-elegant p-6 mt-8">
+              <div className="flex items-center gap-2 mb-4">
+                <MessageSquare className="w-5 h-5 text-primary" />
+                <h2 className="text-lg font-semibold text-foreground">Témoignages ({testimonials.length})</h2>
+              </div>
+              {testimonials.length === 0 ? (
+                <p className="text-muted-foreground text-sm">Aucun témoignage pour le moment.</p>
+              ) : (
+                <div className="space-y-3">
+                  {testimonials.map((t) => (
+                    <div key={t.id} className="flex items-start justify-between gap-4 p-4 rounded-lg bg-secondary/30 border border-border">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold text-foreground">
+                          {t.first_name} {t.last_name}
+                        </p>
+                        <p className="text-xs text-muted-foreground">{t.title}</p>
+                        <p className="text-sm text-foreground mt-2 italic">"{t.message}"</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {new Date(t.created_at).toLocaleString("fr-FR")}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => deleteTestimonial(t.id)}
+                        className="p-2 rounded-lg text-destructive hover:bg-destructive/10 transition-colors shrink-0"
+                        title="Supprimer"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </>
         )}
