@@ -95,8 +95,27 @@ const Admin = () => {
       setLoading(false);
     };
 
+    const fetchTestimonials = async () => {
+      const { data } = await supabase
+        .from("testimonials")
+        .select("*")
+        .order("created_at", { ascending: false });
+      if (data) setTestimonials(data);
+    };
+
     fetchStats();
+    fetchTestimonials();
   }, [authenticated]);
+
+  const deleteTestimonial = async (id: string) => {
+    const { error } = await supabase.from("testimonials").delete().eq("id", id);
+    if (error) {
+      toast.error("Erreur lors de la suppression");
+    } else {
+      setTestimonials((prev) => prev.filter((t) => t.id !== id));
+      toast.success("Témoignage supprimé");
+    }
+  };
 
   if (!authenticated) {
     return (
