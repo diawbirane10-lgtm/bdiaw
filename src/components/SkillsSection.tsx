@@ -5,41 +5,13 @@ const SkillsSection = () => {
   const { t } = useLanguage();
 
   const skillCategories = [
-    {
-      title: t("skills.cat1"),
-      icon: <Cpu size={18} />,
-      skills: [t("skills.s1.1"), t("skills.s1.2"), t("skills.s1.3"), t("skills.s1.4"), t("skills.s1.5")],
-    },
-    {
-      title: t("skills.cat2"),
-      icon: <Gauge size={18} />,
-      skills: [t("skills.s2.1"), t("skills.s2.2"), t("skills.s2.3"), t("skills.s2.4")],
-    },
-    {
-      title: t("skills.cat3"),
-      icon: <CircuitBoard size={18} />,
-      skills: [t("skills.s3.1"), t("skills.s3.2"), t("skills.s3.3"), t("skills.s3.4")],
-    },
-    {
-      title: t("skills.cat4"),
-      icon: <Zap size={18} />,
-      skills: [t("skills.s4.1"), t("skills.s4.2"), t("skills.s4.3"), t("skills.s4.4")],
-    },
-    {
-      title: t("skills.cat5"),
-      icon: <Monitor size={18} />,
-      skills: [t("skills.s5.1"), t("skills.s5.2"), t("skills.s5.3"), t("skills.s5.4"), t("skills.s5.5")],
-    },
-    {
-      title: t("skills.cat6"),
-      icon: <Code size={18} />,
-      skills: [t("skills.s6.1"), t("skills.s6.2"), t("skills.s6.3"), t("skills.s6.4"), t("skills.s6.5")],
-    },
-    {
-      title: t("skills.cat7"),
-      icon: <Sparkles size={18} />,
-      skills: [t("skills.s7.1"), t("skills.s7.2"), t("skills.s7.3"), t("skills.s7.4")],
-    },
+    { title: t("skills.cat1"), icon: <Cpu size={18} />, skills: [t("skills.s1.1"), t("skills.s1.2"), t("skills.s1.3"), t("skills.s1.4"), t("skills.s1.5")] },
+    { title: t("skills.cat2"), icon: <Gauge size={18} />, skills: [t("skills.s2.1"), t("skills.s2.2"), t("skills.s2.3"), t("skills.s2.4")] },
+    { title: t("skills.cat3"), icon: <CircuitBoard size={18} />, skills: [t("skills.s3.1"), t("skills.s3.2"), t("skills.s3.3"), t("skills.s3.4")] },
+    { title: t("skills.cat4"), icon: <Zap size={18} />, skills: [t("skills.s4.1"), t("skills.s4.2"), t("skills.s4.3"), t("skills.s4.4")] },
+    { title: t("skills.cat5"), icon: <Monitor size={18} />, skills: [t("skills.s5.1"), t("skills.s5.2"), t("skills.s5.3"), t("skills.s5.4"), t("skills.s5.5")] },
+    { title: t("skills.cat6"), icon: <Code size={18} />, skills: [t("skills.s6.1"), t("skills.s6.2"), t("skills.s6.3"), t("skills.s6.4"), t("skills.s6.5")] },
+    { title: t("skills.cat7"), icon: <Sparkles size={18} />, skills: [t("skills.s7.1"), t("skills.s7.2"), t("skills.s7.3"), t("skills.s7.4")] },
   ];
 
   const languages = [
@@ -59,10 +31,10 @@ const SkillsSection = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {skillCategories.map((category) => (
-            <div key={category.title} className="card-elegant group">
+            <div key={category.title} className="card-elegant group hover-lift">
               <div className="flex items-center gap-2.5 mb-4">
                 <div className="text-primary">{category.icon}</div>
-                <h3 className="text-xs font-body font-semibold text-foreground tracking-wide uppercase">
+                <h3 className="text-xs font-body font-bold text-foreground tracking-[0.1em] uppercase">
                   {category.title}
                 </h3>
               </div>
@@ -75,15 +47,15 @@ const SkillsSection = () => {
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border">
-          <h3 className="text-xs font-body font-semibold text-foreground mb-4 tracking-wide uppercase">
+        <div className="mt-14 pt-8 border-t border-border/50">
+          <h3 className="text-xs font-body font-bold text-foreground mb-5 tracking-[0.15em] uppercase">
             {t("skills.languages")}
           </h3>
           <div className="flex flex-wrap gap-6">
             {languages.map((l) => (
               <div key={l.lang} className="flex items-center gap-2">
-                <span className="font-body font-medium text-foreground text-sm">{l.lang}</span>
-                <span className="text-xs text-muted-foreground font-body px-2 py-0.5 rounded-full bg-secondary border border-border">
+                <span className="font-body font-semibold text-foreground text-sm">{l.lang}</span>
+                <span className="text-xs text-primary font-body font-bold px-2.5 py-0.5 rounded bg-primary/10 border border-primary/20">
                   {l.level}
                 </span>
               </div>

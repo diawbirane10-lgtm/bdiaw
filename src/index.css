@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,87 +6,79 @@
 
 @layer base {
   :root {
-    /* Clean Light Professional Theme */
-    --background: 210 20% 98%;
-    --foreground: 215 25% 12%;
+    /* Vulcain-inspired Dark Corporate Theme */
+    --background: 220 25% 6%;
+    --foreground: 210 20% 92%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 215 25% 12%;
+    --card: 220 22% 10%;
+    --card-foreground: 210 20% 92%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 12%;
+    --popover: 220 22% 10%;
+    --popover-foreground: 210 20% 92%;
 
-    /* Professional Blue */
-    --primary: 217 91% 50%;
-    --primary-foreground: 0 0% 100%;
+    /* Teal/Cyan accent like Vulcain */
+    --primary: 168 70% 50%;
+    --primary-foreground: 220 25% 6%;
 
-    --secondary: 210 18% 95%;
-    --secondary-foreground: 215 20% 30%;
+    --secondary: 220 18% 14%;
+    --secondary-foreground: 210 14% 70%;
 
-    --muted: 210 14% 93%;
-    --muted-foreground: 215 12% 50%;
+    --muted: 220 15% 16%;
+    --muted-foreground: 215 10% 50%;
 
-    --accent: 25 60% 52%;
+    /* Red accent */
+    --accent: 0 75% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 14% 90%;
-    --input: 214 14% 90%;
-    --ring: 217 91% 50%;
+    --border: 220 14% 16%;
+    --input: 220 14% 16%;
+    --ring: 168 70% 50%;
 
-    --radius: 0.625rem;
+    --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217 91% 50%;
+    --sidebar-background: 220 22% 10%;
+    --sidebar-foreground: 210 20% 92%;
+    --sidebar-primary: 168 70% 50%;
+    --sidebar-primary-foreground: 220 25% 6%;
+    --sidebar-accent: 220 18% 14%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 220 14% 16%;
+    --sidebar-ring: 168 70% 50%;
   }
 
   .dark {
-    --background: 220 20% 8%;
+    /* Same as root — dark by default like Vulcain */
+    --background: 220 25% 6%;
     --foreground: 210 20% 92%;
-
-    --card: 220 18% 11%;
+    --card: 220 22% 10%;
     --card-foreground: 210 20% 92%;
-
-    --popover: 220 18% 11%;
+    --popover: 220 22% 10%;
     --popover-foreground: 210 20% 92%;
-
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 220 14% 16%;
-    --secondary-foreground: 210 14% 75%;
-
-    --muted: 220 12% 18%;
-    --muted-foreground: 215 10% 55%;
-
-    --accent: 25 60% 55%;
+    --primary: 168 70% 50%;
+    --primary-foreground: 220 25% 6%;
+    --secondary: 220 18% 14%;
+    --secondary-foreground: 210 14% 70%;
+    --muted: 220 15% 16%;
+    --muted-foreground: 215 10% 50%;
+    --accent: 0 75% 55%;
     --accent-foreground: 0 0% 100%;
-
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-
-    --border: 220 12% 18%;
-    --input: 220 12% 18%;
-    --ring: 217 91% 60%;
-
-    --radius: 0.625rem;
-
-    --sidebar-background: 220 18% 11%;
+    --border: 220 14% 16%;
+    --input: 220 14% 16%;
+    --ring: 168 70% 50%;
+    --radius: 0.5rem;
+    --sidebar-background: 220 22% 10%;
     --sidebar-foreground: 210 20% 92%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 16%;
+    --sidebar-primary: 168 70% 50%;
+    --sidebar-primary-foreground: 220 25% 6%;
+    --sidebar-accent: 220 18% 14%;
     --sidebar-accent-foreground: 210 20% 92%;
-    --sidebar-border: 220 12% 18%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-border: 220 14% 16%;
+    --sidebar-ring: 168 70% 50%;
   }
 
   * {
@@ -104,42 +96,42 @@
 
 @layer components {
   .section-container {
-    @apply max-w-5xl mx-auto px-6 lg:px-8;
+    @apply max-w-6xl mx-auto px-6 lg:px-8;
   }
 
   .section-padding {
-    @apply py-20 lg:py-28;
+    @apply py-24 lg:py-32;
   }
 
   .section-header {
-    @apply mb-14;
+    @apply mb-16;
   }
 
   .section-label {
-    @apply text-primary font-body font-semibold tracking-[0.15em] uppercase text-xs mb-3 block;
+    @apply text-primary font-body font-bold tracking-[0.2em] uppercase text-xs mb-3 block;
   }
 
   .section-title {
-    @apply font-body text-2xl lg:text-3xl text-foreground font-bold tracking-tight;
+    @apply font-body text-3xl lg:text-4xl text-foreground font-black tracking-tight uppercase;
   }
 
   .section-divider {
-    @apply w-10 h-0.5 bg-primary mt-5 rounded-full;
+    @apply w-12 h-1 bg-primary mt-6 rounded-full;
   }
 
   /* Navigation */
   .nav-link {
-    @apply text-sm font-body font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 tracking-wide;
+    @apply text-xs font-body font-bold text-muted-foreground hover:text-primary transition-colors duration-200 tracking-[0.15em] uppercase;
   }
 
-  /* Cards */
+  /* Cards — glassy dark style */
   .card-elegant {
-    @apply bg-card p-6 rounded-xl border border-border hover:border-primary/30 transition-all duration-300;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+    @apply bg-card/80 p-6 rounded-lg border border-border/50 hover:border-primary/40 transition-all duration-400;
+    backdrop-filter: blur(12px);
   }
 
   .card-elegant:hover {
-    box-shadow: 0 4px 16px -4px rgb(0 0 0 / 0.08);
+    box-shadow: 0 0 30px -10px hsl(168 70% 50% / 0.15);
   }
 
   .card-project {
@@ -148,16 +140,16 @@
 
   /* Skills */
   .skill-tag {
-    @apply inline-block px-3 py-1.5 text-xs font-body font-medium bg-secondary text-secondary-foreground rounded-md border border-border hover:border-primary/30 hover:text-primary transition-all duration-200;
+    @apply inline-block px-3 py-1.5 text-xs font-body font-medium bg-secondary text-secondary-foreground rounded border border-border/60 hover:border-primary/40 hover:text-primary transition-all duration-200;
   }
 
   /* Status badges */
   .badge-status {
-    @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-body font-semibold uppercase tracking-wider rounded-full;
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-body font-bold uppercase tracking-wider rounded-full;
   }
 
   .badge-status-progress {
-    @apply bg-primary/10 text-primary border border-primary/20;
+    @apply bg-primary/15 text-primary border border-primary/30;
   }
 
   .badge-status-upcoming {
@@ -165,7 +157,7 @@
   }
 
   .badge-status-completed {
-    @apply bg-accent/10 text-accent border border-accent/20;
+    @apply bg-accent/15 text-accent border border-accent/30;
   }
 
   /* Hover lift */
@@ -174,7 +166,7 @@
   }
 
   .hover-lift:hover {
-    @apply -translate-y-0.5;
+    @apply -translate-y-1;
   }
 }
 
@@ -188,16 +180,16 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.15);
+  background: hsl(var(--primary) / 0.2);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground) / 0.3);
+  background: hsl(var(--primary) / 0.4);
 }
 
 /* Selection */
 ::selection {
-  background: hsl(var(--primary) / 0.12);
+  background: hsl(var(--primary) / 0.2);
   color: hsl(var(--foreground));
 }
