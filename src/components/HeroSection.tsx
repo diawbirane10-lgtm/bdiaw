@@ -94,7 +94,7 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        <AnimatedCounters />
+        
       </div>
     </section>
   );
