@@ -1,7 +1,7 @@
 import { ArrowDown, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
-import AnimatedCounters from "./AnimatedCounters";
+
 
 const HeroSection = () => {
   const { t } = useLanguage();
