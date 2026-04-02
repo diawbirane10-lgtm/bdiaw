@@ -26,20 +26,20 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-card/90 backdrop-blur-lg border-b border-border shadow-sm"
+          ? "bg-background/95 backdrop-blur-xl border-b border-border/50"
           : "bg-transparent"
       }`}
     >
       <div className="section-container">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           <a
             href="#accueil"
-            className="font-body text-base font-bold text-foreground tracking-tight"
+            className="font-body text-lg font-black text-foreground tracking-tight uppercase"
           >
-            B. Diaw
+            <span className="text-primary">B.</span> Diaw
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-10">
             {navItems.map((item) => (
               <a key={item.href} href={item.href} className="nav-link">
                 {item.label}
@@ -54,17 +54,17 @@ const Header = () => {
             <LanguageSwitcher />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-foreground"
+              className="p-2 text-foreground hover:text-primary transition-colors"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
 
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-border">
-            <div className="flex flex-col gap-3">
+          <nav className="md:hidden py-6 border-t border-border/50">
+            <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <a
                   key={item.href}

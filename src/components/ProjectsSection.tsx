@@ -92,21 +92,22 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projets" className="section-padding bg-secondary/40">
-      <div className="section-container">
+    <section id="projets" className="section-padding relative">
+      {/* Subtle background variation */}
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-transparent pointer-events-none" />
+      
+      <div className="section-container relative z-10">
         <div className="section-header">
           <span className="section-label">{t("proj.label")}</span>
           <h2 className="section-title">{t("proj.title")}</h2>
           <div className="section-divider" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <article key={index} className="card-project hover-lift flex flex-col group">
-              {/* Header with icon placeholder */}
-              <div className="w-full h-32 rounded-lg bg-secondary flex items-center justify-center mb-5">
-                <Folder className="w-10 h-10 text-muted-foreground/30" />
-              </div>
+              {/* Header accent bar */}
+              <div className="w-full h-1 bg-gradient-to-r from-primary/60 to-transparent rounded-full mb-5" />
 
               <div className="mb-4 flex items-center gap-2 flex-wrap">
                 <span className={`badge-status ${
@@ -125,7 +126,7 @@ const ProjectsSection = () => {
                 )}
               </div>
 
-              <h3 className="text-base font-body font-semibold text-foreground mb-1.5 group-hover:text-primary transition-colors duration-200">
+              <h3 className="text-base font-body font-bold text-foreground mb-1.5 group-hover:text-primary transition-colors duration-200 uppercase tracking-wide">
                 {t(project.titleKey)}
               </h3>
 
@@ -135,26 +136,26 @@ const ProjectsSection = () => {
 
               <div className="space-y-2 text-sm font-body text-muted-foreground leading-relaxed flex-grow">
                 <div>
-                  <span className="font-semibold text-foreground/80">{t("proj.context")} :</span>{" "}
+                  <span className="font-bold text-foreground/80">{t("proj.context")} :</span>{" "}
                   {t(project.contexteKey)}
                 </div>
                 <div>
-                  <span className="font-semibold text-foreground/80">{t("proj.objective")} :</span>{" "}
+                  <span className="font-bold text-foreground/80">{t("proj.objective")} :</span>{" "}
                   {t(project.objectifKey)}
                 </div>
                 <div>
-                  <span className="font-semibold text-foreground/80">{t("proj.contribution")} :</span>{" "}
+                  <span className="font-bold text-foreground/80">{t("proj.contribution")} :</span>{" "}
                   {t(project.contributionKey)}
                 </div>
                 {project.resultatsKey && (
                   <div>
-                    <span className="font-semibold text-foreground/80">{t("proj.results")} :</span>{" "}
+                    <span className="font-bold text-foreground/80">{t("proj.results")} :</span>{" "}
                     {t(project.resultatsKey)}
                   </div>
                 )}
               </div>
 
-              <div className="mt-4 pt-4 border-t border-border">
+              <div className="mt-4 pt-4 border-t border-border/50">
                 <div className="flex flex-wrap gap-1.5">
                   {project.outils.map((outil) => (
                     <span key={outil} className="skill-tag text-[11px]">{outil}</span>
@@ -163,12 +164,12 @@ const ProjectsSection = () => {
               </div>
 
               {project.pdfLink && (
-                <div className="mt-3 pt-3 border-t border-border">
+                <div className="mt-3 pt-3 border-t border-border/50">
                   <a
                     href={project.pdfLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-body font-medium text-primary hover:underline"
+                    className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-primary hover:underline uppercase tracking-wider"
                   >
                     <Download size={13} />
                     {project.pdfLabelKey ? t(project.pdfLabelKey) : t("proj.download")}
@@ -178,14 +179,14 @@ const ProjectsSection = () => {
               )}
 
               {project.pdfLinks && (
-                <div className="mt-3 pt-3 border-t border-border flex flex-col gap-1.5">
+                <div className="mt-3 pt-3 border-t border-border/50 flex flex-col gap-1.5">
                   {project.pdfLinks.map((link, i) => (
                     <a
                       key={i}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-body font-medium text-primary hover:underline"
+                      className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-primary hover:underline"
                     >
                       <Download size={12} />
                       {t(link.labelKey)}
@@ -198,7 +199,7 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        <p className="mt-8 text-xs text-muted-foreground font-body italic text-center">
+        <p className="mt-10 text-xs text-muted-foreground font-body italic text-center">
           {t("proj.note")}
         </p>
       </div>

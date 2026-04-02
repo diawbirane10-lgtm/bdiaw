@@ -32,8 +32,10 @@ const CertificationsSection = () => {
   ];
 
   return (
-    <section id="certifications" className="section-padding">
-      <div className="section-container">
+    <section id="certifications" className="section-padding relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/20 to-transparent pointer-events-none" />
+      
+      <div className="section-container relative z-10">
         <div className="section-header">
           <span className="section-label">{t("cert.label")}</span>
           <h2 className="section-title">{t("cert.title")}</h2>
@@ -44,20 +46,20 @@ const CertificationsSection = () => {
           {certifications.map((cert, i) => (
             <div key={i} className="card-elegant hover-lift flex flex-col group">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-10 h-10 rounded bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 border border-primary/20">
                   <Award className="w-4 h-4 text-primary" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-body text-sm font-semibold text-foreground mb-0.5">{cert.title}</h3>
-                  <p className="text-xs text-muted-foreground font-body mb-2">{cert.issuer}</p>
-                  <p className="text-xs text-muted-foreground/80 font-body leading-relaxed">{cert.description}</p>
+                  <h3 className="font-body text-sm font-bold text-foreground mb-0.5">{cert.title}</h3>
+                  <p className="text-xs text-primary font-body font-semibold mb-2">{cert.issuer}</p>
+                  <p className="text-xs text-muted-foreground font-body leading-relaxed">{cert.description}</p>
                 </div>
               </div>
               <a
                 href={cert.justificatif}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-body font-medium text-primary hover:underline pt-3 mt-4 border-t border-border w-full justify-center"
+                className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-primary hover:underline pt-3 mt-4 border-t border-border/50 w-full justify-center uppercase tracking-wider"
               >
                 <Download size={12} />
                 {t("cert.proof")}
