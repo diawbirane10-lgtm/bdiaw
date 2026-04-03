@@ -579,6 +579,17 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.6.tp3": "TP3 — الترشيح",
     "proj.6.tp4": "TP4 — التطبيقات",
 
+    // Project 7 - Electronic Functions Labs
+    "proj.7.title": "أعمال تطبيقية في الوظائف الإلكترونية",
+    "proj.7.subtitle": "محاكاة الدوائر التناظرية — وحدة الوظائف الإلكترونية",
+    "proj.7.contexte": "سلسلة من 4 أعمال تطبيقية في محاكاة الوظائف الإلكترونية التناظرية.",
+    "proj.7.objectif": "محاكاة وتحليل سلوك دوائر المضخمات العملياتية والمرشحات النشطة والمذبذبات.",
+    "proj.7.contribution": "محاكاة الدوائر باستخدام LTSpice، تحليل الاستجابة الترددية، دراسة المذبذبات وكتابة التقارير.",
+    "proj.7.tp1": "TP1 — محاكاة AOP",
+    "proj.7.tp2": "TP2 — المرشحات النشطة",
+    "proj.7.tp3": "TP3 — المضخمات",
+    "proj.7.tp4": "TP4 — المذبذبات",
+
     // Footer
     "footer.label": "اتصل بي",
     "footer.title": "تواصل معي",

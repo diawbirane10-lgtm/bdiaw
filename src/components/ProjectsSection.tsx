@@ -73,6 +73,21 @@ const ProjectsSection = () => {
         { labelKey: "proj.6.tp4", href: "/documents/CR_TS_TP4.pdf" },
       ],
     },
+    {
+      titleKey: "proj.7.title",
+      subtitleKey: "proj.7.subtitle",
+      statusType: "completed" as const,
+      contexteKey: "proj.7.contexte",
+      objectifKey: "proj.7.objectif",
+      contributionKey: "proj.7.contribution",
+      outils: ["LTSpice", "Simulation", "Amplificateurs", "Filtres actifs", "Oscillateurs"],
+      pdfLinks: [
+        { labelKey: "proj.7.tp1", href: "/docs/TP1_SIMU_2.pdf" },
+        { labelKey: "proj.7.tp2", href: "/docs/CR_TP02_PartieB_Simulation.pdf" },
+        { labelKey: "proj.7.tp3", href: "/docs/CR_TP03_PartieB_Simu.pdf" },
+        { labelKey: "proj.7.tp4", href: "/docs/CR_TP04_FE_Simulation.pdf" },
+      ],
+    },
   ];
 
   const getStatusIcon = (statusType: string) => {
