@@ -126,7 +126,7 @@
 
   /* Cards — glassy dark style */
   .card-elegant {
-    @apply bg-card/80 p-6 rounded-lg border border-border/50 hover:border-primary/40 transition-all duration-400;
+    @apply bg-card/80 p-6 rounded-lg border border-border/50 hover:border-primary/40 transition-all duration-300;
     backdrop-filter: blur(12px);
   }
 
