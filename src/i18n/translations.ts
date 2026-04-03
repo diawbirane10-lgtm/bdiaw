@@ -372,7 +372,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Project 7 - Electronic Functions Labs
     "proj.7.title": "Electronic Functions Labs",
-    "proj.7.subtitle": "Analog Circuit Simulation — Electronic Functions Module",
+    "proj.7.subtitle": "Analog Circuit Simulation — Prof. A. El Idrissi",
     "proj.7.contexte": "Series of 4 simulation lab sessions on analog electronic functions.",
     "proj.7.objectif": "Simulate and analyze the behavior of op-amp circuits, active filters and oscillators.",
     "proj.7.contribution": "LTSpice circuit simulation, frequency response analysis, oscillator study and report writing.",
