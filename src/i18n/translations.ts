@@ -163,7 +163,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Project 7 - TPs Fonctions Electroniques
     "proj.7.title": "TPs Fonctions Électroniques",
-    "proj.7.subtitle": "Simulation de circuits analogiques — Module Fonctions Électroniques",
+    "proj.7.subtitle": "Simulation de circuits analogiques — Pr. A. El Idrissi",
     "proj.7.contexte": "Série de 4 travaux pratiques de simulation sur les fonctions électroniques analogiques.",
     "proj.7.objectif": "Simuler et analyser le comportement de circuits à base d'amplificateurs opérationnels, filtres actifs et oscillateurs.",
     "proj.7.contribution": "Simulation LTSpice des circuits, analyse des réponses fréquentielles, étude des oscillateurs et rédaction des comptes rendus.",
@@ -372,7 +372,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Project 7 - Electronic Functions Labs
     "proj.7.title": "Electronic Functions Labs",
-    "proj.7.subtitle": "Analog Circuit Simulation — Electronic Functions Module",
+    "proj.7.subtitle": "Analog Circuit Simulation — Prof. A. El Idrissi",
     "proj.7.contexte": "Series of 4 simulation lab sessions on analog electronic functions.",
     "proj.7.objectif": "Simulate and analyze the behavior of op-amp circuits, active filters and oscillators.",
     "proj.7.contribution": "LTSpice circuit simulation, frequency response analysis, oscillator study and report writing.",
@@ -581,7 +581,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Project 7 - Electronic Functions Labs
     "proj.7.title": "أعمال تطبيقية في الوظائف الإلكترونية",
-    "proj.7.subtitle": "محاكاة الدوائر التناظرية — وحدة الوظائف الإلكترونية",
+    "proj.7.subtitle": "محاكاة الدوائر التناظرية — الأستاذ أ. الإدريسي",
     "proj.7.contexte": "سلسلة من 4 أعمال تطبيقية في محاكاة الوظائف الإلكترونية التناظرية.",
     "proj.7.objectif": "محاكاة وتحليل سلوك دوائر المضخمات العملياتية والمرشحات النشطة والمذبذبات.",
     "proj.7.contribution": "محاكاة الدوائر باستخدام LTSpice، تحليل الاستجابة الترددية، دراسة المذبذبات وكتابة التقارير.",
