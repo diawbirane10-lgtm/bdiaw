@@ -161,6 +161,17 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.6.tp3": "TP3 — Filtrage",
     "proj.6.tp4": "TP4 — Applications",
 
+    // Project 7 - TPs Fonctions Electroniques
+    "proj.7.title": "TPs Fonctions Électroniques",
+    "proj.7.subtitle": "Simulation de circuits analogiques — Module Fonctions Électroniques",
+    "proj.7.contexte": "Série de 4 travaux pratiques de simulation sur les fonctions électroniques analogiques.",
+    "proj.7.objectif": "Simuler et analyser le comportement de circuits à base d'amplificateurs opérationnels, filtres actifs et oscillateurs.",
+    "proj.7.contribution": "Simulation LTSpice des circuits, analyse des réponses fréquentielles, étude des oscillateurs et rédaction des comptes rendus.",
+    "proj.7.tp1": "TP1 — Simulation AOP",
+    "proj.7.tp2": "TP2 — Filtres actifs",
+    "proj.7.tp3": "TP3 — Amplificateurs",
+    "proj.7.tp4": "TP4 — Oscillateurs",
+
     // Footer
     "footer.label": "Contact",
     "footer.title": "Me Contacter",
@@ -359,6 +370,17 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.6.tp3": "Lab 3 — Filtering",
     "proj.6.tp4": "Lab 4 — Applications",
 
+    // Project 7 - Electronic Functions Labs
+    "proj.7.title": "Electronic Functions Labs",
+    "proj.7.subtitle": "Analog Circuit Simulation — Electronic Functions Module",
+    "proj.7.contexte": "Series of 4 simulation lab sessions on analog electronic functions.",
+    "proj.7.objectif": "Simulate and analyze the behavior of op-amp circuits, active filters and oscillators.",
+    "proj.7.contribution": "LTSpice circuit simulation, frequency response analysis, oscillator study and report writing.",
+    "proj.7.tp1": "Lab 1 — Op-Amp Simulation",
+    "proj.7.tp2": "Lab 2 — Active Filters",
+    "proj.7.tp3": "Lab 3 — Amplifiers",
+    "proj.7.tp4": "Lab 4 — Oscillators",
+
     // Footer
     "footer.label": "Contact",
     "footer.title": "Get in Touch",
@@ -556,6 +578,17 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.6.tp2": "TP2 — التحليل الترددي",
     "proj.6.tp3": "TP3 — الترشيح",
     "proj.6.tp4": "TP4 — التطبيقات",
+
+    // Project 7 - Electronic Functions Labs
+    "proj.7.title": "أعمال تطبيقية في الوظائف الإلكترونية",
+    "proj.7.subtitle": "محاكاة الدوائر التناظرية — وحدة الوظائف الإلكترونية",
+    "proj.7.contexte": "سلسلة من 4 أعمال تطبيقية في محاكاة الوظائف الإلكترونية التناظرية.",
+    "proj.7.objectif": "محاكاة وتحليل سلوك دوائر المضخمات العملياتية والمرشحات النشطة والمذبذبات.",
+    "proj.7.contribution": "محاكاة الدوائر باستخدام LTSpice، تحليل الاستجابة الترددية، دراسة المذبذبات وكتابة التقارير.",
+    "proj.7.tp1": "TP1 — محاكاة AOP",
+    "proj.7.tp2": "TP2 — المرشحات النشطة",
+    "proj.7.tp3": "TP3 — المضخمات",
+    "proj.7.tp4": "TP4 — المذبذبات",
 
     // Footer
     "footer.label": "اتصل بي",
