@@ -161,6 +161,17 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.6.tp3": "TP3 — Filtrage",
     "proj.6.tp4": "TP4 — Applications",
 
+    // Project 7 - TPs Fonctions Electroniques
+    "proj.7.title": "TPs Fonctions Électroniques",
+    "proj.7.subtitle": "Simulation de circuits analogiques — Module Fonctions Électroniques",
+    "proj.7.contexte": "Série de 4 travaux pratiques de simulation sur les fonctions électroniques analogiques.",
+    "proj.7.objectif": "Simuler et analyser le comportement de circuits à base d'amplificateurs opérationnels, filtres actifs et oscillateurs.",
+    "proj.7.contribution": "Simulation LTSpice des circuits, analyse des réponses fréquentielles, étude des oscillateurs et rédaction des comptes rendus.",
+    "proj.7.tp1": "TP1 — Simulation AOP",
+    "proj.7.tp2": "TP2 — Filtres actifs",
+    "proj.7.tp3": "TP3 — Amplificateurs",
+    "proj.7.tp4": "TP4 — Oscillateurs",
+
     // Footer
     "footer.label": "Contact",
     "footer.title": "Me Contacter",
