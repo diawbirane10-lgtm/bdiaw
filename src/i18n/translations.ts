@@ -163,7 +163,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Project 7 - TPs Fonctions Electroniques
     "proj.7.title": "TPs Fonctions Électroniques",
-    "proj.7.subtitle": "Simulation de circuits analogiques — Module Fonctions Électroniques",
+    "proj.7.subtitle": "Simulation de circuits analogiques — Pr. A. El Idrissi",
     "proj.7.contexte": "Série de 4 travaux pratiques de simulation sur les fonctions électroniques analogiques.",
     "proj.7.objectif": "Simuler et analyser le comportement de circuits à base d'amplificateurs opérationnels, filtres actifs et oscillateurs.",
     "proj.7.contribution": "Simulation LTSpice des circuits, analyse des réponses fréquentielles, étude des oscillateurs et rédaction des comptes rendus.",
