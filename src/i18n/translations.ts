@@ -97,6 +97,11 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.download": "Télécharger le rapport",
     "proj.note": "Note : Les comptes rendus des TPs d'Électrotechnique, d'Automatique et d'Informatique Industrielle ont été rédigés sur feuille et ne sont pas disponibles au format numérique.",
 
+    // Lab section
+    "lab.label": "Travaux Pratiques",
+    "lab.title": "Hands-On Lab Work",
+    "lab.subtitle": "Du circuit imprimé au spectre fréquentiel — les rapports qui prouvent la théorie.",
+
     // New Project - Gearbox Fault Detection
     "proj.new.title": "Détection de défauts sur boîte de vitesses ferroviaire",
     "proj.new.subtitle": "Analyse vibratoire et classification automatique — MATLAB",
@@ -321,6 +326,11 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.download": "Download report",
     "proj.note": "Note: Lab reports for Electrical Engineering, Automation and Industrial Computing were handwritten and are not available in digital format.",
 
+    // Lab section
+    "lab.label": "Lab Work",
+    "lab.title": "Hands-On Lab Work",
+    "lab.subtitle": "From PCB to frequency spectrum — the reports that prove the theory.",
+
     // New Project - Gearbox Fault Detection
     "proj.new.title": "Railway Gearbox Fault Detection",
     "proj.new.subtitle": "Vibration Analysis & Automatic Classification — MATLAB",
@@ -544,6 +554,11 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.status.completed": "مكتمل",
     "proj.download": "تحميل التقرير",
     "proj.note": "ملاحظة: تقارير مختبر الهندسة الكهربائية والأتمتة والمعلوميات الصناعية كُتبت يدوياً وليست متوفرة بصيغة رقمية.",
+
+    // Lab section
+    "lab.label": "أعمال تطبيقية",
+    "lab.title": "Hands-On Lab Work",
+    "lab.subtitle": "من لوحة الدوائر إلى الطيف الترددي — التقارير التي تثبت النظرية.",
 
     // New Project - Gearbox Fault Detection
     "proj.new.title": "كشف الأعطال في علبة التروس الحديدية",
