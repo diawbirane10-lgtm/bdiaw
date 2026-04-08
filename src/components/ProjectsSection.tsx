@@ -141,10 +141,10 @@ const ProjectsSection = () => {
                   {getStatusIcon(project.statusType)}
                   {getStatusLabel(project.statusType)}
                 </span>
-                {project.date && (
+                {'date' in project && (project as any).date && (
                   <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
                     <Calendar className="w-3 h-3" />
-                    {project.date}
+                    {(project as any).date}
                   </span>
                 )}
               </div>

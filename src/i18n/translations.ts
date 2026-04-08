@@ -106,6 +106,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.rapport": "Rapport préliminaire",
     "proj.new.fiche": "Fiche technique",
 
+    // Project FRA - Frequency Response Analyzer
+    "proj.fra.title": "Analyseur de Réponse en Fréquence (FRA) par Détection Synchrone",
+    "proj.fra.subtitle": "Co-simulation LTspice & Simulink DSP — PoC pour PFE",
+    "proj.fra.contexte": "Développement d'un outil de caractérisation vectorielle (magnitude et phase) capable d'extraire la réponse fréquentielle d'un système analogique, même en présence d'un SNR défavorable.",
+    "proj.fra.objectif": "Concevoir un framework de co-simulation avancée LTspice/Simulink DSP intégrant un démodulateur IQ (Lock-in Amplifier) avec filtrage FIR (fenêtre de Kaiser).",
+    "proj.fra.contribution": "Front-end analogique (filtre Sallen-Key, mélangeur comportemental), pilotage batch MATLAB, architecture de traitement numérique Simulink avec calcul vectoriel magnitude/phase.",
+
     // Project 1 - CubeSat ADCS
     "proj.1.title": "Simulation & Contrôle d'Attitude d'un Nano-Satellite (1U)",
     "proj.1.subtitle": "Mini-Projet CubeSat — ADCS",
