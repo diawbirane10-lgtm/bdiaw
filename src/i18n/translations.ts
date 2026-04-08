@@ -330,6 +330,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.rapport": "Preliminary Report",
     "proj.new.fiche": "Technical Datasheet",
 
+    // Project FRA - Frequency Response Analyzer
+    "proj.fra.title": "Frequency Response Analyzer (FRA) via Synchronous Detection",
+    "proj.fra.subtitle": "LTspice & Simulink DSP Co-simulation — PoC for Final Year Project",
+    "proj.fra.contexte": "Development of a vectorial characterization tool (magnitude and phase) capable of extracting frequency response from an analog system, even under unfavorable SNR conditions.",
+    "proj.fra.objectif": "Design an advanced LTspice/Simulink DSP co-simulation framework integrating an IQ demodulator (Lock-in Amplifier) with FIR filtering (Kaiser window).",
+    "proj.fra.contribution": "Analog front-end (Sallen-Key filter, behavioral mixer), MATLAB batch control, Simulink digital processing architecture with magnitude/phase vector computation.",
+
     // Project 1 - CubeSat ADCS
     "proj.1.title": "Nano-Satellite (1U) Attitude Control & Simulation",
     "proj.1.subtitle": "CubeSat Mini-Project — ADCS",
@@ -546,6 +553,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.contribution": "تنفيذ كامل لخط أنابيب تحليل الاهتزازات، من استخراج الميزات إلى تصنيف SVM.",
     "proj.new.rapport": "التقرير الأولي",
     "proj.new.fiche": "البطاقة التقنية",
+
+    // Project FRA - Frequency Response Analyzer
+    "proj.fra.title": "محلل استجابة التردد (FRA) عبر الكشف المتزامن",
+    "proj.fra.subtitle": "محاكاة مشتركة LTspice و Simulink DSP — إثبات مفهوم لمشروع التخرج",
+    "proj.fra.contexte": "تطوير أداة توصيف متجهي (السعة والطور) قادرة على استخراج استجابة التردد من نظام تناظري حتى في ظروف SNR غير مواتية.",
+    "proj.fra.objectif": "تصميم إطار محاكاة مشتركة متقدم LTspice/Simulink DSP يدمج مزيل تعديل IQ (مضخم القفل) مع ترشيح FIR (نافذة كايزر).",
+    "proj.fra.contribution": "واجهة أمامية تناظرية (مرشح Sallen-Key، خالط سلوكي)، تحكم دفعي MATLAB، بنية معالجة رقمية Simulink مع حساب متجه السعة/الطور.",
 
     // Project 1 - CubeSat ADCS
     "proj.1.title": "محاكاة والتحكم في توجيه قمر صناعي نانوي (1U)",
