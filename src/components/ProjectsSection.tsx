@@ -88,6 +88,17 @@ const ProjectsSection = () => {
         { labelKey: "proj.7.tp4", href: "/docs/CR_TP04_FE_Simulation.pdf" },
       ],
     },
+    {
+      titleKey: "proj.8.title",
+      subtitleKey: "proj.8.subtitle",
+      statusType: "completed" as const,
+      contexteKey: "proj.8.contexte",
+      objectifKey: "proj.8.objectif",
+      contributionKey: "proj.8.contribution",
+      outils: ["MATLAB", "Simscape Multibody", "Simulink", "Robotics", "UAV", "Dynamic Modeling"],
+      pdfLink: "/documents/MAV_aerial_manipulator.pdf",
+      pdfLabelKey: "proj.8.pdfLabel",
+    },
   ];
 
   const getStatusIcon = (statusType: string) => {
