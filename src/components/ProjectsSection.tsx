@@ -6,10 +6,18 @@ const ProjectsSection = () => {
 
   const projects = [
     {
+      titleKey: "proj.fra.title",
+      subtitleKey: "proj.fra.subtitle",
+      statusType: "progress" as const,
+      contexteKey: "proj.fra.contexte",
+      objectifKey: "proj.fra.objectif",
+      contributionKey: "proj.fra.contribution",
+      outils: ["LTspice", "MATLAB", "Simulink DSP", "Co-simulation", "Détection Synchrone", "FIR/Kaiser"],
+    },
+    {
       titleKey: "proj.new.title",
       subtitleKey: "proj.new.subtitle",
-      statusType: "progress" as const,
-      date: "Mars 2026",
+      statusType: "completed" as const,
       contexteKey: "proj.new.contexte",
       objectifKey: "proj.new.objectif",
       contributionKey: "proj.new.contribution",
@@ -18,17 +26,6 @@ const ProjectsSection = () => {
         { labelKey: "proj.new.rapport", href: "/documents/rapport_prelim_defauts.pdf" },
         { labelKey: "proj.new.fiche", href: "/documents/fiche_tech_defauts.pdf" },
       ],
-    },
-    {
-      titleKey: "proj.1.title",
-      subtitleKey: "proj.1.subtitle",
-      statusType: "upcoming" as const,
-      contexteKey: "proj.1.contexte",
-      objectifKey: "proj.1.objectif",
-      contributionKey: "proj.1.contribution",
-      outils: ["MATLAB/Simulink", "Aerospace Blockset", "Control System Toolbox", "PID Tuner"],
-      pdfLink: "/documents/FicheTech_Projet1.pdf",
-      pdfLabelKey: "proj.1.pdfLabel",
     },
     {
       titleKey: "proj.4.title",
