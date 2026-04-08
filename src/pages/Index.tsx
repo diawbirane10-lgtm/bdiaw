@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import SkillsSection from "@/components/SkillsSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import ProjectsSection from "@/components/ProjectsSection";
+import LabSection from "@/components/LabSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -17,6 +18,9 @@ const Index = () => {
         <HeroSection />
         <ScrollReveal>
           <ProjectsSection />
+        </ScrollReveal>
+        <ScrollReveal delay={0.05} direction="left">
+          <LabSection />
         </ScrollReveal>
         <ScrollReveal delay={0.05} direction="left">
           <SkillsSection />
