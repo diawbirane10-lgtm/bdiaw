@@ -172,6 +172,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.7.tp3": "TP3 — Amplificateurs",
     "proj.7.tp4": "TP4 — Oscillateurs",
 
+    // Project 8 - Aerial Manipulator
+    "proj.8.title": "Modélisation Dynamique d'un Manipulateur Aérien 2-DOF",
+    "proj.8.subtitle": "Robotique & Systèmes de Contrôle Avancés",
+    "proj.8.contexte": "Projet de modélisation d'un bras manipulateur à 2 degrés de liberté monté sur un drone quadrotor, utilisant MATLAB/Simscape Multibody.",
+    "proj.8.objectif": "Quantifier le couplage dynamique entre le bras robotique et la base volante, et analyser l'impact des mouvements du bras sur la stabilité du drone.",
+    "proj.8.contribution": "Construction du modèle Simscape, résolution des problèmes de solvabilité numérique, simulation comparative (base fixe vs vol libre) et analyse des résultats.",
+    "proj.8.pdfLabel": "Rapport complet (PDF)",
+
     // Footer
     "footer.label": "Contact",
     "footer.title": "Me Contacter",
@@ -381,6 +389,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.7.tp3": "Lab 3 — Amplifiers",
     "proj.7.tp4": "Lab 4 — Oscillators",
 
+    // Project 8 - Aerial Manipulator
+    "proj.8.title": "Dynamic Modeling of a 2-DOF Aerial Manipulator",
+    "proj.8.subtitle": "Robotics & Advanced Control Systems",
+    "proj.8.contexte": "Modeling project of a 2-DOF robotic manipulator mounted on a quadrotor UAV using MATLAB/Simscape Multibody.",
+    "proj.8.objectif": "Quantify the dynamic coupling between the robotic arm and the free-flying base, and analyze the impact of arm motion on drone stability.",
+    "proj.8.contribution": "Simscape model construction, numerical solvability troubleshooting, comparative simulation (fixed base vs free-flying) and results analysis.",
+    "proj.8.pdfLabel": "Full Report (PDF)",
+
     // Footer
     "footer.label": "Contact",
     "footer.title": "Get in Touch",
@@ -589,6 +605,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.7.tp2": "TP2 — المرشحات النشطة",
     "proj.7.tp3": "TP3 — المضخمات",
     "proj.7.tp4": "TP4 — المذبذبات",
+
+    // Project 8 - Aerial Manipulator
+    "proj.8.title": "النمذجة الديناميكية لمناور جوي ثنائي الحرية",
+    "proj.8.subtitle": "الروبوتيك وأنظمة التحكم المتقدمة",
+    "proj.8.contexte": "مشروع نمذجة ذراع روبوتية بدرجتي حرية مثبتة على طائرة رباعية المراوح باستخدام MATLAB/Simscape Multibody.",
+    "proj.8.objectif": "قياس الترابط الديناميكي بين الذراع الروبوتية والقاعدة الطائرة وتحليل تأثير حركة الذراع على استقرار الطائرة.",
+    "proj.8.contribution": "بناء نموذج Simscape، حل مشاكل القابلية العددية، محاكاة مقارنة (قاعدة ثابتة مقابل طيران حر) وتحليل النتائج.",
+    "proj.8.pdfLabel": "التقرير الكامل (PDF)",
 
     // Footer
     "footer.label": "اتصل بي",
