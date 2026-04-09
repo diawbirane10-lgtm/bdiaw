@@ -69,9 +69,6 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        <p className="mt-10 text-xs text-muted-foreground font-body italic text-center">
-          {t("proj.note")}
-        </p>
       </div>
     </section>
   );
