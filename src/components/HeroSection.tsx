@@ -2,7 +2,7 @@ import { ArrowDown, Download, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-const ease = [0.22, 1, 0.36, 1];
+const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const HeroSection = () => {
   const { t } = useLanguage();
