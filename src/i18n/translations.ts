@@ -113,7 +113,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Project FRA - Frequency Response Analyzer
     "proj.fra.title": "Analyseur de Réponse en Fréquence (FRA) par Détection Synchrone",
-    "proj.fra.subtitle": "Co-simulation LTspice & Simulink DSP — PoC pour PFE",
+    "proj.fra.subtitle": "Co-simulation LTspice & Simulink DSP — Projet Personnel",
     "proj.fra.contexte": "Développement d'un outil de caractérisation vectorielle (magnitude et phase) capable d'extraire la réponse fréquentielle d'un système analogique, même en présence d'un SNR défavorable.",
     "proj.fra.objectif": "Concevoir un framework de co-simulation avancée LTspice/Simulink DSP intégrant un démodulateur IQ (Lock-in Amplifier) avec filtrage FIR (fenêtre de Kaiser).",
     "proj.fra.contribution": "Front-end analogique (filtre Sallen-Key, mélangeur comportemental), pilotage batch MATLAB, architecture de traitement numérique Simulink avec calcul vectoriel magnitude/phase.",
@@ -342,7 +342,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Project FRA - Frequency Response Analyzer
     "proj.fra.title": "Frequency Response Analyzer (FRA) via Synchronous Detection",
-    "proj.fra.subtitle": "LTspice & Simulink DSP Co-simulation — PoC for Final Year Project",
+    "proj.fra.subtitle": "LTspice & Simulink DSP Co-simulation — Personal Project",
     "proj.fra.contexte": "Development of a vectorial characterization tool (magnitude and phase) capable of extracting frequency response from an analog system, even under unfavorable SNR conditions.",
     "proj.fra.objectif": "Design an advanced LTspice/Simulink DSP co-simulation framework integrating an IQ demodulator (Lock-in Amplifier) with FIR filtering (Kaiser window).",
     "proj.fra.contribution": "Analog front-end (Sallen-Key filter, behavioral mixer), MATLAB batch control, Simulink digital processing architecture with magnitude/phase vector computation.",
@@ -571,7 +571,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Project FRA - Frequency Response Analyzer
     "proj.fra.title": "محلل استجابة التردد (FRA) عبر الكشف المتزامن",
-    "proj.fra.subtitle": "محاكاة مشتركة LTspice و Simulink DSP — إثبات مفهوم لمشروع التخرج",
+    "proj.fra.subtitle": "محاكاة مشتركة LTspice و Simulink DSP — مشروع شخصي",
     "proj.fra.contexte": "تطوير أداة توصيف متجهي (السعة والطور) قادرة على استخراج استجابة التردد من نظام تناظري حتى في ظروف SNR غير مواتية.",
     "proj.fra.objectif": "تصميم إطار محاكاة مشتركة متقدم LTspice/Simulink DSP يدمج مزيل تعديل IQ (مضخم القفل) مع ترشيح FIR (نافذة كايزر).",
     "proj.fra.contribution": "واجهة أمامية تناظرية (مرشح Sallen-Key، خالط سلوكي)، تحكم دفعي MATLAB، بنية معالجة رقمية Simulink مع حساب متجه السعة/الطور.",
