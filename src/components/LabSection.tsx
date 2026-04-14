@@ -1,5 +1,6 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import ProjectCard, { ProjectData } from "./ProjectCard";
+import { StaggerContainer, StaggerItem } from "./ScrollReveal";
 
 const LabSection = () => {
   const { t } = useLanguage();
@@ -65,11 +66,13 @@ const LabSection = () => {
           <div className="section-divider" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {labs.map((lab, index) => (
-            <ProjectCard key={index} project={lab} />
+            <StaggerItem key={index}>
+              <ProjectCard project={lab} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         <p className="mt-10 text-xs text-muted-foreground font-body italic text-center">
           {t("proj.note")}
