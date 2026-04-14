@@ -1,5 +1,6 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Cpu, Gauge, CircuitBoard, Zap, Monitor, Code, Sparkles } from "lucide-react";
+import { StaggerContainer, StaggerItem } from "./ScrollReveal";
 
 const SkillsSection = () => {
   const { t } = useLanguage();
@@ -29,23 +30,25 @@ const SkillsSection = () => {
           <div className="section-divider" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {skillCategories.map((category) => (
-            <div key={category.title} className="card-elegant group hover-lift">
-              <div className="flex items-center gap-2.5 mb-4">
-                <div className="text-primary">{category.icon}</div>
-                <h3 className="text-xs font-body font-bold text-foreground tracking-[0.1em] uppercase">
-                  {category.title}
-                </h3>
+            <StaggerItem key={category.title}>
+              <div className="card-elegant group hover-lift h-full">
+                <div className="flex items-center gap-2.5 mb-4">
+                  <div className="text-primary">{category.icon}</div>
+                  <h3 className="text-xs font-body font-bold text-foreground tracking-[0.1em] uppercase">
+                    {category.title}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {category.skills.map((skill) => (
+                    <span key={skill} className="skill-tag">{skill}</span>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-1.5">
-                {category.skills.map((skill) => (
-                  <span key={skill} className="skill-tag">{skill}</span>
-                ))}
-              </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         <div className="mt-14 pt-8 border-t border-border/50">
           <h3 className="text-xs font-body font-bold text-foreground mb-5 tracking-[0.15em] uppercase">
