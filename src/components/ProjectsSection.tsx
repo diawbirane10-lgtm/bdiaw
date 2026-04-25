@@ -7,15 +7,6 @@ const ProjectsSection = () => {
 
   const projects: ProjectData[] = [
     {
-      titleKey: "proj.fra.title",
-      subtitleKey: "proj.fra.subtitle",
-      statusType: "progress",
-      contexteKey: "proj.fra.contexte",
-      objectifKey: "proj.fra.objectif",
-      contributionKey: "proj.fra.contribution",
-      outils: ["LTspice", "MATLAB", "Simulink DSP", "Co-simulation", "Détection Synchrone", "FIR/Kaiser"],
-    },
-    {
       titleKey: "proj.new.title",
       subtitleKey: "proj.new.subtitle",
       statusType: "completed",
