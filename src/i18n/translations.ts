@@ -111,6 +111,15 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.rapport": "Rapport préliminaire",
     "proj.new.fiche": "Fiche technique",
 
+    // Project IMU - Embedded IMU Telemetry Chain
+    "proj.imu.title": "Chaîne de Télémétrie IMU Embarquée — Simulation MATLAB",
+    "proj.imu.subtitle": "Traitement du Signal & Systèmes Embarqués — Projet Personnel",
+    "proj.imu.contexte": "Simulation d'une chaîne complète de télémétrie embarquée : signal d'accélération IMU à 2 Hz corrompu par une vibration parasite à 40 Hz et un bruit gaussien.",
+    "proj.imu.objectif": "Concevoir et valider un filtre passe-bas Butterworth d'ordre 4 (fc = 10 Hz) pour atténuer les interférences haute fréquence et restituer fidèlement le signal utile.",
+    "proj.imu.contribution": "Implémentation complète sous MATLAB : génération du signal, conception du filtre, analyse spectrale par FFT confirmant l'atténuation de la composante parasite.",
+    "proj.imu.resultats": "SNR amélioré de 7,8 dB à 20,7 dB (+12,9 dB), validant l'efficacité de la chaîne de traitement.",
+    "proj.imu.pdfLabel": "Télécharger le rapport",
+
     // Project FRA - Frequency Response Analyzer
     "proj.fra.title": "Analyseur de Réponse en Fréquence (FRA) par Détection Synchrone",
     "proj.fra.subtitle": "Co-simulation LTspice & Simulink DSP — Projet Personnel",
@@ -340,6 +349,15 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.rapport": "Preliminary Report",
     "proj.new.fiche": "Technical Datasheet",
 
+    // Project IMU - Embedded IMU Telemetry Chain
+    "proj.imu.title": "Embedded IMU Telemetry Chain — MATLAB Simulation",
+    "proj.imu.subtitle": "Signal Processing & Embedded Systems — Personal Project",
+    "proj.imu.contexte": "Simulation of a complete embedded telemetry pipeline: a 2 Hz IMU acceleration signal corrupted by a 40 Hz vibration and Gaussian noise.",
+    "proj.imu.objectif": "Design and validate a 4th-order Butterworth low-pass filter (fc = 10 Hz) to attenuate high-frequency interference and faithfully recover the useful signal.",
+    "proj.imu.contribution": "Full MATLAB implementation: signal generation, filter design, spectral analysis via FFT confirming attenuation of the interference component.",
+    "proj.imu.resultats": "SNR improved from 7.8 dB to 20.7 dB (+12.9 dB), validating the effectiveness of the processing chain.",
+    "proj.imu.pdfLabel": "Download report",
+
     // Project FRA - Frequency Response Analyzer
     "proj.fra.title": "Frequency Response Analyzer (FRA) via Synchronous Detection",
     "proj.fra.subtitle": "LTspice & Simulink DSP Co-simulation — Personal Project",
@@ -568,6 +586,15 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.contribution": "تنفيذ كامل لخط أنابيب تحليل الاهتزازات، من استخراج الميزات إلى تصنيف SVM.",
     "proj.new.rapport": "التقرير الأولي",
     "proj.new.fiche": "البطاقة التقنية",
+
+    // Project IMU - Embedded IMU Telemetry Chain
+    "proj.imu.title": "سلسلة القياس عن بعد IMU المدمجة — محاكاة MATLAB",
+    "proj.imu.subtitle": "معالجة الإشارة والأنظمة المدمجة — مشروع شخصي",
+    "proj.imu.contexte": "محاكاة سلسلة كاملة للقياس عن بعد المدمج: إشارة تسارع IMU بتردد 2 هرتز مشوهة باهتزاز طفيلي بتردد 40 هرتز وضوضاء غاوسية.",
+    "proj.imu.objectif": "تصميم والتحقق من مرشح تمرير منخفض من نوع Butterworth من الدرجة الرابعة (fc = 10 هرتز) لتخفيف التداخل عالي التردد واستعادة الإشارة المفيدة بأمانة.",
+    "proj.imu.contribution": "تنفيذ كامل في MATLAB: توليد الإشارة، تصميم المرشح، التحليل الطيفي عبر FFT يؤكد تخفيف المكون الطفيلي.",
+    "proj.imu.resultats": "تحسنت نسبة الإشارة إلى الضوضاء من 7.8 ديسيبل إلى 20.7 ديسيبل (+12.9 ديسيبل)، مما يثبت فعالية سلسلة المعالجة.",
+    "proj.imu.pdfLabel": "تحميل التقرير",
 
     // Project FRA - Frequency Response Analyzer
     "proj.fra.title": "محلل استجابة التردد (FRA) عبر الكشف المتزامن",
