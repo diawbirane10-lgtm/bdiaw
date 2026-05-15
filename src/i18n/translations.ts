@@ -111,6 +111,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.rapport": "Rapport préliminaire",
     "proj.new.fiche": "Fiche technique",
 
+    // Project Digital Twin - DC Drive
+    "proj.dt.title": "Jumeau Numérique — Variateur DC à Vitesse Variable",
+    "proj.dt.subtitle": "Simulation Python Multi-Domaines | Projet Capstone IEEA",
+    "proj.dt.contexte": "Jumeau numérique modulaire en Python d'un variateur industriel DC de 2,2 kW couvrant les quatre domaines IEEA : électromécanique, électronique de puissance, automatique et IHM industrielle.",
+    "proj.dt.objectif": "Construire une architecture OOP propre — un module indépendant par domaine, entièrement testable avant intégration système.",
+    "proj.dt.contribution": "Module 1 : modèle d'état du moteur DC (RK45, cartographie de rendement). Module 2 : pont en H 4 quadrants, PWM bipolaire, analyse THD/ondulation par FFT. Modules 3 & 4 (à venir) : régulation PI cascade (Ziegler-Nichols) et tableau de bord IHM Plotly Dash.",
+    "proj.dt.resultats": "Rendement à pleine charge 96,8 % ; vitesse en charge 1452 rpm ; suivi de tension moyenne à 0,2 % ; ondulation < 0,3 A crête-à-crête.",
+
     // Project IMU - Embedded IMU Telemetry Chain
     "proj.imu.title": "Chaîne de Télémétrie IMU Embarquée — Simulation MATLAB",
     "proj.imu.subtitle": "Traitement du Signal & Systèmes Embarqués — Projet Personnel",
