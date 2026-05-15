@@ -111,6 +111,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.rapport": "Rapport préliminaire",
     "proj.new.fiche": "Fiche technique",
 
+    // Project Digital Twin - DC Drive
+    "proj.dt.title": "Jumeau Numérique — Variateur DC à Vitesse Variable",
+    "proj.dt.subtitle": "Simulation Python Multi-Domaines | Projet Capstone IEEA",
+    "proj.dt.contexte": "Jumeau numérique modulaire en Python d'un variateur industriel DC de 2,2 kW couvrant les quatre domaines IEEA : électromécanique, électronique de puissance, automatique et IHM industrielle.",
+    "proj.dt.objectif": "Construire une architecture OOP propre — un module indépendant par domaine, entièrement testable avant intégration système.",
+    "proj.dt.contribution": "Module 1 : modèle d'état du moteur DC (RK45, cartographie de rendement). Module 2 : pont en H 4 quadrants, PWM bipolaire, analyse THD/ondulation par FFT. Modules 3 & 4 (à venir) : régulation PI cascade (Ziegler-Nichols) et tableau de bord IHM Plotly Dash.",
+    "proj.dt.resultats": "Rendement à pleine charge 96,8 % ; vitesse en charge 1452 rpm ; suivi de tension moyenne à 0,2 % ; ondulation < 0,3 A crête-à-crête.",
+
     // Project IMU - Embedded IMU Telemetry Chain
     "proj.imu.title": "Chaîne de Télémétrie IMU Embarquée — Simulation MATLAB",
     "proj.imu.subtitle": "Traitement du Signal & Systèmes Embarqués — Projet Personnel",
@@ -349,6 +357,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.rapport": "Preliminary Report",
     "proj.new.fiche": "Technical Datasheet",
 
+    // Project Digital Twin - DC Drive
+    "proj.dt.title": "Digital Twin — Variable Speed DC Drive",
+    "proj.dt.subtitle": "Multi-Domain Python Simulation | IEEA Capstone Project",
+    "proj.dt.contexte": "Modular Python digital twin of a 2.2 kW industrial DC motor drive, covering the four IEEA domains: electromechanics, power electronics, automatic control, and industrial HMI.",
+    "proj.dt.objectif": "Build a clean OOP architecture — one independent module per domain, fully testable before system integration.",
+    "proj.dt.contribution": "Module 1: DC motor state-space model (RK45 solver, efficiency mapping). Module 2: 4-quadrant H-bridge with bipolar PWM, THD/ripple analysis via FFT. Modules 3 & 4 (upcoming): cascade PI control (Ziegler-Nichols) and Plotly Dash HMI dashboard.",
+    "proj.dt.resultats": "Full-load efficiency 96.8%; rated load speed 1452 rpm; mean voltage tracking within 0.2%; current ripple < 0.3 A peak-to-peak.",
+
     // Project IMU - Embedded IMU Telemetry Chain
     "proj.imu.title": "Embedded IMU Telemetry Chain — MATLAB Simulation",
     "proj.imu.subtitle": "Signal Processing & Embedded Systems — Personal Project",
@@ -586,6 +602,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.contribution": "تنفيذ كامل لخط أنابيب تحليل الاهتزازات، من استخراج الميزات إلى تصنيف SVM.",
     "proj.new.rapport": "التقرير الأولي",
     "proj.new.fiche": "البطاقة التقنية",
+
+    // Project Digital Twin - DC Drive
+    "proj.dt.title": "التوأم الرقمي — محرك تيار مستمر متغير السرعة",
+    "proj.dt.subtitle": "محاكاة بايثون متعددة المجالات | مشروع تخرج IEEA",
+    "proj.dt.contexte": "توأم رقمي معياري بلغة Python لمحرك تيار مستمر صناعي بقدرة 2.2 كيلوواط، يغطي مجالات IEEA الأربعة: الكهروميكانيكا، إلكترونيات القدرة، التحكم الآلي، وواجهة HMI الصناعية.",
+    "proj.dt.objectif": "بناء بنية OOP نظيفة — وحدة مستقلة لكل مجال، قابلة للاختبار بالكامل قبل تكامل النظام.",
+    "proj.dt.contribution": "الوحدة 1: نموذج فضاء الحالة لمحرك DC (RK45، خريطة الكفاءة). الوحدة 2: جسر H رباعي الأرباع، PWM ثنائي القطب، تحليل THD/التموج عبر FFT. الوحدتان 3 و4 (قريباً): تحكم PI متتالي (Ziegler-Nichols) ولوحة HMI بـ Plotly Dash.",
+    "proj.dt.resultats": "كفاءة الحمل الكامل 96.8٪؛ السرعة عند الحمل المقنن 1452 دورة/دقيقة؛ تتبع الجهد المتوسط ضمن 0.2٪؛ تموج التيار < 0.3 أمبير من الذروة إلى الذروة.",
 
     // Project IMU - Embedded IMU Telemetry Chain
     "proj.imu.title": "سلسلة القياس عن بعد IMU المدمجة — محاكاة MATLAB",
