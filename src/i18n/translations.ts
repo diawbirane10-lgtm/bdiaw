@@ -116,8 +116,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.dt.subtitle": "Simulation Python Multi-Domaines | Projet Capstone IEEA",
     "proj.dt.contexte": "Jumeau numérique modulaire en Python d'un variateur industriel DC de 2,2 kW couvrant les quatre domaines IEEA : électromécanique, électronique de puissance, automatique et IHM industrielle.",
     "proj.dt.objectif": "Construire une architecture OOP propre — un module indépendant par domaine, entièrement testable avant intégration système.",
-    "proj.dt.contribution": "Module 1 : modèle d'état du moteur DC (RK45, cartographie de rendement). Module 2 : pont en H 4 quadrants, PWM bipolaire, analyse THD/ondulation par FFT. Modules 3 & 4 (à venir) : régulation PI cascade (Ziegler-Nichols) et tableau de bord IHM Plotly Dash.",
-    "proj.dt.resultats": "Rendement à pleine charge 96,8 % ; vitesse en charge 1452 rpm ; suivi de tension moyenne à 0,2 % ; ondulation < 0,3 A crête-à-crête.",
+    "proj.dt.contribution": "Module 1 : modèle d'état du moteur DC (RK45, cartographie de rendement). Module 2 : pont en H 4 quadrants, PWM bipolaire, analyse THD/ondulation par FFT. Module 3 : régulation cascade PI (placement de pôles, anti-windup). Module 4 : IHM industrielle CustomTkinter (scénarios, alarmes temps réel, export CSV) + intégration batch.",
+    "proj.dt.resultats": "Rendement pleine charge 96,8 % ; vitesse régulée 1200 tr/min (dépassement < 2 %, erreur statique < 0,2 tr/min) ; rejet de charge < 0,5 s ; ondulation < 0,3 A crête-à-crête.",
+    "proj.dt.pdfLabel": "Rapport technique complet (PDF)",
 
     // Project IMU - Embedded IMU Telemetry Chain
     "proj.imu.title": "Chaîne de Télémétrie IMU Embarquée — Simulation MATLAB",
@@ -362,8 +363,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.dt.subtitle": "Multi-Domain Python Simulation | IEEA Capstone Project",
     "proj.dt.contexte": "Modular Python digital twin of a 2.2 kW industrial DC motor drive, covering the four IEEA domains: electromechanics, power electronics, automatic control, and industrial HMI.",
     "proj.dt.objectif": "Build a clean OOP architecture — one independent module per domain, fully testable before system integration.",
-    "proj.dt.contribution": "Module 1: DC motor state-space model (RK45 solver, efficiency mapping). Module 2: 4-quadrant H-bridge with bipolar PWM, THD/ripple analysis via FFT. Modules 3 & 4 (upcoming): cascade PI control (Ziegler-Nichols) and Plotly Dash HMI dashboard.",
-    "proj.dt.resultats": "Full-load efficiency 96.8%; rated load speed 1452 rpm; mean voltage tracking within 0.2%; current ripple < 0.3 A peak-to-peak.",
+    "proj.dt.contribution": "Module 1: DC motor state-space model (RK45 solver, efficiency mapping). Module 2: 4-quadrant H-bridge with bipolar PWM, THD/ripple analysis via FFT. Module 3: cascade PI control (pole placement, anti-windup). Module 4: CustomTkinter industrial HMI (scenarios, real-time alarms, CSV export) + batch integration.",
+    "proj.dt.resultats": "Full-load efficiency 96.8%; regulated speed 1200 rpm (overshoot < 2%, steady-state error < 0.2 rpm); load rejection < 0.5 s; current ripple < 0.3 A peak-to-peak.",
+    "proj.dt.pdfLabel": "Full technical report (PDF)",
 
     // Project IMU - Embedded IMU Telemetry Chain
     "proj.imu.title": "Embedded IMU Telemetry Chain — MATLAB Simulation",
@@ -608,8 +610,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.dt.subtitle": "محاكاة بايثون متعددة المجالات | مشروع تخرج IEEA",
     "proj.dt.contexte": "توأم رقمي معياري بلغة Python لمحرك تيار مستمر صناعي بقدرة 2.2 كيلوواط، يغطي مجالات IEEA الأربعة: الكهروميكانيكا، إلكترونيات القدرة، التحكم الآلي، وواجهة HMI الصناعية.",
     "proj.dt.objectif": "بناء بنية OOP نظيفة — وحدة مستقلة لكل مجال، قابلة للاختبار بالكامل قبل تكامل النظام.",
-    "proj.dt.contribution": "الوحدة 1: نموذج فضاء الحالة لمحرك DC (RK45، خريطة الكفاءة). الوحدة 2: جسر H رباعي الأرباع، PWM ثنائي القطب، تحليل THD/التموج عبر FFT. الوحدتان 3 و4 (قريباً): تحكم PI متتالي (Ziegler-Nichols) ولوحة HMI بـ Plotly Dash.",
-    "proj.dt.resultats": "كفاءة الحمل الكامل 96.8٪؛ السرعة عند الحمل المقنن 1452 دورة/دقيقة؛ تتبع الجهد المتوسط ضمن 0.2٪؛ تموج التيار < 0.3 أمبير من الذروة إلى الذروة.",
+    "proj.dt.contribution": "الوحدة 1: نموذج فضاء الحالة لمحرك DC (RK45، خريطة الكفاءة). الوحدة 2: جسر H رباعي الأرباع، PWM ثنائي القطب، تحليل THD/التموج عبر FFT. الوحدة 3: تحكم PI متتالي (وضع الأقطاب، مضاد التشبع). الوحدة 4: واجهة HMI صناعية بـ CustomTkinter (سيناريوهات، إنذارات فورية، تصدير CSV) + تكامل دفعي.",
+    "proj.dt.resultats": "كفاءة الحمل الكامل 96.8٪؛ سرعة منظمة 1200 دورة/دقيقة (تجاوز < 2٪، خطأ ثابت < 0.2 دورة/دقيقة)؛ رفض الحمل < 0.5 ث؛ تموج التيار < 0.3 أمبير من الذروة إلى الذروة.",
+    "proj.dt.pdfLabel": "التقرير التقني الكامل (PDF)",
 
     // Project IMU - Embedded IMU Telemetry Chain
     "proj.imu.title": "سلسلة القياس عن بعد IMU المدمجة — محاكاة MATLAB",
