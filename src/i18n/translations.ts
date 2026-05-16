@@ -10,7 +10,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.available": "Disponible pour un stage",
-    "hero.title": "Birane Belal Diaw",
+    "hero.title": "Birane Diaw",
     "hero.subtitle": "Étudiant en Génie Électrique",
     "hero.location": "FST Marrakech — Université Cadi Ayyad",
     "hero.contact": "Me contacter",
@@ -257,7 +257,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.available": "Available for internship",
-    "hero.title": "Birane Belal Diaw",
+    "hero.title": "Birane Diaw",
     "hero.subtitle": "Electrical Engineering Student",
     "hero.location": "FST Marrakech — Cadi Ayyad University",
     "hero.contact": "Contact me",
@@ -504,7 +504,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.available": "متاح للتدريب",
-    "hero.title": "بيران بلال دياو",
+    "hero.title": "بيران دياو",
     "hero.subtitle": "طالب في الهندسة الكهربائية",
     "hero.location": "كلية العلوم والتقنيات بمراكش — جامعة القاضي عياض",
     "hero.contact": "تواصل معي",
