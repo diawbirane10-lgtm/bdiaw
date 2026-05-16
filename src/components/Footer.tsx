@@ -1,4 +1,4 @@
-import { Linkedin, Mail, Phone, MessageCircle } from "lucide-react";
+import { Linkedin, Mail, Phone, MessageCircle, Github } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useState, useRef, useEffect } from "react";
 
@@ -33,7 +33,7 @@ const Footer = () => {
           <div className="section-divider" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
           <a
             href="mailto:diawbirane10@gmail.com"
             className="card-elegant flex items-center gap-4 hover-lift group"
@@ -102,6 +102,23 @@ const Footer = () => {
               <p className="text-[11px] text-muted-foreground font-body uppercase tracking-wider">LinkedIn</p>
               <p className="text-sm font-body font-semibold text-foreground group-hover:text-primary transition-colors">
                 Birane Diaw
+              </p>
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/diawbirane10-lgtm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card-elegant flex items-center gap-4 hover-lift group"
+          >
+            <div className="w-10 h-10 rounded bg-primary/10 flex items-center justify-center border border-primary/20">
+              <Github className="w-4 h-4 text-primary" />
+            </div>
+            <div>
+              <p className="text-[11px] text-muted-foreground font-body uppercase tracking-wider">GitHub</p>
+              <p className="text-sm font-body font-semibold text-foreground group-hover:text-primary transition-colors">
+                diawbirane10-lgtm
               </p>
             </div>
           </a>
