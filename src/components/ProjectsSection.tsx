@@ -9,13 +9,15 @@ const ProjectsSection = () => {
     {
       titleKey: "proj.dt.title",
       subtitleKey: "proj.dt.subtitle",
-      statusType: "progress",
-      date: "Ongoing — 2026",
+      statusType: "completed",
+      date: "May 2026",
       contexteKey: "proj.dt.contexte",
       objectifKey: "proj.dt.objectif",
       contributionKey: "proj.dt.contribution",
       resultatsKey: "proj.dt.resultats",
-      outils: ["Python", "NumPy", "SciPy", "Matplotlib", "Plotly Dash", "OOP", "Control Theory", "Signal Processing", "Power Electronics"],
+      outils: ["Python", "NumPy", "SciPy", "Matplotlib", "CustomTkinter", "OOP", "Control Theory", "Signal Processing", "Power Electronics"],
+      pdfLink: "/documents/Digital_Twin_complet-report.pdf",
+      pdfLabelKey: "proj.dt.pdfLabel",
     },
     {
       titleKey: "proj.new.title",
