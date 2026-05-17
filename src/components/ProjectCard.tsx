@@ -1,4 +1,4 @@
-import { Download, ExternalLink, Clock, CheckCircle, Sparkles, Calendar } from "lucide-react";
+import { Download, ExternalLink, Clock, CheckCircle, Sparkles, Calendar, Github, Rocket } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 export interface ProjectData {
@@ -14,6 +14,10 @@ export interface ProjectData {
   pdfLink?: string;
   pdfLabelKey?: string;
   pdfLinks?: { labelKey: string; href: string }[];
+  liveLink?: string;
+  liveLabelKey?: string;
+  githubLink?: string;
+  githubLabelKey?: string;
 }
 
 const ProjectCard = ({ project }: { project: ProjectData }) => {
@@ -123,6 +127,35 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
               <ExternalLink size={10} className="opacity-40" />
             </a>
           ))}
+        </div>
+      )}
+
+      {(project.liveLink || project.githubLink) && (
+        <div className="mt-3 pt-3 border-t border-border/50 flex flex-wrap gap-3">
+          {project.liveLink && (
+            <a
+              href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-primary hover:underline uppercase tracking-wider"
+            >
+              <Rocket size={13} />
+              {project.liveLabelKey ? t(project.liveLabelKey) : t("proj.live")}
+              <ExternalLink size={11} className="opacity-40" />
+            </a>
+          )}
+          {project.githubLink && (
+            <a
+              href={project.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-foreground hover:text-primary hover:underline uppercase tracking-wider"
+            >
+              <Github size={13} />
+              {project.githubLabelKey ? t(project.githubLabelKey) : "GitHub"}
+              <ExternalLink size={11} className="opacity-40" />
+            </a>
+          )}
         </div>
       )}
     </article>

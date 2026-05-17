@@ -112,6 +112,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.fiche": "Fiche technique",
 
     // Project Digital Twin - DC Drive
+    "proj.batt.title": "Jumeau Numérique — Pack Batteries Li-ion",
+    "proj.batt.subtitle": "Simulation Multi-Physique, Estimation d'État & BMS — Python",
+    "proj.batt.contexte": "Framework Python complet de jumeau numérique pour packs Li-ion (12S4P NMC, 43,2 V / 10 Ah), représentatif des systèmes EV/stockage stationnaire.",
+    "proj.batt.objectif": "Couvrir l'ensemble de la chaîne : simulation physique (ECM Thévenin 2RC, modèles électrochimiques PyBaMM, thermique), estimation SOC/SOH/SOP/SOT, ML (LSTM, TCN-LSTM, XGBoost, EKF/UKF) et logique BMS (équilibrage, protection).",
+    "proj.batt.contribution": "Architecture modulaire (simulation, estimation, ml, bms, digital_twin, visualization). Boucle de synchronisation temps réel, API REST FastAPI, dashboard Streamlit interactif et visualisation 3D du pack (PyVista). Datasets NASA PCoE, CALCE CS2 et Oxford intégrés.",
+    "proj.batt.resultats": "Dashboard Streamlit déployé en ligne, pipeline ML entraîné sur datasets publics, jumeau numérique opérationnel avec estimateurs SOC/SOH validés.",
+    "proj.batt.pdfLabel": "Rapport technique complet (PDF)",
+    "proj.batt.liveLabel": "Voir le Dashboard Live",
     "proj.dt.title": "Jumeau Numérique — Variateur DC à Vitesse Variable",
     "proj.dt.subtitle": "Simulation Python Multi-Domaines | Projet Capstone IEEA",
     "proj.dt.contexte": "Jumeau numérique modulaire en Python d'un variateur industriel DC de 2,2 kW couvrant les quatre domaines IEEA : électromécanique, électronique de puissance, automatique et IHM industrielle.",
@@ -359,6 +367,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.fiche": "Technical Datasheet",
 
     // Project Digital Twin - DC Drive
+    "proj.batt.title": "Digital Twin — Li-ion Battery Packs",
+    "proj.batt.subtitle": "Multi-Physics Simulation, State Estimation & BMS — Python",
+    "proj.batt.contexte": "Complete Python digital twin framework for Li-ion battery packs (12S4P NMC, 43.2 V / 10 Ah), representative of EV / stationary storage systems.",
+    "proj.batt.objectif": "Cover the full chain: physics-based simulation (Thevenin 2RC ECM, electrochemical PyBaMM models, thermal), SOC/SOH/SOP/SOT estimation, ML (LSTM, TCN-LSTM, XGBoost, EKF/UKF) and BMS logic (balancing, protection).",
+    "proj.batt.contribution": "Modular architecture (simulation, estimation, ml, bms, digital_twin, visualization). Real-time sync loop, FastAPI REST API, interactive Streamlit dashboard and 3D pack visualization (PyVista). NASA PCoE, CALCE CS2 and Oxford datasets integrated.",
+    "proj.batt.resultats": "Streamlit dashboard deployed online, ML pipeline trained on public datasets, operational digital twin with validated SOC/SOH estimators.",
+    "proj.batt.pdfLabel": "Full technical report (PDF)",
+    "proj.batt.liveLabel": "View Live Dashboard",
     "proj.dt.title": "Digital Twin — Variable Speed DC Drive",
     "proj.dt.subtitle": "Multi-Domain Python Simulation | IEEA Capstone Project",
     "proj.dt.contexte": "Modular Python digital twin of a 2.2 kW industrial DC motor drive, covering the four IEEA domains: electromechanics, power electronics, automatic control, and industrial HMI.",
@@ -606,6 +622,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.fiche": "البطاقة التقنية",
 
     // Project Digital Twin - DC Drive
+    "proj.batt.title": "التوأم الرقمي — حزم بطاريات ليثيوم أيون",
+    "proj.batt.subtitle": "محاكاة متعددة الفيزياء، تقدير الحالة و BMS — Python",
+    "proj.batt.contexte": "إطار عمل Python كامل لتوأم رقمي لحزم بطاريات ليثيوم أيون (12S4P NMC، 43.2 فولت / 10 أمبير ساعة)، يمثل أنظمة EV / التخزين الثابت.",
+    "proj.batt.objectif": "تغطية السلسلة الكاملة: محاكاة فيزيائية (ECM Thevenin 2RC، نماذج PyBaMM الكهروكيميائية، الحرارية)، تقدير SOC/SOH/SOP/SOT، التعلم الآلي (LSTM، TCN-LSTM، XGBoost، EKF/UKF) ومنطق BMS (التوازن، الحماية).",
+    "proj.batt.contribution": "بنية معيارية (simulation، estimation، ml، bms، digital_twin، visualization). حلقة مزامنة في الوقت الفعلي، REST API بـ FastAPI، لوحة Streamlit تفاعلية ومرئيات ثلاثية الأبعاد للحزمة (PyVista). تكامل مجموعات بيانات NASA PCoE و CALCE CS2 و Oxford.",
+    "proj.batt.resultats": "لوحة Streamlit منشورة عبر الإنترنت، خط أنابيب ML مدرب على مجموعات بيانات عامة، توأم رقمي تشغيلي مع مقدّرات SOC/SOH موثقة.",
+    "proj.batt.pdfLabel": "التقرير التقني الكامل (PDF)",
+    "proj.batt.liveLabel": "عرض لوحة التحكم المباشرة",
     "proj.dt.title": "التوأم الرقمي — محرك تيار مستمر متغير السرعة",
     "proj.dt.subtitle": "محاكاة بايثون متعددة المجالات | مشروع تخرج IEEA",
     "proj.dt.contexte": "توأم رقمي معياري بلغة Python لمحرك تيار مستمر صناعي بقدرة 2.2 كيلوواط، يغطي مجالات IEEA الأربعة: الكهروميكانيكا، إلكترونيات القدرة، التحكم الآلي، وواجهة HMI الصناعية.",
