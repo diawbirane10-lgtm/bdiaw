@@ -7,6 +7,22 @@ const ProjectsSection = () => {
 
   const projects: ProjectData[] = [
     {
+      titleKey: "proj.batt.title",
+      subtitleKey: "proj.batt.subtitle",
+      statusType: "completed",
+      date: "May 2026",
+      contexteKey: "proj.batt.contexte",
+      objectifKey: "proj.batt.objectif",
+      contributionKey: "proj.batt.contribution",
+      resultatsKey: "proj.batt.resultats",
+      outils: ["Python", "Streamlit", "FastAPI", "NumPy", "Pandas", "Plotly", "LSTM", "XGBoost", "EKF/UKF", "PyBaMM", "BMS"],
+      pdfLink: "/documents/Rapport_Digital_Twin_LiIon.pdf",
+      pdfLabelKey: "proj.batt.pdfLabel",
+      liveLink: "https://digitwinbattpacks1.streamlit.app/",
+      liveLabelKey: "proj.batt.liveLabel",
+      githubLink: "https://github.com/diawbirane10-lgtm/Digital_Twin_Li-ion_Batt_Packs",
+    },
+    {
       titleKey: "proj.dt.title",
       subtitleKey: "proj.dt.subtitle",
       statusType: "completed",
