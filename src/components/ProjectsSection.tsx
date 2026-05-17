@@ -15,7 +15,7 @@ const ProjectsSection = () => {
       objectifKey: "proj.batt.objectif",
       contributionKey: "proj.batt.contribution",
       resultatsKey: "proj.batt.resultats",
-      outils: ["Python", "Streamlit", "FastAPI", "NumPy", "Pandas", "Plotly", "LSTM", "XGBoost", "EKF/UKF", "PyBaMM", "BMS"],
+      outils: ["Python", "Streamlit", "FastAPI", "NumPy", "Pandas", "Plotly", "EKF", "BMS"],
       pdfLink: "/documents/Rapport_Digital_Twin_LiIon.pdf",
       pdfLabelKey: "proj.batt.pdfLabel",
       liveLink: "https://digitwinbattpacks1.streamlit.app/",
