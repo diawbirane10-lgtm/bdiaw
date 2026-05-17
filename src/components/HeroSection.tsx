@@ -87,13 +87,13 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.65, ease }}
           className="flex flex-wrap gap-4 mb-20"
         >
-          <a
-            href="#projets"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3 rounded font-body font-bold text-sm tracking-wide uppercase hover:brightness-110 transition-all duration-300 group"
+          <button
+            onClick={() => document.getElementById("projets")?.scrollIntoView({ behavior: "smooth" })}
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3 rounded font-body font-bold text-sm tracking-wide uppercase hover:brightness-110 transition-all duration-300 group cursor-pointer"
           >
             {t("hero.cta.projects")}
             <ArrowDown size={16} className="group-hover:translate-y-0.5 transition-transform duration-300" />
-          </a>
+          </button>
           <a
             href="/documents/CV_Birane_Diaw.pdf"
             target="_blank"
