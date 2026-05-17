@@ -34,6 +34,7 @@ const ProjectsSection = () => {
       outils: ["Python", "NumPy", "SciPy", "Matplotlib", "CustomTkinter", "OOP", "Control Theory", "Signal Processing", "Power Electronics"],
       pdfLink: "/documents/Digital_Twin_complet-report.pdf",
       pdfLabelKey: "proj.dt.pdfLabel",
+      githubLink: "https://github.com/diawbirane10-lgtm/digital-twin-motor",
     },
     {
       titleKey: "proj.new.title",
