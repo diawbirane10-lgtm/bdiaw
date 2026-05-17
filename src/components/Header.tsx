@@ -36,7 +36,7 @@ const Header = () => {
             href="#accueil"
             className="font-body text-lg font-black text-foreground tracking-tight uppercase"
           >
-            <span className="text-primary">B.</span> Diaw
+            <span className="text-primary">B.</span> DIAW
           </a>
 
           <nav className="hidden md:flex items-center gap-10">
