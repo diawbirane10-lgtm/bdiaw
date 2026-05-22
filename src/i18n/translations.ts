@@ -102,6 +102,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "lab.title": "Hands-On Lab Work",
     "lab.subtitle": "Du circuit imprimé au spectre fréquentiel — les rapports qui prouvent la théorie.",
 
+    // Project AS/RS - Automated Storage & Retrieval System
+    "proj.asrs.title": "Automatisation AS/RS — Transtockeur Quadra-10",
+    "proj.asrs.subtitle": "Commande industrielle par automate | GRAFCET, CodeSys V3.5, TIA Portal",
+    "proj.asrs.contexte": "Projet de fin d'études réalisé chez Menara Prefa (Marrakech). Automatisation complète d'un transtockeur AS/RS Quadra-10 commandant un chariot élévateur à 4 axes indépendants (X, Z, satellite, rotation) avec identification RFID des palettes.",
+    "proj.asrs.objectif": "Concevoir une architecture de commande GRAFCET complète couvrant la sécurité, l'initialisation, les 4 axes de mouvement, la gestion des cycles de stockage/déstockage et la communication RFID. Implémenter sur automate Schneider M251 (CodeSys V3.5) et Siemens S7-1200 (TIA Portal SCL), puis développer un jumeau numérique 3D pour simulation et validation.",
+    "proj.asrs.contribution": "10 GRAFCETs hiérarchisés (G0 à G8 + GCH) en Texte Structuré — portés sur CodeSys V3.5 SP7 (M251) et TIA Portal (SCL). Architecture GVL + blocs fonctionnels modulaires, logique de sécurité et anti-collision, gestion de cycle complet. Jumeau numérique 3D en cours de développement.",
+
     // New Project - Gearbox Fault Detection
     "proj.new.title": "Détection de défauts sur boîte de vitesses ferroviaire",
     "proj.new.subtitle": "Analyse vibratoire et classification automatique — MATLAB",
@@ -357,6 +364,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "lab.title": "Hands-On Lab Work",
     "lab.subtitle": "From PCB to frequency spectrum — the reports that prove the theory.",
 
+    // Project AS/RS - Automated Storage & Retrieval System
+    "proj.asrs.title": "AS/RS Automation — Quadra-10 Stacker Crane",
+    "proj.asrs.subtitle": "Industrial PLC Control | GRAFCET, CodeSys V3.5, TIA Portal",
+    "proj.asrs.contexte": "Final-year engineering project carried out at Menara Prefa (Marrakech). Full automation of a Quadra-10 AS/RS stacker crane with 4 independent motion axes (X, Z, satellite, rotation) and RFID-based pallet identification.",
+    "proj.asrs.objectif": "Design a complete GRAFCET control architecture covering safety, initialization, all 4 motion axes, storage/retrieval cycle management and RFID communication. Implement on a Schneider M251 PLC (CodeSys V3.5) and Siemens S7-1200 (TIA Portal SCL), and develop a 3D digital twin for simulation and validation.",
+    "proj.asrs.contribution": "10 hierarchical GRAFCETs (G0–G8 + GCH) in Structured Text — ported to CodeSys V3.5 SP7 (M251) and TIA Portal (SCL). GVL + modular function block architecture, safety and anti-collision logic, full cycle management. 3D digital twin currently in development.",
+
     // New Project - Gearbox Fault Detection
     "proj.new.title": "Railway Gearbox Fault Detection",
     "proj.new.subtitle": "Vibration Analysis & Automatic Classification — MATLAB",
@@ -611,6 +625,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "lab.label": "أعمال تطبيقية",
     "lab.title": "Hands-On Lab Work",
     "lab.subtitle": "من لوحة الدوائر إلى الطيف الترددي — التقارير التي تثبت النظرية.",
+
+    // Project AS/RS - Automated Storage & Retrieval System
+    "proj.asrs.title": "أتمتة AS/RS — رافعة التخزين Quadra-10",
+    "proj.asrs.subtitle": "تحكم صناعي بالمتحكم المنطقي | GRAFCET، CodeSys V3.5، TIA Portal",
+    "proj.asrs.contexte": "مشروع تخرج منجز لدى شركة Menara Prefa (مراكش). أتمتة كاملة لرافعة تخزين AS/RS Quadra-10 تتحكم في عربة رفع بأربعة محاور مستقلة (X وZ والساتل والدوران) مع تحديد هوية المنصات عبر RFID.",
+    "proj.asrs.objectif": "تصميم بنية تحكم GRAFCET كاملة تشمل السلامة والتهيئة والمحاور الأربعة وإدارة دورات التخزين والاسترجاع والاتصال بـ RFID. التنفيذ على متحكم Schneider M251 (CodeSys V3.5) وSiemens S7-1200 (TIA Portal SCL)، مع تطوير توأم رقمي ثلاثي الأبعاد للمحاكاة والتحقق.",
+    "proj.asrs.contribution": "10 مخططات GRAFCET هرمية (G0 إلى G8 + GCH) بلغة النص المهيكل — منفذة على CodeSys V3.5 SP7 (M251) وTIA Portal (SCL). بنية GVL وكتل دالية معيارية، منطق سلامة ومنع تصادم، إدارة دورة كاملة. التوأم الرقمي ثلاثي الأبعاد قيد التطوير.",
 
     // New Project - Gearbox Fault Detection
     "proj.new.title": "كشف الأعطال في علبة التروس الحديدية",

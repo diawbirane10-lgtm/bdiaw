@@ -7,6 +7,15 @@ const ProjectsSection = () => {
 
   const projects: ProjectData[] = [
     {
+      titleKey: "proj.asrs.title",
+      subtitleKey: "proj.asrs.subtitle",
+      statusType: "progress",
+      contexteKey: "proj.asrs.contexte",
+      objectifKey: "proj.asrs.objectif",
+      contributionKey: "proj.asrs.contribution",
+      outils: ["CodeSys V3.5", "TIA Portal", "Structured Text", "GRAFCET", "Schneider M251", "Siemens S7-1200", "RFID", "Digital Twin"],
+    },
+    {
       titleKey: "proj.batt.title",
       subtitleKey: "proj.batt.subtitle",
       statusType: "completed",
