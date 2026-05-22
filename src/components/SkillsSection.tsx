@@ -12,7 +12,7 @@ const SkillsSection = () => {
     { title: t("skills.cat4"), icon: <Zap size={18} />, skills: [t("skills.s4.1"), t("skills.s4.2"), t("skills.s4.3"), t("skills.s4.4")] },
     { title: t("skills.cat5"), icon: <Monitor size={18} />, skills: [t("skills.s5.1"), t("skills.s5.2"), t("skills.s5.3"), t("skills.s5.4"), t("skills.s5.5")] },
     { title: t("skills.cat6"), icon: <Code size={18} />, skills: [t("skills.s6.1"), t("skills.s6.2"), t("skills.s6.3"), t("skills.s6.4"), t("skills.s6.5")] },
-    { title: t("skills.cat7"), icon: <Sparkles size={18} />, skills: [t("skills.s7.1"), t("skills.s7.2"), t("skills.s7.3"), t("skills.s7.4")] },
+    { title: t("skills.cat7"), icon: <Sparkles size={18} />, skills: [t("skills.s7.1"), t("skills.s7.2"), t("skills.s7.3")] },
   ];
 
   const languages = [

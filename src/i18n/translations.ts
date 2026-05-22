@@ -69,10 +69,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     "skills.s6.3": "VS Code",
     "skills.s6.4": "Microsoft Office",
     "skills.s6.5": "NotebookLM",
-    "skills.s7.1": "Google Gemini : rédaction technique et reformulation",
-    "skills.s7.2": "Synthèse de résultats",
-    "skills.s7.3": "Prototypage rapide",
-    "skills.s7.4": "Génération de snippets de code",
+    "skills.s7.1": "Synthèse de résultats",
+    "skills.s7.2": "Prototypage rapide",
+    "skills.s7.3": "Génération de snippets de code",
 
     // Certifications
     "cert.label": "Validation",
@@ -333,10 +332,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     "skills.s6.3": "VS Code",
     "skills.s6.4": "Microsoft Office",
     "skills.s6.5": "NotebookLM",
-    "skills.s7.1": "Google Gemini: technical writing and rephrasing",
-    "skills.s7.2": "Results synthesis",
-    "skills.s7.3": "Rapid prototyping",
-    "skills.s7.4": "Code snippet generation",
+    "skills.s7.1": "Results synthesis",
+    "skills.s7.2": "Rapid prototyping",
+    "skills.s7.3": "Code snippet generation",
 
     // Certifications
     "cert.label": "Validation",
@@ -597,10 +595,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     "skills.s6.3": "VS Code",
     "skills.s6.4": "Microsoft Office",
     "skills.s6.5": "NotebookLM",
-    "skills.s7.1": "Google Gemini: كتابة تقنية وإعادة صياغة",
-    "skills.s7.2": "تجميع النتائج",
-    "skills.s7.3": "النمذجة السريعة",
-    "skills.s7.4": "توليد مقتطفات الكود",
+    "skills.s7.1": "تجميع النتائج",
+    "skills.s7.2": "النمذجة السريعة",
+    "skills.s7.3": "توليد مقتطفات الكود",
 
     // Certifications
     "cert.label": "التحقق",
