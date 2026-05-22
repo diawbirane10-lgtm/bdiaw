@@ -1,4 +1,4 @@
-import { ArrowDown, Download, ChevronRight } from "lucide-react";
+import { ArrowDown, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -94,15 +94,6 @@ const HeroSection = () => {
             {t("hero.cta.projects")}
             <ArrowDown size={16} className="group-hover:translate-y-0.5 transition-transform duration-300" />
           </button>
-          <a
-            href="/documents/CV_Birane_Diaw.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border border-border text-foreground px-7 py-3 rounded font-body font-medium text-sm tracking-wide hover:border-primary hover:text-primary transition-all duration-300"
-          >
-            <Download size={16} />
-            {t("hero.cta.cv")}
-          </a>
         </motion.div>
 
         <motion.div
