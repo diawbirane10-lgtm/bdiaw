@@ -13,7 +13,7 @@ const ProjectsSection = () => {
       contexteKey: "proj.asrs.contexte",
       objectifKey: "proj.asrs.objectif",
       contributionKey: "proj.asrs.contribution",
-      outils: ["CodeSys V3.5", "TIA Portal", "Structured Text", "GRAFCET", "Schneider M251", "Siemens S7-1200", "RFID", "Digital Twin"],
+      outils: ["TIA Portal V17", "PLCSIM Advanced", "Ladder", "GRAFCET", "Siemens S7-1516F", "RFID", "Digital Twin"],
     },
     {
       titleKey: "proj.batt.title",

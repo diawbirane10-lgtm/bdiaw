@@ -103,10 +103,10 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Project AS/RS
     "proj.asrs.title": "Automatisation AS/RS: Transtockeur Quadra-10",
-    "proj.asrs.subtitle": "GRAFCET · CodeSys V3.5 · TIA Portal · Automatique Industrielle",
+    "proj.asrs.subtitle": "GRAFCET · TIA Portal V17 · PLCSIM Advanced · Automatique Industrielle",
     "proj.asrs.contexte": "Projet de fin d'études réalisé chez Menara Prefa à Marrakech. Automatisation complète d'un transtockeur AS/RS Quadra-10 avec 4 axes indépendants (X, Z, satellite, rotation) et identification des palettes par RFID.",
-    "proj.asrs.objectif": "Concevoir une architecture GRAFCET complète pour tous les axes, la logique de sécurité et les cycles de stockage/déstockage. Implémenter sur automate Schneider M251 sous CodeSys V3.5 et sur Siemens S7-1200 sous TIA Portal SCL, puis développer un jumeau numérique 3D pour la simulation et la validation.",
-    "proj.asrs.contribution": "10 GRAFCETs hiérarchisés (G0 à G8 et GCH) écrits en Texte Structuré, portés sur CodeSys V3.5 SP7 et TIA Portal SCL. Architecture modulaire avec GVL partagé, logique de sécurité et anti-collision, gestion de cycle complète. Jumeau numérique 3D en cours.",
+    "proj.asrs.objectif": "Concevoir une architecture GRAFCET complète pour tous les axes, la logique de sécurité et les cycles de stockage/déstockage. Implémenter sur automate Siemens S7-1516F-3 PN/DP avec TIA Portal V17 + PLCSIM Advanced, puis développer un jumeau numérique 3D pour la simulation et la validation.",
+    "proj.asrs.contribution": "10 GRAFCETs hiérarchisés (G0 à G8 et GCH) écrits en Ladder, portés sur TIA Portal V17. Architecture modulaire avec GVL partagé, logique de sécurité et anti-collision, gestion de cycle complète. Jumeau numérique 3D en cours.",
 
     // New Project - Gearbox Fault Detection
     "proj.new.title": "Détection de Défauts: Boîte de Vitesses Ferroviaire",
@@ -366,10 +366,10 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Project AS/RS
     "proj.asrs.title": "AS/RS Automation: Quadra-10 Stacker Crane",
-    "proj.asrs.subtitle": "GRAFCET · CodeSys V3.5 · TIA Portal · Industrial PLC",
+    "proj.asrs.subtitle": "GRAFCET · TIA Portal V17 · PLCSIM Advanced · Industrial PLC",
     "proj.asrs.contexte": "Final-year engineering project at Menara Prefa in Marrakech. Full automation of a Quadra-10 stacker crane with 4 independent motion axes (X, Z, satellite, rotation) and RFID pallet identification.",
-    "proj.asrs.objectif": "Design a complete GRAFCET control architecture for all motion axes, safety interlocks, and storage/retrieval cycles. Deploy on a Schneider M251 PLC (CodeSys V3.5) and a Siemens S7-1200 (TIA Portal SCL), and build a 3D digital twin for simulation and validation.",
-    "proj.asrs.contribution": "10 hierarchical GRAFCETs (G0 to G8 and GCH) written in Structured Text, ported to both CodeSys V3.5 SP7 and TIA Portal SCL. Modular function block architecture around a shared GVL, with safety, anti-collision, and full cycle management. 3D digital twin in development.",
+    "proj.asrs.objectif": "Design a complete GRAFCET control architecture for all motion axes, safety interlocks, and storage/retrieval cycles. Deploy on a Siemens S7-1516F-3 PN/DP via TIA Portal V17 + PLCSIM Advanced, and build a 3D digital twin for simulation and validation.",
+    "proj.asrs.contribution": "10 hierarchical GRAFCETs (G0 to G8 and GCH) written in Ladder, ported to TIA Portal V17. Modular function block architecture around a shared GVL, with safety, anti-collision, and full cycle management. 3D digital twin in development.",
 
     // New Project - Gearbox Fault Detection
     "proj.new.title": "Railway Gearbox Fault Detection",
@@ -629,10 +629,10 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Project AS/RS
     "proj.asrs.title": "أتمتة AS/RS: رافعة التخزين Quadra-10",
-    "proj.asrs.subtitle": "GRAFCET · CodeSys V3.5 · TIA Portal · متحكم صناعي",
+    "proj.asrs.subtitle": "GRAFCET · TIA Portal V17 · PLCSIM Advanced · متحكم صناعي",
     "proj.asrs.contexte": "مشروع تخرج منجز لدى شركة Menara Prefa في مراكش. أتمتة كاملة لرافعة تخزين AS/RS Quadra-10 بأربعة محاور مستقلة (X وZ والساتل والدوران) وتحديد هوية المنصات عبر RFID.",
-    "proj.asrs.objectif": "تصميم بنية تحكم GRAFCET كاملة لجميع المحاور ومنطق السلامة ودورات التخزين والاسترجاع. التنفيذ على متحكم Schneider M251 تحت CodeSys V3.5 وSiemens S7-1200 تحت TIA Portal SCL، مع تطوير توأم رقمي ثلاثي الأبعاد للتحقق.",
-    "proj.asrs.contribution": "10 مخططات GRAFCET هرمية (G0 إلى G8 وGCH) مكتوبة بالنص المهيكل، منفذة على CodeSys V3.5 SP7 وTIA Portal SCL. بنية كتل دالية معيارية حول GVL مشترك، مع منطق سلامة ومنع تصادم وإدارة دورة كاملة. التوأم الرقمي ثلاثي الأبعاد قيد التطوير.",
+    "proj.asrs.objectif": "تصميم بنية تحكم GRAFCET كاملة لجميع المحاور ومنطق السلامة ودورات التخزين والاسترجاع. التنفيذ على متحكم Siemens S7-1516F-3 PN/DP عبر TIA Portal V17 + PLCSIM Advanced، مع تطوير توأم رقمي ثلاثي الأبعاد للتحقق.",
+    "proj.asrs.contribution": "10 مخططات GRAFCET هرمية (G0 إلى G8 وGCH) مكتوبة بـ Ladder، منفذة على TIA Portal V17. بنية كتل دالية معيارية حول GVL مشترك، مع منطق سلامة ومنع تصادم وإدارة دورة كاملة. التوأم الرقمي ثلاثي الأبعاد قيد التطوير.",
 
     // New Project - Gearbox Fault Detection
     "proj.new.title": "كشف أعطال علبة التروس الحديدية",
