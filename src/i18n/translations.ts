@@ -14,7 +14,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "hero.subtitle": "Étudiant en Génie Électrique",
     "hero.location": "FST Marrakech · Université Cadi Ayyad",
     "hero.contact": "Me contacter",
-    "hero.tagline": "Systèmes embarqués, automatisme et instrumentation industrielle. Formation solide, expérience terrain.",
+    "hero.tagline": "Étudiant en génie électrique et automatisme industriel, orienté systèmes industriels intelligents, programmation d'automates, instrumentation, simulation, jumeaux numériques et systèmes énergétiques.",
     "hero.cta.projects": "Voir mes projets",
     "hero.cta.cv": "Télécharger mon CV",
     "hero.about": "À propos",
