@@ -112,11 +112,12 @@ export const translations: Record<Lang, Record<string, string>> = {
     "lab.subtitle": "Du circuit imprimé au spectre fréquentiel, les rapports qui prouvent la théorie.",
 
     // Project AS/RS
-    "proj.asrs.title": "Automatisation AS/RS: Transtockeur Quadra-10",
-    "proj.asrs.subtitle": "GRAFCET · TIA Portal V17 · PLCSIM Advanced · Automatique Industrielle",
-    "proj.asrs.contexte": "Projet de fin d'études réalisé chez Menara Prefa à Marrakech. Automatisation complète d'un transtockeur AS/RS Quadra-10 avec 4 axes indépendants (X, Z, satellite, rotation) et identification des palettes par RFID.",
-    "proj.asrs.objectif": "Concevoir une architecture GRAFCET complète pour tous les axes, la logique de sécurité et les cycles de stockage/déstockage. Implémenter sur automate Siemens S7-1516F-3 PN/DP avec TIA Portal V17 + PLCSIM Advanced, puis développer un jumeau numérique 3D pour la simulation et la validation.",
-    "proj.asrs.contribution": "10 GRAFCETs hiérarchisés (G0 à G8 et GCH) écrits en Ladder, portés sur TIA Portal V17. Architecture modulaire avec GVL partagé, logique de sécurité et anti-collision, gestion de cycle complète. Jumeau numérique 3D en cours.",
+    "proj.asrs.title": "Automatisation AS/RS : Système de Changement de Moule QUADRA-10",
+    "proj.asrs.subtitle": "CODESYS · Structured Text · SoftPLC · RFID · Automatique Industrielle",
+    "proj.asrs.contexte": "Projet de fin d'études à Menara Prefa, Marrakech. Conception d'un système AS/RS intelligent dédié au changement automatisé du moule d'une presse à béton QUADRA 10.",
+    "proj.asrs.objectif": "Concevoir une architecture d'automatisation complète pour réduire le temps de changement de moule de 60 min à 25–30 min, tout en améliorant la sécurité, la traçabilité et la gestion du stock.",
+    "proj.asrs.contribution": "Développement d'une architecture de commande hiérarchique basée GRAFCET, traduite en Structured Text (IEC 61131-3) sous CODESYS IDE 3.5 SP22. Le système intègre un chariot de transfert sur rails, une interface ZPM, la vérification RFID, la gestion du stock de moules, les verrouillages de sécurité, la gestion des alarmes et une supervision SoftPLC locale.",
+    "proj.asrs.resultats": "Logique de commande complète validée via CODESYS Control Win SL et un environnement virtuel SoftPLC/IHM local. Solution conçue pour déploiement sur Siemens S7-1516-3 PN/DP ou tout automate compatible IEC 61131-3. Note : projet d'abord exploré sous TIA Portal/PLCSIM, puis finalisé sous CODESYS IDE 3.5 SP22 en Structured Text avec validation SoftPLC locale.",
 
     // New Project - Gearbox Fault Detection
     "proj.new.title": "Détection de Défauts: Boîte de Vitesses Ferroviaire",
