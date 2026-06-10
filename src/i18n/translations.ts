@@ -660,11 +660,12 @@ export const translations: Record<Lang, Record<string, string>> = {
     "lab.subtitle": "من لوحة الدوائر إلى الطيف الترددي، التقارير التي تثبت النظرية.",
 
     // Project AS/RS
-    "proj.asrs.title": "أتمتة AS/RS: رافعة التخزين Quadra-10",
-    "proj.asrs.subtitle": "GRAFCET · TIA Portal V17 · PLCSIM Advanced · متحكم صناعي",
-    "proj.asrs.contexte": "مشروع تخرج منجز لدى شركة Menara Prefa في مراكش. أتمتة كاملة لرافعة تخزين AS/RS Quadra-10 بأربعة محاور مستقلة (X وZ والساتل والدوران) وتحديد هوية المنصات عبر RFID.",
-    "proj.asrs.objectif": "تصميم بنية تحكم GRAFCET كاملة لجميع المحاور ومنطق السلامة ودورات التخزين والاسترجاع. التنفيذ على متحكم Siemens S7-1516F-3 PN/DP عبر TIA Portal V17 + PLCSIM Advanced، مع تطوير توأم رقمي ثلاثي الأبعاد للتحقق.",
-    "proj.asrs.contribution": "10 مخططات GRAFCET هرمية (G0 إلى G8 وGCH) مكتوبة بـ Ladder، منفذة على TIA Portal V17. بنية كتل دالية معيارية حول GVL مشترك، مع منطق سلامة ومنع تصادم وإدارة دورة كاملة. التوأم الرقمي ثلاثي الأبعاد قيد التطوير.",
+    "proj.asrs.title": "أتمتة AS/RS: نظام تغيير قالب QUADRA-10",
+    "proj.asrs.subtitle": "CODESYS · Structured Text · SoftPLC · RFID · أتمتة صناعية",
+    "proj.asrs.contexte": "مشروع تخرج لدى Menara Prefa بمراكش. تصميم نظام AS/RS ذكي مخصص للتغيير الآلي لقالب مكبس الخرسانة QUADRA 10.",
+    "proj.asrs.objectif": "تصميم بنية أتمتة كاملة لتقليص زمن تغيير القالب من 60 دقيقة إلى 25–30 دقيقة، مع تحسين السلامة والتتبع وإدارة المخزون.",
+    "proj.asrs.contribution": "تطوير بنية تحكم هرمية مبنية على GRAFCET ومترجمة إلى Structured Text (IEC 61131-3) تحت CODESYS IDE 3.5 SP22. يشمل النظام عربة نقل على سكة، واجهة ZPM، التحقق عبر RFID، إدارة مخزون القوالب، تأمينات السلامة، إدارة الإنذارات وإشراف SoftPLC محلي.",
+    "proj.asrs.resultats": "تم التحقق من منطق التحكم الكامل عبر CODESYS Control Win SL وبيئة افتراضية محلية SoftPLC/HMI. الحل مصمم للنشر على Siemens S7-1516-3 PN/DP أو أي متحكم متوافق مع IEC 61131-3. ملاحظة: استُكشف المشروع أولاً تحت TIA Portal/PLCSIM ثم أُنجز نهائياً تحت CODESYS IDE 3.5 SP22 باستخدام Structured Text مع التحقق المحلي عبر SoftPLC.",
 
     // New Project - Gearbox Fault Detection
     "proj.new.title": "كشف أعطال علبة التروس الحديدية",
