@@ -386,11 +386,12 @@ export const translations: Record<Lang, Record<string, string>> = {
     "lab.subtitle": "From PCB to frequency spectrum, the reports that prove the theory.",
 
     // Project AS/RS
-    "proj.asrs.title": "AS/RS Automation: Quadra-10 Stacker Crane",
-    "proj.asrs.subtitle": "GRAFCET · TIA Portal V17 · PLCSIM Advanced · Industrial PLC",
-    "proj.asrs.contexte": "Final-year engineering project at Menara Prefa in Marrakech. Full automation of a Quadra-10 stacker crane with 4 independent motion axes (X, Z, satellite, rotation) and RFID pallet identification.",
-    "proj.asrs.objectif": "Design a complete GRAFCET control architecture for all motion axes, safety interlocks, and storage/retrieval cycles. Deploy on a Siemens S7-1516F-3 PN/DP via TIA Portal V17 + PLCSIM Advanced, and build a 3D digital twin for simulation and validation.",
-    "proj.asrs.contribution": "10 hierarchical GRAFCETs (G0 to G8 and GCH) written in Ladder, ported to TIA Portal V17. Modular function block architecture around a shared GVL, with safety, anti-collision, and full cycle management. 3D digital twin in development.",
+    "proj.asrs.title": "AS/RS Automation: QUADRA-10 Mold Change System",
+    "proj.asrs.subtitle": "CODESYS · Structured Text · SoftPLC · RFID · Industrial Automation",
+    "proj.asrs.contexte": "Final-year project at Menara Prefa in Marrakech. Design of an intelligent AS/RS system dedicated to the automated mold change of a QUADRA 10 concrete press.",
+    "proj.asrs.objectif": "Design a complete automation architecture to reduce mold changeover time from 60 minutes to 25–30 minutes, while improving safety, traceability and stock management.",
+    "proj.asrs.contribution": "Developed a hierarchical GRAFCET-based control architecture translated into IEC 61131-3 Structured Text under CODESYS IDE 3.5 SP22. The system includes a rail-guided transfer cart, ZPM interface, RFID verification, mold stock management, safety interlocks, alarm handling and local SoftPLC supervision.",
+    "proj.asrs.resultats": "Validated the complete control logic through CODESYS Control Win SL and a local virtual SoftPLC/HMI environment. The solution is designed for deployment on a Siemens S7-1516-3 PN/DP or any IEC 61131-3 compliant PLC. Note: this project was first explored with TIA Portal/PLCSIM, then finalized under CODESYS IDE 3.5 SP22 using Structured Text and a local SoftPLC validation environment.",
 
     // New Project - Gearbox Fault Detection
     "proj.new.title": "Railway Gearbox Fault Detection",
