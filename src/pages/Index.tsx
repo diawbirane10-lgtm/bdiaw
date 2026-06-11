@@ -18,11 +18,11 @@ const Index = () => {
         <ScrollReveal>
           <ProjectsSection />
         </ScrollReveal>
-        <ScrollReveal delay={0.05} direction="left">
-          <SkillsSection />
-        </ScrollReveal>
         <ScrollReveal delay={0.05} direction="right">
           <CertificationsSection />
+        </ScrollReveal>
+        <ScrollReveal delay={0.05} direction="left">
+          <SkillsSection />
         </ScrollReveal>
         <ScrollReveal direction="scale">
           <TestimonialsSection />
