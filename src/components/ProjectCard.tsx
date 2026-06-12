@@ -1,4 +1,5 @@
 import { Download, ExternalLink, Clock, CheckCircle, Sparkles, Calendar, Github, Rocket } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 export interface ProjectData {
@@ -18,6 +19,8 @@ export interface ProjectData {
   liveLabelKey?: string;
   githubLink?: string;
   githubLabelKey?: string;
+  featured?: boolean;
+  comingSoon?: boolean;
 }
 
 const ProjectCard = ({ project }: { project: ProjectData }) => {
@@ -40,8 +43,16 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
   };
 
   return (
-    <article className="card-project hover-lift flex flex-col group">
-      <div className="w-full h-1 bg-gradient-to-r from-primary/60 to-transparent rounded-full mb-5" />
+    <article className={cn(
+      "card-project hover-lift flex flex-col group relative overflow-hidden",
+      project.featured && "ring-1 ring-primary/20 shadow-xl shadow-primary/5"
+    )}>
+      <div className={cn(
+        "w-full rounded-full mb-5",
+        project.featured
+          ? "h-1.5 bg-gradient-to-r from-emerald-500 via-primary to-transparent"
+          : "h-1 bg-gradient-to-r from-primary/60 to-transparent"
+      )} />
 
       <div className="mb-4 flex items-center gap-2 flex-wrap">
         <span className={`badge-status ${
@@ -96,6 +107,15 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
           ))}
         </div>
       </div>
+
+      {project.comingSoon && (
+        <div className="mt-3 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20">
+          <p className="text-xs font-body font-semibold text-amber-600 flex items-center gap-2">
+            <Clock className="w-4 h-4" />
+            {t("proj.comingSoon")}
+          </p>
+        </div>
+      )}
 
       {project.pdfLink && (
         <div className="mt-3 pt-3 border-t border-border/50">

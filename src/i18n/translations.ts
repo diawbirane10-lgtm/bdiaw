@@ -105,6 +105,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.status.upcoming": "À venir",
     "proj.status.progress": "En cours",
     "proj.status.completed": "Terminé",
+    "proj.comingSoon": "Documentation et code source disponibles prochainement",
     "proj.download": "Télécharger le rapport",
     "proj.note": "Note : Les comptes rendus des TPs d'Électrotechnique, d'Automatique et d'Informatique Industrielle ont été rédigés sur feuille et ne sont pas disponibles au format numérique.",
 
@@ -120,6 +121,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.asrs.objectif": "Concevoir une architecture d'automatisation complète pour réduire le temps de changement de moule de 60 min à 25–30 min, tout en améliorant la sécurité, la traçabilité et la gestion du stock.",
     "proj.asrs.contribution": "Développement d'une architecture de commande hiérarchique basée GRAFCET, traduite en Structured Text (IEC 61131-3) sous CODESYS IDE 3.5 SP22. Le système intègre un chariot de transfert sur rails, une interface ZPM, la vérification RFID, la gestion du stock de moules, les verrouillages de sécurité, la gestion des alarmes et une supervision SoftPLC locale.",
     "proj.asrs.resultats": "Logique de commande complète validée via CODESYS Control Win SL et un environnement virtuel SoftPLC/IHM local. Solution conçue pour déploiement sur Siemens S7-1516-3 PN/DP ou tout automate compatible IEC 61131-3. Note : projet d'abord exploré sous TIA Portal/PLCSIM, puis finalisé sous CODESYS IDE 3.5 SP22 en Structured Text avec validation SoftPLC locale.",
+
+    // Project HVDC
+    "proj.hvdc.title": "Jumeau Numérique: Hub HVDC Grid-Forming Multi-Terminal",
+    "proj.hvdc.subtitle": "MATLAB/Simulink · Simscape Electrical · Python · Streamlit · Plotly · CrewAI",
+    "proj.hvdc.contexte": "Projet personnel en cours de développement d'un jumeau numérique interactif pour un réseau HVDC (High Voltage Direct Current) à 3 terminaux.",
+    "proj.hvdc.objectif": "Analyser la stabilité du réseau via des modèles à valeur moyenne (AVM) sous MATLAB/Simulink et implémenter une stratégie de contrôle Grid-Forming basée sur la Machine Synchrone Virtuelle (VSM) avec intégration d'un système de stockage par batteries (BESS) sur le bus DC pour fournir un support de fréquence et de l'inertie aux réseaux AC faibles.",
+    "proj.hvdc.contribution": "Construction du modèle de simulation multi-physique sous MATLAB/Simulink (Simscape Electrical) avec architecture VSC-HVDC et contrôle VSM. Développement d'un dashboard Python (Streamlit/Plotly) servant d'interface Digital Twin pour le traitement et la visualisation en temps réel des données transitoires (tensions, fréquences, SOC).",
+    "proj.hvdc.resultats": "Architecture VSC-HVDC multi-terminal, contrôle Grid-Forming & inertie virtuelle, intégration BESS sur bus DC, dashboard Digital Twin interactif Python.",
 
     // New Project - Gearbox Fault Detection
     "proj.new.title": "Détection de Défauts: Boîte de Vitesses Ferroviaire",
@@ -381,6 +390,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.status.upcoming": "Upcoming",
     "proj.status.progress": "In Progress",
     "proj.status.completed": "Completed",
+    "proj.comingSoon": "Documentation and source code coming soon",
     "proj.download": "Download report",
     "proj.note": "Note: Lab reports for Electrical Engineering, Automation and Industrial Computing were handwritten and are not available in digital format.",
 
@@ -396,6 +406,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.asrs.objectif": "Design a complete automation architecture to reduce mold changeover time from 60 minutes to 25–30 minutes, while improving safety, traceability and stock management.",
     "proj.asrs.contribution": "Developed a hierarchical GRAFCET-based control architecture translated into IEC 61131-3 Structured Text under CODESYS IDE 3.5 SP22. The system includes a rail-guided transfer cart, ZPM interface, RFID verification, mold stock management, safety interlocks, alarm handling and local SoftPLC supervision.",
     "proj.asrs.resultats": "Validated the complete control logic through CODESYS Control Win SL and a local virtual SoftPLC/HMI environment. The solution is designed for deployment on a Siemens S7-1516-3 PN/DP or any IEC 61131-3 compliant PLC. Note: this project was first explored with TIA Portal/PLCSIM, then finalized under CODESYS IDE 3.5 SP22 using Structured Text and a local SoftPLC validation environment.",
+
+    // Project HVDC
+    "proj.hvdc.title": "Digital Twin: Multi-Terminal Grid-Forming HVDC Hub",
+    "proj.hvdc.subtitle": "MATLAB/Simulink · Simscape Electrical · Python · Streamlit · Plotly · CrewAI",
+    "proj.hvdc.contexte": "Ongoing personal project developing an interactive Digital Twin for a 3-terminal High Voltage Direct Current (HVDC) network.",
+    "proj.hvdc.objectif": "Analyze grid stability using Average Value Models (AVM) in MATLAB/Simulink and implement an advanced Grid-Forming control topology based on the Virtual Synchronous Machine (VSM) with Battery Energy Storage System (BESS) integration on the DC bus to provide frequency support and inertia to weak AC grids.",
+    "proj.hvdc.contribution": "Built the multi-physics simulation model in MATLAB/Simulink (Simscape Electrical) with VSC-HVDC architecture and VSM control. Developing a Python dashboard (Streamlit/Plotly) acting as the Digital Twin interface, processing and visualizing real-time transient data (voltages, frequencies, SOC) from the Simulink model.",
+    "proj.hvdc.resultats": "Multi-Terminal VSC-HVDC Architecture, Grid-Forming Control & Virtual Inertia Implementation, DC-bus Battery Storage Integration (BESS), Interactive Python-based Digital Twin Dashboard.",
 
     // New Project - Gearbox Fault Detection
     "proj.new.title": "Railway Gearbox Fault Detection",
@@ -657,6 +675,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.status.upcoming": "قريباً",
     "proj.status.progress": "قيد التنفيذ",
     "proj.status.completed": "مكتمل",
+    "proj.comingSoon": "التوثيق والكود المصدري قريباً",
     "proj.download": "تحميل التقرير",
     "proj.note": "ملاحظة: تقارير مختبر الهندسة الكهربائية والأتمتة والمعلوميات الصناعية كُتبت يدوياً وليست متوفرة بصيغة رقمية.",
 
@@ -672,6 +691,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.asrs.objectif": "تصميم بنية أتمتة كاملة لتقليص زمن تغيير القالب من 60 دقيقة إلى 25–30 دقيقة، مع تحسين السلامة والتتبع وإدارة المخزون.",
     "proj.asrs.contribution": "تطوير بنية تحكم هرمية مبنية على GRAFCET ومترجمة إلى Structured Text (IEC 61131-3) تحت CODESYS IDE 3.5 SP22. يشمل النظام عربة نقل على سكة، واجهة ZPM، التحقق عبر RFID، إدارة مخزون القوالب، تأمينات السلامة، إدارة الإنذارات وإشراف SoftPLC محلي.",
     "proj.asrs.resultats": "تم التحقق من منطق التحكم الكامل عبر CODESYS Control Win SL وبيئة افتراضية محلية SoftPLC/HMI. الحل مصمم للنشر على Siemens S7-1516-3 PN/DP أو أي متحكم متوافق مع IEC 61131-3. ملاحظة: استُكشف المشروع أولاً تحت TIA Portal/PLCSIM ثم أُنجز نهائياً تحت CODESYS IDE 3.5 SP22 باستخدام Structured Text مع التحقق المحلي عبر SoftPLC.",
+
+    // Project HVDC
+    "proj.hvdc.title": "التوأم الرقمي: محور HVDC Grid-Forming متعدد المحطات",
+    "proj.hvdc.subtitle": "MATLAB/Simulink · Simscape Electrical · Python · Streamlit · Plotly · CrewAI",
+    "proj.hvdc.contexte": "مشروع شخصي قيد التطوير لبناء توأم رقمي تفاعلي لشبكة HVDC (تيار مباشر عالي الجهد) متعددة المحطات.",
+    "proj.hvdc.objectif": "تحليل استقرار الشبكة باستخدام نماذج القيمة المتوسطة (AVM) في MATLAB/Simulink وتنفيذ استراتيجية تحكم Grid-Forming متقدمة مبنية على الآلة المتزامنة الافتراضية (VSM) مع دمج نظام تخزين طاقة بالبطاريات (BESS) على الناقل DC لتوفير دعم التردد والقصور الذاتي للشبكات AC الضعيفة.",
+    "proj.hvdc.contribution": "بناء نموذج المحاكاة متعدد الفيزياء في MATLAB/Simulink (Simscape Electrical) مع بنية VSC-HVDC وتحكم VSM. تطوير لوحة معلومات Python (Streamlit/Plotly) بوصفها واجهة التوأم الرقمي، لمعالجة وتصور البيانات العابرة في الوقت الفعلي (الجهود، الترددات، حالة الشحن) من نموذج Simulink.",
+    "proj.hvdc.resultats": "بنية VSC-HVDC متعددة المحطات، تحكم Grid-Forming وتنفيذ القصور الذاتي الافتراضي، دمج تخزين الطاقة بالبطاريات على الناقل DC، لوحة تحكم تفاعلية Python للتوأم الرقمي.",
 
     // New Project - Gearbox Fault Detection
     "proj.new.title": "كشف أعطال علبة التروس الحديدية",
