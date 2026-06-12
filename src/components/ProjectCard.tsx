@@ -1,4 +1,5 @@
 import { Download, ExternalLink, Clock, CheckCircle, Sparkles, Calendar, Github, Rocket } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 export interface ProjectData {
