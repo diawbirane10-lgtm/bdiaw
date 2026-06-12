@@ -7,6 +7,31 @@ const ProjectsSection = () => {
 
   const projects: ProjectData[] = [
     {
+      titleKey: "proj.hvdc.title",
+      subtitleKey: "proj.hvdc.subtitle",
+      statusType: "progress",
+      contexteKey: "proj.hvdc.contexte",
+      objectifKey: "proj.hvdc.objectif",
+      contributionKey: "proj.hvdc.contribution",
+      resultatsKey: "proj.hvdc.resultats",
+      outils: [
+        "MATLAB/Simulink",
+        "Simscape Electrical",
+        "Python",
+        "Streamlit",
+        "Plotly",
+        "CrewAI",
+        "AVM",
+        "VSC-HVDC",
+        "Grid-Forming Control",
+        "Virtual Synchronous Machine",
+        "BESS",
+        "Digital Twin",
+      ],
+      featured: true,
+      comingSoon: true,
+    },
+    {
       titleKey: "proj.asrs.title",
       subtitleKey: "proj.asrs.subtitle",
       statusType: "progress",
