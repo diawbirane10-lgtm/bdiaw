@@ -83,6 +83,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "skills.s7.2": "Prototypage rapide",
     "skills.s7.3": "Génération de snippets de code",
 
+    // Research section
+    "research.label": "Recherche",
+    "research.title": "Recherche & Publication",
+    "research.status.review": "Sous évaluation",
+    "research.code": "Code source",
+    "research.hvdc.abstract": "Modélisation et simulation d'un réseau VSC-HVDC à 3 terminaux pour l'intégration du solaire massif dans les réseaux AC faibles du Moyen-Orient. Le travail implémente un contrôle Grid-Forming basé sur la Machine Synchrone Virtuelle (VSM) et intègre un système BESS sur le bus DC pour la fourniture d'inertie synthétique et le support de fréquence. Les simulations sont conduites sous MATLAB/Simulink (Simscape Electrical) avec des modèles à valeur moyenne (AVM).",
+
     // Certifications
     "cert.label": "Validation",
     "cert.title": "Certifications",
@@ -369,6 +376,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "skills.s7.2": "Rapid prototyping",
     "skills.s7.3": "Code snippet generation",
 
+    // Research section
+    "research.label": "Research",
+    "research.title": "Research & Publication",
+    "research.status.review": "Under Review",
+    "research.code": "Source code",
+    "research.hvdc.abstract": "Modeling and simulation of a 3-terminal VSC-HVDC network for large-scale solar integration into weak AC grids in the Middle East. The work implements Grid-Forming control based on the Virtual Synchronous Machine (VSM) and integrates a BESS on the DC bus for synthetic inertia provision and frequency support. Simulations are conducted in MATLAB/Simulink (Simscape Electrical) using Average Value Models (AVM).",
+
     // Certifications
     "cert.label": "Validation",
     "cert.title": "Certifications",
@@ -654,6 +668,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "skills.s7.1": "تجميع النتائج",
     "skills.s7.2": "النمذجة السريعة",
     "skills.s7.3": "توليد مقتطفات الكود",
+
+    // Research section
+    "research.label": "البحث العلمي",
+    "research.title": "البحث والنشر",
+    "research.status.review": "قيد التحكيم",
+    "research.code": "الكود المصدري",
+    "research.hvdc.abstract": "نمذجة ومحاكاة شبكة VSC-HVDC ثلاثية المحطات لدمج الطاقة الشمسية الضخمة في الشبكات AC الضعيفة بمنطقة الشرق الأوسط. يُنفِّذ العمل تحكماً Grid-Forming مبنياً على الآلة المتزامنة الافتراضية (VSM) مع دمج نظام BESS على الناقل DC لتوفير القصور الذاتي الاصطناعي ودعم التردد. تُجرى المحاكاة في MATLAB/Simulink (Simscape Electrical) باستخدام نماذج القيمة المتوسطة (AVM).",
 
     // Certifications
     "cert.label": "التحقق",
