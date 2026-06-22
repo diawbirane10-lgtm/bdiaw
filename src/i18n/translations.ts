@@ -4,6 +4,7 @@ export const translations: Record<Lang, Record<string, string>> = {
   fr: {
     // Nav
     "nav.home": "Accueil",
+    "nav.research": "Recherche",
     "nav.skills": "Compétences",
     "nav.projects": "Projets",
     "nav.contact": "Contact",
@@ -299,6 +300,7 @@ export const translations: Record<Lang, Record<string, string>> = {
   en: {
     // Nav
     "nav.home": "Home",
+    "nav.research": "Research",
     "nav.skills": "Skills",
     "nav.projects": "Projects",
     "nav.contact": "Contact",
@@ -594,6 +596,7 @@ export const translations: Record<Lang, Record<string, string>> = {
   ar: {
     // Nav
     "nav.home": "الرئيسية",
+    "nav.research": "البحث",
     "nav.skills": "المهارات",
     "nav.projects": "المشاريع",
     "nav.contact": "اتصل بي",
