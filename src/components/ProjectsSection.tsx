@@ -10,6 +10,7 @@ const ProjectsSection = () => {
       titleKey: "proj.hvdc.title",
       subtitleKey: "proj.hvdc.subtitle",
       statusType: "progress",
+      statusLabelKey: "proj.hvdc.statusLabel",
       contexteKey: "proj.hvdc.contexte",
       objectifKey: "proj.hvdc.objectif",
       contributionKey: "proj.hvdc.contribution",
