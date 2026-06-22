@@ -6,6 +6,7 @@ export interface ProjectData {
   titleKey: string;
   subtitleKey?: string;
   statusType: "completed" | "progress" | "upcoming";
+  statusLabelKey?: string;
   date?: string;
   contexteKey: string;
   objectifKey: string;
@@ -34,7 +35,8 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
     }
   };
 
-  const getStatusLabel = (statusType: string) => {
+  const getStatusLabel = (statusType: string, overrideKey?: string) => {
+    if (overrideKey) return t(overrideKey);
     switch (statusType) {
       case "completed": return t("proj.status.completed");
       case "progress": return t("proj.status.progress");
@@ -61,7 +63,7 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
             : "badge-status-upcoming"
         }`}>
           {getStatusIcon(project.statusType)}
-          {getStatusLabel(project.statusType)}
+          {getStatusLabel(project.statusType, project.statusLabelKey)}
         </span>
         {project.date && (
           <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
