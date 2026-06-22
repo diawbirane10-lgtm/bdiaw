@@ -35,7 +35,8 @@ const ProjectsSection = () => {
     {
       titleKey: "proj.asrs.title",
       subtitleKey: "proj.asrs.subtitle",
-      statusType: "progress",
+      statusType: "completed",
+      date: "June 2026",
       contexteKey: "proj.asrs.contexte",
       objectifKey: "proj.asrs.objectif",
       contributionKey: "proj.asrs.contribution",
@@ -53,7 +54,7 @@ const ProjectsSection = () => {
         "SMED",
         "HMI",
         "AS/RS",
-        "Siemens S7-1516-3 PN/DP target",
+        "CODESYS 3.5 SP22 – Final Platform",
       ],
     },
     {
