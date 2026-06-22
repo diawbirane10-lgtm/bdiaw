@@ -120,7 +120,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.asrs.contexte": "Projet de fin d'études à Menara Prefa, Marrakech. Conception d'un système AS/RS intelligent dédié au changement automatisé du moule d'une presse à béton QUADRA 10.",
     "proj.asrs.objectif": "Concevoir une architecture d'automatisation complète pour réduire le temps de changement de moule de 60 min à 25–30 min, tout en améliorant la sécurité, la traçabilité et la gestion du stock.",
     "proj.asrs.contribution": "Développement d'une architecture de commande hiérarchique basée GRAFCET, traduite en Structured Text (IEC 61131-3) sous CODESYS IDE 3.5 SP22. Le système intègre un chariot de transfert sur rails, une interface ZPM, la vérification RFID, la gestion du stock de moules, les verrouillages de sécurité, la gestion des alarmes et une supervision SoftPLC locale.",
-    "proj.asrs.resultats": "Logique de commande complète validée via CODESYS Control Win SL et un environnement virtuel SoftPLC/IHM local. Solution conçue pour déploiement sur Siemens S7-1516-3 PN/DP ou tout automate compatible IEC 61131-3. Note : projet d'abord exploré sous TIA Portal/PLCSIM, puis finalisé sous CODESYS IDE 3.5 SP22 en Structured Text avec validation SoftPLC locale.",
+    "proj.asrs.resultats": "Projet soutenu avec succès le 19 juin 2026 à la FST Marrakech (jury : Pr. Sefyani, Pr. Chennani, Pr. Oukili). Logique de commande complète validée sous CODESYS Control Win SL et environnement SoftPLC/IHM local. Solution conçue pour déploiement sur Siemens S7-1516-3 PN/DP ou tout automate compatible IEC 61131-3.",
 
     // Project HVDC
     "proj.hvdc.title": "Jumeau Numérique: Hub HVDC Grid-Forming Multi-Terminal",
