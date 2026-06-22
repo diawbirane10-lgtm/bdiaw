@@ -123,12 +123,12 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.asrs.resultats": "Projet soutenu avec succès le 19 juin 2026 à la FST Marrakech (jury : Pr. Sefyani, Pr. Chennani, Pr. Oukili). Logique de commande complète validée sous CODESYS Control Win SL et environnement SoftPLC/IHM local. Solution conçue pour déploiement sur Siemens S7-1516-3 PN/DP ou tout automate compatible IEC 61131-3.",
 
     // Project HVDC
-    "proj.hvdc.title": "Jumeau Numérique: Hub HVDC Grid-Forming Multi-Terminal",
-    "proj.hvdc.subtitle": "MATLAB/Simulink · Simscape Electrical · Python · Streamlit · Plotly · CrewAI",
-    "proj.hvdc.contexte": "Projet personnel en cours de développement d'un jumeau numérique interactif pour un réseau HVDC (High Voltage Direct Current) à 3 terminaux.",
-    "proj.hvdc.objectif": "Analyser la stabilité du réseau via des modèles à valeur moyenne (AVM) sous MATLAB/Simulink et implémenter une stratégie de contrôle Grid-Forming basée sur la Machine Synchrone Virtuelle (VSM) avec intégration d'un système de stockage par batteries (BESS) sur le bus DC pour fournir un support de fréquence et de l'inertie aux réseaux AC faibles.",
-    "proj.hvdc.contribution": "Construction du modèle de simulation multi-physique sous MATLAB/Simulink (Simscape Electrical) avec architecture VSC-HVDC et contrôle VSM. Développement d'un dashboard Python (Streamlit/Plotly) servant d'interface Digital Twin pour le traitement et la visualisation en temps réel des données transitoires (tensions, fréquences, SOC).",
-    "proj.hvdc.resultats": "Architecture VSC-HVDC multi-terminal, contrôle Grid-Forming & inertie virtuelle, intégration BESS sur bus DC, dashboard Digital Twin interactif Python. Soumis au Journal of Undergraduate Research International (JURI, KFUPM) — Ref. JURI-00314-2026-01 — sous évaluation par les pairs.",
+    "proj.hvdc.title": "Simulation HVDC Multi-Terminal: Grid-Forming & BESS",
+    "proj.hvdc.subtitle": "MATLAB/Simulink · Simscape Electrical · Python · Grid-Forming · BESS",
+    "proj.hvdc.contexte": "Projet personnel de recherche appliquée : modélisation et simulation d'un réseau VSC-HVDC à 3 terminaux pour l'intégration du solaire massif dans les réseaux AC faibles du Moyen-Orient.",
+    "proj.hvdc.objectif": "Analyser la stabilité fréquentielle du réseau via des modèles à valeur moyenne (AVM) sous MATLAB/Simulink et implémenter une stratégie de contrôle Grid-Forming basée sur la Machine Synchrone Virtuelle (VSM) avec intégration d'un système de stockage BESS sur le bus DC pour fournir un support de fréquence et de l'inertie synthétique aux réseaux AC faibles.",
+    "proj.hvdc.contribution": "Construction du modèle de simulation multi-physique sous MATLAB/Simulink (Simscape Electrical) avec architecture VSC-HVDC 3 terminaux et contrôle VSM. Intégration du BESS sur le bus DC pour le support de fréquence et l'injection d'inertie virtuelle. Post-traitement et analyse des données transitoires (tensions, fréquences, SOC) en Python.",
+    "proj.hvdc.resultats": "Architecture VSC-HVDC multi-terminal validée, contrôle Grid-Forming & inertie virtuelle implémentés, intégration BESS sur bus DC. Soumis au Journal of Undergraduate Research International (JURI, KFUPM) — Ref. JURI-00314-2026-01 — sous évaluation par les pairs.",
     "proj.hvdc.statusLabel": "En cours – Soumis pour Publication",
 
     // New Project - Gearbox Fault Detection
@@ -409,12 +409,12 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.asrs.resultats": "Project successfully defended on June 19, 2026 at FST Marrakech (jury: Pr. Sefyani, Pr. Chennani, Pr. Oukili). Full control logic validated under CODESYS Control Win SL and local virtual SoftPLC/HMI environment. The solution is designed for deployment on a Siemens S7-1516-3 PN/DP or any IEC 61131-3 compliant PLC.",
 
     // Project HVDC
-    "proj.hvdc.title": "Digital Twin: Multi-Terminal Grid-Forming HVDC Hub",
-    "proj.hvdc.subtitle": "MATLAB/Simulink · Simscape Electrical · Python · Streamlit · Plotly · CrewAI",
-    "proj.hvdc.contexte": "Ongoing personal project developing an interactive Digital Twin for a 3-terminal High Voltage Direct Current (HVDC) network.",
-    "proj.hvdc.objectif": "Analyze grid stability using Average Value Models (AVM) in MATLAB/Simulink and implement an advanced Grid-Forming control topology based on the Virtual Synchronous Machine (VSM) with Battery Energy Storage System (BESS) integration on the DC bus to provide frequency support and inertia to weak AC grids.",
-    "proj.hvdc.contribution": "Built the multi-physics simulation model in MATLAB/Simulink (Simscape Electrical) with VSC-HVDC architecture and VSM control. Developing a Python dashboard (Streamlit/Plotly) acting as the Digital Twin interface, processing and visualizing real-time transient data (voltages, frequencies, SOC) from the Simulink model.",
-    "proj.hvdc.resultats": "Multi-Terminal VSC-HVDC Architecture, Grid-Forming Control & Virtual Inertia Implementation, DC-bus Battery Storage Integration (BESS), Interactive Python-based Digital Twin Dashboard. Submitted to the Journal of Undergraduate Research International (JURI, KFUPM) — Ref. JURI-00314-2026-01 — under peer review.",
+    "proj.hvdc.title": "3-Terminal VSC-HVDC Simulation: Grid-Forming & BESS",
+    "proj.hvdc.subtitle": "MATLAB/Simulink · Simscape Electrical · Python · Grid-Forming · BESS",
+    "proj.hvdc.contexte": "Applied research project: modeling and simulation of a 3-terminal VSC-HVDC network for large-scale solar integration into weak AC grids in the Middle East.",
+    "proj.hvdc.objectif": "Analyze grid frequency stability using Average Value Models (AVM) in MATLAB/Simulink and implement a Grid-Forming control strategy based on the Virtual Synchronous Machine (VSM) with BESS integration on the DC bus to provide synthetic inertia and frequency support to weak AC grids.",
+    "proj.hvdc.contribution": "Built the multi-physics simulation model in MATLAB/Simulink (Simscape Electrical) with a 3-terminal VSC-HVDC architecture and VSM control. BESS integration on the DC bus for frequency support and virtual inertia injection. Post-processing and analysis of transient simulation data (voltages, frequencies, SOC) in Python.",
+    "proj.hvdc.resultats": "3-terminal VSC-HVDC architecture validated, Grid-Forming control & virtual inertia implemented, BESS integrated on DC bus. Submitted to the Journal of Undergraduate Research International (JURI, KFUPM) — Ref. JURI-00314-2026-01 — under peer review.",
     "proj.hvdc.statusLabel": "In Progress – Submitted for Publication",
 
     // New Project - Gearbox Fault Detection
@@ -695,12 +695,12 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.asrs.resultats": "تم الدفاع عن المشروع بنجاح في 19 يونيو 2026 بكلية العلوم والتقنيات بمراكش (لجنة الحكم: الأستاذ السفياني، الأستاذ الشناني، الأستاذ أوكيلي). تم التحقق من منطق التحكم الكامل عبر CODESYS Control Win SL وبيئة افتراضية محلية SoftPLC/HMI. الحل مصمم للنشر على Siemens S7-1516-3 PN/DP أو أي متحكم متوافق مع IEC 61131-3.",
 
     // Project HVDC
-    "proj.hvdc.title": "التوأم الرقمي: محور HVDC Grid-Forming متعدد المحطات",
-    "proj.hvdc.subtitle": "MATLAB/Simulink · Simscape Electrical · Python · Streamlit · Plotly · CrewAI",
-    "proj.hvdc.contexte": "مشروع شخصي قيد التطوير لبناء توأم رقمي تفاعلي لشبكة HVDC (تيار مباشر عالي الجهد) متعددة المحطات.",
-    "proj.hvdc.objectif": "تحليل استقرار الشبكة باستخدام نماذج القيمة المتوسطة (AVM) في MATLAB/Simulink وتنفيذ استراتيجية تحكم Grid-Forming متقدمة مبنية على الآلة المتزامنة الافتراضية (VSM) مع دمج نظام تخزين طاقة بالبطاريات (BESS) على الناقل DC لتوفير دعم التردد والقصور الذاتي للشبكات AC الضعيفة.",
-    "proj.hvdc.contribution": "بناء نموذج المحاكاة متعدد الفيزياء في MATLAB/Simulink (Simscape Electrical) مع بنية VSC-HVDC وتحكم VSM. تطوير لوحة معلومات Python (Streamlit/Plotly) بوصفها واجهة التوأم الرقمي، لمعالجة وتصور البيانات العابرة في الوقت الفعلي (الجهود، الترددات، حالة الشحن) من نموذج Simulink.",
-    "proj.hvdc.resultats": "بنية VSC-HVDC متعددة المحطات، تحكم Grid-Forming وتنفيذ القصور الذاتي الافتراضي، دمج تخزين الطاقة بالبطاريات على الناقل DC، لوحة تحكم تفاعلية Python للتوأم الرقمي. مُرسل إلى Journal of Undergraduate Research International (JURI, KFUPM) — Ref. JURI-00314-2026-01 — قيد التحكيم.",
+    "proj.hvdc.title": "محاكاة HVDC ثلاثية المحطات: Grid-Forming & BESS",
+    "proj.hvdc.subtitle": "MATLAB/Simulink · Simscape Electrical · Python · Grid-Forming · BESS",
+    "proj.hvdc.contexte": "مشروع بحثي تطبيقي: نمذجة ومحاكاة شبكة VSC-HVDC ثلاثية المحطات لدمج الطاقة الشمسية الضخمة في الشبكات AC الضعيفة بمنطقة الشرق الأوسط.",
+    "proj.hvdc.objectif": "تحليل استقرار التردد في الشبكة باستخدام نماذج القيمة المتوسطة (AVM) في MATLAB/Simulink وتنفيذ استراتيجية تحكم Grid-Forming مبنية على الآلة المتزامنة الافتراضية (VSM) مع دمج نظام BESS على الناقل DC لتوفير دعم التردد والقصور الذاتي الاصطناعي للشبكات AC الضعيفة.",
+    "proj.hvdc.contribution": "بناء نموذج المحاكاة متعدد الفيزياء في MATLAB/Simulink (Simscape Electrical) مع بنية VSC-HVDC ثلاثية المحطات وتحكم VSM. دمج نظام BESS على الناقل DC لدعم التردد وحقن القصور الذاتي الافتراضي. معالجة وتحليل البيانات العابرة (الجهود، الترددات، حالة الشحن) بلغة Python.",
+    "proj.hvdc.resultats": "بنية VSC-HVDC ثلاثية المحطات مُتحقق منها، تحكم Grid-Forming والقصور الذاتي الافتراضي مُنفَّذان، نظام BESS مدمج على الناقل DC. مُرسل إلى Journal of Undergraduate Research International (JURI, KFUPM) — Ref. JURI-00314-2026-01 — قيد التحكيم.",
     "proj.hvdc.statusLabel": "قيد التنفيذ – مُرسل للنشر",
 
     // New Project - Gearbox Fault Detection
