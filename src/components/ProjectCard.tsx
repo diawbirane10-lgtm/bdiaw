@@ -63,7 +63,7 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
             : "badge-status-upcoming"
         }`}>
           {getStatusIcon(project.statusType)}
-          {getStatusLabel(project.statusType)}
+          {getStatusLabel(project.statusType, project.statusLabelKey)}
         </span>
         {project.date && (
           <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
