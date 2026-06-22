@@ -128,7 +128,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.hvdc.contexte": "Projet personnel en cours de développement d'un jumeau numérique interactif pour un réseau HVDC (High Voltage Direct Current) à 3 terminaux.",
     "proj.hvdc.objectif": "Analyser la stabilité du réseau via des modèles à valeur moyenne (AVM) sous MATLAB/Simulink et implémenter une stratégie de contrôle Grid-Forming basée sur la Machine Synchrone Virtuelle (VSM) avec intégration d'un système de stockage par batteries (BESS) sur le bus DC pour fournir un support de fréquence et de l'inertie aux réseaux AC faibles.",
     "proj.hvdc.contribution": "Construction du modèle de simulation multi-physique sous MATLAB/Simulink (Simscape Electrical) avec architecture VSC-HVDC et contrôle VSM. Développement d'un dashboard Python (Streamlit/Plotly) servant d'interface Digital Twin pour le traitement et la visualisation en temps réel des données transitoires (tensions, fréquences, SOC).",
-    "proj.hvdc.resultats": "Architecture VSC-HVDC multi-terminal, contrôle Grid-Forming & inertie virtuelle, intégration BESS sur bus DC, dashboard Digital Twin interactif Python.",
+    "proj.hvdc.resultats": "Architecture VSC-HVDC multi-terminal, contrôle Grid-Forming & inertie virtuelle, intégration BESS sur bus DC, dashboard Digital Twin interactif Python. Soumis au Journal of Undergraduate Research International (JURI, KFUPM) — Ref. JURI-00314-2026-01 — sous évaluation par les pairs.",
+    "proj.hvdc.statusLabel": "En cours – Soumis pour Publication",
 
     // New Project - Gearbox Fault Detection
     "proj.new.title": "Détection de Défauts: Boîte de Vitesses Ferroviaire",
