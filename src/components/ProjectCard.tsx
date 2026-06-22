@@ -35,7 +35,8 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
     }
   };
 
-  const getStatusLabel = (statusType: string) => {
+  const getStatusLabel = (statusType: string, overrideKey?: string) => {
+    if (overrideKey) return t(overrideKey);
     switch (statusType) {
       case "completed": return t("proj.status.completed");
       case "progress": return t("proj.status.progress");
