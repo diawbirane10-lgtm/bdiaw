@@ -6,6 +6,7 @@ export interface ProjectData {
   titleKey: string;
   subtitleKey?: string;
   statusType: "completed" | "progress" | "upcoming";
+  statusLabelKey?: string;
   date?: string;
   contexteKey: string;
   objectifKey: string;
