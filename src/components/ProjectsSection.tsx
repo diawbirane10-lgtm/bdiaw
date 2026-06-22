@@ -30,6 +30,7 @@ const ProjectsSection = () => {
         "AS/RS",
         "CODESYS 3.5 SP22 – Final Platform",
       ],
+      githubLink: "https://github.com/diawbirane10-lgtm/codesys_asrs/tree/main/Project_ASRS_CodeSYS",
     },
     {
       titleKey: "proj.batt.title",
