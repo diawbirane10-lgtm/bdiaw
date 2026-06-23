@@ -185,6 +185,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.pcb.cap.rgb": "LED RGB adressable WS2812B (U4) et bloc Boot/Reset (S1, S2, R1, C6)",
     "proj.pcb.cap.layout": "Rendu PCB 2 couches sous KiCad — routage F.Cu, zone d'antenne dégagée et placement final des composants",
 
+    // Project Radar Patch PCB
+    "proj.radar.title": "Antenne Patch PCB 5,8 GHz: Démo Radar de Surveillance",
+    "proj.radar.subtitle": "MATLAB · Antenna Toolbox · PCB Antenna Designer · RF Design",
+    "proj.radar.contexte": "Projet personnel de conception RF : carte PCB deux couches pour une maquette de radar de surveillance au sol, conçue et simulée entièrement sous MATLAB PCB Antenna Designer.",
+    "proj.radar.objectif": "Concevoir une antenne patch microstrip 5,8 GHz sur substrat FR4, avec port SMA 50 Ω, réseau d'adaptation pi optionnel et plan de masse continu, puis valider le comportement RF par simulation (S11, impédance, diagramme de rayonnement).",
+    "proj.radar.contribution": "Calcul analytique des dimensions du patch (largeur 15,7 mm, longueur 11,7 mm, plan de masse 25,3 × 21,3 mm), modélisation sous MATLAB Antenna Toolbox, simulation de l'impédance et du return loss autour de 5,8 GHz, tracé du diagramme de rayonnement et schéma fonctionnel RF sous Simulink. Export Gerber prévu via gerberWrite.",
+    "proj.radar.resultats": "Dimensions de premier passage validées analytiquement. Pipeline de simulation complet (impédance, S11, pattern) implémenté et prêt pour raffinement sous PCB Antenna Designer. Fichiers Gerber générables depuis l'objet pcbStack MATLAB.",
+
     // Project IMU
     "proj.imu.title": "Chaîne de Télémétrie IMU Embarquée",
     "proj.imu.subtitle": "MATLAB · Traitement du Signal · Systèmes Embarqués",
@@ -497,6 +505,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.pcb.cap.rgb": "WS2812B addressable RGB LED (U4) and Boot/Reset block (S1, S2, R1, C6)",
     "proj.pcb.cap.layout": "2-layer PCB layout in KiCad — F.Cu routing, clear antenna keep-out and final component placement",
 
+    // Project Radar Patch PCB
+    "proj.radar.title": "5.8 GHz Patch PCB Antenna: Ground Radar Demo",
+    "proj.radar.subtitle": "MATLAB · Antenna Toolbox · PCB Antenna Designer · RF Design",
+    "proj.radar.contexte": "Personal RF design project: a two-layer PCB for an educational ground-surveillance radar demo, designed and simulated entirely in MATLAB PCB Antenna Designer.",
+    "proj.radar.objectif": "Design a 5.8 GHz microstrip patch antenna on FR4 substrate with a 50 Ω SMA port, optional pi matching network and continuous ground plane, then validate RF performance through simulation (S11, impedance, radiation pattern).",
+    "proj.radar.contribution": "Analytical first-pass patch dimensioning (width 15.7 mm, length 11.7 mm, ground plane 25.3 × 21.3 mm), MATLAB Antenna Toolbox modelling, impedance and return-loss simulation around 5.8 GHz, radiation pattern plot, and Simulink RF front-end schematic. Gerber export via gerberWrite.",
+    "proj.radar.resultats": "Analytically validated first-pass dimensions. Full simulation pipeline (impedance, S11, pattern) implemented and ready for refinement in PCB Antenna Designer. Gerber files exportable from the MATLAB pcbStack object.",
+
     // Project IMU
     "proj.imu.title": "Embedded IMU Telemetry Chain",
     "proj.imu.subtitle": "MATLAB · Signal Processing · Embedded Systems",
@@ -808,6 +824,14 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.pcb.cap.reg": "اختيار المصدر USB/بطارية (Q1 CJ2301، D1 1N5819W) ومنظم 3.3 فولت RT9080 (U3)",
     "proj.pcb.cap.rgb": "LED RGB قابلة للعنونة WS2812B (U4) وكتلة Boot/Reset (S1, S2, R1, C6)",
     "proj.pcb.cap.layout": "تخطيط PCB بطبقتين على KiCad — توجيه F.Cu، منطقة هوائي خالية ووضع نهائي للمكونات",
+
+    // Project Radar Patch PCB
+    "proj.radar.title": "هوائي Patch PCB بتردد 5.8 GHz: عرض توضيحي لرادار المراقبة",
+    "proj.radar.subtitle": "MATLAB · Antenna Toolbox · PCB Antenna Designer · تصميم RF",
+    "proj.radar.contexte": "مشروع شخصي لتصميم RF: بطاقة PCB ذات طبقتين لنموذج توضيحي لرادار مراقبة أرضي، مصممة ومحاكاة بالكامل باستخدام MATLAB PCB Antenna Designer.",
+    "proj.radar.objectif": "تصميم هوائي patch microstrip بتردد 5.8 GHz على ركيزة FR4 مع منفذ SMA بـ 50 Ω وشبكة مطابقة pi اختيارية وطائرة أرضية مستمرة، ثم التحقق من الأداء RF بالمحاكاة (S11، المعاوقة، نمط الإشعاع).",
+    "proj.radar.contribution": "حساب تحليلي لأبعاد الـ patch (العرض 15.7 مم، الطول 11.7 مم، الطائرة الأرضية 25.3 × 21.3 مم)، نمذجة MATLAB Antenna Toolbox، محاكاة المعاوقة وخسارة الإرجاع حول 5.8 GHz، رسم نمط الإشعاع ومخطط RF وظيفي على Simulink. تصدير Gerber عبر gerberWrite.",
+    "proj.radar.resultats": "أبعاد أولية تم التحقق منها تحليلياً. خط محاكاة كامل (معاوقة، S11، نمط) جاهز للتحسين في PCB Antenna Designer. ملفات Gerber قابلة للتصدير من كائن pcbStack في MATLAB.",
 
     // Project IMU
     "proj.imu.title": "سلسلة القياس عن بعد IMU المدمجة",
