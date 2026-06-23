@@ -90,6 +90,7 @@ const ProjectsSection = () => {
         { src: "/projects/pcb_mars/charger-usb-headers.png", captionKey: "proj.pcb.cap.charger" },
         { src: "/projects/pcb_mars/voltage-regulator.png", captionKey: "proj.pcb.cap.reg" },
         { src: "/projects/pcb_mars/rgb-boot.png", captionKey: "proj.pcb.cap.rgb" },
+        { src: "/projects/pcb_mars/pcb-layout-kicad.png", captionKey: "proj.pcb.cap.layout" },
       ],
     },
     {

@@ -183,6 +183,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.pcb.cap.charger": "Charge LiPo MAX1551 (U2), entrée micro-USB (J1) et headers GPIO (J3/J4)",
     "proj.pcb.cap.reg": "Sélection d'alimentation USB/batterie (Q1 CJ2301, D1 1N5819W) et régulateur 3,3 V RT9080 (U3)",
     "proj.pcb.cap.rgb": "LED RGB adressable WS2812B (U4) et bloc Boot/Reset (S1, S2, R1, C6)",
+    "proj.pcb.cap.layout": "Rendu PCB 2 couches sous KiCad — routage F.Cu, zone d'antenne dégagée et placement final des composants",
 
     // Project IMU
     "proj.imu.title": "Chaîne de Télémétrie IMU Embarquée",
@@ -494,6 +495,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.pcb.cap.charger": "MAX1551 LiPo charger (U2), micro-USB input (J1) and GPIO headers (J3/J4)",
     "proj.pcb.cap.reg": "USB/battery power-path (Q1 CJ2301, D1 1N5819W) and RT9080 3.3 V regulator (U3)",
     "proj.pcb.cap.rgb": "WS2812B addressable RGB LED (U4) and Boot/Reset block (S1, S2, R1, C6)",
+    "proj.pcb.cap.layout": "2-layer PCB layout in KiCad — F.Cu routing, clear antenna keep-out and final component placement",
 
     // Project IMU
     "proj.imu.title": "Embedded IMU Telemetry Chain",
@@ -805,6 +807,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.pcb.cap.charger": "شاحن LiPo MAX1551 (U2)، مدخل micro-USB (J1) و headers GPIO (J3/J4)",
     "proj.pcb.cap.reg": "اختيار المصدر USB/بطارية (Q1 CJ2301، D1 1N5819W) ومنظم 3.3 فولت RT9080 (U3)",
     "proj.pcb.cap.rgb": "LED RGB قابلة للعنونة WS2812B (U4) وكتلة Boot/Reset (S1, S2, R1, C6)",
+    "proj.pcb.cap.layout": "تخطيط PCB بطبقتين على KiCad — توجيه F.Cu، منطقة هوائي خالية ووضع نهائي للمكونات",
 
     // Project IMU
     "proj.imu.title": "سلسلة القياس عن بعد IMU المدمجة",
