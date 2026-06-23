@@ -116,6 +116,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.status.progress": "En cours",
     "proj.status.completed": "Terminé",
     "proj.comingSoon": "Documentation et code source disponibles prochainement",
+    "proj.viewGallery": "Voir schémas & rendu",
     "proj.download": "Télécharger le rapport",
     "proj.note": "Note : Les comptes rendus des TPs d'Électrotechnique, d'Automatique et d'Informatique Industrielle ont été rédigés sur feuille et ne sont pas disponibles au format numérique.",
 
@@ -168,6 +169,20 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.dt.contribution": "Quatre modules interconnectés : modèle d'état du moteur DC résolu par RK45 avec cartographie de rendement, pont en H 4 quadrants avec PWM bipolaire et analyse THD par FFT, régulation cascade PI avec placement de pôles et anti-windup, IHM CustomTkinter avec scénarios, alarmes temps réel et export CSV.",
     "proj.dt.resultats": "Rendement pleine charge à 96,8%. Vitesse régulée à 1200 tr/min avec moins de 2% de dépassement et 0,2 tr/min d'erreur statique. Rejet de charge en moins de 0,5 s, ondulation inférieure à 0,3 A crête-à-crête.",
     "proj.dt.pdfLabel": "Rapport technique complet (PDF)",
+
+    // Project PCB Mars - ESP32-S3 dev board (KiCad)
+    "proj.pcb.title": "project_pcb_mars : Carte ESP32-S3 + LiPo (KiCad)",
+    "proj.pcb.subtitle": "KiCad · ESP32-S3-WROOM-1 · Charge LiPo MAX1551 · LDO 3,3 V · PCB 2 couches",
+    "proj.pcb.contexte": "Projet personnel d'électronique embarquée : conception complète sous KiCad d'une carte de développement compacte (25,6 × 44,5 mm) autour du module ESP32-S3-WROOM-1, alimentée par USB ou batterie LiPo 1S.",
+    "proj.pcb.objectif": "Concevoir une carte autonome programmable par USB natif, avec chargeur LiPo intégré (MAX1551), bascule automatique USB/batterie via MOSFET P-channel et diode Schottky, régulation 3,3 V (RT9080), LED RGB d'état (WS2812B) et boutons Boot/Reset.",
+    "proj.pcb.contribution": "Schéma KiCad organisé en 6 blocs fonctionnels (MCU, charge LiPo, sélection d'alimentation, régulation, USB/headers, IHM). Routage PCB deux couches (F.Cu / B.Cu) avec plan de masse, zone d'antenne dégagée, 26 empreintes, 242 segments de piste, 32 vias, ~487 mm de cuivre. Largeurs différenciées : 0,25 mm signaux / 0,4 mm alimentations.",
+    "proj.pcb.resultats": "Routage 100 % complet (aucun net non routé), ERC/DRC propres, BOM et fichiers prêts à générer (Gerbers, Pick-and-Place). Carte prête pour fabrication prototype.",
+    "proj.pcb.galleryLabel": "Voir schémas KiCad",
+    "proj.pcb.cap.full": "Schéma global KiCad — vue d'ensemble des 6 blocs fonctionnels",
+    "proj.pcb.cap.esp32": "Bloc microcontrôleur ESP32-S3-WROOM-1 (U1) avec mapping GPIO et USB natif",
+    "proj.pcb.cap.charger": "Charge LiPo MAX1551 (U2), entrée micro-USB (J1) et headers GPIO (J3/J4)",
+    "proj.pcb.cap.reg": "Sélection d'alimentation USB/batterie (Q1 CJ2301, D1 1N5819W) et régulateur 3,3 V RT9080 (U3)",
+    "proj.pcb.cap.rgb": "LED RGB adressable WS2812B (U4) et bloc Boot/Reset (S1, S2, R1, C6)",
 
     // Project IMU
     "proj.imu.title": "Chaîne de Télémétrie IMU Embarquée",
@@ -412,6 +427,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.status.progress": "In Progress",
     "proj.status.completed": "Completed",
     "proj.comingSoon": "Documentation and source code coming soon",
+    "proj.viewGallery": "View schematics & render",
     "proj.download": "Download report",
     "proj.note": "Note: Lab reports for Electrical Engineering, Automation and Industrial Computing were handwritten and are not available in digital format.",
 
@@ -464,6 +480,20 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.dt.contribution": "Four interconnected modules: DC motor state-space model solved with RK45 and efficiency mapping, 4-quadrant H-bridge with bipolar PWM and FFT-based THD analysis, cascade PI control with pole placement and anti-windup, CustomTkinter HMI with scenarios, real-time alarms, and CSV export.",
     "proj.dt.resultats": "Full-load efficiency at 96.8%. Regulated speed at 1200 rpm with under 2% overshoot and 0.2 rpm steady-state error. Load rejection in under 0.5s, current ripple under 0.3A peak-to-peak.",
     "proj.dt.pdfLabel": "Full technical report (PDF)",
+
+    // Project PCB Mars - ESP32-S3 dev board (KiCad)
+    "proj.pcb.title": "project_pcb_mars: ESP32-S3 + LiPo Dev Board (KiCad)",
+    "proj.pcb.subtitle": "KiCad · ESP32-S3-WROOM-1 · MAX1551 LiPo Charger · 3.3V LDO · 2-Layer PCB",
+    "proj.pcb.contexte": "Personal embedded electronics project: full KiCad design of a compact development board (25.6 × 44.5 mm) built around the ESP32-S3-WROOM-1 module, powered either from USB or from a single-cell LiPo battery.",
+    "proj.pcb.objectif": "Design a standalone board, programmable through native USB, with integrated LiPo charger (MAX1551), automatic USB/battery switchover via a P-channel MOSFET and Schottky diode, 3.3 V regulation (RT9080), addressable RGB status LED (WS2812B), and Boot/Reset buttons.",
+    "proj.pcb.contribution": "KiCad schematic organized into 6 functional blocks (MCU, LiPo charge, power-path, regulation, USB/headers, user UI). Two-layer PCB routing (F.Cu / B.Cu) with ground plane, clear antenna keep-out, 26 footprints, 242 track segments, 32 vias, ~487 mm of copper. Differentiated widths: 0.25 mm for signals / 0.4 mm for power rails.",
+    "proj.pcb.resultats": "100 % routing completion (no unrouted nets), clean ERC/DRC, BOM and manufacturing files ready to generate (Gerbers, Pick-and-Place). Board ready for prototype fabrication.",
+    "proj.pcb.galleryLabel": "View KiCad schematics",
+    "proj.pcb.cap.full": "Global KiCad schematic — overview of the 6 functional blocks",
+    "proj.pcb.cap.esp32": "ESP32-S3-WROOM-1 microcontroller block (U1) with GPIO mapping and native USB",
+    "proj.pcb.cap.charger": "MAX1551 LiPo charger (U2), micro-USB input (J1) and GPIO headers (J3/J4)",
+    "proj.pcb.cap.reg": "USB/battery power-path (Q1 CJ2301, D1 1N5819W) and RT9080 3.3 V regulator (U3)",
+    "proj.pcb.cap.rgb": "WS2812B addressable RGB LED (U4) and Boot/Reset block (S1, S2, R1, C6)",
 
     // Project IMU
     "proj.imu.title": "Embedded IMU Telemetry Chain",
@@ -708,6 +738,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.status.progress": "قيد التنفيذ",
     "proj.status.completed": "مكتمل",
     "proj.comingSoon": "التوثيق والكود المصدري قريباً",
+    "proj.viewGallery": "عرض المخططات والتصميم",
     "proj.download": "تحميل التقرير",
     "proj.note": "ملاحظة: تقارير مختبر الهندسة الكهربائية والأتمتة والمعلوميات الصناعية كُتبت يدوياً وليست متوفرة بصيغة رقمية.",
 
@@ -760,6 +791,20 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.dt.contribution": "أربع وحدات مترابطة: نموذج فضاء الحالة للمحرك محلول بـ RK45 مع خريطة الكفاءة، جسر H رباعي الأرباع مع PWM ثنائي القطب وتحليل THD بـ FFT، تحكم PI متتالي بوضع الأقطاب ومضاد التشبع، واجهة HMI بـ CustomTkinter مع سيناريوهات وإنذارات فورية وتصدير CSV.",
     "proj.dt.resultats": "كفاءة الحمل الكامل 96.8%. سرعة منظمة عند 1200 دورة/دقيقة مع تجاوز أقل من 2% وخطأ ثابت 0.2 دورة/دقيقة. رفض الحمل في أقل من 0.5 ث، تموج التيار أقل من 0.3 أمبير ذروة إلى ذروة.",
     "proj.dt.pdfLabel": "التقرير التقني الكامل (PDF)",
+
+    // Project PCB Mars - ESP32-S3 dev board (KiCad)
+    "proj.pcb.title": "project_pcb_mars: بطاقة ESP32-S3 + LiPo (KiCad)",
+    "proj.pcb.subtitle": "KiCad · ESP32-S3-WROOM-1 · شاحن MAX1551 · منظم 3.3 فولت · PCB من طبقتين",
+    "proj.pcb.contexte": "مشروع شخصي في الإلكترونيات المدمجة: تصميم كامل بـ KiCad لبطاقة تطوير مدمجة (25.6 × 44.5 مم) حول وحدة ESP32-S3-WROOM-1، تعمل إما عبر USB أو ببطارية LiPo بخلية واحدة.",
+    "proj.pcb.objectif": "تصميم بطاقة مستقلة قابلة للبرمجة عبر USB الأصلي، مع شاحن LiPo مدمج (MAX1551)، تبديل تلقائي بين USB والبطارية عبر MOSFET قناة P وديود Schottky، تنظيم 3.3 فولت (RT9080)، LED RGB عنونة (WS2812B) وأزرار Boot/Reset.",
+    "proj.pcb.contribution": "مخطط KiCad منظم في 6 كتل وظيفية (المتحكم، شحن LiPo، اختيار المصدر، التنظيم، USB/headers، واجهة المستخدم). توجيه PCB من طبقتين (F.Cu / B.Cu) مع مستوى أرضي، منطقة هوائي حرة، 26 بصمة، 242 مقطع مسار، 32 via، حوالي 487 مم من النحاس. عرض متفاوت: 0.25 مم للإشارات / 0.4 مم للطاقة.",
+    "proj.pcb.resultats": "توجيه مكتمل 100% (لا توجد شبكات غير موجَّهة)، ERC/DRC نظيفان، BOM وملفات التصنيع جاهزة للتوليد (Gerbers, Pick-and-Place). البطاقة جاهزة لصنع نموذج أولي.",
+    "proj.pcb.galleryLabel": "عرض مخططات KiCad",
+    "proj.pcb.cap.full": "المخطط العام لـ KiCad — نظرة شاملة على الكتل الوظيفية الست",
+    "proj.pcb.cap.esp32": "كتلة المتحكم ESP32-S3-WROOM-1 (U1) مع تخطيط GPIO و USB الأصلي",
+    "proj.pcb.cap.charger": "شاحن LiPo MAX1551 (U2)، مدخل micro-USB (J1) و headers GPIO (J3/J4)",
+    "proj.pcb.cap.reg": "اختيار المصدر USB/بطارية (Q1 CJ2301، D1 1N5819W) ومنظم 3.3 فولت RT9080 (U3)",
+    "proj.pcb.cap.rgb": "LED RGB قابلة للعنونة WS2812B (U4) وكتلة Boot/Reset (S1, S2, R1, C6)",
 
     // Project IMU
     "proj.imu.title": "سلسلة القياس عن بعد IMU المدمجة",
