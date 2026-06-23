@@ -119,6 +119,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.viewGallery": "Voir schémas & rendu",
     "proj.download": "Télécharger le rapport",
     "proj.note": "Note : Les comptes rendus des TPs d'Électrotechnique, d'Automatique et d'Informatique Industrielle ont été rédigés sur feuille et ne sont pas disponibles au format numérique.",
+    "proj.gallery": "Galerie",
 
     // Lab section
     "lab.label": "Travaux Pratiques",
@@ -192,6 +193,17 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.radar.objectif": "Concevoir une antenne patch microstrip 5,8 GHz sur substrat FR4, avec port SMA 50 Ω, réseau d'adaptation pi optionnel et plan de masse continu, puis valider le comportement RF par simulation (S11, impédance, diagramme de rayonnement).",
     "proj.radar.contribution": "Calcul analytique des dimensions du patch (largeur 15,7 mm, longueur 11,7 mm, plan de masse 25,3 × 21,3 mm), modélisation sous MATLAB Antenna Toolbox, simulation de l'impédance et du return loss autour de 5,8 GHz, tracé du diagramme de rayonnement et schéma fonctionnel RF sous Simulink. Export Gerber prévu via gerberWrite.",
     "proj.radar.resultats": "Dimensions de premier passage validées analytiquement. Pipeline de simulation complet (impédance, S11, pattern) implémenté et prêt pour raffinement sous PCB Antenna Designer. Fichiers Gerber générables depuis l'objet pcbStack MATLAB.",
+    "proj.radar.galleryLabel": "Voir galerie RF",
+    "proj.radar.cap.schema": "Schéma électronique RF simplifié",
+    "proj.radar.alt.schema": "Schéma électronique RF du démonstrateur antenne patch 5,8 GHz",
+    "proj.radar.cap.pcb": "Concept de PCB routé pour antenne patch",
+    "proj.radar.alt.pcb": "Concept PCB routé avec ligne microstrip et antenne patch",
+    "proj.radar.cap.dim": "Dimensions analytiques du patch microstrip",
+    "proj.radar.alt.dim": "Aperçu MATLAB des dimensions de l'antenne patch",
+    "proj.radar.cap.geometry": "Géométrie de l'antenne générée sous MATLAB",
+    "proj.radar.alt.geometry": "Vue 3D de la géométrie de l'antenne patch",
+    "proj.radar.cap.impedance": "Impédance d'entrée autour de 5,8 GHz",
+    "proj.radar.alt.impedance": "Courbe d'impédance d'entrée de l'antenne patch",
 
     // Project IMU
     "proj.imu.title": "Chaîne de Télémétrie IMU Embarquée",
@@ -439,6 +451,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.viewGallery": "View schematics & render",
     "proj.download": "Download report",
     "proj.note": "Note: Lab reports for Electrical Engineering, Automation and Industrial Computing were handwritten and are not available in digital format.",
+    "proj.gallery": "Gallery",
 
     // Lab section
     "lab.label": "Lab Work",
@@ -512,6 +525,17 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.radar.objectif": "Design a 5.8 GHz microstrip patch antenna on FR4 substrate with a 50 Ω SMA port, optional pi matching network and continuous ground plane, then validate RF performance through simulation (S11, impedance, radiation pattern).",
     "proj.radar.contribution": "Analytical first-pass patch dimensioning (width 15.7 mm, length 11.7 mm, ground plane 25.3 × 21.3 mm), MATLAB Antenna Toolbox modelling, impedance and return-loss simulation around 5.8 GHz, radiation pattern plot, and Simulink RF front-end schematic. Gerber export via gerberWrite.",
     "proj.radar.resultats": "Analytically validated first-pass dimensions. Full simulation pipeline (impedance, S11, pattern) implemented and ready for refinement in PCB Antenna Designer. Gerber files exportable from the MATLAB pcbStack object.",
+    "proj.radar.galleryLabel": "View RF gallery",
+    "proj.radar.cap.schema": "Simplified RF electronic schematic",
+    "proj.radar.alt.schema": "RF electronic schematic for the 5.8 GHz patch antenna demonstrator",
+    "proj.radar.cap.pcb": "Routed PCB concept for the patch antenna",
+    "proj.radar.alt.pcb": "Routed PCB concept with microstrip line and patch antenna",
+    "proj.radar.cap.dim": "Analytical microstrip patch dimensions",
+    "proj.radar.alt.dim": "MATLAB preview of the patch antenna dimensions",
+    "proj.radar.cap.geometry": "Antenna geometry generated in MATLAB",
+    "proj.radar.alt.geometry": "3D view of the patch antenna geometry",
+    "proj.radar.cap.impedance": "Input impedance around 5.8 GHz",
+    "proj.radar.alt.impedance": "Input impedance curve of the patch antenna",
 
     // Project IMU
     "proj.imu.title": "Embedded IMU Telemetry Chain",
@@ -759,6 +783,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.viewGallery": "عرض المخططات والتصميم",
     "proj.download": "تحميل التقرير",
     "proj.note": "ملاحظة: تقارير مختبر الهندسة الكهربائية والأتمتة والمعلوميات الصناعية كُتبت يدوياً وليست متوفرة بصيغة رقمية.",
+    "proj.gallery": "المعرض",
 
     // Lab section
     "lab.label": "أعمال تطبيقية",
@@ -832,6 +857,17 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.radar.objectif": "تصميم هوائي patch microstrip بتردد 5.8 GHz على ركيزة FR4 مع منفذ SMA بـ 50 Ω وشبكة مطابقة pi اختيارية وطائرة أرضية مستمرة، ثم التحقق من الأداء RF بالمحاكاة (S11، المعاوقة، نمط الإشعاع).",
     "proj.radar.contribution": "حساب تحليلي لأبعاد الـ patch (العرض 15.7 مم، الطول 11.7 مم، الطائرة الأرضية 25.3 × 21.3 مم)، نمذجة MATLAB Antenna Toolbox، محاكاة المعاوقة وخسارة الإرجاع حول 5.8 GHz، رسم نمط الإشعاع ومخطط RF وظيفي على Simulink. تصدير Gerber عبر gerberWrite.",
     "proj.radar.resultats": "أبعاد أولية تم التحقق منها تحليلياً. خط محاكاة كامل (معاوقة، S11، نمط) جاهز للتحسين في PCB Antenna Designer. ملفات Gerber قابلة للتصدير من كائن pcbStack في MATLAB.",
+    "proj.radar.galleryLabel": "عرض معرض RF",
+    "proj.radar.cap.schema": "مخطط إلكتروني RF مبسط",
+    "proj.radar.alt.schema": "مخطط إلكتروني RF لنموذج هوائي patch بتردد 5.8 GHz",
+    "proj.radar.cap.pcb": "مفهوم PCB موجه لهوائي patch",
+    "proj.radar.alt.pcb": "مفهوم PCB موجه مع خط microstrip وهوائي patch",
+    "proj.radar.cap.dim": "أبعاد تحليلية لهوائي microstrip patch",
+    "proj.radar.alt.dim": "معاينة MATLAB لأبعاد هوائي patch",
+    "proj.radar.cap.geometry": "هندسة الهوائي مولدة في MATLAB",
+    "proj.radar.alt.geometry": "عرض ثلاثي الأبعاد لهندسة هوائي patch",
+    "proj.radar.cap.impedance": "ممانعة الدخل حول 5.8 GHz",
+    "proj.radar.alt.impedance": "منحنى ممانعة الدخل لهوائي patch",
 
     // Project IMU
     "proj.imu.title": "سلسلة القياس عن بعد IMU المدمجة",

@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 
 export interface GalleryItem {
   src: string;
+  altKey?: string;
   captionKey?: string;
 }
 
@@ -224,7 +225,7 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
                     >
                       <img
                         src={item.src}
-                        alt={item.captionKey ? t(item.captionKey) : `Figure ${i + 1}`}
+                        alt={item.altKey ? t(item.altKey) : item.captionKey ? t(item.captionKey) : `Figure ${i + 1}`}
                         loading="lazy"
                         className="w-full h-auto object-contain max-h-[60vh]"
                       />

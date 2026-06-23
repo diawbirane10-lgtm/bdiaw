@@ -83,6 +83,34 @@ const ProjectsSection = () => {
         "RF Design",
         "2-Layer PCB",
       ],
+      galleryLabelKey: "proj.radar.galleryLabel",
+      gallery: [
+        {
+          src: "/projects/airport-radar-pcb/schema-electronique-rf.png",
+          altKey: "proj.radar.alt.schema",
+          captionKey: "proj.radar.cap.schema",
+        },
+        {
+          src: "/projects/airport-radar-pcb/pcb-layout-concept.png",
+          altKey: "proj.radar.alt.pcb",
+          captionKey: "proj.radar.cap.pcb",
+        },
+        {
+          src: "/projects/airport-radar-pcb/patch-dimensions.png",
+          altKey: "proj.radar.alt.dim",
+          captionKey: "proj.radar.cap.dim",
+        },
+        {
+          src: "/projects/airport-radar-pcb/patch-geometry.png",
+          altKey: "proj.radar.alt.geometry",
+          captionKey: "proj.radar.cap.geometry",
+        },
+        {
+          src: "/projects/airport-radar-pcb/input-impedance.png",
+          altKey: "proj.radar.alt.impedance",
+          captionKey: "proj.radar.cap.impedance",
+        },
+      ],
       githubLink: "https://github.com/diawbirane10-lgtm/airport-radar-patch-pcb-matlab",
     },
     {
