@@ -5,6 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // base is /bdiaw/ on GitHub Pages, / everywhere else (Lovable, local)
+  base: mode === "production" && process.env.GITHUB_ACTIONS ? "/bdiaw/" : "/",
   server: {
     host: "::",
     port: 8080,
