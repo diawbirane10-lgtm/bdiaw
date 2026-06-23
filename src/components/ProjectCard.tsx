@@ -1,6 +1,12 @@
-import { Download, ExternalLink, Clock, CheckCircle, Sparkles, Calendar, Github, Rocket } from "lucide-react";
+import { Download, ExternalLink, Clock, CheckCircle, Sparkles, Calendar, Github, Rocket, Images } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+
+export interface GalleryItem {
+  src: string;
+  captionKey?: string;
+}
 
 export interface ProjectData {
   titleKey: string;
@@ -20,6 +26,8 @@ export interface ProjectData {
   liveLabelKey?: string;
   githubLink?: string;
   githubLabelKey?: string;
+  gallery?: GalleryItem[];
+  galleryLabelKey?: string;
   featured?: boolean;
   comingSoon?: boolean;
 }
