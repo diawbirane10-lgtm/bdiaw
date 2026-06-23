@@ -188,6 +188,59 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
           )}
         </div>
       )}
+
+      {project.gallery && project.gallery.length > 0 && (
+        <div className="mt-3 pt-3 border-t border-border/50">
+          <Dialog>
+            <DialogTrigger asChild>
+              <button
+                type="button"
+                className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-primary hover:underline uppercase tracking-wider"
+              >
+                <Images size={13} />
+                {t(project.galleryLabelKey ?? "proj.viewGallery")}
+                <span className="text-muted-foreground/70 normal-case font-normal">
+                  ({project.gallery.length})
+                </span>
+              </button>
+            </DialogTrigger>
+            <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle className="font-body uppercase tracking-wide text-sm">
+                  {t(project.titleKey)} — {t(project.galleryLabelKey ?? "proj.viewGallery")}
+                </DialogTitle>
+              </DialogHeader>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                {project.gallery.map((item, i) => (
+                  <figure
+                    key={i}
+                    className="rounded-lg border border-border/60 bg-secondary/30 overflow-hidden flex flex-col"
+                  >
+                    <a
+                      href={item.src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block bg-white"
+                    >
+                      <img
+                        src={item.src}
+                        alt={item.captionKey ? t(item.captionKey) : `Figure ${i + 1}`}
+                        loading="lazy"
+                        className="w-full h-auto object-contain max-h-[60vh]"
+                      />
+                    </a>
+                    {item.captionKey && (
+                      <figcaption className="px-3 py-2 text-xs font-body text-muted-foreground border-t border-border/40">
+                        {t(item.captionKey)}
+                      </figcaption>
+                    )}
+                  </figure>
+                ))}
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
+      )}
     </article>
   );
 };
