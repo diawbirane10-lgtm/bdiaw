@@ -46,12 +46,11 @@ const Header = () => {
                 {item.label}
               </a>
             ))}
-            <ThemeToggle />
             <LanguageSwitcher />
           </nav>
 
           <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
+            
             <LanguageSwitcher />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
