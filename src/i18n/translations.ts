@@ -186,6 +186,23 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.pcb.cap.rgb": "LED RGB adressable WS2812B (U4) et bloc Boot/Reset (S1, S2, R1, C6)",
     "proj.pcb.cap.layout": "Rendu PCB 2 couches sous KiCad — routage F.Cu, zone d'antenne dégagée et placement final des composants",
 
+    // Project PV 108 kW Grid-Connected
+    "proj.pv108.title": "Système PV 108 kW Raccordé au Réseau — Contrôle dq & MPPT P&O",
+    "proj.pv108.subtitle": "MATLAB/Simulink · Simscape Electrical · Réseaux Électriques · Conversion PV-AC",
+    "proj.pv108.contexte": "Simulation complète d'un système photovoltaïque triphasé de 108 kW raccordé au réseau sous MATLAB/Simulink R2023a : convertisseur boost DC-DC avec MPPT P&O, onduleur VSI deux niveaux, filtre LCL et boucle de contrôle courant en repère dq avec PLL.",
+    "proj.pv108.objectif": "Modéliser la chaîne complète PV→réseau : maximisation de la puissance extraite (MPPT P&O), régulation du bus DC à 600 V, synchronisation réseau par PLL, régulation des courants Id/Iq et test de robustesse par variation d'irradiance.",
+    "proj.pv108.contribution": "Modèle Simulink complet : array PV 108 kW, boost avec MPPT P&O (pas 1e-6 s), onduleur IGBT 2 niveaux, filtre LCL, transformée abc→αβ→dq, régulateur PI tension DC et boucle de courant interne. Test dynamique par échelon d'irradiance (1000 → 400 → 1000 W/m² à t = 0,2 s et t = 0,3 s).",
+    "proj.pv108.resultats": "THD courant injecté : 2,34 % (conforme IEEE 1547 < 5 %). Suivi MPPT validé sous variation d'irradiance. Facteur de puissance unitaire (Iq ≈ 0 A). Tension bus DC maintenue à 600 V malgré les perturbations.",
+    "proj.pv108.galleryLabel": "Voir résultats de simulation",
+    "proj.pv108.cap.schema": "Schéma Simulink complet — PV Array → Boost → Onduleur VSI → Filtre LCL → Réseau",
+    "proj.pv108.cap.pvpower": "Puissance PV (P_PV vs P_MPP), tension V_PV et courant I_PV sous variation d'irradiance",
+    "proj.pv108.cap.gridvi": "Tensions triphasées Va/Vb/Vc (325 V crête, 50 Hz) et courants injectés Ia/Ib/Ic — régime établi après le transitoire initial",
+    "proj.pv108.cap.dclink": "Tension du bus DC : suivi de la référence 600 V avec régulation PI",
+    "proj.pv108.cap.dq": "Courants Id/Iq en repère tournant — Id suit sa référence, Iq ≈ 0 (facteur de puissance unitaire)",
+    "proj.pv108.cap.pf": "Tension Va et courant Ia en p.u. — synchronisation de phase confirme le facteur de puissance unitaire",
+    "proj.pv108.cap.irr": "Profil d'irradiance : échelon 1000 → 400 → 1000 W/m² pour test de robustesse du MPPT",
+    "proj.pv108.cap.thd": "Spectre harmonique du courant injecté — Fondamentale 50 Hz = 212,2 A, THD = 2,34 %",
+
     // Project Radar Patch PCB
     "proj.radar.title": "Antenne Patch PCB 5,8 GHz: Démo Radar de Surveillance",
     "proj.radar.subtitle": "MATLAB · Antenna Toolbox · PCB Antenna Designer · RF Design",
@@ -518,6 +535,23 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.pcb.cap.rgb": "WS2812B addressable RGB LED (U4) and Boot/Reset block (S1, S2, R1, C6)",
     "proj.pcb.cap.layout": "2-layer PCB layout in KiCad — F.Cu routing, clear antenna keep-out and final component placement",
 
+    // Project PV 108 kW Grid-Connected
+    "proj.pv108.title": "108 kW Grid-Connected PV System — dq Control & P&O MPPT",
+    "proj.pv108.subtitle": "MATLAB/Simulink · Simscape Electrical · Grid Systems · PV-AC Conversion",
+    "proj.pv108.contexte": "Full simulation of a 108 kW three-phase grid-connected PV system in MATLAB/Simulink R2023a: DC-DC boost converter with P&O MPPT, two-level VSI inverter, LCL filter, and dq-frame current control loop with PLL.",
+    "proj.pv108.objectif": "Model the complete PV-to-grid chain: maximum power point tracking (P&O), DC bus regulation at 600 V, grid synchronization via PLL, Id/Iq current regulation, and robustness testing under irradiance variation.",
+    "proj.pv108.contribution": "Full Simulink model: 108 kW PV array, boost converter with P&O MPPT (1e-6 s step), 2-level IGBT inverter, LCL filter, abc→αβ→dq transformation, PI DC-bus voltage controller and inner current loop. Dynamic test with irradiance step (1000 → 400 → 1000 W/m² at t = 0.2 s and t = 0.3 s).",
+    "proj.pv108.resultats": "Injected current THD: 2.34% (IEEE 1547 compliant, <5%). MPPT tracking validated under irradiance variation. Unity power factor (Iq ≈ 0 A). DC bus held at 600 V under disturbance.",
+    "proj.pv108.galleryLabel": "View simulation results",
+    "proj.pv108.cap.schema": "Full Simulink diagram — PV Array → Boost → VSI Inverter → LCL Filter → Grid",
+    "proj.pv108.cap.pvpower": "PV power (P_PV vs P_MPP), voltage V_PV and current I_PV under irradiance variation",
+    "proj.pv108.cap.gridvi": "Three-phase grid voltages Va/Vb/Vc (325 V peak, 50 Hz) and injected currents Ia/Ib/Ic — steady state after initial transient",
+    "proj.pv108.cap.dclink": "DC bus voltage: 600 V reference tracking with PI regulation",
+    "proj.pv108.cap.dq": "dq-frame currents Id/Iq — Id tracks its reference, Iq ≈ 0 (unity power factor)",
+    "proj.pv108.cap.pf": "Va and Ia in p.u. — phase synchronization confirms unity power factor",
+    "proj.pv108.cap.irr": "Irradiance profile: 1000 → 400 → 1000 W/m² step for MPPT robustness test",
+    "proj.pv108.cap.thd": "Injected current harmonic spectrum — Fundamental 50 Hz = 212.2 A, THD = 2.34%",
+
     // Project Radar Patch PCB
     "proj.radar.title": "5.8 GHz Patch PCB Antenna: Ground Radar Demo",
     "proj.radar.subtitle": "MATLAB · Antenna Toolbox · PCB Antenna Designer · RF Design",
@@ -849,6 +883,23 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.pcb.cap.reg": "اختيار المصدر USB/بطارية (Q1 CJ2301، D1 1N5819W) ومنظم 3.3 فولت RT9080 (U3)",
     "proj.pcb.cap.rgb": "LED RGB قابلة للعنونة WS2812B (U4) وكتلة Boot/Reset (S1, S2, R1, C6)",
     "proj.pcb.cap.layout": "تخطيط PCB بطبقتين على KiCad — توجيه F.Cu، منطقة هوائي خالية ووضع نهائي للمكونات",
+
+    // Project PV 108 kW Grid-Connected
+    "proj.pv108.title": "نظام PV 108 كيلوواط مرتبط بالشبكة — تحكم dq و MPPT P&O",
+    "proj.pv108.subtitle": "MATLAB/Simulink · Simscape Electrical · شبكات كهربائية · تحويل PV-AC",
+    "proj.pv108.contexte": "محاكاة كاملة لنظام كهروضوئي ثلاثي الأوجه بقدرة 108 كيلوواط مرتبط بالشبكة باستخدام MATLAB/Simulink R2023a : محول رافع DC-DC مع MPPT P&O، عاكس VSI ثنائي المستوى، مرشح LCL وحلقة تحكم في التيار بإطار dq مع PLL.",
+    "proj.pv108.objectif": "نمذجة السلسلة الكاملة من PV إلى الشبكة : تتبع نقطة أقصى قدرة (MPPT P&O)، تنظيم جهد الحافلة DC عند 600 فولت، مزامنة الشبكة عبر PLL، تنظيم تيارات Id/Iq واختبار المتانة بتغيير الإشعاع.",
+    "proj.pv108.contribution": "نموذج Simulink كامل : مصفوفة PV 108 كيلوواط، محول رافع مع MPPT P&O (خطوة 1e-6 ث)، عاكس IGBT ثنائي المستوى، مرشح LCL، تحويل abc→αβ→dq، منظم PI لجهد الحافلة DC وحلقة تيار داخلية. اختبار ديناميكي بقفزة إشعاع (1000 → 400 → 1000 W/m² عند t=0.2 ث وt=0.3 ث).",
+    "proj.pv108.resultats": "THD للتيار المحقون : 2.34% (متوافق مع IEEE 1547، أقل من 5%). تتبع MPPT موثق تحت تغيرات الإشعاع. معامل قدرة وحدوي (Iq ≈ 0 A). الحافلة DC محافظة على 600 فولت رغم الاضطرابات.",
+    "proj.pv108.galleryLabel": "عرض نتائج المحاكاة",
+    "proj.pv108.cap.schema": "مخطط Simulink الكامل — PV Array → Boost → عاكس VSI → مرشح LCL → الشبكة",
+    "proj.pv108.cap.pvpower": "قدرة PV (P_PV مقابل P_MPP)، الجهد V_PV والتيار I_PV تحت تغير الإشعاع",
+    "proj.pv108.cap.gridvi": "جهود الشبكة ثلاثية الأوجه Va/Vb/Vc (325 فولت ذروة، 50 هرتز) والتيارات المحقونة Ia/Ib/Ic — حالة مستقرة بعد العابر الأولي",
+    "proj.pv108.cap.dclink": "جهد الحافلة DC : تتبع المرجع 600 فولت بتنظيم PI",
+    "proj.pv108.cap.dq": "تيارات Id/Iq في الإطار الدوار — Id يتبع مرجعه، Iq ≈ 0 (معامل قدرة وحدوي)",
+    "proj.pv108.cap.pf": "Va وIa بالوحدة النسبية — مزامنة الطور تؤكد معامل القدرة الوحدوي",
+    "proj.pv108.cap.irr": "ملف الإشعاع : قفزة 1000 → 400 → 1000 W/m² لاختبار متانة MPPT",
+    "proj.pv108.cap.thd": "طيف التوافقيات للتيار المحقون — الأساسي 50 هرتز = 212.2 A، THD = 2.34%",
 
     // Project Radar Patch PCB
     "proj.radar.title": "هوائي Patch PCB بتردد 5.8 GHz: عرض توضيحي لرادار المراقبة",
