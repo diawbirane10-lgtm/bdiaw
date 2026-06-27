@@ -204,6 +204,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.b747.cap.nl.schema": "Nonlinear_Model.slx — dynamiques non-linéaires couplées, 4 surfaces (δe, δp, δa, δr), Variable-Step T = 500 s",
     "proj.b747.cap.nl.heading": "Cap non-linéaire : ψ → 90° avec dépassement ~14 % (1,78 rad), stabilisation à ~300 s — couplages non-linéaires visibles",
     "proj.b747.cap.nl.alt": "Altitude non-linéaire : Z monte de 12 200 m à ~13 700 m (+1500 m), convergence stable à t ≈ 200 s",
+    "proj.b747.gallery.reference": "— Référence Aéronef",
+    "proj.b747.cap.real": "Boeing 747-400 de Royal Air Maroc — l'appareil réel modélisé dans ce projet",
+    "proj.b747.scriptLabel": "Télécharger le script MATLAB (.m)",
 
     // Project PV 108 kW Grid-Connected
     "proj.pv108.title": "Système PV 108 kW Raccordé au Réseau — Contrôle dq & MPPT P&O",
