@@ -45,7 +45,15 @@ const ProjectsSection = () => {
             { src: "/projects/b747-flight-controller/nonlinear-alt.png", captionKey: "proj.b747.cap.nl.alt" },
           ],
         },
+        {
+          titleKey: "proj.b747.gallery.reference",
+          items: [
+            { src: "/projects/b747-flight-controller/real-b747.jpg", captionKey: "proj.b747.cap.real" },
+          ],
+        },
       ],
+      pdfLink: "/documents/flight_controller_script.m",
+      pdfLabelKey: "proj.b747.scriptLabel",
       githubLink: "https://github.com/diawbirane10-lgtm/b747-flight-controller",
     },
     {
