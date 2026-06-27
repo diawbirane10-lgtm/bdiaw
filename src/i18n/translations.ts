@@ -575,6 +575,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.b747.cap.nl.schema": "Nonlinear_Model.slx — coupled nonlinear dynamics, 4 control surfaces (δe, δp, δa, δr), Variable-Step T = 500 s",
     "proj.b747.cap.nl.heading": "Nonlinear heading: ψ → 90° with ~14% overshoot (1.78 rad), settling at ~300 s — nonlinear coupling effects visible",
     "proj.b747.cap.nl.alt": "Nonlinear altitude: Z climbs from 12,200 m to ~13,700 m (+1500 m), stable convergence at t ≈ 200 s",
+    "proj.b747.gallery.reference": "— Aircraft Reference",
+    "proj.b747.cap.real": "Royal Air Maroc Boeing 747-400 — the real aircraft modeled in this project",
+    "proj.b747.scriptLabel": "Download MATLAB script (.m)",
 
     // Project PV 108 kW Grid-Connected
     "proj.pv108.title": "108 kW Grid-Connected PV System — dq Control & P&O MPPT",
