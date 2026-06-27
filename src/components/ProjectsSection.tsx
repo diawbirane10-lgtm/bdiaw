@@ -7,6 +7,48 @@ const ProjectsSection = () => {
 
   const projects: ProjectData[] = [
     {
+      titleKey: "proj.b747.title",
+      subtitleKey: "proj.b747.subtitle",
+      statusType: "completed",
+      date: "June 2026",
+      contexteKey: "proj.b747.contexte",
+      objectifKey: "proj.b747.objectif",
+      contributionKey: "proj.b747.contribution",
+      resultatsKey: "proj.b747.resultats",
+      outils: [
+        "MATLAB/Simulink",
+        "Control System Toolbox",
+        "State Space",
+        "PID Control",
+        "Flight Dynamics",
+        "Linearization",
+        "Nonlinear Simulation",
+        "Boeing 747",
+      ],
+      galleryLabelKey: "proj.b747.galleryLabel",
+      subGalleries: [
+        {
+          titleKey: "proj.b747.gallery.linear",
+          items: [
+            { src: "/projects/b747-flight-controller/linear-schema.png", captionKey: "proj.b747.cap.linear.schema" },
+            { src: "/projects/b747-flight-controller/linear-psi.png", captionKey: "proj.b747.cap.linear.psi" },
+            { src: "/projects/b747-flight-controller/linear-alt.png", captionKey: "proj.b747.cap.linear.alt" },
+            { src: "/projects/b747-flight-controller/linear-lat.png", captionKey: "proj.b747.cap.linear.lat" },
+            { src: "/projects/b747-flight-controller/linear-long.png", captionKey: "proj.b747.cap.linear.long" },
+          ],
+        },
+        {
+          titleKey: "proj.b747.gallery.nonlinear",
+          items: [
+            { src: "/projects/b747-flight-controller/nonlinear-schema.png", captionKey: "proj.b747.cap.nl.schema" },
+            { src: "/projects/b747-flight-controller/nonlinear-heading.png", captionKey: "proj.b747.cap.nl.heading" },
+            { src: "/projects/b747-flight-controller/nonlinear-alt.png", captionKey: "proj.b747.cap.nl.alt" },
+          ],
+        },
+      ],
+      githubLink: "https://github.com/diawbirane10-lgtm/b747-flight-controller",
+    },
+    {
       titleKey: "proj.asrs.title",
       subtitleKey: "proj.asrs.subtitle",
       statusType: "completed",

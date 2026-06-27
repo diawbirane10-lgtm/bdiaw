@@ -9,6 +9,11 @@ export interface GalleryItem {
   captionKey?: string;
 }
 
+export interface SubGallery {
+  titleKey: string;
+  items: GalleryItem[];
+}
+
 export interface ProjectData {
   titleKey: string;
   subtitleKey?: string;
@@ -29,6 +34,7 @@ export interface ProjectData {
   githubLabelKey?: string;
   gallery?: GalleryItem[];
   galleryLabelKey?: string;
+  subGalleries?: SubGallery[];
   featured?: boolean;
   comingSoon?: boolean;
 }
@@ -161,58 +167,76 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
         </div>
       )}
 
-      {(project.gallery && project.gallery.length > 0) || project.liveLink || project.githubLink ? (
+      {(project.gallery && project.gallery.length > 0) || (project.subGalleries && project.subGalleries.length > 0) || project.liveLink || project.githubLink ? (
         <div className="mt-3 pt-3 border-t border-border/50 flex flex-wrap gap-3 items-center">
-          {project.gallery && project.gallery.length > 0 && (
-            <Dialog>
-              <DialogTrigger asChild>
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-primary hover:underline uppercase tracking-wider"
-                >
-                  <Images size={13} />
-                  {t(project.galleryLabelKey ?? "proj.viewGallery")}
-                  <span className="text-muted-foreground/70 normal-case font-normal">
-                    ({project.gallery.length})
-                  </span>
-                </button>
-              </DialogTrigger>
-              <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
-                <DialogHeader>
-                  <DialogTitle className="font-body uppercase tracking-wide text-sm">
-                    {t(project.titleKey)} — {t(project.galleryLabelKey ?? "proj.viewGallery")}
-                  </DialogTitle>
-                </DialogHeader>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-                  {project.gallery.map((item, i) => (
-                    <figure
-                      key={i}
-                      className="rounded-lg border border-border/60 bg-secondary/30 overflow-hidden flex flex-col"
-                    >
-                      <a
-                        href={item.src}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block bg-white"
-                      >
-                        <img
-                          src={item.src}
-                          alt={item.altKey ? t(item.altKey) : item.captionKey ? t(item.captionKey) : `Figure ${i + 1}`}
-                          loading="lazy"
-                          className="w-full h-auto object-contain max-h-[60vh]"
-                        />
-                      </a>
-                      {item.captionKey && (
-                        <figcaption className="px-3 py-2 text-xs font-body text-muted-foreground border-t border-border/40">
-                          {t(item.captionKey)}
-                        </figcaption>
-                      )}
-                    </figure>
-                  ))}
-                </div>
-              </DialogContent>
-            </Dialog>
-          )}
+          {((project.gallery && project.gallery.length > 0) || (project.subGalleries && project.subGalleries.length > 0)) && (() => {
+            const totalCount = project.subGalleries
+              ? project.subGalleries.reduce((acc, sg) => acc + sg.items.length, 0)
+              : (project.gallery?.length ?? 0);
+            return (
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-primary hover:underline uppercase tracking-wider"
+                  >
+                    <Images size={13} />
+                    {t(project.galleryLabelKey ?? "proj.viewGallery")}
+                    <span className="text-muted-foreground/70 normal-case font-normal">
+                      ({totalCount})
+                    </span>
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="font-body uppercase tracking-wide text-sm">
+                      {t(project.titleKey)} — {t(project.galleryLabelKey ?? "proj.viewGallery")}
+                    </DialogTitle>
+                  </DialogHeader>
+                  {project.subGalleries ? (
+                    <div className="space-y-8 mt-4">
+                      {project.subGalleries.map((sg, si) => (
+                        <div key={si}>
+                          <h3 className="text-xs font-body font-bold uppercase tracking-widest text-primary mb-3 pb-1.5 border-b border-primary/30">
+                            {t(sg.titleKey)}
+                          </h3>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {sg.items.map((item, i) => (
+                              <figure key={i} className="rounded-lg border border-border/60 bg-secondary/30 overflow-hidden flex flex-col">
+                                <a href={item.src} target="_blank" rel="noopener noreferrer" className="block bg-white">
+                                  <img src={item.src} alt={item.altKey ? t(item.altKey) : item.captionKey ? t(item.captionKey) : `Figure ${i + 1}`} loading="lazy" className="w-full h-auto object-contain max-h-[60vh]" />
+                                </a>
+                                {item.captionKey && (
+                                  <figcaption className="px-3 py-2 text-xs font-body text-muted-foreground border-t border-border/40">
+                                    {t(item.captionKey)}
+                                  </figcaption>
+                                )}
+                              </figure>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                      {project.gallery?.map((item, i) => (
+                        <figure key={i} className="rounded-lg border border-border/60 bg-secondary/30 overflow-hidden flex flex-col">
+                          <a href={item.src} target="_blank" rel="noopener noreferrer" className="block bg-white">
+                            <img src={item.src} alt={item.altKey ? t(item.altKey) : item.captionKey ? t(item.captionKey) : `Figure ${i + 1}`} loading="lazy" className="w-full h-auto object-contain max-h-[60vh]" />
+                          </a>
+                          {item.captionKey && (
+                            <figcaption className="px-3 py-2 text-xs font-body text-muted-foreground border-t border-border/40">
+                              {t(item.captionKey)}
+                            </figcaption>
+                          )}
+                        </figure>
+                      ))}
+                    </div>
+                  )}
+                </DialogContent>
+              </Dialog>
+            );
+          })()}
           {project.liveLink && (
             <a
               href={project.liveLink}

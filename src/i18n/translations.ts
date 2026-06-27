@@ -186,6 +186,25 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.pcb.cap.rgb": "LED RGB adressable WS2812B (U4) et bloc Boot/Reset (S1, S2, R1, C6)",
     "proj.pcb.cap.layout": "Rendu PCB 2 couches sous KiCad — routage F.Cu, zone d'antenne dégagée et placement final des composants",
 
+    // Project Boeing 747 Flight Controller
+    "proj.b747.title": "Contrôle de Vol Boeing 747 — Modèles Linéaire & Non-Linéaire",
+    "proj.b747.subtitle": "MATLAB/Simulink · Dynamique de Vol · Espace d'État · PID",
+    "proj.b747.contexte": "Conception d'un contrôleur de vol complet pour le Boeing 747 à Mach 0,8 (Uo = 235,9 m/s, h ≈ 12 200 m). Dynamiques décomposées en axe longitudinal (altitude : élévateur + manette) et axe latéral (cap : aileron + gouvernail).",
+    "proj.b747.objectif": "Modéliser les dynamiques réelles du B747 en espace d'état, synthétiser les correcteurs PID pour le suivi de cap (90°) et d'altitude, et valider sur modèle linéaire puis non-linéaire couplé.",
+    "proj.b747.contribution": "Identification des paramètres aérodynamiques réels (masse 288 t, envergure 59,6 m, S = 511 m², dérivées de stabilité), matrices A/B/C/D pour les deux axes, synthèse PID Simulink. Double validation : linéaire (T = 300 s) puis non-linéaire couplé (Variable-Step, T = 500 s).",
+    "proj.b747.resultats": "Modèle linéaire : cap 0→90° en ~150 s, altitude +1500 m en ~100 s sans dépassement. Non-linéaire : dépassement cap ~14 %, stabilisation ~300 s. Convergence stable confirmée sur les deux modèles.",
+    "proj.b747.galleryLabel": "Voir galerie",
+    "proj.b747.gallery.linear": "— Modèle Linéaire",
+    "proj.b747.gallery.nonlinear": "— Modèle Non-Linéaire",
+    "proj.b747.cap.linear.schema": "Linear_Model.slx — Heading Control System (haut) et Altitude Control System (bas), blocs SS_lat / SS_long",
+    "proj.b747.cap.linear.psi": "Suivi de cap (linéaire) : ψ atteint 90° (1,57 rad) en ~150 s avec légère oscillation amortie",
+    "proj.b747.cap.linear.alt": "Suivi d'altitude (linéaire) : h atteint ~1500 m en ~100 s — réponse premier ordre sans dépassement",
+    "proj.b747.cap.linear.lat": "États latéraux linéaires (v, p, r, φ) — tous revenant à zéro après la manœuvre de virage",
+    "proj.b747.cap.linear.long": "États longitudinaux linéaires (u, w, q, θ) — stabilisation propre en régime permanent",
+    "proj.b747.cap.nl.schema": "Nonlinear_Model.slx — dynamiques non-linéaires couplées, 4 surfaces (δe, δp, δa, δr), Variable-Step T = 500 s",
+    "proj.b747.cap.nl.heading": "Cap non-linéaire : ψ → 90° avec dépassement ~14 % (1,78 rad), stabilisation à ~300 s — couplages non-linéaires visibles",
+    "proj.b747.cap.nl.alt": "Altitude non-linéaire : Z monte de 12 200 m à ~13 700 m (+1500 m), convergence stable à t ≈ 200 s",
+
     // Project PV 108 kW Grid-Connected
     "proj.pv108.title": "Système PV 108 kW Raccordé au Réseau — Contrôle dq & MPPT P&O",
     "proj.pv108.subtitle": "MATLAB/Simulink · Simscape Electrical · Réseaux Électriques · Conversion PV-AC",
@@ -535,6 +554,25 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.pcb.cap.rgb": "WS2812B addressable RGB LED (U4) and Boot/Reset block (S1, S2, R1, C6)",
     "proj.pcb.cap.layout": "2-layer PCB layout in KiCad — F.Cu routing, clear antenna keep-out and final component placement",
 
+    // Project Boeing 747 Flight Controller
+    "proj.b747.title": "Boeing 747 Flight Controller — Linear & Nonlinear Models",
+    "proj.b747.subtitle": "MATLAB/Simulink · Flight Dynamics · State Space · PID Control",
+    "proj.b747.contexte": "Complete flight controller design for the Boeing 747 at Mach 0.8 (Uo = 235.9 m/s, h ≈ 12,200 m). Dynamics decoupled into longitudinal axis (altitude: elevator + throttle) and lateral axis (heading: aileron + rudder).",
+    "proj.b747.objectif": "Model real B747 aerodynamic dynamics in state-space form, synthesize PID controllers for heading (90°) and altitude tracking, and validate on both linearized and coupled nonlinear models.",
+    "proj.b747.contribution": "Real B747 parameter identification (mass 288 t, span 59.6 m, S = 511 m², stability derivatives), A/B/C/D matrix construction for both axes, PID synthesis in Simulink. Dual validation: linear model (T = 300 s) then coupled nonlinear (Variable-Step, T = 500 s).",
+    "proj.b747.resultats": "Linear model: heading 0→90° in ~150 s, altitude +1500 m in ~100 s with no overshoot. Nonlinear: ~14% heading overshoot, settling at ~300 s. Stable convergence confirmed on both models.",
+    "proj.b747.galleryLabel": "View gallery",
+    "proj.b747.gallery.linear": "— Linear Model",
+    "proj.b747.gallery.nonlinear": "— Nonlinear Model",
+    "proj.b747.cap.linear.schema": "Linear_Model.slx — Heading Control System (top) and Altitude Control System (bottom), SS_lat / SS_long state-space blocks",
+    "proj.b747.cap.linear.psi": "Heading tracking (linear): ψ reaches 90° (1.57 rad) in ~150 s — well-damped oscillation",
+    "proj.b747.cap.linear.alt": "Altitude tracking (linear): h reaches ~1500 m in ~100 s — first-order response, no overshoot",
+    "proj.b747.cap.linear.lat": "Linear lateral states (v, p, r, φ) — all returning to zero after the turning maneuver",
+    "proj.b747.cap.linear.long": "Linear longitudinal states (u, w, q, θ) — clean stabilization at steady state",
+    "proj.b747.cap.nl.schema": "Nonlinear_Model.slx — coupled nonlinear dynamics, 4 control surfaces (δe, δp, δa, δr), Variable-Step T = 500 s",
+    "proj.b747.cap.nl.heading": "Nonlinear heading: ψ → 90° with ~14% overshoot (1.78 rad), settling at ~300 s — nonlinear coupling effects visible",
+    "proj.b747.cap.nl.alt": "Nonlinear altitude: Z climbs from 12,200 m to ~13,700 m (+1500 m), stable convergence at t ≈ 200 s",
+
     // Project PV 108 kW Grid-Connected
     "proj.pv108.title": "108 kW Grid-Connected PV System — dq Control & P&O MPPT",
     "proj.pv108.subtitle": "MATLAB/Simulink · Simscape Electrical · Grid Systems · PV-AC Conversion",
@@ -883,6 +921,25 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.pcb.cap.reg": "اختيار المصدر USB/بطارية (Q1 CJ2301، D1 1N5819W) ومنظم 3.3 فولت RT9080 (U3)",
     "proj.pcb.cap.rgb": "LED RGB قابلة للعنونة WS2812B (U4) وكتلة Boot/Reset (S1, S2, R1, C6)",
     "proj.pcb.cap.layout": "تخطيط PCB بطبقتين على KiCad — توجيه F.Cu، منطقة هوائي خالية ووضع نهائي للمكونات",
+
+    // Project Boeing 747 Flight Controller
+    "proj.b747.title": "نظام التحكم في طيران بوينغ 747 — نماذج خطية وغير خطية",
+    "proj.b747.subtitle": "MATLAB/Simulink · ديناميكيات الطيران · فضاء الحالة · PID",
+    "proj.b747.contexte": "تصميم نظام تحكم كامل في طيران Boeing 747 عند ماخ 0.8 (Uo = 235.9 م/ث، h ≈ 12200 م). يتم فصل الديناميكيات إلى محور طولي (التحكم في الارتفاع: مرفاع + عارضة دفع) ومحور جانبي (التحكم في الاتجاه: مقاود دحرجة + مقاود انعراج).",
+    "proj.b747.objectif": "نمذجة ديناميكيات B747 الحقيقية في فضاء الحالة، تصميم منظمات PID لتتبع الاتجاه (90°) والارتفاع، والتحقق على نموذج خطي ثم نموذج غير خطي مقترن.",
+    "proj.b747.contribution": "تحديد المعاملات الديناميكية الحقيقية للـ B747 (كتلة 288 طن، مسافة بين الجناحين 59.6 م، S = 511 م²، مشتقات الاستقرار)، بناء مصفوفات A/B/C/D لكلا المحورين، تصميم PID في Simulink. تحقق مزدوج: نموذج خطي (T = 300 ث) ثم غير خطي مقترن (Variable-Step، T = 500 ث).",
+    "proj.b747.resultats": "النموذج الخطي: اتجاه 0→90° في ~150 ث، ارتفاع +1500 م في ~100 ث بدون تجاوز. غير الخطي: تجاوز الاتجاه ~14%، استقرار ~300 ث. تقارب مستقر مؤكد على كلا النموذجين.",
+    "proj.b747.galleryLabel": "عرض المعرض",
+    "proj.b747.gallery.linear": "— النموذج الخطي",
+    "proj.b747.gallery.nonlinear": "— النموذج غير الخطي",
+    "proj.b747.cap.linear.schema": "Linear_Model.slx — نظام التحكم في الاتجاه (أعلى) ونظام التحكم في الارتفاع (أسفل)، كتل SS_lat / SS_long",
+    "proj.b747.cap.linear.psi": "تتبع الاتجاه (خطي): ψ يصل إلى 90° (1.57 راد) في ~150 ث مع تذبذب مخمود",
+    "proj.b747.cap.linear.alt": "تتبع الارتفاع (خطي): h يصل ~1500 م في ~100 ث — استجابة من الدرجة الأولى بدون تجاوز",
+    "proj.b747.cap.linear.lat": "الحالات الجانبية الخطية (v, p, r, φ) — جميعها تعود إلى الصفر بعد المناورة",
+    "proj.b747.cap.linear.long": "الحالات الطولية الخطية (u, w, q, θ) — استقرار منتظم في الحالة المستقرة",
+    "proj.b747.cap.nl.schema": "Nonlinear_Model.slx — ديناميكيات غير خطية مقترنة، 4 أسطح تحكم، Variable-Step T = 500 ث",
+    "proj.b747.cap.nl.heading": "الاتجاه غير الخطي: ψ → 90° مع تجاوز ~14% (1.78 راد)، استقرار عند ~300 ث — تأثيرات الاقتران غير الخطي واضحة",
+    "proj.b747.cap.nl.alt": "الارتفاع غير الخطي: Z يرتفع من 12200 م إلى ~13700 م (+1500 م)، تقارب مستقر عند t ≈ 200 ث",
 
     // Project PV 108 kW Grid-Connected
     "proj.pv108.title": "نظام PV 108 كيلوواط مرتبط بالشبكة — تحكم dq و MPPT P&O",
