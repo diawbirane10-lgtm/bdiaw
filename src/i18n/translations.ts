@@ -946,6 +946,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.b747.cap.nl.schema": "Nonlinear_Model.slx — ديناميكيات غير خطية مقترنة، 4 أسطح تحكم، Variable-Step T = 500 ث",
     "proj.b747.cap.nl.heading": "الاتجاه غير الخطي: ψ → 90° مع تجاوز ~14% (1.78 راد)، استقرار عند ~300 ث — تأثيرات الاقتران غير الخطي واضحة",
     "proj.b747.cap.nl.alt": "الارتفاع غير الخطي: Z يرتفع من 12200 م إلى ~13700 م (+1500 م)، تقارب مستقر عند t ≈ 200 ث",
+    "proj.b747.gallery.reference": "— الطائرة المرجعية",
+    "proj.b747.cap.real": "Boeing 747-400 من الخطوط الملكية المغربية — الطائرة الحقيقية المنمذجة في هذا المشروع",
+    "proj.b747.scriptLabel": "تحميل سكربت MATLAB (.m)",
 
     // Project PV 108 kW Grid-Connected
     "proj.pv108.title": "نظام PV 108 كيلوواط مرتبط بالشبكة — تحكم dq و MPPT P&O",
