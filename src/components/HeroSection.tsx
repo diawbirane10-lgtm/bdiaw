@@ -113,9 +113,6 @@ const HeroSection = () => {
               <p className="text-sm font-body text-muted-foreground leading-relaxed">
                 {t("hero.about1")}
               </p>
-              <p className="text-sm font-body text-muted-foreground leading-relaxed">
-                {t("hero.about2")}
-              </p>
             </div>
           </div>
         </motion.div>
