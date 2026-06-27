@@ -189,7 +189,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Project PV 108 kW Grid-Connected
     "proj.pv108.title": "Système PV 108 kW Raccordé au Réseau — Contrôle dq & MPPT P&O",
     "proj.pv108.subtitle": "MATLAB/Simulink · Simscape Electrical · Réseaux Électriques · Conversion PV-AC",
-    "proj.pv108.contexte": "Simulation complète d'un système photovoltaïque triphasé de 108 kW raccordé au réseau sous MATLAB/Simulink R2023a : convertisseur boost DC-DC avec MPPT P&O, onduleur VSI deux niveaux, filtre LCL et boucle de contrôle courant en repère dq avec PLL.",
+    "proj.pv108.contexte": "Simulation complète d'un système photovoltaïque triphasé de 108 kW raccordé au réseau sous MATLAB/Simulink R2024a : convertisseur boost DC-DC avec MPPT P&O, onduleur VSI deux niveaux, filtre LCL et boucle de contrôle courant en repère dq avec PLL.",
     "proj.pv108.objectif": "Modéliser la chaîne complète PV→réseau : maximisation de la puissance extraite (MPPT P&O), régulation du bus DC à 600 V, synchronisation réseau par PLL, régulation des courants Id/Iq et test de robustesse par variation d'irradiance.",
     "proj.pv108.contribution": "Modèle Simulink complet : array PV 108 kW, boost avec MPPT P&O (pas 1e-6 s), onduleur IGBT 2 niveaux, filtre LCL, transformée abc→αβ→dq, régulateur PI tension DC et boucle de courant interne. Test dynamique par échelon d'irradiance (1000 → 400 → 1000 W/m² à t = 0,2 s et t = 0,3 s).",
     "proj.pv108.resultats": "THD courant injecté : 2,34 % (conforme IEEE 1547 < 5 %). Suivi MPPT validé sous variation d'irradiance. Facteur de puissance unitaire (Iq ≈ 0 A). Tension bus DC maintenue à 600 V malgré les perturbations.",
@@ -538,7 +538,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Project PV 108 kW Grid-Connected
     "proj.pv108.title": "108 kW Grid-Connected PV System — dq Control & P&O MPPT",
     "proj.pv108.subtitle": "MATLAB/Simulink · Simscape Electrical · Grid Systems · PV-AC Conversion",
-    "proj.pv108.contexte": "Full simulation of a 108 kW three-phase grid-connected PV system in MATLAB/Simulink R2023a: DC-DC boost converter with P&O MPPT, two-level VSI inverter, LCL filter, and dq-frame current control loop with PLL.",
+    "proj.pv108.contexte": "Full simulation of a 108 kW three-phase grid-connected PV system in MATLAB/Simulink R2024a: DC-DC boost converter with P&O MPPT, two-level VSI inverter, LCL filter, and dq-frame current control loop with PLL.",
     "proj.pv108.objectif": "Model the complete PV-to-grid chain: maximum power point tracking (P&O), DC bus regulation at 600 V, grid synchronization via PLL, Id/Iq current regulation, and robustness testing under irradiance variation.",
     "proj.pv108.contribution": "Full Simulink model: 108 kW PV array, boost converter with P&O MPPT (1e-6 s step), 2-level IGBT inverter, LCL filter, abc→αβ→dq transformation, PI DC-bus voltage controller and inner current loop. Dynamic test with irradiance step (1000 → 400 → 1000 W/m² at t = 0.2 s and t = 0.3 s).",
     "proj.pv108.resultats": "Injected current THD: 2.34% (IEEE 1547 compliant, <5%). MPPT tracking validated under irradiance variation. Unity power factor (Iq ≈ 0 A). DC bus held at 600 V under disturbance.",
@@ -887,7 +887,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Project PV 108 kW Grid-Connected
     "proj.pv108.title": "نظام PV 108 كيلوواط مرتبط بالشبكة — تحكم dq و MPPT P&O",
     "proj.pv108.subtitle": "MATLAB/Simulink · Simscape Electrical · شبكات كهربائية · تحويل PV-AC",
-    "proj.pv108.contexte": "محاكاة كاملة لنظام كهروضوئي ثلاثي الأوجه بقدرة 108 كيلوواط مرتبط بالشبكة باستخدام MATLAB/Simulink R2023a : محول رافع DC-DC مع MPPT P&O، عاكس VSI ثنائي المستوى، مرشح LCL وحلقة تحكم في التيار بإطار dq مع PLL.",
+    "proj.pv108.contexte": "محاكاة كاملة لنظام كهروضوئي ثلاثي الأوجه بقدرة 108 كيلوواط مرتبط بالشبكة باستخدام MATLAB/Simulink R2024a : محول رافع DC-DC مع MPPT P&O، عاكس VSI ثنائي المستوى، مرشح LCL وحلقة تحكم في التيار بإطار dq مع PLL.",
     "proj.pv108.objectif": "نمذجة السلسلة الكاملة من PV إلى الشبكة : تتبع نقطة أقصى قدرة (MPPT P&O)، تنظيم جهد الحافلة DC عند 600 فولت، مزامنة الشبكة عبر PLL، تنظيم تيارات Id/Iq واختبار المتانة بتغيير الإشعاع.",
     "proj.pv108.contribution": "نموذج Simulink كامل : مصفوفة PV 108 كيلوواط، محول رافع مع MPPT P&O (خطوة 1e-6 ث)، عاكس IGBT ثنائي المستوى، مرشح LCL، تحويل abc→αβ→dq، منظم PI لجهد الحافلة DC وحلقة تيار داخلية. اختبار ديناميكي بقفزة إشعاع (1000 → 400 → 1000 W/m² عند t=0.2 ث وt=0.3 ث).",
     "proj.pv108.resultats": "THD للتيار المحقون : 2.34% (متوافق مع IEEE 1547، أقل من 5%). تتبع MPPT موثق تحت تغيرات الإشعاع. معامل قدرة وحدوي (Iq ≈ 0 A). الحافلة DC محافظة على 600 فولت رغم الاضطرابات.",
