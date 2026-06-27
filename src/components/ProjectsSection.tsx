@@ -80,7 +80,6 @@ const ProjectsSection = () => {
       ],
       pdfLink: "/documents/flight_controller_script.m",
       pdfLabelKey: "proj.b747.scriptLabel",
-      githubLink: "https://github.com/diawbirane10-lgtm/b747-flight-controller",
     },
     {
       titleKey: "proj.pv108.title",
@@ -114,7 +113,6 @@ const ProjectsSection = () => {
         { src: "/projects/pv-grid-connected/irradiance.png", captionKey: "proj.pv108.cap.irr" },
         { src: "/projects/pv-grid-connected/thd.png", captionKey: "proj.pv108.cap.thd" },
       ],
-      githubLink: "https://github.com/diawbirane10-lgtm/05_PV_108kW_GridConnected",
     },
     {
       titleKey: "proj.batt.title",
