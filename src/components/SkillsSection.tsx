@@ -10,8 +10,8 @@ const SkillsSection = () => {
     { title: t("skills.cat2"), icon: <Gauge size={18} />, skills: [t("skills.s2.1"), t("skills.s2.2"), t("skills.s2.3"), t("skills.s2.4")] },
     { title: t("skills.cat3"), icon: <CircuitBoard size={18} />, skills: [t("skills.s3.1"), t("skills.s3.2"), t("skills.s3.3"), t("skills.s3.4"), t("skills.s3.5")] },
     { title: t("skills.cat4"), icon: <Zap size={18} />, skills: [t("skills.s4.1"), t("skills.s4.2"), t("skills.s4.3"), t("skills.s4.4")] },
-    { title: t("skills.cat5"), icon: <Monitor size={18} />, skills: [t("skills.s5.1"), t("skills.s5.2"), t("skills.s5.3"), t("skills.s5.4"), t("skills.s5.5"), t("skills.s5.6"), t("skills.s5.7")] },
-    { title: t("skills.cat6"), icon: <Code size={18} />, skills: [t("skills.s6.1"), t("skills.s6.2"), t("skills.s6.3"), t("skills.s6.4"), t("skills.s6.5"), t("skills.s6.6"), t("skills.s6.7"), t("skills.s6.8"), t("skills.s6.9")] },
+    { title: t("skills.cat5"), icon: <Monitor size={18} />, skills: [t("skills.s5.1"), t("skills.s5.2"), t("skills.s5.3"), t("skills.s5.4"), t("skills.s5.5"), t("skills.s5.6"), t("skills.s5.7"), t("skills.s5.8"), t("skills.s5.9")] },
+    { title: t("skills.cat6"), icon: <Code size={18} />, skills: [t("skills.s6.1"), t("skills.s6.2"), t("skills.s6.3"), t("skills.s6.4"), t("skills.s6.5"), t("skills.s6.6"), t("skills.s6.7"), t("skills.s6.8"), t("skills.s6.9"), t("skills.s6.10"), t("skills.s6.11"), t("skills.s6.12")] },
     { title: t("skills.cat7"), icon: <Sparkles size={18} />, skills: [t("skills.s7.1"), t("skills.s7.2"), t("skills.s7.3")] },
   ];
 
