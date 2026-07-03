@@ -475,6 +475,15 @@ export const translations: Record<Lang, Record<string, string>> = {
     "skills.s7.1": "Results synthesis",
     "skills.s7.2": "Rapid prototyping",
     "skills.s7.3": "Code snippet generation",
+    "skills.showAll": "See all skills",
+    "skills.hideAll": "Collapse",
+    "skills.sum.1": "From functional analysis to SoftPLC validation: IEC 61131-3 compliant automation design.",
+    "skills.sum.2": "Full measurement chain, from sensor acquisition to data interpretation.",
+    "skills.sum.3": "Analog/digital circuit analysis and simulation, PCB design in KiCad.",
+    "skills.sum.4": "Wiring, measurements and vector control following electrical safety standards.",
+    "skills.sum.5": "Physical models and control systems in MATLAB/Simulink, CODESYS and TIA Portal.",
+    "skills.sum.6": "Industrial development (SCL / ST / LADDER) and software (Python, C, FastAPI, Streamlit).",
+    "skills.sum.7": "Rapid prototyping, synthesis and AI-assisted code generation.",
 
     // Research section
     "research.label": "Research",
