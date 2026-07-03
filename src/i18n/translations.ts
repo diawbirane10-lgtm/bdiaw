@@ -860,6 +860,15 @@ export const translations: Record<Lang, Record<string, string>> = {
     "skills.s7.1": "تجميع النتائج",
     "skills.s7.2": "النمذجة السريعة",
     "skills.s7.3": "توليد مقتطفات الكود",
+    "skills.showAll": "عرض جميع المهارات",
+    "skills.hideAll": "طي",
+    "skills.sum.1": "من التحليل الوظيفي إلى التحقق من SoftPLC: تصميم أتمتة متوافقة مع IEC 61131-3.",
+    "skills.sum.2": "سلسلة قياس كاملة، من اكتساب المستشعر إلى تفسير البيانات.",
+    "skills.sum.3": "تحليل ومحاكاة الدوائر التماثلية/الرقمية، وتصميم PCB في KiCad.",
+    "skills.sum.4": "التوصيلات والقياسات والتحكم الشعاعي وفقًا لمعايير السلامة الكهربائية.",
+    "skills.sum.5": "النماذج الفيزيائية وأنظمة التحكم على MATLAB/Simulink وCODESYS وTIA Portal.",
+    "skills.sum.6": "التطوير الصناعي (SCL / ST / LADDER) والبرمجيات (Python وC وFastAPI وStreamlit).",
+    "skills.sum.7": "النماذج الأولية السريعة والتوليف وتوليد الكود بمساعدة الذكاء الاصطناعي.",
 
     // Research section
     "research.label": "البحث العلمي",
