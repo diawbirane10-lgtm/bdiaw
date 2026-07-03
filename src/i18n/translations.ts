@@ -90,6 +90,15 @@ export const translations: Record<Lang, Record<string, string>> = {
     "skills.s7.1": "Synthèse de résultats",
     "skills.s7.2": "Prototypage rapide",
     "skills.s7.3": "Génération de snippets de code",
+    "skills.showAll": "Voir toutes les compétences",
+    "skills.hideAll": "Réduire",
+    "skills.sum.1": "De l'analyse fonctionnelle à la validation SoftPLC : conception d'automatismes conformes IEC 61131-3.",
+    "skills.sum.2": "Chaîne de mesure complète, de l'acquisition capteur à l'interprétation des données.",
+    "skills.sum.3": "Analyse et simulation de circuits analogiques/numériques, conception PCB sous KiCad.",
+    "skills.sum.4": "Câblage, mesures et commande vectorielle en respectant les règles de sécurité électrique.",
+    "skills.sum.5": "Modèles physiques et systèmes de contrôle sur MATLAB/Simulink, CODESYS et TIA Portal.",
+    "skills.sum.6": "Développement industriel (SCL / ST / LADDER) et logiciel (Python, C, FastAPI, Streamlit).",
+    "skills.sum.7": "Prototypage rapide, synthèse et génération de code assistée par IA.",
 
     // Research section
     "research.label": "Recherche",
