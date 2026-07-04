@@ -905,8 +905,16 @@ export const translations: Record<Lang, Record<string, string>> = {
     "cert.ge.desc": "محاكاة عملية في الهندسة الكهربائية للطيران: تصميم أنظمة توزيع الطاقة في الطائرات، حماية الدوائر، تشخيص أعطال الإلكترونيات الجوية والتوثيق التقني.",
 
     // Projects
-    "proj.label": "الإنجازات",
-    "proj.title": "المشاريع",
+    "proj.label": "أعمال",
+    "proj.title": "مشاريع صناعية وبحث وتطوير",
+    "proj.intro": "قم بالتصفية حسب المجال التقني. انقر فوق مشروع للاطلاع على التحليل الكامل والمعرض والوثائق.",
+    "proj.explore": "استكشف المشروع",
+    "proj.close": "إغلاق",
+    "proj.filter.all": "الكل",
+    "proj.filter.automation": "الأتمتة والسلامة",
+    "proj.filter.power": "الطاقة والشبكات الذكية",
+    "proj.filter.digital": "التوائم الرقمية والذكاء الاصطناعي",
+    "proj.filter.hardware": "إلكترونيات / RF / فضاء",
     "proj.context": "السياق",
     "proj.objective": "الهدف",
     "proj.contribution": "المساهمة",
