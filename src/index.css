@@ -54,11 +54,12 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body antialiased;
+    @apply bg-background text-foreground font-body antialiased overflow-x-hidden;
   }
 
   html {
     scroll-behavior: smooth;
+    @apply overflow-x-hidden;
   }
 }
 

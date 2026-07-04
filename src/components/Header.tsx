@@ -41,7 +41,7 @@ const Header = () => {
             <span className="text-primary">B.</span> DIAW
           </a>
 
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <a key={item.href} href={item.href} className="nav-link">
                 {item.label}
@@ -50,7 +50,7 @@ const Header = () => {
             <LanguageSwitcher />
           </nav>
 
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
             
             <LanguageSwitcher />
             <button
@@ -64,7 +64,7 @@ const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <nav className="md:hidden py-6 border-t border-border/50">
+          <nav className="lg:hidden py-6 border-t border-border/50">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <a
