@@ -1,6 +1,7 @@
 import { Linkedin, Mail, Phone, MessageCircle, Github } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useState, useRef, useEffect } from "react";
+import ContactForm from "./ContactForm";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -32,6 +33,8 @@ const Footer = () => {
           <h2 className="section-title">{t("footer.title")}</h2>
           <div className="section-divider" />
         </div>
+
+        <ContactForm />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
           <a

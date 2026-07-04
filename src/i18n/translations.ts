@@ -54,6 +54,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "experience.e3.task2": "Intégration d'un chariot de transfert sur rails, vérification RFID, gestion du stock de moules et verrouillages de sécurité",
     "experience.e3.task3": "Réduction du temps de changement de moule de 60 à 25–30 min ; projet soutenu avec succès à la FST Marrakech",
 
+    // Formulaire de contact
+    "contact.form.heading": "Envoyer un message",
+    "contact.form.name": "Nom / Institution",
+    "contact.form.namePlaceholder": "Ex : Aramco / Petrosen",
+    "contact.form.email": "Votre adresse email",
+    "contact.form.emailPlaceholder": "nom@entreprise.com",
+    "contact.form.message": "Cahier des charges ou objet du message",
+    "contact.form.messagePlaceholder": "Intéressé par votre profil d'ingénieur pour nos projets...",
+    "contact.form.submit": "Prendre contact pour entretien",
+    "contact.form.sending": "Envoi en cours...",
+    "contact.form.success": "Message envoyé ! Je vous répondrai rapidement.",
+    "contact.form.error": "Merci de remplir tous les champs, ou réessayez — sinon écrivez-moi directement par email.",
+
     // Hero
     "hero.available": "Disponible pour un stage",
     "hero.title": "Birane Diaw",
@@ -413,22 +426,6 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.call": "Appel téléphonique",
     "footer.copyright": "© {year} Birane Diaw · Marrakech, Maroc",
 
-    // Contact Form
-    "contact.form.heading": "Envie de me contacter ? C'est par ici !",
-    "contact.form.subheading": "Remplissez le formulaire ci-dessous et je vous répondrai dès que possible.",
-    "contact.form.firstName": "Prénom",
-    "contact.form.firstNamePh": "Votre prénom",
-    "contact.form.lastName": "Nom",
-    "contact.form.lastNamePh": "Votre nom",
-    "contact.form.email": "Email",
-    "contact.form.emailPh": "votre@email.com",
-    "contact.form.message": "Message",
-    "contact.form.messagePh": "Votre message...",
-    "contact.form.submit": "Envoyer",
-    "contact.form.sending": "Envoi...",
-    "contact.form.sent": "Message envoyé !",
-    "contact.form.error": "Erreur, réessayer",
-
     // Testimonials
     "testimonials.label": "Témoignages",
     "testimonials.title": "Ce Qu'on Dit de Moi",
@@ -495,6 +492,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "experience.e3.task1": "Designed a hierarchical GRAFCET-based control architecture translated into IEC 61131-3 Structured Text under CODESYS",
     "experience.e3.task2": "Integrated a rail-guided transfer cart, RFID verification, mold stock management and safety interlocks",
     "experience.e3.task3": "Reduced mold changeover time from 60 to 25–30 min; project successfully defended at FST Marrakech",
+
+    // Contact form
+    "contact.form.heading": "Send a message",
+    "contact.form.name": "Name / Institution",
+    "contact.form.namePlaceholder": "e.g. Aramco / Petrosen",
+    "contact.form.email": "Your email address",
+    "contact.form.emailPlaceholder": "name@company.com",
+    "contact.form.message": "Project brief or subject",
+    "contact.form.messagePlaceholder": "Interested in your engineering profile for our projects...",
+    "contact.form.submit": "Get in touch for an interview",
+    "contact.form.sending": "Sending...",
+    "contact.form.success": "Message sent! I'll get back to you shortly.",
+    "contact.form.error": "Please fill in every field, or try again — otherwise email me directly.",
 
     // Hero
     "hero.available": "Available for internship",
@@ -855,21 +865,6 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.call": "Phone call",
     "footer.copyright": "© {year} Birane Diaw · Marrakech, Morocco",
 
-    // Contact Form
-    "contact.form.heading": "Want to reach out? Here you go!",
-    "contact.form.subheading": "Fill in the form below and I'll get back to you as soon as possible.",
-    "contact.form.firstName": "First name",
-    "contact.form.firstNamePh": "Your first name",
-    "contact.form.lastName": "Last name",
-    "contact.form.lastNamePh": "Your last name",
-    "contact.form.email": "Email",
-    "contact.form.emailPh": "your@email.com",
-    "contact.form.message": "Message",
-    "contact.form.messagePh": "Your message...",
-    "contact.form.submit": "Send",
-    "contact.form.sending": "Sending...",
-    "contact.form.sent": "Message sent!",
-    "contact.form.error": "Error, try again",
 
     // Testimonials
     "testimonials.label": "Testimonials",
@@ -937,6 +932,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "experience.e3.task1": "تصميم بنية تحكم هرمية مبنية على GRAFCET ومترجمة إلى Structured Text (IEC 61131-3) تحت CODESYS",
     "experience.e3.task2": "دمج عربة نقل على سكة، التحقق عبر RFID، إدارة مخزون القوالب وتأمينات السلامة",
     "experience.e3.task3": "تقليص زمن تغيير القالب من 60 إلى 25–30 دقيقة؛ تمت مناقشة المشروع بنجاح في كلية العلوم والتقنيات بمراكش",
+
+    // نموذج الاتصال
+    "contact.form.heading": "أرسل رسالة",
+    "contact.form.name": "الاسم / المؤسسة",
+    "contact.form.namePlaceholder": "مثال: Aramco / Petrosen",
+    "contact.form.email": "بريدك الإلكتروني",
+    "contact.form.emailPlaceholder": "name@company.com",
+    "contact.form.message": "دفتر التحملات أو موضوع الرسالة",
+    "contact.form.messagePlaceholder": "مهتم بملفك الهندسي لمشاريعنا...",
+    "contact.form.submit": "تواصل معي لإجراء مقابلة",
+    "contact.form.sending": "جارٍ الإرسال...",
+    "contact.form.success": "تم إرسال الرسالة! سأرد عليك قريباً.",
+    "contact.form.error": "يرجى ملء جميع الحقول، أو أعد المحاولة — أو راسلني مباشرة عبر البريد الإلكتروني.",
 
     // Hero
     "hero.available": "متاح للتدريب",
@@ -1296,22 +1304,6 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.phone": "الهاتف",
     "footer.call": "مكالمة هاتفية",
     "footer.copyright": "© {year} بيران دياو · مراكش، المغرب",
-
-    // Contact Form
-    "contact.form.heading": "تريد التواصل؟ تفضل!",
-    "contact.form.subheading": "املأ النموذج أدناه وسأرد عليك في أقرب وقت ممكن.",
-    "contact.form.firstName": "الاسم الأول",
-    "contact.form.firstNamePh": "اسمك الأول",
-    "contact.form.lastName": "اسم العائلة",
-    "contact.form.lastNamePh": "اسم عائلتك",
-    "contact.form.email": "البريد الإلكتروني",
-    "contact.form.emailPh": "بريدك@الإلكتروني.com",
-    "contact.form.message": "الرسالة",
-    "contact.form.messagePh": "رسالتك...",
-    "contact.form.submit": "إرسال",
-    "contact.form.sending": "جارٍ الإرسال...",
-    "contact.form.sent": "تم إرسال الرسالة!",
-    "contact.form.error": "خطأ، حاول مرة أخرى",
 
     // Testimonials
     "testimonials.label": "الشهادات",
