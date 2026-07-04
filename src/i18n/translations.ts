@@ -119,8 +119,16 @@ export const translations: Record<Lang, Record<string, string>> = {
     "cert.ge.desc": "Simulation pratique d'ingénierie électrique aéronautique : conception de systèmes de distribution de puissance avion, protection des circuits, diagnostic d'incidents avionique et documentation technique.",
 
     // Projects
-    "proj.label": "Réalisations",
-    "proj.title": "Projets",
+    "proj.label": "Portfolio",
+    "proj.title": "Projets Industriels & R&D",
+    "proj.intro": "Filtrez par secteur technique. Cliquez sur un projet pour l'analyse détaillée, la galerie et les documents.",
+    "proj.explore": "Explorer le projet",
+    "proj.close": "Fermer",
+    "proj.filter.all": "Tous",
+    "proj.filter.automation": "Automatisme & Sécurité",
+    "proj.filter.power": "Énergie & Smart Grids",
+    "proj.filter.digital": "Jumeaux Numériques & IA",
+    "proj.filter.hardware": "Électronique / RF / Spatial",
     "proj.context": "Contexte",
     "proj.objective": "Objectif",
     "proj.contribution": "Contribution",
