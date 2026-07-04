@@ -11,8 +11,9 @@ export default defineTool({
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: true },
   handler: async ({ limit }) => {
-    const url = process.env.SUPABASE_URL;
-    const key = process.env.SUPABASE_PUBLISHABLE_KEY ?? process.env.SUPABASE_ANON_KEY;
+    const env = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env ?? {};
+    const url = env.SUPABASE_URL;
+    const key = env.SUPABASE_PUBLISHABLE_KEY ?? env.SUPABASE_ANON_KEY;
     if (!url || !key) {
       return { content: [{ type: "text", text: "Backend not configured" }], isError: true };
     }
