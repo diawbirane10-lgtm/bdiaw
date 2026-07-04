@@ -46,6 +46,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "experience.e2.task1": "Découverte du milieu professionnel (sites HT) : accompagnement des équipes lors des inspections",
     "experience.e2.task2": "Sensibilisation aux règles HSE et aux procédures de maintenance préventive",
     "experience.e2.task3": "Lecture guidée de schémas électriques industriels et familiarisation avec la terminologie",
+    "experience.e3.period": "Avril — Juin 2026",
+    "experience.e3.title": "Stagiaire de Fin d'Études — Automatisme Industriel",
+    "experience.e3.company": "Menara Prefa, Marrakech",
+    "experience.e3.project": "Système AS/RS — Changement automatisé de moule (presse QUADRA-10)",
+    "experience.e3.task1": "Conception d'une architecture de commande hiérarchique GRAFCET traduite en Structured Text (IEC 61131-3) sous CODESYS",
+    "experience.e3.task2": "Intégration d'un chariot de transfert sur rails, vérification RFID, gestion du stock de moules et verrouillages de sécurité",
+    "experience.e3.task3": "Réduction du temps de changement de moule de 60 à 25–30 min ; projet soutenu avec succès à la FST Marrakech",
 
     // Hero
     "hero.available": "Disponible pour un stage",
@@ -481,6 +488,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "experience.e2.task1": "Introduction to the professional environment (HV sites): shadowed teams during inspections",
     "experience.e2.task2": "Awareness of HSE rules and preventive maintenance procedures",
     "experience.e2.task3": "Guided reading of industrial electrical diagrams and familiarization with terminology",
+    "experience.e3.period": "Apr — Jun 2026",
+    "experience.e3.title": "Final-Year Intern — Industrial Automation",
+    "experience.e3.company": "Menara Prefa, Marrakech",
+    "experience.e3.project": "AS/RS System — Automated Mold Change (QUADRA-10 Press)",
+    "experience.e3.task1": "Designed a hierarchical GRAFCET-based control architecture translated into IEC 61131-3 Structured Text under CODESYS",
+    "experience.e3.task2": "Integrated a rail-guided transfer cart, RFID verification, mold stock management and safety interlocks",
+    "experience.e3.task3": "Reduced mold changeover time from 60 to 25–30 min; project successfully defended at FST Marrakech",
 
     // Hero
     "hero.available": "Available for internship",
@@ -916,6 +930,13 @@ export const translations: Record<Lang, Record<string, string>> = {
     "experience.e2.task1": "اكتشاف الوسط المهني (مواقع التوتر العالي): مرافقة الفرق أثناء عمليات التفتيش",
     "experience.e2.task2": "التحسيس بقواعد السلامة الصحية والبيئية وإجراءات الصيانة الوقائية",
     "experience.e2.task3": "قراءة موجهة للمخططات الكهربائية الصناعية والتعرف على المصطلحات",
+    "experience.e3.period": "أبريل — يونيو 2026",
+    "experience.e3.title": "متدرب نهاية الدراسة — الأتمتة الصناعية",
+    "experience.e3.company": "Menara Prefa، مراكش",
+    "experience.e3.project": "نظام AS/RS — تغيير آلي للقالب (مكبس QUADRA-10)",
+    "experience.e3.task1": "تصميم بنية تحكم هرمية مبنية على GRAFCET ومترجمة إلى Structured Text (IEC 61131-3) تحت CODESYS",
+    "experience.e3.task2": "دمج عربة نقل على سكة، التحقق عبر RFID، إدارة مخزون القوالب وتأمينات السلامة",
+    "experience.e3.task3": "تقليص زمن تغيير القالب من 60 إلى 25–30 دقيقة؛ تمت مناقشة المشروع بنجاح في كلية العلوم والتقنيات بمراكش",
 
     // Hero
     "hero.available": "متاح للتدريب",

@@ -6,6 +6,13 @@ const ExperienceSection = () => {
 
   const experiences = [
     {
+      period: t("experience.e3.period"),
+      title: t("experience.e3.title"),
+      company: t("experience.e3.company"),
+      project: t("experience.e3.project"),
+      tasks: [t("experience.e3.task1"), t("experience.e3.task2"), t("experience.e3.task3")],
+    },
+    {
       period: t("experience.e1.period"),
       title: t("experience.e1.title"),
       company: t("experience.e1.company"),
