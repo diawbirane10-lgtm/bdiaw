@@ -205,6 +205,26 @@ const ProjectsSection = () => {
     },
     {
       category: "power",
+      cardTags: ["25 kV AC", "Newton-Raphson", "RBE"],
+      titleKey: "proj.traction.title",
+      subtitleKey: "proj.traction.subtitle",
+      statusType: "completed",
+      date: "July 2026",
+      contexteKey: "proj.traction.contexte",
+      objectifKey: "proj.traction.objectif",
+      contributionKey: "proj.traction.contribution",
+      resultatsKey: "proj.traction.resultats",
+      outils: [
+        "MATLAB/Simulink", "Simscape Electrical", "Newton-Raphson", "FOC Control",
+        "Davis Train Dynamics", "Catenary Modeling", "EN 50163", "Regenerative Braking",
+      ],
+      pdfLinks: [
+        { labelKey: "proj.traction.rapportFr", href: "/documents/rapport_projet_traction_FR.pdf" },
+        { labelKey: "proj.traction.rapportEn", href: "/documents/railway_traction_project_report_EN.pdf" },
+      ],
+    },
+    {
+      category: "power",
       cardTags: ["Simscape Electrical", "Control", "MATLAB"],
       titleKey: "proj.4.title",
       subtitleKey: "proj.4.subtitle",

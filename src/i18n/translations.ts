@@ -236,6 +236,16 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.rapport": "Rapport préliminaire",
     "proj.new.fiche": "Fiche technique",
 
+    // Project Railway Traction 25 kV AC
+    "proj.traction.title": "Traction Ferroviaire 25 kV AC avec Récupération d'Énergie (RBE)",
+    "proj.traction.subtitle": "MATLAB/Simulink · Simscape Electrical · Newton-Raphson · Cas d'étude Maroc/Sénégal",
+    "proj.traction.contexte": "Projet portfolio de modélisation système d'un système de traction ferroviaire 25 kV AC, appliqué à deux cas d'étude africains : la LGV ONCF Avelia Horizon (Maroc) et le TER Dakar Coradia Polyvalent (Sénégal).",
+    "proj.traction.objectif": "Modéliser la chaîne complète (profil de mission, dynamique Davis, convertisseur FOC moyenne-valeur, caténaire, flux de puissance Newton-Raphson, gestion d'énergie récupérée) et comparer la consommation, la récupération d'énergie au freinage et la conformité de tension EN 50163 entre les deux cas.",
+    "proj.traction.contribution": "Développement complet en MATLAB, génération programmatique de deux modèles Simulink modulaires et d'un modèle Simscape Electrical / SPS, validation automatique (signaux, distance, énergie, convergence réseau, tension, SOC).",
+    "proj.traction.resultats": "Taux de récupération d'énergie de 25,1 % (ONCF) et 69,4 % (TER Dakar), convergence Newton-Raphson et conformité EN 50163 à 100 % sur les deux cas.",
+    "proj.traction.rapportFr": "Rapport (FR)",
+    "proj.traction.rapportEn": "Report (EN)",
+
     // Project Digital Twin - Li-Ion Battery Packs
     "proj.batt.title": "Jumeau Numérique: Pack Batteries Li-ion",
     "proj.batt.subtitle": "Python · Simulation Multi-Physique · Estimation d'État · BMS",
@@ -674,6 +684,16 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.contribution": "Complete pipeline implementation from signal generation through feature extraction, SVM training, and model evaluation.",
     "proj.new.rapport": "Preliminary Report",
     "proj.new.fiche": "Technical Datasheet",
+
+    // Project Railway Traction 25 kV AC
+    "proj.traction.title": "25 kV AC Railway Traction with Regenerative Braking Energy Recovery",
+    "proj.traction.subtitle": "MATLAB/Simulink · Simscape Electrical · Newton-Raphson · Morocco/Senegal case studies",
+    "proj.traction.contexte": "Portfolio system-level modeling project for a 25 kV AC railway traction system, applied to two African case studies: the ONCF Avelia Horizon high-speed line (Morocco) and the Dakar TER Coradia Polyvalent regional line (Senegal).",
+    "proj.traction.objectif": "Model the full chain (mission profile, Davis train dynamics, average-value FOC converter, catenary, Newton-Raphson power flow, recovered-energy management) and compare energy consumption, regenerative braking recovery, and EN 50163 voltage compliance between the two cases.",
+    "proj.traction.contribution": "Full MATLAB development, programmatic generation of two modular Simulink models and one Simscape Electrical / SPS model, automatic validation (signals, distance, energy, network convergence, voltage, SOC).",
+    "proj.traction.resultats": "Regenerative braking energy ratio of 25.1% (ONCF) and 69.4% (Dakar TER), 100% Newton-Raphson convergence and EN 50163 compliance on both cases.",
+    "proj.traction.rapportFr": "Rapport (FR)",
+    "proj.traction.rapportEn": "Report (EN)",
 
     // Project Digital Twin - Li-Ion Battery Packs
     "proj.batt.title": "Digital Twin: Li-Ion Battery Packs",
@@ -1114,6 +1134,16 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.contribution": "تنفيذ كامل لخط الأنابيب من توليد الإشارات وحتى تدريب SVM وتقييم النموذج.",
     "proj.new.rapport": "التقرير الأولي",
     "proj.new.fiche": "البطاقة التقنية",
+
+    // Project Railway Traction 25 kV AC
+    "proj.traction.title": "جر السكك الحديدية 25 كيلوفولت تيار متردد مع استرجاع طاقة الكبح",
+    "proj.traction.subtitle": "MATLAB/Simulink · Simscape Electrical · نيوتن-رافسون · حالتا دراسة المغرب/السنغال",
+    "proj.traction.contexte": "مشروع نمذجة نظامية لنظام جر سكك حديدية 25 كيلوفولت تيار متردد، مطبق على حالتين إفريقيتين: خط ONCF أفيليا هورايزون فائق السرعة (المغرب) وخط TER دكار كوراديا بوليفالون الجهوي (السنغال).",
+    "proj.traction.objectif": "نمذجة السلسلة الكاملة (ملف المهمة، ديناميكية القطار، محول FOC، الخط الهوائي، تدفق القدرة بنيوتن-رافسون، إدارة الطاقة المسترجعة) ومقارنة الاستهلاك واسترجاع طاقة الكبح والامتثال لتوتر EN 50163 بين الحالتين.",
+    "proj.traction.contribution": "تطوير كامل بلغة MATLAB، توليد برمجي لنموذجي Simulink معياريين ونموذج Simscape Electrical / SPS، وتحقق آلي (الإشارات، المسافة، الطاقة، تقارب الشبكة، التوتر، حالة الشحن).",
+    "proj.traction.resultats": "معدل استرجاع طاقة الكبح 25.1% (ONCF) و69.4% (TER دكار)، وتقارب نيوتن-رافسون وامتثال EN 50163 بنسبة 100% في الحالتين.",
+    "proj.traction.rapportFr": "التقرير (بالفرنسية)",
+    "proj.traction.rapportEn": "التقرير (بالإنجليزية)",
 
     // Project Digital Twin - Li-Ion Battery Packs
     "proj.batt.title": "التوأم الرقمي: حزم بطاريات ليثيوم أيون",
