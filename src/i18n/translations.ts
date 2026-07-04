@@ -236,6 +236,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.rapport": "Rapport préliminaire",
     "proj.new.fiche": "Fiche technique",
 
+    // Project UFLS Smart Grid Relay (ONEE / SENELEC)
+    "proj.ufls.title": "Relais UFLS Smart Grid — Réseaux ONEE et SENELEC",
+    "proj.ufls.subtitle": "MATLAB/Simulink · Stateflow · Délestage fréquence-métrique · Cas d'étude Maroc/Sénégal",
+    "proj.ufls.contexte": "Projet portfolio de modélisation d'un relais de délestage fréquence-métrique (UFLS) appliqué à deux cas africains : le réseau interconnecté ONEE (Maroc) et le réseau SENELEC (Sénégal), avec dynamique fréquence-puissance agrégée, gouverneur à statisme et action secondaire AGC.",
+    "proj.ufls.objectif": "Construire un banc de simulation reproductible combinant une boucle MATLAB pure et de vrais modèles Simulink/Stateflow, capable de comparer deux réseaux équivalents et de visualiser le comportement de l'automate de délestage face à une perte de production.",
+    "proj.ufls.contribution": "Développement d'un automate Stateflow à six états (NORMAL, ALERT, SHED1, SHED2, SHED3, RESTORE) avec seuils temporisés, génération programmatique des modèles Simulink sf_ufls_onee.slx et sf_ufls_senelec.slx, et scripts MATLAB de validation automatique (signaux finis, absence d'effondrement, bornes d'état, limites du gouverneur).",
+    "proj.ufls.resultats": "Nadir de fréquence proche de 49 Hz dans les deux cas (48.956 Hz ONEE, 48.983 Hz SENELEC), délestage maximal de 10 % (ONEE) et 12 % (SENELEC), restauration complète sans effondrement, douze contrôles de validation réussis.",
+    "proj.ufls.rapportFr": "Rapport (FR)",
+    "proj.ufls.rapportEn": "Report (EN)",
+    "proj.ufls.galleryLabel": "Voir résultats de simulation",
+    "proj.ufls.cap.onee": "Cas ONEE (Maroc) — fréquence, réserve primaire, puissance délestée et état de l'automate",
+    "proj.ufls.cap.senelec": "Cas SENELEC (Sénégal) — fréquence, réserve primaire, puissance délestée et état de l'automate",
+
     // Project Railway Traction 25 kV AC
     "proj.traction.title": "Traction Ferroviaire 25 kV AC avec Récupération d'Énergie (RBE)",
     "proj.traction.subtitle": "MATLAB/Simulink · Simscape Electrical · Newton-Raphson · Cas d'étude Maroc/Sénégal",
@@ -684,6 +697,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.contribution": "Complete pipeline implementation from signal generation through feature extraction, SVM training, and model evaluation.",
     "proj.new.rapport": "Preliminary Report",
     "proj.new.fiche": "Technical Datasheet",
+
+    // Project UFLS Smart Grid Relay (ONEE / SENELEC)
+    "proj.ufls.title": "Smart-Grid UFLS Relay — ONEE and SENELEC Networks",
+    "proj.ufls.subtitle": "MATLAB/Simulink · Stateflow · Under-Frequency Load Shedding · Morocco/Senegal case study",
+    "proj.ufls.contexte": "Portfolio project modeling an under-frequency load shedding (UFLS) relay applied to two African grid cases: the ONEE interconnected system (Morocco) and the SENELEC system (Senegal), with aggregated frequency-power dynamics, droop-based governor and secondary AGC action.",
+    "proj.ufls.objectif": "Build a reproducible simulation bench combining a pure MATLAB loop and real Simulink/Stateflow models, able to compare two equivalent networks and visualize the shedding automaton's behavior in response to a generation loss.",
+    "proj.ufls.contribution": "Developed a six-state Stateflow automaton (NORMAL, ALERT, SHED1, SHED2, SHED3, RESTORE) with timed thresholds, programmatic generation of the sf_ufls_onee.slx and sf_ufls_senelec.slx Simulink models, and MATLAB scripts for automatic validation (finite signals, no collapse, state bounds, governor limits).",
+    "proj.ufls.resultats": "Frequency nadir close to 49 Hz in both cases (48.956 Hz ONEE, 48.983 Hz SENELEC), maximum shedding of 10% (ONEE) and 12% (SENELEC), full restoration without collapse, twelve validation checks passed.",
+    "proj.ufls.rapportFr": "Rapport (FR)",
+    "proj.ufls.rapportEn": "Report (EN)",
+    "proj.ufls.galleryLabel": "View simulation results",
+    "proj.ufls.cap.onee": "ONEE case (Morocco) — frequency, primary reserve, shed power and automaton state",
+    "proj.ufls.cap.senelec": "SENELEC case (Senegal) — frequency, primary reserve, shed power and automaton state",
 
     // Project Railway Traction 25 kV AC
     "proj.traction.title": "25 kV AC Railway Traction with Regenerative Braking Energy Recovery",
@@ -1134,6 +1160,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.contribution": "تنفيذ كامل لخط الأنابيب من توليد الإشارات وحتى تدريب SVM وتقييم النموذج.",
     "proj.new.rapport": "التقرير الأولي",
     "proj.new.fiche": "البطاقة التقنية",
+
+    // Project UFLS Smart Grid Relay (ONEE / SENELEC)
+    "proj.ufls.title": "مرحل فصل الأحمال عند انخفاض التردد (UFLS) — شبكتا ONEE و SENELEC",
+    "proj.ufls.subtitle": "MATLAB/Simulink · Stateflow · فصل الأحمال عند انخفاض التردد · دراسة حالة المغرب/السنغال",
+    "proj.ufls.contexte": "مشروع محفظة لنمذجة مرحل فصل الأحمال عند انخفاض التردد (UFLS) مطبق على حالتين أفريقيتين: الشبكة المترابطة لـ ONEE (المغرب) وشبكة SENELEC (السنغال)، مع ديناميكية تردد-قدرة مجمعة، حاكم بقانون الانحدار، وتحكم ثانوي AGC.",
+    "proj.ufls.objectif": "بناء منصة محاكاة قابلة لإعادة الإنتاج تجمع بين حلقة MATLAB خالصة ونماذج Simulink/Stateflow حقيقية، قادرة على مقارنة شبكتين متكافئتين وتصور سلوك آلة فصل الأحمال عند فقدان الإنتاج.",
+    "proj.ufls.contribution": "تطوير آلة حالة Stateflow من ست حالات (NORMAL، ALERT، SHED1، SHED2، SHED3، RESTORE) مع عتبات مؤقتة، وتوليد برمجي لنموذجي Simulink sf_ufls_onee.slx و sf_ufls_senelec.slx، وسكربتات MATLAB للتحقق الآلي (إشارات محدودة، عدم الانهيار، حدود الحالة، حدود الحاكم).",
+    "proj.ufls.resultats": "أدنى تردد قريب من 49 هرتز في الحالتين (48.956 هرتز لـ ONEE، 48.983 هرتز لـ SENELEC)، فصل أقصى بنسبة 10% (ONEE) و12% (SENELEC)، استعادة كاملة دون انهيار، ونجاح اثني عشر اختبار تحقق.",
+    "proj.ufls.rapportFr": "التقرير (بالفرنسية)",
+    "proj.ufls.rapportEn": "التقرير (بالإنجليزية)",
+    "proj.ufls.galleryLabel": "عرض نتائج المحاكاة",
+    "proj.ufls.cap.onee": "حالة ONEE (المغرب) — التردد، الاحتياطي الأولي، القدرة المفصولة وحالة الآلة",
+    "proj.ufls.cap.senelec": "حالة SENELEC (السنغال) — التردد، الاحتياطي الأولي، القدرة المفصولة وحالة الآلة",
 
     // Project Railway Traction 25 kV AC
     "proj.traction.title": "جر السكك الحديدية 25 كيلوفولت تيار متردد مع استرجاع طاقة الكبح",

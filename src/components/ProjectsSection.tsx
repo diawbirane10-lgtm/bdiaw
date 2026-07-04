@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 type Category = "automation" | "power" | "digital" | "hardware";
 
 interface ProjectEntry extends ProjectData {
-  category: Category;
+  categories: Category[];
   cardTags?: string[];
 }
 
@@ -20,7 +20,33 @@ const ProjectsSection = () => {
 
   const projects: ProjectEntry[] = [
     {
-      category: "power",
+      categories: ["automation", "power"],
+      cardTags: ["Stateflow", "UFLS", "Simulink"],
+      titleKey: "proj.ufls.title",
+      subtitleKey: "proj.ufls.subtitle",
+      statusType: "completed",
+      date: "July 2026",
+      contexteKey: "proj.ufls.contexte",
+      objectifKey: "proj.ufls.objectif",
+      contributionKey: "proj.ufls.contribution",
+      resultatsKey: "proj.ufls.resultats",
+      outils: [
+        "MATLAB/Simulink", "Stateflow", "Swing Equation", "Droop Control",
+        "AGC", "UFLS Relay", "ONEE", "SENELEC",
+      ],
+      pdfLinks: [
+        { labelKey: "proj.ufls.rapportFr", href: "/documents/rapport_projet_ufls_smartgrid_FR.pdf" },
+        { labelKey: "proj.ufls.rapportEn", href: "/documents/ufls_smartgrid_project_report_EN.pdf" },
+      ],
+      galleryLabelKey: "proj.ufls.galleryLabel",
+      gallery: [
+        { src: "/projects/ufls-smartgrid/onee_ufls.png", captionKey: "proj.ufls.cap.onee" },
+        { src: "/projects/ufls-smartgrid/senelec_ufls.png", captionKey: "proj.ufls.cap.senelec" },
+      ],
+      githubLink: "https://github.com/diawbirane10-lgtm/ufls-smartgrid-onee-senelec",
+    },
+    {
+      categories: ["power"],
       cardTags: ["25 kV AC", "Newton-Raphson", "RBE"],
       titleKey: "proj.traction.title",
       subtitleKey: "proj.traction.subtitle",
@@ -40,7 +66,7 @@ const ProjectsSection = () => {
       ],
     },
     {
-      category: "automation",
+      categories: ["automation"],
       cardTags: ["Structured Text", "IEC 61131-3", "GRAFCET"],
       titleKey: "proj.asrs.title",
       subtitleKey: "proj.asrs.subtitle",
@@ -58,7 +84,7 @@ const ProjectsSection = () => {
       githubLink: "https://github.com/diawbirane10-lgtm/codesys_asrs/tree/main/Project_ASRS_CodeSYS",
     },
     {
-      category: "digital",
+      categories: ["digital"],
       cardTags: ["State-Space", "MATLAB", "PID"],
       titleKey: "proj.b747.title",
       subtitleKey: "proj.b747.subtitle",
@@ -91,7 +117,7 @@ const ProjectsSection = () => {
       pdfLabelKey: "proj.b747.scriptLabel",
     },
     {
-      category: "power",
+      categories: ["power"],
       cardTags: ["dq Control", "MPPT P&O", "Simulink"],
       titleKey: "proj.pv108.title",
       subtitleKey: "proj.pv108.subtitle",
@@ -115,7 +141,7 @@ const ProjectsSection = () => {
       ],
     },
     {
-      category: "digital",
+      categories: ["digital"],
       cardTags: ["Streamlit", "Extended Kalman", "FastAPI"],
       titleKey: "proj.batt.title",
       subtitleKey: "proj.batt.subtitle",
@@ -133,7 +159,7 @@ const ProjectsSection = () => {
       githubLink: "https://github.com/diawbirane10-lgtm/Digital_Twin_Li-ion_Batt_Packs",
     },
     {
-      category: "digital",
+      categories: ["digital"],
       cardTags: ["Python", "OOP", "Control Theory"],
       titleKey: "proj.dt.title",
       subtitleKey: "proj.dt.subtitle",
@@ -149,7 +175,7 @@ const ProjectsSection = () => {
       githubLink: "https://github.com/diawbirane10-lgtm/digital-twin-motor",
     },
     {
-      category: "hardware",
+      categories: ["hardware"],
       cardTags: ["RF Design", "PCB", "MATLAB"],
       titleKey: "proj.radar.title",
       subtitleKey: "proj.radar.subtitle",
@@ -171,7 +197,7 @@ const ProjectsSection = () => {
       githubLink: "https://github.com/diawbirane10-lgtm/airport-radar-patch-pcb-matlab",
     },
     {
-      category: "hardware",
+      categories: ["hardware"],
       cardTags: ["KiCad 8", "ESP32-S3", "2-Layer PCB"],
       titleKey: "proj.pcb.title",
       subtitleKey: "proj.pcb.subtitle",
@@ -193,7 +219,7 @@ const ProjectsSection = () => {
       ],
     },
     {
-      category: "hardware",
+      categories: ["hardware"],
       cardTags: ["MATLAB", "FFT", "Embedded"],
       titleKey: "proj.imu.title",
       subtitleKey: "proj.imu.subtitle",
@@ -208,7 +234,7 @@ const ProjectsSection = () => {
       pdfLabelKey: "proj.imu.pdfLabel",
     },
     {
-      category: "digital",
+      categories: ["digital"],
       cardTags: ["ML / SVM", "Signal Processing", "Ferroviaire"],
       titleKey: "proj.new.title",
       subtitleKey: "proj.new.subtitle",
@@ -224,7 +250,7 @@ const ProjectsSection = () => {
       ],
     },
     {
-      category: "power",
+      categories: ["power"],
       cardTags: ["Simscape Electrical", "Control", "MATLAB"],
       titleKey: "proj.4.title",
       subtitleKey: "proj.4.subtitle",
@@ -239,7 +265,7 @@ const ProjectsSection = () => {
       pdfLabelKey: "proj.4.pdfLabel",
     },
     {
-      category: "digital",
+      categories: ["digital"],
       cardTags: ["Simscape Multibody", "Robotics", "UAV"],
       titleKey: "proj.8.title",
       subtitleKey: "proj.8.subtitle",
@@ -263,7 +289,7 @@ const ProjectsSection = () => {
   ];
 
   const visible = useMemo(
-    () => projects.map((p, i) => ({ p, i })).filter(({ p }) => filter === "all" || p.category === filter),
+    () => projects.map((p, i) => ({ p, i })).filter(({ p }) => filter === "all" || p.categories.includes(filter)),
     [filter],
   );
 
@@ -312,10 +338,14 @@ const ProjectsSection = () => {
                 className="group text-left bg-card border border-border/60 rounded-2xl hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 <div className="p-6 space-y-4">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wide text-primary bg-primary/10 px-2.5 py-1 rounded">
-                      {t(`proj.filter.${p.category}`)}
-                    </span>
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <div className="flex flex-wrap gap-1">
+                      {p.categories.map((c) => (
+                        <span key={c} className="text-[10px] font-bold uppercase tracking-wide text-primary bg-primary/10 px-2.5 py-1 rounded">
+                          {t(`proj.filter.${c}`)}
+                        </span>
+                      ))}
+                    </div>
                     {p.date && (
                       <span className="text-[10px] font-semibold text-muted-foreground">{p.date}</span>
                     )}
