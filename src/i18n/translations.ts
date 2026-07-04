@@ -512,8 +512,16 @@ export const translations: Record<Lang, Record<string, string>> = {
     "cert.ge.desc": "Practical electrical engineering simulation focused on aircraft power distribution design, circuit protection, avionics issue diagnosis and technical documentation in an aerospace context.",
 
     // Projects
-    "proj.label": "Achievements",
-    "proj.title": "Projects",
+    "proj.label": "Portfolio",
+    "proj.title": "Industrial & R&D Projects",
+    "proj.intro": "Filter by technical domain. Click a project for the full analysis, gallery and documents.",
+    "proj.explore": "Explore project",
+    "proj.close": "Close",
+    "proj.filter.all": "All",
+    "proj.filter.automation": "Automation & Safety",
+    "proj.filter.power": "Energy & Smart Grids",
+    "proj.filter.digital": "Digital Twins & AI",
+    "proj.filter.hardware": "Electronics / RF / Space",
     "proj.context": "Context",
     "proj.objective": "Objective",
     "proj.contribution": "Contribution",
