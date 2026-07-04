@@ -20,6 +20,26 @@ const ProjectsSection = () => {
 
   const projects: ProjectEntry[] = [
     {
+      category: "power",
+      cardTags: ["25 kV AC", "Newton-Raphson", "RBE"],
+      titleKey: "proj.traction.title",
+      subtitleKey: "proj.traction.subtitle",
+      statusType: "completed",
+      date: "July 2026",
+      contexteKey: "proj.traction.contexte",
+      objectifKey: "proj.traction.objectif",
+      contributionKey: "proj.traction.contribution",
+      resultatsKey: "proj.traction.resultats",
+      outils: [
+        "MATLAB/Simulink", "Simscape Electrical", "Newton-Raphson", "FOC Control",
+        "Davis Train Dynamics", "Catenary Modeling", "EN 50163", "Regenerative Braking",
+      ],
+      pdfLinks: [
+        { labelKey: "proj.traction.rapportFr", href: "/documents/rapport_projet_traction_FR.pdf" },
+        { labelKey: "proj.traction.rapportEn", href: "/documents/railway_traction_project_report_EN.pdf" },
+      ],
+    },
+    {
       category: "automation",
       cardTags: ["Structured Text", "IEC 61131-3", "GRAFCET"],
       titleKey: "proj.asrs.title",
@@ -201,26 +221,6 @@ const ProjectsSection = () => {
       pdfLinks: [
         { labelKey: "proj.new.rapport", href: "/documents/rapport_prelim_defauts.pdf" },
         { labelKey: "proj.new.fiche", href: "/documents/fiche_tech_defauts.pdf" },
-      ],
-    },
-    {
-      category: "power",
-      cardTags: ["25 kV AC", "Newton-Raphson", "RBE"],
-      titleKey: "proj.traction.title",
-      subtitleKey: "proj.traction.subtitle",
-      statusType: "completed",
-      date: "July 2026",
-      contexteKey: "proj.traction.contexte",
-      objectifKey: "proj.traction.objectif",
-      contributionKey: "proj.traction.contribution",
-      resultatsKey: "proj.traction.resultats",
-      outils: [
-        "MATLAB/Simulink", "Simscape Electrical", "Newton-Raphson", "FOC Control",
-        "Davis Train Dynamics", "Catenary Modeling", "EN 50163", "Regenerative Braking",
-      ],
-      pdfLinks: [
-        { labelKey: "proj.traction.rapportFr", href: "/documents/rapport_projet_traction_FR.pdf" },
-        { labelKey: "proj.traction.rapportEn", href: "/documents/railway_traction_project_report_EN.pdf" },
       ],
     },
     {
