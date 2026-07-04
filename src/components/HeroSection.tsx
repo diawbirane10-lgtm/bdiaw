@@ -1,11 +1,13 @@
 import { ArrowDown, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLenis } from "lenis/react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const HeroSection = () => {
   const { t } = useLanguage();
+  const lenis = useLenis();
 
   return (
     <section id="accueil" className="relative min-h-screen flex items-end overflow-hidden">
@@ -88,8 +90,8 @@ const HeroSection = () => {
           className="flex flex-wrap gap-4 mb-20"
         >
           <button
-            onClick={() => document.getElementById("projets")?.scrollIntoView({ behavior: "smooth" })}
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3 rounded font-body font-bold text-sm tracking-wide uppercase hover:brightness-110 transition-all duration-300 group cursor-pointer"
+            onClick={() => lenis?.scrollTo("#projets")}
+            className="btn-shine inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3 rounded font-body font-bold text-sm tracking-wide uppercase hover:brightness-110 transition-all duration-300 group cursor-pointer"
           >
             {t("hero.cta.projects")}
             <ArrowDown size={16} className="group-hover:translate-y-0.5 transition-transform duration-300" />

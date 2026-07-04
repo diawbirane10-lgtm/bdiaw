@@ -105,7 +105,7 @@ const TestimonialsSection = () => {
             maxLength={1000}
             className="mb-3 bg-secondary/50 border-border/50 focus:border-primary"
           />
-          <Button type="submit" disabled={submitting} className="gap-2 font-bold uppercase tracking-wider">
+          <Button type="submit" disabled={submitting} className="btn-shine gap-2 font-bold uppercase tracking-wider">
             <Send size={16} />
             {t("testimonials.form.submit")}
           </Button>

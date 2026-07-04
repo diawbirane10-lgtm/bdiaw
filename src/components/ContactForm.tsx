@@ -80,7 +80,7 @@ const ContactForm = () => {
         className="mb-4 bg-secondary/50 border-border/50 focus:border-primary"
       />
       <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
-      <Button type="submit" disabled={submitting} className="gap-2 font-bold uppercase tracking-wider w-full sm:w-auto">
+      <Button type="submit" disabled={submitting} className="btn-shine gap-2 font-bold uppercase tracking-wider w-full sm:w-auto">
         <Send size={16} />
         {submitting ? t("contact.form.sending") : t("contact.form.submit")}
       </Button>

@@ -43,7 +43,7 @@ export interface ProjectData {
 }
 
 const ctaButtonClass =
-  "inline-flex items-center gap-1.5 text-xs font-body font-bold uppercase tracking-wider px-3.5 py-2 rounded-lg border transition-all duration-200";
+  "btn-shine inline-flex items-center gap-1.5 text-xs font-body font-bold uppercase tracking-wider px-3.5 py-2 rounded-lg border transition-all duration-200";
 
 const ProjectCard = ({ project }: { project: ProjectData }) => {
   const { t } = useLanguage();
