@@ -17,8 +17,11 @@ const Header = () => {
 
   const navItems = [
     { label: t("nav.home"), href: "#accueil" },
+    { label: t("nav.formation"), href: "#formation" },
+    { label: t("nav.experience"), href: "#experience" },
     { label: t("nav.research"), href: "#recherche" },
     { label: t("nav.projects"), href: "#projets" },
+    { label: t("nav.lab"), href: "#lab" },
     { label: t("nav.skills"), href: "#competences" },
     { label: t("nav.contact"), href: "#contact" },
   ];

@@ -1,28 +1,23 @@
 import { Briefcase } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const ExperienceSection = () => {
+  const { t } = useLanguage();
+
   const experiences = [
     {
-      period: "Juil — Août 2024",
-      title: "Stagiaire — Ingénierie Électrique",
-      company: "S4E SARL, Dakar",
-      project: "Centrale hydroélectrique de Manantali (Mali)",
-      tasks: [
-        "Mise en situation terrain et découverte du cycle de mise en service (HT) : participation aux tests et relevés de mesures",
-        "Appui aux études basse tension : dimensionnement (câbles, protections) sur le logiciel Camelia",
-        "Documentation : contribution à la rédaction de comptes rendus et synthèse des données",
-      ],
+      period: t("experience.e1.period"),
+      title: t("experience.e1.title"),
+      company: t("experience.e1.company"),
+      project: t("experience.e1.project"),
+      tasks: [t("experience.e1.task1"), t("experience.e1.task2"), t("experience.e1.task3")],
     },
     {
-      period: "Juil — Août 2023",
-      title: "Stagiaire — Assistant Technique",
-      company: "S4E SARL, Dakar",
-      project: "Sites HT (Mauritanie, Sénégal, Mali)",
-      tasks: [
-        "Découverte du milieu professionnel (sites HT) : accompagnement des équipes lors des inspections",
-        "Sensibilisation aux règles HSE et aux procédures de maintenance préventive",
-        "Lecture guidée de schémas électriques industriels et familiarisation avec la terminologie",
-      ],
+      period: t("experience.e2.period"),
+      title: t("experience.e2.title"),
+      company: t("experience.e2.company"),
+      project: t("experience.e2.project"),
+      tasks: [t("experience.e2.task1"), t("experience.e2.task2"), t("experience.e2.task3")],
     },
   ];
 
@@ -30,15 +25,15 @@ const ExperienceSection = () => {
     <section id="experience" className="section-padding section-alt">
       <div className="section-container">
         <div className="section-header">
-          <span className="section-label">Parcours professionnel</span>
+          <span className="section-label">{t("experience.label")}</span>
           <h2 className="section-title flex items-center gap-3">
             <Briefcase className="w-8 h-8 text-primary" />
-            Expérience
+            {t("experience.title")}
           </h2>
           <div className="section-divider" />
         </div>
 
-        <div className="space-y-0">
+        <div className="space-y-0 max-w-3xl">
           {experiences.map((exp, i) => (
             <div key={i} className="timeline-item">
               <div className="timeline-date">{exp.period}</div>

@@ -1,27 +1,27 @@
 import { GraduationCap } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const FormationSection = () => {
+  const { t } = useLanguage();
+
   const formations = [
     {
-      period: "Sept 2025 — Juin 2026",
-      status: "En cours",
-      title: "Licence Sciences et Techniques — IEEA",
-      institution: "Faculté des Sciences et Techniques (FST), Marrakech",
-      details: [
-        "Spécialité : Informatique, Électronique, Électrotechnique et Automatique",
-        "Compétences clés : Physique appliquée, instrumentation, systèmes industriels, traitement du signal",
-      ],
+      period: t("formation.f1.period"),
+      status: t("formation.f1.status"),
+      title: t("formation.f1.title"),
+      institution: t("formation.f1.institution"),
+      details: [t("formation.f1.detail1"), t("formation.f1.detail2")],
     },
     {
-      period: "Oct 2022 — Juil 2025",
-      title: "Cycle Préparatoire MIP",
-      subtitle: "Maths – Physique – Informatique",
-      institution: "Faculté des Sciences et Techniques (FST), Marrakech",
+      period: t("formation.f2.period"),
+      title: t("formation.f2.title"),
+      subtitle: t("formation.f2.subtitle"),
+      institution: t("formation.f2.institution"),
     },
     {
-      period: "Juil 2022",
-      title: "Baccalauréat Scientifique (Série S2)",
-      institution: "Cours Sainte Marie de Hann, Dakar, Sénégal",
+      period: t("formation.f3.period"),
+      title: t("formation.f3.title"),
+      institution: t("formation.f3.institution"),
     },
   ];
 
@@ -29,21 +29,21 @@ const FormationSection = () => {
     <section id="formation" className="section-padding bg-background">
       <div className="section-container">
         <div className="section-header">
-          <span className="section-label">Parcours</span>
+          <span className="section-label">{t("formation.label")}</span>
           <h2 className="section-title flex items-center gap-3">
             <GraduationCap className="w-8 h-8 text-primary" />
-            Formation
+            {t("formation.title")}
           </h2>
           <div className="section-divider" />
         </div>
 
-        <div className="space-y-0">
+        <div className="space-y-0 max-w-3xl">
           {formations.map((f, i) => (
             <div key={i} className="timeline-item">
               <div className="timeline-date">
                 {f.period}
                 {f.status && (
-                  <span className="ml-3 px-2 py-0.5 text-[10px] bg-primary/10 text-primary rounded-full border border-primary/20">
+                  <span className="ml-1 px-2 py-0.5 text-[10px] bg-primary/10 text-primary rounded-full border border-primary/20">
                     {f.status}
                   </span>
                 )}

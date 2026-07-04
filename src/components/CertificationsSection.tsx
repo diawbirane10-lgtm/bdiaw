@@ -1,5 +1,6 @@
 import { Award, Download, ExternalLink, Calendar, Star } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import TagList from "./TagList";
 
 type Certification = {
   title: string;
@@ -131,13 +132,7 @@ const CertificationsSection = () => {
 
               {cert.tags && (
                 <div className="mt-4 pt-4 border-t border-border/50">
-                  <div className="flex flex-wrap gap-1.5">
-                    {cert.tags.map((tag) => (
-                      <span key={tag} className="skill-tag text-[11px]">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <TagList tags={cert.tags} />
                 </div>
               )}
 
@@ -145,11 +140,11 @@ const CertificationsSection = () => {
                 href={cert.justificatif}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-primary hover:underline pt-3 mt-3 border-t border-border/50 uppercase tracking-wider"
+                className="inline-flex items-center justify-center gap-1.5 text-xs font-body font-bold text-primary-foreground bg-primary hover:brightness-110 px-3.5 py-2.5 mt-4 rounded-lg uppercase tracking-wider"
               >
                 <Download size={13} />
                 {t("cert.proof")}
-                <ExternalLink size={11} className="opacity-40" />
+                <ExternalLink size={11} className="opacity-70" />
               </a>
             </article>
           ))}
@@ -171,12 +166,8 @@ const CertificationsSection = () => {
                   </p>
                   <p className="text-xs text-muted-foreground font-body leading-relaxed">{cert.description}</p>
                   {cert.tags && (
-                    <div className="mt-3 flex flex-wrap gap-1.5">
-                      {cert.tags.map((tag) => (
-                        <span key={tag} className="skill-tag text-[11px]">
-                          {tag}
-                        </span>
-                      ))}
+                    <div className="mt-3">
+                      <TagList tags={cert.tags} />
                     </div>
                   )}
                 </div>
@@ -185,11 +176,11 @@ const CertificationsSection = () => {
                 href={cert.justificatif}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-primary hover:underline pt-3 mt-4 border-t border-border/50 w-full justify-center uppercase tracking-wider"
+                className="inline-flex items-center justify-center gap-1.5 text-xs font-body font-bold text-foreground bg-secondary/70 border border-border hover:border-primary/40 hover:text-primary px-3 py-2 mt-4 rounded-lg w-full uppercase tracking-wider"
               >
                 <Download size={12} />
                 {t("cert.proof")}
-                <ExternalLink size={10} className="opacity-40" />
+                <ExternalLink size={10} className="opacity-60" />
               </a>
             </div>
           ))}

@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import ProjectCard, { ProjectData } from "./ProjectCard";
-import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 type Category = "automation" | "power" | "digital" | "hardware";
@@ -333,6 +333,7 @@ const ProjectsSection = () => {
         >
           {active && (
             <div className="p-4 sm:p-6">
+              <SheetTitle className="sr-only">{t(active.titleKey)}</SheetTitle>
               <ProjectCard project={active} />
             </div>
           )}

@@ -110,7 +110,7 @@ const HeroSection = () => {
               <div className="w-10 h-1 bg-primary rounded-full" />
             </div>
             <div className="space-y-5">
-              <p className="text-sm font-body text-muted-foreground leading-relaxed">
+              <p className="text-sm font-body text-muted-foreground leading-relaxed max-w-prose">
                 {t("hero.about1")}
               </p>
             </div>

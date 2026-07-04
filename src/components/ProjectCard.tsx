@@ -1,7 +1,10 @@
-import { Download, ExternalLink, Clock, CheckCircle, Sparkles, Calendar, Github, Rocket, Images } from "lucide-react";
+import { useState } from "react";
+import { Download, ExternalLink, Clock, CheckCircle, Sparkles, Calendar, Github, Rocket, Images, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { motion, AnimatePresence } from "framer-motion";
+import TagList from "./TagList";
 
 export interface GalleryItem {
   src: string;
@@ -39,8 +42,12 @@ export interface ProjectData {
   comingSoon?: boolean;
 }
 
+const ctaButtonClass =
+  "inline-flex items-center gap-1.5 text-xs font-body font-bold uppercase tracking-wider px-3.5 py-2 rounded-lg border transition-all duration-200";
+
 const ProjectCard = ({ project }: { project: ProjectData }) => {
   const { t } = useLanguage();
+  const [detailsOpen, setDetailsOpen] = useState(false);
 
   const getStatusIcon = (statusType: string) => {
     switch (statusType) {
@@ -93,36 +100,61 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
       </h3>
 
       {project.subtitleKey && (
-        <p className="text-xs font-body text-muted-foreground mb-4">{t(project.subtitleKey)}</p>
+        <p className="text-sm font-body text-muted-foreground leading-relaxed mb-4 max-w-prose">
+          {t(project.subtitleKey)}
+        </p>
       )}
 
-      <div className="space-y-2 text-sm font-body text-muted-foreground leading-relaxed flex-grow">
-        <div>
-          <span className="font-bold text-foreground/80">{t("proj.context")} :</span>{" "}
-          {t(project.contexteKey)}
-        </div>
-        <div>
-          <span className="font-bold text-foreground/80">{t("proj.objective")} :</span>{" "}
-          {t(project.objectifKey)}
-        </div>
-        <div>
-          <span className="font-bold text-foreground/80">{t("proj.contribution")} :</span>{" "}
-          {t(project.contributionKey)}
-        </div>
-        {project.resultatsKey && (
-          <div>
-            <span className="font-bold text-foreground/80">{t("proj.results")} :</span>{" "}
-            {t(project.resultatsKey)}
-          </div>
-        )}
-      </div>
+      {/* Tools preview + expand */}
+      <TagList tags={project.outils} />
 
-      <div className="mt-4 pt-4 border-t border-border/50">
-        <div className="flex flex-wrap gap-1.5">
-          {project.outils.map((outil) => (
-            <span key={outil} className="skill-tag text-[11px]">{outil}</span>
-          ))}
-        </div>
+      {/* Collapsible technical detail */}
+      <div className="mt-3 pt-3 border-t border-border/50">
+        <button
+          type="button"
+          onClick={() => setDetailsOpen((o) => !o)}
+          aria-expanded={detailsOpen}
+          className="w-full flex items-center justify-between gap-2 text-xs font-body font-bold text-primary uppercase tracking-wider"
+        >
+          {detailsOpen ? t("proj.hideDetails") : t("proj.viewDetails")}
+          <ChevronDown
+            size={15}
+            className={cn("shrink-0 transition-transform duration-300", detailsOpen && "rotate-180")}
+          />
+        </button>
+
+        <AnimatePresence initial={false}>
+          {detailsOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="overflow-hidden"
+            >
+              <div className="space-y-2.5 text-sm font-body text-muted-foreground leading-relaxed pt-4 max-w-prose">
+                <div>
+                  <span className="font-bold text-foreground/80">{t("proj.context")} :</span>{" "}
+                  {t(project.contexteKey)}
+                </div>
+                <div>
+                  <span className="font-bold text-foreground/80">{t("proj.objective")} :</span>{" "}
+                  {t(project.objectifKey)}
+                </div>
+                <div>
+                  <span className="font-bold text-foreground/80">{t("proj.contribution")} :</span>{" "}
+                  {t(project.contributionKey)}
+                </div>
+                {project.resultatsKey && (
+                  <div>
+                    <span className="font-bold text-foreground/80">{t("proj.results")} :</span>{" "}
+                    {t(project.resultatsKey)}
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {project.comingSoon && (
@@ -134,41 +166,36 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
         </div>
       )}
 
-      {project.pdfLink && (
-        <div className="mt-3 pt-3 border-t border-border/50">
-          <a
-            href={project.pdfLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-primary hover:underline uppercase tracking-wider"
-          >
-            <Download size={13} />
-            {project.pdfLabelKey ? t(project.pdfLabelKey) : t("proj.download")}
-            <ExternalLink size={11} className="opacity-40" />
-          </a>
-        </div>
-      )}
+      {/* Calls to action — real buttons, not discreet text links */}
+      {(project.pdfLink || project.pdfLinks || project.gallery?.length || project.subGalleries?.length || project.liveLink || project.githubLink) && (
+        <div className="mt-4 pt-4 border-t border-border/50 flex flex-wrap gap-2">
+          {project.pdfLink && (
+            <a
+              href={project.pdfLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(ctaButtonClass, "bg-primary text-primary-foreground border-primary hover:brightness-110")}
+            >
+              <Download size={13} />
+              {project.pdfLabelKey ? t(project.pdfLabelKey) : t("proj.download")}
+              <ExternalLink size={11} className="opacity-60" />
+            </a>
+          )}
 
-      {project.pdfLinks && (
-        <div className="mt-3 pt-3 border-t border-border/50 flex flex-col gap-1.5">
-          {project.pdfLinks.map((link, i) => (
+          {project.pdfLinks?.map((link, i) => (
             <a
               key={i}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-primary hover:underline"
+              className={cn(ctaButtonClass, "bg-primary text-primary-foreground border-primary hover:brightness-110")}
             >
               <Download size={12} />
               {t(link.labelKey)}
-              <ExternalLink size={10} className="opacity-40" />
+              <ExternalLink size={10} className="opacity-60" />
             </a>
           ))}
-        </div>
-      )}
 
-      {(project.gallery && project.gallery.length > 0) || (project.subGalleries && project.subGalleries.length > 0) || project.liveLink || project.githubLink ? (
-        <div className="mt-3 pt-3 border-t border-border/50 flex flex-wrap gap-3 items-center">
           {((project.gallery && project.gallery.length > 0) || (project.subGalleries && project.subGalleries.length > 0)) && (() => {
             const totalCount = project.subGalleries
               ? project.subGalleries.reduce((acc, sg) => acc + sg.items.length, 0)
@@ -178,13 +205,11 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
                 <DialogTrigger asChild>
                   <button
                     type="button"
-                    className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-primary hover:underline uppercase tracking-wider"
+                    className={cn(ctaButtonClass, "bg-secondary/70 text-foreground border-border hover:border-primary/40 hover:text-primary")}
                   >
                     <Images size={13} />
                     {t(project.galleryLabelKey ?? "proj.viewGallery")}
-                    <span className="text-muted-foreground/70 normal-case font-normal">
-                      ({totalCount})
-                    </span>
+                    <span className="opacity-60 normal-case font-normal">({totalCount})</span>
                   </button>
                 </DialogTrigger>
                 <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
@@ -237,32 +262,34 @@ const ProjectCard = ({ project }: { project: ProjectData }) => {
               </Dialog>
             );
           })()}
+
           {project.liveLink && (
             <a
               href={project.liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-primary hover:underline uppercase tracking-wider"
+              className={cn(ctaButtonClass, "bg-secondary/70 text-foreground border-border hover:border-primary/40 hover:text-primary")}
             >
               <Rocket size={13} />
               {project.liveLabelKey ? t(project.liveLabelKey) : t("proj.live")}
-              <ExternalLink size={11} className="opacity-40" />
+              <ExternalLink size={11} className="opacity-60" />
             </a>
           )}
+
           {project.githubLink && (
             <a
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-foreground hover:text-primary hover:underline uppercase tracking-wider"
+              className={cn(ctaButtonClass, "bg-foreground text-background border-foreground hover:brightness-125")}
             >
               <Github size={13} />
               {project.githubLabelKey ? t(project.githubLabelKey) : "GitHub"}
-              <ExternalLink size={11} className="opacity-40" />
+              <ExternalLink size={11} className="opacity-60" />
             </a>
           )}
         </div>
-      ) : null}
+      )}
     </article>
   );
 };
