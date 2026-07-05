@@ -34,6 +34,13 @@ const ProjectsSection = () => {
         "FreeCAD", "Python", "OpenCV", "PID Control", "C++/Arduino",
         "PlatformIO", "Wokwi", "CAD Modeling", "Embedded Systems",
       ],
+      galleryLabelKey: "proj.quad.galleryLabel",
+      gallery: [
+        { src: "/projects/quadcopter/iso-view.png", captionKey: "proj.quad.cap.iso" },
+        { src: "/projects/quadcopter/front-view.png", captionKey: "proj.quad.cap.front" },
+        { src: "/projects/quadcopter/freecad-tree.png", captionKey: "proj.quad.cap.tree" },
+        { src: "/projects/quadcopter/wokwi-sim.png", captionKey: "proj.quad.cap.wokwi" },
+      ],
     },
     {
       categories: ["automation", "power"],
