@@ -6,7 +6,7 @@ import ProjectCard, { ProjectData } from "./ProjectCard";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
-type Category = "automation" | "power" | "digital" | "hardware";
+type Category = "automation" | "power" | "digital" | "hardware" | "robotics";
 
 interface ProjectEntry extends ProjectData {
   categories: Category[];
@@ -19,6 +19,22 @@ const ProjectsSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const projects: ProjectEntry[] = [
+    {
+      categories: ["robotics"],
+      cardTags: ["FreeCAD/CAO", "ESP32", "ArUco/PnP"],
+      titleKey: "proj.quad.title",
+      subtitleKey: "proj.quad.subtitle",
+      statusType: "completed",
+      date: "April 2026",
+      contexteKey: "proj.quad.contexte",
+      objectifKey: "proj.quad.objectif",
+      contributionKey: "proj.quad.contribution",
+      resultatsKey: "proj.quad.resultats",
+      outils: [
+        "FreeCAD", "Python", "OpenCV", "PID Control", "C++/Arduino",
+        "PlatformIO", "Wokwi", "CAD Modeling", "Embedded Systems",
+      ],
+    },
     {
       categories: ["automation", "power"],
       cardTags: ["Stateflow", "UFLS", "Simulink"],
@@ -286,6 +302,7 @@ const ProjectsSection = () => {
     { key: "power", labelKey: "proj.filter.power" },
     { key: "digital", labelKey: "proj.filter.digital" },
     { key: "hardware", labelKey: "proj.filter.hardware" },
+    { key: "robotics", labelKey: "proj.filter.robotics" },
   ];
 
   const visible = useMemo(
