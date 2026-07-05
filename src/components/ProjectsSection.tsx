@@ -20,29 +20,6 @@ const ProjectsSection = () => {
 
   const projects: ProjectEntry[] = [
     {
-      categories: ["robotics"],
-      cardTags: ["FreeCAD/CAO", "ESP32", "ArUco/PnP"],
-      titleKey: "proj.quad.title",
-      subtitleKey: "proj.quad.subtitle",
-      statusType: "completed",
-      date: "April 2026",
-      contexteKey: "proj.quad.contexte",
-      objectifKey: "proj.quad.objectif",
-      contributionKey: "proj.quad.contribution",
-      resultatsKey: "proj.quad.resultats",
-      outils: [
-        "FreeCAD", "Python", "OpenCV", "PID Control", "C++/Arduino",
-        "PlatformIO", "Wokwi", "CAD Modeling", "Embedded Systems",
-      ],
-      galleryLabelKey: "proj.quad.galleryLabel",
-      gallery: [
-        { src: "/projects/quadcopter/iso-view.png", captionKey: "proj.quad.cap.iso" },
-        { src: "/projects/quadcopter/front-view.png", captionKey: "proj.quad.cap.front" },
-        { src: "/projects/quadcopter/freecad-tree.png", captionKey: "proj.quad.cap.tree" },
-        { src: "/projects/quadcopter/wokwi-sim.png", captionKey: "proj.quad.cap.wokwi" },
-      ],
-    },
-    {
       categories: ["automation", "power"],
       cardTags: ["Stateflow", "UFLS", "Simulink"],
       titleKey: "proj.ufls.title",
@@ -218,6 +195,29 @@ const ProjectsSection = () => {
         { src: "/projects/airport-radar-pcb/input-impedance.png", altKey: "proj.radar.alt.impedance", captionKey: "proj.radar.cap.impedance" },
       ],
       githubLink: "https://github.com/diawbirane10-lgtm/airport-radar-patch-pcb-matlab",
+    },
+    {
+      categories: ["robotics"],
+      cardTags: ["FreeCAD/CAO", "ESP32", "ArUco/PnP"],
+      titleKey: "proj.quad.title",
+      subtitleKey: "proj.quad.subtitle",
+      statusType: "completed",
+      date: "April 2026",
+      contexteKey: "proj.quad.contexte",
+      objectifKey: "proj.quad.objectif",
+      contributionKey: "proj.quad.contribution",
+      resultatsKey: "proj.quad.resultats",
+      outils: [
+        "FreeCAD", "Python", "OpenCV", "PID Control", "C++/Arduino",
+        "PlatformIO", "Wokwi", "CAD Modeling", "Embedded Systems",
+      ],
+      galleryLabelKey: "proj.quad.galleryLabel",
+      gallery: [
+        { src: "/projects/quadcopter/iso-view.png", captionKey: "proj.quad.cap.iso" },
+        { src: "/projects/quadcopter/front-view.png", captionKey: "proj.quad.cap.front" },
+        { src: "/projects/quadcopter/freecad-tree.png", captionKey: "proj.quad.cap.tree" },
+        { src: "/projects/quadcopter/wokwi-sim.png", captionKey: "proj.quad.cap.wokwi" },
+      ],
     },
     {
       categories: ["hardware"],
