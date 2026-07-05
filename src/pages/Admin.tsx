@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Eye, Calendar, Monitor, Globe, TrendingUp, Lock, Trash2, MessageSquare } from "lucide-react";
+import { Eye, Calendar, Monitor, Globe, TrendingUp, Lock, Trash2, MessageSquare, MapPin } from "lucide-react";
 import { toast } from "sonner";
 
 const ADMIN_PASSWORD = "bdiaw2026"; // Change this to your preferred password
