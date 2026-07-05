@@ -43,24 +43,51 @@ export type Database = {
       }
       page_visits: {
         Row: {
+          city: string | null
+          country: string | null
+          country_code: string | null
           created_at: string
           id: string
+          ip: string | null
+          isp: string | null
+          latitude: number | null
+          longitude: number | null
           page: string
           referrer: string | null
+          region: string | null
+          timezone: string | null
           user_agent: string | null
         }
         Insert: {
+          city?: string | null
+          country?: string | null
+          country_code?: string | null
           created_at?: string
           id?: string
+          ip?: string | null
+          isp?: string | null
+          latitude?: number | null
+          longitude?: number | null
           page?: string
           referrer?: string | null
+          region?: string | null
+          timezone?: string | null
           user_agent?: string | null
         }
         Update: {
+          city?: string | null
+          country?: string | null
+          country_code?: string | null
           created_at?: string
           id?: string
+          ip?: string | null
+          isp?: string | null
+          latitude?: number | null
+          longitude?: number | null
           page?: string
           referrer?: string | null
+          region?: string | null
+          timezone?: string | null
           user_agent?: string | null
         }
         Relationships: []

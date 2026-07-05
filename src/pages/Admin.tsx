@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Eye, Calendar, Monitor, Globe, TrendingUp, Lock, Trash2, MessageSquare } from "lucide-react";
+import { Eye, Calendar, Monitor, Globe, TrendingUp, Lock, Trash2, MessageSquare, MapPin } from "lucide-react";
 import { toast } from "sonner";
 
 const ADMIN_PASSWORD = "bdiaw2026"; // Change this to your preferred password
@@ -215,6 +215,68 @@ const Admin = () => {
               </div>
             )}
 
+            {/* Top countries / cities */}
+            {(() => {
+              const countryCounts: Record<string, { count: number; code?: string }> = {};
+              const cityCounts: Record<string, { count: number; country?: string }> = {};
+              recentVisits.forEach((v) => {
+                if (v.country) {
+                  const k = v.country;
+                  countryCounts[k] = { count: (countryCounts[k]?.count || 0) + 1, code: v.country_code };
+                }
+                if (v.city) {
+                  const k = `${v.city}${v.country ? ", " + v.country : ""}`;
+                  cityCounts[k] = { count: (cityCounts[k]?.count || 0) + 1, country: v.country };
+                }
+              });
+              const topCountries = Object.entries(countryCounts).sort((a, b) => b[1].count - a[1].count).slice(0, 8);
+              const topCities = Object.entries(cityCounts).sort((a, b) => b[1].count - a[1].count).slice(0, 8);
+              if (topCountries.length === 0 && topCities.length === 0) return null;
+              return (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                  <div className="card-elegant p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Globe className="w-5 h-5 text-primary" />
+                      <h2 className="text-lg font-semibold text-foreground">Top pays (récent)</h2>
+                    </div>
+                    {topCountries.length === 0 ? (
+                      <p className="text-sm text-muted-foreground">Pas encore de données géo.</p>
+                    ) : (
+                      <ul className="space-y-2">
+                        {topCountries.map(([name, v]) => (
+                          <li key={name} className="flex items-center justify-between text-sm">
+                            <span className="text-foreground">
+                              {v.code ? <span className="mr-2 text-muted-foreground">{v.code}</span> : null}
+                              {name}
+                            </span>
+                            <span className="font-semibold text-primary">{v.count}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  <div className="card-elegant p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <MapPin className="w-5 h-5 text-primary" />
+                      <h2 className="text-lg font-semibold text-foreground">Top villes (récent)</h2>
+                    </div>
+                    {topCities.length === 0 ? (
+                      <p className="text-sm text-muted-foreground">Pas encore de données géo.</p>
+                    ) : (
+                      <ul className="space-y-2">
+                        {topCities.map(([name, v]) => (
+                          <li key={name} className="flex items-center justify-between text-sm">
+                            <span className="text-foreground">{name}</span>
+                            <span className="font-semibold text-primary">{v.count}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              );
+            })()}
+
             {/* Recent Visits */}
             <div className="card-elegant p-6">
               <h2 className="text-lg font-semibold text-foreground mb-4">Visites récentes</h2>
@@ -223,6 +285,7 @@ const Admin = () => {
                   <thead>
                     <tr className="text-left text-muted-foreground border-b border-border">
                       <th className="pb-2 pr-4">Date</th>
+                      <th className="pb-2 pr-4">Localisation</th>
                       <th className="pb-2 pr-4">Page</th>
                       <th className="pb-2 pr-4">Appareil</th>
                       <th className="pb-2 pr-4">Navigateur</th>
@@ -230,17 +293,40 @@ const Admin = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {recentVisits.map((v) => (
-                      <tr key={v.id} className="border-b border-border/30">
-                        <td className="py-2 pr-4 text-foreground whitespace-nowrap">
-                          {new Date(v.created_at).toLocaleString("fr-FR")}
-                        </td>
-                        <td className="py-2 pr-4 text-foreground">{v.page}</td>
-                        <td className="py-2 pr-4 text-foreground">{v.user_agent ? getDeviceType(v.user_agent) : "-"}</td>
-                        <td className="py-2 pr-4 text-foreground">{v.user_agent ? getBrowserName(v.user_agent) : "-"}</td>
-                        <td className="py-2 text-muted-foreground truncate max-w-[200px]">{v.referrer || "Direct"}</td>
-                      </tr>
-                    ))}
+                    {recentVisits.map((v) => {
+                      const loc = [v.city, v.region, v.country].filter(Boolean).join(", ");
+                      const coords = v.latitude && v.longitude
+                        ? `https://www.openstreetmap.org/?mlat=${v.latitude}&mlon=${v.longitude}#map=10/${v.latitude}/${v.longitude}`
+                        : null;
+                      return (
+                        <tr key={v.id} className="border-b border-border/30">
+                          <td className="py-2 pr-4 text-foreground whitespace-nowrap">
+                            {new Date(v.created_at).toLocaleString("fr-FR")}
+                          </td>
+                          <td className="py-2 pr-4 text-foreground whitespace-nowrap">
+                            {loc ? (
+                              coords ? (
+                                <a href={coords} target="_blank" rel="noreferrer" className="hover:text-primary inline-flex items-center gap-1">
+                                  <MapPin className="w-3 h-3" />
+                                  {v.country_code ? <span className="text-muted-foreground">{v.country_code}</span> : null} {loc}
+                                </a>
+                              ) : (
+                                <span className="inline-flex items-center gap-1">
+                                  <MapPin className="w-3 h-3" />
+                                  {loc}
+                                </span>
+                              )
+                            ) : (
+                              <span className="text-muted-foreground">—</span>
+                            )}
+                          </td>
+                          <td className="py-2 pr-4 text-foreground">{v.page}</td>
+                          <td className="py-2 pr-4 text-foreground">{v.user_agent ? getDeviceType(v.user_agent) : "-"}</td>
+                          <td className="py-2 pr-4 text-foreground">{v.user_agent ? getBrowserName(v.user_agent) : "-"}</td>
+                          <td className="py-2 text-muted-foreground truncate max-w-[200px]">{v.referrer || "Direct"}</td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
