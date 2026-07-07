@@ -84,6 +84,31 @@ const ProjectsSection = () => {
       githubLink: "https://github.com/diawbirane10-lgtm/codesys_asrs/tree/main/Project_ASRS_CodeSYS",
     },
     {
+      categories: ["power", "digital"],
+      cardTags: ["Simulink", "Li-ion 3S", "State Machine"],
+      titleKey: "proj.minibms.title",
+      subtitleKey: "proj.minibms.subtitle",
+      statusType: "completed",
+      date: "June 2026",
+      contexteKey: "proj.minibms.contexte",
+      objectifKey: "proj.minibms.objectif",
+      contributionKey: "proj.minibms.contribution",
+      resultatsKey: "proj.minibms.resultats",
+      outils: [
+        "MATLAB/Simulink", "Stateflow", "Li-ion 3S Pack", "Coulomb Counting SoC",
+        "OCV/SoC LUT", "R_int(T, SoC) LUT", "Fault Debouncing", "Contactor Control",
+      ],
+      galleryLabelKey: "proj.minibms.galleryLabel",
+      gallery: [
+        { src: "/projects/minibms/idle.png", captionKey: "proj.minibms.cap.idle" },
+        { src: "/projects/minibms/discharge.png", captionKey: "proj.minibms.cap.discharge" },
+        { src: "/projects/minibms/discharge-fault.png", captionKey: "proj.minibms.cap.dischargeFault" },
+        { src: "/projects/minibms/charge.png", captionKey: "proj.minibms.cap.charge" },
+        { src: "/projects/minibms/charge-fault.png", captionKey: "proj.minibms.cap.chargeFault" },
+      ],
+    },
+    {
+
       categories: ["digital"],
       cardTags: ["State-Space", "MATLAB", "PID"],
       titleKey: "proj.b747.title",
