@@ -67,6 +67,34 @@ const profileJsonLd = [
   },
   {
     '@context': 'https://schema.org',
+    '@type': 'ScholarlyArticle',
+    '@id': siteUrl + '/#grid-forming-vsm-vsc-hvdc-paper',
+    url: siteUrl + '/#research',
+    headline:
+      'Grid-Forming Virtual Synchronous Machine Control with DC-Coupled Battery Storage for Frequency Stability in a Multi-Terminal VSC-HVDC Renewable Power System',
+    author: {
+      '@type': 'Person',
+      '@id': siteUrl + '/#birane-diaw',
+      name: 'Birane DIAW',
+    },
+    isPartOf: {
+      '@type': 'Periodical',
+      name: 'Journal of Undergraduate Research International',
+    },
+    identifier: 'JURI-00314-2026-02',
+    creativeWorkStatus: 'Accepted for publication; DOI forthcoming',
+    about: [
+      'Grid-forming control',
+      'Virtual synchronous machine',
+      'VSC-HVDC',
+      'Battery energy storage',
+      'Frequency stability',
+      'Renewable power systems',
+    ],
+    inLanguage: 'en',
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'ProfilePage',
     '@id': siteUrl + '/#profile',
     url: siteUrl,
