@@ -1,16 +1,18 @@
-name: b-diaw.com AI SEO Growth
+name: b-diaw.com SEO Growth Bot
 
 on:
   schedule:
     - cron: "43 6 * * 1"
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - ".github/workflows/seo-growth.yml"
-      - "seo-bot/scripts/growth_autopilot.py"
-      - "seo-bot/scripts/search_console_report.py"
-      - "seo-bot/scripts/semantic_keywords.py"
-      - "seo-bot/config/site.json"
+      - "seo-bot/**"
+      - "recovered-ohmega/app/layout.jsx"
+      - "recovered-ohmega/app/robots.js"
+      - "recovered-ohmega/app/sitemap.js"
+      - "recovered-ohmega/app/[[...slug]]/**"
 
 permissions:
   contents: read
@@ -26,67 +28,56 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: |
-            seo-bot/requirements.txt
-            seo-bot/requirements-ai.txt
+          cache-dependency-path: seo-bot/requirements.txt
 
-      - name: Install SEO and Hugging Face dependencies
-        run: |
-          python -m pip install -r seo-bot/requirements.txt
-          python -m pip install -r seo-bot/requirements-ai.txt
+      - name: Install SEO dependencies
+        run: python -m pip install -r seo-bot/requirements.txt
 
-      - name: Refresh sitemap in Google Search Console
+      - name: Technical SEO audit
+        id: technical
         continue-on-error: true
-        env:
-          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
-        run: python seo-bot/scripts/search_console_sitemap.py
+        run: python seo-bot/scripts/seo_audit.py
 
-      - name: Build Search Console opportunity report
-        continue-on-error: true
-        env:
-          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
-        run: python seo-bot/scripts/search_console_report.py
+      - name: Keyword coverage audit
+        if: always()
+        run: python seo-bot/scripts/keyword_audit.py
 
-      - name: Cluster search intent with Hugging Face embeddings
-        env:
-          HF_HOME: ${{ runner.temp }}/hf-cache
-        run: python seo-bot/scripts/semantic_keywords.py
-
-      - name: Build report-only SEO Growth Autopilot
+      - name: Build autonomous growth recommendations
+        if: always()
         run: python seo-bot/scripts/growth_autopilot.py
 
-      - name: Upload growth intelligence
+      - name: Notify IndexNow-compatible search engines
+        if: always()
+        continue-on-error: true
+        run: python seo-bot/scripts/indexnow_submit.py
+
+      - name: Upload SEO reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: seo-growth-${{ github.run_number }}
-          path: |
-            seo-bot/reports/search-console.json
-            seo-bot/reports/search-console.md
-            seo-bot/reports/semantic-keywords.json
-            seo-bot/reports/semantic-keywords.md
-            seo-bot/reports/growth-autopilot.json
-            seo-bot/reports/growth-autopilot.md
+          path: seo-bot/reports/
           if-no-files-found: error
           retention-days: 90
 
-      - name: Publish weekly opportunity issue
-        if: hashFiles('seo-bot/reports/growth-autopilot.md') != ''
+      - name: Publish weekly SEO issue
+        if: always() && hashFiles('seo-bot/reports/growth-autopilot.md') != ''
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           {
             cat seo-bot/reports/growth-autopilot.md
-            if [ -f seo-bot/reports/search-console.md ]; then
+            if [ -f seo-bot/reports/seo-audit.md ]; then
               echo
               echo "---"
               echo
-              cat seo-bot/reports/search-console.md
+              cat seo-bot/reports/seo-audit.md
             fi
-            if [ -f seo-bot/reports/semantic-keywords.md ]; then
+            if [ -f seo-bot/reports/keyword-audit.md ]; then
               echo
               echo "---"
               echo
-              cat seo-bot/reports/semantic-keywords.md
+              cat seo-bot/reports/keyword-audit.md
             fi
           } > /tmp/seo-growth.md
 
@@ -96,3 +87,7 @@ jobs:
           else
             gh issue create --repo "$GITHUB_REPOSITORY" --title "b-diaw.com weekly SEO growth" --body-file /tmp/seo-growth.md
           fi
+
+      - name: Fail on critical SEO regression
+        if: steps.technical.outcome == 'failure'
+        run: exit 1
