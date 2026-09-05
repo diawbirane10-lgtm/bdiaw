@@ -300,3 +300,88 @@ a{color:inherit;text-decoration-color:var(--soft);text-underline-offset:.18em;te
   }
   .experienceDate{padding-top:0}
 }
+
+
+/* --- OHMEGA v14: experience logos + smartphone-safe navigation --- */
+.experienceHeader{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:8px;
+}
+.experienceHeader>div:first-child{min-width:0;flex:1}
+.experienceHeader .experienceMeta{margin-bottom:0!important}
+.experienceLogo{
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:5px 7px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#fff;
+  overflow:hidden;
+}
+.experienceLogo img{
+  display:block;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+}
+.experienceLogo.s4eLogo{
+  width:104px;
+  height:58px;
+}
+.experienceLogo.menaraLogo{
+  width:122px;
+  height:58px;
+}
+.experienceLogo.s4eLogo img{width:92px;height:auto}
+.experienceLogo.menaraLogo img{width:110px;height:auto}
+
+/* Keep the main navigation readable instead of horizontally clipping on phones. */
+@media(max-width:780px){
+  .hero .nav{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:6px;
+    width:100%;
+    max-width:100%;
+    margin:22px 0 12px;
+    padding:6px;
+    overflow:visible;
+  }
+  .hero .nav a{
+    width:100%;
+    min-width:0;
+    min-height:38px;
+    padding:7px 7px;
+    font-size:12px;
+    line-height:1.2;
+    text-align:center;
+    white-space:normal;
+  }
+}
+@media(max-width:520px){
+  .hero .nav{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    margin-left:0;
+    margin-right:0;
+    padding:6px;
+  }
+  .experienceHeader{
+    gap:12px;
+  }
+  .experienceLogo.s4eLogo{
+    width:92px;
+    height:52px;
+  }
+  .experienceLogo.menaraLogo{
+    width:104px;
+    height:52px;
+  }
+  .experienceLogo.s4eLogo img{width:80px}
+  .experienceLogo.menaraLogo img{width:92px}
+}
