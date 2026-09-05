@@ -1,6 +1,7 @@
 import './globals.css';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
+import { Analytics } from '@vercel/analytics/next';
 
 const siteUrl = 'https://b-diaw.com';
 
@@ -136,6 +137,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
