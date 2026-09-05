@@ -58,13 +58,13 @@ export async function generateMetadata({ params }) {
       url: siteUrl + path,
       title: project.title,
       description: project.description,
-      images: [{ url: '/icon.svg', alt: 'OHMEGA — Birane DIAW' }],
+      images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'OHMEGA — Birane DIAW' }],
     },
     twitter: {
       card: 'summary',
       title: project.title,
       description: project.description,
-      images: ['/icon.svg'],
+      images: ['/opengraph-image'],
     },
   };
 }
