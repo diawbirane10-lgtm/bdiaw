@@ -11,7 +11,8 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "geist": "latest"
+    "geist": "latest",
+    "@vercel/analytics": "latest"
   },
   "devDependencies": {}
 }
