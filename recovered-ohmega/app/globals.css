@@ -1,6 +1,7 @@
 
-:root{color-scheme:dark;--bg:#151515;--panel:#1d1d1d;--ink:#f4f4f4;--mut:#c8c8c8;--soft:#8d8d8d;--line:#3a3a3a;--btn:#f4f4f4;--bt:#111;--max:880px}
+:root{color-scheme:light;--bg:#fff;--panel:#f7f7f7;--ink:#090909;--mut:#424242;--soft:#737373;--line:#d8d8d8;--btn:#090909;--bt:#fff;--max:880px}
 :root[data-theme=light]{color-scheme:light;--bg:#fff;--panel:#f7f7f7;--ink:#090909;--mut:#424242;--soft:#737373;--line:#d8d8d8;--btn:#090909;--bt:#fff}
+:root[data-theme=dark]{color-scheme:dark;--bg:#151515;--panel:#1d1d1d;--ink:#f4f4f4;--mut:#c8c8c8;--soft:#8d8d8d;--line:#3a3a3a;--btn:#f4f4f4;--bt:#111}
 *{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:background .2s,color .2s}
 a{color:inherit;text-decoration-color:var(--soft);text-underline-offset:.18em;text-decoration-thickness:1px}a:hover{text-decoration-color:var(--ink)}button{font:inherit}
@@ -202,4 +203,34 @@ a{color:inherit;text-decoration-color:var(--soft);text-underline-offset:.18em;te
   word-break:normal;
   overflow-wrap:break-word;
   hyphens:none;
+}
+
+
+/* --- OHMEGA v12: compact project skill/software tags --- */
+.projectTags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:10px 0 14px;
+}
+.projectTag{
+  display:inline-flex;
+  align-items:center;
+  min-height:26px;
+  padding:4px 9px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:var(--mut);
+  background:transparent;
+  font:11px/1.2 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  letter-spacing:.02em;
+  white-space:nowrap;
+}
+.projectTag.toolTag{
+  background:var(--panel);
+  color:var(--ink);
+}
+@media(max-width:520px){
+  .projectTags{gap:5px;margin:9px 0 13px}
+  .projectTag{font-size:10px;padding:4px 8px}
 }
