@@ -188,3 +188,18 @@ a{color:inherit;text-decoration-color:var(--soft);text-underline-offset:.18em;te
     font-size:clamp(28px,8vw,34px)!important;
   }
 }
+
+
+/* --- OHMEGA v11: language-safe wrapping --- */
+.sectionHead .sectionTitle,
+.footer .footerSectionTitle{
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  hyphens:none!important;
+}
+.sectionHead{min-width:0}
+.nav a,.inline a,.time h3,.skill h3,.projectHero h1,.projectHero h2,.detailGrid h2{
+  word-break:normal;
+  overflow-wrap:break-word;
+  hyphens:none;
+}
