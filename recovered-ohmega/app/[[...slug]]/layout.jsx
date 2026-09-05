@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation';
+
 const siteUrl = 'https://b-diaw.com';
 
 const projects = {
@@ -68,9 +70,24 @@ export async function generateMetadata({ params }) {
 
 export default async function ProjectSeoLayout({ children, params }) {
   const resolved = await params;
-  const slugParts = resolved?.slug || [];
-  const slug = Array.isArray(slugParts) ? slugParts[slugParts.length - 1] : slugParts;
-  const project = projects[slug];
+  const slugParts = Array.isArray(resolved?.slug)
+    ? resolved.slug
+    : resolved?.slug
+      ? [resolved.slug]
+      : [];
+
+  const isHome = slugParts.length === 0;
+  const isProjectPath =
+    slugParts.length === 2 &&
+    slugParts[0] === 'projects' &&
+    Boolean(projects[slugParts[1]]);
+
+  if (!isHome && !isProjectPath) {
+    notFound();
+  }
+
+  const slug = isProjectPath ? slugParts[1] : null;
+  const project = slug ? projects[slug] : null;
 
   const jsonLd = project
     ? {
