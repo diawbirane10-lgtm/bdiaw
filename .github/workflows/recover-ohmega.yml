@@ -1,0 +1,30 @@
+name: Recover OHMEGA source
+
+on:
+  push:
+    paths:
+      - ".github/workflows/recover-ohmega.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover source snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf recovered-ohmega /tmp/ohmega-recover
+          mkdir -p recovered-ohmega /tmp/ohmega-recover
+          unzip -q portfolio-snapshots/ohmega-fundamental-v12.zip -d /tmp/ohmega-recover
+          ROOT="$(find /tmp/ohmega-recover -mindepth 1 -maxdepth 1 -type d | head -n 1)"
+          cp -R "$ROOT"/. recovered-ohmega/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add recovered-ohmega
+          git commit -m "Recover OHMEGA v12 source" || exit 0
+          git push
