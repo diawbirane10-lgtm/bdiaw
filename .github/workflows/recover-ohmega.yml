@@ -1,5 +1,5 @@
 name: Recover OHMEGA source
-# SEO source recovery — v4
+# SEO source recovery — v5 salvages the historical snapshot even if its ZIP central directory is damaged.
 
 on:
   push:
@@ -27,13 +27,77 @@ jobs:
 
           gh api             -H "Accept: application/vnd.github.raw"             /repos/diawbirane10-lgtm/bdiaw/contents/portfolio-snapshots/ohmega-fundamental-v12.zip             > /tmp/ohmega-snapshot.zip
 
-          file /tmp/ohmega-snapshot.zip
-          unzip -t /tmp/ohmega-snapshot.zip
-          unzip -q /tmp/ohmega-snapshot.zip -d /tmp/ohmega-recover
+          python - <<'PY'
+          import struct, zlib
+          from pathlib import Path
+
+          src = Path("/tmp/ohmega-snapshot.zip").read_bytes()
+          out = Path("/tmp/ohmega-recover")
+          out.mkdir(parents=True, exist_ok=True)
+
+          pos = 0
+          recovered = []
+          while pos + 30 <= len(src):
+              sig = struct.unpack_from("<I", src, pos)[0]
+              if sig != 0x04034B50:
+                  break
+
+              (
+                  _sig, version, flags, method, mtime, mdate,
+                  crc, comp_size, uncomp_size, name_len, extra_len
+              ) = struct.unpack_from("<IHHHHHIIIHH", src, pos)
+
+              start = pos + 30
+              name_bytes = src[start:start + name_len]
+              name = name_bytes.decode("utf-8", errors="replace")
+              data_start = start + name_len + extra_len
+              data_end = data_start + comp_size
+              if data_end > len(src):
+                  raise RuntimeError(f"Truncated entry: {name}")
+
+              safe = Path(name)
+              if safe.is_absolute() or ".." in safe.parts:
+                  raise RuntimeError(f"Unsafe path: {name}")
+
+              target = out / safe
+              if name.endswith("/"):
+                  target.mkdir(parents=True, exist_ok=True)
+              else:
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  compressed = src[data_start:data_end]
+                  if method == 0:
+                      payload = compressed
+                  elif method == 8:
+                      payload = zlib.decompress(compressed, -15)
+                  else:
+                      raise RuntimeError(f"Unsupported compression method {method} for {name}")
+                  target.write_bytes(payload)
+                  recovered.append(name)
+
+              pos = data_end
+
+              # Historical snapshot does not use data descriptors, but handle one if present.
+              if flags & 0x08:
+                  if src[pos:pos+4] == b"PK\x07\x08":
+                      pos += 16
+                  else:
+                      pos += 12
+
+          if not recovered:
+              raise RuntimeError("No files recovered from historical snapshot")
+
+          print("Recovered files:")
+          for item in recovered:
+              print(" -", item)
+          PY
 
           ROOT="$(find /tmp/ohmega-recover -mindepth 1 -maxdepth 1 -type d | head -n 1)"
           test -n "$ROOT"
           cp -R "$ROOT"/. recovered-ohmega/
+
+          test -f recovered-ohmega/package.json
+          test -f recovered-ohmega/app/layout.jsx
+          test -f 'recovered-ohmega/app/[[...slug]]/page.jsx'
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
