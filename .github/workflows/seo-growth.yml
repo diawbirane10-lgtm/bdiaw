@@ -1,0 +1,76 @@
+name: b-diaw.com AI SEO Growth
+
+on:
+  schedule:
+    - cron: "43 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  growth:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: |
+            seo-bot/requirements.txt
+            seo-bot/requirements-ai.txt
+
+      - name: Install SEO and Hugging Face dependencies
+        run: |
+          python -m pip install -r seo-bot/requirements.txt
+          python -m pip install -r seo-bot/requirements-ai.txt
+
+      - name: Refresh sitemap in Google Search Console
+        continue-on-error: true
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: python seo-bot/scripts/search_console_sitemap.py
+
+      - name: Build Search Console opportunity report
+        continue-on-error: true
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: python seo-bot/scripts/search_console_report.py
+
+      - name: Cluster search intent with Hugging Face embeddings
+        env:
+          HF_HOME: ${{ runner.temp }}/hf-cache
+        run: python seo-bot/scripts/semantic_keywords.py
+
+      - name: Upload growth intelligence
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-growth-${{ github.run_number }}
+          path: |
+            seo-bot/reports/search-console.json
+            seo-bot/reports/search-console.md
+            seo-bot/reports/semantic-keywords.json
+            seo-bot/reports/semantic-keywords.md
+          if-no-files-found: ignore
+          retention-days: 90
+
+      - name: Publish weekly opportunity issue
+        if: hashFiles('seo-bot/reports/search-console.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            cat seo-bot/reports/search-console.md
+            echo
+            cat seo-bot/reports/semantic-keywords.md
+          } > /tmp/seo-growth.md
+
+          issue=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search '"b-diaw.com weekly SEO growth" in:title' --json number --jq '.[0].number // empty')
+          if [ -n "$issue" ]; then
+            gh issue edit "$issue" --repo "$GITHUB_REPOSITORY" --body-file /tmp/seo-growth.md
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "b-diaw.com weekly SEO growth" --body-file /tmp/seo-growth.md
+          fi
