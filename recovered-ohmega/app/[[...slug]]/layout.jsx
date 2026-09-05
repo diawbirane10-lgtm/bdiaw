@@ -51,6 +51,7 @@ export async function generateMetadata({ params }) {
   return {
     title: project.title,
     description: project.description,
+    keywords: project.keywords,
     alternates: { canonical: path },
     openGraph: {
       type: 'article',
@@ -90,19 +91,44 @@ export default async function ProjectSeoLayout({ children, params }) {
   const project = slug ? projects[slug] : null;
 
   const jsonLd = project
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'CreativeWork',
-        name: project.title,
-        description: project.description,
-        url: `${siteUrl}/projects/${slug}`,
-        author: {
-          '@type': 'Person',
-          '@id': siteUrl + '/#birane-diaw',
-          name: 'Birane DIAW',
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'TechArticle',
+          '@id': `${siteUrl}/projects/${slug}#article`,
+          headline: project.title,
+          name: project.title,
+          description: project.description,
+          url: `${siteUrl}/projects/${slug}`,
+          mainEntityOfPage: `${siteUrl}/projects/${slug}`,
+          isPartOf: { '@id': siteUrl + '/#website' },
+          inLanguage: 'en',
+          author: {
+            '@type': 'Person',
+            '@id': siteUrl + '/#birane-diaw',
+            name: 'Birane DIAW',
+          },
+          keywords: project.keywords.join(', '),
         },
-        keywords: project.keywords.join(', '),
-      }
+        {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Birane DIAW — OHMEGA',
+              item: siteUrl + '/',
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: project.title,
+              item: `${siteUrl}/projects/${slug}`,
+            },
+          ],
+        },
+      ]
     : null;
 
   return (
