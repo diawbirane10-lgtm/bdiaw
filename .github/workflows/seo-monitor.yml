@@ -1,0 +1,75 @@
+name: b-diaw.com Daily SEO Monitor
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "seo-bot/**"
+      - ".github/workflows/seo-monitor.yml"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: seo-bot/requirements.txt
+
+      - name: Install audit dependencies
+        run: python -m pip install -r seo-bot/requirements.txt
+
+      - name: Technical SEO audit
+        id: technical
+        continue-on-error: true
+        run: python seo-bot/scripts/seo_audit.py
+
+      - name: Keyword coverage audit
+        if: always()
+        run: python seo-bot/scripts/keyword_audit.py
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-daily-${{ github.run_number }}
+          path: seo-bot/reports/
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Open or update critical SEO issue
+        if: steps.technical.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          issue=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search '"b-diaw.com automated SEO alert" in:title' --json number --jq '.[0].number // empty')
+          if [ -n "$issue" ]; then
+            gh issue comment "$issue" --repo "$GITHUB_REPOSITORY" --body "The daily technical SEO audit is still failing. Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "b-diaw.com automated SEO alert" --body-file seo-bot/reports/seo-audit.md
+          fi
+
+      - name: Close alert after recovery
+        if: steps.technical.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          issue=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search '"b-diaw.com automated SEO alert" in:title' --json number --jq '.[0].number // empty')
+          if [ -n "$issue" ]; then
+            gh issue comment "$issue" --repo "$GITHUB_REPOSITORY" --body "Technical SEO checks recovered successfully."
+            gh issue close "$issue" --repo "$GITHUB_REPOSITORY" --reason completed
+          fi
+
+      - name: Fail on critical regression
+        if: steps.technical.outcome == 'failure'
+        run: exit 1
