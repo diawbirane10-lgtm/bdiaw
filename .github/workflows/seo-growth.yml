@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "43 6 * * 1"
   workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/seo-growth.yml"
 
 permissions:
   contents: read
