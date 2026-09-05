@@ -1,0 +1,27 @@
+# Birane DIAW — OHMEGA
+
+Canonical website: https://b-diaw.com/
+
+Birane DIAW is a State Engineering Student focused on electrical engineering and intelligent systems. The portfolio presents research and engineering case studies in power systems, smart grids, VSC-HVDC, grid-forming control, renewable energy, industrial automation, digital twins and embedded electronics.
+
+## Research
+
+- Grid-Forming Virtual Synchronous Machine Control with DC-Coupled Battery Storage for Frequency Stability in a Multi-Terminal VSC-HVDC Renewable Power System
+- Journal of Undergraduate Research International, KFUPM
+- Manuscript accepted for publication; DOI forthcoming.
+
+## Selected engineering case studies
+
+- https://b-diaw.com/projects/ufls-smartgrid — Smart-Grid UFLS Relay — ONEE & SENELEC
+- https://b-diaw.com/projects/wave-energy-conversion — Wave-Energy Conversion Chain — PMSG, FOC & Grid Injection
+- https://b-diaw.com/projects/railway-traction-25kv — 25 kV AC Railway Traction System
+- https://b-diaw.com/projects/digital-twin-liion-battery — Digital Twin — Li-ion Battery Packs
+- https://b-diaw.com/projects/digital-twin-electric-drive — Digital Twin — Variable-Speed Electric Drive
+
+## Profiles
+
+- GitHub: https://github.com/diawbirane10-lgtm
+- LinkedIn: https://www.linkedin.com/in/birane-diaw-b83b47374
+- X: https://x.com/epsilonp0
+
+Use the canonical b-diaw.com URLs when citing this portfolio.
