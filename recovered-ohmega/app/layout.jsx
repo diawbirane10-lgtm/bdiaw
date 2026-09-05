@@ -26,14 +26,14 @@ export const metadata = {
     title: 'Birane DIAW — Electrical Engineering & Intelligent Systems',
     description:
       'Power systems, renewable energy, smart grids, control, automation, digital twins and embedded electronics.',
-    images: [{ url: '/icon.svg', alt: 'OHMEGA — Birane DIAW' }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'OHMEGA — Birane DIAW' }],
   },
   twitter: {
     card: 'summary',
     title: 'Birane DIAW — Electrical Engineering & Intelligent Systems',
     description:
       'Power systems, renewable energy, smart grids, control, automation, digital twins and embedded electronics.',
-    images: ['/icon.svg'],
+    images: ['/opengraph-image'],
   },
   icons: {
     icon: '/icon.svg',
