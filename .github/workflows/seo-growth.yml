@@ -7,6 +7,10 @@ on:
   push:
     paths:
       - ".github/workflows/seo-growth.yml"
+      - "seo-bot/scripts/growth_autopilot.py"
+      - "seo-bot/scripts/search_console_report.py"
+      - "seo-bot/scripts/semantic_keywords.py"
+      - "seo-bot/config/site.json"
 
 permissions:
   contents: read
@@ -48,6 +52,9 @@ jobs:
           HF_HOME: ${{ runner.temp }}/hf-cache
         run: python seo-bot/scripts/semantic_keywords.py
 
+      - name: Build report-only SEO Growth Autopilot
+        run: python seo-bot/scripts/growth_autopilot.py
+
       - name: Upload growth intelligence
         uses: actions/upload-artifact@v4
         with:
@@ -57,18 +64,30 @@ jobs:
             seo-bot/reports/search-console.md
             seo-bot/reports/semantic-keywords.json
             seo-bot/reports/semantic-keywords.md
-          if-no-files-found: ignore
+            seo-bot/reports/growth-autopilot.json
+            seo-bot/reports/growth-autopilot.md
+          if-no-files-found: error
           retention-days: 90
 
       - name: Publish weekly opportunity issue
-        if: hashFiles('seo-bot/reports/search-console.md') != ''
+        if: hashFiles('seo-bot/reports/growth-autopilot.md') != ''
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           {
-            cat seo-bot/reports/search-console.md
-            echo
-            cat seo-bot/reports/semantic-keywords.md
+            cat seo-bot/reports/growth-autopilot.md
+            if [ -f seo-bot/reports/search-console.md ]; then
+              echo
+              echo "---"
+              echo
+              cat seo-bot/reports/search-console.md
+            fi
+            if [ -f seo-bot/reports/semantic-keywords.md ]; then
+              echo
+              echo "---"
+              echo
+              cat seo-bot/reports/semantic-keywords.md
+            fi
           } > /tmp/seo-growth.md
 
           issue=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search '"b-diaw.com weekly SEO growth" in:title' --json number --jq '.[0].number // empty')
