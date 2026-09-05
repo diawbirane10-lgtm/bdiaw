@@ -385,3 +385,100 @@ a{color:inherit;text-decoration-color:var(--soft);text-underline-offset:.18em;te
   .experienceLogo.s4eLogo img{width:80px}
   .experienceLogo.menaraLogo img{width:92px}
 }
+
+
+/* --- OHMEGA v15: clickable desktop nav + mobile hamburger --- */
+.mobileMenuButton{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:42px;
+  margin:24px 0 12px;
+  padding:9px 14px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--panel);
+  color:var(--ink);
+  font-weight:700;
+  cursor:pointer;
+}
+.hamburgerIcon{
+  width:19px;
+  display:grid;
+  gap:4px;
+}
+.hamburgerIcon span{
+  display:block;
+  height:2px;
+  border-radius:999px;
+  background:currentColor;
+}
+
+.hero .nav a{
+  border-color:var(--line)!important;
+  background:var(--bg)!important;
+  color:var(--ink)!important;
+  box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 8%,transparent);
+}
+.hero .nav a:hover,
+.hero .nav a:focus-visible{
+  transform:translateY(-1px);
+  background:var(--ink)!important;
+  color:var(--bg)!important;
+  border-color:var(--ink)!important;
+  box-shadow:0 8px 20px color-mix(in srgb,#000 14%,transparent);
+  outline:none;
+}
+
+/* Tablet: keep the full navigation visible, only tighten spacing if needed. */
+@media(min-width:641px) and (max-width:900px){
+  .hero .nav{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    justify-content:center;
+    width:100%;
+    max-width:100%;
+    overflow:visible!important;
+    gap:6px;
+    padding:6px;
+    margin:22px 0 12px;
+  }
+  .hero .nav a{
+    flex:0 1 auto!important;
+    min-height:38px;
+    padding:7px 10px;
+    font-size:12.5px;
+    white-space:nowrap;
+  }
+}
+
+/* Phone: replace the horizontal bar with a real hamburger/dropdown. */
+@media(max-width:640px){
+  .mobileMenuButton{
+    display:inline-flex;
+  }
+  .hero .nav{
+    display:none!important;
+    width:100%;
+    margin:8px 0 12px!important;
+    padding:8px!important;
+    grid-template-columns:1fr!important;
+    gap:6px!important;
+    border-radius:14px;
+    background:var(--panel);
+    overflow:visible!important;
+  }
+  .hero .nav.isOpen{
+    display:grid!important;
+  }
+  .hero .nav a{
+    width:100%;
+    min-height:40px;
+    padding:8px 12px;
+    justify-content:flex-start;
+    text-align:left;
+    font-size:13px;
+    white-space:normal;
+  }
+}
