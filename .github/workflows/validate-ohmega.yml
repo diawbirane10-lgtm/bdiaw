@@ -1,0 +1,33 @@
+name: Validate recovered OHMEGA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "recovered-ohmega/**"
+      - ".github/workflows/validate-ohmega.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: recovered-ohmega
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: recovered-ohmega/package-lock.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Next.js production bundle
+        run: npm run build
