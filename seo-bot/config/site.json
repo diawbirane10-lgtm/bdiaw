@@ -1,0 +1,59 @@
+{
+  "site_name": "Birane DIAW — OHMEGA",
+  "base_url": "https://b-diaw.com",
+  "canonical_host": "b-diaw.com",
+  "robots_url": "https://b-diaw.com/robots.txt",
+  "sitemap_url": "https://b-diaw.com/sitemap.xml",
+  "search_console_property": "sc-domain:b-diaw.com",
+  "core_pages": [
+    "https://b-diaw.com/",
+    "https://b-diaw.com/projects/ufls-smartgrid",
+    "https://b-diaw.com/projects/wave-energy-conversion",
+    "https://b-diaw.com/projects/railway-traction-25kv",
+    "https://b-diaw.com/projects/digital-twin-liion-battery",
+    "https://b-diaw.com/projects/digital-twin-electric-drive"
+  ],
+  "target_queries": [
+    "Birane Diaw",
+    "Birane DIAW engineer",
+    "Birane Diaw electrical engineering",
+    "Birane Diaw portfolio",
+    "Birane Diaw EMSI",
+    "Birane Diaw FST Marrakech",
+    "electrical engineering portfolio Morocco",
+    "electrical engineering portfolio Senegal",
+    "power systems engineering portfolio",
+    "smart grid engineer portfolio",
+    "HVDC grid-forming control",
+    "grid-forming virtual synchronous machine battery storage",
+    "VSC HVDC renewable power system",
+    "UFLS ONEE SENELEC",
+    "MATLAB Simulink power systems portfolio",
+    "industrial automation CODESYS portfolio",
+    "IEC 61131-3 electrical engineer",
+    "digital twin lithium ion battery",
+    "25 kV railway traction project",
+    "wave energy PMSG FOC project",
+    "ingénieur génie électrique portfolio",
+    "étudiant ingénieur génie électrique Maroc",
+    "ingénieur systèmes électriques Sénégal"
+  ],
+  "keyword_clusters": {
+    "brand": ["birane diaw", "ohmega"],
+    "electrical_engineering": ["electrical engineering", "génie électrique", "electrical engineer"],
+    "power_systems": ["power systems", "smart grid", "smart grids", "ufls", "vsc-hvdc", "hvdc"],
+    "grid_forming": ["grid-forming", "virtual synchronous machine", "vsm", "frequency stability"],
+    "renewable_energy": ["renewable energy", "wave energy", "pmsg", "battery storage"],
+    "automation": ["industrial automation", "codesys", "iec 61131-3", "openplc", "scada"],
+    "simulation": ["matlab", "simulink", "simscape", "stateflow", "digital twin"],
+    "embedded": ["embedded systems", "esp32", "kicad", "pcb"]
+  },
+  "page_keyword_targets": {
+    "/": ["birane diaw", "electrical engineering", "power systems", "industrial automation", "renewable energy"],
+    "/projects/ufls-smartgrid": ["ufls", "onee", "senelec", "smart grid", "stateflow"],
+    "/projects/wave-energy-conversion": ["wave energy", "pmsg", "field-oriented control", "renewable energy"],
+    "/projects/railway-traction-25kv": ["25 kv", "railway traction", "regenerative braking"],
+    "/projects/digital-twin-liion-battery": ["digital twin", "li-ion battery", "soc", "soh"],
+    "/projects/digital-twin-electric-drive": ["digital twin", "electric drive", "pi control"]
+  }
+}
