@@ -234,3 +234,69 @@ a{color:inherit;text-decoration-color:var(--soft);text-underline-offset:.18em;te
   .projectTags{gap:5px;margin:9px 0 13px}
   .projectTag{font-size:10px;padding:4px 8px}
 }
+
+
+/* --- OHMEGA v13: compact bilingual Experience section --- */
+.experienceList{border-top:1px solid var(--line)}
+.experienceItem{
+  display:grid;
+  grid-template-columns:128px minmax(0,1fr);
+  gap:24px;
+  padding:22px 0;
+  border-bottom:1px solid var(--line);
+}
+.experienceDate{
+  color:var(--soft);
+  font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding-top:3px;
+}
+.experienceContent h3{
+  margin:0 0 5px;
+  color:var(--ink);
+  font-size:19px;
+  line-height:1.2;
+  font-weight:620;
+  letter-spacing:-.02em;
+}
+.experienceMeta{
+  margin:0 0 9px!important;
+  color:var(--soft)!important;
+  font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace!important;
+  letter-spacing:.05em!important;
+  text-transform:uppercase!important;
+}
+.experienceBody{
+  margin:0!important;
+  max-width:650px;
+  color:var(--mut)!important;
+  font-size:15px;
+  line-height:1.55;
+}
+.experienceTags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:12px;
+}
+.experienceTag{
+  display:inline-flex;
+  align-items:center;
+  min-height:25px;
+  padding:4px 8px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--panel);
+  color:var(--mut);
+  font:10.5px/1.2 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  white-space:nowrap;
+}
+@media(max-width:780px){
+  .experienceItem{
+    grid-template-columns:1fr;
+    gap:8px;
+    padding:20px 0;
+  }
+  .experienceDate{padding-top:0}
+}
