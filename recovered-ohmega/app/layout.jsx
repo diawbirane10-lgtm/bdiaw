@@ -51,37 +51,53 @@ export const metadata = {
   },
 };
 
-const profileJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfilePage',
-  '@id': siteUrl + '/#profile',
-  url: siteUrl,
-  name: 'Birane DIAW — Electrical Engineering Portfolio',
-  mainEntity: {
-    '@type': 'Person',
-    '@id': siteUrl + '/#birane-diaw',
-    name: 'Birane DIAW',
+const profileJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': siteUrl + '/#website',
     url: siteUrl,
-    jobTitle: 'State Engineering Student — Electrical Engineering & Intelligent Systems',
-    sameAs: [
-      'https://github.com/diawbirane10-lgtm',
-      'https://www.linkedin.com/in/birane-diaw-b83b47374',
-      'https://x.com/epsilonp0',
-    ],
-    knowsAbout: [
-      'Electrical engineering',
-      'Power systems',
-      'Smart grids',
-      'VSC-HVDC',
-      'Grid-forming control',
-      'Renewable energy',
-      'Industrial automation',
-      'MATLAB/Simulink',
-      'Digital twins',
-      'Embedded systems',
-    ],
+    name: 'Birane DIAW — OHMEGA',
+    inLanguage: 'en',
+    publisher: {
+      '@type': 'Person',
+      '@id': siteUrl + '/#birane-diaw',
+      name: 'Birane DIAW',
+    },
   },
-};
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': siteUrl + '/#profile',
+    url: siteUrl,
+    name: 'Birane DIAW — Electrical Engineering Portfolio',
+    isPartOf: { '@id': siteUrl + '/#website' },
+    mainEntity: {
+      '@type': 'Person',
+      '@id': siteUrl + '/#birane-diaw',
+      name: 'Birane DIAW',
+      url: siteUrl,
+      jobTitle: 'State Engineering Student — Electrical Engineering & Intelligent Systems',
+      sameAs: [
+        'https://github.com/diawbirane10-lgtm',
+        'https://www.linkedin.com/in/birane-diaw-b83b47374',
+        'https://x.com/epsilonp0',
+      ],
+      knowsAbout: [
+        'Electrical engineering',
+        'Power systems',
+        'Smart grids',
+        'VSC-HVDC',
+        'Grid-forming control',
+        'Renewable energy',
+        'Industrial automation',
+        'MATLAB/Simulink',
+        'Digital twins',
+        'Embedded systems',
+      ],
+    },
+  },
+];
 
 export default function RootLayout({ children }) {
   return (
