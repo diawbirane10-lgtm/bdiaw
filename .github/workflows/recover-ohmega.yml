@@ -1,5 +1,5 @@
 name: Recover OHMEGA source
-# SEO source recovery — v3
+# SEO source recovery — v4
 
 on:
   push:
@@ -17,15 +17,17 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Recover source snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf recovered-ohmega /tmp/ohmega-recover /tmp/ohmega-snapshot.zip /tmp/ohmega-snapshot.b64
+          rm -rf recovered-ohmega /tmp/ohmega-recover /tmp/ohmega-snapshot.zip
           mkdir -p recovered-ohmega /tmp/ohmega-recover
 
-          curl --fail --location --retry 3             "https://raw.githubusercontent.com/diawbirane10-lgtm/bdiaw/main/portfolio-snapshots/ohmega-fundamental-v12.zip"             --output /tmp/ohmega-snapshot.b64
+          gh api             -H "Accept: application/vnd.github.raw"             /repos/diawbirane10-lgtm/bdiaw/contents/portfolio-snapshots/ohmega-fundamental-v12.zip             > /tmp/ohmega-snapshot.zip
 
-          tr -d '\r\n' < /tmp/ohmega-snapshot.b64 | base64 --decode > /tmp/ohmega-snapshot.zip
+          file /tmp/ohmega-snapshot.zip
           unzip -t /tmp/ohmega-snapshot.zip
           unzip -q /tmp/ohmega-snapshot.zip -d /tmp/ohmega-recover
 
