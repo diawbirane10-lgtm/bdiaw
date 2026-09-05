@@ -12,7 +12,7 @@ export const metadata = {
     template: '%s | Birane DIAW',
   },
   description:
-    'Engineering portfolio of Birane DIAW: power systems, smart grids, VSC-HVDC, grid-forming control, renewable energy, industrial automation, digital twins and embedded systems.',
+    'Electrical engineering portfolio of Birane DIAW: power systems, smart grids, VSC-HVDC, grid-forming control, renewable energy, industrial automation, digital twins and embedded systems.',
   authors: [{ name: 'Birane DIAW', url: siteUrl }],
   creator: 'Birane DIAW',
   publisher: 'Birane DIAW',
