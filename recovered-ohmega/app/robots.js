@@ -4,6 +4,7 @@ export default function robots() {
       {
         userAgent: '*',
         allow: '/',
+        disallow: ['/admin', '/admin/', '/api/', '/_next/'],
       },
     ],
     sitemap: 'https://b-diaw.com/sitemap.xml',
