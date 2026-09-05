@@ -1,0 +1,67 @@
+name: b-diaw.com Weekly Lighthouse
+
+on:
+  schedule:
+    - cron: "21 6 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Lighthouse
+        run: npm install --global lighthouse
+
+      - name: Audit public portfolio pages
+        run: |
+          mkdir -p seo-bot/reports/lighthouse
+          declare -A pages=(
+            [home]="https://b-diaw.com/"
+            [ufls]="https://b-diaw.com/projects/ufls-smartgrid"
+            [wave]="https://b-diaw.com/projects/wave-energy-conversion"
+            [rail]="https://b-diaw.com/projects/railway-traction-25kv"
+            [battery]="https://b-diaw.com/projects/digital-twin-liion-battery"
+            [drive]="https://b-diaw.com/projects/digital-twin-electric-drive"
+          )
+          for key in "${!pages[@]}"; do
+            lighthouse "${pages[$key]}"               --output=json               --output-path="seo-bot/reports/lighthouse/$key.json"               --only-categories=performance,accessibility,best-practices,seo               --chrome-flags="--headless --no-sandbox --disable-gpu"               --quiet
+          done
+
+      - name: Summarize scores
+        id: summary
+        continue-on-error: true
+        run: python seo-bot/scripts/lighthouse_summary.py
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-${{ github.run_number }}
+          path: seo-bot/reports/lighthouse/
+          retention-days: 60
+
+      - name: Open alert when thresholds fall
+        if: steps.summary.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          issue=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search '"b-diaw.com Lighthouse alert" in:title' --json number --jq '.[0].number // empty')
+          if [ -n "$issue" ]; then
+            gh issue comment "$issue" --repo "$GITHUB_REPOSITORY" --body "One or more Lighthouse thresholds remain below target. Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "b-diaw.com Lighthouse alert" --body-file seo-bot/reports/lighthouse/summary.md
+          fi
