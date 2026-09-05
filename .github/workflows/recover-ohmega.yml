@@ -1,5 +1,5 @@
 name: Recover OHMEGA source
-# Triggered for SEO source recovery
+# SEO source recovery — v2
 
 on:
   push:
@@ -15,21 +15,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Recover source snapshot
-        env:
-          GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
           rm -rf recovered-ohmega /tmp/ohmega-recover /tmp/ohmega-snapshot.zip
           mkdir -p recovered-ohmega /tmp/ohmega-recover
-          gh api repos/diawbirane10-lgtm/bdiaw/contents/portfolio-snapshots/ohmega-fundamental-v12.zip             --jq '.content' | tr -d '\n' | base64 -d > /tmp/ohmega-snapshot.zip
+
+          curl --fail --location --retry 3             "https://raw.githubusercontent.com/diawbirane10-lgtm/bdiaw/main/portfolio-snapshots/ohmega-fundamental-v12.zip"             --output /tmp/ohmega-snapshot.zip
+
           unzip -t /tmp/ohmega-snapshot.zip
           unzip -q /tmp/ohmega-snapshot.zip -d /tmp/ohmega-recover
+
           ROOT="$(find /tmp/ohmega-recover -mindepth 1 -maxdepth 1 -type d | head -n 1)"
+          test -n "$ROOT"
           cp -R "$ROOT"/. recovered-ohmega/
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add recovered-ohmega
-          git commit -m "Recover OHMEGA v12 source" || exit 0
+          git commit -m "Recover OHMEGA v12 source for SEO" || exit 0
           git push
