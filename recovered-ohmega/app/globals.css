@@ -482,3 +482,20 @@ a{color:inherit;text-decoration-color:var(--soft);text-underline-offset:.18em;te
     white-space:normal;
   }
 }
+
+
+/* --- OHMEGA v16: subtle reference-standard tags --- */
+.projectTag.standardTag,
+.experienceTag.standardTag{
+  border-style:dashed;
+  border-color:color-mix(in srgb,var(--ink) 34%,var(--line));
+  background:color-mix(in srgb,var(--panel) 72%,var(--bg) 28%);
+  color:var(--ink);
+  font-weight:700;
+}
+.caseStudyStandards{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:14px;
+}
