@@ -41,7 +41,7 @@
   font:700 11px/1.3 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
   white-space:nowrap;
   opacity:0;
-  animation:introReveal .55s ease .18s forwards;
+  animation:centerReveal .55s ease .18s forwards;
 }
 .gridIntroSvg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 28px 28px rgba(0,0,0,.22))}
 .gridHorizon{fill:none;stroke:rgba(125,159,198,.28);stroke-width:1.4;stroke-dasharray:5 10}
@@ -64,14 +64,14 @@
   position:absolute;
   left:50%;
   bottom:2%;
-  transform:translateX(-50%);
+  transform:translateX(-50%) translateY(8px);
   display:flex;
   align-items:center;
   justify-content:center;
   gap:10px;
   width:100%;
   opacity:0;
-  animation:introReveal .5s ease 1.72s forwards;
+  animation:centerReveal .5s ease 1.72s forwards;
 }
 .gridIntroProfile span{
   border:1px solid rgba(148,163,184,.2);
@@ -90,7 +90,8 @@
   display:grid;
   gap:3px;
   opacity:0;
-  animation:introReveal .5s ease 2.05s forwards;
+  transform:translateY(8px);
+  animation:plainReveal .5s ease 2.05s forwards;
 }
 .gridIntroSignature strong{font-size:15px;letter-spacing:-.01em}.gridIntroSignature span{color:#8295ac;font-size:11px}
 .gridIntroSkip{
@@ -108,7 +109,8 @@
   font:650 11px ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
   backdrop-filter:blur(8px);
   opacity:0;
-  animation:introReveal .35s ease .3s forwards;
+  transform:translateY(-5px);
+  animation:plainReveal .35s ease .3s forwards;
 }
 .gridIntroSkip:hover,.gridIntroSkip:focus-visible{color:#fff;border-color:rgba(96,165,250,.62);outline:none}
 
@@ -124,6 +126,8 @@
 html[lang="fr"] .hero .introCopy:after{
   content:"Mon travail se situe à l’intersection des réseaux électriques, de l’électronique de puissance et de la commande intelligente, avec un intérêt croissant pour les architectures électriques de forte puissance et les systèmes critiques. J’utilise la modélisation, la simulation et l’automatisation pour étudier leur comportement, leur stabilité et leur sûreté.";
 }
+
+/* No project-count wording: the section can grow without becoming stale. */
 #projects .sectionSubtitle{font-size:0!important}
 #projects .sectionSubtitle:after{
   content:"Engineering case studies";
@@ -139,7 +143,8 @@ html[lang="fr"] #projects .sectionSubtitle:after{content:"Études de cas d’ing
 @keyframes flowAppear{to{opacity:1}}
 @keyframes flowPulse{to{stroke-dashoffset:-120}}
 @keyframes telemetryIn{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes introReveal{to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes centerReveal{to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes plainReveal{to{opacity:1;transform:translateY(0)}}
 @keyframes statusBlink{to{opacity:.4}}
 @keyframes ambientDrift{0%{transform:translate3d(0,0,0) scale(.9)}100%{transform:translate3d(22px,-10px,0) scale(1.12)}}
 @keyframes gridIntroExit{to{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.012)}}
