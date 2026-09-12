@@ -1,5 +1,6 @@
 import './globals.css';
 import './uupm-preview.css';
+import './research-status.css';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import SiteAnalytics from './SiteAnalytics';
@@ -84,7 +85,7 @@ const profileJsonLd = [
       name: 'Journal of Undergraduate Research International',
     },
     identifier: 'JURI-00314-2026-02',
-    creativeWorkStatus: 'Accepted for publication; DOI forthcoming',
+    creativeWorkStatus: 'Accepted for publication; DOI pending',
     about: [
       'Grid-forming control',
       'Virtual synchronous machine',
