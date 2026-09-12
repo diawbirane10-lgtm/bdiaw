@@ -1,0 +1,24 @@
+/* Research publication status wording — visual copy kept concise until DOI assignment. */
+#research .meta,
+#research .journal{
+  font-size:0;
+}
+#research .meta::after,
+#research .journal::after{
+  color:inherit;
+  font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+#research .meta::after{
+  content:"Accepted for publication · DOI pending";
+}
+#research .journal::after{
+  content:"Journal of Undergraduate Research International, KFUPM · JURI-00314-2026-02 · DOI pending";
+}
+html[lang="fr"] #research .meta::after{
+  content:"Accepté pour publication · DOI en attente";
+}
+html[lang="fr"] #research .journal::after{
+  content:"Journal of Undergraduate Research International, KFUPM · JURI-00314-2026-02 · DOI en attente";
+}
