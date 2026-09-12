@@ -17,10 +17,10 @@ export default function PowerGridIntro(){
   if(pathname!=="/"||!visible) return null;
 
   return(
-    <div className="gridIntro" role="presentation" aria-hidden="true">
-      <button className="gridIntroSkip" type="button" onClick={()=>setVisible(false)} aria-label="Skip intro">Skip</button>
-      <div className="gridIntroAmbient gridIntroAmbientA"/>
-      <div className="gridIntroAmbient gridIntroAmbientB"/>
+    <div className="gridIntro" aria-label="Power systems introduction">
+      <button className="gridIntroSkip" type="button" onClick={()=>setVisible(false)} aria-label="Skip introduction">Skip</button>
+      <div className="gridIntroAmbient gridIntroAmbientA" aria-hidden="true"/>
+      <div className="gridIntroAmbient gridIntroAmbientB" aria-hidden="true"/>
       <div className="gridIntroStage">
         <div className="gridIntroEyebrow">ELECTRICAL ENGINEERING · POWER SYSTEMS</div>
         <svg className="gridIntroSvg" viewBox="0 0 1200 610" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
