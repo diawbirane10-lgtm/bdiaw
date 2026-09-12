@@ -1,9 +1,11 @@
 import './globals.css';
 import './uupm-preview.css';
 import './research-status.css';
+import './power-grid-intro.css';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import SiteAnalytics from './SiteAnalytics';
+import PowerGridIntro from './PowerGridIntro';
 
 const siteUrl = 'https://b-diaw.com';
 
@@ -138,6 +140,7 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
         />
+        <PowerGridIntro />
         {children}
         <SiteAnalytics />
       </body>
