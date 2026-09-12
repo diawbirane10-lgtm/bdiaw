@@ -1,0 +1,211 @@
+/* UI/UX Pro Max preview pass — isolated from production styles */
+
+:root{
+  --uupm-accent:#1d4ed8;
+  --uupm-accent-soft:color-mix(in srgb,var(--uupm-accent) 10%,transparent);
+  --uupm-shadow:0 12px 36px color-mix(in srgb,#000 9%,transparent);
+}
+
+/* Accessibility / interaction affordance */
+a,button{transition:background-color .18s ease,color .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease}
+a:focus-visible,button:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--uupm-accent) 42%,transparent);
+  outline-offset:3px;
+}
+.switches button,.hero .nav a,.inline a,.projectHero>a,.mobileMenuButton{min-height:44px}
+
+/* Header: same structure, slightly more premium and clearer */
+.topbar{
+  border-bottom-color:color-mix(in srgb,var(--line) 72%,transparent);
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+}
+.brandMark{
+  border-color:color-mix(in srgb,var(--ink) 18%,var(--line));
+  box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 8%,transparent);
+}
+.switches button{
+  background:var(--panel);
+  border-color:color-mix(in srgb,var(--ink) 16%,var(--line));
+  font-weight:650;
+}
+.switches button:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 16px color-mix(in srgb,#000 10%,transparent);
+}
+
+/* Hero navigation: unmistakably clickable, but still restrained */
+.hero .nav{
+  padding:8px;
+  border-radius:18px;
+  border-color:color-mix(in srgb,var(--ink) 14%,var(--line));
+  background:color-mix(in srgb,var(--panel) 92%,var(--bg) 8%);
+  box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 6%,transparent);
+}
+.hero .nav a{
+  min-height:44px;
+  padding:9px 15px;
+  border:1px solid color-mix(in srgb,var(--ink) 14%,var(--line))!important;
+  border-radius:12px;
+  background:var(--bg)!important;
+  box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 7%,transparent);
+}
+.hero .nav a:hover,.hero .nav a:focus-visible{
+  background:var(--ink)!important;
+  color:var(--bg)!important;
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px color-mix(in srgb,#000 14%,transparent);
+}
+
+/* Section hierarchy: editorial/minimal, no extra cards */
+.sectionHead{gap:8px}
+.sectionHead .sectionSubtitle{
+  color:color-mix(in srgb,var(--uupm-accent) 82%,var(--soft))!important;
+  font-weight:700!important;
+}
+.sectionHead .sectionTitle{position:relative;padding-bottom:10px}
+.sectionHead .sectionTitle:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:38px;
+  height:2px;
+  border-radius:999px;
+  background:var(--uupm-accent);
+}
+
+/* Research: stronger focal card, same content */
+.paper{
+  border-radius:18px;
+  border-color:color-mix(in srgb,var(--ink) 12%,var(--line));
+  background:color-mix(in srgb,var(--panel) 86%,var(--bg) 14%);
+  box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 7%,transparent),var(--uupm-shadow);
+}
+#research .paperTop img{border-radius:12px}
+.paper .inline a{
+  border-color:color-mix(in srgb,var(--uupm-accent) 28%,var(--line));
+}
+
+/* Projects: row-based portfolio interaction inspired by UUPM portfolio patterns */
+.work{
+  position:relative;
+  margin:0 -14px;
+  padding:24px 14px;
+  border-radius:14px;
+  transition:background-color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.work:hover{
+  background:color-mix(in srgb,var(--panel) 82%,transparent);
+  transform:translateY(-1px);
+  box-shadow:inset 3px 0 0 var(--uupm-accent);
+}
+.work>span{
+  width:40px;
+  height:28px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--panel);
+  color:var(--ink);
+  font-weight:700;
+}
+.work h3 a{transition:color .18s ease}
+.work h3 a:hover{color:var(--uupm-accent);text-decoration:none}
+.work .inline a:first-child{
+  background:var(--ink);
+  color:var(--bg);
+  border-color:var(--ink);
+  font-weight:700;
+}
+.work .inline a:first-child:hover{
+  background:var(--uupm-accent);
+  border-color:var(--uupm-accent);
+  color:#fff;
+  transform:translateY(-1px);
+  box-shadow:0 8px 20px color-mix(in srgb,var(--uupm-accent) 24%,transparent);
+}
+.projectTag,.experienceTag{
+  min-height:28px;
+  border-color:color-mix(in srgb,var(--ink) 14%,var(--line));
+}
+.projectTag.standardTag,.experienceTag.standardTag{
+  border-style:solid;
+  border-color:color-mix(in srgb,var(--uupm-accent) 28%,var(--line));
+  background:var(--uupm-accent-soft);
+}
+
+/* Experience / academic path: subtle hover, clearer logos */
+.experienceItem,.time,.skill{
+  transition:background-color .18s ease,box-shadow .18s ease;
+}
+.experienceItem:hover,.time:hover,.skill:hover{
+  background:color-mix(in srgb,var(--panel) 70%,transparent);
+  box-shadow:inset 3px 0 0 color-mix(in srgb,var(--uupm-accent) 72%,transparent);
+}
+.experienceItem{margin:0 -12px;padding-left:12px;padding-right:12px;border-radius:12px}
+.time,.skill{margin-left:-12px;margin-right:-12px;padding-left:12px;padding-right:12px;border-radius:12px}
+.experienceLogo,.schoolLogo{
+  box-shadow:0 4px 14px color-mix(in srgb,#000 7%,transparent);
+  border-color:color-mix(in srgb,var(--ink) 13%,var(--line));
+}
+
+/* Contact: make icon links look intentionally interactive */
+.contactAction{
+  border:1px solid var(--line);
+  background:var(--panel);
+  box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 6%,transparent);
+}
+.contactAction:hover{
+  border-color:color-mix(in srgb,var(--uupm-accent) 34%,var(--line));
+  background:var(--bg);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px color-mix(in srgb,#000 10%,transparent);
+}
+
+/* Case study pages */
+.projectHero>a{
+  background:var(--panel);
+  border-color:color-mix(in srgb,var(--ink) 14%,var(--line));
+  font-weight:700;
+}
+.detailGrid article{transition:background-color .18s ease}
+.detailGrid article:hover{background:color-mix(in srgb,var(--panel) 72%,var(--bg) 28%)}
+
+/* UUPM responsive / touch guidance */
+@media(max-width:640px){
+  .mobileMenuButton{
+    border-color:color-mix(in srgb,var(--ink) 16%,var(--line));
+    background:var(--ink);
+    color:var(--bg);
+    box-shadow:0 8px 22px color-mix(in srgb,#000 12%,transparent);
+  }
+  .hero .nav.isOpen{
+    box-shadow:var(--uupm-shadow);
+  }
+  .hero .nav a{
+    min-height:46px;
+  }
+  .work,.experienceItem,.time,.skill{
+    margin-left:0;
+    margin-right:0;
+    padding-left:0;
+    padding-right:0;
+    border-radius:0;
+  }
+  .work:hover,.experienceItem:hover,.time:hover,.skill:hover{
+    background:transparent;
+    box-shadow:none;
+    transform:none;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
