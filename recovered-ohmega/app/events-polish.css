@@ -47,12 +47,6 @@
   max-width:720px;
   line-height:1.62;
 }
-html[lang="en"] .eventBody::after{
-  content:" The session also included introductory technical discussions on nuclear power generation, grid integration, electrical protection, instrumentation and control, together with the role of nuclear-industry standards, codes and regulatory frameworks. These exchanges were not intended as a detailed engineering study, but they provided a broader view of the technical and regulatory requirements associated with a future nuclear power programme.";
-}
-html[lang="fr"] .eventBody::after{
-  content:" La session a également donné lieu à des échanges techniques introductifs sur la production électronucléaire, l’intégration au réseau, les protections électriques, l’instrumentation et le contrôle-commande, ainsi que sur le rôle des normes, codes et cadres réglementaires applicables à l’industrie nucléaire. Ces échanges ne constituaient pas une étude d’ingénierie détaillée, mais ils ont permis d’élargir la compréhension des exigences techniques et réglementaires liées à un futur programme électronucléaire.";
-}
 
 @media(min-width:641px) and (max-width:900px){
   .eventLogoMinistry{width:82px!important;height:94px!important}
