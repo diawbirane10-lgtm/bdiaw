@@ -1,26 +1,48 @@
 /* Final polish for Conferences & Events */
+
+/* Each event mark keeps its own intrinsic shape: same visual height, no forced wide box. */
 .eventLogoMinistry,
 .eventLogoIaea{
-  width:150px;
+  flex:0 0 auto!important;
+  min-width:0!important;
+  max-width:none!important;
+  padding:0!important;
+  margin:0!important;
+  overflow:visible!important;
 }
 
-/* Show the full ministry logo without cropping or over-zooming. */
+/* Ministry lockup: source aspect ratio is 200 × 228. */
 .eventLogoMinistry{
-  background-color:#fff;
-  background-repeat:no-repeat;
-  background-position:center;
-  background-size:contain;
-  background-image:url("/mep-logo.svg");
+  width:88px!important;
+  height:100px!important;
+  background-color:transparent!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:100% 100%!important;
+  background-image:url("/mep-logo.svg")!important;
 }
 .eventLogoMinistry img{
   display:none!important;
 }
-.eventLogoIaea img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  transform:scale(1.02)!important;
+
+/* IAEA: let the image itself determine the width from its natural aspect ratio. */
+.eventLogoIaea{
+  width:auto!important;
+  height:100px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:transparent!important;
 }
+.eventLogoIaea img{
+  display:block!important;
+  width:auto!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  transform:none!important;
+}
+
 .eventBody{
   max-width:720px;
   line-height:1.62;
@@ -31,11 +53,12 @@ html[lang="en"] .eventBody::after{
 html[lang="fr"] .eventBody::after{
   content:" La session a également donné lieu à des échanges techniques introductifs sur la production électronucléaire, l’intégration au réseau, les protections électriques, l’instrumentation et le contrôle-commande, ainsi que sur le rôle des normes, codes et cadres réglementaires applicables à l’industrie nucléaire. Ces échanges ne constituaient pas une étude d’ingénierie détaillée, mais ils ont permis d’élargir la compréhension des exigences techniques et réglementaires liées à un futur programme électronucléaire.";
 }
+
 @media(min-width:641px) and (max-width:900px){
-  .eventLogoMinistry,
-  .eventLogoIaea{width:142px}
+  .eventLogoMinistry{width:82px!important;height:94px!important}
+  .eventLogoIaea{height:94px!important}
 }
 @media(max-width:640px){
-  .eventLogoMinistry,
-  .eventLogoIaea{width:132px}
+  .eventLogoMinistry{width:74px!important;height:84px!important}
+  .eventLogoIaea{height:84px!important}
 }
