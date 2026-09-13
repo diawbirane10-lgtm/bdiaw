@@ -8,15 +8,21 @@ const copy={
     date:"Aug 2026 — Present",
     title:"Engineering Studies & Tendering Assistant",
     meta:"S4E SARL · Dakar, Senegal",
-    body:"Supporting engineering-office activities through preparation of an Expression of Interest dossier for an electrical-infrastructure assignment in the Democratic Republic of the Congo, together with technical review, drawing coordination and works monitoring for the Kolda solar power project.",
-    tags:["PVsyst","AutoCAD","Excel","Tendering","IEC 62548","IEC 62446-1"]
+    body1Title:"Republic of the Congo — PASEL",
+    body1:"Contributed to the preparation of an Expression of Interest for an engineering-consulting assignment related to electricity-network extension works in Brazzaville and Pointe-Noire.",
+    body2Title:"Kolda, Senegal — NEA Kolda",
+    body2:"Supported technical review, drawing coordination and works monitoring for the Kolda solar power project developed by AXIAN Energy, with SKD acting locally in Senegal.",
+    tags:["Tendering","Power Networks","Solar PV","BESS","AutoCAD","PVsyst","Excel"]
   },
   fr:{
     date:"Août 2026 — Aujourd’hui",
     title:"Assistant études & appels d’offres — Ingénierie électrique",
     meta:"S4E SARL · Dakar, Sénégal",
-    body:"Appui aux activités du bureau d’études avec la préparation d’un dossier de manifestation d’intérêt pour une mission d’infrastructure électrique en République démocratique du Congo, ainsi que la revue technique, la coordination des plans et le suivi des travaux de la centrale solaire de Kolda.",
-    tags:["PVsyst","AutoCAD","Excel","Appels d’offres","IEC 62548","IEC 62446-1"]
+    body1Title:"République du Congo — PASEL",
+    body1:"Contribution à la préparation d’une manifestation d’intérêt pour une mission d’ingénieur-conseil liée à des travaux d’extension des réseaux électriques à Brazzaville et Pointe-Noire.",
+    body2Title:"Kolda, Sénégal — NEA Kolda",
+    body2:"Appui à la revue technique, à la coordination des plans et au contrôle-suivi des travaux de la centrale solaire de Kolda portée par AXIAN Energy, avec SKD intervenant localement au Sénégal.",
+    tags:["Appels d’offres","Réseaux électriques","Solaire PV","BESS","AutoCAD","PVsyst","Excel"]
   }
 };
 
@@ -78,7 +84,8 @@ export default function ExperienceSupplement(){
           </div>
           {logoSrc&&<div className="experienceLogo s4eLogo"><img src={logoSrc} alt="S4E SARL logo"/></div>}
         </div>
-        <p className="experienceBody">{t.body}</p>
+        <p className="experienceBody"><strong>{t.body1Title}</strong><br/>{t.body1}</p>
+        <p className="experienceBody"><strong>{t.body2Title}</strong><br/>{t.body2}</p>
         <div className="experienceTags">
           {t.tags.map(tag=><span className="experienceTag" key={tag}>{tag}</span>)}
         </div>
