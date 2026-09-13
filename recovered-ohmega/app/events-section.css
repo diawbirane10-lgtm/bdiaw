@@ -1,0 +1,36 @@
+/* OHMEGA — Conferences & Events */
+#events.eventsSection{border-top:1px solid var(--line)}
+#events .eventsList{border-top:1px solid var(--line)}
+#events .eventItem{display:grid;grid-template-columns:128px minmax(0,1fr);gap:24px;padding:24px 0;border-bottom:1px solid var(--line)}
+#events .eventDate{color:var(--soft);letter-spacing:.06em;text-transform:uppercase;padding-top:3px;font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+#events .eventContent{min-width:0}
+#events .eventTop{display:flex;align-items:flex-start;justify-content:space-between;gap:22px}
+#events .eventText{min-width:0;flex:1}
+#events .eventRole{color:var(--soft);letter-spacing:.08em;text-transform:uppercase;margin:0 0 6px;font:11px/1.4 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+#events .eventContent h3{color:var(--ink);letter-spacing:-.02em;margin:0 0 7px;font-size:20px;font-weight:620;line-height:1.22}
+#events .eventMeta{color:var(--soft)!important;letter-spacing:.045em!important;text-transform:uppercase!important;margin:0!important;font:11.5px/1.5 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace!important}
+#events .eventBody{max-width:680px;color:var(--mut)!important;margin:14px 0 0!important;font-size:15px;line-height:1.58}
+#events .eventLogos{display:flex;align-items:center;gap:9px;flex:none}
+#events .eventLogo{display:flex;align-items:center;justify-content:center;height:66px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 9px;overflow:hidden;box-shadow:0 4px 14px color-mix(in srgb,#000 7%,transparent);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+#events .eventLogo:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--ink) 28%,var(--line));box-shadow:0 10px 24px color-mix(in srgb,#000 10%,transparent)}
+#events .eventLogo img{display:block;object-fit:contain;max-width:100%;max-height:100%}
+#events .eventLogo.ministry{width:132px}
+#events .eventLogo.iaea{width:76px}
+#events .eventLinks{margin-top:14px}
+#events .eventLinks a{min-height:40px}
+
+@media(max-width:780px){
+  #events .eventItem{grid-template-columns:1fr;gap:8px;padding:21px 0}
+  #events .eventDate{padding-top:0}
+  #events .eventTop{gap:14px}
+  #events .eventLogo{height:58px}
+  #events .eventLogo.ministry{width:114px}
+  #events .eventLogo.iaea{width:66px}
+}
+
+@media(max-width:560px){
+  #events .eventTop{display:block}
+  #events .eventLogos{margin-top:15px}
+  #events .eventContent h3{font-size:19px}
+  #events .eventBody{font-size:14.5px}
+}
