@@ -1,0 +1,14 @@
+/* Keep Selected Projects wording scalable as the portfolio grows. */
+#projects .sectionSubtitle{
+  font-size:0!important;
+}
+#projects .sectionSubtitle::after{
+  content:"Selected engineering case studies";
+  font:inherit;
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+html[lang="fr"] #projects .sectionSubtitle::after{
+  content:"Études de cas d’ingénierie sélectionnées";
+}
