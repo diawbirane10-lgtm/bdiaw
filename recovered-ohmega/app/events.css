@@ -1,4 +1,4 @@
-/* OHMEGA — conferences & events */
+/* OHMEGA — Conferences & Events: aligned with the portfolio design system */
 .hero .nav a[href="#top"]{order:0}
 .hero .nav a[href="#research"]{order:1}
 .hero .nav a[href="#projects"]{order:2}
@@ -8,41 +8,63 @@
 .hero .nav a[href="#skills"]{order:6}
 .hero .nav a[href="#contact"]{order:7}
 
+/* Defensive singleton display: avoid duplicated client portals/nav items. */
+.hero .nav .eventsNavLink~.eventsNavLink{display:none!important}
 #events-portal-mount{display:contents}
+#events-portal-mount #events~#events{display:none!important}
+
 .eventsSection .sectionHead{min-width:0}
 .eventsList{border-top:1px solid var(--line)}
-.eventItem{border-bottom:1px solid var(--line);padding:24px 0 26px}
-.eventLogoRow{display:flex;align-items:center;gap:12px;margin-bottom:20px}
-.eventLogo{display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:7px;box-shadow:0 4px 14px color-mix(in srgb,#000 6%,transparent);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
-.eventLogo:hover{transform:translateY(-2px);box-shadow:0 10px 24px color-mix(in srgb,#000 10%,transparent);border-color:color-mix(in srgb,var(--ink) 24%,var(--line))}
-.eventLogo img{width:100%;height:100%;object-fit:contain;display:block}
-.eventLogoMinistry{width:154px;height:82px}
-.eventLogoIaea{width:86px;height:82px}
-.eventLogoDivider{color:var(--soft);font:600 15px/1 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+.eventItem{border-bottom:1px solid var(--line);padding:28px 0}
+
+/* Logos use the same visual language as Experience / Academic Path cards. */
+.eventLogoRow{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.eventLogo{display:flex;align-items:center;justify-content:center;height:76px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px;overflow:hidden;box-shadow:0 4px 14px color-mix(in srgb,#000 6%,transparent);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.eventLogo:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--ink) 28%,var(--line));box-shadow:0 10px 24px color-mix(in srgb,#000 10%,transparent)}
+.eventLogo img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+.eventLogoMinistry{width:150px}
+.eventLogoIaea{width:94px}
+/* The supplied Ministry image contains large white margins, so enlarge its artwork inside the same card size. */
+.eventLogoMinistry img{width:100%;height:100%;transform:scale(1.82)}
+.eventLogoIaea img{width:100%;height:100%;transform:scale(1.08)}
+.eventLogoDivider{color:var(--soft);font:600 14px/1 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+
 .eventKicker{display:flex;flex-wrap:wrap;gap:7px 16px;margin:0 0 10px;color:var(--soft);letter-spacing:.08em;text-transform:uppercase;font:11.5px/1.45 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
 .eventKicker span+span{position:relative}
 .eventKicker span+span:before{content:"·";position:absolute;left:-10px;color:var(--line)}
-.eventItem h3{margin:0 0 10px;color:var(--ink);letter-spacing:-.028em;font-size:clamp(21px,2.6vw,28px);font-weight:620;line-height:1.18}
-.eventMeta{margin:0 0 14px;color:var(--soft);font-size:13px;line-height:1.55}
-.eventBody{max-width:680px;margin:0;color:var(--mut);font-size:15.5px;line-height:1.62}
-.eventLinks{margin-top:18px}
+.eventItem h3{max-width:720px;margin:0 0 9px;color:var(--ink);letter-spacing:-.025em;font-size:clamp(22px,3vw,30px);font-weight:560;line-height:1.18}
+.eventMeta{max-width:720px;margin:0 0 12px!important;color:var(--soft)!important;letter-spacing:.05em!important;text-transform:uppercase!important;font:11.5px/1.5 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace!important}
+.eventBody{max-width:650px;margin:0!important;color:var(--mut)!important;font-size:15px;line-height:1.55}
+.eventLinks{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.eventLinks a{min-height:40px}
 .eventLinks a:first-child{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
 .eventLinks a:first-child:hover{background:var(--uupm-accent,#1d4ed8);border-color:var(--uupm-accent,#1d4ed8);color:#fff}
 
-@media(max-width:780px){
-  .eventItem{padding:21px 0 23px}
-  .eventLogoRow{margin-bottom:17px}
-  .eventLogoMinistry{width:140px;height:76px}
-  .eventLogoIaea{width:80px;height:76px}
-  .eventItem h3{font-size:22px}
+/* Tablet: preserve the desktop hierarchy while tightening the artwork. */
+@media(min-width:641px) and (max-width:900px){
+  .eventItem{padding:24px 0}
+  .eventLogoRow{margin-bottom:18px}
+  .eventLogo{height:72px}
+  .eventLogoMinistry{width:142px}
+  .eventLogoIaea{width:88px}
+  .eventItem h3{max-width:680px;font-size:clamp(22px,3.2vw,27px)}
+  .eventBody{max-width:640px}
 }
 
-@media(max-width:520px){
-  .eventLogoRow{gap:9px}
-  .eventLogoMinistry{width:128px;height:70px}
-  .eventLogoIaea{width:74px;height:70px}
+/* Phones follow the same single-column rhythm as Experience and Academic Path. */
+@media(max-width:640px){
+  .eventItem{padding:21px 0 23px}
+  .eventLogoRow{gap:9px;margin-bottom:17px}
+  .eventLogo{height:70px;padding:6px;border-radius:10px}
+  .eventLogoMinistry{width:132px}
+  .eventLogoIaea{width:82px}
+  .eventLogoMinistry img{transform:scale(1.82)}
+  .eventLogoIaea img{transform:scale(1.06)}
   .eventLogoDivider{font-size:13px}
-  .eventMeta{font-size:12.5px}
-  .eventBody{font-size:15px}
-  .eventLinks{grid-template-columns:1fr!important;display:grid!important}
+  .eventKicker{font-size:11px;margin-bottom:10px}
+  .eventItem h3{max-width:none;font-size:clamp(20px,6vw,24px);line-height:1.18}
+  .eventMeta{max-width:none;font-size:11px!important}
+  .eventBody{max-width:none;font-size:14.5px;line-height:1.58}
+  .eventLinks{display:grid!important;grid-template-columns:1fr!important;gap:7px;margin-top:15px}
+  .eventLinks a{width:100%;min-height:42px}
 }
