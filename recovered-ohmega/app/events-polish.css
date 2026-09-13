@@ -1,13 +1,20 @@
 /* Final polish for Conferences & Events */
-.eventLogoMinistry{
-  width:176px;
+.eventLogoMinistry,
+.eventLogoIaea{
+  width:150px;
 }
 .eventLogoMinistry img{
-  content:url("https://energie-mines.gouv.sn/wp-content/uploads/2026/07/images.png");
+  content:url("https://energie-mines.gouv.sn/wp-content/uploads/2025/05/logo-scaled.jpg");
   width:100%;
   height:100%;
   object-fit:contain;
   transform:none!important;
+}
+.eventLogoIaea img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  transform:scale(1.02)!important;
 }
 .eventBody{
   max-width:690px;
@@ -20,8 +27,10 @@ html[lang="fr"] .eventBody::after{
   content:" L’atelier a également abordé le cadre progressif de l’AIEA, la coordination entre institutions nationales ainsi que les exigences d’infrastructure et de préparation du réseau liées à un futur programme électronucléaire.";
 }
 @media(min-width:641px) and (max-width:900px){
-  .eventLogoMinistry{width:164px}
+  .eventLogoMinistry,
+  .eventLogoIaea{width:142px}
 }
 @media(max-width:640px){
-  .eventLogoMinistry{width:154px}
+  .eventLogoMinistry,
+  .eventLogoIaea{width:132px}
 }
