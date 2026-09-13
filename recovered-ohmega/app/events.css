@@ -1,0 +1,48 @@
+/* OHMEGA — conferences & events */
+.hero .nav a[href="#top"]{order:0}
+.hero .nav a[href="#research"]{order:1}
+.hero .nav a[href="#projects"]{order:2}
+.hero .nav a[href="#experience"]{order:3}
+.hero .nav .eventsNavLink{order:4}
+.hero .nav a[href="#path"]{order:5}
+.hero .nav a[href="#skills"]{order:6}
+.hero .nav a[href="#contact"]{order:7}
+
+#events-portal-mount{display:contents}
+.eventsSection .sectionHead{min-width:0}
+.eventsList{border-top:1px solid var(--line)}
+.eventItem{border-bottom:1px solid var(--line);padding:24px 0 26px}
+.eventLogoRow{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.eventLogo{display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:7px;box-shadow:0 4px 14px color-mix(in srgb,#000 6%,transparent);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.eventLogo:hover{transform:translateY(-2px);box-shadow:0 10px 24px color-mix(in srgb,#000 10%,transparent);border-color:color-mix(in srgb,var(--ink) 24%,var(--line))}
+.eventLogo img{width:100%;height:100%;object-fit:contain;display:block}
+.eventLogoMinistry{width:154px;height:82px}
+.eventLogoIaea{width:86px;height:82px}
+.eventLogoDivider{color:var(--soft);font:600 15px/1 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+.eventKicker{display:flex;flex-wrap:wrap;gap:7px 16px;margin:0 0 10px;color:var(--soft);letter-spacing:.08em;text-transform:uppercase;font:11.5px/1.45 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+.eventKicker span+span{position:relative}
+.eventKicker span+span:before{content:"·";position:absolute;left:-10px;color:var(--line)}
+.eventItem h3{margin:0 0 10px;color:var(--ink);letter-spacing:-.028em;font-size:clamp(21px,2.6vw,28px);font-weight:620;line-height:1.18}
+.eventMeta{margin:0 0 14px;color:var(--soft);font-size:13px;line-height:1.55}
+.eventBody{max-width:680px;margin:0;color:var(--mut);font-size:15.5px;line-height:1.62}
+.eventLinks{margin-top:18px}
+.eventLinks a:first-child{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
+.eventLinks a:first-child:hover{background:var(--uupm-accent,#1d4ed8);border-color:var(--uupm-accent,#1d4ed8);color:#fff}
+
+@media(max-width:780px){
+  .eventItem{padding:21px 0 23px}
+  .eventLogoRow{margin-bottom:17px}
+  .eventLogoMinistry{width:140px;height:76px}
+  .eventLogoIaea{width:80px;height:76px}
+  .eventItem h3{font-size:22px}
+}
+
+@media(max-width:520px){
+  .eventLogoRow{gap:9px}
+  .eventLogoMinistry{width:128px;height:70px}
+  .eventLogoIaea{width:74px;height:70px}
+  .eventLogoDivider{font-size:13px}
+  .eventMeta{font-size:12.5px}
+  .eventBody{font-size:15px}
+  .eventLinks{grid-template-columns:1fr!important;display:grid!important}
+}
