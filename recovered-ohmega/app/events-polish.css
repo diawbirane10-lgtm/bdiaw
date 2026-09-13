@@ -4,12 +4,12 @@
   width:150px;
 }
 
-/* Use the exact ministry logo stored locally so it cannot be blocked by hotlink protection. */
+/* Keep the ministry logo visually aligned with the other event marks. */
 .eventLogoMinistry{
   background-color:#fff;
   background-repeat:no-repeat;
-  background-position:center;
-  background-size:94% auto;
+  background-position:left center;
+  background-size:100% auto;
   background-image:url("/mep-logo.svg");
 }
 .eventLogoMinistry img{
