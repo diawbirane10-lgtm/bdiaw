@@ -11,7 +11,7 @@ const copy={
     body1Title:"Republic of the Congo — PASEL",
     body1:"Contributed to the preparation of an Expression of Interest for an engineering-consulting assignment related to electricity-network extension works in Brazzaville and Pointe-Noire.",
     body2Title:"Kolda, Senegal — NEA Kolda",
-    body2:"Supported technical review, drawing coordination and works monitoring for the Kolda solar power project developed by AXIAN Energy, with SKD acting locally in Senegal.",
+    body2:"Supported technical review, drawing coordination and works monitoring for the Kolda solar power project developed by AXIAN Energy, with S4E acting locally in Senegal.",
     tags:["Tendering","Power Networks","Solar PV","BESS","AutoCAD","PVsyst","Excel"]
   },
   fr:{
@@ -21,7 +21,7 @@ const copy={
     body1Title:"République du Congo — PASEL",
     body1:"Contribution à la préparation d’une manifestation d’intérêt pour une mission d’ingénieur-conseil liée à des travaux d’extension des réseaux électriques à Brazzaville et Pointe-Noire.",
     body2Title:"Kolda, Sénégal — NEA Kolda",
-    body2:"Appui à la revue technique, à la coordination des plans et au contrôle-suivi des travaux de la centrale solaire de Kolda portée par AXIAN Energy, avec SKD intervenant localement au Sénégal.",
+    body2:"Appui à la revue technique, à la coordination des plans et au contrôle-suivi des travaux de la centrale solaire de Kolda portée par AXIAN Energy, avec S4E intervenant localement au Sénégal.",
     tags:["Appels d’offres","Réseaux électriques","Solaire PV","BESS","AutoCAD","PVsyst","Excel"]
   }
 };
