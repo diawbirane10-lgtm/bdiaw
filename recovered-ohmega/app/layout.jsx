@@ -2,7 +2,7 @@ import './globals.css';
 import './uupm-preview.css';
 import './research-status.css';
 import './project-heading.css';
-import './events-section.css';
+import './events.css';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import SiteAnalytics from './SiteAnalytics';
