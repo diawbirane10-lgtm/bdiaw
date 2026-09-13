@@ -1,0 +1,13 @@
+.brandText{
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.085em;
+  color:var(--ink);
+}
+
+@media(max-width:520px){
+  .brandText{
+    font-size:13px;
+    font-weight:800;
+  }
+}
