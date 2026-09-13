@@ -8,15 +8,15 @@ const copy={
     date:"Aug 2026 — Present",
     title:"Engineering Studies & Tendering Assistant",
     meta:"S4E SARL · Dakar, Senegal",
-    body:"Contributing to engineering-office activities and tender preparation for electrical and infrastructure assignments, with current work focused on a Republic of the Congo tender dossier. Responsibilities include reviewing requirements, structuring technical documentation, consolidating engineering inputs and supporting consistency and compliance checks across the bid package.",
-    tags:["Engineering studies","Tendering","Technical documentation","Bid compliance"]
+    body:"Supporting engineering-office activities through preparation of an Expression of Interest dossier for an electrical-infrastructure assignment in the Democratic Republic of the Congo, together with technical review, drawing coordination and works monitoring for the Kolda solar power project.",
+    tags:["PVsyst","AutoCAD","Excel","Tendering","IEC 62548","IEC 62446-1"]
   },
   fr:{
     date:"Août 2026 — Aujourd’hui",
     title:"Assistant études & appels d’offres — Ingénierie électrique",
     meta:"S4E SARL · Dakar, Sénégal",
-    body:"Participation aux activités du bureau d’études et à la préparation de dossiers d’appels d’offres pour des missions d’ingénierie électrique et d’infrastructures, avec un travail actuellement centré sur un dossier en République du Congo. Les contributions portent notamment sur l’analyse des exigences, la structuration de la documentation technique, la consolidation des éléments d’ingénierie et les vérifications de cohérence et de conformité du dossier.",
-    tags:["Études d’ingénierie","Appels d’offres","Documentation technique","Conformité du dossier"]
+    body:"Appui aux activités du bureau d’études avec la préparation d’un dossier de manifestation d’intérêt pour une mission d’infrastructure électrique en République démocratique du Congo, ainsi que la revue technique, la coordination des plans et le suivi des travaux de la centrale solaire de Kolda.",
+    tags:["PVsyst","AutoCAD","Excel","Appels d’offres","IEC 62548","IEC 62446-1"]
   }
 };
 
