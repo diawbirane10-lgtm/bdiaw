@@ -2,9 +2,11 @@ import './globals.css';
 import './uupm-preview.css';
 import './research-status.css';
 import './project-heading.css';
+import './events-section.css';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import SiteAnalytics from './SiteAnalytics';
+import EventsSection from './EventsSection';
 
 const siteUrl = 'https://b-diaw.com';
 
@@ -140,6 +142,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
         />
         {children}
+        <EventsSection />
         <SiteAnalytics />
       </body>
     </html>
