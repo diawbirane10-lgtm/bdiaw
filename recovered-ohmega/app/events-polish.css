@@ -4,12 +4,12 @@
   width:150px;
 }
 
-/* Keep the ministry logo visually aligned with the other event marks. */
+/* Show the full ministry logo without cropping or over-zooming. */
 .eventLogoMinistry{
   background-color:#fff;
   background-repeat:no-repeat;
-  background-position:left center;
-  background-size:100% auto;
+  background-position:center;
+  background-size:contain;
   background-image:url("/mep-logo.svg");
 }
 .eventLogoMinistry img{
