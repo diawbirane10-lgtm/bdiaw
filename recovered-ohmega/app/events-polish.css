@@ -4,13 +4,13 @@
   width:150px;
 }
 
-/* Render the ministry mark locally so it cannot be blocked by hotlink protection. */
+/* Use the exact ministry logo stored locally so it cannot be blocked by hotlink protection. */
 .eventLogoMinistry{
   background-color:#fff;
   background-repeat:no-repeat;
   background-position:center;
-  background-size:92% auto;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 342'%3E%3Crect width='1200' height='342' fill='white'/%3E%3Cg transform='translate(18 22)'%3E%3Crect x='0' y='0' width='165' height='298' fill='%23008753'/%3E%3Crect x='165' y='0' width='165' height='298' fill='%23FDEF42'/%3E%3Crect x='330' y='0' width='165' height='298' fill='%23E31B23'/%3E%3Cpath d='M247.5 90 263 137h49l-39.5 28.8 15 47.2-40-29-40 29 15-47.2L183 137h49z' fill='%23008753'/%3E%3Cg transform='translate(520 12)' fill='%23000'%3E%3Ctext x='0' y='48' font-family='Arial,Helvetica,sans-serif' font-size='58' font-weight='400'%3ER%C3%A9publique du S%C3%A9n%C3%A9gal%3C/text%3E%3Crect x='0' y='72' width='640' height='3' fill='%23000'/%3E%3Ctext x='0' y='120' font-family='Arial,Helvetica,sans-serif' font-size='35' font-style='italic'%3EUn Peuple %C2%B7 Un But %C2%B7 Une Foi%3C/text%3E%3Ctext x='0' y='220' font-family='Arial,Helvetica,sans-serif' font-size='44' font-weight='700'%3EMINIST%C3%88RE DE L%E2%80%99%C3%89NERGIE,%3C/text%3E%3Ctext x='0' y='275' font-family='Arial,Helvetica,sans-serif' font-size='44' font-weight='700'%3EDU P%C3%89TROLE ET DES MINES%3C/text%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-size:94% auto;
+  background-image:url("/mep-logo.svg");
 }
 .eventLogoMinistry img{
   display:none!important;
@@ -25,9 +25,11 @@
   max-width:720px;
   line-height:1.62;
 }
-html[lang="en"] .eventBody::after,
+html[lang="en"] .eventBody::after{
+  content:" The session also included introductory technical discussions on nuclear power generation, grid integration, electrical protection, instrumentation and control, together with the role of nuclear-industry standards, codes and regulatory frameworks. These exchanges were not intended as a detailed engineering study, but they provided a broader view of the technical and regulatory requirements associated with a future nuclear power programme.";
+}
 html[lang="fr"] .eventBody::after{
-  content:"";
+  content:" La session a également donné lieu à des échanges techniques introductifs sur la production électronucléaire, l’intégration au réseau, les protections électriques, l’instrumentation et le contrôle-commande, ainsi que sur le rôle des normes, codes et cadres réglementaires applicables à l’industrie nucléaire. Ces échanges ne constituaient pas une étude d’ingénierie détaillée, mais ils ont permis d’élargir la compréhension des exigences techniques et réglementaires liées à un futur programme électronucléaire.";
 }
 @media(min-width:641px) and (max-width:900px){
   .eventLogoMinistry,
