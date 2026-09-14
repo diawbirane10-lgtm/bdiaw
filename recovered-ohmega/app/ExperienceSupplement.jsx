@@ -7,7 +7,7 @@ const copy={
   en:{
     date:"Aug 2026 — Present",
     title:"Engineering Studies & Tendering Assistant",
-    meta:"S4E SARL · Dakar, Senegal",
+    meta:"S4E SARL · Dakar, Senegal · Hybrid — primarily remote",
     body1Title:"Democratic Republic of the Congo — PASEL",
     body1:"Contributed to the preparation of an Expression of Interest for an engineering-consulting assignment related to electricity-network extension works.",
     body2Title:"Kolda, Senegal — NEA Kolda",
@@ -17,7 +17,7 @@ const copy={
   fr:{
     date:"Août 2026 — Aujourd’hui",
     title:"Assistant études & appels d’offres — Ingénierie électrique",
-    meta:"S4E SARL · Dakar, Sénégal",
+    meta:"S4E SARL · Dakar, Sénégal · Hybride — principalement en télétravail",
     body1Title:"République démocratique du Congo — PASEL",
     body1:"Contribution à la préparation d’une manifestation d’intérêt pour une mission d’ingénieur-conseil liée à des travaux d’extension de réseaux électriques.",
     body2Title:"Kolda, Sénégal — NEA Kolda",
