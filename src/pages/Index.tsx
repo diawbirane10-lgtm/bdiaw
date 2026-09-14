@@ -7,6 +7,7 @@ import SkillsSection from "@/components/SkillsSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import FocusLinksSection from "@/components/FocusLinksSection";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useVisitTracker } from "@/hooks/useVisitTracker";
@@ -36,6 +37,9 @@ const Index = () => {
           </ScrollReveal>
           <ScrollReveal direction="scale">
             <TestimonialsSection />
+          </ScrollReveal>
+          <ScrollReveal>
+            <FocusLinksSection />
           </ScrollReveal>
         </main>
         <Footer />
