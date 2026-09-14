@@ -1,6 +1,6 @@
 /* Navigation hierarchy aligned with the portfolio reading order.
-   Navigation is intentionally non-sticky: it is fully visible at the top,
-   then scrolls away so content is never covered. */
+   Navigation is intentionally non-sticky: it is visible in the opening header,
+   then scrolls away with the rest of the top bar so content is never covered. */
 
 #portfolio-navigation a[href="#top"]{order:0}
 #portfolio-navigation a[href="#research"]{order:1}
@@ -11,10 +11,8 @@
 #portfolio-navigation a[href="#skills"]{order:6}
 #portfolio-navigation a[href="#contact"]{order:7}
 
-/* No persistent header means section anchors no longer need a large offset. */
 #research,#projects,#experience,#events,#path,#skills,#contact{scroll-margin-top:24px}
 
-/* The brand/language/theme row belongs to the opening view only. */
 .topbar{
   position:relative!important;
   top:auto!important;
@@ -22,32 +20,50 @@
 }
 
 @media(min-width:901px){
-  .hero #portfolio-navigation{
-    position:relative;
-    z-index:1;
-    top:auto;
-    left:auto;
-    transform:none;
-    width:max-content;
-    max-width:100%;
-    margin:28px auto 14px;
-    padding:5px;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:3px;
-    border-radius:14px;
-    background:color-mix(in srgb,var(--panel) 84%,var(--bg) 16%);
-    backdrop-filter:none;
-    box-shadow:none;
+  .topbar{
+    display:grid!important;
+    grid-template-columns:auto minmax(0,1fr) auto;
+    align-items:center;
+    gap:22px;
   }
-  .hero #portfolio-navigation a{
-    min-height:36px;
-    padding:6px 10px;
-    font-size:12px;
+
+  .topbar > .brand{justify-self:start}
+  .topbar > .switches{justify-self:end}
+
+  #portfolio-navigation.navDocked{
+    position:static!important;
+    inset:auto!important;
+    transform:none!important;
+    justify-self:center;
+    width:auto;
+    max-width:100%;
+    margin:0!important;
+    padding:4px;
+    display:flex!important;
+    flex-wrap:nowrap;
+    justify-content:center;
+    gap:2px;
+    border:1px solid var(--line);
+    border-radius:13px;
+    background:color-mix(in srgb,var(--panel) 74%,var(--bg) 26%);
+    box-shadow:none;
+    backdrop-filter:none;
+  }
+
+  #portfolio-navigation.navDocked a{
+    min-height:34px;
+    padding:5px 8px;
+    border-radius:10px;
+    border-color:transparent;
+    font-size:11px;
+    font-weight:650;
     white-space:nowrap;
   }
-  /* The brand already returns to the top, so keep the desktop bar focused. */
-  .hero #portfolio-navigation a[href="#top"]{display:none}
+
+  #portfolio-navigation.navDocked a[href="#top"]{display:none}
+
+  /* Hide the original hero placement once the navigation is docked. */
+  .hero #portfolio-navigation:not(.navDocked){display:none!important}
 }
 
 @media(min-width:641px) and (max-width:900px){
