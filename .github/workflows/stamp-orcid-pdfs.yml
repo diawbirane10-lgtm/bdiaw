@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/stamp_orcid_pdfs.py'
       - '.github/workflows/stamp-orcid-pdfs.yml'
+      - 'recovered-ohmega/app/**/page.jsx'
   workflow_dispatch:
 
 permissions:
@@ -28,7 +29,7 @@ jobs:
       - name: Install PDF tools
         run: pip install pypdf reportlab
 
-      - name: Stamp ORCID on project reports
+      - name: Stamp ORCID on linked project reports
         run: python scripts/stamp_orcid_pdfs.py
 
       - name: Commit stamped PDFs
