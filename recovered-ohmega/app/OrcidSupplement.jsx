@@ -17,6 +17,15 @@ function makeLink(className,label){
   return a;
 }
 
+function styleInline(link){
+  link.style.display="inline-flex";
+  link.style.alignItems="center";
+  link.style.gap=".1rem";
+  link.style.fontSize=".9rem";
+  link.style.fontWeight="600";
+  link.style.textDecoration="none";
+}
+
 export default function OrcidSupplement(){
   useEffect(()=>{
     const sync=()=>{
@@ -26,16 +35,28 @@ export default function OrcidSupplement(){
         contact.appendChild(link);
       }
 
+      document.querySelectorAll("#projects .work").forEach((card)=>{
+        const nav=card.querySelector("nav.inline");
+        if(nav && !nav.querySelector(".orcidCardLink")){
+          const link=makeLink("orcidCardLink", "ORCID");
+          styleInline(link);
+          nav.appendChild(link);
+        }
+      });
+
       const hero=document.querySelector(".projectHero");
       if(hero && !hero.querySelector(".orcidProjectLink")){
         const link=makeLink("orcidProjectLink", `ORCID ${ORCID_ID}`);
-        link.style.display="inline-flex";
-        link.style.alignItems="center";
+        styleInline(link);
         link.style.marginTop="1rem";
-        link.style.fontSize=".92rem";
-        link.style.fontWeight="600";
-        link.style.textDecoration="none";
         hero.appendChild(link);
+      }
+
+      const resources=document.querySelector(".detailGrid .wide nav.inline");
+      if(resources && !resources.querySelector(".orcidResourceLink")){
+        const link=makeLink("orcidResourceLink", `ORCID ${ORCID_ID}`);
+        styleInline(link);
+        resources.appendChild(link);
       }
 
       const research=document.querySelector("#research .inline");
