@@ -1,0 +1,61 @@
+/* Navigation hierarchy aligned with the portfolio reading order.
+   Desktop: compact persistent navigation centered in the sticky top bar area.
+   Tablet/mobile keep the existing responsive behaviour. */
+
+#portfolio-navigation a[href="#top"]{order:0}
+#portfolio-navigation a[href="#research"]{order:1}
+#portfolio-navigation a[href="#projects"]{order:2}
+#portfolio-navigation a[href="#experience"]{order:3}
+#portfolio-navigation a[href="#events"]{order:4}
+#portfolio-navigation a[href="#path"]{order:5}
+#portfolio-navigation a[href="#skills"]{order:6}
+#portfolio-navigation a[href="#contact"]{order:7}
+
+#research,#projects,#experience,#events,#path,#skills,#contact{scroll-margin-top:92px}
+
+@media(min-width:901px){
+  .hero #portfolio-navigation{
+    position:fixed;
+    z-index:30;
+    top:10px;
+    left:50%;
+    transform:translateX(-50%);
+    width:auto;
+    max-width:min(690px,calc(100vw - 310px));
+    margin:0;
+    padding:5px;
+    flex-wrap:nowrap;
+    gap:3px;
+    border-radius:14px;
+    background:color-mix(in srgb,var(--bg) 90%,transparent);
+    backdrop-filter:blur(14px);
+    box-shadow:0 8px 26px color-mix(in srgb,#000 8%,transparent);
+  }
+  .hero #portfolio-navigation a{
+    min-height:34px;
+    padding:5px 9px;
+    font-size:12px;
+    white-space:nowrap;
+  }
+  /* The brand already returns to the top, so keep the desktop bar focused. */
+  .hero #portfolio-navigation a[href="#top"]{display:none}
+}
+
+@media(min-width:641px) and (max-width:900px){
+  .hero #portfolio-navigation{
+    justify-content:flex-start!important;
+  }
+}
+
+@media(max-width:640px){
+  .hero #portfolio-navigation.isOpen{
+    display:flex!important;
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .hero #portfolio-navigation.isOpen a{
+    width:100%;
+    justify-content:flex-start;
+    text-align:left;
+  }
+}
