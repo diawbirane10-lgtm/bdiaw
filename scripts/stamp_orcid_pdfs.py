@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from io import BytesIO
 from pathlib import Path
+import re
 
 from pypdf import PdfReader, PdfWriter
 from reportlab.pdfgen import canvas
@@ -10,8 +11,11 @@ from reportlab.lib.colors import HexColor
 ORCID_ID = "0009-0003-4015-7854"
 ORCID_URL = f"https://orcid.org/{ORCID_ID}"
 SIGNATURE = f"Birane DIAW · ORCID {ORCID_ID} · b-diaw.com"
+PROJECT_PAGE = Path("recovered-ohmega/app/[[...slug]]/page.jsx")
 
-TARGETS = [
+# Keep the current portfolio reports explicit as a safety net, while also
+# discovering any new PDF report linked from the project definitions.
+CURRENT_TARGETS = {
     Path("public/documents/ufls_smartgrid_project_report_EN.pdf"),
     Path("public/documents/rapport_projet_ufls_smartgrid_FR.pdf"),
     Path("public/documents/projet-houlomotrice.pdf"),
@@ -19,16 +23,33 @@ TARGETS = [
     Path("public/documents/rapport_projet_traction_FR.pdf"),
     Path("public/documents/Rapport_Digital_Twin_LiIon.pdf"),
     Path("public/documents/Digital_Twin_complet-report.pdf"),
-]
+}
 
 GREEN = HexColor("#A6CE39")
 DARK = HexColor("#34424A")
+
+
+def discover_targets() -> list[Path]:
+    targets = set(CURRENT_TARGETS)
+    if PROJECT_PAGE.exists():
+        text = PROJECT_PAGE.read_text(encoding="utf-8")
+        for name in re.findall(r"public/documents/([^\"']+?\.pdf)", text, flags=re.IGNORECASE):
+            targets.add(Path("public/documents") / name)
+    return sorted(targets)
+
+
+def already_stamped(reader: PdfReader) -> bool:
+    meta = reader.metadata or {}
+    subject = str(meta.get("/Subject", ""))
+    keywords = str(meta.get("/Keywords", ""))
+    return ORCID_ID in subject or ORCID_ID in keywords
 
 
 def overlay_for_page(width: float, height: float, first_page: bool) -> PdfReader:
     packet = BytesIO()
     c = canvas.Canvas(packet, pagesize=(width, height))
 
+    # Persistent footer signature on every page.
     y = 14
     c.setFillColor(GREEN)
     c.circle(20, y + 2.5, 5.2, fill=1, stroke=0)
@@ -42,6 +63,7 @@ def overlay_for_page(width: float, height: float, first_page: bool) -> PdfReader
     c.setLineWidth(0.45)
     c.line(14, y + 11, width - 14, y + 11)
 
+    # Extra author mark on the first page.
     if first_page:
         top_y = height - 24
         label = f"ORCID {ORCID_ID}"
@@ -57,20 +79,23 @@ def overlay_for_page(width: float, height: float, first_page: bool) -> PdfReader
         c.drawString(x + 9, top_y, label)
         c.linkURL(ORCID_URL, (x - 6, top_y - 3, width - 14, top_y + 10), relative=0)
 
-    c.linkURL(ORCID_URL, (14, y - 3, min(width - 14, 270), y + 10), relative=0)
+    c.linkURL(ORCID_URL, (14, y - 3, min(width - 14, 300), y + 10), relative=0)
     c.save()
     packet.seek(0)
     return PdfReader(packet)
 
 
-def stamp(path: Path) -> None:
+def stamp(path: Path) -> bool:
     if not path.exists():
         print(f"SKIP missing: {path}")
-        return
+        return False
 
     reader = PdfReader(str(path))
-    writer = PdfWriter()
+    if already_stamped(reader):
+        print(f"SKIP already stamped: {path}")
+        return False
 
+    writer = PdfWriter()
     for i, page in enumerate(reader.pages):
         width = float(page.mediabox.width)
         height = float(page.mediabox.height)
@@ -92,8 +117,11 @@ def stamp(path: Path) -> None:
         writer.write(f)
     tmp.replace(path)
     print(f"STAMPED: {path} ({len(reader.pages)} pages)")
+    return True
 
 
 if __name__ == "__main__":
-    for pdf in TARGETS:
-        stamp(pdf)
+    changed = 0
+    for pdf in discover_targets():
+        changed += int(stamp(pdf))
+    print(f"ORCID stamping complete. Modified {changed} PDF(s).")
