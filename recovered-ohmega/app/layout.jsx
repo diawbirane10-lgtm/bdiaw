@@ -12,8 +12,10 @@ import SiteAnalytics from './SiteAnalytics';
 import EventsSection from './EventsSection';
 import IntroSplash from './IntroSplash';
 import ScrollReveal from './ScrollReveal';
+import OrcidSupplement from './OrcidSupplement';
 
 const siteUrl = 'https://b-diaw.com';
+const orcidUrl = 'https://orcid.org/0009-0003-4015-7854';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -87,6 +89,7 @@ const profileJsonLd = [
       '@type': 'Person',
       '@id': siteUrl + '/#birane-diaw',
       name: 'Birane DIAW',
+      sameAs: [orcidUrl],
     },
     isPartOf: {
       '@type': 'Periodical',
@@ -116,8 +119,15 @@ const profileJsonLd = [
       '@id': siteUrl + '/#birane-diaw',
       name: 'Birane DIAW',
       url: siteUrl,
+      identifier: {
+        '@type': 'PropertyValue',
+        propertyID: 'ORCID',
+        value: '0009-0003-4015-7854',
+        url: orcidUrl,
+      },
       jobTitle: 'State Engineering Student — Electrical Engineering & Intelligent Systems',
       sameAs: [
+        orcidUrl,
         'https://github.com/diawbirane10-lgtm',
         'https://www.linkedin.com/in/birane-diaw-b83b47374',
         'https://x.com/epsilonp0',
@@ -144,6 +154,7 @@ export default function RootLayout({ children }) {
       <body>
         <IntroSplash />
         <ScrollReveal />
+        <OrcidSupplement />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
