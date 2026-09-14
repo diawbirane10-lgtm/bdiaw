@@ -5,11 +5,13 @@ import './project-heading.css';
 import './events.css';
 import './events-polish.css';
 import './brand-tweak.css';
+import './scroll-reveal.css';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import SiteAnalytics from './SiteAnalytics';
 import EventsSection from './EventsSection';
 import IntroSplash from './IntroSplash';
+import ScrollReveal from './ScrollReveal';
 
 const siteUrl = 'https://b-diaw.com';
 
@@ -141,6 +143,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
         <IntroSplash />
+        <ScrollReveal />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
