@@ -1,1 +1,3 @@
-requests\nbeautifulsoup4\nlxml\n
+requests
+beautifulsoup4
+lxml
