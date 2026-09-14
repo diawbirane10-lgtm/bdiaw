@@ -1,6 +1,6 @@
 /* Navigation hierarchy aligned with the portfolio reading order.
-   Desktop: compact persistent navigation centered in the sticky top bar area.
-   Tablet/mobile keep the existing responsive behaviour. */
+   Navigation is intentionally non-sticky: it is fully visible at the top,
+   then scrolls away so content is never covered. */
 
 #portfolio-navigation a[href="#top"]{order:0}
 #portfolio-navigation a[href="#research"]{order:1}
@@ -11,29 +11,38 @@
 #portfolio-navigation a[href="#skills"]{order:6}
 #portfolio-navigation a[href="#contact"]{order:7}
 
-#research,#projects,#experience,#events,#path,#skills,#contact{scroll-margin-top:92px}
+/* No persistent header means section anchors no longer need a large offset. */
+#research,#projects,#experience,#events,#path,#skills,#contact{scroll-margin-top:24px}
+
+/* The brand/language/theme row belongs to the opening view only. */
+.topbar{
+  position:relative!important;
+  top:auto!important;
+  z-index:10!important;
+}
 
 @media(min-width:901px){
   .hero #portfolio-navigation{
-    position:fixed;
-    z-index:30;
-    top:10px;
-    left:50%;
-    transform:translateX(-50%);
-    width:auto;
-    max-width:min(690px,calc(100vw - 310px));
-    margin:0;
+    position:relative;
+    z-index:1;
+    top:auto;
+    left:auto;
+    transform:none;
+    width:max-content;
+    max-width:100%;
+    margin:28px auto 14px;
     padding:5px;
-    flex-wrap:nowrap;
+    flex-wrap:wrap;
+    justify-content:center;
     gap:3px;
     border-radius:14px;
-    background:color-mix(in srgb,var(--bg) 90%,transparent);
-    backdrop-filter:blur(14px);
-    box-shadow:0 8px 26px color-mix(in srgb,#000 8%,transparent);
+    background:color-mix(in srgb,var(--panel) 84%,var(--bg) 16%);
+    backdrop-filter:none;
+    box-shadow:none;
   }
   .hero #portfolio-navigation a{
-    min-height:34px;
-    padding:5px 9px;
+    min-height:36px;
+    padding:6px 10px;
     font-size:12px;
     white-space:nowrap;
   }
