@@ -8,6 +8,8 @@ export default function NavDock() {
     let nav = null;
     let originalParent = null;
     let placeholder = null;
+    let frame = 0;
+    let attempts = 0;
 
     const locate = () => {
       nav = document.getElementById("portfolio-navigation");
@@ -21,25 +23,35 @@ export default function NavDock() {
     };
 
     const sync = () => {
-      if (!locate()) return;
+      if (!locate()) return false;
       const topbar = document.querySelector(".topbar");
       const switches = topbar?.querySelector(".switches");
+
       if (media.matches && topbar && switches) {
-        topbar.insertBefore(nav, switches);
+        if (nav.parentNode !== topbar || nav.nextSibling !== switches) {
+          topbar.insertBefore(nav, switches);
+        }
         nav.classList.add("navDocked");
       } else if (placeholder?.parentNode) {
-        placeholder.parentNode.insertBefore(nav, placeholder.nextSibling);
+        if (nav.parentNode !== placeholder.parentNode || nav.previousSibling !== placeholder) {
+          placeholder.parentNode.insertBefore(nav, placeholder.nextSibling);
+        }
         nav.classList.remove("navDocked");
       }
+      return true;
     };
 
-    sync();
-    const observer = new MutationObserver(sync);
-    observer.observe(document.body, { childList: true, subtree: true });
+    const boot = () => {
+      if (sync()) return;
+      attempts += 1;
+      if (attempts < 60) frame = window.requestAnimationFrame(boot);
+    };
+
+    boot();
     media.addEventListener("change", sync);
 
     return () => {
-      observer.disconnect();
+      window.cancelAnimationFrame(frame);
       media.removeEventListener("change", sync);
       if (nav && placeholder?.parentNode) {
         placeholder.parentNode.insertBefore(nav, placeholder.nextSibling);
