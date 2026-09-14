@@ -6,6 +6,7 @@ import './events.css';
 import './events-polish.css';
 import './brand-tweak.css';
 import './scroll-reveal.css';
+import './navigation-polish.css';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import SiteAnalytics from './SiteAnalytics';
