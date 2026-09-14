@@ -1,0 +1,44 @@
+name: Stamp ORCID on project PDFs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/stamp_orcid_pdfs.py'
+      - '.github/workflows/stamp-orcid-pdfs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stamp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install PDF tools
+        run: pip install pypdf reportlab
+
+      - name: Stamp ORCID on project reports
+        run: python scripts/stamp_orcid_pdfs.py
+
+      - name: Commit stamped PDFs
+        run: |
+          if git diff --quiet -- public/documents; then
+            echo "No PDF changes to commit."
+            exit 0
+          fi
+          git config user.name "ohmega-orcid-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add public/documents/*.pdf
+          git commit -m "Stamp ORCID signature on project reports"
+          git push
