@@ -14,6 +14,8 @@ import EventsSection from './EventsSection';
 import IntroSplash from './IntroSplash';
 import ScrollReveal from './ScrollReveal';
 import OrcidSupplement from './OrcidSupplement';
+import NavDock from './NavDock';
+import ResearchTitlePatch from './ResearchTitlePatch';
 
 const siteUrl = 'https://b-diaw.com';
 const orcidUrl = 'https://orcid.org/0009-0003-4015-7854';
@@ -85,7 +87,7 @@ const profileJsonLd = [
     '@id': siteUrl + '/#grid-forming-vsm-vsc-hvdc-paper',
     url: siteUrl + '/#research',
     headline:
-      'Grid-Forming Virtual Synchronous Machine Control with DC-Coupled Battery Storage for Frequency Stability in a Multi-Terminal VSC-HVDC Renewable Power System',
+      'Grid-Forming Virtual Synchronous Machine Control with Battery Storage for Frequency Stability in Multiterminal High-Voltage Direct-Current Systems',
     author: {
       '@type': 'Person',
       '@id': siteUrl + '/#birane-diaw',
@@ -156,6 +158,8 @@ export default function RootLayout({ children }) {
         <IntroSplash />
         <ScrollReveal />
         <OrcidSupplement />
+        <NavDock />
+        <ResearchTitlePatch />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
