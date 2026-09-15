@@ -22,48 +22,72 @@
 @media(min-width:901px){
   .topbar{
     display:grid!important;
-    grid-template-columns:auto minmax(0,1fr) auto;
+    grid-template-columns:minmax(190px,auto) minmax(0,1fr) minmax(132px,auto);
     align-items:center;
-    gap:22px;
+    column-gap:18px;
+    padding:14px 0 16px;
   }
 
-  .topbar > .brand{justify-self:start}
-  .topbar > .switches{justify-self:end}
+  .topbar > .brand{
+    justify-self:start;
+    min-width:190px;
+  }
+
+  .topbar > .switches{
+    justify-self:end;
+    min-width:132px;
+    justify-content:flex-end;
+  }
 
   #portfolio-navigation.navDocked{
     position:static!important;
     inset:auto!important;
     transform:none!important;
-    justify-self:center;
-    width:auto;
-    max-width:100%;
+    justify-self:stretch;
+    width:100%;
+    max-width:none;
     margin:0!important;
-    padding:4px;
+    padding:5px 7px;
     display:flex!important;
     flex-wrap:nowrap;
-    justify-content:center;
-    gap:2px;
+    justify-content:space-between;
+    gap:3px;
     border:1px solid var(--line);
-    border-radius:13px;
-    background:color-mix(in srgb,var(--panel) 74%,var(--bg) 26%);
+    border-radius:14px;
+    background:color-mix(in srgb,var(--panel) 72%,var(--bg) 28%);
     box-shadow:none;
     backdrop-filter:none;
   }
 
   #portfolio-navigation.navDocked a{
-    min-height:34px;
-    padding:5px 8px;
+    flex:1 1 auto;
+    min-height:36px;
+    padding:6px 9px;
     border-radius:10px;
     border-color:transparent;
-    font-size:11px;
+    font-size:11.5px;
     font-weight:650;
     white-space:nowrap;
+    text-align:center;
   }
 
   #portfolio-navigation.navDocked a[href="#top"]{display:none}
-
-  /* Hide the original hero placement once the navigation is docked. */
   .hero #portfolio-navigation:not(.navDocked){display:none!important}
+}
+
+@media(min-width:1200px){
+  .topbar{
+    grid-template-columns:minmax(210px,auto) minmax(0,1fr) minmax(150px,auto);
+    column-gap:24px;
+  }
+
+  .topbar > .brand{min-width:210px}
+  .topbar > .switches{min-width:150px}
+
+  #portfolio-navigation.navDocked a{
+    font-size:12px;
+    padding-inline:10px;
+  }
 }
 
 @media(min-width:641px) and (max-width:900px){
