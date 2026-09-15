@@ -22,20 +22,20 @@
 @media(min-width:901px){
   .topbar{
     display:grid!important;
-    grid-template-columns:minmax(190px,auto) minmax(0,1fr) minmax(132px,auto);
+    grid-template-columns:auto minmax(620px,1fr) auto;
     align-items:center;
-    column-gap:18px;
+    column-gap:12px;
     padding:14px 0 16px;
   }
 
   .topbar > .brand{
     justify-self:start;
-    min-width:190px;
+    min-width:0;
   }
 
   .topbar > .switches{
     justify-self:end;
-    min-width:132px;
+    min-width:0;
     justify-content:flex-end;
   }
 
@@ -45,28 +45,34 @@
     transform:none!important;
     justify-self:stretch;
     width:100%;
-    max-width:none;
+    max-width:none!important;
+    min-width:0;
     margin:0!important;
-    padding:5px 7px;
+    padding:7px 10px;
     display:flex!important;
     flex-wrap:nowrap;
-    justify-content:space-between;
-    gap:3px;
+    justify-content:stretch;
+    gap:4px;
     border:1px solid var(--line);
-    border-radius:14px;
+    border-radius:15px;
     background:color-mix(in srgb,var(--panel) 72%,var(--bg) 28%);
     box-shadow:none;
     backdrop-filter:none;
   }
 
   #portfolio-navigation.navDocked a{
-    flex:1 1 auto;
-    min-height:36px;
-    padding:6px 9px;
-    border-radius:10px;
+    flex:1 1 0;
+    min-width:0;
+    min-height:44px;
+    padding:10px 12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:11px;
     border-color:transparent;
-    font-size:11.5px;
+    font-size:13px;
     font-weight:650;
+    line-height:1.1;
     white-space:nowrap;
     text-align:center;
   }
@@ -77,16 +83,28 @@
 
 @media(min-width:1200px){
   .topbar{
-    grid-template-columns:minmax(210px,auto) minmax(0,1fr) minmax(150px,auto);
-    column-gap:24px;
+    grid-template-columns:auto minmax(760px,1fr) auto;
+    column-gap:14px;
   }
 
-  .topbar > .brand{min-width:210px}
-  .topbar > .switches{min-width:150px}
+  #portfolio-navigation.navDocked{
+    padding:8px 12px;
+  }
 
   #portfolio-navigation.navDocked a{
-    font-size:12px;
-    padding-inline:10px;
+    min-height:46px;
+    padding:10px 14px;
+    font-size:13.5px;
+  }
+}
+
+@media(min-width:1500px){
+  .topbar{
+    grid-template-columns:auto minmax(860px,1fr) auto;
+  }
+
+  #portfolio-navigation.navDocked a{
+    font-size:14px;
   }
 }
 
