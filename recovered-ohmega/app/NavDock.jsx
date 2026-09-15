@@ -4,22 +4,38 @@ import { useEffect } from "react";
 
 export default function NavDock() {
   useEffect(() => {
-    const media = window.matchMedia("(min-width: 901px)");
+    const desktop = window.matchMedia("(min-width: 901px)");
+    const mobile = window.matchMedia("(max-width: 640px)");
     let nav = null;
-    let originalParent = null;
-    let placeholder = null;
+    let menuButton = null;
+    let navPlaceholder = null;
+    let menuPlaceholder = null;
     let frame = 0;
     let attempts = 0;
 
     const locate = () => {
       nav = document.getElementById("portfolio-navigation");
+      menuButton = document.querySelector(".mobileMenuButton");
       if (!nav) return false;
-      if (!originalParent) {
-        originalParent = nav.parentNode;
-        placeholder = document.createComment("portfolio-navigation-home");
-        originalParent.insertBefore(placeholder, nav);
+
+      if (!navPlaceholder && nav.parentNode) {
+        navPlaceholder = document.createComment("portfolio-navigation-home");
+        nav.parentNode.insertBefore(navPlaceholder, nav);
       }
+
+      if (menuButton && !menuPlaceholder && menuButton.parentNode) {
+        menuPlaceholder = document.createComment("portfolio-menu-home");
+        menuButton.parentNode.insertBefore(menuPlaceholder, menuButton);
+      }
+
       return true;
+    };
+
+    const restore = (node, placeholder) => {
+      if (!node || !placeholder?.parentNode) return;
+      if (node.parentNode !== placeholder.parentNode || node.previousSibling !== placeholder) {
+        placeholder.parentNode.insertBefore(node, placeholder.nextSibling);
+      }
     };
 
     const sync = () => {
@@ -27,16 +43,26 @@ export default function NavDock() {
       const topbar = document.querySelector(".topbar");
       const switches = topbar?.querySelector(".switches");
 
-      if (media.matches && topbar && switches) {
+      if (desktop.matches && topbar && switches) {
+        restore(menuButton, menuPlaceholder);
         if (nav.parentNode !== topbar || nav.nextSibling !== switches) {
           topbar.insertBefore(nav, switches);
         }
         nav.classList.add("navDocked");
-      } else if (placeholder?.parentNode) {
-        if (nav.parentNode !== placeholder.parentNode || nav.previousSibling !== placeholder) {
-          placeholder.parentNode.insertBefore(nav, placeholder.nextSibling);
+        nav.classList.remove("navMobileDocked");
+      } else if (mobile.matches && topbar && switches && menuButton) {
+        if (menuButton.parentNode !== topbar || menuButton.nextSibling !== switches) {
+          topbar.insertBefore(menuButton, switches);
+        }
+        if (nav.parentNode !== topbar) {
+          topbar.appendChild(nav);
         }
         nav.classList.remove("navDocked");
+        nav.classList.add("navMobileDocked");
+      } else {
+        restore(nav, navPlaceholder);
+        restore(menuButton, menuPlaceholder);
+        nav.classList.remove("navDocked", "navMobileDocked");
       }
       return true;
     };
@@ -48,16 +74,18 @@ export default function NavDock() {
     };
 
     boot();
-    media.addEventListener("change", sync);
+    desktop.addEventListener("change", sync);
+    mobile.addEventListener("change", sync);
 
     return () => {
       window.cancelAnimationFrame(frame);
-      media.removeEventListener("change", sync);
-      if (nav && placeholder?.parentNode) {
-        placeholder.parentNode.insertBefore(nav, placeholder.nextSibling);
-        nav.classList.remove("navDocked");
-      }
-      placeholder?.remove();
+      desktop.removeEventListener("change", sync);
+      mobile.removeEventListener("change", sync);
+      restore(nav, navPlaceholder);
+      restore(menuButton, menuPlaceholder);
+      nav?.classList.remove("navDocked", "navMobileDocked");
+      navPlaceholder?.remove();
+      menuPlaceholder?.remove();
     };
   }, []);
 
