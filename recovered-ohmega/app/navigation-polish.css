@@ -1,6 +1,5 @@
-/* Navigation hierarchy aligned with the portfolio reading order.
-   Navigation is intentionally non-sticky: it is visible in the opening header,
-   then scrolls away with the rest of the top bar so content is never covered. */
+/* Structured, monochrome portfolio navigation.
+   The header remains non-sticky so it never obscures section content. */
 
 #portfolio-navigation a[href="#top"]{order:0}
 #portfolio-navigation a[href="#research"]{order:1}
@@ -22,21 +21,29 @@
 @media(min-width:901px){
   .topbar{
     display:grid!important;
-    grid-template-columns:auto minmax(620px,1fr) auto;
+    grid-template-columns:auto minmax(0,1fr) auto;
     align-items:center;
-    column-gap:12px;
-    padding:14px 0 16px;
+    column-gap:20px;
+    min-height:78px;
+    padding:10px 0 12px;
+    border-top:2px solid var(--ink);
+    border-bottom:1px solid var(--line);
   }
 
   .topbar > .brand{
     justify-self:start;
-    min-width:0;
+    min-width:225px;
+    padding-right:22px;
+    border-right:1px solid var(--line);
   }
 
   .topbar > .switches{
     justify-self:end;
-    min-width:0;
+    min-width:116px;
     justify-content:flex-end;
+    gap:8px;
+    padding-left:20px;
+    border-left:1px solid var(--line);
   }
 
   #portfolio-navigation.navDocked{
@@ -48,33 +55,53 @@
     max-width:none!important;
     min-width:0;
     margin:0!important;
-    padding:7px 10px;
-    display:flex!important;
-    flex-wrap:nowrap;
-    justify-content:stretch;
-    gap:4px;
-    border:1px solid var(--line);
-    border-radius:15px;
-    background:color-mix(in srgb,var(--panel) 72%,var(--bg) 28%);
+    padding:0;
+    display:grid!important;
+    grid-template-columns:repeat(7,minmax(0,1fr));
+    align-items:center;
+    gap:0;
+    border:0;
+    border-radius:0;
+    background:transparent;
     box-shadow:none;
     backdrop-filter:none;
   }
 
   #portfolio-navigation.navDocked a{
-    flex:1 1 0;
+    position:relative;
     min-width:0;
-    min-height:44px;
-    padding:10px 12px;
+    min-height:48px;
+    padding:8px 10px;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:11px;
-    border-color:transparent;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    color:var(--ink);
     font-size:13px;
     font-weight:650;
-    line-height:1.1;
+    line-height:1.15;
     white-space:nowrap;
     text-align:center;
+  }
+
+  #portfolio-navigation.navDocked a::after{
+    content:"";
+    position:absolute;
+    left:22%;
+    right:22%;
+    bottom:2px;
+    height:1.5px;
+    background:currentColor;
+    transform:scaleX(0);
+    transform-origin:center;
+    transition:transform .18s ease;
+  }
+
+  #portfolio-navigation.navDocked a:hover::after,
+  #portfolio-navigation.navDocked a:focus-visible::after{
+    transform:scaleX(1);
   }
 
   #portfolio-navigation.navDocked a[href="#top"]{display:none}
@@ -83,29 +110,23 @@
 
 @media(min-width:1200px){
   .topbar{
-    grid-template-columns:auto minmax(760px,1fr) auto;
-    column-gap:14px;
+    column-gap:24px;
+    min-height:82px;
   }
 
-  #portfolio-navigation.navDocked{
-    padding:8px 12px;
-  }
+  .topbar > .brand{min-width:245px;padding-right:26px}
+  .topbar > .switches{min-width:124px;padding-left:24px}
 
   #portfolio-navigation.navDocked a{
-    min-height:46px;
-    padding:10px 14px;
+    min-height:50px;
+    padding-inline:12px;
     font-size:13.5px;
   }
 }
 
 @media(min-width:1500px){
-  .topbar{
-    grid-template-columns:auto minmax(860px,1fr) auto;
-  }
-
-  #portfolio-navigation.navDocked a{
-    font-size:14px;
-  }
+  .topbar > .brand{min-width:260px}
+  #portfolio-navigation.navDocked a{font-size:14px}
 }
 
 @media(min-width:641px) and (max-width:900px){
