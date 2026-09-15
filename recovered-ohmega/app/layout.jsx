@@ -18,6 +18,7 @@ import NavDock from './NavDock';
 import ResearchTitlePatch from './ResearchTitlePatch';
 import AboutCopyPatch from './AboutCopyPatch';
 import HeroNamePatch from './HeroNamePatch';
+import AcademicPathPatch from './AcademicPathPatch';
 
 const siteUrl = 'https://b-diaw.com';
 const orcidUrl = 'https://orcid.org/0009-0003-4015-7854';
@@ -166,6 +167,7 @@ export default function RootLayout({ children }) {
         <ResearchTitlePatch />
         <AboutCopyPatch />
         <HeroNamePatch />
+        <AcademicPathPatch />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
