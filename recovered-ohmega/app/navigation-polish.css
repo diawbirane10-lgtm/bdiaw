@@ -136,14 +136,108 @@
 }
 
 @media(max-width:640px){
-  .hero #portfolio-navigation.isOpen{
+  .topbar{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto auto!important;
+    align-items:center!important;
+    column-gap:8px!important;
+    row-gap:0!important;
+    margin-bottom:34px!important;
+    padding:8px 0 10px!important;
+  }
+
+  .topbar > .brand{min-width:0!important}
+  .topbar > .switches{gap:5px!important}
+
+  .topbar > .mobileMenuButton{
+    position:static!important;
+    inset:auto!important;
+    transform:none!important;
+    width:auto!important;
+    min-width:42px!important;
+    min-height:34px!important;
+    margin:0!important;
+    padding:5px 9px!important;
+    border:1px solid var(--line)!important;
+    border-radius:999px!important;
+    background:transparent!important;
+    color:var(--ink)!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:6px!important;
+    font-size:12px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+  }
+
+  .topbar > .mobileMenuButton .hamburgerIcon{
+    width:15px!important;
+    height:12px!important;
+  }
+
+  #portfolio-navigation.navMobileDocked{
+    grid-column:1/-1!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:10px 0 0!important;
+    padding:8px!important;
+    border:1px solid var(--line)!important;
+    border-radius:14px!important;
+    background:var(--bg)!important;
+    box-shadow:0 12px 28px color-mix(in srgb,#000 10%,transparent)!important;
+    overflow:visible!important;
+  }
+
+  #portfolio-navigation.navMobileDocked:not(.isOpen){display:none!important}
+  #portfolio-navigation.navMobileDocked.isOpen{
     display:flex!important;
-    flex-direction:column;
-    align-items:stretch;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:2px!important;
   }
-  .hero #portfolio-navigation.isOpen a{
-    width:100%;
-    justify-content:flex-start;
-    text-align:left;
+
+  #portfolio-navigation.navMobileDocked.isOpen a{
+    width:100%!important;
+    min-height:38px!important;
+    padding:7px 10px!important;
+    justify-content:flex-start!important;
+    text-align:left!important;
+    border:0!important;
+    border-radius:9px!important;
+    font-size:13px!important;
   }
+
+  .hero > .mobileMenuButton{display:none!important}
+
+  .inline{
+    display:flex!important;
+    grid-template-columns:none!important;
+    flex-wrap:wrap!important;
+    gap:7px!important;
+  }
+
+  .inline a,
+  #research .inline a,
+  #research .orcidResearchLink{
+    width:auto!important;
+    min-height:34px!important;
+    padding:5px 10px!important;
+    font-size:13px!important;
+    line-height:1.15!important;
+    flex:0 0 auto!important;
+  }
+
+  .paper{padding:18px!important}
+  #research .paperTop{gap:16px!important}
+  #research .paperTop>a,#research .paperTop img{width:100%!important;max-width:320px!important}
+  .summary{font-size:15.5px!important;line-height:1.55!important}
+}
+
+@media(max-width:380px){
+  .topbar{grid-template-columns:minmax(0,1fr) auto auto!important;column-gap:5px!important}
+  .brandText{font-size:12px!important}
+  .topbar > .mobileMenuButton{padding:5px 7px!important}
+  .topbar > .mobileMenuButton > span:last-child{display:none!important}
+  .switches button{padding:4px 8px!important}
 }
