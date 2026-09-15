@@ -16,6 +16,7 @@ import ScrollReveal from './ScrollReveal';
 import OrcidSupplement from './OrcidSupplement';
 import NavDock from './NavDock';
 import ResearchTitlePatch from './ResearchTitlePatch';
+import AboutCopyPatch from './AboutCopyPatch';
 
 const siteUrl = 'https://b-diaw.com';
 const orcidUrl = 'https://orcid.org/0009-0003-4015-7854';
@@ -27,7 +28,7 @@ export const metadata = {
     template: '%s | Birane DIAW',
   },
   description:
-    'Electrical engineering portfolio of Birane DIAW: power systems, smart grids, VSC-HVDC, grid-forming control, renewable energy, industrial automation, digital twins and embedded systems.',
+    'Electrical engineering portfolio of Birane DIAW: power systems, smart grids, HVDC/HVAC, grid-forming control, renewable energy, industrial automation, digital twins and embedded systems.',
   authors: [{ name: 'Birane DIAW', url: siteUrl }],
   creator: 'Birane DIAW',
   publisher: 'Birane DIAW',
@@ -40,14 +41,14 @@ export const metadata = {
     siteName: 'Birane DIAW — OHMEGA',
     title: 'Birane DIAW — Electrical Engineering & Intelligent Systems',
     description:
-      'Power systems, renewable energy, smart grids, control, automation, digital twins and embedded electronics.',
+      'Power systems, HVDC/HVAC, smart grids, control, automation, digital twins and embedded electronics.',
     images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'OHMEGA — Birane DIAW' }],
   },
   twitter: {
     card: 'summary',
     title: 'Birane DIAW — Electrical Engineering & Intelligent Systems',
     description:
-      'Power systems, renewable energy, smart grids, control, automation, digital twins and embedded electronics.',
+      'Power systems, HVDC/HVAC, smart grids, control, automation, digital twins and embedded electronics.',
     images: ['/opengraph-image'],
   },
   icons: {
@@ -139,7 +140,8 @@ const profileJsonLd = [
         'Electrical engineering',
         'Power systems',
         'Smart grids',
-        'VSC-HVDC',
+        'HVDC',
+        'HVAC',
         'Grid-forming control',
         'Renewable energy',
         'Industrial automation',
@@ -160,6 +162,7 @@ export default function RootLayout({ children }) {
         <OrcidSupplement />
         <NavDock />
         <ResearchTitlePatch />
+        <AboutCopyPatch />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
