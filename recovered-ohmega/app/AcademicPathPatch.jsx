@@ -17,12 +17,20 @@ export default function AcademicPathPatch() {
 
       const pageText = section.textContent || "";
       const isFrench = pageText.includes("Parcours") || pageText.includes("ingénieur d’État") || document.documentElement.lang === "fr";
-      body.textContent = isFrench ? FR_TEXT : EN_TEXT;
+      const nextText = isFrench ? FR_TEXT : EN_TEXT;
+
+      if (body.textContent?.trim() !== nextText) {
+        body.textContent = nextText;
+      }
     };
 
     apply();
-    const observer = new MutationObserver(apply);
+
+    const observer = new MutationObserver(() => {
+      window.requestAnimationFrame(apply);
+    });
     observer.observe(document.body, { childList: true, subtree: true });
+
     return () => observer.disconnect();
   }, []);
 
