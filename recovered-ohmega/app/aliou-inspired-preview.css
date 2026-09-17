@@ -1,5 +1,6 @@
 /* Production typography pass — inspired by aliouba.org's simple, fluid typographic rhythm.
-   Keeps OHMEGA's identity while improving readability across screen sizes. */
+   Keeps OHMEGA's identity while improving readability across screen sizes.
+   Production deployment trigger refreshed after reconnecting Vercel Git integration. */
 
 :root{
   --preview-max: 1040px;
