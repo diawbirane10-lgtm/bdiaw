@@ -797,3 +797,170 @@ body,
   --panel:#ffffff!important;
   --navy-ink:#ffffff!important;
 }
+
+
+/* Compact institutional engagement — visible without becoming a full Events section. */
+.engagement{
+  display:grid;
+  grid-template-columns:180px 210px minmax(0,1fr);
+  gap:34px;
+  align-items:start;
+  padding:72px 0;
+  border-bottom:1px solid var(--line);
+  background:#fff!important;
+}
+.engagementLabel{
+  display:grid;
+  gap:10px;
+  color:var(--navy);
+  font:700 10.5px/1.35 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.engagementLabel span:last-child{
+  color:var(--soft);
+}
+.engagementLogos{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.engagementLogo{
+  width:86px;
+  height:86px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  background:#fff;
+  text-decoration:none!important;
+}
+.engagementLogo img{
+  max-width:72px;
+  max-height:72px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+.engagementLogo.ministry img{
+  max-width:60px;
+  max-height:70px;
+}
+.engagementJoin{
+  color:var(--soft);
+  font:600 14px/1 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+.engagementKicker{
+  margin:0 0 12px;
+  color:var(--soft);
+  font:650 10.5px/1.4 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.engagementCopy h2{
+  max-width:760px;
+  margin:0 0 16px;
+  font-size:clamp(26px,2.8vw,38px);
+  line-height:1.08;
+  font-weight:580;
+  letter-spacing:-.04em;
+}
+.engagementCopy>p:not(.engagementKicker){
+  max-width:760px;
+  margin:0;
+  color:var(--mut);
+  font-size:15.5px;
+  line-height:1.68;
+}
+.engagementLinks{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:22px;
+}
+.engagementLinks a{
+  display:inline-flex;
+  min-height:38px;
+  align-items:center;
+  padding:7px 11px;
+  border:1px solid var(--navy);
+  color:var(--navy)!important;
+  background:#fff;
+  text-decoration:none!important;
+  font:650 11px/1 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+.engagementLinks a:hover{
+  background:var(--navy);
+  color:#fff!important;
+}
+
+/* Recognisable footer profile icons */
+.contactIcon{
+  width:30px!important;
+  height:30px!important;
+  flex:0 0 30px!important;
+  display:inline-grid!important;
+  place-items:center!important;
+  border:0!important;
+  background:#fff!important;
+  color:var(--navy)!important;
+}
+.contactIcon svg{
+  width:18px!important;
+  height:18px!important;
+  display:block!important;
+  fill:currentColor!important;
+}
+.orcidIcon{
+  color:#a6ce39!important;
+}
+.orcidIcon svg circle{
+  fill:#fff!important;
+  stroke:#a6ce39!important;
+  stroke-width:1.5!important;
+}
+
+@media(max-width:900px){
+  .engagement{
+    grid-template-columns:150px minmax(0,1fr);
+    gap:28px;
+  }
+  .engagementLogos{
+    grid-column:1;
+    grid-row:2;
+  }
+  .engagementCopy{
+    grid-column:2;
+    grid-row:1 / span 2;
+  }
+}
+@media(max-width:640px){
+  .engagement{
+    grid-template-columns:1fr;
+    gap:22px;
+    padding:52px 0;
+  }
+  .engagementLogos,
+  .engagementCopy{
+    grid-column:auto;
+    grid-row:auto;
+  }
+  .engagementLogo{
+    width:76px;
+    height:76px;
+  }
+  .engagementLogo img{
+    max-width:64px;
+    max-height:64px;
+  }
+  .engagementCopy h2{
+    font-size:27px;
+  }
+  .engagementLinks{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  .engagementLinks a{
+    width:100%;
+    justify-content:flex-start;
+  }
+}
