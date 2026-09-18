@@ -6,6 +6,10 @@ on:
     branches: [main]
     paths:
       - "recovered-ohmega/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "recovered-ohmega/**"
 
 permissions:
   contents: read
