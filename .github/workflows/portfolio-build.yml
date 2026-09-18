@@ -27,3 +27,23 @@ jobs:
           node-version: 22
       - run: npm install --no-audit --no-fund
       - run: npm run build
+      - name: Smoke test rendered pages
+        run: |
+          npx next start -p 3000 >/tmp/ohmega-next.log 2>&1 &
+          APP_PID=$!
+          trap 'kill $APP_PID || true' EXIT
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:3000/ -o /tmp/home.html; then
+              break
+            fi
+            sleep 1
+          done
+          test -s /tmp/home.html
+          grep -q "Birane Idriss DIAW" /tmp/home.html
+          grep -q "About" /tmp/home.html
+          grep -q "Selected Work" /tmp/home.html
+          grep -q "Research" /tmp/home.html
+          grep -q "Experience" /tmp/home.html
+          grep -q "17+" /tmp/home.html
+          curl -fsS http://127.0.0.1:3000/projects/ufls-smartgrid -o /tmp/project.html
+          grep -q "Smart-Grid UFLS Relay" /tmp/project.html
