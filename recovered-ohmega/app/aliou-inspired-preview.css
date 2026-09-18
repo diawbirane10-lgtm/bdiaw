@@ -1,87 +1,98 @@
-/* Production typography pass — inspired by aliouba.org's simple, fluid typographic rhythm.
-   Keeps OHMEGA's identity while improving readability across screen sizes.
-   Production deployment trigger refreshed after reconnecting Vercel Git integration. */
+/* Production typography system — simple, editorial and fluid.
+   Inspired by the visual restraint of aliouba.org, adapted for OHMEGA with
+   larger, more accessible type and stronger hierarchy. */
 
 :root{
-  --preview-max: 1040px;
+  --preview-max:1120px;
 }
 
 body{
-  font-size:17px;
-  line-height:1.62;
-  letter-spacing:-0.006em;
+  font-size:18px!important;
+  line-height:1.68!important;
+  letter-spacing:-.008em;
 }
 
 .site{
-  width:min(var(--preview-max),calc(100% - 48px));
+  width:min(var(--preview-max),calc(100% - 56px))!important;
 }
 
+/* Hero */
 .hero h1{
-  font-size:clamp(58px,8.6vw,104px);
-  line-height:.94;
-  letter-spacing:-.065em;
-  max-width:900px;
+  font-size:clamp(68px,8vw,108px)!important;
+  line-height:.94!important;
+  letter-spacing:-.065em!important;
+  max-width:980px;
+  margin-bottom:20px!important;
 }
 
 .hero .lead{
-  font-size:clamp(27px,3.5vw,40px);
-  line-height:1.08;
-  max-width:840px;
+  font-size:clamp(28px,3vw,40px)!important;
+  line-height:1.12!important;
+  letter-spacing:-.035em!important;
+  max-width:900px;
 }
 
 .introCopy{
-  max-width:800px;
-  font-size:18px;
-  line-height:1.66;
+  max-width:860px!important;
+  font-size:19px!important;
+  line-height:1.72!important;
 }
 
+/* Main section hierarchy */
 .sectionHead .sectionTitle,
 .footer .footerSectionTitle{
-  font-size:clamp(32px,3.7vw,42px)!important;
-  letter-spacing:-.045em!important;
+  font-size:clamp(38px,4vw,52px)!important;
+  line-height:1.02!important;
+  letter-spacing:-.05em!important;
 }
 
 .sectionHead .sectionSubtitle,
 .sectionHead p,
 .meta,
 .journal,
-.time span,
+.time>span,
 .work>span,
 .work>div>p:first-child{
-  font-size:12.5px!important;
-  letter-spacing:.07em!important;
-}
-
-.paper h3,
-.work h3{
-  letter-spacing:-.03em;
+  font-size:13.5px!important;
+  line-height:1.4!important;
+  letter-spacing:.055em!important;
 }
 
 .paper h3{
-  font-size:clamp(26px,3.4vw,38px);
+  font-size:clamp(30px,3.2vw,42px)!important;
+  line-height:1.12!important;
+  letter-spacing:-.04em!important;
 }
 
-.work h3{
-  font-size:clamp(23px,2.8vw,31px);
+.work h3,
+.experienceItem h3,
+.time h3,
+.skill h3{
+  font-size:clamp(24px,2.5vw,32px)!important;
+  line-height:1.18!important;
+  letter-spacing:-.035em!important;
 }
 
 .summary,
 .work p,
+.experienceBody,
 .timeBody,
 .skill p,
 .footerIntro{
-  font-size:16.5px;
-  line-height:1.65;
+  font-size:17px!important;
+  line-height:1.7!important;
 }
 
+/* Buttons / links */
 .inline a,
 .projectHero>a,
 .switches button{
-  font-size:13.5px;
-  min-height:36px;
-  padding:7px 12px;
+  font-size:14px!important;
+  min-height:38px!important;
+  padding:8px 13px!important;
 }
 
+/* Cards stay restrained, not oversized */
 .paper,
 .work,
 .time,
@@ -93,94 +104,121 @@ body{
   border-radius:14px;
 }
 
-@media (max-width:900px){
-  .site{
-    width:min(100% - 34px,var(--preview-max));
-  }
-
-  .hero h1{
-    font-size:clamp(54px,12vw,82px);
-  }
-
-  .hero .lead{
-    font-size:clamp(26px,5vw,34px);
-  }
-
-  .introCopy{
-    font-size:17.5px;
-  }
-}
-
-@media (max-width:640px){
+/* Tablet */
+@media(max-width:900px){
   body{
-    font-size:16.5px;
-    line-height:1.6;
+    font-size:17px!important;
   }
 
   .site{
-    width:calc(100% - 24px);
-  }
-
-  .topbar{
-    margin-bottom:34px;
-  }
-
-  .hero{
-    padding-bottom:46px;
+    width:min(100% - 34px,var(--preview-max))!important;
   }
 
   .hero h1{
-    font-size:clamp(46px,15.5vw,68px);
-    line-height:.96;
-    letter-spacing:-.055em;
-    margin-bottom:16px;
+    font-size:clamp(58px,11vw,82px)!important;
   }
 
   .hero .lead{
-    font-size:clamp(24px,7.1vw,30px);
-    line-height:1.12;
+    font-size:clamp(26px,4.7vw,34px)!important;
   }
 
   .introCopy{
-    font-size:16.5px;
-    line-height:1.66;
-  }
-
-  .section,
-  .cut{
-    padding:46px 0;
-  }
-
-  .sectionHead{
-    margin-bottom:24px;
+    font-size:17.5px!important;
   }
 
   .sectionHead .sectionTitle,
   .footer .footerSectionTitle{
-    font-size:clamp(28px,9vw,34px)!important;
+    font-size:clamp(34px,5vw,44px)!important;
+  }
+}
+
+/* Smartphone */
+@media(max-width:640px){
+  body{
+    font-size:16.5px!important;
+    line-height:1.64!important;
+  }
+
+  .site{
+    width:calc(100% - 24px)!important;
+  }
+
+  .topbar{
+    margin-bottom:26px!important;
+  }
+
+  .hero{
+    padding-bottom:42px!important;
+  }
+
+  .hero h1{
+    font-size:clamp(46px,14.8vw,62px)!important;
+    line-height:.97!important;
+    letter-spacing:-.055em!important;
+    margin-bottom:16px!important;
+  }
+
+  .hero .lead{
+    font-size:clamp(23px,6.7vw,29px)!important;
+    line-height:1.13!important;
+  }
+
+  .introCopy{
+    font-size:16.5px!important;
+    line-height:1.66!important;
+  }
+
+  .section,
+  .cut{
+    padding:44px 0!important;
+  }
+
+  .sectionHead{
+    margin-bottom:22px!important;
+  }
+
+  .sectionHead .sectionTitle,
+  .footer .footerSectionTitle{
+    font-size:clamp(30px,8.5vw,36px)!important;
+    line-height:1.05!important;
+  }
+
+  .sectionHead .sectionSubtitle,
+  .sectionHead p,
+  .meta,
+  .journal,
+  .time>span,
+  .work>span,
+  .work>div>p:first-child{
+    font-size:12.5px!important;
   }
 
   .paper{
-    padding:18px;
-    border-radius:12px;
+    padding:18px!important;
+    border-radius:12px!important;
   }
 
   .paper h3{
-    font-size:clamp(24px,7.5vw,30px);
-    line-height:1.16;
+    font-size:clamp(24px,7.2vw,30px)!important;
+    line-height:1.17!important;
   }
 
-  .work h3{
-    font-size:clamp(22px,6.7vw,27px);
+  .work h3,
+  .experienceItem h3,
+  .time h3,
+  .skill h3{
+    font-size:clamp(21px,6.2vw,26px)!important;
+    line-height:1.2!important;
   }
 
   .summary,
   .work p,
+  .experienceBody,
   .timeBody,
   .skill p,
   .footerIntro{
-    font-size:16px;
-    line-height:1.64;
+    font-size:16px!important;
+    line-height:1.66!important;
   }
 
   .inline{
@@ -202,25 +240,26 @@ body{
 
   #research .paperTop>a,
   #research .paperTop img{
-    width:min(100%,310px)!important;
+    width:min(100%,300px)!important;
   }
 }
 
-@media (max-width:390px){
+@media(max-width:390px){
   .hero h1{
-    font-size:clamp(44px,14.8vw,58px);
+    font-size:clamp(43px,14.2vw,56px)!important;
   }
 
   .hero .lead{
-    font-size:23px;
+    font-size:22px!important;
   }
 
   .introCopy,
   .summary,
   .work p,
+  .experienceBody,
   .timeBody,
   .skill p,
   .footerIntro{
-    font-size:15.8px;
+    font-size:15.8px!important;
   }
 }
