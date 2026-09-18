@@ -8,18 +8,14 @@ import './brand-tweak.css';
 import './scroll-reveal.css';
 import './navigation-polish.css';
 import './aliou-inspired-preview.css';
+import './premium-engineer.css';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import SiteAnalytics from './SiteAnalytics';
-import EventsSection from './EventsSection';
 import IntroSplash from './IntroSplash';
 import ScrollReveal from './ScrollReveal';
 import OrcidSupplement from './OrcidSupplement';
 import NavDock from './NavDock';
-import ResearchTitlePatch from './ResearchTitlePatch';
-import AboutCopyPatch from './AboutCopyPatch';
-import HeroNamePatch from './HeroNamePatch';
-import AcademicPathPatch from './AcademicPathPatch';
 
 const siteUrl = 'https://b-diaw.com';
 const orcidUrl = 'https://orcid.org/0009-0003-4015-7854';
@@ -165,16 +161,11 @@ export default function RootLayout({ children }) {
         <ScrollReveal />
         <OrcidSupplement />
         <NavDock />
-        <ResearchTitlePatch />
-        <AboutCopyPatch />
-        <HeroNamePatch />
-        <AcademicPathPatch />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
         />
         {children}
-        <EventsSection />
         <SiteAnalytics />
       </body>
     </html>
