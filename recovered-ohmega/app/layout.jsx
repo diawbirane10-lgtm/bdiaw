@@ -1,21 +1,11 @@
 import './globals.css';
-import './uupm-preview.css';
-import './research-status.css';
-import './project-heading.css';
-import './events.css';
-import './events-polish.css';
-import './brand-tweak.css';
-import './scroll-reveal.css';
 import './navigation-polish.css';
-import './aliou-inspired-preview.css';
 import './premium-engineer.css';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import SiteAnalytics from './SiteAnalytics';
-import IntroSplash from './IntroSplash';
-import ScrollReveal from './ScrollReveal';
-import OrcidSupplement from './OrcidSupplement';
 import NavDock from './NavDock';
+import MotionEngine from './MotionEngine';
 
 const siteUrl = 'https://b-diaw.com';
 const orcidUrl = 'https://orcid.org/0009-0003-4015-7854';
@@ -157,10 +147,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
-        <IntroSplash />
-        <ScrollReveal />
-        <OrcidSupplement />
         <NavDock />
+        <MotionEngine />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
