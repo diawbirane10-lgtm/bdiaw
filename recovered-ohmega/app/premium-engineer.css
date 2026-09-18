@@ -1071,22 +1071,26 @@ body,
 
 /* Project concept illustration — deliberately square-edged to match the portfolio system. */
 .projectVisual{
-  max-width:var(--max);
+  width:min(100%,980px);
   margin:0 auto;
-  padding:0 26px 58px;
+  padding:0 26px 52px;
   background:#fff!important;
 }
 .projectVisualFrame{
   width:100%;
+  min-height:0;
+  display:grid;
+  place-items:center;
   border:1px solid var(--line);
   background:#fff;
   overflow:hidden;
 }
 .projectVisualFrame img{
   display:block;
-  width:100%;
+  width:auto;
+  max-width:100%;
   height:auto;
-  aspect-ratio:4/3;
+  max-height:520px;
   object-fit:contain;
   background:#fff;
 }
@@ -1111,6 +1115,17 @@ body,
   line-height:1.68;
 }
 
+
+@media(max-width:900px){
+  .projectVisual{
+    width:min(100%,820px);
+    padding:0 20px 46px;
+  }
+  .projectVisualFrame img{
+    max-height:430px;
+  }
+}
+
 @media(max-width:640px){
   .educationStrip{
     grid-template-columns:54px minmax(0,1fr) max-content;
@@ -1133,7 +1148,11 @@ body,
     font-size:12.5px;
   }
   .projectVisual{
-    padding:0 18px 42px;
+    width:100%;
+    padding:0 8px 38px;
+  }
+  .projectVisualFrame img{
+    max-height:300px;
   }
   .projectVisual figcaption{
     grid-template-columns:1fr;
