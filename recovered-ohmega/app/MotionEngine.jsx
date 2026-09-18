@@ -2,6 +2,7 @@
 
 import {useEffect} from "react";
 
+// Scroll-driven reveal + progress state.
 export default function MotionEngine(){
   useEffect(()=>{
     const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
