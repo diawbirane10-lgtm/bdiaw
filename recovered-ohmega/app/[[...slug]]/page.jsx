@@ -1,6 +1,7 @@
 "use client";
 import {useEffect,useMemo,useRef,useState} from "react";
 import {usePathname} from "next/navigation";
+import EventsSection from "../EventsSection";
 
 const github="https://github.com/diawbirane10-lgtm";
 const linkedin="https://www.linkedin.com/in/birane-diaw-b83b47374";
@@ -195,6 +196,8 @@ function Home({t,lang}){
         </div>
       </article>)}</div>
     </Section>
+
+    <EventsSection lang={lang}/>
 
     <footer id="contact" className="footer motionSection">
       <div className="footerIndex">05</div>
