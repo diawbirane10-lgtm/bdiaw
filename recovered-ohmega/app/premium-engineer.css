@@ -1,0 +1,496 @@
+/* OHMEGA — premium engineering portfolio
+   Warm off-white + deep navy + charcoal. Sharp geometry, editorial spacing. */
+
+:root,
+:root[data-theme="light"]{
+  --bg:#f6f3ec;
+  --panel:#fbf9f4;
+  --ink:#111317;
+  --mut:#454b53;
+  --soft:#707781;
+  --line:#cfd3d6;
+  --accent:#102a43;
+  --accent-2:#173f63;
+  --accent-ink:#f8f6f0;
+  --btn:#102a43;
+  --bt:#f8f6f0;
+  --max:1160px;
+}
+
+:root[data-theme="dark"]{
+  --bg:#0f1419;
+  --panel:#141b22;
+  --ink:#f1f0eb;
+  --mut:#c5c9ce;
+  --soft:#929aa3;
+  --line:#303945;
+  --accent:#d8e7f5;
+  --accent-2:#adc7df;
+  --accent-ink:#0f1419;
+  --btn:#d8e7f5;
+  --bt:#0f1419;
+}
+
+html{background:var(--bg)}
+body{
+  background:var(--bg)!important;
+  color:var(--ink);
+}
+
+.site{
+  width:min(var(--max),calc(100% - 64px))!important;
+  padding-top:24px!important;
+}
+
+/* Header: technical, quiet, square. */
+.topbar{
+  min-height:70px!important;
+  margin-bottom:78px!important;
+  padding:10px 0 12px!important;
+  border-top:2px solid var(--accent)!important;
+  border-bottom:1px solid var(--line)!important;
+  background:transparent!important;
+  backdrop-filter:none!important;
+}
+
+.brand{
+  color:var(--ink)!important;
+  letter-spacing:.1em!important;
+}
+.brandMark{
+  width:32px!important;
+  height:32px!important;
+  flex-basis:32px!important;
+  border:1px solid var(--accent)!important;
+  border-radius:2px!important;
+  color:var(--accent)!important;
+  background:transparent!important;
+}
+
+.switches button,
+.nav a,
+.inline a,
+.projectHero>a{
+  border-radius:2px!important;
+  box-shadow:none!important;
+}
+
+@media(min-width:901px){
+  .topbar{
+    grid-template-columns:max-content minmax(0,1fr) max-content!important;
+    column-gap:28px!important;
+  }
+  .topbar>.brand{border-right:0!important;padding-right:0!important}
+  .topbar>.switches{border-left:0!important;padding-left:0!important}
+
+  #portfolio-navigation.navDocked{
+    justify-content:center!important;
+    gap:26px!important;
+  }
+  #portfolio-navigation.navDocked a{
+    min-height:38px!important;
+    padding:7px 0!important;
+    font-size:12px!important;
+    font-family:var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
+    font-weight:600!important;
+    letter-spacing:.035em!important;
+    text-transform:uppercase;
+  }
+  #portfolio-navigation.navDocked a::after{
+    background:var(--accent)!important;
+  }
+}
+
+/* Hero: name first, then one clear technical identity. */
+.hero{
+  position:relative;
+  padding:12px 0 92px!important;
+  border-bottom:1px solid var(--line)!important;
+}
+.hero::before{
+  content:"ENGINEERING PROFILE";
+  display:block;
+  margin-bottom:28px;
+  color:var(--accent);
+  font:600 11px/1.2 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.14em;
+}
+.hero h1{
+  max-width:1000px!important;
+  margin:0 0 28px!important;
+  font-size:clamp(64px,8vw,112px)!important;
+  line-height:.91!important;
+  font-weight:610!important;
+  letter-spacing:-.066em!important;
+}
+.hero .lead{
+  max-width:820px!important;
+  margin:0 0 22px!important;
+  color:var(--ink)!important;
+  font-size:clamp(25px,2.7vw,36px)!important;
+  line-height:1.12!important;
+  font-weight:520!important;
+  letter-spacing:-.035em!important;
+}
+.introCopy{
+  max-width:770px!important;
+  margin:0!important;
+  color:var(--mut)!important;
+  font-size:18px!important;
+  line-height:1.72!important;
+}
+
+/* Remove the old pill-nav visual when it lives inside hero/tablet. */
+.hero .nav:not(.navDocked):not(.navMobileDocked){
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  padding:0!important;
+  margin-top:34px!important;
+}
+.hero .nav:not(.navDocked):not(.navMobileDocked) a{
+  border:0!important;
+  border-bottom:1px solid var(--line)!important;
+  border-radius:0!important;
+  padding:8px 2px!important;
+}
+
+/* Sections: numbered editorial system. */
+.section{
+  position:relative;
+  display:grid!important;
+  grid-template-columns:160px minmax(0,1fr)!important;
+  gap:56px!important;
+  padding:86px 0!important;
+  border-bottom:1px solid var(--line)!important;
+  background:transparent!important;
+}
+.cut{
+  margin:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  border-top:0!important;
+}
+.sectionHead{
+  position:static!important;
+  display:block!important;
+}
+.sectionHead::before{
+  display:block;
+  margin-bottom:14px;
+  color:var(--accent);
+  font:650 12px/1 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.08em;
+}
+#research .sectionHead::before{content:"01"}
+#projects .sectionHead::before{content:"02"}
+#experience .sectionHead::before{content:"03"}
+
+.sectionHead .sectionTitle{
+  margin:0 0 12px!important;
+  font-size:clamp(28px,3vw,38px)!important;
+  line-height:1!important;
+  font-weight:620!important;
+  letter-spacing:-.045em!important;
+}
+.sectionHead .sectionSubtitle{
+  color:var(--soft)!important;
+  font-size:11px!important;
+  line-height:1.45!important;
+  letter-spacing:.08em!important;
+}
+
+/* Research: one confident, flat feature block. */
+#research.section{
+  display:grid!important;
+}
+#research .sectionHead{
+  margin:0!important;
+}
+.paper{
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+#research .paperTop{
+  display:grid!important;
+  grid-template-columns:220px minmax(0,1fr)!important;
+  gap:30px!important;
+  padding-bottom:28px;
+  border-bottom:1px solid var(--line);
+}
+#research .paperTop>a,
+#research .paperTop img{
+  width:220px!important;
+  max-width:220px!important;
+  border-radius:0!important;
+}
+#research .paperTop img{
+  border:1px solid var(--line)!important;
+}
+.paper h3{
+  max-width:760px;
+  font-size:clamp(28px,3vw,40px)!important;
+  line-height:1.08!important;
+  font-weight:570!important;
+  letter-spacing:-.04em!important;
+}
+.summary{
+  max-width:790px;
+  margin:26px 0 16px!important;
+  color:var(--mut)!important;
+  font-size:16.5px!important;
+  line-height:1.72!important;
+}
+.journal{margin:0 0 22px!important}
+.inline a{
+  min-height:36px!important;
+  border:1px solid var(--accent)!important;
+  color:var(--accent)!important;
+  background:transparent!important;
+  font-family:var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:12px!important;
+  letter-spacing:.03em;
+}
+.inline a:hover{
+  background:var(--accent)!important;
+  color:var(--accent-ink)!important;
+}
+
+/* Selected work: geometric two-column system, no rounded SaaS cards. */
+#projects .list{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  border-top:1px solid var(--line)!important;
+  border-left:1px solid var(--line);
+}
+#projects .work{
+  min-height:310px;
+  display:block!important;
+  padding:28px!important;
+  border-right:1px solid var(--line)!important;
+  border-bottom:1px solid var(--line)!important;
+}
+#projects .work>span{
+  display:block;
+  margin-bottom:42px!important;
+  color:var(--accent)!important;
+  font-size:12px!important;
+}
+#projects .work h3{
+  margin-bottom:14px!important;
+  font-size:clamp(23px,2.25vw,30px)!important;
+  line-height:1.12!important;
+}
+#projects .work p{
+  max-width:510px;
+  font-size:15.5px!important;
+  line-height:1.6!important;
+}
+.projectTags{
+  margin-top:18px;
+}
+.projectTag{
+  border-radius:1px!important;
+}
+#projects .note{
+  margin-top:20px;
+  padding:0!important;
+  align-items:center;
+}
+#projects .note p{
+  max-width:650px;
+  font-size:14px;
+}
+
+/* Experience: compact professional record. */
+.experienceList{
+  border-top:1px solid var(--line);
+}
+.experienceItem{
+  padding:28px 0!important;
+  border-bottom:1px solid var(--line)!important;
+  display:grid!important;
+  grid-template-columns:130px minmax(0,1fr)!important;
+  gap:28px!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.experienceDate{
+  color:var(--accent)!important;
+  font:600 11px/1.45 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
+  letter-spacing:.05em;
+}
+.experienceContent{min-width:0}
+.experienceHeader{
+  align-items:start!important;
+}
+.experienceHeader h3{
+  font-size:clamp(21px,2vw,27px)!important;
+  line-height:1.15!important;
+}
+.experienceLogo{
+  border-radius:0!important;
+}
+.experienceBody{
+  max-width:760px;
+  font-size:15.5px!important;
+  line-height:1.65!important;
+}
+.experienceTag{
+  border-radius:1px!important;
+  font-size:11px!important;
+}
+
+/* Contact becomes the only strong navy block. */
+.footer{
+  position:relative;
+  margin:0!important;
+  padding:72px 48px!important;
+  border:0!important;
+  background:var(--accent)!important;
+  color:var(--accent-ink)!important;
+}
+.footer::before{
+  content:"04";
+  display:block;
+  margin-bottom:14px;
+  color:color-mix(in srgb,var(--accent-ink) 70%,transparent);
+  font:650 12px/1 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.08em;
+}
+.footer .footerSectionTitle,
+.footer .footerHeadline,
+.footer .contactValue,
+.footer .contactValue a{
+  color:var(--accent-ink)!important;
+}
+.footer .footerIntro,
+.footer .contactLabel,
+.footer span{
+  color:color-mix(in srgb,var(--accent-ink) 76%,transparent)!important;
+}
+.footer .contactDetail{
+  border-color:color-mix(in srgb,var(--accent-ink) 24%,transparent)!important;
+}
+.footer .contactAction{
+  color:var(--accent-ink)!important;
+  border-radius:2px!important;
+}
+.footer .contactAction:hover{
+  transform:translateY(-2px)!important;
+}
+
+/* Project detail pages inherit the same geometry. */
+.projectHero>a,
+.detailGrid article{
+  border-radius:0!important;
+}
+.detailGrid{
+  gap:1px!important;
+  background:var(--line)!important;
+}
+
+/* Mobile */
+@media(max-width:900px){
+  .site{
+    width:min(100% - 34px,var(--max))!important;
+  }
+  .topbar{margin-bottom:52px!important}
+  .hero{padding-bottom:66px!important}
+  .section{
+    grid-template-columns:1fr!important;
+    gap:28px!important;
+    padding:62px 0!important;
+  }
+  #research.section{display:block!important}
+  #research .sectionHead{margin-bottom:28px!important}
+  #projects .list{
+    grid-template-columns:1fr!important;
+  }
+  #projects .work{min-height:0}
+  .footer{padding:56px 30px!important}
+}
+
+@media(max-width:640px){
+  .site{
+    width:calc(100% - 24px)!important;
+    padding-top:12px!important;
+  }
+  .topbar{
+    margin-bottom:42px!important;
+    border-top-width:1px!important;
+  }
+  .topbar>.mobileMenuButton{
+    border-radius:2px!important;
+  }
+  #portfolio-navigation.navMobileDocked{
+    border-radius:2px!important;
+    box-shadow:none!important;
+    background:var(--panel)!important;
+  }
+  #portfolio-navigation.navMobileDocked.isOpen a{
+    border-radius:0!important;
+    font-family:var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace;
+    text-transform:uppercase;
+    letter-spacing:.035em;
+  }
+
+  .hero::before{margin-bottom:20px}
+  .hero h1{
+    font-size:clamp(48px,15vw,66px)!important;
+    line-height:.94!important;
+    margin-bottom:22px!important;
+  }
+  .hero .lead{
+    font-size:clamp(22px,6vw,28px)!important;
+  }
+  .introCopy{
+    font-size:16px!important;
+    line-height:1.66!important;
+  }
+  .section{
+    gap:24px!important;
+    padding:50px 0!important;
+  }
+  .sectionHead .sectionTitle{
+    font-size:30px!important;
+  }
+  #research .paperTop{
+    grid-template-columns:1fr!important;
+    gap:20px!important;
+  }
+  #research .paperTop>a,
+  #research .paperTop img{
+    width:min(100%,260px)!important;
+    max-width:260px!important;
+  }
+  .paper h3{
+    font-size:26px!important;
+  }
+  #projects .work{
+    padding:24px 18px!important;
+  }
+  #projects .work>span{
+    margin-bottom:28px!important;
+  }
+  .experienceItem{
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+  .footer{
+    margin-left:-12px!important;
+    margin-right:-12px!important;
+    padding:48px 24px!important;
+  }
+  .footerContactGrid{
+    grid-template-columns:1fr!important;
+  }
+}
+
+@media(max-width:390px){
+  .hero h1{font-size:45px!important}
+  .hero .lead{font-size:21px!important}
+}
