@@ -1,5 +1,5 @@
 /* OHMEGA — dynamic engineering portfolio
-   Warm off-white, deep navy, charcoal. Sharp geometry, editorial motion. */
+   Pure white, deep navy, charcoal. Sharp geometry, editorial motion. */
 
 :root,
 :root[data-theme="light"]{
@@ -30,8 +30,8 @@
   --bt:#0d1319;
 }
 
-html{background:var(--bg);scroll-behavior:smooth}
-body{background:var(--bg)!important;color:var(--ink)!important}
+html{background:#fff;scroll-behavior:smooth}
+body{background:#fff!important;color:var(--ink)!important}
 .site{width:min(var(--max),calc(100% - 64px))!important;margin:auto!important;padding:24px 0 0!important}
 
 /* progress */
@@ -389,7 +389,7 @@ body{background:var(--bg)!important;color:var(--ink)!important}
 }
 .contactLinks{
   display:grid;
-  grid-template-columns:repeat(5,minmax(0,1fr));
+  grid-template-columns:repeat(4,minmax(0,1fr));
   gap:8px;
   margin:0!important;
 }
@@ -412,15 +412,23 @@ body{background:var(--bg)!important;color:var(--ink)!important}
   color:var(--navy)!important;
 }
 .contactIcon{
-  width:23px;
-  height:23px;
-  flex:0 0 23px;
+  width:24px;
+  height:24px;
+  flex:0 0 24px;
   display:inline-grid;
   place-items:center;
-  border:1px solid currentColor;
-  font-size:10px;
-  line-height:1;
-  font-weight:800;
+  color:currentColor;
+}
+.contactIcon svg{
+  width:18px;
+  height:18px;
+  display:block;
+  fill:currentColor;
+}
+.orcidIcon svg circle{
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.5;
 }
 
 @media(max-width:900px){
