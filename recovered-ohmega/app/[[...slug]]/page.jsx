@@ -145,29 +145,27 @@ function Home({t,lang}){
     </Section>
 
     <Section id="projects" title={lang==="fr"?"Projets sélectionnés":"Selected Work"} subtitle={lang==="fr"?"Une sélection parmi plus de 17 projets":"A selection from 17+ engineering projects"}>
-      <div className="workGrid">
-        {projects.map(p=><article className="work motionItem" key={p.slug}>
-          <span className="workNo">{p.no}</span>
-          <p className="workField">{p.field[lang]}</p>
-          <h3><ExtLink href={`/projects/${p.slug}`} className="titleLink">{p.title}</ExtLink></h3>
-          <p className="workBody">{p.body[lang]}</p>
-          <div className="projectTags" aria-label={lang==="fr"?"Compétences et logiciels":"Skills and software"}>
-            {projectTags[p.slug]?.skills[lang].slice(0,3).map(tag=><span className="projectTag" key={`skill-${tag}`}>{tag}</span>)}
-            {projectTags[p.slug]?.tools.slice(0,2).map(tag=><span className="projectTag toolTag" key={`tool-${tag}`}>{tag}</span>)}
+      <div className="workList">
+        {projects.map(p=><article className="workRow motionItem" key={p.slug}>
+          <div className="workRowIndex">{p.no}</div>
+          <div className="workRowMain">
+            <p className="workField">{p.field[lang]}</p>
+            <h3><ExtLink href={`/projects/${p.slug}`} className="titleLink">{p.title}</ExtLink></h3>
+            <p className="workBody">{p.body[lang]}</p>
           </div>
-          <nav className="workActions">
-            <ExtLink href={`/projects/${p.slug}`}>{lang==="fr"?"Voir le projet":"View project"}</ExtLink>
-          </nav>
+          <div className="workRowMeta">
+            <div className="projectTags" aria-label={lang==="fr"?"Compétences et logiciels":"Skills and software"}>
+              {projectTags[p.slug]?.skills[lang].slice(0,2).map(tag=><span className="projectTag" key={`skill-${tag}`}>{tag}</span>)}
+              {projectTags[p.slug]?.tools.slice(0,1).map(tag=><span className="projectTag toolTag" key={`tool-${tag}`}>{tag}</span>)}
+            </div>
+            <ExtLink href={`/projects/${p.slug}`} className="workRowLink">{lang==="fr"?"Voir le projet":"View project"} <span aria-hidden="true">↗</span></ExtLink>
+          </div>
         </article>)}
-        <article className="work workExplore motionItem">
-          <span className="workNo">17+</span>
-          <p className="workField">{lang==="fr"?"ARCHIVES · PROTOTYPES":"ARCHIVE · PROTOTYPES"}</p>
-          <h3>{lang==="fr"?"Le reste du travail":"More engineering work"}</h3>
-          <p className="workBody">{lang==="fr"
-            ?"Cette page ne montre qu’une sélection. Les autres prototypes, simulations et dépôts restent accessibles sur GitHub."
-            :"This page shows only a selection. Additional prototypes, simulations and repositories remain available on GitHub."}</p>
-          <nav className="workActions"><ExtLink href={github}>{lang==="fr"?"Explorer GitHub":"Explore GitHub"}</ExtLink></nav>
-        </article>
+      </div>
+      <div className="workArchive motionItem">
+        <div><strong>17+</strong><span>{lang==="fr"?"projets d’ingénierie":"engineering projects"}</span></div>
+        <p>{lang==="fr"?"Cette page n’en montre qu’une sélection. Le reste est disponible sur GitHub.":"This page shows only a selection. More projects are available on GitHub."}</p>
+        <ExtLink href={github}>{lang==="fr"?"Explorer GitHub":"Explore GitHub"} ↗</ExtLink>
       </div>
     </Section>
 
@@ -208,13 +206,16 @@ function Home({t,lang}){
           <div className="contactDetail"><span className="contactLabel">Email</span><div className="contactValue"><a href={mail}>diawbirane10@gmail.com</a></div></div>
         </div>
       </div>
-      <nav className="contactLinks" aria-label="Contact links">
-        <a href={mail}>Email</a>
-        <a href={linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
-        <a href={github} target="_blank" rel="noreferrer">GitHub ↗</a>
-        <a href={x} target="_blank" rel="noreferrer">X ↗</a>
-        <a href={orcid} target="_blank" rel="noreferrer">ORCID ↗</a>
-      </nav>
+      <div className="footerBottom">
+        <a className="footerBrand" href="#top" aria-label="Back to top"><span className="footerOmega">Ω</span><span>OHMEGA</span></a>
+        <nav className="contactLinks" aria-label="Contact links">
+          <a href={mail}><span className="contactIcon">✉</span><span>Email</span></a>
+          <a href={linkedin} target="_blank" rel="noreferrer"><span className="contactIcon">in</span><span>LinkedIn</span></a>
+          <a href={github} target="_blank" rel="noreferrer"><span className="contactIcon">GH</span><span>GitHub</span></a>
+          <a href={x} target="_blank" rel="noreferrer"><span className="contactIcon">X</span><span>X</span></a>
+          <a href={orcid} target="_blank" rel="noreferrer"><span className="contactIcon">iD</span><span>ORCID</span></a>
+        </nav>
+      </div>
     </footer>
   </>
 }
