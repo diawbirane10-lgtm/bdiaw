@@ -117,6 +117,11 @@ function Home({t,lang}){
   return <>
     <header className="hero heroReveal" id="top">
       <div className="heroKicker">{lang==="fr"?"PORTFOLIO · GÉNIE ÉLECTRIQUE":"PORTFOLIO · ELECTRICAL ENGINEERING"}</div>
+      <div className="availabilityBar" aria-label={lang==="fr"?"Disponibilités":"Availability"}>
+        <span className="availabilityDot" aria-hidden="true"></span>
+        <span>{lang==="fr"?"DISPONIBLE POUR":"AVAILABLE FOR"}</span>
+        <strong>{lang==="fr"?"STAGES · COLLABORATIONS DE RECHERCHE · FELLOWSHIPS · PROJETS SÉLECTIONNÉS":"INTERNSHIPS · RESEARCH COLLABORATIONS · FELLOWSHIPS · SELECTED PROJECTS"}</strong>
+      </div>
       <h1>{t.title}</h1>
       <p className="lead">{t.subtitle}</p>
       <p className="introCopy">{t.intro}</p>
