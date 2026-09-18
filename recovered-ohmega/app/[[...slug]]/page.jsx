@@ -120,7 +120,7 @@ function Home({t,lang}){
       <div className="availabilityBar" aria-label={lang==="fr"?"Disponibilités":"Availability"}>
         <span className="availabilityDot" aria-hidden="true"></span>
         <span>{lang==="fr"?"DISPONIBLE POUR":"AVAILABLE FOR"}</span>
-        <strong>{lang==="fr"?"STAGES · COLLABORATIONS DE RECHERCHE · FELLOWSHIPS · PROJETS SÉLECTIONNÉS":"INTERNSHIPS · RESEARCH COLLABORATIONS · FELLOWSHIPS · SELECTED PROJECTS"}</strong>
+        <strong>{lang==="fr"?"STAGES · COLLABORATIONS DE RECHERCHE · FELLOWSHIPS":"INTERNSHIPS · RESEARCH COLLABORATIONS · FELLOWSHIPS"}</strong>
       </div>
       <h1>{t.title}</h1>
       <p className="lead">{t.subtitle}</p>
@@ -217,20 +217,53 @@ function Home({t,lang}){
       <div className="footerBottom">
         <a className="footerBrand" href="#top" aria-label="Back to top"><span className="footerOmega">Ω</span><span>OHMEGA</span></a>
         <nav className="contactLinks" aria-label="Professional profiles">
+          <a href={mail} aria-label="Email">
+            <span className="contactIcon brandIcon gmailIcon" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <path fill="#4285F4" d="M6 38V16.5l8 6.1V38H6Z"/>
+                <path fill="#34A853" d="M34 38V22.6l8-6.1V38h-8Z"/>
+                <path fill="#EA4335" d="M6 16.5V11c0-3.1 3.6-4.9 6.1-3L24 17l11.9-9c2.5-1.9 6.1-.1 6.1 3v5.5l-18 13.7L6 16.5Z"/>
+                <path fill="#FBBC04" d="M34 22.6 42 16.5v-5.2l-8 6.1v5.2Z"/>
+                <path fill="#C5221F" d="M6 11.3v5.2l8 6.1v-5.2l-8-6.1Z"/>
+              </svg>
+            </span>
+            <span>Email</span>
+          </a>
           <a href={linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <span className="contactIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5.2 7.9H1.6V22h3.6V7.9ZM3.4 2A2.1 2.1 0 1 0 3.4 6.2 2.1 2.1 0 0 0 3.4 2ZM22.4 14c0-4.3-2.3-6.3-5.4-6.3-2.5 0-3.6 1.4-4.2 2.3V7.9H9.2V22h3.6v-7c0-1.8.4-3.6 2.7-3.6 2.3 0 2.3 2.1 2.3 3.7V22h3.6v-8Z"/></svg></span>
+            <span className="contactIcon brandIcon linkedinIcon" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="22" fill="#0A66C2"/>
+                <path fill="#fff" d="M16.2 19.4h-5.1V35h5.1V19.4Zm-2.5-7.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM35.9 26c0-4.8-2.6-7-6.1-7-2.8 0-4.1 1.6-4.8 2.7v-2.3h-5.1V35H25v-7.7c0-2 .4-4 3-4 2.6 0 2.7 2.5 2.7 4.2V35h5.1l.1-9Z"/>
+              </svg>
+            </span>
             <span>LinkedIn</span>
           </a>
           <a href={github} target="_blank" rel="noreferrer" aria-label="GitHub">
-            <span className="contactIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 .8a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2.2c-3.4.7-4.1-1.4-4.1-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.4 3.6 1.1.1-.8.4-1.4.8-1.7-2.7-.3-5.6-1.4-5.6-6.1 0-1.4.5-2.5 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.4 1.3a11.6 11.6 0 0 1 6.2 0c2.4-1.6 3.4-1.3 3.4-1.3.6 1.7.2 3 .1 3.3.8.8 1.2 1.9 1.2 3.3 0 4.8-2.9 5.8-5.6 6.1.4.4.8 1.2.8 2.4v3.5c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .8Z"/></svg></span>
+            <span className="contactIcon brandIcon githubIcon" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="22" fill="#000"/>
+                <path fill="#fff" d="M24 10.5A13.5 13.5 0 0 0 19.7 36.8c.7.1.9-.3.9-.7v-2.6c-4 .9-4.9-1.7-4.9-1.7-.6-1.7-1.6-2.2-1.6-2.2-1.3-.9.1-.9.1-.9 1.5.1 2.2 1.5 2.2 1.5 1.3 2.2 3.4 1.6 4.2 1.2.1-.9.5-1.6.9-2-3.2-.4-6.6-1.6-6.6-7.2 0-1.6.6-2.9 1.5-4-.2-.4-.7-1.9.1-4 0 0 1.2-.4 4.1 1.5a14 14 0 0 1 7.4 0c2.8-1.9 4-1.5 4-1.5.8 2.1.3 3.6.2 4 .9 1.1 1.5 2.4 1.5 4 0 5.6-3.4 6.8-6.7 7.2.5.5 1 1.4 1 2.8v4c0 .4.2.8.9.7A13.5 13.5 0 0 0 24 10.5Z"/>
+              </svg>
+            </span>
             <span>GitHub</span>
           </a>
           <a href={x} target="_blank" rel="noreferrer" aria-label="X">
-            <span className="contactIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.2l7.3-8.4L2.8 2h6.5l4.4 5.8L18.9 2Zm-1.1 17.8h1.7L8.3 4H6.5l11.3 15.8Z"/></svg></span>
+            <span className="contactIcon brandIcon xIcon" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <rect x="2" y="2" width="44" height="44" rx="2" fill="#fff"/>
+                <path fill="#11161C" d="M31.2 10h6.5L27 22.2 39.5 38H29.7l-7.6-9.8L13.5 38H7l11.9-13.6L6.9 10h10.1l6.8 8.7L31.2 10Zm-2.3 25.2h3.6L15.1 12.6h-3.9l17.7 22.6Z"/>
+              </svg>
+            </span>
             <span>X</span>
           </a>
           <a href={orcid} target="_blank" rel="noreferrer" aria-label="ORCID">
-            <span className="contactIcon orcidIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.2 7.2h1.6v1.6H8.2V7.2Zm0 3h1.6v6.6H8.2v-6.6Zm3.5 0h3c2.3 0 3.8 1.3 3.8 3.3s-1.5 3.3-3.8 3.3h-3v-6.6Zm1.6 1.4v3.8h1.3c1.4 0 2.2-.7 2.2-1.9s-.8-1.9-2.2-1.9h-1.3Z" fill="currentColor"/></svg></span>
+            <span className="contactIcon brandIcon orcidIcon" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="22" fill="#A6CE39"/>
+                <circle cx="15.5" cy="15" r="2.4" fill="#fff"/>
+                <path fill="#fff" d="M13.3 20h4.4v15h-4.4V20Zm8.2 0h7c5.4 0 9.2 3 9.2 7.5S33.9 35 28.5 35h-7V20Zm4.4 3.8v7.4h2.4c3 0 4.8-1.3 4.8-3.7s-1.8-3.7-4.8-3.7h-2.4Z"/>
+              </svg>
+            </span>
             <span>ORCID</span>
           </a>
         </nav>
