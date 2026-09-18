@@ -12,25 +12,11 @@
   --line:#cfd3d6;
   --navy:#102f4c;
   --navy-2:#173f63;
-  --navy-ink:#f8f5ee;
+  --navy-ink:#ffffff;
   --btn:#102f4c;
-  --bt:#f8f5ee;
+  --bt:#ffffff;
   --max:1180px;
 }
-:root[data-theme="dark"]{
-  --bg:#0d1319;
-  --panel:#121a22;
-  --ink:#f2f0ea;
-  --mut:#c2c7cd;
-  --soft:#929aa3;
-  --line:#313b46;
-  --navy:#d8e7f5;
-  --navy-2:#adc7df;
-  --navy-ink:#0d1319;
-  --btn:#d8e7f5;
-  --bt:#0d1319;
-}
-
 html{background:#fff;scroll-behavior:smooth}
 body{background:#fff!important;color:var(--ink)!important}
 .site{width:min(var(--max),calc(100% - 64px))!important;margin:auto!important;padding:24px 0 0!important}
@@ -773,4 +759,41 @@ body{background:#fff!important;color:var(--ink)!important}
   .hero h1{font-size:44px!important}
   .hero .lead{font-size:21px!important}
   .contactLinks{grid-template-columns:1fr}
+}
+
+
+/* FINAL WHITE LOCK — all principal page surfaces stay true #FFFFFF. */
+html,
+body,
+.site,
+.hero,
+.section,
+.section>div,
+.aboutGrid,
+.aboutStatement,
+.profileStats,
+.profileStat,
+.workList,
+.workRow,
+.workRowMain,
+.workRowMeta,
+.workArchive,
+.researchFeature,
+.researchContent,
+.experienceList,
+.experienceItem,
+.projectHero,
+.detailGrid,
+.detailGrid article{
+  background:#ffffff!important;
+}
+.topbar{
+  background:rgba(255,255,255,.96)!important;
+}
+:root,
+:root[data-theme="light"],
+:root[data-theme="dark"]{
+  --bg:#ffffff!important;
+  --panel:#ffffff!important;
+  --navy-ink:#ffffff!important;
 }
