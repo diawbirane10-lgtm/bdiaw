@@ -4,5 +4,13 @@
   "ignoreCommand": "git diff --quiet HEAD^ HEAD ./",
   "github": {
     "autoJobCancelation": true
+  },
+  "git": {
+    "deploymentEnabled": {
+      "test/dynamic-redesign-build": false,
+      "test/dynamic-smoke-build": false,
+      "test/final-portfolio-smoke": false,
+      "test/pure-white-lock": false
+    }
   }
 }
