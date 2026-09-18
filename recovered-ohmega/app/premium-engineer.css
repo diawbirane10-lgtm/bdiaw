@@ -1,10 +1,10 @@
-/* OHMEGA — dynamic engineering portfolio\n   CI smoke verification.
+/* OHMEGA — dynamic engineering portfolio\n   CI smoke verification.\n   Pure white verification.
    Warm off-white, deep navy, charcoal. Sharp geometry, editorial motion. */
 
 :root,
 :root[data-theme="light"]{
-  --bg:#f5f2ea;
-  --panel:#faf8f3;
+  --bg:#ffffff;
+  --panel:#ffffff;
   --ink:#111317;
   --mut:#4b5159;
   --soft:#747b84;
