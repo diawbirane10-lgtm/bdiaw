@@ -90,6 +90,36 @@ body{background:#fff!important;color:var(--ink)!important}
   padding:10px 0 86px!important;
   border-bottom:1px solid var(--line)!important;
 }
+
+.availabilityBar{
+  width:max-content;
+  max-width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px 14px;
+  margin:0 0 28px;
+  padding:9px 12px;
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--mut);
+  font:650 10.5px/1.35 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.065em;
+  text-transform:uppercase;
+}
+.availabilityBar strong{
+  color:var(--navy);
+  font-weight:750;
+}
+.availabilityDot{
+  width:8px;
+  height:8px;
+  flex:0 0 8px;
+  border-radius:50%;
+  background:#2f7d57;
+  box-shadow:0 0 0 4px rgba(47,125,87,.10);
+}
+
 .heroKicker{
   margin-bottom:28px;
   color:var(--navy);
@@ -442,6 +472,18 @@ body{background:#fff!important;color:var(--ink)!important}
 }
 
 @media(max-width:640px){
+  .availabilityBar{
+    width:100%;
+    gap:8px 10px;
+    margin-bottom:22px;
+    font-size:9.5px;
+  }
+  .availabilityBar strong{
+    display:block;
+    width:100%;
+    padding-left:18px;
+    line-height:1.5;
+  }
   .workRow{
     grid-template-columns:1fr;
     gap:10px;
@@ -836,15 +878,11 @@ body,
   text-decoration:none!important;
 }
 .engagementLogo img{
-  max-width:72px;
-  max-height:72px;
-  width:auto;
-  height:auto;
+  width:72px;
+  height:72px;
+  max-width:none;
+  max-height:none;
   object-fit:contain;
-}
-.engagementLogo.ministry img{
-  max-width:60px;
-  max-height:70px;
 }
 .engagementJoin{
   color:var(--soft);
