@@ -75,7 +75,7 @@ function resourceLabel(label,lang){
   return labels[label]||label;
 }
 function ExtLink({href,children,className=""}){const external=!href.startsWith("/")&&!href.startsWith("mailto:");return <a className={className} href={href} target={external?"_blank":undefined} rel={external?"noreferrer":undefined}>{children}{external?<span aria-hidden="true"> ↗</span>:null}</a>}
-function Top({t,lang,setLang,theme,setTheme}){return <div className="topbar"><a className="brand" href="/"><span className="brandMark" aria-hidden="true">Ω</span><span className="brandText">OHMEGA</span></a><div className="switches"><button type="button" onClick={()=>setLang(lang==="en"?"fr":"en")}>{t.lang}</button><button className="themeButton" type="button" aria-label={lang==="fr"?(theme==="dark"?"Passer au mode clair":"Passer au mode sombre"):(theme==="dark"?"Switch to light mode":"Switch to dark mode")} title={lang==="fr"?(theme==="dark"?"Passer au mode clair":"Passer au mode sombre"):(theme==="dark"?"Switch to light mode":"Switch to dark mode")} onClick={()=>setTheme(theme==="dark"?"light":"dark")}>{theme==="dark"?"☀︎":"☾"}</button></div></div>}
+function Top({t,lang,setLang}){return <div className="topbar"><a className="brand" href="/"><span className="brandMark" aria-hidden="true">Ω</span><span className="brandText">OHMEGA</span></a><div className="switches"><button type="button" onClick={()=>setLang(lang==="en"?"fr":"en")}>{t.lang}</button></div></div>}
 function Section({id,title,subtitle,children,cut=false}){return <section id={id} className={`section${cut?" cut":""}`}><div className="sectionHead"><h2 className="sectionTitle">{title}</h2><p className="sectionSubtitle">{subtitle}</p></div><div>{children}</div></section>}
 
 function ProfileStats({lang}){
@@ -208,16 +208,27 @@ function Home({t,lang}){
       </div>
       <div className="footerBottom">
         <a className="footerBrand" href="#top" aria-label="Back to top"><span className="footerOmega">Ω</span><span>OHMEGA</span></a>
-        <nav className="contactLinks" aria-label="Contact links">
-          <a href={mail}><span className="contactIcon">✉</span><span>Email</span></a>
-          <a href={linkedin} target="_blank" rel="noreferrer"><span className="contactIcon">in</span><span>LinkedIn</span></a>
-          <a href={github} target="_blank" rel="noreferrer"><span className="contactIcon">GH</span><span>GitHub</span></a>
-          <a href={x} target="_blank" rel="noreferrer"><span className="contactIcon">X</span><span>X</span></a>
-          <a href={orcid} target="_blank" rel="noreferrer"><span className="contactIcon">iD</span><span>ORCID</span></a>
+        <nav className="contactLinks" aria-label="Professional profiles">
+          <a href={linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <span className="contactIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5.2 7.9H1.6V22h3.6V7.9ZM3.4 2A2.1 2.1 0 1 0 3.4 6.2 2.1 2.1 0 0 0 3.4 2ZM22.4 14c0-4.3-2.3-6.3-5.4-6.3-2.5 0-3.6 1.4-4.2 2.3V7.9H9.2V22h3.6v-7c0-1.8.4-3.6 2.7-3.6 2.3 0 2.3 2.1 2.3 3.7V22h3.6v-8Z"/></svg></span>
+            <span>LinkedIn</span>
+          </a>
+          <a href={github} target="_blank" rel="noreferrer" aria-label="GitHub">
+            <span className="contactIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 .8a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2.2c-3.4.7-4.1-1.4-4.1-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.4 3.6 1.1.1-.8.4-1.4.8-1.7-2.7-.3-5.6-1.4-5.6-6.1 0-1.4.5-2.5 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.4 1.3a11.6 11.6 0 0 1 6.2 0c2.4-1.6 3.4-1.3 3.4-1.3.6 1.7.2 3 .1 3.3.8.8 1.2 1.9 1.2 3.3 0 4.8-2.9 5.8-5.6 6.1.4.4.8 1.2.8 2.4v3.5c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .8Z"/></svg></span>
+            <span>GitHub</span>
+          </a>
+          <a href={x} target="_blank" rel="noreferrer" aria-label="X">
+            <span className="contactIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.2l7.3-8.4L2.8 2h6.5l4.4 5.8L18.9 2Zm-1.1 17.8h1.7L8.3 4H6.5l11.3 15.8Z"/></svg></span>
+            <span>X</span>
+          </a>
+          <a href={orcid} target="_blank" rel="noreferrer" aria-label="ORCID">
+            <span className="contactIcon orcidIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.2 7.2h1.6v1.6H8.2V7.2Zm0 3h1.6v6.6H8.2v-6.6Zm3.5 0h3c2.3 0 3.8 1.3 3.8 3.3s-1.5 3.3-3.8 3.3h-3v-6.6Zm1.6 1.4v3.8h1.3c1.4 0 2.2-.7 2.2-1.9s-.8-1.9-2.2-1.9h-1.3Z" fill="currentColor"/></svg></span>
+            <span>ORCID</span>
+          </a>
         </nav>
       </div>
     </footer>
   </>
 }
 function ProjectDetail({project,t,lang}){return <><header className="projectHero"><ExtLink href="/">{t.detail[0]}</ExtLink><p>{project.no} · {project.field[lang]}</p><h1>{project.title}</h1><h2>{project.body[lang]}</h2>{projectTags[project.slug]?.standards?.length?<div className="caseStudyStandards" aria-label={lang==="fr"?"Normes de référence":"Reference standards"}>{projectTags[project.slug].standards.map(tag=><span className="projectTag standardTag" key={tag}>{tag}</span>)}</div>:null}</header><section className="detailGrid"><article><p>{t.detail[1]}</p><h2>{project.problem[lang]}</h2></article><article><p>{t.detail[2]}</p><h2>{project.solution[lang]}</h2></article><article><p>{t.detail[3]}</p><ol>{project.steps[lang].map(s=><li key={s}>{s}</li>)}</ol></article><article><p>{t.detail[4]}</p><h2>{project.discussion[lang]}</h2></article><article className="wide"><p>{t.detail[5]}</p><nav className="inline">{project.links.map(([label,href])=><ExtLink href={href} key={label}>{resourceLabel(label,lang)}</ExtLink>)}</nav></article></section></>}
-export default function Portfolio(){const pathname=usePathname();const[lang,setLang]=useState("en");const[theme,setTheme]=useState("light");useEffect(()=>{const a=localStorage.getItem("ohmega-theme-v2"),b=localStorage.getItem("ohmega-lang");localStorage.removeItem("ohmega-theme");if(a)setTheme(a);if(b)setLang(b)},[]);useEffect(()=>{document.documentElement.dataset.theme=theme;document.documentElement.lang=lang;localStorage.setItem("ohmega-theme-v2",theme);localStorage.setItem("ohmega-lang",lang)},[theme,lang]);const t=useMemo(()=>copy[lang],[lang]);const slug=pathname?.startsWith("/projects/")?pathname.split("/projects/")[1]?.split("/")[0]:null;const project=projects.find(p=>p.slug===slug);return <main className="site"><Top t={t} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme}/>{project?<ProjectDetail project={project} t={t} lang={lang}/>:<Home t={t} lang={lang}/>}</main>}
+export default function Portfolio(){const pathname=usePathname();const[lang,setLang]=useState("en");useEffect(()=>{const savedLang=localStorage.getItem("ohmega-lang");localStorage.removeItem("ohmega-theme");localStorage.removeItem("ohmega-theme-v2");if(savedLang)setLang(savedLang);document.documentElement.dataset.theme="light"},[]);useEffect(()=>{document.documentElement.dataset.theme="light";document.documentElement.lang=lang;localStorage.setItem("ohmega-lang",lang)},[lang]);const t=useMemo(()=>copy[lang],[lang]);const slug=pathname?.startsWith("/projects/")?pathname.split("/projects/")[1]?.split("/")[0]:null;const project=projects.find(p=>p.slug===slug);return <main className="site"><Top t={t} lang={lang} setLang={setLang}/>{project?<ProjectDetail project={project} t={t} lang={lang}/>:<Home t={t} lang={lang}/>}</main>}
