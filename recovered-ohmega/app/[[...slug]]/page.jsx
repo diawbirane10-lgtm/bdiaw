@@ -143,8 +143,8 @@ function Home({t,lang}){
             ?"Élève ingénieur d’État en Génie Électrique et Systèmes Intelligents, orienté systèmes électriques de forte puissance, réseaux électriques, électronique de puissance et architectures électriques critiques."
             :"State Engineering student in Electrical Engineering & Intelligent Systems, focused on high-power electrical systems, power systems, power electronics and critical electrical architectures."}</p>
           <p>{lang==="fr"
-            ?"Mon travail s’appuie sur la modélisation, la simulation et l’ingénierie système, avec un intérêt particulier pour la stabilité des réseaux, le HVDC / HVAC, les technologies grid-forming et les systèmes électriques avancés."
-            :"My work is driven by modelling, simulation and system-level engineering, with particular interests in grid stability, HVDC / HVAC, grid-forming technologies and advanced electrical energy systems."}</p>
+            ?"Mon travail s’appuie sur la modélisation, la simulation, la commande et l’ingénierie système, avec un intérêt particulier pour la stabilité des réseaux, le HVDC / HVAC, les technologies grid-forming et les systèmes électriques avancés. J’étends progressivement cette même approche aux systèmes électromécaniques autonomes et à la robotique industrielle, à l’intersection des capteurs, de l’actionnement électrique, de l’automatisation et de l’intelligence embarquée."
+            :"My work is driven by modelling, simulation, control and system-level engineering, with particular interests in grid stability, HVDC / HVAC, grid-forming technologies and advanced electrical energy systems. I am progressively extending this same approach to autonomous electromechanical systems and industrial robotics, where sensing, electrical actuation, automation and embedded intelligence come together."}</p>
         </div>
         <ProfileStats lang={lang}/>
       </div>
