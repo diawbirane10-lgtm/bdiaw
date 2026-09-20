@@ -665,69 +665,72 @@ body{
 }
 
 
-/* ---------- INSTITUTIONAL LOGO OPTICAL SCALE ----------
-   Keep the allocated frames unchanged; compensate for whitespace baked into source artwork. */
+
+
+
+/* ---------- LOGO FIT — FINAL ----------
+   Keep the allocated frames. Remove the aggressive zoom and use the frame area efficiently. */
 .engagementLogo{
   overflow:hidden!important;
+  padding:4px!important;
 }
 .engagementLogo img{
-  width:100%!important;
-  height:100%!important;
-  max-width:none!important;
-  max-height:none!important;
+  display:block!important;
+  width:auto!important;
+  height:auto!important;
+  max-width:calc(100% - 4px)!important;
+  max-height:calc(100% - 4px)!important;
   object-fit:contain!important;
   object-position:center!important;
-  transform-origin:center center;
+  transform:none!important;
 }
-.engagementLogo.ministry img{
-  transform:scale(1.72);
-}
+.engagementLogo.ministry img,
 .engagementLogo.iaea img{
-  transform:scale(1.62);
+  transform:none!important;
 }
 
-@media(max-width:900px){
-  .engagementLogo.ministry img{
-    transform:scale(1.68);
-  }
-  .engagementLogo.iaea img{
-    transform:scale(1.58);
-  }
-}
-
-@media(max-width:640px){
-  .engagementLogo.ministry img{
-    transform:scale(1.58);
-  }
-  .engagementLogo.iaea img{
-    transform:scale(1.50);
-  }
-}
-
-
-/* ---------- RESEARCH LOGO OPTICAL SCALE ----------
-   Keep the research logo frame unchanged; compensate for whitespace inside the source artwork. */
+/* JURI: the old 14px padding was applied to the image itself and made the mark look tiny. */
 .researchBrand{
-  overflow:hidden!important;
+  overflow:visible!important;
+}
+.researchBrand a{
+  display:block!important;
+  width:190px!important;
+  max-width:100%!important;
 }
 .researchBrand img{
-  display:block;
-  width:100%!important;
-  height:100%!important;
-  max-width:none!important;
-  max-height:none!important;
+  display:block!important;
+  width:190px!important;
+  max-width:100%!important;
+  height:auto!important;
+  padding:3px!important;
+  border:1px solid var(--v32-line)!important;
+  background:#fff!important;
   object-fit:contain!important;
-  object-position:center!important;
-  transform-origin:center center;
-  transform:scale(1.55);
+  transform:none!important;
+  box-sizing:border-box!important;
 }
+
 @media(max-width:900px){
+  .researchBrand a,
   .researchBrand img{
-    transform:scale(1.48);
+    width:170px!important;
   }
 }
+
 @media(max-width:640px){
+  .engagementLogo{
+    padding:3px!important;
+  }
+  .researchBrand a,
   .researchBrand img{
-    transform:scale(1.40);
+    width:165px!important;
+  }
+}
+
+@media(max-width:390px){
+  .researchBrand a,
+  .researchBrand img{
+    width:155px!important;
   }
 }
