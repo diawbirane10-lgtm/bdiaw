@@ -10,7 +10,7 @@ const projects = {
     keywords: ['UFLS', 'smart grid', 'ONEE', 'SENELEC', 'Stateflow', 'power system protection'],
   },
   'wave-energy-conversion': {
-    title: 'Wave-Energy Conversion Chain — PMSG, FOC & Grid Injection',
+    title: 'Wave-Energy Conversion Chain — FOC & Grid Injection',
     description:
       'Wave-energy conversion case study using a PMSG, field-oriented control and grid-side injection for renewable-energy system simulation.',
     keywords: ['wave energy', 'PMSG', 'FOC', 'renewable energy', 'grid injection'],
