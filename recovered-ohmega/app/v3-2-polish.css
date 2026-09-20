@@ -703,3 +703,31 @@ body{
     transform:scale(1.50);
   }
 }
+
+
+/* ---------- RESEARCH LOGO OPTICAL SCALE ----------
+   Keep the research logo frame unchanged; compensate for whitespace inside the source artwork. */
+.researchBrand{
+  overflow:hidden!important;
+}
+.researchBrand img{
+  display:block;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  transform-origin:center center;
+  transform:scale(1.55);
+}
+@media(max-width:900px){
+  .researchBrand img{
+    transform:scale(1.48);
+  }
+}
+@media(max-width:640px){
+  .researchBrand img{
+    transform:scale(1.40);
+  }
+}
