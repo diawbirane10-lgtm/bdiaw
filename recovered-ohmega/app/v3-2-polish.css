@@ -751,3 +751,51 @@ body{
   object-position:center!important;
   transform:none!important;
 }
+
+
+/* Ministry mark is vertically richer than the IAEA mark: give it enough height to remain legible. */
+.engagementLogo.ministry{
+  width:176px!important;
+  min-height:150px!important;
+  padding:6px!important;
+}
+.engagementLogo.ministry img{
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:138px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  transform:none!important;
+}
+
+@media(max-width:900px){
+  .engagementLogo.ministry{
+    width:145px!important;
+    min-height:126px!important;
+  }
+  .engagementLogo.ministry img{
+    max-height:114px!important;
+  }
+}
+
+@media(max-width:640px){
+  .engagementLogo.ministry{
+    width:112px!important;
+    min-height:100px!important;
+    padding:4px!important;
+  }
+  .engagementLogo.ministry img{
+    max-height:92px!important;
+  }
+}
+
+@media(max-width:390px){
+  .engagementLogo.ministry{
+    width:102px!important;
+    min-height:94px!important;
+  }
+  .engagementLogo.ministry img{
+    max-height:86px!important;
+  }
+}
