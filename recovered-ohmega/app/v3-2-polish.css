@@ -1,0 +1,481 @@
+/* OHMEGA V3.2 — editorial systems pass
+   Purpose: unify the live portfolio around a sharp, engineering-led visual language.
+   Constraints: white canvas, square geometry, no gradients, no blobs, no decorative circles. */
+
+:root{
+  --v32-ink:#0f1216;
+  --v32-navy:#0b2942;
+  --v32-muted:#5b636c;
+  --v32-soft:#7b838c;
+  --v32-line:#d9dde0;
+  --v32-line-strong:#aeb6bd;
+  --v32-paper:#ffffff;
+  --v32-wash:#f7f8f9;
+}
+
+/* ---------- GLOBAL CLEANUP ---------- */
+html{
+  scroll-padding-top:88px;
+}
+body{
+  background:#fff!important;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{
+  background:#dbe5ed;
+  color:var(--v32-ink);
+}
+a,button{
+  -webkit-tap-highlight-color:transparent;
+}
+a:focus-visible,
+button:focus-visible{
+  outline:2px solid var(--v32-navy)!important;
+  outline-offset:4px!important;
+}
+.hero .lead,
+.introCopy,
+.aboutLead,
+.researchContent h3,
+.footerHeadline,
+.projectHero h1,
+.projectHero h2{
+  text-wrap:balance;
+}
+
+/* ---------- REMOVE GENERIC "AI UI" RESIDUE ---------- */
+.projectTag,
+.experienceTag,
+.standardTag,
+.mobileMenuButton,
+.nav a,
+.inline a,
+.researchActions a,
+.engagementLinks a,
+.contactLinks a{
+  border-radius:0!important;
+}
+.projectTag,
+.experienceTag{
+  background:#fff!important;
+  box-shadow:none!important;
+}
+.projectTag.toolTag,
+.experienceTag.standardTag{
+  background:var(--v32-wash)!important;
+}
+.availabilityDot{
+  width:22px!important;
+  height:2px!important;
+  flex:0 0 22px!important;
+  border-radius:0!important;
+  background:var(--v32-navy)!important;
+  box-shadow:none!important;
+}
+
+/* ---------- HEADER / NAV: QUIETER + MORE PRECISE ---------- */
+.topbar{
+  box-shadow:none!important;
+}
+#portfolio-navigation.navDocked a{
+  position:relative;
+}
+#portfolio-navigation.navDocked a::after{
+  height:1px!important;
+  bottom:3px!important;
+}
+.mobileMenuButton{
+  box-shadow:none!important;
+}
+
+/* ---------- HERO REFINEMENT ---------- */
+.heroKicker{
+  font-variant-numeric:tabular-nums;
+}
+.availabilityBar{
+  color:var(--v32-muted)!important;
+}
+.availabilityBar strong{
+  color:var(--v32-ink)!important;
+  font-weight:680!important;
+}
+.hero h1{
+  text-wrap:pretty;
+}
+.heroScrollCue{
+  transition:gap .22s cubic-bezier(.22,1,.36,1);
+}
+.heroScrollCue:hover{
+  gap:24px;
+}
+
+/* ---------- SECTION RHYTHM ---------- */
+.sectionHead{
+  isolation:isolate;
+}
+.sectionHead .sectionSubtitle{
+  max-width:560px!important;
+}
+.workField,
+.meta,
+.journal,
+.experienceDate,
+.experienceMeta,
+.engagementKicker{
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---------- PROJECT INDEX ---------- */
+.workRow{
+  isolation:isolate;
+}
+.workRow::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:-1px;
+  width:0;
+  height:1px;
+  background:var(--v32-navy);
+  transition:width .32s cubic-bezier(.22,1,.36,1);
+}
+.workRow:hover::before{
+  width:100%;
+}
+.workRow h3 a{
+  text-decoration:none!important;
+}
+.workRow h3 a:hover{
+  text-decoration:none!important;
+}
+.workRowLink{
+  transition:padding-right .2s ease;
+}
+.workRowLink:hover{
+  padding-right:8px!important;
+}
+.workArchive{
+  border-top:0!important;
+}
+
+/* ---------- RESEARCH ---------- */
+.researchFeature{
+  border:0!important;
+  background:#fff!important;
+  box-shadow:none!important;
+}
+.researchActions{
+  display:flex!important;
+  flex-wrap:wrap;
+  gap:12px 24px!important;
+}
+.researchActions a{
+  min-height:auto!important;
+  padding:0 0 4px!important;
+  border:0!important;
+  border-bottom:1px solid var(--v32-navy)!important;
+  background:transparent!important;
+  color:var(--v32-ink)!important;
+}
+
+/* ---------- EXPERIENCE ---------- */
+.experienceItem{
+  position:relative;
+}
+.experienceItem::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:-1px;
+  width:72px;
+  height:1px;
+  background:var(--v32-navy);
+}
+.experienceHeader{
+  gap:24px!important;
+}
+.experienceTags{
+  gap:6px!important;
+}
+.experienceTag{
+  min-height:26px!important;
+  border:1px solid var(--v32-line)!important;
+  padding:4px 8px!important;
+}
+
+/* ---------- INSTITUTIONAL ENGAGEMENT / IAEA-NEPIO ----------
+   This section intentionally reads like an engineering dossier rather than a card. */
+.engagement{
+  position:relative;
+  display:grid!important;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:0 24px;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-bottom:1px solid var(--v32-ink)!important;
+  background:#fff!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+.engagementLabel{
+  grid-column:1/-1;
+  display:grid!important;
+  grid-template-columns:72px minmax(0,1fr) max-content;
+  gap:24px;
+  align-items:baseline;
+  padding:26px 0 24px!important;
+  border-top:0!important;
+  border-bottom:1px solid var(--v32-line)!important;
+  color:var(--v32-soft)!important;
+  font:650 9.5px/1.45 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
+  letter-spacing:.1em!important;
+  text-transform:uppercase;
+}
+.engagementLabel::before{
+  content:"05";
+  color:var(--v32-navy);
+  font-size:10px;
+}
+.engagementLabel span:first-child{
+  color:var(--v32-ink);
+}
+.engagementLogos{
+  grid-column:1/4;
+  display:grid!important;
+  grid-template-columns:1fr;
+  align-content:start;
+  justify-items:start;
+  gap:16px!important;
+  margin:68px 0 86px!important;
+  padding:0!important;
+}
+.engagementLogo{
+  display:grid!important;
+  place-items:center;
+  width:176px!important;
+  min-height:96px;
+  padding:14px!important;
+  border:1px solid var(--v32-line)!important;
+  border-radius:0!important;
+  background:#fff!important;
+  box-shadow:none!important;
+}
+.engagementLogo img{
+  display:block;
+  max-width:100%;
+  max-height:74px;
+  object-fit:contain;
+}
+.engagementJoin{
+  display:block!important;
+  width:176px;
+  color:var(--v32-soft)!important;
+  font:500 18px/1 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
+  text-align:center;
+}
+.engagementCopy{
+  grid-column:4/13;
+  margin:68px 0 86px!important;
+  padding-left:38px!important;
+  border-left:1px solid var(--v32-line-strong);
+}
+.engagementKicker{
+  margin:0 0 22px!important;
+  color:var(--v32-navy)!important;
+  font:650 10px/1.45 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
+  letter-spacing:.09em!important;
+  text-transform:uppercase;
+}
+.engagementCopy h2{
+  max-width:900px;
+  margin:0 0 28px!important;
+  color:var(--v32-ink)!important;
+  font-size:clamp(36px,4vw,56px)!important;
+  line-height:1.01!important;
+  font-weight:510!important;
+  letter-spacing:-.05em!important;
+  text-wrap:balance;
+}
+.engagementCopy>p:not(.engagementKicker){
+  max-width:770px;
+  margin:0!important;
+  color:var(--v32-muted)!important;
+  font-size:15.5px!important;
+  line-height:1.82!important;
+}
+.engagementLinks{
+  display:flex!important;
+  flex-wrap:wrap;
+  gap:12px 26px!important;
+  margin-top:34px!important;
+}
+.engagementLinks a{
+  min-height:auto!important;
+  padding:0 0 5px!important;
+  border:0!important;
+  border-bottom:1px solid var(--v32-navy)!important;
+  background:transparent!important;
+  color:var(--v32-ink)!important;
+  text-decoration:none!important;
+}
+
+/* Footer becomes the sixth indexed block after institutional engagement. */
+.footerIndex{
+  font-size:0!important;
+}
+.footerIndex::after{
+  content:"06";
+  font-size:10px;
+  letter-spacing:.1em;
+}
+
+/* ---------- CASE STUDIES ---------- */
+.projectHero{
+  border-bottom:1px solid var(--v32-ink)!important;
+}
+.projectHero h1{
+  text-wrap:balance;
+}
+.projectVisualFrame{
+  background:#fff!important;
+}
+.projectVisualFrame img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.detailGrid article{
+  background:#fff!important;
+}
+.inline{
+  gap:10px 22px!important;
+}
+.inline a{
+  min-height:auto!important;
+  padding:0 0 4px!important;
+  border:0!important;
+  border-bottom:1px solid var(--v32-navy)!important;
+  background:transparent!important;
+}
+
+/* ---------- TABLET ---------- */
+@media(max-width:900px){
+  .engagement{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+  }
+  .engagementLabel{
+    grid-template-columns:54px minmax(0,1fr) max-content;
+  }
+  .engagementLogos{
+    grid-column:1/3;
+    margin:56px 0 72px!important;
+  }
+  .engagementCopy{
+    grid-column:3/7;
+    margin:56px 0 72px!important;
+    padding-left:28px!important;
+  }
+  .engagementLogo,
+  .engagementJoin{
+    width:145px!important;
+  }
+  .engagementCopy h2{
+    font-size:clamp(34px,5vw,48px)!important;
+  }
+}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:640px){
+  html{scroll-padding-top:72px}
+  .availabilityDot{
+    width:16px!important;
+    flex-basis:16px!important;
+  }
+  .workRow::before,
+  .experienceItem::before{
+    display:none;
+  }
+  .engagement{
+    display:block!important;
+  }
+  .engagementLabel{
+    display:grid!important;
+    grid-template-columns:44px minmax(0,1fr);
+    gap:12px;
+    padding:20px 0!important;
+  }
+  .engagementLabel span:last-child{
+    grid-column:2;
+    margin-top:8px;
+  }
+  .engagementLogos{
+    display:flex!important;
+    align-items:center;
+    gap:10px!important;
+    margin:44px 0 30px!important;
+  }
+  .engagementLogo{
+    width:112px!important;
+    min-height:72px;
+    padding:10px!important;
+  }
+  .engagementLogo img{
+    max-height:52px;
+  }
+  .engagementJoin{
+    width:auto!important;
+    padding:0 2px;
+  }
+  .engagementCopy{
+    margin:0 0 58px!important;
+    padding:0!important;
+    border-left:0;
+  }
+  .engagementKicker{
+    margin-bottom:16px!important;
+  }
+  .engagementCopy h2{
+    font-size:31px!important;
+    line-height:1.04!important;
+    margin-bottom:22px!important;
+  }
+  .engagementCopy>p:not(.engagementKicker){
+    font-size:15px!important;
+    line-height:1.72!important;
+  }
+  .engagementLinks{
+    display:grid!important;
+    grid-template-columns:1fr;
+    gap:14px!important;
+    margin-top:28px!important;
+  }
+  .engagementLinks a,
+  .researchActions a,
+  .inline a{
+    width:max-content;
+    max-width:100%;
+  }
+}
+
+@media(max-width:390px){
+  .engagementLogos{
+    align-items:stretch;
+  }
+  .engagementLogo{
+    width:102px!important;
+  }
+}
+
+/* ---------- MOTION SAFETY ---------- */
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
