@@ -1,6 +1,6 @@
 "use client";
 
-const ministryLogo="/mep-logo-full.webp";
+const ministryLogo="/mep-logo-official.svg";
 const iaeaLogo="/brand-iaea.svg";
 
 const ministrySite="https://energie-mines.gouv.sn/";

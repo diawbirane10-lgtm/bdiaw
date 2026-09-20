@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 712 760" role="img" aria-labelledby="title desc">
+  <title id="title">République du Sénégal — Ministère de l'Énergie, du Pétrole et des Mines</title>
+  <desc id="desc">Drapeau du Sénégal, devise nationale et nom du ministère.</desc>
+
+  <g>
+    <rect x="16" y="16" width="226.667" height="397" fill="#00853F"/>
+    <rect x="242.667" y="16" width="226.667" height="397" fill="#FDEF42"/>
+    <rect x="469.334" y="16" width="226.666" height="397" fill="#E31B23"/>
+    <polygon fill="#00853F" points="356,149 372,198 424,198 382,229 398,279 356,249 314,279 330,229 288,198 340,198"/>
+  </g>
+
+  <text x="356" y="510" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="400" fill="#111111">République du Sénégal</text>
+  <line x1="28" y1="545" x2="684" y2="545" stroke="#777777" stroke-width="2"/>
+
+  <text x="356" y="598" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="29" font-style="italic" fill="#111111">Un Peuple  ·  Un But  ·  Une Foi</text>
+
+  <text x="356" y="678" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" letter-spacing=".4" fill="#111111">MINISTÈRE DE L’ÉNERGIE,</text>
+  <text x="356" y="730" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" letter-spacing=".4" fill="#111111">DU PÉTROLE ET DES MINES</text>
+</svg>
