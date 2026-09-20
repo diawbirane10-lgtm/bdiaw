@@ -663,3 +663,43 @@ body{
     font-size:28px!important;
   }
 }
+
+
+/* ---------- INSTITUTIONAL LOGO OPTICAL SCALE ----------
+   Keep the allocated frames unchanged; compensate for whitespace baked into source artwork. */
+.engagementLogo{
+  overflow:hidden!important;
+}
+.engagementLogo img{
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  transform-origin:center center;
+}
+.engagementLogo.ministry img{
+  transform:scale(1.72);
+}
+.engagementLogo.iaea img{
+  transform:scale(1.62);
+}
+
+@media(max-width:900px){
+  .engagementLogo.ministry img{
+    transform:scale(1.68);
+  }
+  .engagementLogo.iaea img{
+    transform:scale(1.58);
+  }
+}
+
+@media(max-width:640px){
+  .engagementLogo.ministry img{
+    transform:scale(1.58);
+  }
+  .engagementLogo.iaea img{
+    transform:scale(1.50);
+  }
+}
