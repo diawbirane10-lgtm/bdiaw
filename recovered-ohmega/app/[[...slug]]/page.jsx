@@ -80,35 +80,11 @@ function Top({t,lang,setLang}){return <div className="topbar"><a className="bran
 function Section({id,title,subtitle,children,cut=false}){return <section id={id} className={`section${cut?" cut":""}`}><div className="sectionHead"><h2 className="sectionTitle">{title}</h2><p className="sectionSubtitle">{subtitle}</p></div><div>{children}</div></section>}
 
 function ProfileStats({lang}){
-  const ref=useRef(null);
-  const[values,setValues]=useState([0,0,0]);
-  useEffect(()=>{
-    const node=ref.current;
-    if(!node)return;
-    const targets=[17,1,3];
-    let raf=0;
-    let started=false;
-    const observer=new IntersectionObserver(([entry])=>{
-      if(!entry?.isIntersecting||started)return;
-      started=true;
-      const start=performance.now();
-      const duration=1200;
-      const tick=(now)=>{
-        const p=Math.min(1,(now-start)/duration);
-        const eased=1-Math.pow(1-p,4);
-        setValues(targets.map((v)=>Math.round(v*eased)));
-        if(p<1)raf=requestAnimationFrame(tick);
-      };
-      raf=requestAnimationFrame(tick);
-      observer.disconnect();
-    },{threshold:.45,rootMargin:"0px 0px -8% 0px"});
-    observer.observe(node);
-    return()=>{observer.disconnect();cancelAnimationFrame(raf)};
-  },[]);
+  const values=[17,1,3];
   const labels=lang==="fr"
     ?["Projets d’ingénierie","Publication de recherche","Expériences d’ingénierie"]
     :["Engineering projects","Research publication","Engineering experiences"];
-  return <dl ref={ref} className="profileStats">{values.map((v,i)=><div className="profileStat" key={labels[i]}><dt>{i===0?String(v)+"+":v}</dt><dd>{labels[i]}</dd></div>)}</dl>
+  return <dl className="profileStats">{values.map((v,i)=><div className="profileStat" key={labels[i]}><dt>{i===0?String(v)+"+":v}</dt><dd>{labels[i]}</dd></div>)}</dl>
 }
 
 function Home({t,lang}){
