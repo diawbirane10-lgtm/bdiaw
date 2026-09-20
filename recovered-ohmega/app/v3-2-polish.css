@@ -479,3 +479,187 @@ button:focus-visible{
     transition-duration:.01ms!important;
   }
 }
+
+
+/* ---------- V3.2B — READABILITY / SMARTPHONE TYPE SCALE ----------
+   Small increase only: body copy gains roughly 1px while display type keeps its hierarchy. */
+body{
+  font-size:17px!important;
+}
+.introCopy{
+  font-size:16.5px!important;
+  line-height:1.72!important;
+}
+.aboutStatement p:not(.aboutLead){
+  font-size:17px!important;
+  line-height:1.78!important;
+}
+.sectionHead .sectionSubtitle{
+  font-size:10.5px!important;
+  line-height:1.55!important;
+}
+.availabilityBar{
+  font-size:10.5px!important;
+  line-height:1.45!important;
+}
+.workField,
+.workRowIndex,
+.experienceDate,
+.experienceMeta,
+.meta,
+.journal{
+  font-size:10.5px!important;
+  line-height:1.55!important;
+}
+.workBody,
+.experienceBody{
+  font-size:15.5px!important;
+  line-height:1.75!important;
+}
+.projectTag,
+.experienceTag{
+  font-size:10.5px!important;
+  line-height:1.3!important;
+}
+.researchContent .summary{
+  font-size:16.5px!important;
+  line-height:1.78!important;
+}
+.researchContent .journal{
+  font-size:10.5px!important;
+  line-height:1.7!important;
+}
+.researchActions a,
+.workRowLink,
+.inline a,
+.engagementLinks a{
+  font-size:14px!important;
+  line-height:1.35!important;
+}
+.footerIntro{
+  font-size:16.5px!important;
+  line-height:1.7!important;
+}
+.contactLabel{
+  font-size:11px!important;
+}
+.contactValue,
+.contactValue a{
+  font-size:16px!important;
+}
+.engagementLabel{
+  font-size:10.5px!important;
+}
+.engagementKicker{
+  font-size:10.5px!important;
+}
+.engagementCopy>p:not(.engagementKicker){
+  font-size:16.5px!important;
+  line-height:1.78!important;
+}
+
+/* Long technical strings should wrap naturally without creating horizontal overflow. */
+.researchContent h3,
+.projectHero h1,
+.projectHero h2,
+.workRow h3,
+.engagementCopy h2,
+.footerHeadline{
+  max-width:100%!important;
+  word-break:normal!important;
+  overflow-wrap:break-word!important;
+}
+
+/* The actual mobile navigation is a compact menu, not six persistent header items. */
+@media(max-width:640px){
+  body{
+    font-size:16.5px!important;
+  }
+  .topbar > .mobileMenuButton{
+    border-radius:0!important;
+    box-shadow:none!important;
+    font-size:13px!important;
+  }
+  #portfolio-navigation.navMobileDocked{
+    border-radius:0!important;
+    box-shadow:none!important;
+    padding:6px!important;
+  }
+  #portfolio-navigation.navMobileDocked.isOpen a{
+    border-radius:0!important;
+    min-height:42px!important;
+    padding:9px 10px!important;
+    font-size:14px!important;
+  }
+  .introCopy{
+    font-size:16px!important;
+    line-height:1.68!important;
+  }
+  .aboutStatement p:not(.aboutLead){
+    font-size:16px!important;
+    line-height:1.72!important;
+  }
+  .sectionHead .sectionSubtitle{
+    font-size:10.5px!important;
+  }
+  .workBody,
+  .experienceBody{
+    font-size:15.5px!important;
+    line-height:1.7!important;
+  }
+  .projectTag,
+  .experienceTag{
+    max-width:100%;
+    font-size:10.5px!important;
+    white-space:normal!important;
+  }
+  .researchContent h3{
+    font-size:32px!important;
+    line-height:1.04!important;
+    letter-spacing:-.04em!important;
+  }
+  .researchContent .summary{
+    font-size:16px!important;
+    line-height:1.7!important;
+  }
+  .researchContent .journal{
+    font-size:10.5px!important;
+  }
+  .engagementCopy h2{
+    font-size:30px!important;
+    line-height:1.06!important;
+    letter-spacing:-.04em!important;
+  }
+  .engagementCopy>p:not(.engagementKicker){
+    font-size:16px!important;
+    line-height:1.7!important;
+  }
+  .footerIntro{
+    font-size:16px!important;
+  }
+  .contactValue,
+  .contactValue a{
+    font-size:15.5px!important;
+  }
+}
+
+@media(max-width:390px){
+  .hero h1{
+    font-size:clamp(48px,14.2vw,56px)!important;
+    letter-spacing:-.06em!important;
+  }
+  .hero .lead{
+    font-size:23px!important;
+    line-height:1.1!important;
+  }
+  .researchContent h3{
+    font-size:29px!important;
+  }
+  .workRow h3{
+    font-size:24px!important;
+    line-height:1.08!important;
+  }
+  .engagementCopy h2{
+    font-size:28px!important;
+  }
+}
