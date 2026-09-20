@@ -734,3 +734,20 @@ body{
     width:155px!important;
   }
 }
+
+
+/* Ministry logo uses the complete official lockup supplied by the user.
+   Keep the frame unchanged and fit the whole mark, never crop it. */
+.engagementLogo.ministry{
+  padding:2px!important;
+}
+.engagementLogo.ministry img{
+  display:block!important;
+  width:auto!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  transform:none!important;
+}
