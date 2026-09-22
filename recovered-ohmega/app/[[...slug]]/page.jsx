@@ -35,13 +35,13 @@ const softwareGroups=[
     items:[
       {name:"MathWorks MATLAB & Simulink",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Matlab_icon.png"},
       {name:"DIgSILENT PowerFactory",logo:"https://appsforbtc.com/wp-content/uploads/2018/02/DIgSILENT-Logo_InDesign2_transparent.png"},
-      {name:"Siemens TIA Portal",logo:"https://cdn2.arolabs.ai/nstatics/logos/tia_portal.png"},
+      {name:"Siemens TIA Portal",logo:"https://cdn.simpleicons.org/siemens/009999",fit:"wide"},
       {name:"Factory I/O",logo:"https://edu4industry.com/wp-content/uploads/2020/10/Factory-I_O-.png"},
-      {name:"OpenPLC Editor",logo:"https://i0.wp.com/www.moreware.org/wp/wp-content/uploads/2022/12/openplc-editor-runtime-logo-v2.jpg?ssl=1&w=500"},
+      {name:"OpenPLC Editor",logo:"https://i0.wp.com/www.moreware.org/wp/wp-content/uploads/2022/12/openplc-editor-runtime-logo-v2.jpg?ssl=1&w=500",fit:"boost"},
       {name:"CODESYS",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Codesys_Logo.svg"},
-      {name:"Autodesk AutoCAD Electrical",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Autodesk_AutoCAD_Logo.svg"},
-      {name:"Autodesk Revit",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Autodesk_Revit_Logo.svg"},
-      {name:"Autodesk Fusion",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Autodesk_Fusion_Logo.svg"},
+      {name:"Autodesk AutoCAD Electrical",logo:"https://cdn.simpleicons.org/autocad/E51050",fit:"boost"},
+      {name:"Autodesk Revit",logo:"https://cdn.simpleicons.org/autodeskrevit/186BFF",fit:"boost"},
+      {name:"Autodesk Fusion",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Fusion360_Logo.svg",fit:"boost"},
       {name:"KiCad",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/KiCad_logo_square.svg"}
     ]
   },
@@ -52,7 +52,8 @@ const softwareGroups=[
       {name:"Microsoft Word",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Microsoft_Office_Word_(2025%E2%80%93present).svg"},
       {name:"Microsoft Excel",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Microsoft_Office_Excel_(2025%E2%80%93present).svg"},
       {name:"Microsoft Access",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Microsoft_Office_Access_(2025-present).svg"},
-      {name:"Microsoft PowerPoint",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Microsoft_Office_PowerPoint_(2025%E2%80%93present).svg"}
+      {name:"Microsoft PowerPoint",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Microsoft_Office_PowerPoint_(2025%E2%80%93present).svg"},
+      {name:"Visual Studio Code",logo:"https://code.visualstudio.com/assets/branding/code-stable.png",fit:"boost"}
     ]
   }
 ];
@@ -224,7 +225,7 @@ function Home({t,lang}){
           <h3 className="softwareGroupTitle">{group.title[lang]}</h3>
           <div className="softwareList">
             {group.items.map(item=><div className="softwareItem" key={item.name}>
-              <span className="softwareLogo" aria-hidden="true"><img src={item.logo} alt=""/></span>
+              <span className={`softwareLogo${item.fit?` is-${item.fit}`:""}`} aria-hidden="true"><img src={item.logo} alt=""/></span>
               <span className="softwareName">{item.name}</span>
             </div>)}
           </div>
