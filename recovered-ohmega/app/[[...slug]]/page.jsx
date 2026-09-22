@@ -28,6 +28,36 @@ const experienceLogos={
   menara:"/brand-menara.svg"
 };
 
+const softwareGroups=[
+  {
+    key:"engineering",
+    title:{en:"Core Engineering",fr:"Ingénierie — logiciels principaux"},
+    items:[
+      {name:"MathWorks MATLAB & Simulink",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Matlab_icon.png"},
+      {name:"DIgSILENT PowerFactory",logo:"https://appsforbtc.com/wp-content/uploads/2018/02/DIgSILENT-Logo_InDesign2_transparent.png"},
+      {name:"Siemens TIA Portal",logo:"https://cdn2.arolabs.ai/nstatics/logos/tia_portal.png"},
+      {name:"Factory I/O",logo:"https://edu4industry.com/wp-content/uploads/2020/10/Factory-I_O-.png"},
+      {name:"OpenPLC Editor",logo:"https://i0.wp.com/www.moreware.org/wp/wp-content/uploads/2022/12/openplc-editor-runtime-logo-v2.jpg?ssl=1&w=500"},
+      {name:"CODESYS",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Codesys_Logo.svg"},
+      {name:"Autodesk AutoCAD Electrical",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Autodesk_AutoCAD_Logo.svg"},
+      {name:"Autodesk Revit",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Autodesk_Revit_Logo.svg"},
+      {name:"Autodesk Fusion",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Autodesk_Fusion_Logo.svg"},
+      {name:"KiCad",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/KiCad_logo_square.svg"}
+    ]
+  },
+  {
+    key:"work",
+    title:{en:"Work Tools",fr:"Outils de travail"},
+    items:[
+      {name:"Microsoft Word",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Microsoft_Office_Word_(2025%E2%80%93present).svg"},
+      {name:"Microsoft Excel",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Microsoft_Office_Excel_(2025%E2%80%93present).svg"},
+      {name:"Microsoft Access",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Microsoft_Office_Access_(2025-present).svg"},
+      {name:"Microsoft PowerPoint",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Microsoft_Office_PowerPoint_(2025%E2%80%93present).svg"}
+    ]
+  }
+];
+
+
 const projects=[
 {no:"01",slug:"ufls-smartgrid",field:{en:"Power systems · protection logic",fr:"Réseaux électriques · protection"},title:"Smart-Grid UFLS Relay — ONEE & SENELEC",image:"https://d2ol7oe51mr4n9.cloudfront.net/user_3IntLmDThKw8IJ84Ymo2nubJp2q/a3ae89e8-81d2-48a8-95af-29cb064f6f51.png",visualNote:{en:"The illustration follows a frequency event from detection to selective load shedding: as system frequency crosses predefined thresholds, non-critical feeders are disconnected in stages while essential demand is preserved, giving generation and load time to rebalance.",fr:"L’illustration suit un incident de fréquence depuis sa détection jusqu’au délestage sélectif : lorsque la fréquence franchit les seuils définis, les départs non critiques sont déconnectés par étapes tandis que les charges essentielles restent alimentées, afin de laisser au système le temps de retrouver l’équilibre."},body:{en:"UFLS relay model for two grid contexts, with a six-state Stateflow automaton for staged shedding, restoration and validation.",fr:"Modèle de relais UFLS pour deux contextes de réseau, avec un automate Stateflow à six états pour le délestage, la restauration et la validation."},problem:{en:"Frequency events require protection logic that reacts quickly without hiding the assumptions behind each threshold.",fr:"Les événements de fréquence exigent une logique de protection rapide, sans masquer les hypothèses derrière chaque seuil."},solution:{en:"A staged UFLS controller with explicit states, thresholds and restoration rules.",fr:"Un contrôleur UFLS par paliers, avec états, seuils et règles de restauration explicitement définis."},steps:{en:["Define grid assumptions and frequency thresholds.","Build the Stateflow state machine.","Run disturbance scenarios.","Check staged shedding and restoration behaviour."],fr:["Définir les hypothèses réseau et les seuils de fréquence.","Construire l’automate Stateflow.","Tester les scénarios de perturbation.","Vérifier le délestage par paliers et la restauration."]},discussion:{en:"The value of the model is traceability: when the relay acts, why it acts, and how the grid returns toward normal operation remain visible.",fr:"La valeur du modèle est la traçabilité : quand le relais agit, pourquoi il agit et comment le réseau revient vers un fonctionnement normal."},links:[["GitHub","https://github.com/diawbirane10-lgtm/ufls-smartgrid-onee-senelec"],["Report EN","https://raw.githubusercontent.com/diawbirane10-lgtm/bdiaw/main/public/documents/ufls_smartgrid_project_report_EN.pdf"],["Rapport FR","https://raw.githubusercontent.com/diawbirane10-lgtm/bdiaw/main/public/documents/rapport_projet_ufls_smartgrid_FR.pdf"]]},
 {no:"02",slug:"wave-energy-conversion",field:{en:"Renewable energy · machine control",fr:"Énergie renouvelable · commande"},title:"Wave-Energy Conversion Chain — FOC & Grid Injection",image:"https://d2ol7oe51mr4n9.cloudfront.net/user_3IntLmDThKw8IJ84Ymo2nubJp2q/7b8ee7bc-d56d-4a0e-a437-92ad584294e3.png",visualNote:{en:"The visual reads the model as an energy path: wave motion is converted into mechanical rotation, the PMSG produces variable electrical power, and the power-electronic stages condition that power before a synchronized grid-side converter delivers it to the network.",fr:"Le visuel présente le modèle comme une chaîne énergétique : le mouvement des vagues devient une rotation mécanique, la GSAP produit une puissance électrique variable, puis les convertisseurs la conditionnent et la régulent avant l’injection synchronisée au réseau."},body:{en:"Simulation of a wave-energy conversion chain using a PMSG, field-oriented control and grid-side injection.",fr:"Simulation d’une chaîne houlomotrice avec GSAP, commande vectorielle et injection côté réseau."},problem:{en:"Wave input is variable; the electrical chain must regulate power without pretending the source is stable.",fr:"L’entrée houlomotrice est variable ; la chaîne électrique doit réguler la puissance sans faire comme si la source était stable."},solution:{en:"A PMSG conversion model with field-oriented control and grid-injection logic.",fr:"Un modèle de conversion par GSAP avec commande vectorielle et logique d’injection réseau."},steps:{en:["Model the mechanical-to-electrical conversion chain.","Set the machine-control assumptions.","Connect the control loop to the grid-side stage.","Discuss the limits of the simulation."],fr:["Modéliser la chaîne de conversion mécanique-électrique.","Définir les hypothèses de commande machine.","Relier la boucle de commande à l’étage côté réseau.","Discuter les limites de la simulation."]},discussion:{en:"The project connects renewable-energy modelling with machine-control practice and shows where variability enters the system.",fr:"Le projet relie la modélisation d’énergie renouvelable à la commande de machine et montre où la variabilité entre dans le système."},links:[["Project report","https://raw.githubusercontent.com/diawbirane10-lgtm/bdiaw/main/public/documents/projet-houlomotrice.pdf"]]},
@@ -185,6 +215,21 @@ function Home({t,lang}){
           <div className="experienceTags">{tags.split(" · ").slice(0,5).map(tag=><span className="experienceTag" key={tag}>{tag}</span>)}{standards?.split(" · ").slice(0,2).map(tag=><span className="experienceTag standardTag" key={`standard-${tag}`}>{tag}</span>)}</div>
         </div>
       </article>)}</div>
+    </Section>
+
+
+    <Section id="software" title={lang==="fr"?"Logiciels d’ingénierie":"Engineering Software"} subtitle={lang==="fr"?"Environnements techniques & outils de travail":"Engineering environments & work tools"}>
+      <div className="softwareGroups">
+        {softwareGroups.map(group=><article className="softwareGroup motionItem" key={group.key}>
+          <h3 className="softwareGroupTitle">{group.title[lang]}</h3>
+          <div className="softwareList">
+            {group.items.map(item=><div className="softwareItem" key={item.name}>
+              <span className="softwareLogo" aria-hidden="true"><img src={item.logo} alt=""/></span>
+              <span className="softwareName">{item.name}</span>
+            </div>)}
+          </div>
+        </article>)}
+      </div>
     </Section>
 
     <EventsSection lang={lang}/>
