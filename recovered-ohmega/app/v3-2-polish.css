@@ -908,3 +908,52 @@ body{
     font-size:14px;
   }
 }
+
+
+/* ---------- FOOTER CONTRAST REBALANCE ---------- */
+.footer{
+  background:#294E63!important;
+  color:#FFFFFF!important;
+}
+.footerIndex,
+.footerIndex::after{
+  color:#B7C7D0!important;
+}
+.footerSectionTitle,
+.footerHeadline{
+  color:#FFFFFF!important;
+}
+.footerIntro{
+  color:#D7E0E5!important;
+}
+.contactDetail{
+  border-bottom-color:rgba(255,255,255,.22)!important;
+}
+.contactLabel{
+  color:#B7C7D0!important;
+}
+.contactValue,
+.contactValue a{
+  color:#FFFFFF!important;
+}
+.footerBottom{
+  border-top-color:rgba(255,255,255,.22)!important;
+}
+.footerBrand{
+  color:#D7E0E5!important;
+}
+.footerOmega{
+  border-color:rgba(255,255,255,.38)!important;
+  color:#FFFFFF!important;
+}
+.contactLinks a{
+  border-color:rgba(255,255,255,.28)!important;
+  color:#FFFFFF!important;
+  background:transparent!important;
+}
+.contactLinks a:hover,
+.contactLinks a:focus-visible{
+  background:#FFFFFF!important;
+  color:#294E63!important;
+  border-color:#FFFFFF!important;
+}
