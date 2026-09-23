@@ -2060,3 +2060,35 @@ body{
     padding-right:14px!important;
   }
 }
+
+
+/* Section-title badges — green, dimensional, restrained */
+.sectionHead .sectionTitle{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:fit-content!important;
+  max-width:100%!important;
+  margin:0!important;
+  padding:.20em .56em .24em!important;
+  color:#FFFFFF!important;
+  background:#174C3A!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  border-radius:14px!important;
+  box-shadow:
+    0 5px 0 #103D2E,
+    0 11px 24px rgba(23,76,58,.16)!important;
+  line-height:.94!important;
+  text-wrap:balance;
+}
+
+@media(max-width:640px){
+  .sectionHead .sectionTitle{
+    padding:.20em .50em .23em!important;
+    border-radius:12px!important;
+    box-shadow:
+      0 4px 0 #103D2E,
+      0 8px 18px rgba(23,76,58,.14)!important;
+    line-height:.96!important;
+  }
+}
