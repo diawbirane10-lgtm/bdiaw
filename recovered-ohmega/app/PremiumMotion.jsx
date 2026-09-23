@@ -190,7 +190,7 @@ export function ThickCard({project,lang,index}){
   const ref=useRef(null);
   const reduce=useReducedMotion();
   const accent=ACCENTS[project.slug]||"#7BE495";
-  const shades=useMemo(()=>Array.from({length:8},(_,i)=>i),[]);
+  const shades=useMemo(()=>Array.from({length:6},(_,i)=>i),[]);
   useEffect(()=>{
     const el=ref.current;
     if(!el||reduce||!window.matchMedia("(pointer:fine)").matches)return;
@@ -217,10 +217,10 @@ export function ThickCard({project,lang,index}){
   },[reduce]);
 
   const tags=project.tags||[];
-  return <article ref={ref} className="thickCardWrap motionItem" style={{"--accent":accent,"--idle-rot":`${[-2.7,2.2,-1.3,2.8,-2][index]||0}deg`}}>
+  return <article ref={ref} className="thickCardWrap" style={{"--accent":accent,"--idle-rot":`${[-2.7,2.2,-1.3,2.8,-2][index]||0}deg`}}>
     <a className="thickCard" href={`/projects/${project.slug}`}>
       <span className="thickShine" aria-hidden="true"></span>
-      {shades.map(i=><span className="thickLayer" style={{"--layer":i}} aria-hidden="true" key={i}></span>)}
+      {shades.map(i=><span className="thickLayer" style={{"--layer":i}} data-layer={i} aria-hidden="true" key={i}></span>)}
       <div className="thickFace">
         <div className="thickTop">
           <span>{project.no}</span>
