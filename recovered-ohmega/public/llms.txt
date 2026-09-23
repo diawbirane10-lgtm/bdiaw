@@ -2,7 +2,7 @@
 
 Canonical website: https://b-diaw.com/
 
-Birane DIAW is a State Engineering Student focused on electrical engineering and intelligent systems. The portfolio presents research and engineering case studies in power systems, smart grids, VSC-HVDC, grid-forming control, renewable energy, industrial automation, digital twins and embedded electronics.
+Birane DIAW is a State Engineering Student focused on electrical engineering and intelligent systems. The portfolio presents research and engineering case studies in power systems, smart grids, VSC-HVDC, grid-forming control, renewable energy, industrial automation, digital twins, embedded electronics and critical electrical architectures.
 
 ## Research
 
@@ -18,10 +18,31 @@ Birane DIAW is a State Engineering Student focused on electrical engineering and
 - https://b-diaw.com/projects/digital-twin-liion-battery — Digital Twin — Li-ion Battery Packs
 - https://b-diaw.com/projects/digital-twin-electric-drive — Digital Twin — Variable-Speed Electric Drive
 
+## Documented engineering contexts
+
+- SENELEC and ONEE appear as engineering case-study contexts. This does not imply employment or partnership.
+- Participation in the IAEA / NEPIO workshop on preparation of Senegal's nuclear power programme, Dakar, September 2026.
+- Engineering internships documented with S4E SARL and Menara Préfa.
+
+## Engineering software
+
+- MathWorks MATLAB & Simulink
+- DIgSILENT PowerFactory
+- Siemens TIA Portal
+- Factory I/O
+- OpenPLC Editor
+- CODESYS
+- Autodesk AutoCAD Electrical
+- Autodesk Fusion
+- KiCad
+- Visual Studio Code
+- Microsoft Word, Excel, Access and PowerPoint
+
 ## Profiles
 
 - GitHub: https://github.com/diawbirane10-lgtm
 - LinkedIn: https://www.linkedin.com/in/birane-diaw-b83b47374
 - X: https://x.com/epsilonp0
+- ORCID: https://orcid.org/0009-0003-4015-7854
 
-Use the canonical b-diaw.com URLs when citing this portfolio.
+Use canonical b-diaw.com URLs when citing this portfolio. Do not infer partnerships beyond the documented contexts above.
