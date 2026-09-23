@@ -40,7 +40,6 @@ const softwareGroups=[
       {name:"OpenPLC Editor",logo:"https://i0.wp.com/www.moreware.org/wp/wp-content/uploads/2022/12/openplc-editor-runtime-logo-v2.jpg?ssl=1&w=500",fit:"boost"},
       {name:"CODESYS",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Codesys_Logo.svg"},
       {name:"Autodesk AutoCAD Electrical",logo:"https://cdn.simpleicons.org/autocad/E51050",fit:"boost"},
-      {name:"Autodesk Revit",logo:"https://cdn.simpleicons.org/autodeskrevit/186BFF",fit:"boost"},
       {name:"Autodesk Fusion",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Fusion360_Logo.svg",fit:"boost"},
       {name:"KiCad",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/KiCad_logo_square.svg"}
     ]
@@ -92,7 +91,7 @@ const projectTags={
   }
 };
 
-const copy={en:{lang:"FR",title:"Birane Idriss DIAW",subtitle:"State Engineering Student — Electrical Engineering & Intelligent Systems.",intro:"Focused on high-power electrical systems, power systems, power electronics and critical electrical architectures. I work through modelling, simulation and system-level engineering, with particular interests in grid stability, HVDC / HVAC, grid-forming technologies and advanced electrical energy systems.",nav:["About","Selected work","Research","Experience","Contact"],research:{eyebrow:"Research",heading:"Accepted manuscript",summary:"This paper studies how grid-forming virtual synchronous machine control, supported by DC-coupled battery storage, can improve frequency stability in a renewable multi-terminal VSC-HVDC system. It connects converter behaviour, storage response and disturbance scenarios while keeping the control assumptions explicit.",meta:"Journal of Undergraduate Research International, KFUPM · JURI-00314-2026-02 · DOI forthcoming",link:"Journal website"},projects:{eyebrow:"Selected projects",heading:"Five selected engineering projects",open:"Open case study",more:"More projects",moreBody:"Additional prototypes and code repositories are available on GitHub.",github:"Open GitHub"},experience:{heading:"Engineering internships & field work",items:[["Final-Year Project Intern — Industrial Automation","Menara Préfa · Marrakech, Morocco","Apr — Jun 2026","Designed an intelligent AS/RS concept for automated mold changes on the QUADRA 10 press, with GRAFCET sequencing, RFID identification, PLC/HMI integration and simulation.","TIA Portal · GRAFCET · RFID · PLCSIM · Factory I/O","menara","IEC 61131-3 · IEC 60204-1 · ISO 12100"],["Intern — Engineering Office & Works Supervision","S4E SARL · Dakar, Senegal","Jul — Aug 2024","Contributed to an EDG tender file, LV sizing with Camelia, AutoCAD drawing updates, and field commissioning of a 225 kV / 20 MVA transformer at Manantali.","AutoCAD · Camelia · 225 kV · Commissioning","s4e"],["High-Voltage Engineering Intern","S4E SARL · Dakar, Senegal","Jul — Aug 2023","Observed and documented HV-substation operations, updated single-line diagrams and applied HSE procedures during field visits in Senegal, Mali and Mauritania.","HV substations · Single-line diagrams · HSE","s4e","IEC 61850"]]},path:{eyebrow:"Academic path",heading:"Engineering education",site:"School website",items:[["State Engineering Student — Electrical Engineering & Intelligent Systems","EMSI Rabat","Oct 2026 — Jun 2028","Engineering cycle focused on electrical engineering, intelligent systems and industrial technologies. The path connects power systems, smart grids, automation, supervision, embedded systems and applied engineering projects.",logos.emsi,schoolLinks.emsi],["Bachelor in Science and Techniques — Industrial Computing, Electronics, Electrical Engineering and Automation (IEEA)","FST Marrakech · Université Cadi Ayyad","Oct 2022 — Jun 2026","Four-year path combining a common scientific core in mathematics, computer science, physics and chemistry, followed by applied mathematics and a final-year reorientation toward electrical engineering. The degree now bridges modelling, industrial computing, electronics, electrotechnics and automatic control.",logos.fst,schoolLinks.fst],["Baccalauréat S2, Experimental Sciences","Cours Sainte Marie de Hann, Dakar","Jul 2022","Senegalese scientific track centred on experimental sciences, physics and mathematics. It built the base for scientific reasoning, observation, quantitative analysis and the transition toward engineering studies.",logos.csmh,schoolLinks.csmh]]},skills:{eyebrow:"Skills",heading:"Tools and methods",groups:[["Power systems, power electronics & smart grids","Smart grids · UFLS · VSC-HVDC · Grid-forming control · Virtual Synchronous Machine (VSM) · Droop control · Newton-Raphson power flow · PV conversion · Railway traction · Wave energy · Battery systems · Electric drives"],["Control & simulation","MATLAB/Simulink · Simscape Electrical · Stateflow · Clarke transform · Park transform · dq control · FOC · PLL / SRF-PLL · PID · MPC · Numerical simulation"],["Industrial automation & SCADA","Siemens TIA Portal · Siemens PLCs · CODESYS 3.5 · GRAFCET · OpenPLC · SCADA concepts"],["Embedded & electronics","KiCad · PCB design · ESP32 · C/C++ basics · Sensors · Telemetry · RF concepts"],["Engineering software","Python · FastAPI · Streamlit · CustomTkinter · Git/GitHub · Data processing · Technical documentation"],["Standards & industrial practices","IEC 61131-3 · IEC 60204-1 · IEC 61508 · IEC 62443 · IEC 61850 · IEC 61000 · ISO 12100 · ISO 13849-1 · ISA-101 · ISA-95 / IEC 62264"]]},contact:{heading:"Systems should remain understandable when they become complex.",body:"For internships, engineering collaboration or research discussions, email is the simplest entry point."},detail:["Back to portfolio","Problem","Solution","Build path","Discussion","Reports and links"]},fr:{lang:"EN",title:"Birane Idriss DIAW",subtitle:"Élève ingénieur d\'État — Génie électrique & systèmes intelligents.",intro:"Je me concentre sur les systèmes électriques de forte puissance, les réseaux électriques, l’électronique de puissance et les architectures électriques critiques. Mon travail s’appuie sur la modélisation, la simulation et l’ingénierie système, avec un intérêt particulier pour la stabilité des réseaux, le HVDC / HVAC, les technologies grid-forming et les systèmes électriques avancés.",nav:["À propos","Projets sélectionnés","Recherche","Expérience","Contact"],research:{eyebrow:"Recherche",heading:"Manuscrit accepté",summary:"Cet article étudie comment une commande grid-forming de type machine synchrone virtuelle, appuyée par un stockage batterie couplé côté DC, peut améliorer la stabilité fréquentielle d’un système VSC-HVDC multi-terminal à forte part renouvelable. Il relie le comportement des convertisseurs, la réponse du stockage et les scénarios de perturbation, avec des hypothèses de commande explicites.",meta:"Journal of Undergraduate Research International, KFUPM · JURI-00314-2026-02 · DOI à venir",link:"Site du journal"},projects:{eyebrow:"Projets sélectionnés",heading:"Cinq projets d’ingénierie sélectionnés",open:"Ouvrir la fiche projet",more:"Autres projets",moreBody:"D’autres prototypes et dépôts de code sont disponibles sur GitHub.",github:"Ouvrir GitHub"},experience:{heading:"Stages & expérience terrain",items:[["Stagiaire PFE — Maintenance & automatismes industriels","Menara Préfa · Marrakech, Maroc","Avr. — Juin 2026","Conception d’un concept AS/RS intelligent pour automatiser le changement de moules sur la presse QUADRA 10, avec séquencement GRAFCET, identification RFID, intégration automate/IHM et simulation.","TIA Portal · GRAFCET · RFID · PLCSIM · Factory I/O","menara","IEC 61131-3 · IEC 60204-1 · ISO 12100"],["Stagiaire — Bureau d’études et suivi de travaux","S4E SARL · Dakar, Sénégal","Juil. — Août 2024","Participation à un dossier d’appel d’offres EDG, dimensionnement BT avec Camelia, mise à jour de plans AutoCAD et mise en service terrain d’un transformateur 225 kV / 20 MVA à Manantali.","AutoCAD · Camelia · 225 kV · Mise en service","s4e"],["Stagiaire — Haute tension","S4E SARL · Dakar, Sénégal","Juil. — Août 2023","Observation et documentation d’installations HT, mise à jour de schémas unifilaires et application des procédures HSE lors de visites terrain au Sénégal, au Mali et en Mauritanie.","Postes HT · Schémas unifilaires · HSE","s4e","IEC 61850"]]},path:{eyebrow:"Parcours académique",heading:"Formation d’ingénieur",site:"Site de l’école",items:[["Élève ingénieur d\'État — Génie électrique & systèmes intelligents","EMSI Rabat","Oct. 2026 — Juin 2028","Cycle ingénieur orienté vers le génie électrique, les systèmes intelligents et les technologies industrielles. Le parcours relie réseaux électriques, smart grids, automatisation, supervision, systèmes embarqués et projets d’ingénierie appliquée.",logos.emsi,schoolLinks.emsi],["Bachelor en sciences et techniques — IEEA : informatique industrielle, électronique, électrotechnique et automatique","FST Marrakech · Université Cadi Ayyad","Oct. 2022 — Juin 2026","Parcours de quatre ans avec un cycle commun en mathématiques, informatique, physique et chimie, puis une spécialisation en mathématiques appliquées et une réorientation en dernière année vers le génie électrique. La formation relie aujourd’hui modélisation, informatique industrielle, électronique, électrotechnique et automatique.",logos.fst,schoolLinks.fst],["Baccalauréat S2, Sciences expérimentales","Cours Sainte Marie de Hann, Dakar","Juil. 2022","Série scientifique sénégalaise centrée sur les sciences expérimentales, les sciences physiques et les mathématiques. Elle a posé les bases du raisonnement scientifique, de l’observation, de l’analyse quantitative et du passage vers les études d’ingénierie.",logos.csmh,schoolLinks.csmh]]},skills:{eyebrow:"Compétences",heading:"Outils et méthodes",groups:[["Réseaux électriques, électronique de puissance & smart grids","Smart grids · UFLS · VSC-HVDC · Commande grid-forming · Machine synchrone virtuelle (VSM) · Commande droop · Calcul de flux Newton-Raphson · Conversion photovoltaïque · Traction ferroviaire · Énergie houlomotrice · Systèmes de batteries · Entraînements électriques"],["Commande & simulation","MATLAB/Simulink · Simscape Electrical · Stateflow · Transformée de Clarke · Transformée de Park · Commande dq · FOC · PLL / SRF-PLL · PID · MPC · Simulation numérique"],["Automatisation industrielle & SCADA","Siemens TIA Portal · Automates Siemens · CODESYS 3.5 · GRAFCET · OpenPLC · Concepts SCADA"],["Systèmes embarqués & électronique","KiCad · Conception de PCB · ESP32 · Bases C/C++ · Capteurs · Télémétrie · Concepts RF"],["Logiciels d’ingénierie","Python · FastAPI · Streamlit · CustomTkinter · Git/GitHub · Traitement de données · Documentation technique"],["Normes & pratiques industrielles","IEC 61131-3 · IEC 60204-1 · IEC 61508 · IEC 62443 · IEC 61850 · IEC 61000 · ISO 12100 · ISO 13849-1 · ISA-101 · ISA-95 / IEC 62264"]]},contact:{heading:"Les systèmes doivent rester compréhensibles même quand ils deviennent complexes.",body:"Pour un stage, une collaboration technique ou une discussion de recherche, l’email reste le point d’entrée le plus simple."},detail:["Retour au portfolio","Problème","Solution","Étapes","Discussion","Rapports et liens"]}};
+const copy={en:{lang:"FR",title:"Birane Idriss DIAW",subtitle:"State Engineering Student — Electrical Engineering & Intelligent Systems.",intro:"Focused on high-power electrical systems, power systems, power electronics and critical electrical architectures. I work through modelling, simulation and system-level engineering, with particular interests in grid stability, HVDC / HVAC, grid-forming technologies and advanced electrical energy systems.",nav:["Profile","Work","Research","Experience","Tools","Contact"],research:{eyebrow:"Research",heading:"Accepted manuscript",summary:"This paper studies how grid-forming virtual synchronous machine control, supported by DC-coupled battery storage, can improve frequency stability in a renewable multi-terminal VSC-HVDC system. It connects converter behaviour, storage response and disturbance scenarios while keeping the control assumptions explicit.",meta:"Journal of Undergraduate Research International, KFUPM · JURI-00314-2026-02 · DOI forthcoming",link:"Journal website"},projects:{eyebrow:"Selected projects",heading:"Five selected engineering projects",open:"Open case study",more:"More projects",moreBody:"Additional prototypes and code repositories are available on GitHub.",github:"Open GitHub"},experience:{heading:"Engineering internships & field work",items:[["Final-Year Project Intern — Industrial Automation","Menara Préfa · Marrakech, Morocco","Apr — Jun 2026","Designed an intelligent AS/RS concept for automated mold changes on the QUADRA 10 press, with GRAFCET sequencing, RFID identification, PLC/HMI integration and simulation.","TIA Portal · GRAFCET · RFID · PLCSIM · Factory I/O","menara","IEC 61131-3 · IEC 60204-1 · ISO 12100"],["Intern — Engineering Office & Works Supervision","S4E SARL · Dakar, Senegal","Jul — Aug 2024","Contributed to an EDG tender file, LV sizing with Camelia, AutoCAD drawing updates, and field commissioning of a 225 kV / 20 MVA transformer at Manantali.","AutoCAD · Camelia · 225 kV · Commissioning","s4e"],["High-Voltage Engineering Intern","S4E SARL · Dakar, Senegal","Jul — Aug 2023","Observed and documented HV-substation operations, updated single-line diagrams and applied HSE procedures during field visits in Senegal, Mali and Mauritania.","HV substations · Single-line diagrams · HSE","s4e","IEC 61850"]]},path:{eyebrow:"Academic path",heading:"Engineering education",site:"School website",items:[["State Engineering Student — Electrical Engineering & Intelligent Systems","EMSI Rabat","Oct 2026 — Jun 2028","Engineering cycle focused on electrical engineering, intelligent systems and industrial technologies. The path connects power systems, smart grids, automation, supervision, embedded systems and applied engineering projects.",logos.emsi,schoolLinks.emsi],["Bachelor in Science and Techniques — Industrial Computing, Electronics, Electrical Engineering and Automation (IEEA)","FST Marrakech · Université Cadi Ayyad","Oct 2022 — Jun 2026","Four-year path combining a common scientific core in mathematics, computer science, physics and chemistry, followed by applied mathematics and a final-year reorientation toward electrical engineering. The degree now bridges modelling, industrial computing, electronics, electrotechnics and automatic control.",logos.fst,schoolLinks.fst],["Baccalauréat S2, Experimental Sciences","Cours Sainte Marie de Hann, Dakar","Jul 2022","Senegalese scientific track centred on experimental sciences, physics and mathematics. It built the base for scientific reasoning, observation, quantitative analysis and the transition toward engineering studies.",logos.csmh,schoolLinks.csmh]]},skills:{eyebrow:"Skills",heading:"Tools and methods",groups:[["Power systems, power electronics & smart grids","Smart grids · UFLS · VSC-HVDC · Grid-forming control · Virtual Synchronous Machine (VSM) · Droop control · Newton-Raphson power flow · PV conversion · Railway traction · Wave energy · Battery systems · Electric drives"],["Control & simulation","MATLAB/Simulink · Simscape Electrical · Stateflow · Clarke transform · Park transform · dq control · FOC · PLL / SRF-PLL · PID · MPC · Numerical simulation"],["Industrial automation & SCADA","Siemens TIA Portal · Siemens PLCs · CODESYS 3.5 · GRAFCET · OpenPLC · SCADA concepts"],["Embedded & electronics","KiCad · PCB design · ESP32 · C/C++ basics · Sensors · Telemetry · RF concepts"],["Engineering software","Python · FastAPI · Streamlit · CustomTkinter · Git/GitHub · Data processing · Technical documentation"],["Standards & industrial practices","IEC 61131-3 · IEC 60204-1 · IEC 61508 · IEC 62443 · IEC 61850 · IEC 61000 · ISO 12100 · ISO 13849-1 · ISA-101 · ISA-95 / IEC 62264"]]},contact:{heading:"Systems should remain understandable when they become complex.",body:"For internships, engineering collaboration or research discussions, email is the simplest entry point."},detail:["Back to portfolio","Problem","Solution","Build path","Discussion","Reports and links"]},fr:{lang:"EN",title:"Birane Idriss DIAW",subtitle:"Élève ingénieur d\'État — Génie électrique & systèmes intelligents.",intro:"Je me concentre sur les systèmes électriques de forte puissance, les réseaux électriques, l’électronique de puissance et les architectures électriques critiques. Mon travail s’appuie sur la modélisation, la simulation et l’ingénierie système, avec un intérêt particulier pour la stabilité des réseaux, le HVDC / HVAC, les technologies grid-forming et les systèmes électriques avancés.",nav:["Profil","Projets","Recherche","Expérience","Outils","Contact"],research:{eyebrow:"Recherche",heading:"Manuscrit accepté",summary:"Cet article étudie comment une commande grid-forming de type machine synchrone virtuelle, appuyée par un stockage batterie couplé côté DC, peut améliorer la stabilité fréquentielle d’un système VSC-HVDC multi-terminal à forte part renouvelable. Il relie le comportement des convertisseurs, la réponse du stockage et les scénarios de perturbation, avec des hypothèses de commande explicites.",meta:"Journal of Undergraduate Research International, KFUPM · JURI-00314-2026-02 · DOI à venir",link:"Site du journal"},projects:{eyebrow:"Projets sélectionnés",heading:"Cinq projets d’ingénierie sélectionnés",open:"Ouvrir la fiche projet",more:"Autres projets",moreBody:"D’autres prototypes et dépôts de code sont disponibles sur GitHub.",github:"Ouvrir GitHub"},experience:{heading:"Stages & expérience terrain",items:[["Stagiaire PFE — Maintenance & automatismes industriels","Menara Préfa · Marrakech, Maroc","Avr. — Juin 2026","Conception d’un concept AS/RS intelligent pour automatiser le changement de moules sur la presse QUADRA 10, avec séquencement GRAFCET, identification RFID, intégration automate/IHM et simulation.","TIA Portal · GRAFCET · RFID · PLCSIM · Factory I/O","menara","IEC 61131-3 · IEC 60204-1 · ISO 12100"],["Stagiaire — Bureau d’études et suivi de travaux","S4E SARL · Dakar, Sénégal","Juil. — Août 2024","Participation à un dossier d’appel d’offres EDG, dimensionnement BT avec Camelia, mise à jour de plans AutoCAD et mise en service terrain d’un transformateur 225 kV / 20 MVA à Manantali.","AutoCAD · Camelia · 225 kV · Mise en service","s4e"],["Stagiaire — Haute tension","S4E SARL · Dakar, Sénégal","Juil. — Août 2023","Observation et documentation d’installations HT, mise à jour de schémas unifilaires et application des procédures HSE lors de visites terrain au Sénégal, au Mali et en Mauritanie.","Postes HT · Schémas unifilaires · HSE","s4e","IEC 61850"]]},path:{eyebrow:"Parcours académique",heading:"Formation d’ingénieur",site:"Site de l’école",items:[["Élève ingénieur d\'État — Génie électrique & systèmes intelligents","EMSI Rabat","Oct. 2026 — Juin 2028","Cycle ingénieur orienté vers le génie électrique, les systèmes intelligents et les technologies industrielles. Le parcours relie réseaux électriques, smart grids, automatisation, supervision, systèmes embarqués et projets d’ingénierie appliquée.",logos.emsi,schoolLinks.emsi],["Bachelor en sciences et techniques — IEEA : informatique industrielle, électronique, électrotechnique et automatique","FST Marrakech · Université Cadi Ayyad","Oct. 2022 — Juin 2026","Parcours de quatre ans avec un cycle commun en mathématiques, informatique, physique et chimie, puis une spécialisation en mathématiques appliquées et une réorientation en dernière année vers le génie électrique. La formation relie aujourd’hui modélisation, informatique industrielle, électronique, électrotechnique et automatique.",logos.fst,schoolLinks.fst],["Baccalauréat S2, Sciences expérimentales","Cours Sainte Marie de Hann, Dakar","Juil. 2022","Série scientifique sénégalaise centrée sur les sciences expérimentales, les sciences physiques et les mathématiques. Elle a posé les bases du raisonnement scientifique, de l’observation, de l’analyse quantitative et du passage vers les études d’ingénierie.",logos.csmh,schoolLinks.csmh]]},skills:{eyebrow:"Compétences",heading:"Outils et méthodes",groups:[["Réseaux électriques, électronique de puissance & smart grids","Smart grids · UFLS · VSC-HVDC · Commande grid-forming · Machine synchrone virtuelle (VSM) · Commande droop · Calcul de flux Newton-Raphson · Conversion photovoltaïque · Traction ferroviaire · Énergie houlomotrice · Systèmes de batteries · Entraînements électriques"],["Commande & simulation","MATLAB/Simulink · Simscape Electrical · Stateflow · Transformée de Clarke · Transformée de Park · Commande dq · FOC · PLL / SRF-PLL · PID · MPC · Simulation numérique"],["Automatisation industrielle & SCADA","Siemens TIA Portal · Automates Siemens · CODESYS 3.5 · GRAFCET · OpenPLC · Concepts SCADA"],["Systèmes embarqués & électronique","KiCad · Conception de PCB · ESP32 · Bases C/C++ · Capteurs · Télémétrie · Concepts RF"],["Logiciels d’ingénierie","Python · FastAPI · Streamlit · CustomTkinter · Git/GitHub · Traitement de données · Documentation technique"],["Normes & pratiques industrielles","IEC 61131-3 · IEC 60204-1 · IEC 61508 · IEC 62443 · IEC 61850 · IEC 61000 · ISO 12100 · ISO 13849-1 · ISA-101 · ISA-95 / IEC 62264"]]},contact:{heading:"Les systèmes doivent rester compréhensibles même quand ils deviennent complexes.",body:"Pour un stage, une collaboration technique ou une discussion de recherche, l’email reste le point d’entrée le plus simple."},detail:["Retour au portfolio","Problème","Solution","Étapes","Discussion","Rapports et liens"]}};
 
 function resourceLabel(label,lang){
   if(lang!=="fr")return label;
@@ -118,23 +117,72 @@ function ProfileStats({lang}){
   return <dl className="profileStats">{values.map((v,i)=><div className="profileStat" key={labels[i]}><dt>{i===0?String(v)+"+":v}</dt><dd>{labels[i]}</dd></div>)}</dl>
 }
 
+function SystemPreview({lang}){
+  return <div className="systemPreview depthCard motionItem" aria-hidden="true">
+    <div className="systemPreviewHead">
+      <span>OHMEGA / SYSTEM VIEW</span>
+      <span className="systemLive"><i></i> LIVE MODEL</span>
+    </div>
+    <div className="systemCanvas">
+      <svg viewBox="0 0 640 360" focusable="false">
+        <g className="systemGrid">
+          <path d="M40 70H600M40 150H600M40 230H600M40 310H600"/>
+          <path d="M110 30V330M240 30V330M370 30V330M500 30V330"/>
+        </g>
+        <path className="systemTrace" d="M52 238 C94 238 104 125 153 125 S215 277 266 277 S334 151 387 151 S457 230 514 230 S568 96 610 96"/>
+        <g className="systemNodes">
+          <circle cx="100" cy="250" r="9"/><circle cx="238" cy="184" r="9"/><circle cx="372" cy="214" r="9"/><circle cx="526" cy="126" r="9"/>
+          <path d="M100 250L238 184L372 214L526 126"/>
+        </g>
+      </svg>
+    </div>
+    <div className="systemPreviewFoot">
+      <span><b>50 Hz</b><small>{lang==="fr"?"Réseau":"Grid"}</small></span>
+      <span><b>GFM</b><small>{lang==="fr"?"Commande":"Control"}</small></span>
+      <span><b>PLC</b><small>{lang==="fr"?"Automatisation":"Automation"}</small></span>
+    </div>
+  </div>
+}
+
+function FeaturedProject({p,lang}){
+  const tags=projectTags[p.slug];
+  return <article className="projectFeature depthCard motionItem">
+    <a className="projectFeatureMedia" href={`/projects/${p.slug}`} aria-label={p.title}>
+      <img src={p.image} alt="" loading="lazy"/>
+    </a>
+    <div className="projectFeatureBody">
+      <div className="projectFeatureMeta"><span>{p.no}</span><span>{p.field[lang]}</span></div>
+      <h3><a href={`/projects/${p.slug}`}>{p.title}</a></h3>
+      <p>{p.body[lang]}</p>
+      <div className="projectFeatureFoot">
+        <div className="projectTags">{tags?.skills[lang].slice(0,2).map(tag=><span className="projectTag" key={tag}>{tag}</span>)}</div>
+        <a className="openCase" href={`/projects/${p.slug}`}>{lang==="fr"?"Ouvrir le projet":"Open case study"} <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </article>
+}
+
 function Home({t,lang}){
   const[navOpen,setNavOpen]=useState(false);
-  const navTargets=["#about","#projects","#research","#experience","#contact"];
+  const navTargets=["#about","#projects","#research","#experience","#software","#contact"];
   return <>
-    <header className="hero heroReveal" id="top">
-      <div className="heroKicker">{lang==="fr"?"PORTFOLIO · GÉNIE ÉLECTRIQUE":"PORTFOLIO · ELECTRICAL ENGINEERING"}</div>
-      <div className="availabilityBar" aria-label={lang==="fr"?"Disponibilités":"Availability"}>
-        <span className="availabilityDot" aria-hidden="true"></span>
-        <span>{lang==="fr"?"DISPONIBLE À L’INTERNATIONAL POUR":"AVAILABLE WORLDWIDE FOR"}</span>
-        <strong>{lang==="fr"?"STAGES · COLLABORATIONS DE RECHERCHE · FELLOWSHIPS":"INTERNSHIPS · RESEARCH COLLABORATIONS · FELLOWSHIPS"}</strong>
+    <header className="heroV5" id="top">
+      <div className="heroV5Copy motionItem">
+        <div className="heroV5Topline">
+          <span>{lang==="fr"?"GÉNIE ÉLECTRIQUE · SYSTÈMES INTELLIGENTS":"ELECTRICAL ENGINEERING · INTELLIGENT SYSTEMS"}</span>
+          <span className="availabilityPill"><i></i>{lang==="fr"?"Disponible à l’international":"Available worldwide"}</span>
+        </div>
+        <h1>{t.title}</h1>
+        <p className="heroRole">{t.subtitle}</p>
+        <p className="heroIntro">{lang==="fr"
+          ?"Je conçois et simule des systèmes électriques de puissance, de commande et d’automatisation avec une approche système claire, vérifiable et orientée terrain."
+          :"I design and simulate power, control and automation systems with a clear, verifiable, system-level engineering approach."}</p>
+        <div className="heroV5Actions">
+          <a className="primaryAction" href="#projects">{lang==="fr"?"Voir les projets":"View selected work"} <span>↘</span></a>
+          <a className="secondaryAction" href={mail}>{lang==="fr"?"Me contacter":"Contact"} <span>↗</span></a>
+        </div>
       </div>
-      <h1>{t.title}</h1>
-      <p className="lead">{t.subtitle}</p>
-      <p className="introCopy">{t.intro}</p>
-      <a className="heroScrollCue" href="#about" aria-label={lang==="fr"?"Découvrir le portfolio":"Explore the portfolio"}>
-        <span>{lang==="fr"?"Découvrir":"Explore"}</span><span aria-hidden="true">↓</span>
-      </a>
+      <SystemPreview lang={lang}/>
       <button className="mobileMenuButton" type="button" aria-expanded={navOpen} aria-controls="portfolio-navigation" onClick={()=>setNavOpen(v=>!v)}>
         <span className="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span><span>Menu</span>
       </button>
@@ -143,90 +191,75 @@ function Home({t,lang}){
       </nav>
     </header>
 
-    <Section id="about" title={lang==="fr"?"À propos":"About"} subtitle={lang==="fr"?"Profil d’ingénierie":"Engineering profile"}>
-      <div className="aboutGrid">
-        <div className="aboutStatement motionItem">
-          <p className="aboutLead">{lang==="fr"
-            ?"Élève ingénieur d’État en Génie Électrique et Systèmes Intelligents, orienté systèmes électriques de forte puissance, réseaux électriques, électronique de puissance et architectures électriques critiques."
-            :"State Engineering student in Electrical Engineering & Intelligent Systems, focused on high-power electrical systems, power systems, power electronics and critical electrical architectures."}</p>
+    <Section id="about" title={lang==="fr"?"Profil":"Profile"} subtitle={lang==="fr"?"Une lecture rapide":"At a glance"}>
+      <div className="profileV5">
+        <div className="profileV5Copy motionItem">
+          <p className="profileLead">{lang==="fr"
+            ?"Élève ingénieur d’État en Génie Électrique et Systèmes Intelligents, orienté réseaux électriques, électronique de puissance, automatisation et architectures critiques."
+            :"State Engineering student in Electrical Engineering & Intelligent Systems, focused on power systems, power electronics, automation and critical electrical architectures."}</p>
           <p>{lang==="fr"
-            ?"Mon travail s’appuie sur la modélisation, la simulation, la commande et l’ingénierie système, avec un intérêt particulier pour la stabilité des réseaux, le HVDC / HVAC, les technologies grid-forming et les systèmes électriques avancés. J’étends progressivement cette même approche aux systèmes électromécaniques autonomes et à la robotique industrielle, à l’intersection des capteurs, de l’actionnement électrique, de l’automatisation et de l’intelligence embarquée."
-            :"My work is driven by modelling, simulation, control and system-level engineering, with particular interests in grid stability, HVDC / HVAC, grid-forming technologies and advanced electrical energy systems. I am progressively extending this same approach to autonomous electromechanical systems and industrial robotics, where sensing, electrical actuation, automation and embedded intelligence come together."}</p>
+            ?"Mon fil conducteur : rendre les systèmes complexes compréhensibles, simulables et justifiables — du réseau électrique jusqu’à la logique de commande."
+            :"My common thread: make complex systems understandable, simulatable and justifiable — from the electrical grid down to control logic."}</p>
+          <div className="focusPills">
+            <span>Power systems</span><span>HVDC / HVAC</span><span>Grid-forming</span><span>Industrial automation</span>
+          </div>
         </div>
         <ProfileStats lang={lang}/>
       </div>
-      <a className="educationStrip motionItem" href="https://emsi.ma/" target="_blank" rel="noreferrer" aria-label={lang==="fr"?"École Marocaine des Sciences de l’Ingénieur — site officiel":"École Marocaine des Sciences de l’Ingénieur — official website"}>
+      <a className="educationV5 motionItem" href="https://emsi.ma/" target="_blank" rel="noreferrer">
         <span className="educationLogo" aria-hidden="true"><img src="https://emsi.ma/wp-content/uploads/2024/03/favicon.svg" alt=""/></span>
-        <span className="educationCopy">
-          <span className="educationEyebrow">{lang==="fr"?"FORMATION ACTUELLE":"CURRENT EDUCATION"}</span>
-          <strong>École Marocaine des Sciences de l’Ingénieur · Rabat</strong>
-          <span>{lang==="fr"?"Génie Électrique & Systèmes Intelligents":"Electrical Engineering & Intelligent Systems"}</span>
-        </span>
-        <span className="educationArrow" aria-hidden="true">↗</span>
+        <span><small>{lang==="fr"?"FORMATION ACTUELLE":"CURRENT EDUCATION"}</small><strong>École Marocaine des Sciences de l’Ingénieur · Rabat</strong><em>{lang==="fr"?"Génie Électrique & Systèmes Intelligents":"Electrical Engineering & Intelligent Systems"}</em></span>
+        <b aria-hidden="true">↗</b>
       </a>
     </Section>
 
-    <Section id="projects" title={lang==="fr"?"Projets sélectionnés":"Selected Work"} subtitle={lang==="fr"?"Une sélection parmi plus de 17 projets":"A selection from 17+ engineering projects"}>
-      <div className="workList">
-        {projects.map(p=><article className="workRow motionItem" key={p.slug}>
-          <div className="workRowIndex">{p.no}</div>
-          <div className="workRowMain">
-            <p className="workField">{p.field[lang]}</p>
-            <h3><ExtLink href={`/projects/${p.slug}`} className="titleLink">{p.title}</ExtLink></h3>
-            <p className="workBody">{p.body[lang]}</p>
-          </div>
-          <div className="workRowMeta">
-            <div className="projectTags" aria-label={lang==="fr"?"Compétences et logiciels":"Skills and software"}>
-              {projectTags[p.slug]?.skills[lang].slice(0,2).map(tag=><span className="projectTag" key={`skill-${tag}`}>{tag}</span>)}
-              {projectTags[p.slug]?.tools.slice(0,1).map(tag=><span className="projectTag toolTag" key={`tool-${tag}`}>{tag}</span>)}
-            </div>
-            <ExtLink href={`/projects/${p.slug}`} className="workRowLink">{lang==="fr"?"Voir le projet":"View project"} <span aria-hidden="true">↗</span></ExtLink>
-          </div>
-        </article>)}
+    <Section id="projects" title={lang==="fr"?"Projets sélectionnés":"Selected Work"} subtitle={lang==="fr"?"Trois études mises en avant, puis deux accès rapides":"Three featured cases, then two quick entries"}>
+      <div className="featuredProjects">
+        {projects.slice(0,3).map(p=><FeaturedProject p={p} lang={lang} key={p.slug}/>)}
       </div>
-      <div className="workArchive motionItem">
-        <div><strong>17+</strong><span>{lang==="fr"?"projets d’ingénierie":"engineering projects"}</span></div>
-        <p>{lang==="fr"?"Cette page n’en montre qu’une sélection. Le reste est disponible sur GitHub.":"This page shows only a selection. More projects are available on GitHub."}</p>
-        <ExtLink href={github}>{lang==="fr"?"Explorer GitHub":"Explore GitHub"}</ExtLink>
+      <div className="moreProjects motionItem">
+        <div className="moreProjectsHead"><span>{lang==="fr"?"Autres projets sélectionnés":"More selected work"}</span><ExtLink href={github}>{lang==="fr"?"Voir GitHub":"Explore GitHub"}</ExtLink></div>
+        {projects.slice(3).map(p=><a className="projectQuick" href={`/projects/${p.slug}`} key={p.slug}>
+          <span>{p.no}</span><strong>{p.title}</strong><em>{p.field[lang]}</em><b>↗</b>
+        </a>)}
       </div>
     </Section>
 
-    <Section id="research" title={lang==="fr"?"Recherche":"Research"} subtitle={lang==="fr"?"Publication sélectionnée":"Selected publication"}>
-      <article className="researchFeature motionItem">
+    <Section id="research" title={lang==="fr"?"Recherche":"Research"} subtitle={lang==="fr"?"Une publication, un message clair":"One publication, one clear story"}>
+      <article className="researchV5 depthCard motionItem">
         <div className="researchBrand"><a href={juri} target="_blank" rel="noreferrer"><img src={logos.juri} alt="Journal of Undergraduate Research International logo"/></a></div>
-        <div className="researchContent">
-          <p className="meta">{lang==="fr"?"Accepté pour publication · DOI à venir":"Accepted for publication · DOI forthcoming"}</p>
+        <div className="researchV5Content">
+          <span className="statusPill">{lang==="fr"?"Accepté pour publication · DOI à venir":"Accepted for publication · DOI forthcoming"}</span>
           <h3>Grid-Forming Virtual Synchronous Machine Control with Battery Storage for Frequency Stability in Multiterminal High-Voltage Direct-Current Systems</h3>
-          <p className="summary">{t.research.summary}</p>
-          <p className="journal">{t.research.meta}</p>
-          <nav className="researchActions">
-            <ExtLink href={juri}>{t.research.link}</ExtLink>
-            <ExtLink href={orcid}>ORCID 0009-0003-4015-7854</ExtLink>
-          </nav>
+          <p>{lang==="fr"
+            ?"Une étude de stabilité fréquentielle reliant commande grid-forming, VSM, VSC-HVDC multi-terminal et stockage batterie."
+            :"A frequency-stability study connecting grid-forming control, VSM, multi-terminal VSC-HVDC and battery storage."}</p>
+          <div className="researchV5Links"><ExtLink href={juri}>{t.research.link}</ExtLink><ExtLink href={orcid}>ORCID</ExtLink></div>
         </div>
       </article>
     </Section>
 
-    <Section id="experience" title={lang==="fr"?"Expérience":"Experience"} subtitle={t.experience.heading}>
-      <div className="experienceList">{t.experience.items.map(([role,company,date,description,tags,logoKey,standards])=><article className="experienceItem motionItem" key={`${company}-${date}`}>
-        <span className="experienceDate">{date}</span>
-        <div className="experienceContent">
-          <div className="experienceHeader"><div><h3>{role}</h3><p className="experienceMeta">{company}</p></div><div className={`experienceLogo ${logoKey==="menara"?"menaraLogo":"s4eLogo"}`}><img src={experienceLogos[logoKey]} alt={`${company.split(" · ")[0]} logo`}/></div></div>
-          <p className="experienceBody">{description}</p>
-          <div className="experienceTags">{tags.split(" · ").slice(0,5).map(tag=><span className="experienceTag" key={tag}>{tag}</span>)}{standards?.split(" · ").slice(0,2).map(tag=><span className="experienceTag standardTag" key={`standard-${tag}`}>{tag}</span>)}</div>
-        </div>
-      </article>)}</div>
+    <Section id="experience" title={lang==="fr"?"Expérience":"Experience"} subtitle={lang==="fr"?"Terrain, automatisation et haute tension":"Field work, automation and high voltage"}>
+      <div className="experienceV5">
+        {t.experience.items.map(([role,company,date,description,tags,logoKey,standards])=><article className="experienceV5Item motionItem" key={`${company}-${date}`}>
+          <div className="experienceV5Date">{date}</div>
+          <div className="experienceV5Body">
+            <div className="experienceV5Title"><div><h3>{role}</h3><p>{company}</p></div><div className={`experienceLogo ${logoKey==="menara"?"menaraLogo":"s4eLogo"}`}><img src={experienceLogos[logoKey]} alt={`${company.split(" · ")[0]} logo`}/></div></div>
+            <p className="experienceV5Text">{description}</p>
+            <div className="experienceTags">{tags.split(" · ").slice(0,3).map(tag=><span className="experienceTag" key={tag}>{tag}</span>)}{standards?.split(" · ").slice(0,1).map(tag=><span className="experienceTag standardTag" key={tag}>{tag}</span>)}</div>
+          </div>
+        </article>)}
+      </div>
     </Section>
 
-
-    <Section id="software" title={lang==="fr"?"Logiciels d’ingénierie":"Engineering Software"} subtitle={lang==="fr"?"Environnements techniques & outils de travail":"Engineering environments & work tools"}>
-      <div className="softwareGroups">
-        {softwareGroups.map(group=><article className="softwareGroup motionItem" key={group.key}>
-          <h3 className="softwareGroupTitle">{group.title[lang]}</h3>
-          <div className="softwareList">
-            {group.items.map(item=><div className="softwareItem" key={item.name}>
+    <Section id="software" title={lang==="fr"?"Outils":"Tools"} subtitle={lang==="fr"?"Deux familles, pas un mur de logos":"Two families, not a logo wall"}>
+      <div className="softwareDeck">
+        {softwareGroups.map(group=><article className="softwareDeckCard depthCard motionItem" key={group.key}>
+          <div className="softwareDeckHead"><span>{group.key==="engineering"?"01":"02"}</span><h3>{group.title[lang]}</h3></div>
+          <div className="softwareDeckList">
+            {group.items.map(item=><div className="softwareDeckItem" key={item.name}>
               <span className={`softwareLogo${item.fit?` is-${item.fit}`:""}`} aria-hidden="true"><img src={item.logo} alt=""/></span>
-              <span className="softwareName">{item.name}</span>
+              <span>{item.name}</span>
             </div>)}
           </div>
         </article>)}
