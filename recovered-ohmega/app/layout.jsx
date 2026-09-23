@@ -2,6 +2,7 @@ import './globals.css';
 import './navigation-polish.css';
 import './premium-engineer.css';
 import './v3-2-polish.css';
+import './v4-system.css';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import SiteAnalytics from './SiteAnalytics';
@@ -137,7 +138,12 @@ const profileJsonLd = [
         'Grid-forming control',
         'Renewable energy',
         'Industrial automation',
-        'MATLAB/Simulink',
+        'MATLAB and Simulink',
+        'DIgSILENT PowerFactory',
+        'Siemens TIA Portal',
+        'Autodesk AutoCAD Electrical',
+        'Autodesk Fusion',
+        'KiCad',
         'Digital twins',
         'Embedded systems',
       ],
