@@ -1095,3 +1095,69 @@ body{
     border-radius:7px!important;
   }
 }
+
+
+/* Final micro-alignment + availability emphasis */
+@media(min-width:901px){
+  .topbar > .brand{
+    padding-left:10px!important;
+  }
+  .topbar > .switches{
+    padding-right:10px!important;
+  }
+}
+
+.availabilityBar{
+  font-size:11.5px!important;
+  line-height:1.5!important;
+  letter-spacing:.075em!important;
+  gap:12px!important;
+}
+.availabilityBar strong{
+  font-size:11.8px!important;
+  font-weight:760!important;
+  letter-spacing:.055em!important;
+}
+.availabilityDot{
+  width:9px!important;
+  height:9px!important;
+  flex:0 0 9px!important;
+  border-radius:50%!important;
+  background:#174C3A!important;
+  box-shadow:0 0 0 0 rgba(23,76,58,.42)!important;
+  animation:availabilityPulse 1.6s ease-out infinite!important;
+}
+@keyframes availabilityPulse{
+  0%{
+    opacity:1;
+    box-shadow:0 0 0 0 rgba(23,76,58,.42);
+  }
+  55%{
+    opacity:.82;
+    box-shadow:0 0 0 7px rgba(23,76,58,0);
+  }
+  100%{
+    opacity:1;
+    box-shadow:0 0 0 0 rgba(23,76,58,0);
+  }
+}
+@media(max-width:640px){
+  .availabilityBar{
+    font-size:10.8px!important;
+    line-height:1.5!important;
+    gap:9px!important;
+  }
+  .availabilityBar strong{
+    font-size:11px!important;
+  }
+  .availabilityDot{
+    width:8px!important;
+    height:8px!important;
+    flex-basis:8px!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .availabilityDot{
+    animation:none!important;
+  }
+}
