@@ -1100,10 +1100,10 @@ body{
 /* Final micro-alignment + availability emphasis */
 @media(min-width:901px){
   .topbar > .brand{
-    padding-left:10px!important;
+    padding-left:7px!important;
   }
   .topbar > .switches{
-    padding-right:10px!important;
+    padding-right:7px!important;
   }
 }
 
