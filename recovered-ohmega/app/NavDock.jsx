@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 export default function NavDock() {
   useEffect(() => {
-    const desktop = window.matchMedia("(min-width: 901px)");
-    const mobile = window.matchMedia("(max-width: 640px)");
+    const desktop = window.matchMedia("(min-width: 761px)");
+    const mobile = window.matchMedia("(max-width: 760px)");
     let nav = null;
     let menuButton = null;
     let navPlaceholder = null;
