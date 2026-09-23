@@ -1161,3 +1161,78 @@ body{
     animation:none!important;
   }
 }
+
+
+/* Availability signal — visibly active, still restrained */
+.availabilityBar{
+  font-size:12.2px!important;
+}
+.availabilityBar > span:nth-child(2){
+  color:#174C3A!important;
+  font-weight:780!important;
+  letter-spacing:.085em!important;
+}
+.availabilityBar strong{
+  color:#11161C!important;
+  font-size:12.4px!important;
+  font-weight:760!important;
+}
+.availabilityDot{
+  position:relative!important;
+  display:inline-block!important;
+  width:10px!important;
+  height:10px!important;
+  flex:0 0 10px!important;
+  border-radius:50%!important;
+  background:#1F8A5B!important;
+  box-shadow:0 0 0 3px rgba(31,138,91,.12)!important;
+  animation:availabilityLed 1.25s ease-in-out infinite!important;
+}
+.availabilityDot::after{
+  content:""!important;
+  position:absolute!important;
+  inset:-5px!important;
+  border:1px solid rgba(31,138,91,.42)!important;
+  border-radius:50%!important;
+  transform:scale(.65)!important;
+  opacity:.8!important;
+  animation:availabilityRing 1.25s ease-out infinite!important;
+}
+@keyframes availabilityLed{
+  0%,100%{
+    opacity:1;
+    transform:scale(1);
+    box-shadow:0 0 0 3px rgba(31,138,91,.12),0 0 8px rgba(31,138,91,.18);
+  }
+  50%{
+    opacity:.72;
+    transform:scale(.82);
+    box-shadow:0 0 0 2px rgba(31,138,91,.08),0 0 2px rgba(31,138,91,.10);
+  }
+}
+@keyframes availabilityRing{
+  0%{transform:scale(.55);opacity:.75}
+  70%,100%{transform:scale(1.45);opacity:0}
+}
+@media(max-width:640px){
+  .availabilityBar{
+    font-size:11.2px!important;
+  }
+  .availabilityBar > span:nth-child(2){
+    font-size:11.2px!important;
+  }
+  .availabilityBar strong{
+    font-size:11.4px!important;
+  }
+  .availabilityDot{
+    width:9px!important;
+    height:9px!important;
+    flex-basis:9px!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .availabilityDot,
+  .availabilityDot::after{
+    animation:none!important;
+  }
+}
