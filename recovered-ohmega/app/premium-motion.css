@@ -712,3 +712,180 @@
     padding-left:12px!important;
   }
 }
+
+
+/* ---------- STRUCTURE FIX: ABOUT + EQUAL PROJECT CARDS ---------- */
+
+/* About must be a normal two-part section:
+   narrative/stats in one explicit grid, education strip full-width below.
+   This overrides the legacy display:contents rule that was flattening the DOM
+   and letting the education strip participate in the wrong grid. */
+#about>div:last-child{
+  display:block!important;
+}
+#about .aboutGrid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.28fr) minmax(300px,.72fr)!important;
+  gap:64px!important;
+  align-items:start!important;
+}
+#about .aboutStatement{
+  min-width:0!important;
+}
+#about .profileStats{
+  min-width:0!important;
+}
+#about .educationStrip{
+  width:100%!important;
+  grid-column:auto!important;
+  margin-top:42px!important;
+}
+
+/* Equal-size project system.
+   Desktop = clean 2-column matrix + final card centered.
+   All cards use the same fixed visual height and internal row structure. */
+.premiumProjectGrid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:42px 34px!important;
+  align-items:stretch!important;
+  padding:28px 8px 38px!important;
+}
+.thickCardWrap:nth-child(n){
+  grid-column:auto!important;
+  width:100%!important;
+  margin:0!important;
+  justify-self:stretch!important;
+  align-self:stretch!important;
+}
+.thickCardWrap:nth-child(5){
+  grid-column:1/-1!important;
+  width:calc(50% - 17px)!important;
+  justify-self:center!important;
+}
+.thickCard{
+  height:540px!important;
+  min-height:540px!important;
+}
+.thickFace{
+  grid-template-rows:auto 200px minmax(0,1fr) auto!important;
+  height:100%!important;
+  min-height:0!important;
+}
+.thickCopy{
+  min-height:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+}
+.thickCopy h3{
+  display:-webkit-box!important;
+  -webkit-box-orient:vertical!important;
+  -webkit-line-clamp:3!important;
+  overflow:hidden!important;
+}
+.thickCopy p{
+  display:-webkit-box!important;
+  -webkit-box-orient:vertical!important;
+  -webkit-line-clamp:4!important;
+  overflow:hidden!important;
+}
+
+/* Smooth scrolling/card paint:
+   no layout/paint containment on the cards because it can cause visible
+   rasterization jumps while scrolling on Chromium tablets. */
+.thickCardWrap{
+  contain:none!important;
+  content-visibility:visible!important;
+  will-change:auto!important;
+}
+.thickCard,
+.thickFace,
+.thickLayer{
+  transform-style:preserve-3d!important;
+}
+@media(pointer:coarse){
+  .thickCardWrap{
+    transform:none!important;
+  }
+  .thickLayer{
+    transform:translate3d(calc(var(--layer) * .65px),calc(var(--layer) * 1px),0)!important;
+  }
+  .thickCard,
+  .thickFace{
+    transform:none!important;
+  }
+}
+
+/* Intermediate widths: avoid the old About/grid rules returning when zoomed. */
+@media(max-width:1100px){
+  #about .aboutGrid{
+    grid-template-columns:minmax(0,1fr) minmax(260px,.58fr)!important;
+    gap:42px!important;
+  }
+  .thickCard{
+    height:515px!important;
+    min-height:515px!important;
+  }
+  .thickFace{
+    grid-template-rows:auto 180px minmax(0,1fr) auto!important;
+  }
+}
+
+@media(max-width:900px){
+  #about .aboutGrid{
+    grid-template-columns:1fr!important;
+    gap:34px!important;
+  }
+  #about .profileStats{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+  .premiumProjectGrid{
+    grid-template-columns:1fr 1fr!important;
+    gap:30px 22px!important;
+  }
+  .thickCardWrap:nth-child(5){
+    grid-column:1/-1!important;
+    width:calc(50% - 11px)!important;
+  }
+  .thickCard{
+    height:480px!important;
+    min-height:480px!important;
+  }
+  .thickFace{
+    grid-template-rows:auto 165px minmax(0,1fr) auto!important;
+  }
+  .thickCopy h3{
+    font-size:clamp(24px,3.6vw,30px)!important;
+  }
+}
+
+@media(max-width:640px){
+  #about .aboutGrid{
+    display:block!important;
+  }
+  #about .profileStats{
+    margin-top:32px!important;
+    grid-template-columns:1fr!important;
+  }
+  #about .educationStrip{
+    margin-top:30px!important;
+  }
+  .premiumProjectGrid{
+    grid-template-columns:1fr!important;
+    gap:28px!important;
+    padding-left:2px!important;
+    padding-right:2px!important;
+  }
+  .thickCardWrap:nth-child(5){
+    grid-column:auto!important;
+    width:100%!important;
+  }
+  .thickCard{
+    height:470px!important;
+    min-height:470px!important;
+  }
+  .thickFace{
+    grid-template-rows:auto 170px minmax(0,1fr) auto!important;
+  }
+}
