@@ -912,25 +912,25 @@ body{
 
 /* ---------- FOOTER CONTRAST REBALANCE ---------- */
 .footer{
-  background:#294E63!important;
+  background:#174C3A!important;
   color:#FFFFFF!important;
 }
 .footerIndex,
 .footerIndex::after{
-  color:#B7C7D0!important;
+  color:#B9D4C6!important;
 }
 .footerSectionTitle,
 .footerHeadline{
   color:#FFFFFF!important;
 }
 .footerIntro{
-  color:#D7E0E5!important;
+  color:#DDEBE4!important;
 }
 .contactDetail{
   border-bottom-color:rgba(255,255,255,.22)!important;
 }
 .contactLabel{
-  color:#B7C7D0!important;
+  color:#B9D4C6!important;
 }
 .contactValue,
 .contactValue a{
@@ -940,7 +940,7 @@ body{
   border-top-color:rgba(255,255,255,.22)!important;
 }
 .footerBrand{
-  color:#D7E0E5!important;
+  color:#DDEBE4!important;
 }
 .footerOmega{
   border-color:rgba(255,255,255,.38)!important;
@@ -954,6 +954,6 @@ body{
 .contactLinks a:hover,
 .contactLinks a:focus-visible{
   background:#FFFFFF!important;
-  color:#294E63!important;
+  color:#174C3A!important;
   border-color:#FFFFFF!important;
 }
