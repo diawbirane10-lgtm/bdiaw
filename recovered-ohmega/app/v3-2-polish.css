@@ -966,3 +966,49 @@ body{
   opacity:1!important;
   font-weight:700!important;
 }
+
+
+/* Header — same green as footer */
+.topbar{
+  background:#174C3A!important;
+  border-top-color:#174C3A!important;
+  border-bottom-color:rgba(255,255,255,.20)!important;
+}
+.topbar .brand,
+.topbar .brandText,
+.topbar .switches button,
+#portfolio-navigation.navDocked a{
+  color:#FFFFFF!important;
+}
+.topbar .brandMark{
+  color:#FFFFFF!important;
+  border-color:rgba(255,255,255,.62)!important;
+  background:transparent!important;
+}
+#portfolio-navigation.navDocked a::after{
+  background:#FFFFFF!important;
+}
+#portfolio-navigation.navDocked a:hover,
+#portfolio-navigation.navDocked a[aria-current="page"]{
+  color:#FFFFFF!important;
+}
+.topbar .switches button:hover,
+.topbar .switches button:focus-visible{
+  color:#FFFFFF!important;
+  border-bottom-color:#FFFFFF!important;
+}
+@media(max-width:640px){
+  #portfolio-navigation.navMobileDocked{
+    background:#174C3A!important;
+    border-color:rgba(255,255,255,.20)!important;
+  }
+  #portfolio-navigation.navMobileDocked a{
+    color:#FFFFFF!important;
+    border-bottom-color:rgba(255,255,255,.18)!important;
+  }
+  .topbar>.mobileMenuButton{
+    color:#FFFFFF!important;
+    border-color:rgba(255,255,255,.35)!important;
+    background:transparent!important;
+  }
+}
