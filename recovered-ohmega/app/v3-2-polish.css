@@ -957,3 +957,12 @@ body{
   color:#174C3A!important;
   border-color:#FFFFFF!important;
 }
+
+
+/* Footer social/link labels — explicit high-contrast text */
+.footerBrand > span:not(.footerOmega),
+.contactLinks a > span:not(.contactIcon){
+  color:#FFFFFF!important;
+  opacity:1!important;
+  font-weight:700!important;
+}
