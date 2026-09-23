@@ -1012,3 +1012,18 @@ body{
     background:transparent!important;
   }
 }
+
+
+/* Header auto-hide on downward scroll */
+.topbar{
+  transition:transform .28s cubic-bezier(.22,1,.36,1),background-color .2s ease,border-color .2s ease!important;
+  will-change:transform;
+}
+.topbar.is-hidden{
+  transform:translate3d(0,calc(-100% - 4px),0)!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .topbar{
+    transition:none!important;
+  }
+}
