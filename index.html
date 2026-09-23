@@ -58,6 +58,14 @@
   </head>
 
   <body>
+    <script>
+      // Redirect the old Lovable site to the new domain
+      if (location.hostname === "bdiaw.lovable.app") {
+        location.replace(
+          "https://b-diaw.com" + location.pathname + location.search + location.hash
+        );
+      }
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
