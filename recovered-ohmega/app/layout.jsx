@@ -2,6 +2,7 @@ import './globals.css';
 import './navigation-polish.css';
 import './premium-engineer.css';
 import './v3-2-polish.css';
+import './premium-motion.css';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import SiteAnalytics from './SiteAnalytics';
@@ -37,7 +38,7 @@ export const metadata = {
     images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: `OHMEGA — ${publicName}` }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: `${publicName} — Electrical Engineering & Intelligent Systems`,
     description:
       'Power systems, HVDC/HVAC, smart grids, control, automation, digital twins and embedded electronics.',
