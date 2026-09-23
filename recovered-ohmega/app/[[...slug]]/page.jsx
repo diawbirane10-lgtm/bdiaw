@@ -269,7 +269,7 @@ function Home({t,lang}){
     <EventsSection lang={lang}/>
 
     <footer id="contact" className="footer motionSection">
-      <div className="footerIndex">05</div>
+      <div className="footerIndex">07</div>
       <h2 className="footerSectionTitle">Contact</h2>
       <div className="footerContactGrid">
         <div><h3 className="footerHeadline">{t.contact.heading}</h3><span className="footerIntro">{t.contact.body}</span></div>
