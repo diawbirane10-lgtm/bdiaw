@@ -2,6 +2,7 @@
 import {useEffect,useMemo,useState} from "react";
 import {usePathname} from "next/navigation";
 import EventsSection from "../EventsSection";
+import {AnimatedStats,HeroFluidField,OmegaDepth,ThickCard} from "../PremiumMotion";
 
 const github="https://github.com/diawbirane10-lgtm";
 const linkedin="https://www.linkedin.com/in/birane-diaw-b83b47374";
@@ -122,19 +123,23 @@ function Home({t,lang}){
   const[navOpen,setNavOpen]=useState(false);
   const navTargets=["#about","#projects","#research","#experience","#contact"];
   return <>
-    <header className="hero heroReveal" id="top">
-      <div className="heroKicker">{lang==="fr"?"PORTFOLIO · GÉNIE ÉLECTRIQUE":"PORTFOLIO · ELECTRICAL ENGINEERING"}</div>
-      <div className="availabilityBar" aria-label={lang==="fr"?"Disponibilités":"Availability"}>
-        <span className="availabilityDot" aria-hidden="true"></span>
-        <span>{lang==="fr"?"DISPONIBLE À L’INTERNATIONAL POUR":"AVAILABLE WORLDWIDE FOR"}</span>
-        <strong>{lang==="fr"?"STAGES · COLLABORATIONS DE RECHERCHE · FELLOWSHIPS":"INTERNSHIPS · RESEARCH COLLABORATIONS · FELLOWSHIPS"}</strong>
+    <header className="hero heroReveal premiumHero" id="top">
+      <HeroFluidField/>
+      <div className="premiumHeroCopy">
+        <div className="heroKicker">{lang==="fr"?"PORTFOLIO · GÉNIE ÉLECTRIQUE":"PORTFOLIO · ELECTRICAL ENGINEERING"}</div>
+        <div className="availabilityBar" aria-label={lang==="fr"?"Disponibilités":"Availability"}>
+          <span className="availabilityDot" aria-hidden="true"></span>
+          <span>{lang==="fr"?"DISPONIBLE À L’INTERNATIONAL POUR":"AVAILABLE WORLDWIDE FOR"}</span>
+          <strong>{lang==="fr"?"STAGES · COLLABORATIONS DE RECHERCHE · FELLOWSHIPS":"INTERNSHIPS · RESEARCH COLLABORATIONS · FELLOWSHIPS"}</strong>
+        </div>
+        <h1>{t.title}</h1>
+        <p className="lead">{t.subtitle}</p>
+        <p className="introCopy">{t.intro}</p>
+        <a className="heroScrollCue" href="#about" aria-label={lang==="fr"?"Découvrir le portfolio":"Explore the portfolio"}>
+          <span>{lang==="fr"?"Découvrir":"Explore"}</span><span aria-hidden="true">↓</span>
+        </a>
       </div>
-      <h1>{t.title}</h1>
-      <p className="lead">{t.subtitle}</p>
-      <p className="introCopy">{t.intro}</p>
-      <a className="heroScrollCue" href="#about" aria-label={lang==="fr"?"Découvrir le portfolio":"Explore the portfolio"}>
-        <span>{lang==="fr"?"Découvrir":"Explore"}</span><span aria-hidden="true">↓</span>
-      </a>
+      <div className="premiumHeroObject"><OmegaDepth/></div>
       <button className="mobileMenuButton" type="button" aria-expanded={navOpen} aria-controls="portfolio-navigation" onClick={()=>setNavOpen(v=>!v)}>
         <span className="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span><span>Menu</span>
       </button>
@@ -153,7 +158,7 @@ function Home({t,lang}){
             ?"Mon travail s’articule autour de la modélisation, de la simulation et de l’ingénierie système, à l’intersection des systèmes de puissance, de la commande et de l’automatisation — de la stabilité des réseaux, du HVDC / HVAC et des technologies grid-forming jusqu’aux systèmes électromécaniques et au contrôle industriel. Je m’intéresse particulièrement aux architectures intégrées où conversion de puissance, capteurs, actionnement et intelligence embarquée sont conçus ensemble pour assurer stabilité, performance et fiabilité."
             :"My work centers on modelling, simulation and system-level engineering across power, control and automation, from grid stability, HVDC / HVAC and grid-forming technologies to electromechanical systems and industrial control. I am particularly interested in integrated architectures where power conversion, sensing, actuation and embedded intelligence are engineered together for stability, performance and reliability."}</p>
         </div>
-        <ProfileStats lang={lang}/>
+        <AnimatedStats lang={lang}/>
       </div>
       <a className="educationStrip motionItem" href="https://emsi.ma/" target="_blank" rel="noreferrer" aria-label={lang==="fr"?"École Marocaine des Sciences de l’Ingénieur — site officiel":"École Marocaine des Sciences de l’Ingénieur — official website"}>
         <span className="educationLogo" aria-hidden="true"><img src="https://emsi.ma/wp-content/uploads/2024/03/favicon.svg" alt=""/></span>
@@ -167,22 +172,8 @@ function Home({t,lang}){
     </Section>
 
     <Section id="projects" title={lang==="fr"?"Projets sélectionnés":"Selected Work"} subtitle={lang==="fr"?"Une sélection parmi plus de 17 projets":"A selection from 17+ engineering projects"}>
-      <div className="workList">
-        {projects.map(p=><article className="workRow motionItem" key={p.slug}>
-          <div className="workRowIndex">{p.no}</div>
-          <div className="workRowMain">
-            <p className="workField">{p.field[lang]}</p>
-            <h3><ExtLink href={`/projects/${p.slug}`} className="titleLink">{p.title}</ExtLink></h3>
-            <p className="workBody">{p.body[lang]}</p>
-          </div>
-          <div className="workRowMeta">
-            <div className="projectTags" aria-label={lang==="fr"?"Compétences et logiciels":"Skills and software"}>
-              {projectTags[p.slug]?.skills[lang].slice(0,2).map(tag=><span className="projectTag" key={`skill-${tag}`}>{tag}</span>)}
-              {projectTags[p.slug]?.tools.slice(0,1).map(tag=><span className="projectTag toolTag" key={`tool-${tag}`}>{tag}</span>)}
-            </div>
-            <ExtLink href={`/projects/${p.slug}`} className="workRowLink">{lang==="fr"?"Voir le projet":"View project"} <span aria-hidden="true">↗</span></ExtLink>
-          </div>
-        </article>)}
+      <div className="premiumProjectGrid">
+        {projects.map((p,i)=><ThickCard project={p} lang={lang} index={i} key={p.slug}/>)}
       </div>
       <div className="workArchive motionItem">
         <div><strong>17+</strong><span>{lang==="fr"?"projets d’ingénierie":"engineering projects"}</span></div>
