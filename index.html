@@ -57,16 +57,16 @@
     </script>
   </head>
 
-  <body>
+  <body style="margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a;">
+    <p style="margin:0;font-size:1.25rem;">
+      check <a href="https://b-diaw.com" style="color:#2563eb;text-decoration:underline;">https://b-diaw.com</a>
+    </p>
     <script>
-      // Redirect the old Lovable site to the new domain
-      if (location.hostname === "bdiaw.lovable.app") {
-        location.replace(
-          "https://b-diaw.com" + location.pathname + location.search + location.hash
-        );
+      if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+        setTimeout(function () {
+          location.replace("https://b-diaw.com" + location.pathname + location.search + location.hash);
+        }, 2000);
       }
     </script>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
