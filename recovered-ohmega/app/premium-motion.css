@@ -483,3 +483,232 @@
   .miniVisual .steps rect,
   .miniVisual .cells rect{opacity:1!important;transform:none!important;animation:none!important}
 }
+
+
+/* ---------- PREVIEW FIX PASS: hero scopes, smoother cards, restrained color below ---------- */
+
+/* Kill legacy grid-line placement leaking from the old hero layout.
+   Every child inside the premium copy belongs to one explicit column. */
+.premiumHeroCopy > *{
+  grid-column:1!important;
+  grid-row:auto!important;
+}
+.premiumHero{
+  grid-template-columns:minmax(0,1.16fr) minmax(300px,.84fr)!important;
+  gap:44px!important;
+}
+.premiumHeroCopy{
+  align-content:center;
+}
+.premiumHero h1{
+  max-width:860px!important;
+}
+.premiumHero .lead{
+  width:min(100%,720px)!important;
+  max-width:720px!important;
+  padding:0!important;
+}
+.premiumHero .introCopy{
+  width:min(100%,650px)!important;
+  max-width:650px!important;
+  padding:0!important;
+  border-left:0!important;
+}
+.premiumHeroObject{
+  min-width:0;
+}
+.omegaDepth{
+  width:min(31vw,390px);
+}
+
+/* Project rhythm: asymmetrical but deliberate, without per-card reveal transforms. */
+.premiumProjectGrid{
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:52px 34px;
+  align-items:start;
+  padding-top:28px;
+}
+.thickCardWrap{
+  contain:layout paint style;
+  content-visibility:auto;
+  contain-intrinsic-size:520px;
+  backface-visibility:hidden;
+}
+.thickCardWrap:nth-child(1){
+  grid-column:2/12;
+  width:100%;
+}
+.thickCardWrap:nth-child(2){
+  grid-column:1/7;
+}
+.thickCardWrap:nth-child(3){
+  grid-column:7/13;
+  margin-top:28px;
+}
+.thickCardWrap:nth-child(4){
+  grid-column:2/7;
+  margin-top:-4px;
+}
+.thickCardWrap:nth-child(5){
+  grid-column:7/12;
+  margin-top:24px;
+}
+.thickCard,
+.thickFace,
+.thickLayer{
+  backface-visibility:hidden;
+}
+.thickFace{
+  box-shadow:0 22px 48px rgba(15,39,30,.12),0 7px 16px rgba(15,39,30,.07);
+}
+
+/* On touch/coarse pointers, remove the expensive interactive depth math while
+   preserving the thick-card visual. */
+@media(pointer:coarse){
+  .thickCardWrap{
+    transform:rotate(var(--idle-rot))!important;
+  }
+  .thickCard{
+    transform:none!important;
+  }
+  .thickCardWrap:hover{
+    transform:rotate(var(--idle-rot))!important;
+  }
+  .thickCardWrap:hover .thickCard{
+    transform:none!important;
+  }
+  .thickShine{
+    display:none!important;
+  }
+  .thickLayer[data-layer="4"],
+  .thickLayer[data-layer="5"]{
+    display:none!important;
+  }
+  .thickFace{
+    box-shadow:0 16px 34px rgba(15,39,30,.11),0 5px 12px rgba(15,39,30,.06);
+  }
+}
+
+/* Lower-page color cadence: very light washes, not full saturated blocks. */
+#research,
+#software,
+#engagement{
+  position:relative;
+  isolation:isolate;
+}
+#research::after,
+#software::after,
+#engagement::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:36px;
+}
+#research::after{
+  inset:28px -22px 28px -22px;
+  background:linear-gradient(135deg,#F1F8F4 0%,#F8FBF9 68%,#FFFFFF 100%);
+}
+#software::after{
+  inset:30px -22px 30px -22px;
+  background:linear-gradient(135deg,#F4F2FF 0%,#FAF9FF 58%,#FFFFFF 100%);
+}
+#engagement::after{
+  inset:28px -22px 24px -22px;
+  background:linear-gradient(135deg,#F2FAF7 0%,#F7FBFA 60%,#FFFFFF 100%);
+}
+#research .sectionHead::after,
+#software .sectionHead::after{
+  content:"";
+  width:42px;
+  height:4px;
+  border-radius:999px;
+  align-self:end;
+  justify-self:end;
+}
+#research .sectionHead::after{background:#7BE495}
+#software .sectionHead::after{background:#8F7CFF}
+
+/* Small timeline accent to continue the green language lower down. */
+.experienceList{
+  position:relative;
+}
+.experienceList::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:linear-gradient(#174C3A 0%,rgba(23,76,58,.1) 85%,transparent);
+  opacity:.34;
+}
+.experienceItem{
+  padding-left:18px!important;
+}
+
+/* Tablet/zoomed desktop: keep the hero copy readable instead of forcing old grid scopes. */
+@media(max-width:1100px){
+  .premiumHero{
+    grid-template-columns:minmax(0,1fr) 280px!important;
+    gap:28px!important;
+  }
+  .premiumHero h1{
+    font-size:clamp(66px,10.5vw,96px)!important;
+  }
+  .premiumHero .lead{
+    font-size:clamp(24px,3.2vw,31px)!important;
+    line-height:1.05!important;
+  }
+  .premiumHero .introCopy{
+    font-size:15.5px!important;
+    line-height:1.62!important;
+  }
+  .omegaDepth{
+    width:270px;
+  }
+}
+
+@media(max-width:900px){
+  .premiumHero{
+    grid-template-columns:minmax(0,1fr) 240px!important;
+  }
+  .premiumProjectGrid{
+    grid-template-columns:1fr 1fr;
+    gap:36px 24px;
+  }
+  .thickCardWrap:nth-child(n){
+    grid-column:auto;
+    width:100%;
+    margin-top:0;
+  }
+  .thickCardWrap:nth-child(1){
+    grid-column:1/-1;
+    width:min(88%,760px);
+    justify-self:center;
+  }
+}
+
+@media(max-width:640px){
+  .premiumHeroCopy > *{
+    grid-column:auto!important;
+    grid-row:auto!important;
+  }
+  .premiumProjectGrid{
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+  .thickCardWrap:nth-child(1){
+    grid-column:auto;
+    width:100%;
+  }
+  #research::after,
+  #software::after,
+  #engagement::after{
+    inset:16px -10px 16px -10px;
+    border-radius:24px;
+  }
+  .experienceItem{
+    padding-left:12px!important;
+  }
+}
