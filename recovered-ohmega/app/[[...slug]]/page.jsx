@@ -52,6 +52,7 @@ const softwareGroups=[
       {name:"Microsoft Excel",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Microsoft_Office_Excel_(2025%E2%80%93present).svg"},
       {name:"Microsoft Access",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Microsoft_Office_Access_(2025-present).svg"},
       {name:"Microsoft PowerPoint",logo:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Microsoft_Office_PowerPoint_(2025%E2%80%93present).svg"},
+      {name:"Python",logo:"https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/files/python-logo-only.svg",fit:"boost"},
       {name:"Visual Studio Code",logo:"https://code.visualstudio.com/assets/branding/code-stable.png",fit:"boost"}
     ]
   }
@@ -149,8 +150,8 @@ function Home({t,lang}){
             ?"Élève ingénieur d’État en Génie Électrique et Systèmes Intelligents, orienté systèmes électriques de forte puissance, réseaux électriques, électronique de puissance et architectures électriques critiques."
             :"State Engineering student in Electrical Engineering & Intelligent Systems, focused on high-power electrical systems, power systems, power electronics and critical electrical architectures."}</p>
           <p>{lang==="fr"
-            ?"Mon travail s’appuie sur la modélisation, la simulation, la commande et l’ingénierie système, avec un intérêt particulier pour la stabilité des réseaux, le HVDC / HVAC, les technologies grid-forming et les systèmes électriques avancés. J’étends progressivement cette même approche aux systèmes électromécaniques autonomes et à la robotique industrielle, à l’intersection des capteurs, de l’actionnement électrique, de l’automatisation et de l’intelligence embarquée."
-            :"My work is driven by modelling, simulation, control and system-level engineering, with particular interests in grid stability, HVDC / HVAC, grid-forming technologies and advanced electrical energy systems. I am progressively extending this same approach to autonomous electromechanical systems and industrial robotics, where sensing, electrical actuation, automation and embedded intelligence come together."}</p>
+            ?"Mon travail s’articule autour de la modélisation, de la simulation et de l’ingénierie système, à l’intersection des systèmes de puissance, de la commande et de l’automatisation — de la stabilité des réseaux, du HVDC / HVAC et des technologies grid-forming jusqu’aux systèmes électromécaniques et au contrôle industriel. Je m’intéresse particulièrement aux architectures intégrées où conversion de puissance, capteurs, actionnement et intelligence embarquée sont conçus ensemble pour assurer stabilité, performance et fiabilité."
+            :"My work centers on modelling, simulation and system-level engineering across power, control and automation, from grid stability, HVDC / HVAC and grid-forming technologies to electromechanical systems and industrial control. I am particularly interested in integrated architectures where power conversion, sensing, actuation and embedded intelligence are engineered together for stability, performance and reliability."}</p>
         </div>
         <ProfileStats lang={lang}/>
       </div>
@@ -225,7 +226,7 @@ function Home({t,lang}){
           <div className="softwareList">
             {group.items.map(item=><div className="softwareItem" key={item.name}>
               <span className={`softwareLogo${item.fit?` is-${item.fit}`:""}`} aria-hidden="true"><img src={item.logo} alt=""/></span>
-              <span className="softwareName">{item.name}{item.primary?` (${lang==="fr"?"principal":"primary"})`:""}</span>
+              <span className="softwareName">{item.name}{item.primary?` (${lang==="fr"?"environnement principal":"main environment"})`:""}</span>
             </div>)}
           </div>
         </article>)}
