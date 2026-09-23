@@ -138,7 +138,7 @@ const profileJsonLd = [
         'Grid-forming control',
         'Renewable energy',
         'Industrial automation',
-        'MATLAB/Simulink',
+        'MATLAB and Simulink',
         'Digital twins',
         'Embedded systems',
       ],
