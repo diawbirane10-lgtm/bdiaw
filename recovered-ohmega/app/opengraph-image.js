@@ -12,44 +12,83 @@ export default function OpenGraphImage() {
           width: '100%',
           height: '100%',
           display: 'flex',
-          position: 'relative',
-          overflow: 'hidden',
+          alignItems: 'stretch',
+          justifyContent: 'space-between',
           background: '#ffffff',
           color: '#101210',
-          padding: '58px 64px',
+          borderTop: '12px solid #0b6b47',
           fontFamily: 'serif',
+          padding: '64px',
         }}
       >
-        <div style={{position:'absolute',top:0,left:0,width:'100%',height:10,display:'flex'}}>
-          <span style={{flex:3,background:'#0b6b47'}} />
-          <span style={{flex:1,background:'#2f6df6'}} />
-          <span style={{flex:1,background:'#7657ff'}} />
-          <span style={{flex:1,background:'#ff765f'}} />
-          <span style={{flex:1,background:'#f3c94a'}} />
+        <div
+          style={{
+            width: '72%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              fontSize: 22,
+              letterSpacing: 5,
+              color: '#0b6b47',
+            }}
+          >
+            OHMEGA / ENGINEERING PORTFOLIO
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div
+              style={{
+                display: 'flex',
+                fontSize: 92,
+                lineHeight: 0.88,
+                letterSpacing: -5,
+                fontWeight: 600,
+              }}
+            >
+              Birane Idriss DIAW
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                marginTop: 28,
+                fontSize: 30,
+                color: '#4f5852',
+              }}
+            >
+              Electrical Engineering & Intelligent Systems
+            </div>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              gap: 18,
+              fontSize: 19,
+              color: '#2f6df6',
+            }}
+          >
+            POWER SYSTEMS · CONTROL · AUTOMATION · DIGITAL TWINS
+          </div>
         </div>
-        <div style={{display:'flex',width:'100%',height:'100%',alignItems:'stretch'}}>
-          <div style={{display:'flex',flexDirection:'column',justifyContent:'space-between',width:'68%'}}>
-            <div style={{display:'flex',alignItems:'center',gap:18,fontSize:20,letterSpacing:5}}>
-              <span style={{display:'flex',width:54,height:54,border:'2px solid #0b6b47',alignItems:'center',justifyContent:'center',fontSize:38,color:'#0b6b47'}}>Ω</span>
-              <span>OHMEGA / ENGINEERING PORTFOLIO</span>
-            </div>
-            <div style={{display:'flex',flexDirection:'column'}}>
-              <div style={{fontSize:86,lineHeight:.9,letterSpacing:-4,fontWeight:600}}>Birane Idriss<br/>DIAW</div>
-              <div style={{marginTop:28,fontSize:28,color:'#4e5751'}}>Electrical Engineering & Intelligent Systems</div>
-            </div>
-            <div style={{display:'flex',gap:18,fontSize:18}}>
-              <span style={{color:'#0b6b47'}}>POWER SYSTEMS</span>
-              <span>×</span>
-              <span style={{color:'#7657ff'}}>CONTROL</span>
-              <span>×</span>
-              <span style={{color:'#2f6df6'}}>AUTOMATION</span>
-            </div>
-          </div>
-          <div style={{display:'flex',width:'32%',position:'relative',alignItems:'center',justifyContent:'center'}}>
-            <div style={{position:'absolute',width:270,height:330,background:'#e7efff',transform:'rotate(-7deg) translate(-20px,12px)',border:'1px solid #dfe5e1'}} />
-            <div style={{position:'absolute',width:270,height:330,background:'#eee9ff',transform:'rotate(7deg) translate(20px,-10px)',border:'1px solid #dfe5e1'}} />
-            <div style={{display:'flex',width:270,height:330,background:'#dff4e9',border:'2px solid #0b6b47',alignItems:'center',justifyContent:'center',fontSize:130,color:'#0b6b47'}}>Ω</div>
-          </div>
+        <div
+          style={{
+            width: 290,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: '#eee9ff',
+            border: '3px solid #7657ff',
+            boxShadow: '18px 18px 0 #fff4c8',
+            color: '#0b6b47',
+            fontSize: 190,
+            lineHeight: 1,
+          }}
+        >
+          Ω
         </div>
       </div>
     ),
