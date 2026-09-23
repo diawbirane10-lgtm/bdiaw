@@ -5,33 +5,38 @@ import {useEffect} from "react";
 export default function MotionEngine(){
   useEffect(()=>{
     const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const fine=window.matchMedia("(pointer: fine)").matches;
+    const finePointer=window.matchMedia("(pointer: fine)").matches;
     const root=document.documentElement;
     root.classList.add("motionReady");
 
-    const sections=[...document.querySelectorAll(".motionSection")];
     const items=[...document.querySelectorAll(".motionItem")];
+    const sections=[...document.querySelectorAll(".motionSection")];
 
     if(reduce){
-      sections.forEach(el=>el.classList.add("motionIn"));
       items.forEach(el=>el.classList.add("motionIn"));
+      sections.forEach(el=>el.classList.add("motionIn"));
       root.style.setProperty("--scroll-progress","1");
       return()=>root.classList.remove("motionReady");
     }
 
-    const reveal=new IntersectionObserver((entries)=>{
+    const reveal=(entries,observer)=>{
       entries.forEach(entry=>{
         if(!entry.isIntersecting)return;
+        const parent=entry.target.parentElement;
+        if(entry.target.classList.contains("motionItem")&&parent){
+          const siblings=[...parent.children].filter(node=>node.classList?.contains("motionItem"));
+          const index=siblings.indexOf(entry.target);
+          entry.target.style.setProperty("--motion-delay",`${Math.min(Math.max(index,0)*55,180)}ms`);
+        }
         entry.target.classList.add("motionIn");
-        reveal.unobserve(entry.target);
+        observer.unobserve(entry.target);
       });
-    },{threshold:.14,rootMargin:"0px 0px -8% 0px"});
+    };
 
-    sections.forEach(el=>reveal.observe(el));
-    items.forEach((el,index)=>{
-      el.style.setProperty("--motion-delay",`${Math.min((index%3)*60,120)}ms`);
-      reveal.observe(el);
-    });
+    const itemObserver=new IntersectionObserver(reveal,{threshold:.14,rootMargin:"0px 0px -8% 0px"});
+    const sectionObserver=new IntersectionObserver(reveal,{threshold:.1,rootMargin:"0px 0px -10% 0px"});
+    items.forEach(el=>itemObserver.observe(el));
+    sections.forEach(el=>sectionObserver.observe(el));
 
     const navLinks=[...document.querySelectorAll('#portfolio-navigation a[href^="#"]')];
     const navSections=navLinks
@@ -47,7 +52,7 @@ export default function MotionEngine(){
         if(section===visible.target)link.setAttribute("aria-current","page");
         else link.removeAttribute("aria-current");
       });
-    },{rootMargin:"-28% 0px -62% 0px",threshold:[0,.2,.5]});
+    },{rootMargin:"-30% 0px -58% 0px",threshold:[0,.15,.35,.6]});
     navSections.forEach(({section})=>navObserver.observe(section));
 
     let scrollFrame=0;
@@ -61,49 +66,55 @@ export default function MotionEngine(){
       if(scrollFrame)return;
       scrollFrame=requestAnimationFrame(updateProgress);
     };
+    updateProgress();
+    window.addEventListener("scroll",onScroll,{passive:true});
 
     const tiltCleanups=[];
-    if(fine){
-      document.querySelectorAll(".depthCard").forEach(card=>{
+    if(finePointer){
+      [...document.querySelectorAll(".depthCard")].forEach(el=>{
         let frame=0;
         let rx=0;
         let ry=0;
-        const apply=()=>{
+
+        const paint=()=>{
           frame=0;
-          card.style.setProperty("--rx",rx.toFixed(2)+"deg");
-          card.style.setProperty("--ry",ry.toFixed(2)+"deg");
+          el.style.setProperty("--rx",rx.toFixed(2)+"deg");
+          el.style.setProperty("--ry",ry.toFixed(2)+"deg");
         };
-        const move=(event)=>{
-          const rect=card.getBoundingClientRect();
+
+        const onMove=(event)=>{
+          const rect=el.getBoundingClientRect();
           const x=(event.clientX-rect.left)/rect.width-.5;
           const y=(event.clientY-rect.top)/rect.height-.5;
-          rx=-y*2.2;
-          ry=x*2.6;
-          if(!frame)frame=requestAnimationFrame(apply);
+          rx=-y*1.5;
+          ry=x*1.8;
+          if(!frame)frame=requestAnimationFrame(paint);
         };
-        const leave=()=>{
-          rx=0;ry=0;
-          if(!frame)frame=requestAnimationFrame(apply);
+
+        const onLeave=()=>{
+          cancelAnimationFrame(frame);
+          frame=0;
+          el.style.setProperty("--rx","0deg");
+          el.style.setProperty("--ry","0deg");
         };
-        card.addEventListener("pointermove",move,{passive:true});
-        card.addEventListener("pointerleave",leave,{passive:true});
+
+        el.addEventListener("pointermove",onMove,{passive:true});
+        el.addEventListener("pointerleave",onLeave,{passive:true});
         tiltCleanups.push(()=>{
           cancelAnimationFrame(frame);
-          card.removeEventListener("pointermove",move);
-          card.removeEventListener("pointerleave",leave);
+          el.removeEventListener("pointermove",onMove);
+          el.removeEventListener("pointerleave",onLeave);
         });
       });
     }
 
-    updateProgress();
-    window.addEventListener("scroll",onScroll,{passive:true});
-
     return()=>{
-      reveal.disconnect();
+      itemObserver.disconnect();
+      sectionObserver.disconnect();
       navObserver.disconnect();
       window.removeEventListener("scroll",onScroll);
-      tiltCleanups.forEach(fn=>fn());
       cancelAnimationFrame(scrollFrame);
+      tiltCleanups.forEach(fn=>fn());
       root.classList.remove("motionReady");
     };
   },[]);
