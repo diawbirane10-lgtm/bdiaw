@@ -46,25 +46,11 @@ export default function MotionEngine(){
     items.forEach(el=>itemObserver.observe(el));
 
     let ticking=false;
-    let lastY=window.scrollY;
-    const topbar=document.querySelector(".topbar");
     const updateProgress=()=>{
       ticking=false;
-      const y=window.scrollY;
       const max=document.documentElement.scrollHeight-window.innerHeight;
-      const progress=max>0?Math.min(1,Math.max(0,y/max)):0;
+      const progress=max>0?Math.min(1,Math.max(0,window.scrollY/max)):0;
       root.style.setProperty("--scroll-progress",String(progress));
-
-      if(topbar){
-        const navOpen=document.getElementById("portfolio-navigation")?.classList.contains("isOpen");
-        const delta=y-lastY;
-        if(y<72 || delta<-6 || navOpen){
-          topbar.classList.remove("is-hidden");
-        }else if(delta>6 && y>120){
-          topbar.classList.add("is-hidden");
-        }
-      }
-      lastY=y;
     };
     const onScroll=()=>{
       if(ticking)return;
@@ -78,7 +64,6 @@ export default function MotionEngine(){
       sectionObserver.disconnect();
       itemObserver.disconnect();
       window.removeEventListener("scroll",onScroll);
-      topbar?.classList.remove("is-hidden");
       root.classList.remove("motionReady");
     };
   },[]);

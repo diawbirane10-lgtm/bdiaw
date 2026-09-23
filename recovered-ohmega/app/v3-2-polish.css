@@ -1014,16 +1014,84 @@ body{
 }
 
 
-/* Header auto-hide on downward scroll */
+/* Header layout final — symmetric, non-sticky, language selector */
 .topbar{
-  transition:transform .28s cubic-bezier(.22,1,.36,1),background-color .2s ease,border-color .2s ease!important;
-  will-change:transform;
+  position:relative!important;
+  top:auto!important;
+  transform:none!important;
+  z-index:10!important;
 }
-.topbar.is-hidden{
-  transform:translate3d(0,calc(-100% - 4px),0)!important;
-}
-@media(prefers-reduced-motion:reduce){
+@media(min-width:901px){
   .topbar{
-    transition:none!important;
+    grid-template-columns:180px minmax(0,1fr) 180px!important;
+    column-gap:24px!important;
+  }
+  .topbar > .brand{
+    width:100%!important;
+    justify-self:stretch!important;
+    justify-content:flex-start!important;
+    padding-right:22px!important;
+    border-right:1px solid rgba(255,255,255,.22)!important;
+  }
+  .topbar > .switches{
+    width:100%!important;
+    justify-self:stretch!important;
+    justify-content:flex-end!important;
+    padding-left:22px!important;
+    border-left:1px solid rgba(255,255,255,.22)!important;
+  }
+  #portfolio-navigation.navDocked{
+    width:auto!important;
+    max-width:100%!important;
+    justify-self:center!important;
+    justify-content:center!important;
+    gap:30px!important;
+    padding:0!important;
+  }
+}
+.topbar .switches button{
+  min-width:50px!important;
+  min-height:36px!important;
+  padding:7px 12px!important;
+  border:1px solid rgba(255,255,255,.62)!important;
+  border-radius:7px!important;
+  background:transparent!important;
+  color:#FFFFFF!important;
+  font-weight:750!important;
+  letter-spacing:.06em!important;
+}
+.topbar .switches button:hover,
+.topbar .switches button:focus-visible{
+  background:#FFFFFF!important;
+  color:#174C3A!important;
+  border-color:#FFFFFF!important;
+}
+.orcidIcon img{
+  display:block!important;
+  width:27px!important;
+  height:27px!important;
+  object-fit:contain!important;
+}
+.softwarePrimary{
+  color:var(--v32-soft)!important;
+}
+@media(max-width:1100px) and (min-width:901px){
+  .topbar{
+    grid-template-columns:150px minmax(0,1fr) 150px!important;
+    column-gap:18px!important;
+  }
+  #portfolio-navigation.navDocked{gap:22px!important}
+}
+@media(max-width:640px){
+  .topbar{
+    position:relative!important;
+    top:auto!important;
+    transform:none!important;
+  }
+  .topbar .switches button{
+    min-width:46px!important;
+    min-height:34px!important;
+    padding:6px 10px!important;
+    border-radius:7px!important;
   }
 }

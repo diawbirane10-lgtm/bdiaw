@@ -10,7 +10,7 @@ import MotionEngine from './MotionEngine';
 
 const siteUrl = 'https://b-diaw.com';
 const orcidUrl = 'https://orcid.org/0009-0003-4015-7854';
-const publicName = 'Birane I. DIAW';
+const publicName = 'Birane DIAW';
 // Production refresh: dynamic portfolio architecture.
 
 export const metadata = {
