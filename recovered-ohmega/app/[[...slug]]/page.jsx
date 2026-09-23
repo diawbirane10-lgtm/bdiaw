@@ -350,5 +350,25 @@ function Home({t,lang}){
     </footer>
   </>
 }
-function ProjectDetail({project,t,lang}){return <><header className="projectHero"><ExtLink href="/">{t.detail[0]}</ExtLink><p>{project.no} · {project.field[lang]}</p><h1>{project.title}</h1><h2>{project.body[lang]}</h2>{projectTags[project.slug]?.standards?.length?<div className="caseStudyStandards" aria-label={lang==="fr"?"Normes de référence":"Reference standards"}>{projectTags[project.slug].standards.map(tag=><span className="projectTag standardTag" key={tag}>{tag}</span>)}</div>:null}</header>{project.image?<figure className="projectVisual motionSection"><div className="projectVisualFrame"><img src={project.image} alt={project.title}/></div><figcaption><span>{lang==="fr"?"VUE CONCEPTUELLE DU PROJET":"PROJECT CONCEPT VIEW"}</span><p>{project.visualNote?.[lang]}</p></figcaption></figure>:null}<section className="detailGrid"><article><p>{t.detail[1]}</p><h2>{project.problem[lang]}</h2></article><article><p>{t.detail[2]}</p><h2>{project.solution[lang]}</h2></article><article><p>{t.detail[3]}</p><ol>{project.steps[lang].map(s=><li key={s}>{s}</li>)}</ol></article><article><p>{t.detail[4]}</p><h2>{project.discussion[lang]}</h2></article><article className="wide"><p>{t.detail[5]}</p><nav className="inline">{project.links.map(([label,href])=><ExtLink href={href} key={label}>{resourceLabel(label,lang)}</ExtLink>)}</nav></article></section></>}
+function projectAccent(no){return {"01":"#0b6b47","02":"#7657ff","03":"#2f6df6","04":"#c18e00","05":"#ff765f"}[no]||"#0b6b47"}
+function ProjectDetail({project,t,lang}){return <div className="projectPage" style={{"--project-accent":projectAccent(project.no)}}>
+  <header className="projectHero">
+    <ExtLink href="/">{t.detail[0]}</ExtLink>
+    <p>{project.no} · {project.field[lang]}</p>
+    <h1>{project.title}</h1>
+    <h2>{project.body[lang]}</h2>
+    {projectTags[project.slug]?.standards?.length?<div className="caseStudyStandards" aria-label={lang==="fr"?"Normes de référence":"Reference standards"}>{projectTags[project.slug].standards.map(tag=><span className="projectTag standardTag" key={tag}>{tag}</span>)}</div>:null}
+  </header>
+  {project.image?<figure className="projectVisual motionSection">
+    <div className="projectVisualFrame"><img src={project.image} alt={project.title}/></div>
+    <figcaption><span>{lang==="fr"?"VUE CONCEPTUELLE DU PROJET":"PROJECT CONCEPT VIEW"}</span><p>{project.visualNote?.[lang]}</p></figcaption>
+  </figure>:null}
+  <section className="detailGrid">
+    <article><p>{t.detail[1]}</p><h2>{project.problem[lang]}</h2></article>
+    <article><p>{t.detail[2]}</p><h2>{project.solution[lang]}</h2></article>
+    <article><p>{t.detail[3]}</p><ol>{project.steps[lang].map(s=><li key={s}>{s}</li>)}</ol></article>
+    <article><p>{t.detail[4]}</p><h2>{project.discussion[lang]}</h2></article>
+    <article className="wide"><p>{t.detail[5]}</p><nav className="inline">{project.links.map(([label,href])=><ExtLink href={href} key={label}>{resourceLabel(label,lang)}</ExtLink>)}</nav></article>
+  </section>
+</div>}
 export default function Portfolio(){const pathname=usePathname();const[lang,setLang]=useState("en");useEffect(()=>{const savedLang=localStorage.getItem("ohmega-lang");localStorage.removeItem("ohmega-theme");localStorage.removeItem("ohmega-theme-v2");if(savedLang)setLang(savedLang);document.documentElement.dataset.theme="light"},[]);useEffect(()=>{document.documentElement.dataset.theme="light";document.documentElement.lang=lang;localStorage.setItem("ohmega-lang",lang)},[lang]);const t=useMemo(()=>copy[lang],[lang]);const slug=pathname?.startsWith("/projects/")?pathname.split("/projects/")[1]?.split("/")[0]:null;const project=projects.find(p=>p.slug===slug);return <main className="site"><Top t={t} lang={lang} setLang={setLang}/>{project?<ProjectDetail project={project} t={t} lang={lang}/>:<Home t={t} lang={lang}/>}</main>}
