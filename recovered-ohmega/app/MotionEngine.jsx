@@ -91,6 +91,39 @@ export default function MotionEngine(){
       pointerFrame=requestAnimationFrame(updatePointer);
     };
 
+    const tiltCleanups=[];
+    if(finePointer){
+      [...document.querySelectorAll(".workRow,.softwareGroup")].forEach(el=>{
+        let frame=0;
+        let nextX=0;
+        let nextY=0;
+        const apply=()=>{
+          frame=0;
+          el.style.setProperty("--tilt-x",nextY.toFixed(2)+"deg");
+          el.style.setProperty("--tilt-y",(-nextX).toFixed(2)+"deg");
+        };
+        const move=(event)=>{
+          const rect=el.getBoundingClientRect();
+          nextX=((event.clientX-rect.left)/rect.width-.5)*2.2;
+          nextY=((event.clientY-rect.top)/rect.height-.5)*1.8;
+          if(!frame)frame=requestAnimationFrame(apply);
+        };
+        const leave=()=>{
+          cancelAnimationFrame(frame);
+          frame=0;
+          el.style.setProperty("--tilt-x","0deg");
+          el.style.setProperty("--tilt-y","0deg");
+        };
+        el.addEventListener("pointermove",move,{passive:true});
+        el.addEventListener("pointerleave",leave,{passive:true});
+        tiltCleanups.push(()=>{
+          cancelAnimationFrame(frame);
+          el.removeEventListener("pointermove",move);
+          el.removeEventListener("pointerleave",leave);
+        });
+      });
+    }
+
     updateProgress();
     window.addEventListener("scroll",onScroll,{passive:true});
     if(finePointer)window.addEventListener("pointermove",onPointerMove,{passive:true});
@@ -101,6 +134,7 @@ export default function MotionEngine(){
       navObserver.disconnect();
       window.removeEventListener("scroll",onScroll);
       window.removeEventListener("pointermove",onPointerMove);
+      tiltCleanups.forEach(fn=>fn());
       cancelAnimationFrame(scrollFrame);
       cancelAnimationFrame(pointerFrame);
       root.classList.remove("motionReady");
