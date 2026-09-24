@@ -133,7 +133,7 @@ function Home({t,lang}){
               <rect x="20" y="0" width="10" height="20" fill="#E31B23"/>
               <polygon fill="#00853F" points="15,5.2 16.2,8.8 20,8.8 16.9,11 18.1,14.6 15,12.4 11.9,14.6 13.1,11 10,8.8 13.8,8.8"/>
             </svg>
-            <span>SENEGAL, WEST AFRICA</span>
+            <span><span className="identityLead">ORIGINALLY FROM</span> — SENEGAL, WEST AFRICA</span>
           </span>
           <span className="moroccoMark">
             <svg className="moroccoFlag" viewBox="0 0 30 20" aria-hidden="true" focusable="false">
@@ -141,7 +141,7 @@ function Home({t,lang}){
               <polygon points="15,4.2 16.7,9.1 21.9,9.2 17.8,12.2 19.3,17 15,14.1 10.7,17 12.2,12.2 8.1,9.2 13.3,9.1"
                 fill="none" stroke="#006233" stroke-width="1.15" stroke-linejoin="round"/>
             </svg>
-            <span>RABAT, MOROCCO</span>
+            <span><span className="identityLead">BASED IN</span> — RABAT, MOROCCO, NORTH AFRICA</span>
           </span>
         </span>
       </div>

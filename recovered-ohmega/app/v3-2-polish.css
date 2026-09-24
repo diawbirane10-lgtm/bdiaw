@@ -2168,3 +2168,16 @@ body{
     height:14px!important;
   }
 }
+
+
+/* Clarify origin vs current base in hero identity */
+.identityLead{
+  font-weight:820!important;
+  color:#174C3A!important;
+}
+.moroccoMark .identityLead{
+  color:#174C3A!important;
+}
+.moroccoMark{
+  color:#5E6762!important;
+}
