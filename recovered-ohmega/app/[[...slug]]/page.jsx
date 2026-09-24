@@ -123,7 +123,18 @@ function Home({t,lang}){
   const navTargets=["#about","#projects","#research","#experience","#contact"];
   return <>
     <header className="hero heroReveal" id="top">
-      <div className="heroKicker">{lang==="fr"?"PORTFOLIO · GÉNIE ÉLECTRIQUE":"PORTFOLIO · ELECTRICAL ENGINEERING"}</div>
+      <div className="heroKicker">
+        <span>{lang==="fr"?"PORTFOLIO · GÉNIE ÉLECTRIQUE":"PORTFOLIO · ELECTRICAL ENGINEERING"}</span>
+        <span className="senegalMark">
+          <svg className="senegalFlag" viewBox="0 0 30 20" aria-hidden="true" focusable="false">
+            <rect x="0" y="0" width="10" height="20" fill="#00853F"/>
+            <rect x="10" y="0" width="10" height="20" fill="#FDEF42"/>
+            <rect x="20" y="0" width="10" height="20" fill="#E31B23"/>
+            <polygon fill="#00853F" points="15,5.2 16.2,8.8 20,8.8 16.9,11 18.1,14.6 15,12.4 11.9,14.6 13.1,11 10,8.8 13.8,8.8"/>
+          </svg>
+          <span>SENEGAL</span>
+        </span>
+      </div>
       <div className="availabilityBar" aria-label={lang==="fr"?"Disponibilités":"Availability"}>
         <span className="availabilityDot" aria-hidden="true"></span>
         <span>{lang==="fr"?"DISPONIBLE À L’INTERNATIONAL POUR":"AVAILABLE WORLDWIDE FOR"}</span>

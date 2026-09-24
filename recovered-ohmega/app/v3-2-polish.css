@@ -2092,3 +2092,42 @@ body{
     line-height:.96!important;
   }
 }
+
+
+/* Senegal identity mark beneath the portfolio kicker */
+.heroKicker{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  gap:10px!important;
+}
+.senegalMark{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  width:max-content!important;
+  color:#174C3A!important;
+  font:700 10px/1 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
+  letter-spacing:.10em!important;
+}
+.senegalFlag{
+  display:block!important;
+  width:21px!important;
+  height:14px!important;
+  flex:0 0 auto!important;
+  border:1px solid rgba(16,20,16,.10)!important;
+  box-shadow:0 2px 5px rgba(16,20,16,.08)!important;
+}
+@media(max-width:640px){
+  .heroKicker{
+    gap:8px!important;
+  }
+  .senegalMark{
+    gap:7px!important;
+    font-size:9.5px!important;
+  }
+  .senegalFlag{
+    width:19px!important;
+    height:12.7px!important;
+  }
+}
