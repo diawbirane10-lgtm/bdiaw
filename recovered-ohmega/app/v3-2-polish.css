@@ -2131,3 +2131,40 @@ body{
     height:14px!important;
   }
 }
+
+
+/* Residence marker beneath Senegal identity */
+.heroIdentityStack{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  gap:8px!important;
+}
+.moroccoMark{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  width:max-content!important;
+  color:#5E6762!important;
+  font:700 11.2px/1 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
+  letter-spacing:.095em!important;
+}
+.moroccoFlag{
+  display:block!important;
+  width:24px!important;
+  height:16px!important;
+  flex:0 0 auto!important;
+  border:1px solid rgba(16,20,16,.10)!important;
+  box-shadow:0 2px 5px rgba(16,20,16,.08)!important;
+}
+@media(max-width:640px){
+  .heroIdentityStack{gap:7px!important}
+  .moroccoMark{
+    gap:7px!important;
+    font-size:10.2px!important;
+  }
+  .moroccoFlag{
+    width:21px!important;
+    height:14px!important;
+  }
+}
