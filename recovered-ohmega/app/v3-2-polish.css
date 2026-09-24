@@ -1347,7 +1347,7 @@ body{
   .heroKicker{
     margin:0!important;
     padding:0!important;
-    font-size:9.5px!important;
+    font-size:10.8px!important;
     line-height:1.35!important;
     letter-spacing:.11em!important;
   }
@@ -2107,13 +2107,13 @@ body{
   gap:8px!important;
   width:max-content!important;
   color:#174C3A!important;
-  font:700 10px/1 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
+  font:760 12.2px/1 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
   letter-spacing:.10em!important;
 }
 .senegalFlag{
   display:block!important;
-  width:21px!important;
-  height:14px!important;
+  width:24px!important;
+  height:16px!important;
   flex:0 0 auto!important;
   border:1px solid rgba(16,20,16,.10)!important;
   box-shadow:0 2px 5px rgba(16,20,16,.08)!important;
@@ -2127,7 +2127,7 @@ body{
     font-size:9.5px!important;
   }
   .senegalFlag{
-    width:19px!important;
-    height:12.7px!important;
+    width:21px!important;
+    height:14px!important;
   }
 }

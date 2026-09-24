@@ -132,7 +132,7 @@ function Home({t,lang}){
             <rect x="20" y="0" width="10" height="20" fill="#E31B23"/>
             <polygon fill="#00853F" points="15,5.2 16.2,8.8 20,8.8 16.9,11 18.1,14.6 15,12.4 11.9,14.6 13.1,11 10,8.8 13.8,8.8"/>
           </svg>
-          <span>SENEGAL</span>
+          <span>SENEGAL, WEST AFRICA</span>
         </span>
       </div>
       <div className="availabilityBar" aria-label={lang==="fr"?"Disponibilités":"Availability"}>
