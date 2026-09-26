@@ -16,6 +16,34 @@ const researchAbstracts={
   juri:`Converter-dominated renewable power systems are increasingly vulnerable to rapid frequency excursions because the displacement of synchronous generation reduces effective system inertia. This study evaluates a grid-forming (GFM) control strategy based on a virtual synchronous machine supported by a direct current (DC)-coupled battery energy storage system (BESS) in a representative three-terminal voltage-source converter high-voltage DC renewable power system. The main contribution is a compact, five-state, reduced-order model that simultaneously captures the alternating current (AC) frequency, common DC bus voltage, governor response, BESS active power, and state-of-charge dynamics while enabling a reproducible assessment of coupled AC/DC stability under multiple contingency conditions. The model was independently cross-verified in the software using adaptive BDF, fixed-step fourth-order Runge–Kutta, and Radau solvers, with the existing Simulink implementation retained as an additional check. Three disturbances were considered: a 280 MW load increase, 400 MW wind-generation loss, and 300 MW solar-power ramp over 100 ms. Compared with the grid-following baseline, the GFM-BESS improved the frequency nadir by 1.615–1.616 Hz across all the tested scenarios and reduced the 200 ms rate of change of frequency in the severe wind-trip case from 2.186 to 1.244 Hz/s. The common DC-bus voltage remained within the ±5% study benchmark. The BESS reached 99% of its 200 MW rating within 0.117–0.166 s and delivered only 0.141–0.144 MWh up to the nadir, demonstrating that short-term performance is constrained primarily by power capability rather than energy capacity. These results highlight the effectiveness and limitations of the DC-coupled storage for coordinated frequency and DC voltage support in low-inertia multiterminal DC systems.`
 };
 
+
+const researchPublications={
+  "risk-aware-wind-hvdc-bess":{
+    key:"iet",
+    type:{en:"Book chapter",fr:"Chapitre d’ouvrage"},
+    status:{en:"Accepted · Publication expected shortly",fr:"Accepté · Publication prévue très prochainement"},
+    title:"Risk-Aware Co-Design of Synthetic Inertia and Battery Support for HVDC-Connected Wind Power Plants under Grid and Wind Uncertainty",
+    venue:{en:"The Institution of Engineering and Technology (IET) · Chapter 9",fr:"The Institution of Engineering and Technology (IET) · Chapitre 9"},
+    abstract:researchAbstracts.iet,
+    logo:"/iet-logo.png",
+    logoAlt:"The Institution of Engineering and Technology (IET) logo",
+    publisherUrl:iet,
+    publisherLabel:{en:"Official IET website",fr:"Site officiel IET"}
+  },
+  "grid-forming-vsm-hvdc-bess":{
+    key:"juri",
+    type:{en:"Journal article",fr:"Article de revue"},
+    status:{en:"Accepted for publication · DOI forthcoming",fr:"Accepté pour publication · DOI à venir"},
+    title:"Grid-Forming Virtual Synchronous Machine Control with Battery Storage for Frequency Stability in Multiterminal High-Voltage Direct-Current Systems",
+    venue:{en:"Journal of Undergraduate Research International, KFUPM · JURI-00314-2026-02",fr:"Journal of Undergraduate Research International, KFUPM · JURI-00314-2026-02"},
+    abstract:researchAbstracts.juri,
+    logo:"https://www.journalssystem.com/juri/_static/juri-head5.jpg",
+    logoAlt:"Journal of Undergraduate Research International logo",
+    publisherUrl:juri,
+    publisherLabel:{en:"Journal website",fr:"Site de la revue"}
+  }
+};
+
 const schoolLinks={
   emsi:"https://emsi.ma/",
   fst:"https://www.fstg-marrakech.ac.ma/",
@@ -226,13 +254,7 @@ function Home({t,lang}){
           <div className="researchContent">
             <p className="meta">{lang==="fr"?"Chapitre d’ouvrage · Accepté · Publication prévue très prochainement":"Book chapter · Accepted · Publication expected shortly"}</p>
             <h3>Risk-Aware Co-Design of Synthetic Inertia and Battery Support for HVDC-Connected Wind Power Plants under Grid and Wind Uncertainty</h3>
-            <details className="abstractDisclosure">
-              <summary>{lang==="fr"?"Voir l’abstract":"View abstract"}</summary>
-              <div className="abstractPanel">
-                <span className="abstractLabel">Abstract</span>
-                <p>{researchAbstracts.iet}</p>
-              </div>
-            </details>
+            <ExtLink href="/research/risk-aware-wind-hvdc-bess" className="abstractPageLink">{lang==="fr"?"Voir l’abstract":"View abstract"} <span aria-hidden="true">↗</span></ExtLink>
             <p className="journal">{lang==="fr"?"The Institution of Engineering and Technology (IET) · Chapitre 9":"The Institution of Engineering and Technology (IET) · Chapter 9"}</p>
             <nav className="researchActions">
               <ExtLink href={iet}>{lang==="fr"?"Site officiel IET":"Official IET website"}</ExtLink>
@@ -246,13 +268,7 @@ function Home({t,lang}){
           <div className="researchContent">
             <p className="meta">{lang==="fr"?"Accepté pour publication · DOI à venir":"Accepted for publication · DOI forthcoming"}</p>
             <h3>Grid-Forming Virtual Synchronous Machine Control with Battery Storage for Frequency Stability in Multiterminal High-Voltage Direct-Current Systems</h3>
-            <details className="abstractDisclosure">
-              <summary>{lang==="fr"?"Voir l’abstract":"View abstract"}</summary>
-              <div className="abstractPanel">
-                <span className="abstractLabel">Abstract</span>
-                <p>{researchAbstracts.juri}</p>
-              </div>
-            </details>
+            <ExtLink href="/research/grid-forming-vsm-hvdc-bess" className="abstractPageLink">{lang==="fr"?"Voir l’abstract":"View abstract"} <span aria-hidden="true">↗</span></ExtLink>
             <p className="journal">{t.research.meta}</p>
             <nav className="researchActions">
               <ExtLink href={juri}>{t.research.link}</ExtLink>
@@ -354,5 +370,27 @@ function Home({t,lang}){
     </footer>
   </>
 }
+function ResearchDetail({publication,lang}){return <>
+  <header className="projectHero researchHero">
+    <ExtLink href="/#research">{lang==="fr"?"← Retour à Research":"← Back to Research"}</ExtLink>
+    <p>{publication.type[lang]} · {publication.status[lang]}</p>
+    <h1>{publication.title}</h1>
+    <h2>{publication.venue[lang]}</h2>
+    <div className="researchDetailBrand"><img src={publication.logo} alt={publication.logoAlt}/></div>
+  </header>
+  <section className="detailGrid researchDetailGrid">
+    <article className="wide researchAbstractArticle">
+      <p>Abstract</p>
+      <div className="researchAbstractBody">{publication.abstract}</div>
+    </article>
+    <article className="wide">
+      <p>{lang==="fr"?"Publication & profils":"Publication & profiles"}</p>
+      <nav className="inline">
+        <ExtLink href={publication.publisherUrl}>{publication.publisherLabel[lang]}</ExtLink>
+        <ExtLink href={orcid}>ORCID 0009-0003-4015-7854</ExtLink>
+      </nav>
+    </article>
+  </section>
+</>}
 function ProjectDetail({project,t,lang}){return <><header className="projectHero"><ExtLink href="/">{t.detail[0]}</ExtLink><p>{project.no} · {project.field[lang]}</p><h1>{project.title}</h1><h2>{project.body[lang]}</h2>{projectTags[project.slug]?.standards?.length?<div className="caseStudyStandards" aria-label={lang==="fr"?"Normes de référence":"Reference standards"}>{projectTags[project.slug].standards.map(tag=><span className="projectTag standardTag" key={tag}>{tag}</span>)}</div>:null}</header>{project.image?<figure className="projectVisual motionSection"><div className="projectVisualFrame"><img src={project.image} alt={project.title}/></div><figcaption><span>{lang==="fr"?"VUE CONCEPTUELLE DU PROJET":"PROJECT CONCEPT VIEW"}</span><p>{project.visualNote?.[lang]}</p></figcaption></figure>:null}<section className="detailGrid"><article><p>{t.detail[1]}</p><h2>{project.problem[lang]}</h2></article><article><p>{t.detail[2]}</p><h2>{project.solution[lang]}</h2></article><article><p>{t.detail[3]}</p><ol>{project.steps[lang].map(s=><li key={s}>{s}</li>)}</ol></article><article><p>{t.detail[4]}</p><h2>{project.discussion[lang]}</h2></article><article className="wide"><p>{t.detail[5]}</p><nav className="inline">{project.links.map(([label,href])=><ExtLink href={href} key={label}>{resourceLabel(label,lang)}</ExtLink>)}</nav></article></section></>}
-export default function Portfolio(){const pathname=usePathname();const[lang,setLang]=useState("en");useEffect(()=>{const savedLang=localStorage.getItem("ohmega-lang");localStorage.removeItem("ohmega-theme");localStorage.removeItem("ohmega-theme-v2");if(savedLang)setLang(savedLang);document.documentElement.dataset.theme="light"},[]);useEffect(()=>{document.documentElement.dataset.theme="light";document.documentElement.lang=lang;localStorage.setItem("ohmega-lang",lang)},[lang]);const t=useMemo(()=>copy[lang],[lang]);const slug=pathname?.startsWith("/projects/")?pathname.split("/projects/")[1]?.split("/")[0]:null;const project=projects.find(p=>p.slug===slug);return <main className="site"><Top t={t} lang={lang} setLang={setLang}/>{project?<ProjectDetail project={project} t={t} lang={lang}/>:<Home t={t} lang={lang}/>}</main>}
+export default function Portfolio(){const pathname=usePathname();const[lang,setLang]=useState("en");useEffect(()=>{const savedLang=localStorage.getItem("ohmega-lang");localStorage.removeItem("ohmega-theme");localStorage.removeItem("ohmega-theme-v2");if(savedLang)setLang(savedLang);document.documentElement.dataset.theme="light"},[]);useEffect(()=>{document.documentElement.dataset.theme="light";document.documentElement.lang=lang;localStorage.setItem("ohmega-lang",lang)},[lang]);const t=useMemo(()=>copy[lang],[lang]);const projectSlug=pathname?.startsWith("/projects/")?pathname.split("/projects/")[1]?.split("/")[0]:null;const researchSlug=pathname?.startsWith("/research/")?pathname.split("/research/")[1]?.split("/")[0]:null;const project=projects.find(p=>p.slug===projectSlug);const publication=researchSlug?researchPublications[researchSlug]:null;return <main className="site"><Top t={t} lang={lang} setLang={setLang}/>{project?<ProjectDetail project={project} t={t} lang={lang}/>:publication?<ResearchDetail publication={publication} lang={lang}/>:<Home t={t} lang={lang}/>}</main>}
