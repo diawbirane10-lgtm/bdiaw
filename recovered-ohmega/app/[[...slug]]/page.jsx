@@ -219,11 +219,11 @@ function Home({t,lang}){
         <article className="researchFeature motionItem ietPublication">
           <div className="researchBrand"><a href={iet} target="_blank" rel="noreferrer"><img src={logos.iet} alt="The Institution of Engineering and Technology (IET) logo"/></a></div>
           <div className="researchContent">
-            <p className="meta">{lang==="fr"?"Chapitre d’ouvrage · Accepté":"Book chapter · Accepted"}</p>
+            <p className="meta">{lang==="fr"?"Chapitre d’ouvrage · Accepté · Publication prévue très prochainement":"Book chapter · Accepted · Publication expected shortly"}</p>
             <h3>Risk-Aware Co-Design of Synthetic Inertia and Battery Support for HVDC-Connected Wind Power Plants under Grid and Wind Uncertainty</h3>
             <p className="summary">{lang==="fr"
-              ?"Accepté comme chapitre 9 de l’ouvrage IET Cybersecurity and Control of Microgrids with Wind, PV, and Battery Systems, dirigé par le Prof. Badre Bossoufi."
-              :"Accepted as Chapter 9 of the IET book Cybersecurity and Control of Microgrids with Wind, PV, and Battery Systems, edited by Prof. Badre Bossoufi."}</p>
+              ?"Accepté comme chapitre 9 de l’ouvrage IET Cybersecurity and Control of Microgrids with Wind, PV, and Battery Systems, dirigé par le Prof. Badre Bossoufi. La publication du livre est prévue très prochainement."
+              :"Accepted as Chapter 9 of the IET book Cybersecurity and Control of Microgrids with Wind, PV, and Battery Systems, edited by Prof. Badre Bossoufi. The book is expected to be published shortly."}</p>
             <p className="journal">{lang==="fr"?"The Institution of Engineering and Technology (IET) · Chapitre 9":"The Institution of Engineering and Technology (IET) · Chapter 9"}</p>
             <nav className="researchActions">
               <ExtLink href={iet}>{lang==="fr"?"Site officiel IET":"Official IET website"}</ExtLink>
