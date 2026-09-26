@@ -3,6 +3,16 @@ import { Github, ExternalLink, BookOpen, FlaskConical } from "lucide-react";
 
 const papers = [
   {
+    title: "Risk-Aware Co-Design of Synthetic Inertia and Battery Support for HVDC-Connected Wind Power Plants under Grid and Wind Uncertainty",
+    abstract: "Accepted as Chapter 9 in the forthcoming IET book Cybersecurity and Control of Microgrids with Wind, PV, and Battery Systems, edited by Prof. Badre Bossoufi.",
+    journal: "The Institution of Engineering and Technology (IET)",
+    publisher: "IET Books",
+    ref: "Chapter 9 · Forthcoming",
+    status: "Accepted",
+    logo: "/iet-logo.svg",
+    outils: ["Synthetic Inertia", "BESS", "VSC-HVDC", "Wind Power", "Grid Uncertainty", "Risk-Aware Control"],
+  },
+  {
     titleKey: "proj.hvdc.title",
     abstractKey: "research.hvdc.abstract",
     journal: "Journal of Undergraduate Research International (JURI)",
@@ -53,7 +63,7 @@ const ResearchSection = () => {
               <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg font-body font-black text-foreground uppercase tracking-wide group-hover:text-primary transition-colors duration-200 mb-2">
-                    {t(paper.titleKey)}
+                    {"title" in paper ? paper.title : t(paper.titleKey)}
                   </h3>
                   <div className="flex flex-wrap items-center gap-2 text-xs font-body text-muted-foreground">
                     <BookOpen className="w-3.5 h-3.5 shrink-0 text-primary" />
@@ -66,7 +76,7 @@ const ResearchSection = () => {
                 <div className="flex flex-col items-end gap-2 shrink-0">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-body font-bold bg-amber-500/15 text-amber-600 border border-amber-500/30 uppercase tracking-wider">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-                    {t(paper.statusKey)}
+                    {"status" in paper ? paper.status : t(paper.statusKey)}
                   </span>
                   <span className="text-[11px] font-mono text-muted-foreground/60 tracking-wider">
                     {paper.ref}
@@ -75,7 +85,7 @@ const ResearchSection = () => {
               </div>
 
               <p className="text-sm font-body text-muted-foreground leading-relaxed mb-5">
-                {t(paper.abstractKey)}
+                {"abstract" in paper ? paper.abstract : t(paper.abstractKey)}
               </p>
 
               <div className="flex flex-wrap gap-1.5 mb-5">
