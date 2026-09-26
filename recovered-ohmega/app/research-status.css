@@ -9,26 +9,32 @@
   border-top:1px solid var(--line)!important;
 }
 
+.ietPublication{
+  grid-template-columns:minmax(330px,380px) minmax(0,1fr)!important;
+  gap:42px!important;
+}
+
 .ietPublication .researchBrand{
   display:flex;
   align-items:flex-start;
+  width:100%;
 }
 
 .ietPublication .researchBrand a{
   display:block;
-  width:230px;
-  max-width:100%;
+  width:100%!important;
+  max-width:none!important;
 }
 
 .ietPublication .researchBrand img{
   display:block;
-  width:230px;
-  max-width:100%;
+  width:100%!important;
+  max-width:none!important;
   height:auto;
   object-fit:contain;
-  padding:16px;
-  background:#fff;
-  border:1px solid var(--line);
+  padding:0!important;
+  background:transparent;
+  border:0!important;
 }
 
 .juriPublication .meta,
@@ -63,6 +69,7 @@ html[lang="fr"] .juriPublication .journal::after{
 @media(max-width:760px){
   .researchList{gap:34px}
   .researchList .researchFeature + .researchFeature{padding-top:34px!important}
+  .ietPublication{grid-template-columns:1fr!important;gap:22px!important}
   .ietPublication .researchBrand a,
-  .ietPublication .researchBrand img{width:100%;max-width:280px}
+  .ietPublication .researchBrand img{width:100%!important;max-width:100%!important}
 }
