@@ -8,14 +8,9 @@ const linkedin="https://www.linkedin.com/in/birane-diaw-b83b47374";
 const x="https://x.com/epsilonp0";
 const mail="mailto:diawbirane10@gmail.com";
 const juri="https://www.journalssystem.com/juri/";
-const iet="https://www.theiet.org/";
 const orcid="https://orcid.org/0009-0003-4015-7854";
 
 const researchAbstracts={
-  iet:{
-    en:`The replacement of synchronous generation by converter-interfaced wind, solar and storage resources reduces the natural kinetic response available after a power imbalance. Offshore wind power plants connected through Voltage-Source Converter High-Voltage Direct Current (VSC-HVDC) links can contribute fast active power, but the available support is spread across different physical reserves. Wind rotors, the HVDC DC link and battery storage differ in response speed, usable energy, recovery behaviour and sensitivity to weak-grid conditions. A controller tuned at one operating point may therefore improve the frequency nadir while drawing excessive rotor energy, depressing DC voltage or using battery energy inefficiently. This chapter develops a reduced-order and risk-aware co-design framework for an aggregated Type-4 offshore wind power plant, a VSC-HVDC link and an alternating-current (AC)-coupled Battery Energy Storage System (BESS). The nonlinear model retains grid frequency, primary response, rotor speed, wind-power actuation, DC-link energy, HVDC transfer, battery power, state of charge and filtered frequency measurement. Three strategies are assessed: an uncoordinated reference, fixed supplementary gains and an adaptive controller whose wind, HVDC and battery participation changes with rotor reserve, DC-voltage headroom, state of charge, converter margin and grid strength. The gain vector is selected by minimizing expected composite loss together with Conditional Value-at-Risk (CVaR). Numerical linearization, Jacobian eigenvalues and spectral-abscissa maps are used for local stability screening, while Latin-hypercube Monte Carlo scenarios quantify performance under uncertainty. In the reported 120-scenario validation, the adaptive strategy reduces mean loss by 10.4% and 90%-CVaR by 6.4% relative to fixed gains, with no sampled constraint violation. The results also reveal a practical trade-off: faster frequency containment requires greater use of kinetic and battery energy and may reduce the local damping margin.`,
-    fr:`La montée en puissance des moyens de production et de stockage raccordés au réseau par électronique de puissance réduit progressivement la réponse inertielle naturellement fournie par les machines synchrones lors d’un déséquilibre de puissance. Les parcs éoliens offshore connectés par des liaisons à convertisseurs de source de tension en courant continu haute tension (VSC-HVDC) peuvent apporter un soutien actif très rapide, mais cette contribution repose sur plusieurs réserves physiques aux caractéristiques très différentes : énergie cinétique des rotors, énergie disponible dans le bus continu HVDC et stockage batterie. Ces sources ne présentent ni les mêmes constantes de temps, ni les mêmes limites énergétiques, ni les mêmes contraintes de récupération, et leur comportement se dégrade différemment lorsque le réseau devient faible. Dans ce contexte, un réglage efficace à un point de fonctionnement donné peut améliorer le nadir de fréquence tout en sollicitant excessivement les rotors, en provoquant une baisse trop importante de la tension DC ou en mobilisant inutilement le BESS. Ce chapitre propose donc une approche de co-conception à ordre réduit intégrant explicitement le risque pour un parc éolien offshore Type-4 agrégé, une liaison VSC-HVDC et un système de stockage d’énergie par batterie (BESS) couplé côté courant alternatif (AC). Le modèle non linéaire représente conjointement la fréquence du réseau, la réponse primaire, la vitesse rotorique, la commande de puissance éolienne, l’énergie du bus continu, le transfert de puissance HVDC, la puissance batterie, l’état de charge et la mesure filtrée de fréquence. Trois stratégies sont comparées : une configuration non coordonnée, un réglage à gains fixes et une commande adaptative faisant varier la contribution de l’éolien, de l’HVDC et du BESS en fonction de la réserve rotorique, de la marge de tension DC, de l’état de charge, de la marge convertisseur et de la force du réseau. Le vecteur de gains est déterminé en minimisant à la fois la perte composite espérée et la Conditional Value-at-Risk (CVaR). La stabilité locale est examinée par linéarisation numérique, analyse des valeurs propres du Jacobien et cartes d’abscisse spectrale, tandis qu’une campagne Monte Carlo fondée sur un Latin hypercube permet d’évaluer les performances sous incertitude. Sur les 120 scénarios étudiés, la stratégie adaptative réduit la perte moyenne de 10,4 % et la 90%-CVaR de 6,4 % par rapport aux gains fixes, sans violation de contrainte observée. Les résultats mettent enfin en évidence un compromis essentiel : améliorer la tenue en fréquence exige de mobiliser davantage l’énergie cinétique et la batterie, ce qui peut se faire au détriment de la marge locale d’amortissement.`
-  },
   juri:{
     en:`Converter-dominated renewable power systems are increasingly vulnerable to rapid frequency excursions because the displacement of synchronous generation reduces effective system inertia. This study evaluates a grid-forming (GFM) control strategy based on a Virtual Synchronous Machine (VSM) supported by a direct-current (DC)-coupled Battery Energy Storage System (BESS) in a representative three-terminal voltage-source converter high-voltage DC renewable power system. The main contribution is a compact, five-state, reduced-order model that simultaneously captures the alternating current (AC) frequency, common DC bus voltage, governor response, BESS active power, and state-of-charge dynamics while enabling a reproducible assessment of coupled AC/DC stability under multiple contingency conditions. The model was independently cross-verified in the software using adaptive BDF, fixed-step fourth-order Runge–Kutta, and Radau solvers, with the existing Simulink implementation retained as an additional check. Three disturbances were considered: a 280 MW load increase, 400 MW wind-generation loss, and 300 MW solar-power ramp over 100 ms. Compared with the grid-following baseline, the GFM-BESS improved the frequency nadir by 1.615–1.616 Hz across all the tested scenarios and reduced the 200 ms Rate of Change of Frequency (RoCoF) in the severe wind-trip case from 2.186 to 1.244 Hz/s. The common DC-bus voltage remained within the ±5% study benchmark. The BESS reached 99% of its 200 MW rating within 0.117–0.166 s and delivered only 0.141–0.144 MWh up to the nadir, demonstrating that short-term performance is constrained primarily by power capability rather than energy capacity. These results highlight the effectiveness and limitations of the DC-coupled storage for coordinated frequency and DC voltage support in low-inertia multiterminal DC systems.`,
     fr:`Les réseaux électriques fortement dominés par des convertisseurs deviennent plus sensibles aux variations rapides de fréquence, car le recul de la production synchrone réduit l’inertie globale disponible. Cette étude évalue une stratégie de commande grid-forming (GFM) reposant sur une machine synchrone virtuelle (Virtual Synchronous Machine, VSM), associée à un système de stockage d’énergie par batterie (Battery Energy Storage System, BESS) couplé côté courant continu (DC), dans un système renouvelable à trois terminaux fondé sur des convertisseurs de source de tension et des liaisons HVDC (VSC-HVDC). La contribution principale réside dans un modèle réduit compact à cinq états, capable de représenter simultanément la fréquence côté AC, la tension du bus continu commun, la réponse de la régulation primaire, la puissance active du BESS et l’évolution de l’état de charge. Cette formulation permet d’analyser de manière reproductible les interactions entre dynamique de fréquence et dynamique du bus DC sous plusieurs scénarios de perturbation. Le modèle a été vérifié indépendamment à l’aide de trois solveurs numériques — BDF adaptatif, Runge–Kutta d’ordre 4 à pas fixe et Radau — tandis que l’implémentation Simulink existante a été conservée comme validation complémentaire. Trois événements ont été étudiés : une augmentation de charge de 280 MW, une perte de 400 MW de production éolienne et une rampe solaire de 300 MW appliquée sur 100 ms. Par rapport à la configuration de référence grid-following, le GFM-BESS améliore le nadir de fréquence de 1,615 à 1,616 Hz selon le scénario et réduit, dans le cas sévère de perte éolienne, le taux de variation de fréquence (Rate of Change of Frequency, RoCoF) mesuré sur 200 ms de 2,186 à 1,244 Hz/s. La tension du bus DC commun reste dans la plage de ±5 % retenue pour l’étude. Le BESS atteint 99 % de sa puissance nominale de 200 MW en seulement 0,117 à 0,166 s, tout en ne délivrant que 0,141 à 0,144 MWh jusqu’au nadir. Ce résultat montre que, pour ce type d’événement court, la contrainte déterminante est avant tout la puissance disponible du stockage plutôt que sa capacité énergétique. L’étude met ainsi en évidence à la fois l’intérêt et les limites d’un BESS couplé côté DC pour assurer conjointement le soutien en fréquence et la maîtrise de la tension continue dans les systèmes HVDC multiterminaux à faible inertie.`
@@ -23,18 +18,6 @@ const researchAbstracts={
 };
 
 const researchPublications={
-  "risk-aware-wind-hvdc-bess":{
-    key:"iet",
-    type:{en:"Book chapter",fr:"Chapitre d’ouvrage"},
-    status:{en:"Accepted · Publication expected shortly",fr:"Accepté · Publication prévue très prochainement"},
-    title:"Risk-Aware Co-Design of Synthetic Inertia and Battery Support for HVDC-Connected Wind Power Plants under Grid and Wind Uncertainty",
-    venue:{en:"The Institution of Engineering and Technology (IET) · Chapter 9",fr:"The Institution of Engineering and Technology (IET) · Chapitre 9"},
-    abstract:researchAbstracts.iet,
-    logo:"/iet-logo.png",
-    logoAlt:"The Institution of Engineering and Technology (IET) logo",
-    publisherUrl:iet,
-    publisherLabel:{en:"Official IET website",fr:"Site officiel IET"}
-  },
   "grid-forming-vsm-hvdc-bess":{
     key:"juri",
     type:{en:"Journal article",fr:"Article de revue"},
@@ -56,7 +39,6 @@ const schoolLinks={
 };
 
 const logos={
-  iet:"/iet-logo.png",
   juri:"https://www.journalssystem.com/juri/_static/juri-head5.jpg",
   emsi:"https://emsi.ma/wp-content/uploads/2024/03/logo-vert.png",
   fst:"https://stagiairesdocs.s3.eu-west-3.amazonaws.com/wp-content/uploads/2024/02/09171154/FST-MARRAKECH-900x420-1.png",
@@ -151,7 +133,7 @@ function Top({t,lang,setLang}){return <div className="topbar"><a className="bran
 function Section({id,title,subtitle,children,cut=false}){return <section id={id} className={`section${cut?" cut":""}`}><div className="sectionHead"><h2 className="sectionTitle">{title}</h2><p className="sectionSubtitle">{subtitle}</p></div><div>{children}</div></section>}
 
 function ProfileStats({lang}){
-  const values=[17,2,3];
+  const values=[17,1,3];
   const labels=lang==="fr"
     ?["Projets d’ingénierie","Publications de recherche","Expériences d’ingénierie"]
     :["Engineering projects","Research publications","Engineering experiences"];
@@ -254,20 +236,6 @@ function Home({t,lang}){
 
     <Section id="research" title={lang==="fr"?"Recherche":"Research"} subtitle={lang==="fr"?"Publications sélectionnées":"Selected publications"}>
       <div className="researchList">
-        <article className="researchFeature motionItem ietPublication">
-          <div className="researchBrand"><a href={iet} target="_blank" rel="noreferrer"><img src={logos.iet} alt="The Institution of Engineering and Technology (IET) logo"/></a></div>
-          <div className="researchContent">
-            <p className="meta">{lang==="fr"?"Chapitre d’ouvrage · Accepté · Publication prévue très prochainement":"Book chapter · Accepted · Publication expected shortly"}</p>
-            <h3>Risk-Aware Co-Design of Synthetic Inertia and Battery Support for HVDC-Connected Wind Power Plants under Grid and Wind Uncertainty</h3>
-            <ExtLink href="/research/risk-aware-wind-hvdc-bess" className="abstractPageLink">{lang==="fr"?"Voir l’abstract":"View abstract"} <span aria-hidden="true">↗</span></ExtLink>
-            <p className="journal">{lang==="fr"?"The Institution of Engineering and Technology (IET) · Chapitre 9":"The Institution of Engineering and Technology (IET) · Chapter 9"}</p>
-            <nav className="researchActions">
-              <ExtLink href={iet}>{lang==="fr"?"Site officiel IET":"Official IET website"}</ExtLink>
-              <ExtLink href={orcid}>ORCID 0009-0003-4015-7854</ExtLink>
-            </nav>
-          </div>
-        </article>
-
         <article className="researchFeature motionItem juriPublication">
           <div className="researchBrand"><a href={juri} target="_blank" rel="noreferrer"><img src={logos.juri} alt="Journal of Undergraduate Research International logo"/></a></div>
           <div className="researchContent">
