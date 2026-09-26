@@ -1,24 +1,68 @@
-/* Research publication status wording — visual copy kept concise until DOI assignment. */
-#research .meta,
-#research .journal{
+/* Research publication status wording and multi-publication layout. */
+.researchList{
+  display:grid;
+  gap:48px;
+}
+
+.researchList .researchFeature + .researchFeature{
+  padding-top:48px!important;
+  border-top:1px solid var(--line)!important;
+}
+
+.ietPublication .researchBrand{
+  display:flex;
+  align-items:flex-start;
+}
+
+.ietPublication .researchBrand a{
+  display:block;
+  width:230px;
+  max-width:100%;
+}
+
+.ietPublication .researchBrand img{
+  display:block;
+  width:230px;
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+  padding:16px;
+  background:#fff;
+  border:1px solid var(--line);
+}
+
+.juriPublication .meta,
+.juriPublication .journal{
   font-size:0;
 }
-#research .meta::after,
-#research .journal::after{
+
+.juriPublication .meta::after,
+.juriPublication .journal::after{
   color:inherit;
   font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
   letter-spacing:.08em;
   text-transform:uppercase;
 }
-#research .meta::after{
+
+.juriPublication .meta::after{
   content:"Accepted for publication · DOI pending";
 }
-#research .journal::after{
+
+.juriPublication .journal::after{
   content:"Journal of Undergraduate Research International, KFUPM · JURI-00314-2026-02 · DOI pending";
 }
-html[lang="fr"] #research .meta::after{
+
+html[lang="fr"] .juriPublication .meta::after{
   content:"Accepté pour publication · DOI en attente";
 }
-html[lang="fr"] #research .journal::after{
+
+html[lang="fr"] .juriPublication .journal::after{
   content:"Journal of Undergraduate Research International, KFUPM · JURI-00314-2026-02 · DOI en attente";
+}
+
+@media(max-width:760px){
+  .researchList{gap:34px}
+  .researchList .researchFeature + .researchFeature{padding-top:34px!important}
+  .ietPublication .researchBrand a,
+  .ietPublication .researchBrand img{width:100%;max-width:280px}
 }
