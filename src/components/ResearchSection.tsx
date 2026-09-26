@@ -7,7 +7,7 @@ const papers = [
     abstract: "Accepted as Chapter 9 in the forthcoming IET book Cybersecurity and Control of Microgrids with Wind, PV, and Battery Systems, edited by Prof. Badre Bossoufi.",
     journal: "The Institution of Engineering and Technology (IET)",
     publisher: "IET Books",
-    ref: "Chapter 9 · Forthcoming",
+    ref: "Chapter 9",
     status: "Accepted",
     logo: "/iet-logo.svg",
     outils: ["Synthetic Inertia", "BESS", "VSC-HVDC", "Wind Power", "Grid Uncertainty", "Risk-Aware Control"],
