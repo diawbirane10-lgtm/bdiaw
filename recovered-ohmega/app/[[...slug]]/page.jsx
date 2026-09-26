@@ -385,8 +385,12 @@ function ResearchDetail({publication,lang}){return <>
   </header>
   <section className="detailGrid researchDetailGrid">
     <article className="wide researchAbstractArticle">
-      <p>{lang==="fr"?"Résumé":"Abstract"}</p>
-      <div className="researchAbstractBody">{publication.abstract[lang]}</div>
+      <div className="abstractFrame">
+        <div className="abstractFrameHeader">
+          <span className="abstractKicker">{lang==="fr"?"Résumé":"Abstract"}</span>
+        </div>
+        <div className="researchAbstractBody">{publication.abstract[lang]}</div>
+      </div>
     </article>
     <article className="wide">
       <p>{lang==="fr"?"Publication & profils":"Publication & profiles"}</p>
