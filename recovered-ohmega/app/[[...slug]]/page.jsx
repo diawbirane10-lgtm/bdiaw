@@ -8,6 +8,7 @@ const linkedin="https://www.linkedin.com/in/birane-diaw-b83b47374";
 const x="https://x.com/epsilonp0";
 const mail="mailto:diawbirane10@gmail.com";
 const juri="https://www.journalssystem.com/juri/";
+const iet="https://www.theiet.org/";
 const orcid="https://orcid.org/0009-0003-4015-7854";
 
 const schoolLinks={
@@ -17,6 +18,7 @@ const schoolLinks={
 };
 
 const logos={
+  iet:"/iet-logo.png",
   juri:"https://www.journalssystem.com/juri/_static/juri-head5.jpg",
   emsi:"https://emsi.ma/wp-content/uploads/2024/03/logo-vert.png",
   fst:"https://stagiairesdocs.s3.eu-west-3.amazonaws.com/wp-content/uploads/2024/02/09171154/FST-MARRAKECH-900x420-1.png",
@@ -111,10 +113,10 @@ function Top({t,lang,setLang}){return <div className="topbar"><a className="bran
 function Section({id,title,subtitle,children,cut=false}){return <section id={id} className={`section${cut?" cut":""}`}><div className="sectionHead"><h2 className="sectionTitle">{title}</h2><p className="sectionSubtitle">{subtitle}</p></div><div>{children}</div></section>}
 
 function ProfileStats({lang}){
-  const values=[17,1,3];
+  const values=[17,2,3];
   const labels=lang==="fr"
-    ?["Projets d’ingénierie","Publication de recherche","Expériences d’ingénierie"]
-    :["Engineering projects","Research publication","Engineering experiences"];
+    ?["Projets d’ingénierie","Publications de recherche","Expériences d’ingénierie"]
+    :["Engineering projects","Research publications","Engineering experiences"];
   return <dl className="profileStats">{values.map((v,i)=><div className="profileStat" key={labels[i]}><dt>{i===0?String(v)+"+":v}</dt><dd>{labels[i]}</dd></div>)}</dl>
 }
 
@@ -212,20 +214,38 @@ function Home({t,lang}){
       </div>
     </Section>
 
-    <Section id="research" title={lang==="fr"?"Recherche":"Research"} subtitle={lang==="fr"?"Publication sélectionnée":"Selected publication"}>
-      <article className="researchFeature motionItem">
-        <div className="researchBrand"><a href={juri} target="_blank" rel="noreferrer"><img src={logos.juri} alt="Journal of Undergraduate Research International logo"/></a></div>
-        <div className="researchContent">
-          <p className="meta">{lang==="fr"?"Accepté pour publication · DOI à venir":"Accepted for publication · DOI forthcoming"}</p>
-          <h3>Grid-Forming Virtual Synchronous Machine Control with Battery Storage for Frequency Stability in Multiterminal High-Voltage Direct-Current Systems</h3>
-          <p className="summary">{t.research.summary}</p>
-          <p className="journal">{t.research.meta}</p>
-          <nav className="researchActions">
-            <ExtLink href={juri}>{t.research.link}</ExtLink>
-            <ExtLink href={orcid}>ORCID 0009-0003-4015-7854</ExtLink>
-          </nav>
-        </div>
-      </article>
+    <Section id="research" title={lang==="fr"?"Recherche":"Research"} subtitle={lang==="fr"?"Publications sélectionnées":"Selected publications"}>
+      <div className="researchList">
+        <article className="researchFeature motionItem ietPublication">
+          <div className="researchBrand"><a href={iet} target="_blank" rel="noreferrer"><img src={logos.iet} alt="The Institution of Engineering and Technology (IET) logo"/></a></div>
+          <div className="researchContent">
+            <p className="meta">{lang==="fr"?"Chapitre d’ouvrage · Accepté":"Book chapter · Accepted"}</p>
+            <h3>Risk-Aware Co-Design of Synthetic Inertia and Battery Support for HVDC-Connected Wind Power Plants under Grid and Wind Uncertainty</h3>
+            <p className="summary">{lang==="fr"
+              ?"Accepté comme chapitre 9 de l’ouvrage IET Cybersecurity and Control of Microgrids with Wind, PV, and Battery Systems, dirigé par le Prof. Badre Bossoufi."
+              :"Accepted as Chapter 9 of the IET book Cybersecurity and Control of Microgrids with Wind, PV, and Battery Systems, edited by Prof. Badre Bossoufi."}</p>
+            <p className="journal">{lang==="fr"?"The Institution of Engineering and Technology (IET) · Chapitre 9":"The Institution of Engineering and Technology (IET) · Chapter 9"}</p>
+            <nav className="researchActions">
+              <ExtLink href={iet}>{lang==="fr"?"Site officiel IET":"Official IET website"}</ExtLink>
+              <ExtLink href={orcid}>ORCID 0009-0003-4015-7854</ExtLink>
+            </nav>
+          </div>
+        </article>
+
+        <article className="researchFeature motionItem juriPublication">
+          <div className="researchBrand"><a href={juri} target="_blank" rel="noreferrer"><img src={logos.juri} alt="Journal of Undergraduate Research International logo"/></a></div>
+          <div className="researchContent">
+            <p className="meta">{lang==="fr"?"Accepté pour publication · DOI à venir":"Accepted for publication · DOI forthcoming"}</p>
+            <h3>Grid-Forming Virtual Synchronous Machine Control with Battery Storage for Frequency Stability in Multiterminal High-Voltage Direct-Current Systems</h3>
+            <p className="summary">{t.research.summary}</p>
+            <p className="journal">{t.research.meta}</p>
+            <nav className="researchActions">
+              <ExtLink href={juri}>{t.research.link}</ExtLink>
+              <ExtLink href={orcid}>ORCID 0009-0003-4015-7854</ExtLink>
+            </nav>
+          </div>
+        </article>
+      </div>
     </Section>
 
     <Section id="experience" title={lang==="fr"?"Expérience":"Experience"} subtitle={t.experience.heading}>
