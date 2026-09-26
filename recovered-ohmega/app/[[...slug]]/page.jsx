@@ -11,6 +11,11 @@ const juri="https://www.journalssystem.com/juri/";
 const iet="https://www.theiet.org/";
 const orcid="https://orcid.org/0009-0003-4015-7854";
 
+const researchAbstracts={
+  iet:`The replacement of synchronous generation by converter-interfaced wind, solar and storage resources reduces the natural kinetic response available after a power imbalance. Offshore wind power plants connected through voltage-source-converter high-voltage direct-current links can contribute fast active power, but the available support is spread across different physical reserves. Wind rotors, the HVDC DC link and battery storage differ in response speed, usable energy, recovery behaviour and sensitivity to weak-grid conditions. A controller tuned at one operating point may therefore improve the frequency nadir while drawing excessive rotor energy, depressing DC voltage or using battery energy inefficiently. This chapter develops a reduced-order and risk-aware co-design framework for an aggregated Type-4 offshore wind power plant, a VSC-HVDC link and an AC-coupled battery energy storage system. The nonlinear model retains grid frequency, primary response, rotor speed, wind-power actuation, DC-link energy, HVDC transfer, battery power, state of charge and filtered frequency measurement. Three strategies are assessed: an uncoordinated reference, fixed supplementary gains and an adaptive controller whose wind, HVDC and battery participation changes with rotor reserve, DC-voltage headroom, state of charge, converter margin and grid strength. The gain vector is selected by minimizing expected composite loss together with conditional value-at-risk. Numerical linearization, Jacobian eigenvalues and spectral-abscissa maps are used for local stability screening, while Latin-hypercube Monte Carlo scenarios quantify performance under uncertainty. In the reported 120-scenario validation, the adaptive strategy reduces mean loss by 10.4% and 90%-CVaR by 6.4% relative to fixed gains, with no sampled constraint violation. The results also reveal a practical trade-off: faster frequency containment requires greater use of kinetic and battery energy and may reduce the local damping margin.`,
+  juri:`Converter-dominated renewable power systems are increasingly exposed to rapid frequency excursions after generation-loss or load-increase events. This paper evaluates a grid-forming (GFM) control strategy based on a Virtual Synchronous Machine (VSM) in a representative three-terminal VSC-HVDC renewable power system. A DC-coupled Battery Energy Storage System (BESS) supplies the fast active-power support. The novelty is a compact, reproducible five-state formulation that couples AC-frequency, common DC-bus voltage, governor, BESS-power and state-of-charge dynamics. It also quantifies the simultaneous frequency and DC-voltage response of the storage-assisted GFM terminal under three distinct disturbances. The reduced-order equations are independently implemented with an adaptive stiff BDF solver and a fixed-step fourth-order Runge–Kutta solver for software-in-the-loop numerical cross-verification. The previously developed Simulink block model is retained as a separate implementation check. For a 280 MW load increase, a 400 MW wind-generation loss and a 300 MW solar ramp, GFM-BESS improves the frequency nadir by 1.615–1.616 Hz. The 200 ms RoCoF of the severe wind-trip case decreases from 2.186 to 1.244 Hz/s, while the common DC-bus voltage stays within the ±5% study benchmark. The BESS reaches 99% of its 200 MW discharge rating within 0.117–0.166 s and delivers 0.141–0.144 MWh up to the nadir, explaining the nearly equal nadir improvement across disturbances. These results identify BESS power rating, rather than short-event energy capacity, as the binding constraint in the severe case.`
+};
+
 const schoolLinks={
   emsi:"https://emsi.ma/",
   fst:"https://www.fstg-marrakech.ac.ma/",
@@ -221,9 +226,13 @@ function Home({t,lang}){
           <div className="researchContent">
             <p className="meta">{lang==="fr"?"Chapitre d’ouvrage · Accepté · Publication prévue très prochainement":"Book chapter · Accepted · Publication expected shortly"}</p>
             <h3>Risk-Aware Co-Design of Synthetic Inertia and Battery Support for HVDC-Connected Wind Power Plants under Grid and Wind Uncertainty</h3>
-            <p className="summary">{lang==="fr"
-              ?"Accepté comme chapitre 9 de l’ouvrage IET Cybersecurity and Control of Microgrids with Wind, PV, and Battery Systems, dirigé par le Prof. Badre Bossoufi. La publication du livre est prévue très prochainement."
-              :"Accepted as Chapter 9 of the IET book Cybersecurity and Control of Microgrids with Wind, PV, and Battery Systems, edited by Prof. Badre Bossoufi. The book is expected to be published shortly."}</p>
+            <details className="abstractDisclosure">
+              <summary>{lang==="fr"?"Voir l’abstract":"View abstract"}</summary>
+              <div className="abstractPanel">
+                <span className="abstractLabel">Abstract</span>
+                <p>{researchAbstracts.iet}</p>
+              </div>
+            </details>
             <p className="journal">{lang==="fr"?"The Institution of Engineering and Technology (IET) · Chapitre 9":"The Institution of Engineering and Technology (IET) · Chapter 9"}</p>
             <nav className="researchActions">
               <ExtLink href={iet}>{lang==="fr"?"Site officiel IET":"Official IET website"}</ExtLink>
@@ -237,7 +246,13 @@ function Home({t,lang}){
           <div className="researchContent">
             <p className="meta">{lang==="fr"?"Accepté pour publication · DOI à venir":"Accepted for publication · DOI forthcoming"}</p>
             <h3>Grid-Forming Virtual Synchronous Machine Control with Battery Storage for Frequency Stability in Multiterminal High-Voltage Direct-Current Systems</h3>
-            <p className="summary">{t.research.summary}</p>
+            <details className="abstractDisclosure">
+              <summary>{lang==="fr"?"Voir l’abstract":"View abstract"}</summary>
+              <div className="abstractPanel">
+                <span className="abstractLabel">Abstract</span>
+                <p>{researchAbstracts.juri}</p>
+              </div>
+            </details>
             <p className="journal">{t.research.meta}</p>
             <nav className="researchActions">
               <ExtLink href={juri}>{t.research.link}</ExtLink>
