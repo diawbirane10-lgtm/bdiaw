@@ -2236,3 +2236,81 @@ body{
   #research .abstractPanel{padding-top:15px}
   #research .abstractPanel p{font-size:14.5px!important;line-height:1.68!important}
 }
+
+
+/* Research abstracts — dedicated editorial pages, same behavior as project case studies */
+#research .abstractPageLink{
+  display:inline-flex;
+  align-items:center;
+  width:fit-content;
+  margin:22px 0 18px;
+  padding:0 0 4px;
+  border-bottom:1px solid var(--v32-navy);
+  color:var(--v32-ink);
+  text-decoration:none;
+  font:650 10px/1.4 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+#research .abstractPageLink:hover{
+  color:var(--v32-navy);
+}
+
+.researchHero>.researchDetailBrand{
+  grid-column:2;
+  margin-top:30px;
+  padding-top:24px;
+  border-top:1px solid var(--v32-line);
+}
+
+.researchDetailBrand img{
+  display:block;
+  width:auto;
+  max-width:min(420px,100%);
+  max-height:92px;
+  object-fit:contain;
+  object-position:left center;
+}
+
+.researchDetailGrid .researchAbstractArticle{
+  padding-top:46px!important;
+  padding-bottom:50px!important;
+}
+
+.researchAbstractBody{
+  max-width:980px;
+  color:var(--v32-muted);
+  font-size:18px;
+  line-height:1.82;
+  letter-spacing:-.012em;
+}
+
+@media(max-width:640px){
+  #research .abstractPageLink{
+    margin:18px 0 14px;
+    min-height:38px;
+    align-items:center;
+  }
+
+  .researchHero>.researchDetailBrand{
+    grid-column:auto;
+    margin-top:24px;
+    padding-top:20px;
+  }
+
+  .researchDetailBrand img{
+    max-width:100%;
+    max-height:78px;
+  }
+
+  .researchDetailGrid .researchAbstractArticle{
+    padding-top:30px!important;
+    padding-bottom:32px!important;
+  }
+
+  .researchAbstractBody{
+    font-size:16px;
+    line-height:1.72;
+  }
+}
