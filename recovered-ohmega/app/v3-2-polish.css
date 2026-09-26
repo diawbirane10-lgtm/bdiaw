@@ -2150,3 +2150,23 @@ body{
 .moroccoMark{
   color:#5E6762!important;
 }
+
+
+/* Research publication separation — keep each paper visually distinct */
+#research .researchList{
+  display:grid!important;
+  row-gap:0!important;
+}
+
+#research .researchList .researchFeature + .researchFeature{
+  margin-top:28px!important;
+  padding-top:36px!important;
+  border-top:1px solid var(--v32-line)!important;
+}
+
+@media(max-width:640px){
+  #research .researchList .researchFeature + .researchFeature{
+    margin-top:20px!important;
+    padding-top:28px!important;
+  }
+}
