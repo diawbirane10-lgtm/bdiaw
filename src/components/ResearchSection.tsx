@@ -66,10 +66,16 @@ const ResearchSection = () => {
                     {"title" in paper ? paper.title : t(paper.titleKey)}
                   </h3>
                   <div className="flex flex-wrap items-center gap-2 text-xs font-body text-muted-foreground">
-                    <BookOpen className="w-3.5 h-3.5 shrink-0 text-primary" />
-                    <span className="font-semibold text-foreground/70">{paper.journal}</span>
-                    <span className="opacity-40">·</span>
-                    <span>{paper.publisher}</span>
+                    {"logo" in paper ? (
+                      <img src={paper.logo} alt="IET — The Institution of Engineering and Technology" className="h-10 sm:h-12 w-auto max-w-[320px] object-contain" />
+                    ) : (
+                      <>
+                        <BookOpen className="w-3.5 h-3.5 shrink-0 text-primary" />
+                        <span className="font-semibold text-foreground/70">{paper.journal}</span>
+                        <span className="opacity-40">·</span>
+                        <span>{paper.publisher}</span>
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -94,18 +100,20 @@ const ResearchSection = () => {
                 ))}
               </div>
 
-              <div className="pt-4 border-t border-border/50 flex flex-wrap gap-4">
-                <a
-                  href={paper.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-foreground hover:text-primary transition-colors uppercase tracking-wider"
-                >
-                  <Github size={13} />
-                  {t("research.code")}
-                  <ExternalLink size={11} className="opacity-40" />
-                </a>
-              </div>
+              {"githubLink" in paper && (
+                <div className="pt-4 border-t border-border/50 flex flex-wrap gap-4">
+                  <a
+                    href={paper.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-body font-bold text-foreground hover:text-primary transition-colors uppercase tracking-wider"
+                  >
+                    <Github size={13} />
+                    {t("research.code")}
+                    <ExternalLink size={11} className="opacity-40" />
+                  </a>
+                </div>
+              )}
             </article>
           ))}
         </div>
