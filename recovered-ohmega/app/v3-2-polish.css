@@ -2349,3 +2349,895 @@ body{
     line-height:1.72;
   }
 }
+
+
+/* =========================================================
+   SPORT PROGRAMME VISUAL LANGUAGE — PORTFOLIO ADAPTATION
+   Source of truth: sport/DESIGN.md + sport/app/globals.css
+   Keep portfolio content architecture and dedicated detail pages.
+   ========================================================= */
+
+:root,
+:root[data-theme="light"]{
+  --bg:#ffffff!important;
+  --panel:#ffffff!important;
+  --ink:#111111!important;
+  --mut:#696d73!important;
+  --soft:#777b80!important;
+  --line:#d9dce1!important;
+  --btn:#111111!important;
+  --bt:#ffffff!important;
+  --navy:#145dff!important;
+  --navy-2:#009fbd!important;
+  --navy-ink:#ffffff!important;
+  --v32-ink:#111111;
+  --v32-navy:#145dff;
+  --v32-muted:#696d73;
+  --v32-soft:#777b80;
+  --v32-line:#d9dce1;
+  --v32-line-strong:#111111;
+  --v32-paper:#ffffff;
+  --v32-wash:#f7f7f5;
+  --sport-blue:#145dff;
+  --sport-cyan:#009fbd;
+  --sport-green:#157b58;
+  --sport-yellow:#c28a00;
+  --sport-orange:#df5f0e;
+  --sport-red:#cb3831;
+  --sport-violet:#6541b5;
+  --max:1320px!important;
+}
+
+html,body{
+  background:#fff!important;
+  color:#111!important;
+}
+
+body{
+  font-family:Arial,Helvetica,var(--font-geist-sans),sans-serif!important;
+}
+
+.site{
+  width:min(1320px,calc(100% - 64px))!important;
+  padding-top:0!important;
+}
+
+/* top bar: white, square, functional */
+.topbar{
+  min-height:68px!important;
+  margin:0 0 42px!important;
+  padding:10px 0!important;
+  border-top:0!important;
+  border-bottom:1px solid #111!important;
+  background:#fff!important;
+  backdrop-filter:none!important;
+}
+
+.brandMark{
+  width:40px!important;
+  height:40px!important;
+  flex-basis:40px!important;
+  border:1px solid #111!important;
+  background:#111!important;
+  color:#fff!important;
+  font-size:24px!important;
+  font-weight:700!important;
+}
+
+.brandText{
+  color:#111!important;
+  font-size:13px!important;
+  letter-spacing:.07em!important;
+}
+
+.switches button{
+  min-height:38px!important;
+  padding:8px 12px!important;
+  border:1px solid #111!important;
+  background:#fff!important;
+  color:#111!important;
+  font-size:11px!important;
+  font-weight:700!important;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.switches button:hover{
+  background:#111!important;
+  color:#fff!important;
+  border-color:#111!important;
+}
+
+/* hero: information first, no oversized landing-page treatment */
+.hero{
+  min-height:auto!important;
+  justify-content:flex-start!important;
+  padding:22px 0 48px!important;
+  border-bottom:0!important;
+}
+
+.heroKicker{
+  margin-bottom:22px!important;
+  color:var(--sport-blue)!important;
+  font-size:10px!important;
+  letter-spacing:.12em!important;
+}
+
+.availabilityBar{
+  margin:0 0 24px!important;
+  padding:8px 10px!important;
+  border:1px solid var(--line)!important;
+  background:#fff!important;
+  color:#62666b!important;
+  font-size:9px!important;
+  letter-spacing:.09em!important;
+}
+
+.availabilityBar strong{
+  color:#111!important;
+}
+
+.availabilityDot{
+  width:16px!important;
+  height:2px!important;
+  flex-basis:16px!important;
+  background:var(--sport-green)!important;
+}
+
+.hero h1{
+  max-width:1000px!important;
+  margin:0 0 20px!important;
+  font-size:clamp(52px,6.4vw,86px)!important;
+  line-height:.96!important;
+  font-weight:650!important;
+  letter-spacing:-.055em!important;
+}
+
+.hero .lead{
+  max-width:890px!important;
+  margin-bottom:18px!important;
+  font-size:clamp(25px,2.7vw,35px)!important;
+  line-height:1.08!important;
+}
+
+.introCopy{
+  max-width:820px!important;
+  font-size:16px!important;
+  line-height:1.65!important;
+  color:var(--mut)!important;
+}
+
+.heroScrollCue{
+  margin-top:28px!important;
+  color:var(--sport-blue)!important;
+  gap:10px!important;
+  font-size:10px!important;
+}
+
+.heroScrollCue:hover{gap:10px!important}
+.heroScrollCue span:last-child{animation:none!important}
+
+/* rectangular system navigation */
+.hero .nav{
+  width:max-content!important;
+  max-width:100%!important;
+  display:flex!important;
+  gap:0!important;
+  margin:30px 0 0!important;
+  padding:0!important;
+  border:1px solid #111!important;
+  border-radius:0!important;
+  background:#fff!important;
+  overflow:auto;
+  scrollbar-width:none;
+}
+
+.hero .nav a{
+  min-height:42px!important;
+  padding:0 15px!important;
+  border:0!important;
+  border-right:1px solid var(--line)!important;
+  border-radius:0!important;
+  background:#fff!important;
+  color:#50545a!important;
+  box-shadow:none!important;
+  transform:none!important;
+  font-size:10px!important;
+  font-weight:700!important;
+  letter-spacing:.08em!important;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.hero .nav a:last-child{border-right:0!important}
+.hero .nav a:hover{
+  background:#111!important;
+  color:#fff!important;
+  border-color:#111!important;
+  transform:none!important;
+}
+
+/* compact horizontal section heads */
+.section{
+  display:block!important;
+  padding:54px 0!important;
+  border-bottom:0!important;
+}
+
+.sectionHead{
+  display:grid!important;
+  grid-template-columns:54px minmax(0,1fr) max-content;
+  gap:16px!important;
+  align-items:end!important;
+  margin:0 0 20px!important;
+  padding:0 0 11px!important;
+  border-bottom:1px solid #111!important;
+}
+
+.sectionHead::before{
+  align-self:end;
+  margin:0 0 4px!important;
+  color:var(--sport-blue)!important;
+  font-size:10px!important;
+  letter-spacing:.12em!important;
+}
+
+#projects .sectionHead::before{color:var(--sport-cyan)!important}
+#research .sectionHead::before{color:var(--sport-violet)!important}
+#experience .sectionHead::before{color:var(--sport-orange)!important}
+
+.sectionHead .sectionTitle{
+  margin:0!important;
+  color:#111!important;
+  font-size:27px!important;
+  line-height:1!important;
+  font-weight:650!important;
+  letter-spacing:-.03em!important;
+}
+
+.sectionHead .sectionSubtitle{
+  max-width:520px!important;
+  margin:0 0 2px!important;
+  color:var(--mut)!important;
+  font-size:9px!important;
+  line-height:1.4!important;
+  letter-spacing:.1em!important;
+  text-align:right;
+}
+
+/* about + metrics */
+.aboutGrid{gap:20px!important}
+.aboutStatement{
+  max-width:980px!important;
+  padding:6px 0 24px;
+  border-bottom:1px solid var(--line);
+}
+
+.aboutStatement .aboutLead{
+  max-width:920px;
+  margin-bottom:14px!important;
+  font-size:clamp(22px,2.35vw,31px)!important;
+  line-height:1.22!important;
+}
+
+.aboutStatement p:not(.aboutLead){
+  max-width:900px;
+  font-size:15.5px!important;
+  line-height:1.68!important;
+}
+
+.profileStats{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  border:1px solid var(--line)!important;
+  background:#fff!important;
+}
+
+.profileStat{
+  min-height:116px!important;
+  padding:17px 19px!important;
+  border:0!important;
+  border-right:1px solid var(--line)!important;
+  background:#fff!important;
+}
+
+.profileStat:last-child{border-right:0!important}
+.profileStat dt{
+  margin:0 0 24px!important;
+  font-size:34px!important;
+  line-height:1!important;
+  color:var(--sport-blue)!important;
+}
+.profileStat:nth-child(2) dt{color:var(--sport-violet)!important}
+.profileStat:nth-child(3) dt{color:var(--sport-cyan)!important}
+.profileStat dd{
+  color:var(--mut)!important;
+  font-size:9px!important;
+  letter-spacing:.1em!important;
+}
+
+/* selected work: table-like, no extra cards */
+.workList{
+  border:1px solid var(--line)!important;
+  border-bottom:0!important;
+}
+
+.workRow{
+  grid-template-columns:48px minmax(0,1fr) 210px!important;
+  gap:20px!important;
+  padding:20px 18px 21px!important;
+  border-bottom:1px solid var(--line)!important;
+  background:#fff!important;
+}
+
+.workRow::before{display:none!important}
+.workRowIndex{
+  padding-top:2px!important;
+  font-size:10px!important;
+  color:var(--sport-blue)!important;
+}
+.workRow:nth-child(2) .workRowIndex{color:var(--sport-cyan)!important}
+.workRow:nth-child(3) .workRowIndex{color:var(--sport-orange)!important}
+.workRow:nth-child(4) .workRowIndex{color:var(--sport-violet)!important}
+.workRow:nth-child(5) .workRowIndex{color:var(--sport-green)!important}
+
+.workField{
+  margin-bottom:8px!important;
+  color:var(--mut)!important;
+  font-size:9px!important;
+}
+
+.workRow h3{
+  margin-bottom:9px!important;
+  font-size:clamp(21px,2vw,28px)!important;
+  line-height:1.1!important;
+}
+
+.workBody{
+  max-width:800px!important;
+  font-size:14px!important;
+  line-height:1.58!important;
+}
+
+.workRowMeta{
+  gap:10px!important;
+}
+
+.projectTag,
+.experienceTag{
+  min-height:24px!important;
+  padding:4px 7px!important;
+  border:1px solid var(--line)!important;
+  background:#fff!important;
+  color:#5d6166!important;
+  font-size:9px!important;
+}
+
+.workRowLink{
+  color:var(--sport-blue)!important;
+  font-size:10px!important;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.workRowLink:hover{padding-right:0!important}
+
+.workArchive{
+  grid-template-columns:150px minmax(0,1fr) max-content!important;
+  padding:18px 18px!important;
+  border:1px solid var(--line)!important;
+  border-top:0!important;
+  background:var(--v32-wash)!important;
+}
+
+.workArchive strong{color:var(--sport-blue)!important;font-size:28px!important}
+.workArchive p{font-size:12.5px!important}
+.workArchive>a{
+  color:var(--sport-blue)!important;
+  font-size:10px!important;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+/* research: one clean publication panel; details stay on their own page */
+#research .researchList{
+  display:block!important;
+}
+
+.researchFeature{
+  grid-template-columns:190px minmax(0,1fr)!important;
+  gap:26px!important;
+  padding:22px!important;
+  border:1px solid var(--line)!important;
+  background:#fff!important;
+}
+
+.researchBrand a,
+.researchBrand img{
+  width:190px!important;
+}
+
+.researchContent .meta{
+  color:var(--sport-violet)!important;
+  font-size:9px!important;
+}
+
+.researchContent h3{
+  margin-bottom:18px!important;
+  font-size:clamp(25px,2.6vw,35px)!important;
+  line-height:1.08!important;
+}
+
+#research .abstractPageLink{
+  margin:14px 0!important;
+  color:var(--sport-blue)!important;
+  border-bottom-color:var(--sport-blue)!important;
+}
+
+.researchContent .journal{
+  margin-bottom:10px!important;
+  font-size:9px!important;
+}
+
+/* experience: compact register */
+.experienceList{
+  border:1px solid var(--line)!important;
+  border-bottom:0!important;
+}
+
+.experienceItem{
+  grid-template-columns:118px minmax(0,1fr)!important;
+  gap:20px!important;
+  padding:19px 18px!important;
+  border-bottom:1px solid var(--line)!important;
+}
+
+.experienceItem::before{display:none!important}
+.experienceDate{
+  color:var(--sport-orange)!important;
+  font-size:9px!important;
+}
+
+.experienceHeader h3{
+  font-size:clamp(19px,1.8vw,24px)!important;
+}
+
+.experienceMeta{font-size:9px!important}
+.experienceBody{
+  margin-top:12px!important;
+  font-size:14px!important;
+  line-height:1.58!important;
+}
+
+.experienceLogo{
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+
+/* institutional engagement: dossier, but compressed */
+.engagement{
+  margin-top:0!important;
+  padding:0!important;
+  border:1px solid var(--line)!important;
+  background:#fff!important;
+}
+
+.engagementLabel{
+  padding:16px 18px!important;
+  border-bottom:1px solid var(--line)!important;
+  grid-template-columns:48px minmax(0,1fr) max-content!important;
+}
+
+.engagementLabel::before{color:var(--sport-green)!important}
+
+.engagementLogos{
+  margin:26px 0 30px!important;
+  padding-left:18px!important;
+}
+
+.engagementCopy{
+  margin:26px 0 30px!important;
+  padding:0 24px 0 28px!important;
+}
+
+.engagementKicker{
+  color:var(--sport-green)!important;
+  font-size:9px!important;
+}
+
+.engagementCopy h2{
+  margin-bottom:16px!important;
+  font-size:clamp(25px,2.7vw,36px)!important;
+}
+
+.engagementCopy>p:not(.engagementKicker){
+  font-size:14px!important;
+  line-height:1.62!important;
+}
+
+/* details and research pages keep the multipage architecture */
+.projectHero{
+  padding:20px 0 42px!important;
+  border-bottom:1px solid #111!important;
+}
+
+.projectHero>a{
+  min-height:40px!important;
+  margin-bottom:30px!important;
+  padding:0 12px!important;
+  border:1px solid #111!important;
+  background:#fff!important;
+  color:#111!important;
+  font-size:10px!important;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.projectHero>a:hover{
+  background:#111!important;
+  color:#fff!important;
+}
+
+.projectHero>p{
+  color:var(--sport-blue)!important;
+  font-size:9px!important;
+}
+
+.projectHero h1{
+  max-width:1050px!important;
+  font-size:clamp(40px,5.2vw,68px)!important;
+  line-height:1!important;
+}
+
+.projectHero h2{
+  max-width:900px!important;
+  font-size:clamp(19px,2vw,27px)!important;
+}
+
+.detailGrid{
+  gap:0!important;
+  border:1px solid var(--line)!important;
+  border-top:0!important;
+  background:#fff!important;
+}
+
+.detailGrid article{
+  padding:26px!important;
+  border-right:1px solid var(--line)!important;
+  border-bottom:1px solid var(--line)!important;
+  background:#fff!important;
+}
+
+.detailGrid article:nth-child(even){border-right:0!important}
+.detailGrid .wide{border-right:0!important}
+
+.abstractFrame{
+  max-width:980px!important;
+  padding:24px 26px!important;
+  border:1px solid var(--line)!important;
+  border-radius:0!important;
+  background:var(--v32-wash)!important;
+  box-shadow:none!important;
+}
+
+.abstractKicker{color:var(--sport-violet)!important}
+
+/* footer: pure white, same family as Sport Programme */
+.footer{
+  margin-top:54px!important;
+  padding:44px 0 52px!important;
+  border-top:1px solid #111!important;
+  background:#fff!important;
+  color:#111!important;
+}
+
+.footerIndex{color:var(--sport-blue)!important}
+.footerSectionTitle,
+.footerHeadline{color:#111!important}
+
+.footerSectionTitle{
+  margin-bottom:28px!important;
+  font-size:clamp(30px,3vw,42px)!important;
+}
+
+.footerHeadline{
+  margin-bottom:16px!important;
+  font-size:clamp(28px,3.2vw,44px)!important;
+}
+
+.footerIntro{
+  color:var(--mut)!important;
+  font-size:14px!important;
+  line-height:1.62!important;
+}
+
+.footerContactGrid{gap:42px!important}
+
+.contactDetail{
+  padding-bottom:12px!important;
+  border-bottom:1px solid var(--line)!important;
+}
+
+.contactLabel{
+  color:var(--mut)!important;
+  font-size:9px!important;
+}
+
+.contactValue,
+.contactValue a{
+  color:#111!important;
+  font-size:14px!important;
+}
+
+.contactLinks{
+  gap:0!important;
+  margin-top:28px!important;
+  border:1px solid var(--line);
+  width:max-content;
+  max-width:100%;
+}
+
+.contactLinks a{
+  min-height:40px!important;
+  padding:7px 10px!important;
+  border:0!important;
+  border-right:1px solid var(--line)!important;
+  color:#111!important;
+  background:#fff!important;
+  font-size:10px!important;
+}
+
+.contactLinks a:last-child{border-right:0!important}
+.contactLinks a:hover{
+  background:#111!important;
+  color:#fff!important;
+}
+
+.contactIcon{
+  background:#fff!important;
+  color:var(--sport-blue)!important;
+}
+
+.footerBottom{
+  border-top:1px solid var(--line)!important;
+}
+
+.footerBrand{color:#111!important}
+.footerOmega{
+  border-color:#111!important;
+  background:#111;
+  color:#fff;
+}
+
+/* quieter motion: no floating/marketing feel */
+.heroReveal{animation:none!important}
+.motionReady .section,
+.motionReady .motionSection,
+.motionReady .motionItem{
+  transform:none!important;
+  transition:opacity .22s ease!important;
+}
+
+/* tablet */
+@media(max-width:900px){
+  .site{width:calc(100% - 36px)!important}
+  .topbar{margin-bottom:30px!important}
+  .hero{padding:18px 0 38px!important}
+  .section{padding:44px 0!important}
+  .sectionHead{
+    grid-template-columns:44px minmax(0,1fr) max-content!important;
+  }
+  .researchFeature{
+    grid-template-columns:165px minmax(0,1fr)!important;
+  }
+  .researchBrand a,
+  .researchBrand img{width:165px!important}
+  .engagement{display:grid!important}
+  .engagementLogos{padding-left:14px!important}
+  .engagementCopy{padding-right:18px!important}
+  .footer{padding-left:0!important;padding-right:0!important}
+}
+
+/* mobile */
+@media(max-width:640px){
+  .site{
+    width:calc(100% - 22px)!important;
+    padding-top:0!important;
+  }
+
+  .topbar{
+    min-height:60px!important;
+    margin-bottom:20px!important;
+    padding:8px 0!important;
+  }
+
+  .brandMark{
+    width:34px!important;
+    height:34px!important;
+    flex-basis:34px!important;
+    font-size:21px!important;
+  }
+
+  .hero{
+    padding:12px 0 32px!important;
+  }
+
+  .heroKicker{margin-bottom:16px!important}
+  .availabilityBar{margin-bottom:18px!important}
+
+  .hero h1{
+    font-size:clamp(44px,13vw,58px)!important;
+    line-height:.97!important;
+  }
+
+  .hero .lead{
+    font-size:22px!important;
+    line-height:1.1!important;
+  }
+
+  .introCopy{
+    font-size:15px!important;
+    line-height:1.62!important;
+  }
+
+  .heroScrollCue{margin-top:22px!important}
+
+  .hero .nav{
+    width:100%!important;
+    margin-top:24px!important;
+  }
+
+  .hero .nav a{
+    flex:1 0 auto;
+    min-height:40px!important;
+    padding:0 11px!important;
+    font-size:9px!important;
+  }
+
+  .section{padding:36px 0!important}
+
+  .sectionHead{
+    grid-template-columns:38px minmax(0,1fr)!important;
+    gap:10px!important;
+    margin-bottom:16px!important;
+  }
+
+  .sectionHead .sectionTitle{
+    font-size:24px!important;
+  }
+
+  .sectionHead .sectionSubtitle{
+    grid-column:2;
+    text-align:left!important;
+    font-size:8.5px!important;
+  }
+
+  .profileStats{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+
+  .profileStat{
+    min-height:96px!important;
+    padding:13px 10px!important;
+  }
+
+  .profileStat dt{
+    margin-bottom:18px!important;
+    font-size:27px!important;
+  }
+
+  .profileStat dd{
+    font-size:7.5px!important;
+    letter-spacing:.07em!important;
+  }
+
+  .workRow{
+    display:grid!important;
+    grid-template-columns:34px minmax(0,1fr)!important;
+    gap:12px!important;
+    padding:16px 12px!important;
+  }
+
+  .workRowMeta{
+    grid-column:2;
+    align-items:flex-start!important;
+  }
+
+  .workRow h3{
+    font-size:21px!important;
+  }
+
+  .workBody{
+    font-size:13.5px!important;
+  }
+
+  .workArchive{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+    padding:14px 12px!important;
+  }
+
+  .researchFeature{
+    grid-template-columns:1fr!important;
+    gap:18px!important;
+    padding:16px!important;
+  }
+
+  .researchBrand a,
+  .researchBrand img{
+    width:160px!important;
+  }
+
+  .researchContent h3{
+    font-size:25px!important;
+  }
+
+  .experienceItem{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+    padding:16px 12px!important;
+  }
+
+  .experienceHeader{gap:14px!important}
+
+  .engagement{
+    display:block!important;
+  }
+
+  .engagementLabel{
+    grid-template-columns:34px minmax(0,1fr)!important;
+    padding:14px 12px!important;
+  }
+
+  .engagementLogos{
+    margin:20px 12px!important;
+    padding:0!important;
+  }
+
+  .engagementCopy{
+    margin:0 12px 24px!important;
+    padding:0!important;
+  }
+
+  .projectHero{
+    padding:12px 0 32px!important;
+  }
+
+  .projectHero h1{
+    font-size:clamp(36px,11vw,50px)!important;
+  }
+
+  .detailGrid{
+    display:block!important;
+  }
+
+  .detailGrid article{
+    padding:20px 16px!important;
+    border-right:0!important;
+  }
+
+  .abstractFrame{
+    padding:19px 16px!important;
+  }
+
+  .footer{
+    margin-top:38px!important;
+    padding:34px 0 42px!important;
+  }
+
+  .footerContactGrid{
+    grid-template-columns:1fr!important;
+    gap:28px!important;
+  }
+
+  .contactLinks{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    width:100%;
+  }
+
+  .contactLinks a{
+    border-right:1px solid var(--line)!important;
+    border-bottom:1px solid var(--line)!important;
+  }
+}
