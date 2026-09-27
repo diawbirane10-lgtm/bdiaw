@@ -130,7 +130,7 @@ function resourceLabel(label,lang){
 }
 function ExtLink({href,children,className=""}){const external=!href.startsWith("/")&&!href.startsWith("mailto:");return <a className={className} href={href} target={external?"_blank":undefined} rel={external?"noreferrer":undefined}>{children}{external?<span aria-hidden="true"> ↗</span>:null}</a>}
 function Top({t,lang,setLang}){return <div className="topbar"><a className="brand" href="/"><span className="brandMark" aria-hidden="true">Ω</span><span className="brandText">OHMEGA</span></a><div className="switches"><button type="button" onClick={()=>setLang(lang==="en"?"fr":"en")}>{t.lang}</button></div></div>}
-function Section({id,title,subtitle,children,cut=false}){return <section id={id} className={`section${cut?" cut":""}`}><div className="sectionHead"><h2 className="sectionTitle">{title}</h2><p className="sectionSubtitle">{subtitle}</p></div><div>{children}</div></section>}
+function Section({id,title,subtitle,children,cut=false}){return <section id={id} className={`section${cut?" cut":""}`}><div className="sectionHead"><h2 className="sectionTitle">{title}</h2><p className="sectionSubtitle">{subtitle}</p></div><div className="sectionBody">{children}</div></section>}
 
 function ProfileStats({lang}){
   const values=[17,1,3];
@@ -180,8 +180,10 @@ function Home({t,lang}){
 
         <div className="availabilityBar" aria-label={lang==="fr"?"Disponibilités":"Availability"}>
           <span className="availabilityDot" aria-hidden="true"></span>
-          <span>{lang==="fr"?"DISPONIBLE À L’INTERNATIONAL POUR":"AVAILABLE WORLDWIDE FOR"}</span>
-          <strong>{lang==="fr"?"STAGES · COLLABORATIONS DE RECHERCHE · FELLOWSHIPS":"INTERNSHIPS · RESEARCH COLLABORATIONS · FELLOWSHIPS"}</strong>
+          <div className="availabilityCopy">
+            <span className="availabilityLabel">{lang==="fr"?"DISPONIBLE À L’INTERNATIONAL POUR":"AVAILABLE WORLDWIDE FOR"}</span>
+            <strong className="availabilityValue">{lang==="fr"?"STAGES · COLLABORATIONS DE RECHERCHE · FELLOWSHIPS":"INTERNSHIPS · RESEARCH COLLABORATIONS · FELLOWSHIPS"}</strong>
+          </div>
         </div>
       </aside>
 
