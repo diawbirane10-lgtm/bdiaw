@@ -4396,3 +4396,311 @@ body{
     grid-template-columns:1fr!important;
   }
 }
+
+
+/* =========================================================
+   ABOUT + SELECTED WORK FINAL ALIGNMENT
+   ========================================================= */
+
+#about .aboutGrid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.35fr) minmax(390px,.65fr)!important;
+  gap:56px!important;
+  align-items:start!important;
+}
+
+#about .aboutStatement{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+}
+
+#about .aboutStatement .aboutLead{
+  max-width:760px!important;
+  margin:0 0 18px!important;
+  font-size:clamp(27px,2.45vw,35px)!important;
+  line-height:1.2!important;
+  letter-spacing:-.035em!important;
+}
+
+#about .aboutStatement p:not(.aboutLead){
+  max-width:780px!important;
+  margin:0!important;
+  font-size:16px!important;
+  line-height:1.72!important;
+}
+
+#about .profileStats{
+  align-self:start!important;
+  width:100%!important;
+  max-width:520px!important;
+  margin:0!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+}
+
+#about .profileStat{
+  display:flex!important;
+  min-width:0!important;
+  min-height:132px!important;
+  padding:20px 18px!important;
+  flex-direction:column!important;
+  justify-content:space-between!important;
+  align-items:flex-start!important;
+}
+
+#about .profileStat dt{
+  margin:0!important;
+  font-size:42px!important;
+  line-height:1!important;
+}
+
+#about .profileStat dd{
+  width:100%!important;
+  margin:0!important;
+  font-size:9px!important;
+  line-height:1.35!important;
+  letter-spacing:.075em!important;
+  overflow-wrap:normal!important;
+}
+
+#about .educationStrip{
+  margin-top:30px!important;
+}
+
+/* Explicit four-column Selected Work rows.
+   No display:contents, so every project shares exactly the same anchors. */
+#projects .workRow{
+  display:grid!important;
+  grid-template-columns:52px minmax(300px,1.15fr) minmax(260px,.72fr) minmax(220px,.58fr)!important;
+  column-gap:24px!important;
+  row-gap:0!important;
+  align-items:center!important;
+  padding:22px 18px!important;
+}
+
+#projects .workRowIndex{
+  grid-column:1!important;
+  grid-row:1!important;
+  align-self:start!important;
+  padding-top:4px!important;
+}
+
+#projects .workRowMain{
+  display:block!important;
+  grid-column:2!important;
+  grid-row:1!important;
+  min-width:0!important;
+  margin:0!important;
+}
+
+#projects .workField{
+  margin:0 0 12px!important;
+}
+
+#projects .workRow h3{
+  margin:0!important;
+  max-width:none!important;
+  font-size:clamp(20px,1.9vw,27px)!important;
+  line-height:1.08!important;
+}
+
+#projects .workRowSummary{
+  grid-column:3!important;
+  grid-row:1!important;
+  align-self:center!important;
+  min-width:0!important;
+  max-width:330px!important;
+  margin:0!important;
+  color:var(--mut)!important;
+  font-size:14px!important;
+  line-height:1.58!important;
+}
+
+#projects .workRowMeta{
+  grid-column:4!important;
+  grid-row:1!important;
+  align-self:stretch!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:space-between!important;
+  gap:16px!important;
+  min-width:0!important;
+  margin:0!important;
+}
+
+#projects .workRowMeta .projectTags{
+  margin:0!important;
+}
+
+#projects .workRowLink{
+  margin-top:auto!important;
+}
+
+/* Keep all selected-work title anchors vertically and horizontally identical. */
+#projects .workRow:first-child .workRowMain,
+#projects .workRow:first-child .workField,
+#projects .workRow:first-child h3{
+  margin-left:0!important;
+  padding-left:0!important;
+  transform:none!important;
+}
+
+@media(min-width:761px) and (max-width:1150px){
+  #about .aboutGrid{
+    grid-template-columns:minmax(0,1.25fr) minmax(360px,.75fr)!important;
+    gap:42px!important;
+  }
+
+  #about .aboutStatement .aboutLead{
+    max-width:690px!important;
+    font-size:clamp(27px,3vw,33px)!important;
+  }
+
+  #about .aboutStatement p:not(.aboutLead){
+    max-width:700px!important;
+    font-size:15.5px!important;
+  }
+
+  #about .profileStats{
+    max-width:100%!important;
+  }
+
+  #about .profileStat{
+    min-height:120px!important;
+    padding:18px 14px!important;
+  }
+
+  #about .profileStat dt{
+    font-size:38px!important;
+  }
+
+  #projects .workRow{
+    grid-template-columns:46px minmax(280px,1.05fr) minmax(245px,.78fr) minmax(210px,.62fr)!important;
+    column-gap:18px!important;
+    padding:20px 14px!important;
+  }
+
+  #projects .workRowSummary{
+    max-width:none!important;
+    font-size:13.5px!important;
+  }
+
+  #projects .projectTag{
+    font-size:8.5px!important;
+  }
+}
+
+@media(max-width:900px){
+  #about .aboutGrid{
+    grid-template-columns:1fr!important;
+    gap:28px!important;
+  }
+
+  #about .aboutStatement .aboutLead,
+  #about .aboutStatement p:not(.aboutLead){
+    max-width:820px!important;
+  }
+
+  #about .profileStats{
+    max-width:620px!important;
+  }
+
+  #projects .workRow{
+    grid-template-columns:40px minmax(0,1fr) minmax(190px,.58fr)!important;
+    row-gap:14px!important;
+  }
+
+  #projects .workRowMain{
+    grid-column:2!important;
+    grid-row:1!important;
+  }
+
+  #projects .workRowSummary{
+    grid-column:2!important;
+    grid-row:2!important;
+    max-width:680px!important;
+  }
+
+  #projects .workRowMeta{
+    grid-column:3!important;
+    grid-row:1/3!important;
+  }
+}
+
+@media(max-width:760px){
+  #about .aboutStatement .aboutLead{
+    font-size:25px!important;
+    line-height:1.2!important;
+  }
+
+  #about .aboutStatement p:not(.aboutLead){
+    font-size:15px!important;
+    line-height:1.65!important;
+  }
+
+  #about .profileStats{
+    grid-template-columns:1fr 1fr 1fr!important;
+    max-width:100%!important;
+  }
+
+  #about .profileStat{
+    min-height:100px!important;
+    padding:14px 10px!important;
+  }
+
+  #about .profileStat dt{
+    font-size:31px!important;
+  }
+
+  #about .profileStat dd{
+    font-size:7.5px!important;
+  }
+
+  #projects .workRow{
+    grid-template-columns:30px minmax(0,1fr)!important;
+    row-gap:10px!important;
+    padding:17px 10px!important;
+  }
+
+  #projects .workRowIndex{
+    grid-column:1!important;
+    grid-row:1!important;
+  }
+
+  #projects .workRowMain{
+    grid-column:2!important;
+    grid-row:1!important;
+  }
+
+  #projects .workRowSummary{
+    grid-column:2!important;
+    grid-row:2!important;
+    font-size:13.5px!important;
+    line-height:1.55!important;
+  }
+
+  #projects .workRowMeta{
+    grid-column:2!important;
+    grid-row:3!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:12px!important;
+  }
+}
+
+@media(max-width:420px){
+  #about .profileStats{
+    grid-template-columns:1fr!important;
+  }
+
+  #about .profileStat{
+    min-height:auto!important;
+    padding:14px 12px!important;
+    border-right:0!important;
+    border-top:1px solid var(--line)!important;
+  }
+
+  #about .profileStat:first-child{
+    border-top:0!important;
+  }
+}
