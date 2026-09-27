@@ -5182,3 +5182,29 @@ body{
     display:none!important;
   }
 }
+
+
+/* Research header must span the full section width on tablet/desktop.
+   Neutralizes legacy .sectionHead{max-width:520px} from premium-engineer.css. */
+@media(min-width:761px){
+  #research .sectionHead{
+    width:100%!important;
+    max-width:none!important;
+    justify-self:stretch!important;
+    grid-template-columns:54px minmax(0,1fr) max-content!important;
+  }
+
+  #research .sectionHead .sectionSubtitle{
+    grid-column:3!important;
+    justify-self:end!important;
+    align-self:end!important;
+    margin-left:auto!important;
+    white-space:nowrap!important;
+  }
+}
+
+@media(min-width:761px) and (max-width:900px){
+  #research .sectionHead{
+    grid-template-columns:44px minmax(0,1fr) max-content!important;
+  }
+}
