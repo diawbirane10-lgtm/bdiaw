@@ -145,8 +145,19 @@ function Home({t,lang}){
   const navTargets=["#about","#projects","#research","#experience","#contact"];
   return <>
     <header className="hero heroReveal" id="top">
-      <div className="heroKicker">
-        <span>{lang==="fr"?"PORTFOLIO · GÉNIE ÉLECTRIQUE":"PORTFOLIO · ELECTRICAL ENGINEERING"}</span>
+      <div className="heroPanel heroPrimaryPanel">
+        <div className="heroKicker">
+          <span>{lang==="fr"?"PORTFOLIO · GÉNIE ÉLECTRIQUE":"PORTFOLIO · ELECTRICAL ENGINEERING"}</span>
+        </div>
+        <h1>{t.title}</h1>
+        <p className="lead">{t.subtitle}</p>
+        <p className="introCopy">{t.intro}</p>
+        <a className="heroScrollCue" href="#about" aria-label={lang==="fr"?"Découvrir le portfolio":"Explore the portfolio"}>
+          <span>{lang==="fr"?"Découvrir":"Explore"}</span><span aria-hidden="true">↓</span>
+        </a>
+      </div>
+
+      <aside className="heroPanel heroProfilePanel" aria-label={lang==="fr"?"Profil et disponibilité":"Profile and availability"}>
         <span className="heroIdentityStack">
           <span className="senegalMark">
             <svg className="senegalFlag" viewBox="0 0 30 20" aria-hidden="true" focusable="false">
@@ -166,18 +177,14 @@ function Home({t,lang}){
             <span><span className="identityLead">BASED IN</span> — RABAT, MOROCCO, NORTH AFRICA</span>
           </span>
         </span>
-      </div>
-      <div className="availabilityBar" aria-label={lang==="fr"?"Disponibilités":"Availability"}>
-        <span className="availabilityDot" aria-hidden="true"></span>
-        <span>{lang==="fr"?"DISPONIBLE À L’INTERNATIONAL POUR":"AVAILABLE WORLDWIDE FOR"}</span>
-        <strong>{lang==="fr"?"STAGES · COLLABORATIONS DE RECHERCHE · FELLOWSHIPS":"INTERNSHIPS · RESEARCH COLLABORATIONS · FELLOWSHIPS"}</strong>
-      </div>
-      <h1>{t.title}</h1>
-      <p className="lead">{t.subtitle}</p>
-      <p className="introCopy">{t.intro}</p>
-      <a className="heroScrollCue" href="#about" aria-label={lang==="fr"?"Découvrir le portfolio":"Explore the portfolio"}>
-        <span>{lang==="fr"?"Découvrir":"Explore"}</span><span aria-hidden="true">↓</span>
-      </a>
+
+        <div className="availabilityBar" aria-label={lang==="fr"?"Disponibilités":"Availability"}>
+          <span className="availabilityDot" aria-hidden="true"></span>
+          <span>{lang==="fr"?"DISPONIBLE À L’INTERNATIONAL POUR":"AVAILABLE WORLDWIDE FOR"}</span>
+          <strong>{lang==="fr"?"STAGES · COLLABORATIONS DE RECHERCHE · FELLOWSHIPS":"INTERNSHIPS · RESEARCH COLLABORATIONS · FELLOWSHIPS"}</strong>
+        </div>
+      </aside>
+
       <button className="mobileMenuButton" type="button" aria-expanded={navOpen} aria-controls="portfolio-navigation" onClick={()=>setNavOpen(v=>!v)}>
         <span className="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span><span>Menu</span>
       </button>
