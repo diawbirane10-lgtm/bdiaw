@@ -4704,3 +4704,20 @@ body{
     border-top:0!important;
   }
 }
+
+
+/* Research section header: match Experience header alignment */
+#research .sectionHead .sectionSubtitle{
+  justify-self:end!important;
+  text-align:right!important;
+  align-self:end!important;
+  max-width:none!important;
+}
+
+@media(max-width:760px){
+  #research .sectionHead .sectionSubtitle{
+    justify-self:start!important;
+    text-align:left!important;
+    align-self:auto!important;
+  }
+}
