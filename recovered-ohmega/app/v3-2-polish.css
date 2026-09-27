@@ -4784,3 +4784,125 @@ body{
     max-width:620px!important;
   }
 }
+
+
+/* =========================================================
+   FINAL HEADER VISIBILITY + RESEARCH HEADING ALIGNMENT
+   ========================================================= */
+
+/* Topbar: neutralize legacy dark-header rules that made content
+   white-on-white after the Sport Programme restyle. */
+.topbar{
+  position:sticky!important;
+  top:0!important;
+  z-index:80!important;
+  background:#fff!important;
+  color:#111!important;
+  border-top:0!important;
+  border-bottom:1px solid #111!important;
+  box-shadow:none!important;
+}
+
+.topbar .brand{
+  color:#111!important;
+  opacity:1!important;
+}
+
+.topbar .brandMark{
+  background:#111!important;
+  color:#fff!important;
+  border-color:#111!important;
+}
+
+.topbar .brandText{
+  color:#111!important;
+  opacity:1!important;
+}
+
+#portfolio-navigation.navDocked{
+  background:transparent!important;
+}
+
+#portfolio-navigation.navDocked a,
+#portfolio-navigation.navDocked a[aria-current="page"]{
+  color:#111!important;
+  opacity:1!important;
+}
+
+#portfolio-navigation.navDocked a:hover,
+#portfolio-navigation.navDocked a:focus-visible{
+  color:#145dff!important;
+}
+
+.topbar .switches button{
+  min-width:auto!important;
+  min-height:36px!important;
+  padding:7px 11px!important;
+  border:1px solid #111!important;
+  border-radius:0!important;
+  background:#fff!important;
+  color:#111!important;
+  opacity:1!important;
+}
+
+.topbar .switches button:hover,
+.topbar .switches button:focus-visible{
+  background:#111!important;
+  color:#fff!important;
+  border-color:#111!important;
+}
+
+/* Research header uses the same 3-column geometry as Experience. */
+#research .sectionHead{
+  display:grid!important;
+  grid-template-columns:54px minmax(0,1fr) max-content!important;
+  align-items:end!important;
+  width:100%!important;
+}
+
+#research .sectionHead::before{
+  grid-column:1!important;
+}
+
+#research .sectionHead .sectionTitle{
+  grid-column:2!important;
+  justify-self:start!important;
+}
+
+#research .sectionHead .sectionSubtitle{
+  grid-column:3!important;
+  justify-self:end!important;
+  align-self:end!important;
+  width:max-content!important;
+  max-width:none!important;
+  margin:0!important;
+  text-align:right!important;
+}
+
+@media(min-width:761px) and (max-width:1150px){
+  #research .sectionHead{
+    grid-template-columns:44px minmax(0,1fr) max-content!important;
+  }
+}
+
+@media(max-width:760px){
+  #research .sectionHead{
+    grid-template-columns:34px minmax(0,1fr)!important;
+  }
+
+  #research .sectionHead::before{
+    grid-column:1!important;
+  }
+
+  #research .sectionHead .sectionTitle{
+    grid-column:2!important;
+  }
+
+  #research .sectionHead .sectionSubtitle{
+    grid-column:2!important;
+    justify-self:start!important;
+    width:auto!important;
+    margin-top:4px!important;
+    text-align:left!important;
+  }
+}
