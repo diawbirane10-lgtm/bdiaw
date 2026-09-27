@@ -132,12 +132,33 @@ function ExtLink({href,children,className=""}){const external=!href.startsWith("
 function Top({t,lang,setLang}){return <div className="topbar"><a className="brand" href="/"><span className="brandMark" aria-hidden="true">Ω</span><span className="brandText">OHMEGA</span></a><div className="switches"><button type="button" onClick={()=>setLang(lang==="en"?"fr":"en")}>{t.lang}</button></div></div>}
 function Section({id,title,subtitle,children,cut=false}){return <section id={id} className={`section${cut?" cut":""}`}><div className="sectionHead"><h2 className="sectionTitle">{title}</h2><p className="sectionSubtitle">{subtitle}</p></div><div className="sectionBody">{children}</div></section>}
 
-function ProfileStats({lang}){
-  const values=[17,1,3];
-  const labels=lang==="fr"
-    ?["Projets d’ingénierie","Publications de recherche","Expériences d’ingénierie"]
-    :["Engineering projects","Research publications","Engineering experiences"];
-  return <dl className="profileStats">{values.map((v,i)=><div className="profileStat" key={labels[i]}><dt>{i===0?String(v)+"+":v}</dt><dd>{labels[i]}</dd></div>)}</dl>
+const engineeringProjectTotal=17;
+
+function AnimatedCount({value,suffix=""}){
+  const[display,setDisplay]=useState(0);
+  useEffect(()=>{
+    let frame=0;
+    const duration=700;
+    const started=performance.now();
+    const tick=(now)=>{
+      const progress=Math.min(1,(now-started)/duration);
+      const eased=1-Math.pow(1-progress,3);
+      setDisplay(Math.round(value*eased));
+      if(progress<1) frame=requestAnimationFrame(tick);
+    };
+    frame=requestAnimationFrame(tick);
+    return()=>cancelAnimationFrame(frame);
+  },[value]);
+  return <>{display}{suffix}</>;
+}
+
+function ProfileStats({lang,experienceCount}){
+  const metrics=[
+    {value:engineeringProjectTotal,suffix:"+",label:lang==="fr"?"Projets d’ingénierie":"Engineering projects"},
+    {value:Object.keys(researchPublications).length,suffix:"",label:lang==="fr"?"Publications de recherche":"Research publications"},
+    {value:experienceCount,suffix:"",label:lang==="fr"?"Expériences d’ingénierie":"Engineering experiences"}
+  ];
+  return <dl className="profileStats">{metrics.map(metric=><div className="profileStat" key={metric.label}><dt><AnimatedCount value={metric.value} suffix={metric.suffix}/></dt><dd>{metric.label}</dd></div>)}</dl>
 }
 
 function Home({t,lang}){
@@ -205,7 +226,7 @@ function Home({t,lang}){
             ?"Mon travail s’articule autour de la modélisation, de la simulation et de l’ingénierie système, à l’intersection des systèmes de puissance, de la commande et de l’automatisation — de la stabilité des réseaux, du HVDC / HVAC et des technologies grid-forming jusqu’aux systèmes électromécaniques et au contrôle industriel. Je m’intéresse particulièrement aux architectures intégrées où conversion de puissance, capteurs, actionnement et intelligence embarquée sont conçus ensemble pour assurer stabilité, performance et fiabilité."
             :"My work centers on modelling, simulation and system-level engineering across power, control and automation, from grid stability, HVDC / HVAC and grid-forming technologies to electromechanical systems and industrial control. I am particularly interested in integrated architectures where power conversion, sensing, actuation and embedded intelligence are engineered together for stability, performance and reliability."}</p>
         </div>
-        <ProfileStats lang={lang}/>
+        <ProfileStats lang={lang} experienceCount={t.experience.items.length}/>
       </div>
       <a className="educationStrip motionItem" href="https://emsi.ma/" target="_blank" rel="noreferrer" aria-label={lang==="fr"?"École Marocaine des Sciences de l’Ingénieur — site officiel":"École Marocaine des Sciences de l’Ingénieur — official website"}>
         <span className="educationLogo" aria-hidden="true"><img src="https://emsi.ma/wp-content/uploads/2024/03/favicon.svg" alt=""/></span>
@@ -218,15 +239,15 @@ function Home({t,lang}){
       </a>
     </Section>
 
-    <Section id="projects" title={lang==="fr"?"Projets sélectionnés":"Selected Work"} subtitle={lang==="fr"?"Une sélection parmi plus de 17 projets":"A selection from 17+ engineering projects"}>
+    <Section id="projects" title={lang==="fr"?"Projets sélectionnés":"Selected Work"} subtitle={lang==="fr"?`Une sélection parmi plus de ${engineeringProjectTotal} projets`:`A selection from ${engineeringProjectTotal}+ engineering projects`}>
       <div className="workList">
         {projects.map(p=><article className="workRow motionItem" key={p.slug}>
           <div className="workRowIndex">{p.no}</div>
           <div className="workRowMain">
             <p className="workField">{p.field[lang]}</p>
             <h3><ExtLink href={`/projects/${p.slug}`} className="titleLink">{p.title}</ExtLink></h3>
-            <p className="workBody">{p.body[lang]}</p>
           </div>
+          <p className="workRowSummary">{p.body[lang]}</p>
           <div className="workRowMeta">
             <div className="projectTags" aria-label={lang==="fr"?"Compétences et logiciels":"Skills and software"}>
               {projectTags[p.slug]?.skills[lang].slice(0,2).map(tag=><span className="projectTag" key={`skill-${tag}`}>{tag}</span>)}
@@ -237,7 +258,7 @@ function Home({t,lang}){
         </article>)}
       </div>
       <div className="workArchive motionItem">
-        <div><strong>17+</strong><span>{lang==="fr"?"projets d’ingénierie":"engineering projects"}</span></div>
+        <div><strong><AnimatedCount value={engineeringProjectTotal} suffix="+"/></strong><span>{lang==="fr"?"projets d’ingénierie":"engineering projects"}</span></div>
         <p>{lang==="fr"?"Cette page n’en montre qu’une sélection. Le reste est disponible sur GitHub.":"This page shows only a selection. More projects are available on GitHub."}</p>
         <ExtLink href={github}>{lang==="fr"?"Explorer GitHub":"Explore GitHub"}</ExtLink>
       </div>
