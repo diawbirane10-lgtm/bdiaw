@@ -3796,3 +3796,603 @@ body{
     grid-template-columns:1fr!important;
   }
 }
+
+
+/* =========================================================
+   FINAL VISUAL CLEANUP — tablet screenshots audit
+   Keep current palette. Fix geometry, spacing and readability.
+   ========================================================= */
+
+/* Kill legacy grid positioning that still leaks into the new hero. */
+.heroPrimaryPanel,
+.heroPrimaryPanel > *{
+  min-width:0!important;
+}
+.heroPrimaryPanel h1,
+.heroPrimaryPanel .lead,
+.heroPrimaryPanel .introCopy,
+.heroPrimaryPanel .heroKicker,
+.heroPrimaryPanel .heroScrollCue{
+  grid-column:auto!important;
+  grid-row:auto!important;
+  justify-self:start!important;
+  align-self:flex-start!important;
+  text-align:left!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+.heroPrimaryPanel h1{
+  width:100%!important;
+  max-width:820px!important;
+  font-size:clamp(42px,4.6vw,66px)!important;
+}
+.heroPrimaryPanel .lead{
+  width:100%!important;
+  max-width:760px!important;
+}
+.heroPrimaryPanel .introCopy{
+  width:100%!important;
+  max-width:720px!important;
+  padding-left:0!important;
+  border-left:0!important;
+}
+
+/* Availability: one clean information block, no legacy pseudo-line overlap. */
+.heroProfilePanel .availabilityBar{
+  display:flex!important;
+  align-items:flex-start!important;
+  gap:10px!important;
+  width:100%!important;
+  margin:0!important;
+  padding:12px!important;
+}
+.heroProfilePanel .availabilityBar::before{
+  display:none!important;
+  content:none!important;
+}
+.availabilityCopy{
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:5px!important;
+}
+.availabilityLabel,
+.availabilityValue{
+  display:block!important;
+  min-width:0!important;
+  white-space:normal!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+}
+.availabilityLabel{
+  color:var(--mut)!important;
+  font:700 9px/1.4 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
+  letter-spacing:.085em!important;
+}
+.availabilityValue{
+  color:#111!important;
+  font:700 11px/1.5 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
+  letter-spacing:.055em!important;
+}
+
+/* Remove the excessive inherited section padding visible in the tablet shots. */
+.section{
+  padding:0!important;
+  border-bottom:1px solid var(--line)!important;
+}
+.sectionHead{
+  margin:0!important;
+  padding:24px 0 18px!important;
+}
+.sectionBody,
+.section>div:last-child{
+  width:100%!important;
+  min-width:0!important;
+  padding:30px 0 42px!important;
+}
+#about .sectionBody{padding-top:32px!important}
+#projects .sectionBody{padding-top:24px!important}
+#research .sectionBody{padding-top:28px!important}
+#experience .sectionBody{padding-top:24px!important}
+#software .sectionBody{padding-top:24px!important}
+
+/* About: prevent statistics labels from escaping the right edge. */
+#about .aboutGrid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.45fr) minmax(300px,.55fr)!important;
+  gap:54px!important;
+  align-items:start!important;
+}
+.profileStats{
+  width:100%!important;
+  min-width:0!important;
+}
+.profileStat{
+  min-width:0!important;
+  overflow:hidden!important;
+}
+.profileStat dd{
+  display:block!important;
+  max-width:100%!important;
+  overflow-wrap:break-word!important;
+  word-break:normal!important;
+}
+
+/* Selected work: denser, more balanced rows. */
+.workRow{
+  align-items:center!important;
+  min-height:0!important;
+}
+.workRow h3{
+  max-width:640px!important;
+  font-size:clamp(20px,1.9vw,27px)!important;
+  line-height:1.08!important;
+}
+.workBody{
+  max-width:590px!important;
+}
+.workRowMeta{
+  justify-self:stretch!important;
+  min-width:0!important;
+}
+.workRowLink{
+  width:max-content!important;
+  max-width:100%!important;
+}
+
+/* Research index: keep the publication card visually centred in its section. */
+#research .researchList{
+  max-width:1040px!important;
+  margin:0 auto!important;
+}
+#research .researchFeature{
+  width:100%!important;
+  margin:0 auto!important;
+}
+.researchContent h3{
+  max-width:760px!important;
+}
+
+/* Research detail: article title, not a giant marketing hero. */
+.researchHero{
+  display:block!important;
+  padding:22px 0 30px!important;
+}
+.researchHero>a{
+  margin-bottom:26px!important;
+}
+.researchHero>p{
+  margin:0 0 14px!important;
+}
+.researchHero h1{
+  width:100%!important;
+  max-width:980px!important;
+  margin:0 0 16px!important;
+  font-size:clamp(38px,4.1vw,54px)!important;
+  line-height:1.01!important;
+  font-weight:650!important;
+  letter-spacing:-.045em!important;
+  text-wrap:pretty!important;
+}
+.researchHero h2{
+  width:100%!important;
+  max-width:960px!important;
+  margin:0 0 24px!important;
+  font-size:clamp(17px,1.65vw,22px)!important;
+  line-height:1.35!important;
+  font-weight:500!important;
+}
+.researchHero>.researchDetailBrand{
+  width:100%!important;
+  max-width:960px!important;
+  margin:0!important;
+  padding:20px 0 0!important;
+  border-top:1px solid var(--line)!important;
+}
+
+/* Abstract: centred reading column, contained rather than edge-to-edge. */
+.researchDetailGrid{
+  display:block!important;
+  width:100%!important;
+  border:0!important;
+  background:#fff!important;
+}
+.researchDetailGrid .researchAbstractArticle{
+  padding:34px 0 24px!important;
+  border:0!important;
+}
+.abstractFrame{
+  width:min(860px,100%)!important;
+  max-width:860px!important;
+  margin:0 auto!important;
+  padding:26px 28px 30px!important;
+  border:1px solid var(--line)!important;
+  background:var(--v32-wash)!important;
+}
+.researchAbstractBody{
+  max-width:760px!important;
+  margin:0 auto!important;
+  color:var(--mut)!important;
+  font-size:16.5px!important;
+  line-height:1.76!important;
+}
+.researchDetailGrid article.wide:last-child{
+  width:min(860px,100%)!important;
+  margin:0 auto!important;
+  padding:22px 0 10px!important;
+  border:0!important;
+}
+
+/* Case-study detail: same editorial scale discipline. */
+.projectHero{
+  display:block!important;
+  padding:22px 0 32px!important;
+}
+.projectHero>a{
+  margin-bottom:24px!important;
+}
+.projectHero>p{
+  margin:0 0 12px!important;
+}
+.projectHero h1{
+  width:100%!important;
+  max-width:900px!important;
+  margin:0 0 14px!important;
+  font-size:clamp(36px,3.8vw,52px)!important;
+  line-height:1.02!important;
+  font-weight:650!important;
+  letter-spacing:-.045em!important;
+  text-wrap:pretty!important;
+}
+.projectHero h2{
+  width:100%!important;
+  max-width:820px!important;
+  margin:0!important;
+  font-size:clamp(18px,1.7vw,23px)!important;
+  line-height:1.34!important;
+}
+
+/* Institutional engagement: stack both logos to save width and equalise framing. */
+.engagement{
+  grid-template-columns:180px minmax(0,1fr)!important;
+  gap:0!important;
+}
+.engagementLogos{
+  grid-column:1!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:10px!important;
+  padding:22px 16px!important;
+  border-right:1px solid var(--line)!important;
+}
+.engagementLogo{
+  width:128px!important;
+  min-height:92px!important;
+  height:auto!important;
+  padding:9px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border:1px solid var(--line)!important;
+  background:#fff!important;
+}
+.engagementLogo img{
+  display:block!important;
+  width:auto!important;
+  height:auto!important;
+  max-width:106px!important;
+  max-height:92px!important;
+  object-fit:contain!important;
+}
+.engagementLogo.iaea img{
+  max-width:78px!important;
+  max-height:70px!important;
+}
+.engagementJoin{
+  width:auto!important;
+  height:auto!important;
+  line-height:1!important;
+}
+.engagementCopy{
+  grid-column:2!important;
+  padding:26px 28px!important;
+}
+
+/* Footer: readable, contained, no full-bleed remnants from the old design. */
+.footer{
+  width:100%!important;
+  max-width:100%!important;
+  margin:0!important;
+  padding:34px 0 42px!important;
+  border-top:1px solid #111!important;
+  background:#fff!important;
+  color:#111!important;
+}
+.footerIndex,
+.footerSectionTitle,
+.footerHeadline,
+.footerBrand,
+.footerBrand > span:not(.footerOmega),
+.contactValue,
+.contactValue a,
+.contactLinks a,
+.contactLinks a > span:not(.contactIcon){
+  color:#111!important;
+  opacity:1!important;
+}
+.footerIntro,
+.contactLabel{
+  color:var(--mut)!important;
+}
+.footerContactGrid{
+  width:100%!important;
+  grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr)!important;
+  gap:48px!important;
+}
+.footerHeadline{
+  max-width:760px!important;
+  font-size:clamp(28px,3vw,42px)!important;
+  line-height:1.05!important;
+}
+.footerBottom{
+  width:100%!important;
+  margin:30px 0 0!important;
+  padding:20px 0 0!important;
+  border-top:1px solid var(--line)!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:22px!important;
+}
+.footerBrand{
+  flex:0 0 auto!important;
+  margin:0!important;
+}
+.footerOmega{
+  border-color:#111!important;
+  background:#111!important;
+  color:#fff!important;
+}
+.contactLinks{
+  width:auto!important;
+  max-width:100%!important;
+  margin:0!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  border:1px solid var(--line)!important;
+  background:#fff!important;
+}
+.contactLinks a{
+  color:#111!important;
+  background:#fff!important;
+  border:0!important;
+  border-right:1px solid var(--line)!important;
+}
+.contactLinks a:last-child{border-right:0!important}
+.contactLinks a:hover,
+.contactLinks a:focus-visible{
+  color:#fff!important;
+  background:#111!important;
+}
+
+/* TABLET — targeted from the screenshots. */
+@media(min-width:761px) and (max-width:1150px){
+  .site{
+    width:calc(100% - 56px)!important;
+    max-width:none!important;
+  }
+
+  .hero{
+    grid-template-columns:minmax(0,1.9fr) minmax(290px,.72fr)!important;
+    gap:14px!important;
+  }
+  .heroPanel{padding:24px!important}
+  .heroPrimaryPanel h1{
+    max-width:720px!important;
+    font-size:clamp(44px,5.6vw,60px)!important;
+  }
+  .heroProfilePanel{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:space-between!important;
+    gap:22px!important;
+    min-height:100%!important;
+    padding:22px!important;
+  }
+
+  #about .aboutGrid{
+    grid-template-columns:minmax(0,1fr) 360px!important;
+    gap:46px!important;
+  }
+  .profileStats{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+  .profileStat{
+    padding:16px 13px!important;
+  }
+  .profileStat dd{
+    font-size:8px!important;
+    line-height:1.3!important;
+    letter-spacing:.055em!important;
+  }
+
+  .workRow{
+    grid-template-columns:42px minmax(0,1fr) 195px!important;
+    gap:16px!important;
+    padding:18px 16px!important;
+  }
+  .workRow h3{
+    font-size:clamp(20px,2.1vw,25px)!important;
+  }
+
+  #research .researchList{
+    max-width:940px!important;
+  }
+  .researchFeature{
+    grid-template-columns:165px minmax(0,1fr)!important;
+  }
+
+  .researchHero h1{
+    max-width:880px!important;
+    font-size:clamp(36px,4.2vw,48px)!important;
+  }
+  .projectHero h1{
+    max-width:820px!important;
+    font-size:clamp(34px,4vw,46px)!important;
+  }
+
+  .engagement{
+    grid-template-columns:165px minmax(0,1fr)!important;
+  }
+  .engagementLogo{
+    width:118px!important;
+  }
+
+  .footerContactGrid{
+    grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr)!important;
+    gap:34px!important;
+  }
+  .footerBottom{
+    align-items:flex-start!important;
+  }
+  .contactLinks{
+    justify-content:flex-end!important;
+  }
+}
+
+/* MOBILE */
+@media(max-width:760px){
+  .site{
+    width:calc(100% - 28px)!important;
+  }
+
+  .hero{
+    grid-template-columns:1fr!important;
+  }
+  .heroPrimaryPanel h1{
+    max-width:100%!important;
+    font-size:38px!important;
+  }
+  .heroProfilePanel{
+    display:block!important;
+    min-height:0!important;
+  }
+  .heroProfilePanel .availabilityBar{
+    margin-top:18px!important;
+  }
+
+  .sectionHead{
+    padding:18px 0 14px!important;
+  }
+  .sectionBody,
+  .section>div:last-child{
+    padding:22px 0 30px!important;
+  }
+
+  #about .aboutGrid{
+    grid-template-columns:1fr!important;
+    gap:26px!important;
+  }
+  .profileStats{
+    grid-template-columns:1fr!important;
+  }
+  .profileStat,
+  .profileStat:nth-child(2),
+  .profileStat:nth-child(3){
+    grid-column:auto!important;
+    border-right:0!important;
+    border-top:1px solid var(--line)!important;
+  }
+  .profileStat:first-child{border-top:0!important}
+
+  .workRow{
+    grid-template-columns:30px minmax(0,1fr)!important;
+  }
+  .workRow h3{
+    font-size:21px!important;
+  }
+
+  .researchHero h1{
+    font-size:32px!important;
+    line-height:1.04!important;
+  }
+  .researchHero h2{
+    font-size:17px!important;
+  }
+  .projectHero h1{
+    font-size:31px!important;
+    line-height:1.04!important;
+  }
+  .projectHero h2{
+    font-size:17px!important;
+  }
+
+  .researchDetailGrid .researchAbstractArticle{
+    padding:24px 0 16px!important;
+  }
+  .abstractFrame{
+    width:100%!important;
+    padding:20px 18px 22px!important;
+  }
+  .researchAbstractBody{
+    font-size:15.5px!important;
+    line-height:1.7!important;
+  }
+
+  .engagement{
+    display:block!important;
+  }
+  .engagementLogos{
+    flex-direction:column!important;
+    border-right:0!important;
+    border-bottom:1px solid var(--line)!important;
+  }
+  .engagementCopy{
+    padding:22px 14px!important;
+  }
+
+  .footer{
+    padding:28px 0 36px!important;
+  }
+  .footerContactGrid{
+    grid-template-columns:1fr!important;
+    gap:26px!important;
+  }
+  .footerBottom{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:18px!important;
+  }
+  .contactLinks{
+    width:100%!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .contactLinks a{
+    min-width:0!important;
+    border-right:1px solid var(--line)!important;
+    border-bottom:1px solid var(--line)!important;
+  }
+}
+
+/* SMALL MOBILE */
+@media(max-width:390px){
+  .site{
+    width:calc(100% - 22px)!important;
+  }
+  .heroPanel{
+    padding:15px!important;
+  }
+  .heroPrimaryPanel h1{
+    font-size:34px!important;
+  }
+  .researchHero h1,
+  .projectHero h1{
+    font-size:29px!important;
+  }
+  .contactLinks{
+    grid-template-columns:1fr!important;
+  }
+}
