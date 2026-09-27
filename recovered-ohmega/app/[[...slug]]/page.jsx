@@ -129,7 +129,25 @@ function resourceLabel(label,lang){
   return labels[label]||label;
 }
 function ExtLink({href,children,className=""}){const external=!href.startsWith("/")&&!href.startsWith("mailto:");return <a className={className} href={href} target={external?"_blank":undefined} rel={external?"noreferrer":undefined}>{children}{external?<span aria-hidden="true"> ↗</span>:null}</a>}
-function Top({t,lang,setLang}){return <div className="topbar"><a className="brand" href="/"><span className="brandMark" aria-hidden="true">Ω</span><span className="brandText">OHMEGA</span></a><div className="switches"><button type="button" onClick={()=>setLang(lang==="en"?"fr":"en")}>{t.lang}</button></div></div>}
+function Top({t,lang,setLang,navOpen,setNavOpen}){
+  const navTargets=["/#about","/#projects","/#research","/#experience","/#contact"];
+  return <div className="topbar">
+    <a className="brand" href="/"><span className="brandMark" aria-hidden="true">Ω</span><span className="brandText">OHMEGA</span></a>
+    <nav className="topNavDesktop" aria-label={lang==="fr"?"Navigation du portfolio":"Portfolio navigation"}>
+      {t.nav.map((n,i)=><a href={navTargets[i]} key={n}>{n}</a>)}
+    </nav>
+    <div className="topbarActions">
+      <div className="switches"><button type="button" onClick={()=>setLang(lang==="en"?"fr":"en")}>{t.lang}</button></div>
+      <button className="topbarMenuButton" type="button" aria-expanded={navOpen} aria-controls="mobile-portfolio-navigation" onClick={()=>setNavOpen(v=>!v)}>
+        <span className="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span className="menuLabel">{lang==="fr"?"Menu":"Menu"}</span>
+      </button>
+    </div>
+    <nav id="mobile-portfolio-navigation" className={`topNavMobile${navOpen?" isOpen":""}`} aria-label={lang==="fr"?"Navigation mobile du portfolio":"Mobile portfolio navigation"}>
+      {t.nav.map((n,i)=><a href={navTargets[i]} key={n} onClick={()=>setNavOpen(false)}>{n}</a>)}
+    </nav>
+  </div>
+}
 function Section({id,title,subtitle,children,cut=false}){return <section id={id} className={`section${cut?" cut":""}`}><div className="sectionHead"><h2 className="sectionTitle">{title}</h2><p className="sectionSubtitle">{subtitle}</p></div><div className="sectionBody">{children}</div></section>}
 
 const engineeringProjectTotal=17;
@@ -161,10 +179,7 @@ function ProfileStats({lang,experienceCount}){
   return <dl className="profileStats">{metrics.map(metric=><div className="profileStat" key={metric.label}><dt><AnimatedCount value={metric.value} suffix={metric.suffix}/></dt><dd>{metric.label}</dd></div>)}</dl>
 }
 
-function Home({t,lang}){
-  const[navOpen,setNavOpen]=useState(false);
-  const navTargets=["#about","#projects","#research","#experience","#contact"];
-  return <>
+function Home({t,lang}){return <>
     <header className="hero heroReveal" id="top">
       <div className="heroPanel heroPrimaryPanel">
         <div className="heroKicker">
@@ -208,12 +223,6 @@ function Home({t,lang}){
         </div>
       </aside>
 
-      <button className="mobileMenuButton" type="button" aria-expanded={navOpen} aria-controls="portfolio-navigation" onClick={()=>setNavOpen(v=>!v)}>
-        <span className="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span><span>Menu</span>
-      </button>
-      <nav id="portfolio-navigation" className={`nav${navOpen?" isOpen":""}`} aria-label={lang==="fr"?"Navigation du portfolio":"Portfolio navigation"}>
-        {t.nav.map((n,i)=><a href={navTargets[i]} key={n} onClick={()=>setNavOpen(false)}>{n}</a>)}
-      </nav>
     </header>
 
     <Section id="about" title={lang==="fr"?"À propos":"About"} subtitle={lang==="fr"?"Profil d’ingénierie":"Engineering profile"}>
@@ -400,4 +409,4 @@ function ResearchDetail({publication,lang}){return <>
   </section>
 </>}
 function ProjectDetail({project,t,lang}){return <><header className="projectHero"><ExtLink href="/">{t.detail[0]}</ExtLink><p>{project.no} · {project.field[lang]}</p><h1>{project.title}</h1><h2>{project.body[lang]}</h2>{projectTags[project.slug]?.standards?.length?<div className="caseStudyStandards" aria-label={lang==="fr"?"Normes de référence":"Reference standards"}>{projectTags[project.slug].standards.map(tag=><span className="projectTag standardTag" key={tag}>{tag}</span>)}</div>:null}</header>{project.image?<figure className="projectVisual motionSection"><div className="projectVisualFrame"><img src={project.image} alt={project.title}/></div><figcaption><span>{lang==="fr"?"VUE CONCEPTUELLE DU PROJET":"PROJECT CONCEPT VIEW"}</span><p>{project.visualNote?.[lang]}</p></figcaption></figure>:null}<section className="detailGrid"><article><p>{t.detail[1]}</p><h2>{project.problem[lang]}</h2></article><article><p>{t.detail[2]}</p><h2>{project.solution[lang]}</h2></article><article><p>{t.detail[3]}</p><ol>{project.steps[lang].map(s=><li key={s}>{s}</li>)}</ol></article><article><p>{t.detail[4]}</p><h2>{project.discussion[lang]}</h2></article><article className="wide"><p>{t.detail[5]}</p><nav className="inline">{project.links.map(([label,href])=><ExtLink href={href} key={label}>{resourceLabel(label,lang)}</ExtLink>)}</nav></article></section></>}
-export default function Portfolio(){const pathname=usePathname();const[lang,setLang]=useState("en");useEffect(()=>{const savedLang=localStorage.getItem("ohmega-lang");localStorage.removeItem("ohmega-theme");localStorage.removeItem("ohmega-theme-v2");if(savedLang)setLang(savedLang);document.documentElement.dataset.theme="light"},[]);useEffect(()=>{document.documentElement.dataset.theme="light";document.documentElement.lang=lang;localStorage.setItem("ohmega-lang",lang)},[lang]);const t=useMemo(()=>copy[lang],[lang]);const projectSlug=pathname?.startsWith("/projects/")?pathname.split("/projects/")[1]?.split("/")[0]:null;const researchSlug=pathname?.startsWith("/research/")?pathname.split("/research/")[1]?.split("/")[0]:null;const project=projects.find(p=>p.slug===projectSlug);const publication=researchSlug?researchPublications[researchSlug]:null;return <main className="site"><Top t={t} lang={lang} setLang={setLang}/>{project?<ProjectDetail project={project} t={t} lang={lang}/>:publication?<ResearchDetail publication={publication} lang={lang}/>:<Home t={t} lang={lang}/>}</main>}
+export default function Portfolio(){const pathname=usePathname();const[lang,setLang]=useState("en");const[navOpen,setNavOpen]=useState(false);useEffect(()=>{const savedLang=localStorage.getItem("ohmega-lang");localStorage.removeItem("ohmega-theme");localStorage.removeItem("ohmega-theme-v2");if(savedLang)setLang(savedLang);document.documentElement.dataset.theme="light"},[]);useEffect(()=>{document.documentElement.dataset.theme="light";document.documentElement.lang=lang;localStorage.setItem("ohmega-lang",lang)},[lang]);useEffect(()=>{setNavOpen(false)},[pathname]);const t=useMemo(()=>copy[lang],[lang]);const projectSlug=pathname?.startsWith("/projects/")?pathname.split("/projects/")[1]?.split("/")[0]:null;const researchSlug=pathname?.startsWith("/research/")?pathname.split("/research/")[1]?.split("/")[0]:null;const project=projects.find(p=>p.slug===projectSlug);const publication=researchSlug?researchPublications[researchSlug]:null;return <main className="site"><Top t={t} lang={lang} setLang={setLang} navOpen={navOpen} setNavOpen={setNavOpen}/>{project?<ProjectDetail project={project} t={t} lang={lang}/>:publication?<ResearchDetail publication={publication} lang={lang}/>:<Home t={t} lang={lang}/>}</main>}
