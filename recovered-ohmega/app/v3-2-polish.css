@@ -4906,3 +4906,279 @@ body{
     text-align:left!important;
   }
 }
+
+
+/* =========================================================
+   STRUCTURAL TOP NAV + MOBILE BURGER
+   No DOM re-parenting: desktop nav and mobile dropdown live in Top.
+   ========================================================= */
+
+.topbar{
+  display:grid!important;
+  grid-template-columns:max-content minmax(0,1fr) max-content!important;
+  align-items:center!important;
+  column-gap:18px!important;
+  min-height:64px!important;
+  padding:8px 0!important;
+  background:#fff!important;
+  color:#111!important;
+  border-bottom:1px solid #111!important;
+}
+
+.topNavDesktop{
+  min-width:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:clamp(14px,2vw,30px)!important;
+}
+
+.topNavDesktop a{
+  position:relative!important;
+  min-width:0!important;
+  padding:12px 0 10px!important;
+  color:#111!important;
+  font:700 10px/1.1 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
+  letter-spacing:.065em!important;
+  text-transform:uppercase!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
+}
+
+.topNavDesktop a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:5px;
+  height:1px;
+  background:#145dff;
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition:transform .16s ease;
+}
+
+.topNavDesktop a:hover::after,
+.topNavDesktop a:focus-visible::after{
+  transform:scaleX(1);
+}
+
+.topbarActions{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:8px!important;
+}
+
+.topbarMenuButton,
+.topNavMobile{
+  display:none!important;
+}
+
+.hamburgerIcon{
+  width:15px!important;
+  height:12px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:space-between!important;
+  flex:0 0 auto!important;
+}
+
+.hamburgerIcon span{
+  display:block!important;
+  width:100%!important;
+  height:1px!important;
+  background:currentColor!important;
+}
+
+@media(min-width:761px) and (max-width:1150px){
+  .topbar{
+    column-gap:12px!important;
+  }
+
+  .topNavDesktop{
+    gap:12px!important;
+  }
+
+  .topNavDesktop a{
+    font-size:9px!important;
+    letter-spacing:.04em!important;
+  }
+}
+
+/* Phone/tablet portrait: compact topbar + dropdown menu. */
+@media(max-width:760px){
+  .topbar{
+    grid-template-columns:minmax(0,1fr) auto!important;
+    column-gap:10px!important;
+    row-gap:0!important;
+    min-height:58px!important;
+    margin-bottom:18px!important;
+    padding:7px 0!important;
+  }
+
+  .topbar .brand{
+    min-width:0!important;
+    justify-self:start!important;
+    overflow:hidden!important;
+  }
+
+  .topbar .brandMark{
+    width:34px!important;
+    height:34px!important;
+    flex:0 0 34px!important;
+    font-size:21px!important;
+  }
+
+  .topbar .brandText{
+    font-size:11px!important;
+  }
+
+  .topNavDesktop{
+    display:none!important;
+  }
+
+  .topbarActions{
+    grid-column:2!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:6px!important;
+  }
+
+  .topbar .switches{
+    display:flex!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+  }
+
+  .topbar .switches button{
+    min-height:34px!important;
+    padding:5px 8px!important;
+    font-size:9px!important;
+  }
+
+  .topbarMenuButton{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:7px!important;
+    min-height:34px!important;
+    padding:5px 9px!important;
+    margin:0!important;
+    border:1px solid #111!important;
+    border-radius:0!important;
+    background:#fff!important;
+    color:#111!important;
+    font:700 9px/1 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
+    letter-spacing:.07em!important;
+    text-transform:uppercase!important;
+  }
+
+  .topbarMenuButton:hover,
+  .topbarMenuButton:focus-visible{
+    background:#111!important;
+    color:#fff!important;
+  }
+
+  .topNavMobile{
+    grid-column:1/-1!important;
+    width:100%!important;
+    margin:7px 0 0!important;
+    border:1px solid #111!important;
+    background:#fff!important;
+  }
+
+  .topNavMobile.isOpen{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+  }
+
+  .topNavMobile a{
+    min-height:40px!important;
+    padding:9px 11px!important;
+    display:flex!important;
+    align-items:center!important;
+    color:#111!important;
+    background:#fff!important;
+    border-bottom:1px solid var(--line)!important;
+    text-decoration:none!important;
+    font:700 10px/1.2 var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace!important;
+    letter-spacing:.07em!important;
+    text-transform:uppercase!important;
+  }
+
+  .topNavMobile a:last-child{
+    border-bottom:0!important;
+  }
+
+  .topNavMobile a:hover,
+  .topNavMobile a:focus-visible{
+    background:#111!important;
+    color:#fff!important;
+  }
+
+  /* Selected Publications stays right-aligned; on narrow screens it
+     occupies the second row but remains anchored to the right edge. */
+  #research .sectionHead{
+    grid-template-columns:34px minmax(0,1fr)!important;
+  }
+
+  #research .sectionHead::before{
+    grid-column:1!important;
+    grid-row:1!important;
+  }
+
+  #research .sectionHead .sectionTitle{
+    grid-column:2!important;
+    grid-row:1!important;
+    justify-self:start!important;
+  }
+
+  #research .sectionHead .sectionSubtitle{
+    grid-column:2!important;
+    grid-row:2!important;
+    justify-self:end!important;
+    align-self:start!important;
+    width:max-content!important;
+    max-width:100%!important;
+    margin-top:4px!important;
+    text-align:right!important;
+  }
+}
+
+/* Desktop/tablet: Selected Publications is the rightmost header item. */
+@media(min-width:761px){
+  #research .sectionHead{
+    grid-template-columns:54px minmax(0,1fr) max-content!important;
+  }
+
+  #research .sectionHead::before{
+    grid-column:1!important;
+  }
+
+  #research .sectionHead .sectionTitle{
+    grid-column:2!important;
+    justify-self:start!important;
+  }
+
+  #research .sectionHead .sectionSubtitle{
+    grid-column:3!important;
+    justify-self:end!important;
+    width:max-content!important;
+    max-width:none!important;
+    text-align:right!important;
+    margin-left:auto!important;
+  }
+}
+
+@media(max-width:390px){
+  .topbarMenuButton{
+    width:36px!important;
+    padding:5px!important;
+  }
+
+  .topbarMenuButton .menuLabel{
+    display:none!important;
+  }
+}
