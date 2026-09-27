@@ -232,7 +232,7 @@ function Home({t,lang}){
               {projectTags[p.slug]?.skills[lang].slice(0,2).map(tag=><span className="projectTag" key={`skill-${tag}`}>{tag}</span>)}
               {projectTags[p.slug]?.tools.slice(0,1).map(tag=><span className="projectTag toolTag" key={`tool-${tag}`}>{tag}</span>)}
             </div>
-            <ExtLink href={`/projects/${p.slug}`} className="workRowLink">{lang==="fr"?"Voir le projet":"View project"} <span aria-hidden="true">↗</span></ExtLink>
+            <ExtLink href={`/projects/${p.slug}`} className="workRowLink">{lang==="fr"?"Ouvrir l’étude de cas":"Open case study"} <span aria-hidden="true">↗</span></ExtLink>
           </div>
         </article>)}
       </div>
