@@ -254,10 +254,10 @@ function Home({t,lang}){return <>
       <div className="lightswindArchiveCta motionItem">
         <div>
           <p className="lightswindArchiveEyebrow">{lang==="fr"?"ARCHIVES TECHNIQUES":"ENGINEERING ARCHIVE"}</p>
-          <h3>{t.project.more}</h3>
-          <p>{t.project.moreBody}</p>
+          <h3>{t.projects.more}</h3>
+          <p>{t.projects.moreBody}</p>
         </div>
-        <ExtLink href={github} className="lightswindArchiveLink">{t.project.github}</ExtLink>
+        <ExtLink href={github} className="lightswindArchiveLink">{t.projects.github}</ExtLink>
       </div>
     </Section>
 
