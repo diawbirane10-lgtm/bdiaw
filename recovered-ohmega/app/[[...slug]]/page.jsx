@@ -2,6 +2,7 @@
 import {useEffect,useMemo,useState} from "react";
 import {usePathname} from "next/navigation";
 import EventsSection from "../EventsSection";
+import {LightswindTemplateHome,LightswindProjectDetail,LightswindResearchDetail} from "../LightswindTemplatePortfolio";
 
 const github="https://github.com/diawbirane10-lgtm";
 const linkedin="https://www.linkedin.com/in/birane-diaw-b83b47374";
@@ -179,234 +180,48 @@ function ProfileStats({lang,experienceCount}){
   return <dl className="profileStats">{metrics.map(metric=><div className="profileStat" key={metric.label}><dt><AnimatedCount value={metric.value} suffix={metric.suffix}/></dt><dd>{metric.label}</dd></div>)}</dl>
 }
 
-function Home({t,lang}){return <>
-    <header className="hero heroReveal" id="top">
-      <div className="heroPanel heroPrimaryPanel">
-        <div className="heroKicker">
-          <span>{lang==="fr"?"PORTFOLIO · GÉNIE ÉLECTRIQUE":"PORTFOLIO · ELECTRICAL ENGINEERING"}</span>
-        </div>
-        <h1>{t.title}</h1>
-        <p className="lead">{t.subtitle}</p>
-        <p className="introCopy">{t.intro}</p>
-        <a className="heroScrollCue" href="#about" aria-label={lang==="fr"?"Découvrir le portfolio":"Explore the portfolio"}>
-          <span>{lang==="fr"?"Découvrir":"Explore"}</span><span aria-hidden="true">↓</span>
-        </a>
-      </div>
-
-      <aside className="heroPanel heroProfilePanel" aria-label={lang==="fr"?"Profil et disponibilité":"Profile and availability"}>
-        <span className="heroIdentityStack">
-          <span className="senegalMark">
-            <svg className="senegalFlag" viewBox="0 0 30 20" aria-hidden="true" focusable="false">
-              <rect x="0" y="0" width="10" height="20" fill="#00853F"/>
-              <rect x="10" y="0" width="10" height="20" fill="#FDEF42"/>
-              <rect x="20" y="0" width="10" height="20" fill="#E31B23"/>
-              <polygon fill="#00853F" points="15,5.2 16.2,8.8 20,8.8 16.9,11 18.1,14.6 15,12.4 11.9,14.6 13.1,11 10,8.8 13.8,8.8"/>
-            </svg>
-            <span><span className="identityLead">ORIGINALLY FROM</span> — DAKAR, SENEGAL, WEST AFRICA</span>
-          </span>
-          <span className="moroccoMark">
-            <svg className="moroccoFlag" viewBox="0 0 30 20" aria-hidden="true" focusable="false">
-              <rect x="0" y="0" width="30" height="20" fill="#C1272D"/>
-              <polygon points="15,4.2 16.7,9.1 21.9,9.2 17.8,12.2 19.3,17 15,14.1 10.7,17 12.2,12.2 8.1,9.2 13.3,9.1"
-                fill="none" stroke="#006233" stroke-width="1.15" stroke-linejoin="round"/>
-            </svg>
-            <span><span className="identityLead">BASED IN</span> — RABAT, MOROCCO, NORTH AFRICA</span>
-          </span>
-        </span>
-
-        <div className="availabilityBar" aria-label={lang==="fr"?"Disponibilités":"Availability"}>
-          <span className="availabilityDot" aria-hidden="true"></span>
-          <div className="availabilityCopy">
-            <span className="availabilityLabel">{lang==="fr"?"DISPONIBLE À L’INTERNATIONAL POUR":"AVAILABLE WORLDWIDE FOR"}</span>
-            <strong className="availabilityValue">{lang==="fr"?"STAGES · COLLABORATIONS DE RECHERCHE · FELLOWSHIPS":"INTERNSHIPS · RESEARCH COLLABORATIONS · FELLOWSHIPS"}</strong>
-          </div>
-        </div>
-      </aside>
-
-    </header>
-
-    <Section id="about" title={lang==="fr"?"À propos":"About"} subtitle={lang==="fr"?"Profil d’ingénierie":"Engineering profile"}>
-      <div className="aboutGrid">
-        <div className="aboutStatement motionItem">
-          <p className="aboutLead">{lang==="fr"
-            ?"Élève ingénieur d’État en Génie Électrique et Systèmes Intelligents, orienté systèmes électriques de forte puissance, réseaux électriques, électronique de puissance et architectures électriques critiques."
-            :"State Engineering student in Electrical Engineering & Intelligent Systems, focused on high-power electrical systems, power systems, power electronics and critical electrical architectures."}</p>
-          <p>{lang==="fr"
-            ?"Mon travail s’articule autour de la modélisation, de la simulation et de l’ingénierie système, à l’intersection des systèmes de puissance, de la commande et de l’automatisation — de la stabilité des réseaux, du HVDC / HVAC et des technologies grid-forming jusqu’aux systèmes électromécaniques et au contrôle industriel. Je m’intéresse particulièrement aux architectures intégrées où conversion de puissance, capteurs, actionnement et intelligence embarquée sont conçus ensemble pour assurer stabilité, performance et fiabilité."
-            :"My work centers on modelling, simulation and system-level engineering across power, control and automation, from grid stability, HVDC / HVAC and grid-forming technologies to electromechanical systems and industrial control. I am particularly interested in integrated architectures where power conversion, sensing, actuation and embedded intelligence are engineered together for stability, performance and reliability."}</p>
-        </div>
-        <ProfileStats lang={lang} experienceCount={t.experience.items.length}/>
-      </div>
-      <a className="educationStrip motionItem" href="https://emsi.ma/" target="_blank" rel="noreferrer" aria-label={lang==="fr"?"École Marocaine des Sciences de l’Ingénieur — site officiel":"École Marocaine des Sciences de l’Ingénieur — official website"}>
-        <span className="educationLogo" aria-hidden="true"><img src="https://emsi.ma/wp-content/uploads/2024/03/favicon.svg" alt=""/></span>
-        <span className="educationCopy">
-          <span className="educationEyebrow">{lang==="fr"?"FORMATION ACTUELLE":"CURRENT EDUCATION"}</span>
-          <strong>École Marocaine des Sciences de l’Ingénieur · Rabat</strong>
-          <span>{lang==="fr"?"Génie Électrique & Systèmes Intelligents":"Electrical Engineering & Intelligent Systems"}</span>
-        </span>
-        <span className="educationArrow" aria-hidden="true">↗</span>
-      </a>
-    </Section>
-
-    <Section id="projects" title={lang==="fr"?"Projets sélectionnés":"Selected Work"} subtitle={lang==="fr"?`Une sélection parmi plus de ${engineeringProjectTotal} projets`:`A selection from ${engineeringProjectTotal}+ engineering projects`}>
-      <div className="workList">
-        {projects.map(p=><article className="workRow motionItem" key={p.slug}>
-          <div className="workRowIndex">{p.no}</div>
-          <div className="workRowMain">
-            <p className="workField">{p.field[lang]}</p>
-            <h3><ExtLink href={`/projects/${p.slug}`} className="titleLink">{p.title}</ExtLink></h3>
-          </div>
-          <p className="workRowSummary">{p.body[lang]}</p>
-          <div className="workRowMeta">
-            <div className="projectTags" aria-label={lang==="fr"?"Compétences et logiciels":"Skills and software"}>
-              {projectTags[p.slug]?.skills[lang].slice(0,2).map(tag=><span className="projectTag" key={`skill-${tag}`}>{tag}</span>)}
-              {projectTags[p.slug]?.tools.slice(0,1).map(tag=><span className="projectTag toolTag" key={`tool-${tag}`}>{tag}</span>)}
-            </div>
-            <ExtLink href={`/projects/${p.slug}`} className="workRowLink">{lang==="fr"?"Ouvrir l’étude de cas":"Open case study"} <span aria-hidden="true">↗</span></ExtLink>
-          </div>
-        </article>)}
-      </div>
-      <div className="workArchive motionItem">
-        <div><strong><AnimatedCount value={engineeringProjectTotal} suffix="+"/></strong><span>{lang==="fr"?"projets d’ingénierie":"engineering projects"}</span></div>
-        <p>{lang==="fr"?"Cette page n’en montre qu’une sélection. Le reste est disponible sur GitHub.":"This page shows only a selection. More projects are available on GitHub."}</p>
-        <ExtLink href={github}>{lang==="fr"?"Explorer GitHub":"Explore GitHub"}</ExtLink>
-      </div>
-    </Section>
-
-    <Section id="research" title={lang==="fr"?"Recherche":"Research"} subtitle={lang==="fr"?"Publications sélectionnées":"Selected publications"}>
-      <div className="researchList">
-        <article className="researchFeature motionItem juriPublication">
-          <div className="researchBrand"><a href={juri} target="_blank" rel="noreferrer"><img src={logos.juri} alt="Journal of Undergraduate Research International logo"/></a></div>
-          <div className="researchContent">
-            <p className="meta">{lang==="fr"?"Accepté pour publication · DOI à venir":"Accepted for publication · DOI forthcoming"}</p>
-            <h3>Grid-Forming Virtual Synchronous Machine Control with Battery Storage for Frequency Stability in Multiterminal High-Voltage Direct-Current Systems</h3>
-            <ExtLink href="/research/grid-forming-vsm-hvdc-bess" className="abstractPageLink">{lang==="fr"?"Voir l’abstract":"View abstract"} <span aria-hidden="true">↗</span></ExtLink>
-            <p className="journal">{t.research.meta}</p>
-            <nav className="researchActions">
-              <ExtLink href={juri}>{t.research.link}</ExtLink>
-              <ExtLink href={orcid}>ORCID 0009-0003-4015-7854</ExtLink>
-            </nav>
-          </div>
-        </article>
-      </div>
-    </Section>
-
-    <Section id="experience" title={lang==="fr"?"Expérience":"Experience"} subtitle={t.experience.heading}>
-      <div className="experienceList">{t.experience.items.map(([role,company,date,description,tags,logoKey,standards])=><article className="experienceItem motionItem" key={`${company}-${date}`}>
-        <span className="experienceDate">{date}</span>
-        <div className="experienceContent">
-          <div className="experienceHeader"><div><h3>{role}</h3><p className="experienceMeta">{company}</p></div><div className={`experienceLogo ${logoKey==="menara"?"menaraLogo":"s4eLogo"}`}><img src={experienceLogos[logoKey]} alt={`${company.split(" · ")[0]} logo`}/></div></div>
-          <p className="experienceBody">{description}</p>
-          <div className="experienceTags">{tags.split(" · ").slice(0,5).map(tag=><span className="experienceTag" key={tag}>{tag}</span>)}{standards?.split(" · ").slice(0,2).map(tag=><span className="experienceTag standardTag" key={`standard-${tag}`}>{tag}</span>)}</div>
-        </div>
-      </article>)}</div>
-    </Section>
-
-
-    <Section id="software" title={lang==="fr"?"Logiciels d’ingénierie":"Engineering Software"} subtitle={lang==="fr"?"Environnements techniques & outils de travail":"Engineering environments & work tools"}>
-      <div className="softwareGroups">
-        {softwareGroups.map(group=><article className="softwareGroup motionItem" key={group.key}>
-          <h3 className="softwareGroupTitle">{group.title[lang]}</h3>
-          <div className="softwareList">
-            {group.items.map(item=><div className="softwareItem" key={item.name}>
-              <span className={`softwareLogo${item.fit?` is-${item.fit}`:""}`} aria-hidden="true"><img src={item.logo} alt=""/></span>
-              <span className="softwareName">{item.name}{item.primary?` (${lang==="fr"?"environnement principal":"main environment"})`:""}</span>
-            </div>)}
-          </div>
-        </article>)}
-      </div>
-    </Section>
-
-    <EventsSection lang={lang}/>
-
-    <footer id="contact" className="footer motionSection">
-      <div className="footerIndex">05</div>
-      <h2 className="footerSectionTitle">Contact</h2>
-      <div className="footerContactGrid">
-        <div><h3 className="footerHeadline">{t.contact.heading}</h3><span className="footerIntro">{t.contact.body}</span></div>
-        <div className="contactDetails">
-          <div className="contactDetail"><span className="contactLabel">{lang==="fr"?"Localisation":"Location"}</span><div className="contactValue">{lang==="fr"?"Rabat, Maroc / Dakar, Sénégal":"Rabat, Morocco / Dakar, Senegal"}</div></div>
-          <div className="contactDetail"><span className="contactLabel">Email</span><div className="contactValue"><a href={mail}>diawbirane10@gmail.com</a></div></div>
-        </div>
-      </div>
-      <div className="footerBottom">
-        <a className="footerBrand" href="#top" aria-label="Back to top"><span className="footerOmega">Ω</span><span>OHMEGA</span></a>
-        <nav className="contactLinks" aria-label="Professional profiles">
-          <a href={mail} aria-label="Email">
-            <span className="contactIcon brandIcon gmailIcon" aria-hidden="true">
-              <svg viewBox="0 0 48 48">
-                <path fill="#4285F4" d="M6 38V16.5l8 6.1V38H6Z"/>
-                <path fill="#34A853" d="M34 38V22.6l8-6.1V38h-8Z"/>
-                <path fill="#EA4335" d="M6 16.5V11c0-3.1 3.6-4.9 6.1-3L24 17l11.9-9c2.5-1.9 6.1-.1 6.1 3v5.5l-18 13.7L6 16.5Z"/>
-                <path fill="#FBBC04" d="M34 22.6 42 16.5v-5.2l-8 6.1v5.2Z"/>
-                <path fill="#C5221F" d="M6 11.3v5.2l8 6.1v-5.2l-8-6.1Z"/>
-              </svg>
-            </span>
-            <span>Email</span>
-          </a>
-          <a href={linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <span className="contactIcon brandIcon linkedinIcon" aria-hidden="true">
-              <svg viewBox="0 0 48 48">
-                <circle cx="24" cy="24" r="22" fill="#0A66C2"/>
-                <path fill="#fff" d="M16.2 19.4h-5.1V35h5.1V19.4Zm-2.5-7.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM35.9 26c0-4.8-2.6-7-6.1-7-2.8 0-4.1 1.6-4.8 2.7v-2.3h-5.1V35H25v-7.7c0-2 .4-4 3-4 2.6 0 2.7 2.5 2.7 4.2V35h5.1l.1-9Z"/>
-              </svg>
-            </span>
-            <span>LinkedIn</span>
-          </a>
-          <a href={github} target="_blank" rel="noreferrer" aria-label="GitHub">
-            <span className="contactIcon brandIcon githubIcon" aria-hidden="true">
-              <svg viewBox="0 0 48 48">
-                <circle cx="24" cy="24" r="22" fill="#000"/>
-                <path fill="#fff" d="M24 10.5A13.5 13.5 0 0 0 19.7 36.8c.7.1.9-.3.9-.7v-2.6c-4 .9-4.9-1.7-4.9-1.7-.6-1.7-1.6-2.2-1.6-2.2-1.3-.9.1-.9.1-.9 1.5.1 2.2 1.5 2.2 1.5 1.3 2.2 3.4 1.6 4.2 1.2.1-.9.5-1.6.9-2-3.2-.4-6.6-1.6-6.6-7.2 0-1.6.6-2.9 1.5-4-.2-.4-.7-1.9.1-4 0 0 1.2-.4 4.1 1.5a14 14 0 0 1 7.4 0c2.8-1.9 4-1.5 4-1.5.8 2.1.3 3.6.2 4 .9 1.1 1.5 2.4 1.5 4 0 5.6-3.4 6.8-6.7 7.2.5.5 1 1.4 1 2.8v4c0 .4.2.8.9.7A13.5 13.5 0 0 0 24 10.5Z"/>
-              </svg>
-            </span>
-            <span>GitHub</span>
-          </a>
-          <a href={x} target="_blank" rel="noreferrer" aria-label="X">
-            <span className="contactIcon brandIcon xIcon" aria-hidden="true">
-              <svg viewBox="0 0 48 48">
-                <rect x="2" y="2" width="44" height="44" rx="2" fill="#fff"/>
-                <path fill="#11161C" d="M31.2 10h6.5L27 22.2 39.5 38H29.7l-7.6-9.8L13.5 38H7l11.9-13.6L6.9 10h10.1l6.8 8.7L31.2 10Zm-2.3 25.2h3.6L15.1 12.6h-3.9l17.7 22.6Z"/>
-              </svg>
-            </span>
-            <span>X</span>
-          </a>
-          <a href={orcid} target="_blank" rel="noreferrer" aria-label="ORCID">
-            <span className="contactIcon brandIcon orcidIcon" aria-hidden="true">
-              <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/ORCID_iD.svg" alt=""/>
-            </span>
-            <span>ORCID</span>
-          </a>
-        </nav>
-      </div>
-    </footer>
-  </>
+function Home({t,lang,setLang}){
+  const publication=researchPublications["grid-forming-vsm-hvdc-bess"];
+  return <LightswindTemplateHome
+    t={t}
+    lang={lang}
+    setLang={setLang}
+    projects={projects}
+    softwareGroups={softwareGroups}
+    publication={publication}
+    links={{github,linkedin,x,mail,orcid}}
+  />
 }
-function ResearchDetail({publication,lang}){return <>
-  <header className="projectHero researchHero">
-    <ExtLink href="/#research">{lang==="fr"?"← Retour à Research":"← Back to Research"}</ExtLink>
-    <p>{publication.type[lang]} · {publication.status[lang]}</p>
-    <h1>{publication.title}</h1>
-    <h2>{publication.venue[lang]}</h2>
-    <div className="researchDetailBrand"><img src={publication.logo} alt={publication.logoAlt}/></div>
-  </header>
-  <section className="detailGrid researchDetailGrid">
-    <article className="wide researchAbstractArticle">
-      <div className="abstractFrame">
-        <div className="abstractFrameHeader">
-          <span className="abstractKicker">{lang==="fr"?"Résumé":"Abstract"}</span>
-        </div>
-        <div className="researchAbstractBody">{publication.abstract[lang]}</div>
-      </div>
-    </article>
-    <article className="wide">
-      <p>{lang==="fr"?"Publication & profils":"Publication & profiles"}</p>
-      <nav className="inline">
-        <ExtLink href={publication.publisherUrl}>{publication.publisherLabel[lang]}</ExtLink>
-        <ExtLink href={orcid}>ORCID 0009-0003-4015-7854</ExtLink>
-      </nav>
-    </article>
-  </section>
-</>}
-function ProjectDetail({project,t,lang}){return <><header className="projectHero"><ExtLink href="/">{t.detail[0]}</ExtLink><p>{project.no} · {project.field[lang]}</p><h1>{project.title}</h1><h2>{project.body[lang]}</h2>{projectTags[project.slug]?.standards?.length?<div className="caseStudyStandards" aria-label={lang==="fr"?"Normes de référence":"Reference standards"}>{projectTags[project.slug].standards.map(tag=><span className="projectTag standardTag" key={tag}>{tag}</span>)}</div>:null}</header>{project.image?<figure className="projectVisual motionSection"><div className="projectVisualFrame"><img src={project.image} alt={project.title}/></div><figcaption><span>{lang==="fr"?"VUE CONCEPTUELLE DU PROJET":"PROJECT CONCEPT VIEW"}</span><p>{project.visualNote?.[lang]}</p></figcaption></figure>:null}<section className="detailGrid"><article><p>{t.detail[1]}</p><h2>{project.problem[lang]}</h2></article><article><p>{t.detail[2]}</p><h2>{project.solution[lang]}</h2></article><article><p>{t.detail[3]}</p><ol>{project.steps[lang].map(s=><li key={s}>{s}</li>)}</ol></article><article><p>{t.detail[4]}</p><h2>{project.discussion[lang]}</h2></article><article className="wide"><p>{t.detail[5]}</p><nav className="inline">{project.links.map(([label,href])=><ExtLink href={href} key={label}>{resourceLabel(label,lang)}</ExtLink>)}</nav></article></section></>}
-export default function Portfolio(){const pathname=usePathname();const[lang,setLang]=useState("en");const[navOpen,setNavOpen]=useState(false);useEffect(()=>{const savedLang=localStorage.getItem("ohmega-lang");localStorage.removeItem("ohmega-theme");localStorage.removeItem("ohmega-theme-v2");if(savedLang)setLang(savedLang);document.documentElement.dataset.theme="light"},[]);useEffect(()=>{document.documentElement.dataset.theme="light";document.documentElement.lang=lang;localStorage.setItem("ohmega-lang",lang)},[lang]);useEffect(()=>{setNavOpen(false)},[pathname]);const t=useMemo(()=>copy[lang],[lang]);const projectSlug=pathname?.startsWith("/projects/")?pathname.split("/projects/")[1]?.split("/")[0]:null;const researchSlug=pathname?.startsWith("/research/")?pathname.split("/research/")[1]?.split("/")[0]:null;const project=projects.find(p=>p.slug===projectSlug);const publication=researchSlug?researchPublications[researchSlug]:null;return <main className="site"><Top t={t} lang={lang} setLang={setLang} navOpen={navOpen} setNavOpen={setNavOpen}/>{project?<ProjectDetail project={project} t={t} lang={lang}/>:publication?<ResearchDetail publication={publication} lang={lang}/>:<Home t={t} lang={lang}/>}</main>}
+
+function ResearchDetail({publication,lang,setLang}){
+  return <LightswindResearchDetail publication={publication} lang={lang} setLang={setLang}/>;
+}
+
+function ProjectDetail({project,t,lang,setLang}){
+  return <LightswindProjectDetail project={project} t={t} lang={lang} setLang={setLang} resourceLabel={resourceLabel}/>;
+}
+
+export default function Portfolio(){
+  const pathname=usePathname();
+  const[lang,setLang]=useState("en");
+
+  useEffect(()=>{
+    const savedLang=localStorage.getItem("ohmega-lang");
+    if(savedLang==="fr"||savedLang==="en")setLang(savedLang);
+  },[]);
+
+  useEffect(()=>{
+    document.documentElement.lang=lang;
+    localStorage.setItem("ohmega-lang",lang);
+  },[lang]);
+
+  const t=useMemo(()=>copy[lang],[lang]);
+  const projectSlug=pathname?.startsWith("/projects/")?pathname.split("/projects/")[1]?.split("/")[0]:null;
+  const researchSlug=pathname?.startsWith("/research/")?pathname.split("/research/")[1]?.split("/")[0]:null;
+  const project=projects.find(p=>p.slug===projectSlug);
+  const publication=researchSlug?researchPublications[researchSlug]:null;
+
+  if(project)return <ProjectDetail project={project} t={t} lang={lang} setLang={setLang}/>;
+  if(publication)return <ResearchDetail publication={publication} lang={lang} setLang={setLang}/>;
+  return <Home t={t} lang={lang} setLang={setLang}/>;
+}
