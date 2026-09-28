@@ -2,6 +2,7 @@
 import {useEffect,useMemo,useState} from "react";
 import {usePathname} from "next/navigation";
 import EventsSection from "../EventsSection";
+import LightswindPortfolio from "../LightswindPortfolio";
 
 const github="https://github.com/diawbirane10-lgtm";
 const linkedin="https://www.linkedin.com/in/birane-diaw-b83b47374";
@@ -249,27 +250,14 @@ function Home({t,lang}){return <>
     </Section>
 
     <Section id="projects" title={lang==="fr"?"Projets sélectionnés":"Selected Work"} subtitle={lang==="fr"?`Une sélection parmi plus de ${engineeringProjectTotal} projets`:`A selection from ${engineeringProjectTotal}+ engineering projects`}>
-      <div className="workList">
-        {projects.map(p=><article className="workRow motionItem" key={p.slug}>
-          <div className="workRowIndex">{p.no}</div>
-          <div className="workRowMain">
-            <p className="workField">{p.field[lang]}</p>
-            <h3><ExtLink href={`/projects/${p.slug}`} className="titleLink">{p.title}</ExtLink></h3>
-          </div>
-          <p className="workRowSummary">{p.body[lang]}</p>
-          <div className="workRowMeta">
-            <div className="projectTags" aria-label={lang==="fr"?"Compétences et logiciels":"Skills and software"}>
-              {projectTags[p.slug]?.skills[lang].slice(0,2).map(tag=><span className="projectTag" key={`skill-${tag}`}>{tag}</span>)}
-              {projectTags[p.slug]?.tools.slice(0,1).map(tag=><span className="projectTag toolTag" key={`tool-${tag}`}>{tag}</span>)}
-            </div>
-            <ExtLink href={`/projects/${p.slug}`} className="workRowLink">{lang==="fr"?"Ouvrir l’étude de cas":"Open case study"} <span aria-hidden="true">↗</span></ExtLink>
-          </div>
-        </article>)}
-      </div>
-      <div className="workArchive motionItem">
-        <div><strong><AnimatedCount value={engineeringProjectTotal} suffix="+"/></strong><span>{lang==="fr"?"projets d’ingénierie":"engineering projects"}</span></div>
-        <p>{lang==="fr"?"Cette page n’en montre qu’une sélection. Le reste est disponible sur GitHub.":"This page shows only a selection. More projects are available on GitHub."}</p>
-        <ExtLink href={github}>{lang==="fr"?"Explorer GitHub":"Explore GitHub"}</ExtLink>
+      <LightswindPortfolio projects={projects} lang={lang}/>
+      <div className="lightswindArchiveCta motionItem">
+        <div>
+          <p className="lightswindArchiveEyebrow">{lang==="fr"?"ARCHIVES TECHNIQUES":"ENGINEERING ARCHIVE"}</p>
+          <h3>{t.project.more}</h3>
+          <p>{t.project.moreBody}</p>
+        </div>
+        <ExtLink href={github} className="lightswindArchiveLink">{t.project.github}</ExtLink>
       </div>
     </Section>
 
