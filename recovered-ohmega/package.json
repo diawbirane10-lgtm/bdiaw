@@ -12,7 +12,13 @@
     "react": "latest",
     "react-dom": "latest",
     "geist": "latest",
-    "@vercel/analytics": "latest"
+    "@vercel/analytics": "latest",
+    "framer-motion": "^11.15.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.3",
+    "@types/react-dom": "^19.0.2"
+  }
 }
