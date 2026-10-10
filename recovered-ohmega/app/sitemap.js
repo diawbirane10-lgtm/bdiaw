@@ -1,5 +1,4 @@
 const pages = [
-  { path: '/projects/dakar-v2g-iiot', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/', changeFrequency: 'weekly', priority: 1 },
   { path: '/projects/ufls-smartgrid', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/projects/wave-energy-conversion', changeFrequency: 'monthly', priority: 0.8 },

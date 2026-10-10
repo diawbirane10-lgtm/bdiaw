@@ -3,11 +3,6 @@ import { notFound } from 'next/navigation';
 const siteUrl = 'https://b-diaw.com';
 
 const projects = {
-  'dakar-v2g-iiot': {
-    title: 'Dakar V2G — Smart Charging & IIoT',
-    description: 'A two-site EV charging concept and interactive simulator for Dakar: local energy management, conditional V2G, finite backup, communication-loss scenarios and a manipulable 3D site plan.',
-    keywords: ['Dakar', 'IIoT', 'EV charging', 'V1G', 'V2G', 'energy management', 'resilience', '3D simulator'],
-  },
   'ufls-smartgrid': {
     title: 'Smart-Grid UFLS Relay — ONEE & SENELEC',
     description:
