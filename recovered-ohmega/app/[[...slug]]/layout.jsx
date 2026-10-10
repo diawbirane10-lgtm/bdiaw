@@ -24,7 +24,7 @@ const projects = {
   'digital-twin-liion-battery': {
     title: 'Digital Twin — Li-ion Battery Packs',
     description:
-      'Li-ion battery-pack digital twin using a Thevenin 2RC model, SOC, SOH/RUL and thermal behaviour for engineering analysis.',
+      'Battery Twin: Li-ion pack simulation, EKF SOC estimation and CSV telemetry diagnostics. Primary Streamlit app, alternative Vercel dashboard and NASA validation evidence.',
     keywords: ['battery digital twin', 'Li-ion battery', 'Thevenin 2RC', 'SOC', 'SOH', 'RUL'],
   },
   'digital-twin-electric-drive': {

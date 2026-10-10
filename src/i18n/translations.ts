@@ -318,13 +318,13 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Project Digital Twin - Li-Ion Battery Packs
     "proj.batt.title": "Jumeau Numérique: Pack Batteries Li-ion",
-    "proj.batt.subtitle": "Python · Simulation Multi-Physique · Estimation d'État · BMS",
-    "proj.batt.contexte": "Jumeau numérique Python pour packs Li-ion à topologie Ns×Np configurable, basé sur la cellule 18650 NMC NASA B0005 (2 Ah). Couvre les cas d'usage EV et stockage stationnaire.",
-    "proj.batt.objectif": "Couvrir la chaîne d'estimation d'état complète : modèle ECM Thévenin 2RC, estimation SOC en temps réel par filtre de Kalman étendu, suivi SOH par comptage coulombique et prédiction RUL par modèle d'Arrhenius. Simulation du comportement thermique et protection BMS (OVP, UVP, OTP) sur un pack multi-cellules.",
-    "proj.batt.contribution": "Architecture Python modulaire répartie sur simulation, estimation et visualisation. API REST FastAPI avec 10 endpoints, dashboard Streamlit interactif avec visualisation 3D du pack sous Plotly. Dataset NASA PCoE B0005 intégré pour la validation.",
-    "proj.batt.resultats": "Dashboard déployé sur Streamlit Cloud. Estimateur SOC validé à moins de 0,1% d'erreur par rapport au comptage coulombique sur 180 s à 1C.",
+    "proj.batt.subtitle": "Python · Streamlit · Simulation et diagnostic CSV",
+    "proj.batt.contexte": "Battery Twin : simulateur de packs Li-ion configurables et outil de diagnostic de télémétrie. Streamlit est l’application principale, Vercel une alternative.",
+    "proj.batt.objectif": "Comparer des scénarios électriques et thermiques avec ECM 2RC et EKF SOC ; examiner la qualité des mesures CSV, charge, énergie et alertes.",
+    "proj.batt.contribution": "IHM sobre et carrée inspirée ISA-101, cinq vues, import CSV, rapports JSON et provenance SHA-256. SOH conditionné aux mesures de capacité ; RUL par tendance simple. Pas de connexion CAN/OBD ni de calibration constructeur.",
+    "proj.batt.resultats": "41 tests Python réussis. 636 cycles NASA, quatre cellules de laboratoire et 185 721 mesures : écart absolu moyen de charge de 0,01303 Ah contre les capacités étiquetées. Cohérence numérique, sans qualification automobile.",
     "proj.batt.pdfLabel": "Rapport technique complet (PDF)",
-    "proj.batt.liveLabel": "Voir le Dashboard Live",
+    "proj.batt.liveLabel": "Ouvrir Streamlit — application principale",
 
     // Project Digital Twin - DC Drive
     "proj.dt.title": "Jumeau Numérique: Variateur DC à Vitesse Variable",
@@ -837,13 +837,13 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Project Digital Twin - Li-Ion Battery Packs
     "proj.batt.title": "Digital Twin: Li-Ion Battery Packs",
-    "proj.batt.subtitle": "Python · Multi-Physics Simulation · State Estimation · BMS",
-    "proj.batt.contexte": "Python digital twin for Li-ion battery packs with configurable Ns×Np topology, based on the 18650 NMC NASA B0005 cell (2 Ah). Covers EV and stationary storage scenarios.",
-    "proj.batt.objectif": "Build a complete state estimation chain: Thevenin 2RC ECM model, real-time SOC via Extended Kalman Filter, SOH tracking with Coulomb counting, and RUL prediction with the Arrhenius model. Includes thermal behavior and BMS protection logic (OVP, UVP, OTP) for multi-cell packs.",
-    "proj.batt.contribution": "Modular Python architecture across simulation, estimation, and visualization. FastAPI REST layer with 10 endpoints, interactive Streamlit dashboard with 3D pack visualization in Plotly. NASA PCoE B0005 dataset integrated for validation.",
-    "proj.batt.resultats": "Dashboard deployed on Streamlit Cloud. SOC estimator validated at under 0.1% error versus Coulomb counting over 180s at 1C.",
+    "proj.batt.subtitle": "Python · Streamlit · Simulation and CSV diagnostics",
+    "proj.batt.contexte": "Battery Twin: configurable Li-ion pack simulator and telemetry diagnostic tool. Streamlit is the primary app; Vercel is an alternative.",
+    "proj.batt.objectif": "Compare electrical and thermal scenarios using ECM 2RC and EKF SOC; inspect CSV measurement quality, charge, energy and alerts.",
+    "proj.batt.contribution": "Restrained square HMI inspired by ISA-101, five views, CSV import, JSON reports and SHA-256 provenance. SOH requires capacity measurements; RUL uses a simple trend. No CAN/OBD connection or OEM calibration.",
+    "proj.batt.resultats": "41 Python tests passed. 636 NASA cycles, four laboratory cells and 185,721 measurements: mean absolute charge difference of 0.01303 Ah against capacity labels. Numerical consistency, without automotive qualification.",
     "proj.batt.pdfLabel": "Full technical report (PDF)",
-    "proj.batt.liveLabel": "View Live Dashboard",
+    "proj.batt.liveLabel": "Open Streamlit — primary app",
 
     // Project Digital Twin - DC Drive
     "proj.dt.title": "Digital Twin: Variable Speed DC Drive",
