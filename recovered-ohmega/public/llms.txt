@@ -12,6 +12,7 @@ Birane DIAW is a State Engineering Student focused on electrical engineering and
 
 ## Selected engineering case studies
 
+- https://b-diaw.com/projects/dakar-v2g-iiot — Dakar V2G: IIoT smart charging concept, temporal simulator and illustrative 3D site plan (software only; no live Senelec integration).
 - https://b-diaw.com/projects/ufls-smartgrid — Smart-Grid UFLS Relay — ONEE & SENELEC
 - https://b-diaw.com/projects/wave-energy-conversion — Wave-Energy Conversion Chain — PMSG, FOC & Grid Injection
 - https://b-diaw.com/projects/railway-traction-25kv — 25 kV AC Railway Traction System
