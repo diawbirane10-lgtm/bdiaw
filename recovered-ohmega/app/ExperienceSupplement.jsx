@@ -5,7 +5,7 @@ import {createPortal} from "react-dom";
 
 const copy={
   en:{
-    date:"Aug 2026 — Present",
+    date:"Aug — Sep 2026 · 2 months",
     title:"Engineering Studies & Tendering Assistant",
     meta:"S4E SARL · Dakar, Senegal · Hybrid — primarily remote",
     body1Title:"Democratic Republic of the Congo — PASEL",
@@ -15,7 +15,7 @@ const copy={
     tags:["Tendering","Power Networks","Solar PV","BESS","AutoCAD","PVsyst","Excel"]
   },
   fr:{
-    date:"Août 2026 — Aujourd’hui",
+    date:"Août — Sept. 2026 · 2 mois",
     title:"Assistant études & appels d’offres — Ingénierie électrique",
     meta:"S4E SARL · Dakar, Sénégal · Hybride — principalement en télétravail",
     body1Title:"République démocratique du Congo — PASEL",
