@@ -213,6 +213,25 @@ export function HomePage({ lang }) {
           </div>
         </div>
       </section>
+      <section id="experience" className="section wrap home-experience" aria-labelledby="home-experience-title">
+        <div className="section-head">
+          <h2 id="home-experience-title">{lang === "fr" ? "EXPÉRIENCE" : "EXPERIENCE"}</h2>
+          <Link className="text-link" href="/experience">
+            {lang === "fr" ? "Tout le parcours" : "View all experience"}<Arrow />
+          </Link>
+        </div>
+        <p className="experience-intro">{t.experience.heading}</p>
+        <div className="experience-preview-list">
+          {t.experience.items.map(([role, company, date, , , logo, , id]) => (
+            <Link className="experience-preview" href={"/experience#" + id} key={id}>
+              <span className="experience-preview-date">{date}</span>
+              <img src={experienceLogos[logo]} alt="" width="120" height="64" loading="lazy" />
+              <div><p className="category">{company}</p><h3>{role}</h3></div>
+              <span className="experience-preview-arrow"><Arrow /></span>
+            </Link>
+          ))}
+        </div>
+      </section>
       <section className="section wrap">
         <SectionHead
           title={lang === "fr" ? "LE PARCOURS" : "BEHIND THE WORK"}
@@ -522,10 +541,16 @@ export function ExperiencePage({ lang }) {
         intro={t.experience.heading}
         lang={lang}
       />
+      <nav className="wrap experience-index" aria-label={lang === "fr" ? "Accès direct aux expériences" : "Jump to experience"}>
+        {t.experience.items.map(([, company, date, , , , , id]) => (
+          <a key={id} href={"#" + id}>{company.split(" · ")[0]} · {date}<Arrow /></a>
+        ))}
+        <a href="#engagement">{lang === "fr" ? "Atelier AIEA / NEPIO" : "IAEA / NEPIO workshop"}<Arrow /></a>
+      </nav>
       <section className="wrap experience-timeline">
         {t.experience.items.map(
-          ([role, company, date, description, tags, logo, standards]) => (
-            <article className="experience-entry" key={company + date}>
+          ([role, company, date, description, tags, logo, standards, id]) => (
+            <article id={id} className="experience-entry" key={id}>
               <div className="experience-date">
                 <span>{date}</span>
                 <img
@@ -536,7 +561,7 @@ export function ExperiencePage({ lang }) {
               <div>
                 <p className="category">{company}</p>
                 <h2>{role}</h2>
-                <p>{description}</p>
+                {description.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                 <div className="tag-list">
                   {(tags + (standards ? " · " + standards : ""))
                     .split(" · ")
@@ -622,7 +647,7 @@ export function AboutPage({ lang }) {
           ))}
         </div>
       </section>
-      <section className="tools-section">
+      <section id="software" className="tools-section">
         <div className="wrap">
           <SectionHead
             title={lang === "fr" ? "OUTILS & MÉTHODES" : "TOOLS & METHODS"}
