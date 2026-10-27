@@ -16,20 +16,20 @@ try:
             break
         except (OSError, urllib.error.URLError):
             time.sleep(.25)
-    routes = {'/':'BIRANE DIAW', '/projects':'Smart-Grid UFLS Relay', '/research':'DOI forthcoming', '/experience':'Menara', '/about':'EMSI Rabat', '/contact':'diawbirane10@gmail.com', '/research/grid-forming-vsm-hvdc-bess':'ABSTRACT'}
+    routes = {'/':'Birane DIAW', '/research/grid-forming-vsm-hvdc-bess':'Abstract'}
     for slug in ['ufls-smartgrid','wave-energy-conversion','railway-traction-25kv','digital-twin-liion-battery','digital-twin-electric-drive']:
-        routes['/projects/'+slug] = 'IN THIS PROJECT'
+        routes['/projects/'+slug] = 'detailGrid'
     for path, expected in routes.items():
         status, raw = fetch(path)
         html=raw.decode()
         assert status == 200 and expected in html, path
         canonical = re.search(r'<link rel="canonical" href="([^"]+)"', html).group(1)
         assert canonical.rstrip('/') == ('https://b-diaw.com'+path).rstrip('/'), 'canonical '+path
-        assert '<h1' in html and 'site-header' in html and 'site-footer' in html, 'layout '+path
+        assert '<h1' in html and 'topbar' in html and 'class="site"' in html, 'layout '+path
         print('PASS',path)
     # Guard the experience lost when the old DOM-injected supplement was replaced.
     home = fetch('/')[1].decode()
-    experience = fetch('/experience')[1].decode()
+    experience = home
     for expected in ['PASEL', 'NEA Kolda', 'Aug — Sep 2026', 'Menara Préfa']:
         assert expected in experience, 'Missing experience: '+expected
     class Anchors(HTMLParser):
@@ -46,11 +46,25 @@ try:
     mission_ids = ['s4e-2026', 'menara-2026', 's4e-2024', 's4e-2023']
     for anchor in mission_ids:
         assert anchor in target.ids, 'Missing mission anchor: '+anchor
-        assert '/experience#'+anchor in Anchors(home).links, 'Missing home experience link: '+anchor
+        assert '/#experience' in Anchors(home).links, 'Missing experience navigation'
     for href in target.links:
         if href.startswith('#'):
             assert href[1:] in target.ids, 'Broken experience link: '+href
-    assert 'software' in Anchors(fetch('/about')[1].decode()).ids
+    assert all(section in target.ids for section in ['top','about','projects','research','experience','software','engagement','contact'])
+    styles = re.findall(r'<link rel="stylesheet" href="([^"]+)"', home)
+    css = b' '.join(fetch(path)[1] for path in styles).decode()
+    assert 'Virage-NarrowUltraboldItalic.woff2' in css and 'Virage-WideSemibold.woff2' in css
+    assert 'home-hero' not in home and 'site-header' not in home
+    class NoRedirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self, req, fp, code, msg, headers, newurl): return None
+    redirects = urllib.request.build_opener(urllib.request.ProxyHandler({}), NoRedirect())
+    for section in ['about','projects','research','experience','contact']:
+        try:
+            redirects.open(base+'/'+section, timeout=2)
+            raise AssertionError('Expected section redirect: '+section)
+        except urllib.error.HTTPError as e:
+            assert e.code==307 and e.headers['Location']=='/#'+section, section
+    print('PASS original home sections, anchor navigation and legacy page redirects')
     print('PASS restored S4E experience, home links, unique anchors and direct navigation')
     for font in Path('public/fonts/virage').glob('*.woff2'):
         status, raw=fetch('/fonts/virage/'+font.name)
