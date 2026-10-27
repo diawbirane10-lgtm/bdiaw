@@ -1,0 +1,61 @@
+@font-face {
+  font-family: Virage;
+  src: url("/fonts/virage/Virage-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Virage;
+  src: url("/fonts/virage/Virage-Semibold.woff2") format("woff2");
+  font-weight: 600 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Virage Narrow";
+  src: url("/fonts/virage/Virage-NarrowSemibold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Virage Narrow";
+  src: url("/fonts/virage/Virage-NarrowBoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Virage Narrow";
+  src: url("/fonts/virage/Virage-NarrowUltraboldItalic.woff2") format("woff2");
+  font-weight: 800 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Virage Wide";
+  src: url("/fonts/virage/Virage-WideRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Virage Wide";
+  src: url("/fonts/virage/Virage-WideSemibold.woff2") format("woff2");
+  font-weight: 600 800;
+  font-display: swap;
+}
+
+/* Preserve the original layout and palette; retain only the Virage type system. */
+:root { --font-geist-sans: Virage; --font-geist-mono: Virage; }
+html body, html body .site :is(p,span,div,a,button,li,figcaption,input,textarea) {
+  font-family: Virage, Helvetica, Arial, sans-serif !important;
+}
+html body .site :is(h1,h2,h3,h4),
+html body .site .sectionHead .sectionTitle,
+html body .site .footer .footerSectionTitle {
+  font-family: "Virage Narrow", Helvetica, Arial, sans-serif !important;
+  font-style: italic;
+}
+html body .site :is(.topNavDesktop,.topNavMobile) a,
+html body .site .brandText {
+  font-family: "Virage Wide", Helvetica, Arial, sans-serif !important;
+}
+html body .site :is(.brandMark,.footerOmega) { font-family: Georgia, serif !important; }
