@@ -6,10 +6,10 @@ opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
 base = 'http://127.0.0.1:3091'
 server = subprocess.Popen(['node', 'node_modules/next/dist/bin/next', 'start', '-p', '3091'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 def fetch(path):
-    with opener.open(base + path, timeout=20) as r:
+    with opener.open(base + path, timeout=2) as r:
         return r.status, r.read()
 try:
-    for attempt in range(60):
+    for attempt in range(12):
         try:
             fetch('/')
             break
