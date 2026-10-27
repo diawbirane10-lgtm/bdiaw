@@ -2,48 +2,10 @@
 
 import {useEffect} from "react";
 
-// Scroll-driven reveal + progress state.
+// Progress is decorative. Content must remain visible without observer callbacks.
 export default function MotionEngine(){
   useEffect(()=>{
-    const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const root=document.documentElement;
-    root.classList.add("motionReady");
-
-    const sections=[...document.querySelectorAll(".section, .motionSection")];
-    const items=[...document.querySelectorAll(".motionItem")];
-
-    if(reduce){
-      sections.forEach(el=>el.classList.add("motionIn"));
-      items.forEach(el=>el.classList.add("motionIn"));
-      root.style.setProperty("--scroll-progress","1");
-      return()=>root.classList.remove("motionReady");
-    }
-
-    const sectionObserver=new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(!entry.isIntersecting)return;
-        entry.target.classList.add("motionIn");
-        sectionObserver.unobserve(entry.target);
-      });
-    },{threshold:.16,rootMargin:"0px 0px -12% 0px"});
-
-    sections.forEach(el=>sectionObserver.observe(el));
-
-    const itemObserver=new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(!entry.isIntersecting)return;
-        const parent=entry.target.parentElement;
-        if(parent){
-          const siblings=[...parent.children].filter(node=>node.classList?.contains("motionItem"));
-          const index=siblings.indexOf(entry.target);
-          entry.target.style.setProperty("--motion-delay",`${Math.min(Math.max(index,0)*80,320)}ms`);
-        }
-        entry.target.classList.add("motionIn");
-        itemObserver.unobserve(entry.target);
-      });
-    },{threshold:.18,rootMargin:"0px 0px -8% 0px"});
-
-    items.forEach(el=>itemObserver.observe(el));
 
     let ticking=false;
     const updateProgress=()=>{
@@ -61,10 +23,7 @@ export default function MotionEngine(){
     window.addEventListener("scroll",onScroll,{passive:true});
 
     return()=>{
-      sectionObserver.disconnect();
-      itemObserver.disconnect();
       window.removeEventListener("scroll",onScroll);
-      root.classList.remove("motionReady");
     };
   },[]);
 
