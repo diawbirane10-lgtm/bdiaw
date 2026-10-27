@@ -344,7 +344,7 @@ export function ProjectsPage({ lang }) {
         </div>
         <p className="result-count" aria-live="polite">
           {shown.length}{" "}
-          {lang === "fr" ? "projets sélectionnés" : "selected projects"}
+          {lang === "fr" ? (shown.length === 1 ? "projet sélectionné" : "projets sélectionnés") : (shown.length === 1 ? "selected project" : "selected projects")}
         </p>
         <div className="projects-grid">
           {shown.map((p) => (

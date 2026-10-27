@@ -167,6 +167,7 @@ export function Header({ lang, setLang }) {
       <dialog
         ref={menu}
         id="site-menu"
+        aria-label={lang === "fr" ? "Menu du portfolio" : "Portfolio menu"}
         className="menu-dialog"
         onClose={() => setOpen(false)}
         onClick={(e) => {
@@ -214,6 +215,7 @@ export function Header({ lang, setLang }) {
       <dialog
         ref={search}
         className="search-dialog"
+        aria-label={lang === "fr" ? "Recherche de projets" : "Project search"}
         onClose={() => setOpen(false)}
       >
         <div className="dialog-top">

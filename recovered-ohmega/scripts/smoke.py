@@ -1,5 +1,5 @@
 """Exercise rendered routes, canonical URLs, missing pages and local font bytes."""
-import subprocess, time, urllib.request, urllib.error
+import subprocess, time, urllib.request, urllib.error, re
 from pathlib import Path
 
 opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
@@ -22,7 +22,8 @@ try:
         status, raw = fetch(path)
         html=raw.decode()
         assert status == 200 and expected in html, path
-        assert 'https://b-diaw.com'+path+'"' in html, 'canonical '+path
+        canonical = re.search(r'<link rel="canonical" href="([^"]+)"', html).group(1)
+        assert canonical.rstrip('/') == ('https://b-diaw.com'+path).rstrip('/'), 'canonical '+path
         assert '<h1' in html and 'site-header' in html and 'site-footer' in html, 'layout '+path
         print('PASS',path)
     for font in Path('public/fonts/virage').glob('*.woff2'):

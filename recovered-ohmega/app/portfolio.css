@@ -1609,7 +1609,7 @@ dialog::backdrop {
     padding-bottom: 45px;
   }
   .hero-content h1 {
-    font-size: clamp(58px, 15vw, 95px);
+    font-size: clamp(48px, 14vw, 95px);
     letter-spacing: -0.02em;
   }
   .hero-role {
@@ -2091,7 +2091,7 @@ dialog::backdrop {
     font-size: 9px;
   }
   .hero-content h1 {
-    font-size: 58px;
+    font-size: 50px;
   }
   .footer-social {
     flex-direction: column;
@@ -2120,3 +2120,5 @@ dialog::backdrop {
     animation: none !important;
   }
 }
+
+@media(min-width:651px){.field-tile h3{min-height:2.1em}}
