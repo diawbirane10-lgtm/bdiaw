@@ -239,7 +239,7 @@ function Home({t,lang}){return <>
             ?"Mon travail s’articule autour de la modélisation, de la simulation et de l’ingénierie système, à l’intersection des systèmes de puissance, de la commande et de l’automatisation — de la stabilité des réseaux, du HVDC / HVAC et des technologies grid-forming jusqu’aux systèmes électromécaniques et au contrôle industriel. Je m’intéresse particulièrement aux architectures intégrées où conversion de puissance, capteurs, actionnement et intelligence embarquée sont conçus ensemble pour assurer stabilité, performance et fiabilité."
             :"My work centers on modelling, simulation and system-level engineering across power, control and automation, from grid stability, HVDC / HVAC and grid-forming technologies to electromechanical systems and industrial control. I am particularly interested in integrated architectures where power conversion, sensing, actuation and embedded intelligence are engineered together for stability, performance and reliability."}</p>
         </div>
-        <ProfileStats lang={lang} experienceCount={t.experience.items.length}/>
+        <ProfileStats lang={lang} experienceCount={sharedCopy[lang].experience.items.length}/>
       </div>
       <a className="educationStrip motionItem" href="https://emsi.ma/" target="_blank" rel="noreferrer" aria-label={lang==="fr"?"École Marocaine des Sciences de l’Ingénieur — site officiel":"École Marocaine des Sciences de l’Ingénieur — official website"}>
         <span className="educationLogo" aria-hidden="true"><img src="https://emsi.ma/wp-content/uploads/2024/03/favicon.svg" alt=""/></span>
