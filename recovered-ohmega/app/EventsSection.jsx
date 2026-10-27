@@ -48,20 +48,21 @@ export default function EventsSection({lang="en"}){
       <span>{lang==="fr"?"ENGAGEMENT INSTITUTIONNEL":"INSTITUTIONAL ENGAGEMENT"}</span>
       <span>{t.date}</span>
     </div>
-    <div className="engagementLogos" aria-label={lang==="fr"?"Organisations":"Organizations"}>
-      <a className="engagementLogo ministry" href={ministrySite} target="_blank" rel="noreferrer" title={t.ministry}>
-        <img src={ministryLogo} alt={t.ministry}/>
+    <div className="engagementPartners" aria-label={lang==="fr"?"Organisations":"Organizations"}>
+      <a className="engagementPartner" href={ministrySite} target="_blank" rel="noreferrer">
+        <span className="engagementMark ministryMark"><img src={ministryLogo} alt="" width="141" height="120"/></span>
+        <span className="engagementPartnerName">{t.ministry}</span>
       </a>
-      <span className="engagementJoin" aria-hidden="true">×</span>
-      <a className="engagementLogo iaea" href={iaeaSite} target="_blank" rel="noreferrer" title={t.iaea}>
-        <img src={iaeaLogo} alt={t.iaea}/>
+      <a className="engagementPartner" href={iaeaSite} target="_blank" rel="noreferrer">
+        <span className="engagementMark iaeaMark"><img src={iaeaLogo} alt="" width="160" height="80"/></span>
+        <span className="engagementPartnerName">{t.iaea}</span>
       </a>
     </div>
     <div className="engagementCopy motionItem">
       <p className="engagementKicker">{t.role} · {t.place}</p>
       <h2 id="engagement-title">{lang==="fr"?"Atelier AIEA / NEPIO — Programme électronucléaire du Sénégal":"IAEA / NEPIO Workshop — Senegal Nuclear Power Programme"}</h2>
       <p>{t.body}</p>
-      <nav className="engagementLinks">
+      <nav className="engagementLinks" aria-label={lang==="fr"?"Sources de l’atelier":"Workshop sources"}>
         <a href={workshopNote} target="_blank" rel="noreferrer">{t.official} ↗</a>
         <a href={milestones} target="_blank" rel="noreferrer">{t.guide} ↗</a>
       </nav>

@@ -324,7 +324,7 @@ function Home({t,lang}){return <>
     <EventsSection lang={lang}/>
 
     <footer id="contact" className="footer motionSection">
-      <div className="footerIndex">05</div>
+      <div className="footerIndex">07</div>
       <h2 className="footerSectionTitle">Contact</h2>
       <div className="footerContactGrid">
         <div><h3 className="footerHeadline">{t.contact.heading}</h3><span className="footerIntro">{t.contact.body}</span></div>
@@ -334,7 +334,7 @@ function Home({t,lang}){return <>
         </div>
       </div>
       <div className="footerBottom">
-        <a className="footerBrand" href="#top" aria-label="Back to top"><span className="footerOmega">Ω</span><span>OHMEGA</span></a>
+        <a className="footerBrand" href="#top" aria-label={lang==="fr"?"Retour en haut":"Back to top"}><span className="footerOmega">Ω</span><span>OHMEGA</span></a>
         <nav className="contactLinks" aria-label="Professional profiles">
           <a href={mail} aria-label="Email">
             <span className="contactIcon brandIcon gmailIcon" aria-hidden="true">
