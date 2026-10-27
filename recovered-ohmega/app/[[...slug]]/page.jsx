@@ -31,7 +31,7 @@ export default function Portfolio() {
       research: "/research",
       experience: "/experience",
       contact: "/contact",
-      software: "/about",
+      software: "/about#software",
       engagement: "/experience#engagement",
     };
     const target = targets[window.location.hash.slice(1)];

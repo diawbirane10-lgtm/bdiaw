@@ -65,7 +65,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px;
+  scroll-padding-top: calc(var(--header) + 24px);
 }
 body {
   margin: 0;
@@ -1065,7 +1065,6 @@ dialog::backdrop {
 .case-sections > section {
   border-top: 1px solid var(--line);
   padding: 35px 0;
-  scroll-margin-top: 100px;
 }
 .case-sections h2 {
   font-size: 34px;
@@ -1159,6 +1158,44 @@ dialog::backdrop {
 }
 .experience-timeline {
   padding-bottom: 70px;
+}
+.experience-intro {
+  margin: -16px 0 32px;
+  color: var(--muted);
+}
+.experience-preview {
+  display: grid;
+  grid-template-columns: 180px 120px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 32px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+.experience-preview-date { color: var(--muted); font-size: 14px; }
+.experience-preview img { width: 120px; height: 64px; object-fit: contain; }
+.experience-preview h3 { font-size: clamp(24px, 2.5vw, 34px); margin-top: 10px; }
+.experience-preview:hover h3 { color: var(--red); }
+.experience-preview-arrow { color: var(--red); }
+.experience-index { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 38px; }
+.experience-index a {
+  display: inline-flex; align-items: center; gap: 12px;
+  min-height: 44px; padding: 12px 16px;
+  border: 1px solid var(--line); font-size: 14px;
+}
+.experience-index a:hover { background: var(--soft); }
+.experience-entry:target { border-top-color: var(--red); }
+.experience-entry p + p { margin-top: 18px; }
+@media (max-width: 900px) {
+  .experience-preview { grid-template-columns: 150px minmax(0, 1fr) 24px; gap: 20px; }
+  .experience-preview img { display: none; }
+}
+@media (max-width: 600px) {
+  .experience-preview { grid-template-columns: minmax(0, 1fr) 24px; gap: 12px; padding: 24px 0; }
+  .experience-preview-date { grid-column: 1/-1; }
+  .experience-preview h3 { font-size: 27px; }
+  .experience-preview .category { overflow-wrap: anywhere; }
+  .experience-index { gap: 8px; }
+  .experience-index a { width: 100%; justify-content: space-between; }
 }
 .experience-entry {
   display: grid;
