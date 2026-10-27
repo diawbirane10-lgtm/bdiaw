@@ -1,4 +1,11 @@
 /* Containment and separators for the retained portfolio layout. */
+/* Never gate readable content on JavaScript or scroll-animation completion. */
+.site :is(.section,.motionSection,.motionItem,.heroReveal) {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
 #about .profileStats > .profileStat {
   border-top: 0 !important;
   border-left: 0 !important;
