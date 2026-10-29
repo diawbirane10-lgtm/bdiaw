@@ -1,73 +1,40 @@
-# Welcome to your Lovable project
+# Birane DIAW — Electrical Engineering & Intelligent Systems
 
-## Project info
+[Explore my portfolio](https://b-diaw.com/?utm_source=github&utm_medium=organic&utm_campaign=portfolio) · [LinkedIn](https://www.linkedin.com/in/birane-diaw-b83b47374) · [Contact](mailto:diawbirane10@gmail.com)
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+I am a fourth-year electrical engineering and intelligent systems student at EMSI Rabat, based in Morocco and originally from Senegal. My work focuses on power systems, control, industrial automation and digital twins, using MATLAB, Simulink and Stateflow.
 
-## How can I edit this code?
+I welcome conversations about **engineering internships** and **freelance modelling and simulation projects**.
 
-There are several ways of editing your application.
+## Selected engineering projects
 
-**Use Lovable**
+| Project | Explore |
+| --- | --- |
+| Smart-grid UFLS relay: staged load shedding and restoration in ONEE/SENELEC study contexts | [Case study](https://b-diaw.com/projects/ufls-smartgrid?utm_source=github&utm_medium=organic&utm_campaign=portfolio) |
+| Wave-energy conversion: PMSG, field-oriented control and grid injection | [Case study](https://b-diaw.com/projects/wave-energy-conversion?utm_source=github&utm_medium=organic&utm_campaign=portfolio) |
+| 25 kV railway traction and regenerative braking | [Case study](https://b-diaw.com/projects/railway-traction-25kv?utm_source=github&utm_medium=organic&utm_campaign=portfolio) |
+| Li-ion battery digital twin: pack simulation and CSV telemetry diagnostics | [Case study](https://b-diaw.com/projects/digital-twin-liion-battery?utm_source=github&utm_medium=organic&utm_campaign=portfolio) |
+| Variable-speed electric-drive digital twin | [Case study](https://b-diaw.com/projects/digital-twin-electric-drive?utm_source=github&utm_medium=organic&utm_campaign=portfolio) |
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+The case studies distinguish models, validation evidence and development limits. They include reports and source-code links where available.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Work together
 
-**Use your preferred IDE**
+- **Internships:** power systems, renewable energy, control and industrial automation.
+- **Freelance enquiries:** MATLAB/Simulink modelling, control-system simulation and technical analysis.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Please email [diawbirane10@gmail.com](mailto:diawbirane10@gmail.com) with the project scope, expected deliverables and timeline.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Run the website
 
-Follow these steps:
+The current portfolio is the Next.js application in `recovered-ohmega/`. The repository also retains an earlier Vite application in `src/`.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+cd recovered-ohmega
+npm ci
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Build and check routes with `npm run build` and `python3 scripts/smoke.py`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Scheduled GitHub Actions handle technical SEO checks, IndexNow submission, and Lighthouse reporting. These checks support discovery and monitoring; they do not guarantee search rankings.
