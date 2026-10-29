@@ -4,6 +4,7 @@ import {usePathname} from "next/navigation";
 import EventsSection from "../EventsSection";
 import {copy as sharedCopy} from "../portfolio-data";
 import {readLanguage,saveLanguage} from "../browser-preferences.mjs";
+import {reportDownloadHref} from "../report-catalog.mjs";
 
 const github="https://github.com/diawbirane10-lgtm";
 const linkedin="https://www.linkedin.com/in/birane-diaw-b83b47374";
@@ -133,7 +134,7 @@ function resourceLabel(label,lang){
   };
   return labels[label]||label;
 }
-function ExtLink({href,children,className=""}){const external=!href.startsWith("/")&&!href.startsWith("mailto:");return <a className={className} href={href} target={external?"_blank":undefined} rel={external?"noreferrer":undefined}>{children}{external?<span aria-hidden="true"> ↗</span>:null}</a>}
+function ExtLink({href,children,className=""}){const external=!href.startsWith("/")&&!href.startsWith("mailto:");return <a className={className} href={reportDownloadHref(href)} target={external?"_blank":undefined} rel={external?"noreferrer":undefined}>{children}{external?<span aria-hidden="true"> ↗</span>:null}</a>}
 function Top({t,lang,setLang,navOpen,setNavOpen}){
   const navTargets=["/#about","/#projects","/#research","/#experience","/#contact"];
   return <div className="topbar">
