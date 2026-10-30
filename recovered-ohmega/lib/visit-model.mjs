@@ -30,16 +30,17 @@ export function referrerHost(value) {
   try { const u = new URL(value); return /^https?:$/.test(u.protocol) ? u.hostname.slice(0, 200) : null; } catch { return null; }
 }
 
-export function makeVisit(body, headers, now = Date.now()) {
+export function makeVisit(body, headers, now = Date.now(), { allowBots = false } = {}) {
   if (!body || !uuid.test(body.id || "") || !uuid.test(body.sessionId || "") || !pages.has(body.page)) return null;
   const ua = headers.get("user-agent") || "";
-  if (/bot\b|crawler|spider|lighthouse|headless|preview|facebookexternalhit/i.test(ua)) return null;
+  const automated = /bot\b|crawler|spider|lighthouse|headless|preview|facebookexternalhit/i.test(ua);
+  if (automated && !allowBots) return null;
   const code = cleanHeader(headers, "x-vercel-ip-country", 2)?.toUpperCase();
   const countryCode = /^[A-Z]{2}$/.test(code || "") ? code : null;
   let country = null;
   if (countryCode) { try { country = new Intl.DisplayNames(["en"], { type: "region" }).of(countryCode); } catch { /* Unknown location. */ } }
   return {
-    id: body.id, sessionId: body.sessionId, page: body.page, occurredAt: new Date(now).toISOString(),
+    id: body.id, sessionId: body.sessionId, page: body.page, occurredAt: new Date(now).toISOString(), kind: "pageview", automated,
     countryCode, country, city: cleanHeader(headers, "x-vercel-ip-city"), region: cleanHeader(headers, "x-vercel-ip-country-region"),
     timeZone: cleanHeader(headers, "x-vercel-ip-timezone"),
     referrer: referrerHost(body.referrer),
@@ -49,18 +50,20 @@ export function makeVisit(body, headers, now = Date.now()) {
 }
 
 export function visitPath(visit) {
-  return `${VISIT_PREFIX}${String(9999999999999 - Date.parse(visit.occurredAt)).padStart(13, "0")}-${visit.id}.json`;
+  const type = visit.kind === "download" ? `download-${visit.reportId}-` : "";
+  return `${VISIT_PREFIX}${String(9999999999999 - Date.parse(visit.occurredAt)).padStart(13, "0")}-${type}${visit.id}.json`;
 }
 
 export function groupVisits(events) {
   const groups = new Map();
   for (const event of [...events].sort((a, b) => Date.parse(b.occurredAt) - Date.parse(a.occurredAt))) {
     const key = event.sessionId;
-    if (!groups.has(key)) groups.set(key, { ...event, firstSeen: event.occurredAt, lastSeen: event.occurredAt, events: [], pages: [] });
+    if (!groups.has(key)) groups.set(key, { ...event, firstSeen: event.occurredAt, lastSeen: event.occurredAt, events: [], pages: [], downloads: [] });
     const visit = groups.get(key);
     if (visit.events.some(x => x.id === event.id)) continue;
     visit.events.push(event);
-    if (!visit.pages.includes(event.page)) visit.pages.push(event.page);
+    if (event.kind === "download") visit.downloads.push(event);
+    else if (!visit.pages.includes(event.page)) visit.pages.push(event.page);
     if (event.occurredAt < visit.firstSeen) visit.firstSeen = event.occurredAt;
     // Acquisition belongs to the earliest page loaded for a session.
     visit.referrer = event.referrer;
