@@ -1,8 +1,8 @@
 import "./admin.css";
 
 export const metadata = {
-  title: "Admin Analytics — OHMEGA",
-  description: "Private site analytics dashboard.",
+  title: "Administration — OHMEGA",
+  description: "Historique privé des visites du portfolio.",
   robots: { index: false, follow: false, nocache: true },
 };
 

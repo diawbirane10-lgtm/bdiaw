@@ -26,6 +26,8 @@ jobs:
         with:
           node-version: 22
       - run: npm install --no-audit --no-fund
+      - name: Test visit history and browser preferences
+        run: node --test scripts/*.test.mjs
       - run: npm run build
       - name: Smoke test rendered pages and fonts
         run: python3 scripts/smoke.py
