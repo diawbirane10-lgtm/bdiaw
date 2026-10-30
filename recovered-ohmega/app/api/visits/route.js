@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { makeVisit } from "../../../lib/visit-model.mjs";
 import { historyConfigured, storeVisit } from "../../../lib/visit-history.mjs";
 import { ADMIN_COOKIE, verifySessionValue } from "../../../lib/admin-auth";
+import { VISITOR_COOKIE } from "../../../lib/visitor-session.mjs";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -22,7 +23,9 @@ export async function POST(request) {
   if (!event) return new Response(null, { status: 204, headers });
   try {
     await storeVisit(event);
-    return new Response(null, { status: 204, headers });
+    const response = new NextResponse(null, { status: 204, headers });
+    response.cookies.set(VISITOR_COOKIE, event.sessionId, { httpOnly: true, secure: true, sameSite: "lax", path: "/", maxAge: 1800 });
+    return response;
   } catch {
     console.warn("Visit history write failed.");
     return NextResponse.json({ ok: false }, { status: 503, headers });
