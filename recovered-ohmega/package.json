@@ -8,11 +8,11 @@
     "dev": "next dev"
   },
   "dependencies": {
+    "@vercel/analytics": "latest",
+    "@vercel/blob": "2.8.2",
+    "geist": "latest",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "geist": "latest",
-    "@vercel/analytics": "latest"
-  },
-  "devDependencies": {}
+    "react-dom": "latest"
+  }
 }

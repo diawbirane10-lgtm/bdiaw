@@ -4,7 +4,7 @@ export const ADMIN_COOKIE = "ohmega_admin";
 const MAX_AGE = 60 * 60 * 12;
 
 function secret() {
-  return process.env.VERCEL_ANALYTICS_TOKEN || "ohmega-admin-session";
+  return process.env.ADMIN_SESSION_SECRET || process.env.VERCEL_ANALYTICS_TOKEN || null;
 }
 
 export function passwordMatches(password) {
@@ -14,6 +14,7 @@ export function passwordMatches(password) {
 }
 
 export function createSessionValue() {
+  if (!secret()) throw new Error("Admin session secret is not configured.");
   const issuedAt = Math.floor(Date.now() / 1000);
   const payload = `admin:${issuedAt}`;
   const sig = crypto.createHmac("sha256", secret()).update(payload).digest("hex");
@@ -21,6 +22,7 @@ export function createSessionValue() {
 }
 
 export function verifySessionValue(value) {
+  if (!secret()) return false;
   if (!value || !value.includes(".")) return false;
   const [issuedRaw, sig] = value.split(".");
   const issuedAt = Number(issuedRaw);

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { ADMIN_COOKIE, verifySessionValue } from "../../../../lib/admin-auth";
+import { periodStart, validZone } from "../../../../lib/visit-model.mjs";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -12,9 +13,9 @@ function authOk(request) {
   return verifySessionValue(request.cookies.get(ADMIN_COOKIE)?.value);
 }
 
-function range(days) {
+function range(days, zone) {
   const until = new Date();
-  const since = new Date(until.getTime() - days * 24 * 60 * 60 * 1000);
+  const since = new Date(periodStart(days, zone, until.getTime()));
   return { since: since.toISOString(), until: until.toISOString() };
 }
 
@@ -44,8 +45,8 @@ async function vercelQuery(mode, params) {
   return data;
 }
 
-async function countDays(days) {
-  const { since, until } = range(days);
+async function countDays(days, zone) {
+  const { since, until } = range(days, zone);
   const result = await vercelQuery("count", { since, until });
   return {
     days,
@@ -54,14 +55,10 @@ async function countDays(days) {
   };
 }
 
-async function aggregate(days, by, limit = 12) {
-  const { since, until } = range(days);
-  try {
-    const result = await vercelQuery("aggregate", { since, until, by, limit });
-    return Array.isArray(result?.data) ? result.data : [];
-  } catch (error) {
-    return [];
-  }
+async function aggregate(days, by, zone, limit = 12) {
+  const { since, until } = range(days, zone);
+  const result = await vercelQuery("aggregate", { since, until, by, limit });
+  return Array.isArray(result?.data) ? result.data : [];
 }
 
 function labelCountry(code) {
@@ -102,30 +99,21 @@ export async function GET(request) {
 
   const periodParam = Number(new URL(request.url).searchParams.get("days") || 30);
   const days = [1, 7, 30].includes(periodParam) ? periodParam : 30;
+  const zone = validZone(new URL(request.url).searchParams.get("tz"));
 
   try {
     const [
       today,
       week,
       month,
-      trend,
       pages,
-      countries,
-      devices,
-      browsers,
       referrers,
-      operatingSystems,
     ] = await Promise.all([
-      countDays(1),
-      countDays(7),
-      countDays(30),
-      aggregate(days, "day", 40),
-      aggregate(days, "requestPath", 15),
-      aggregate(days, "country", 20),
-      aggregate(days, "deviceType", 10),
-      aggregate(days, "browserName", 10),
-      aggregate(days, "referrerHostname", 12),
-      aggregate(days, "osName", 10),
+      countDays(1, zone),
+      countDays(7, zone),
+      countDays(30, zone),
+      aggregate(days, "requestPath", zone, 15),
+      aggregate(days, "referrerHostname", zone, 12),
     ]);
 
     return NextResponse.json({
@@ -135,13 +123,8 @@ export async function GET(request) {
       generatedAt: new Date().toISOString(),
       periodDays: days,
       totals: { today, week, month },
-      trend: normalize(trend, "day"),
       pages: normalize(pages, "requestPath"),
-      countries: normalize(countries, "country"),
-      devices: normalize(devices, "deviceType"),
-      browsers: normalize(browsers, "browserName"),
       referrers: normalize(referrers, "referrerHostname"),
-      operatingSystems: normalize(operatingSystems, "osName"),
     }, {
       headers: { "Cache-Control": "private, no-store" },
     });

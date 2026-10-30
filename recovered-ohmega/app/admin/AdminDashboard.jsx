@@ -1,179 +1,137 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { groupVisits, TIME_ZONES } from "../../lib/visit-model.mjs";
 
-const COUNTRY_CENTERS = {
-  SN:[14.4974,-14.4524], MA:[31.7917,-7.0926], FR:[46.2276,2.2137], US:[37.0902,-95.7129],
-  CA:[56.1304,-106.3468], GB:[55.3781,-3.4360], ES:[40.4637,-3.7492], PT:[39.3999,-8.2245],
-  DE:[51.1657,10.4515], IT:[41.8719,12.5674], BE:[50.5039,4.4699], NL:[52.1326,5.2913],
-  CH:[46.8182,8.2275], TR:[38.9637,35.2433], AE:[23.4241,53.8478], QA:[25.3548,51.1839],
-  SA:[23.8859,45.0792], CI:[7.5400,-5.5471], GH:[7.9465,-1.0232], NG:[9.0820,8.6753],
-  ML:[17.5707,-3.9962], GN:[9.9456,-9.6966], GM:[13.4432,-15.3101], MR:[21.0079,-10.9408],
-  DZ:[28.0339,1.6596], TN:[33.8869,9.5375], EG:[26.8206,30.8025], ZA:[-30.5595,22.9375],
-  KE:[-0.0236,37.9062], IN:[20.5937,78.9629], CN:[35.8617,104.1954], JP:[36.2048,138.2529],
-  KR:[35.9078,127.7669], BR:[-14.2350,-51.9253], MX:[23.6345,-102.5528], AU:[-25.2744,133.7751]
-};
-
-function fmt(n){ return new Intl.NumberFormat("en-US").format(Number(n||0)); }
-
-function Metric({label,value,sub}){
-  return <div className="adminMetric"><span>{label}</span><strong>{fmt(value)}</strong><small>{sub}</small></div>;
+const periods = [[1,"Aujourd’hui"],[7,"7 jours"],[30,"30 jours"],[0,"Tout l’historique"]];
+const titles = { "/":"Accueil", "/projects/ufls-smartgrid":"UFLS · Smart grid", "/projects/wave-energy-conversion":"Énergie houlomotrice", "/projects/railway-traction-25kv":"Traction ferroviaire", "/projects/digital-twin-liion-battery":"Jumeau numérique · Batterie", "/projects/digital-twin-electric-drive":"Jumeau numérique · Entraînement", "/research/grid-forming-vsm-hvdc-bess":"Recherche · Grid forming" };
+const number = value => value == null ? "—" : new Intl.NumberFormat("fr-FR").format(Number(value));
+function stamp(value, zone, type) {
+  return new Intl.DateTimeFormat("fr-FR", { timeZone: zone, ...(type === "date" ? { day:"2-digit", month:"short", year:"numeric" } : { hour:"2-digit", minute:"2-digit", second:"2-digit", hourCycle:"h23" }) }).format(new Date(value));
+}
+function Brand() { return <a className="adminBrand" href="/" aria-label="OHMEGA — retour au portfolio"><span aria-hidden="true">Ω</span><span><b>OHMEGA</b><small>Administration privée</small></span></a>; }
+function Ranking({ title, items, pageLinks = false }) {
+  return <section className="adminPanel rankingPanel"><div className="panelHead"><h2>{title}</h2><span>Pages vues</span></div>{items?.length ? <ol className="rankingList">{items.map((item,i) => <li key={item.key || item.name}><span className="rankNumber">{String(i+1).padStart(2,"0")}</span>{pageLinks && item.name.startsWith("/") ? <a href={item.name} target="_blank" rel="noreferrer">{titles[item.name] || item.name}</a> : <span>{item.name}</span>}<strong>{number(item.pageviews)}</strong></li>)}</ol> : <p className="adminEmpty">Aucune donnée disponible pour cette période.</p>}</section>;
 }
 
-function Bars({items,labelKey="name"}){
-  if(!items?.length) return <div className="emptyState">No data yet.</div>;
-  const max=Math.max(...items.map(x=>x.pageviews||0),1);
-  return <div className="barList">{items.map((item,i)=><div className="barRow" key={(item.key||item.name)+i}>
-    <div className="barMeta"><span title={item[labelKey]}>{item[labelKey]}</span><b>{fmt(item.pageviews)}</b></div>
-    <div className="barTrack"><i style={{width:`${Math.max(3,(item.pageviews/max)*100)}%`}}/></div>
-    <small>{fmt(item.visitors)} visitors</small>
-  </div>)}</div>;
-}
+export default function AdminDashboard() {
+  const [auth,setAuth] = useState(null);
+  const [password,setPassword] = useState("");
+  const [loggingIn,setLoggingIn] = useState(false);
+  const [loginError,setLoginError] = useState("");
+  const [days,setDays] = useState(7);
+  const [zone,setZone] = useState("Africa/Casablanca");
+  const [records,setRecords] = useState([]);
+  const [cursor,setCursor] = useState(null);
+  const [historyLoading,setHistoryLoading] = useState(true);
+  const [moreLoading,setMoreLoading] = useState(false);
+  const [historyError,setHistoryError] = useState("");
+  const [historyReady,setHistoryReady] = useState(false);
+  const [partial,setPartial] = useState(false);
+  const [updatedAt,setUpdatedAt] = useState(null);
+  const [summary,setSummary] = useState(null);
+  const [summaryError,setSummaryError] = useState("");
+  const [summaryLoading,setSummaryLoading] = useState(true);
+  const [search,setSearch] = useState("");
+  const [country,setCountry] = useState("");
+  const generation = useRef(0);
+  const moreInFlight = useRef(false);
 
-function Trend({items}){
-  if(!items?.length) return <div className="emptyState">Traffic will appear here after Analytics receives visits.</div>;
-  const max=Math.max(...items.map(x=>x.pageviews||0),1);
-  return <div className="trendBars">{items.map((item,i)=><div className="trendCol" key={(item.key||"d")+i} title={`${item.name}: ${item.pageviews} page views`}>
-    <div className="trendValue">{item.pageviews||0}</div>
-    <div className="trendBar"><i style={{height:`${Math.max(5,(item.pageviews/max)*100)}%`}}/></div>
-    <small>{String(item.name).slice(5)}</small>
-  </div>)}</div>;
-}
+  const refresh = useCallback(async () => {
+    const current = ++generation.current;
+    setHistoryLoading(true); setSummaryLoading(true); setHistoryError(""); setSummaryError(""); setHistoryReady(false);
+    setRecords([]); setCursor(null); setSummary(null); setMoreLoading(false); moreInFlight.current=false;
+    const params = `days=${days}&tz=${encodeURIComponent(zone)}`;
+    await Promise.allSettled([
+      (async () => {
+        try {
+          const response = await fetch(`/api/admin/visits?${params}`, { cache:"no-store" });
+          const result = await response.json();
+          if (current !== generation.current) return;
+          if (response.status === 401) { setAuth(false); return; }
+          setAuth(true);
+          if (!response.ok || !result.ok) throw new Error(result.error || "Le journal ne peut pas être chargé.");
+          setRecords(result.events); setCursor(result.nextCursor); setPartial(result.partial); setUpdatedAt(result.generatedAt); setHistoryReady(true);
+        } catch(error) { if (current === generation.current) setHistoryError(error.message || "Connexion indisponible."); }
+        finally { if (current === generation.current) setHistoryLoading(false); }
+      })(),
+      (async () => {
+        try {
+          const response = await fetch(`/api/admin/analytics?days=${days || 30}&tz=${encodeURIComponent(zone)}`, { cache:"no-store" });
+          const result = await response.json();
+          if (current !== generation.current) return;
+          if (response.status === 401) { setAuth(false); return; }
+          setAuth(true);
+          if (!response.ok || !result.ok) throw new Error("Le bilan global est temporairement indisponible.");
+          setSummary(result);
+        } catch(error) { if (current === generation.current) setSummaryError(error.message); }
+        finally { if (current === generation.current) setSummaryLoading(false); }
+      })(),
+    ]);
+  }, [days,zone]);
 
-export default function AdminDashboard(){
-  const [auth,setAuth]=useState(null);
-  const [password,setPassword]=useState("");
-  const [loading,setLoading]=useState(true);
-  const [error,setError]=useState("");
-  const [data,setData]=useState(null);
-  const [days,setDays]=useState(30);
-  const [country,setCountry]=useState(null);
+  useEffect(() => { refresh(); return () => { generation.current++; }; }, [refresh]);
 
-  async function load(period=days){
-    setLoading(true); setError("");
-    try{
-      const r=await fetch(`/api/admin/analytics?days=${period}`,{cache:"no-store"});
-      const j=await r.json();
-      if(r.status===401){ setAuth(false); setData(null); return; }
-      setAuth(true);
-      if(!r.ok || !j.ok) throw new Error(j.error||"Unable to load analytics.");
-      setData(j);
-      if(j.countries?.length) setCountry(c=>c||j.countries[0]);
-    }catch(e){ setError(e.message||"Unable to load analytics."); }
-    finally{ setLoading(false); }
+  async function loadMore() {
+    if (!cursor || moreInFlight.current) return;
+    moreInFlight.current=true; setMoreLoading(true); setHistoryError("");
+    const current=generation.current;
+    try {
+      const response=await fetch(`/api/admin/visits?days=${days}&tz=${encodeURIComponent(zone)}&cursor=${encodeURIComponent(cursor)}`,{cache:"no-store"});
+      const result=await response.json();
+      if(current!==generation.current)return;
+      if(response.status===401){setAuth(false);return;}
+      if(!response.ok||!result.ok)throw new Error(result.error||"Impossible de charger la suite.");
+      setRecords(previous=>[...new Map([...previous,...result.events].map(row=>[row.id,row])).values()]);
+      setCursor(result.nextCursor); setPartial(previous=>previous||result.partial);
+    }catch(error){if(current===generation.current)setHistoryError(error.message);}
+    finally{if(current===generation.current){setMoreLoading(false);moreInFlight.current=false;}}
   }
 
-  useEffect(()=>{ load(days); },[]);
-
-  async function login(e){
-    e.preventDefault(); setLoading(true); setError("");
-    const r=await fetch("/api/admin/login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({password})});
-    const j=await r.json().catch(()=>({}));
-    if(!r.ok){ setError(j.error||"Incorrect password."); setLoading(false); return; }
-    setPassword(""); setAuth(true); await load(days);
+  async function login(event) {
+    event.preventDefault(); setLoggingIn(true); setLoginError("");
+    try {
+      const response=await fetch("/api/admin/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({password})});
+      if(!response.ok)throw new Error(response.status===401?"Mot de passe incorrect.":"Connexion indisponible. Réessayez.");
+      setPassword(""); setAuth(true); await refresh();
+    }catch(error){setLoginError(error.message);}
+    finally{setLoggingIn(false);}
+  }
+  async function logout() {
+    try {
+      const response=await fetch("/api/admin/logout",{method:"POST"});
+      if(!response.ok)throw new Error();
+      generation.current++; setAuth(false); setRecords([]); setSummary(null);
+    } catch { setHistoryError("La déconnexion a échoué. Réessayez."); }
   }
 
-  async function logout(){
-    await fetch("/api/admin/logout",{method:"POST"});
-    setAuth(false); setData(null);
-  }
+  const visits=useMemo(()=>groupVisits(records),[records]);
+  const countries=useMemo(()=>[...new Set(visits.map(v=>v.country).filter(Boolean))].sort(),[visits]);
+  const visible=useMemo(()=>{
+    const term=search.trim().toLocaleLowerCase("fr");
+    return visits.filter(visit=>(!country||visit.country===country)&&(!term||[visit.country,visit.city,visit.region,...visit.pages].filter(Boolean).join(" ").toLocaleLowerCase("fr").includes(term)));
+  },[visits,search,country]);
+  const total=summary?.totals?.[days===1?"today":days===7?"week":"month"];
 
-  async function changePeriod(next){
-    setDays(next); await load(next);
-  }
-
-  const map = useMemo(()=>{
-    const code=country?.key?.toUpperCase();
-    const center=COUNTRY_CENTERS[code]||[20,0];
-    const [lat,lon]=center;
-    const bbox=[lon-8,lat-5,lon+8,lat+5].join(",");
-    return `https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(bbox)}&layer=mapnik&marker=${lat}%2C${lon}`;
-  },[country]);
-
-  if(auth===false){
-    return <main className="adminShell loginShell">
-      <section className="loginCard">
-        <div className="adminBrand"><span>Ω</span><div><b>OHMEGA</b><small>Private analytics</small></div></div>
-        <h1>Admin Dashboard</h1>
-        <p>Owner access only.</p>
-        <form onSubmit={login}>
-          <label>Password<input type="password" value={password} onChange={e=>setPassword(e.target.value)} autoFocus autoComplete="current-password"/></label>
-          {error&&<div className="loginError">{error}</div>}
-          <button disabled={loading||!password}>{loading?"Checking…":"Access dashboard"}</button>
-        </form>
-        <a href="/">← Back to portfolio</a>
-      </section>
-    </main>;
-  }
+  if(auth===false)return <main className="adminShell adminLogin"><section className="loginCard"><Brand/><p className="adminEyebrow">ESPACE PROPRIÉTAIRE</p><h1>Bienvenue,<br/>Birane.</h1><p>Connectez-vous pour consulter les visites de votre portfolio.</p><form onSubmit={login}><label htmlFor="admin-password">Mot de passe</label><input id="admin-password" type="password" value={password} onChange={e=>setPassword(e.target.value)} autoComplete="current-password" required/>{loginError&&<p className="adminNotice adminError" role="alert">{loginError}</p>}<button className="adminButton primaryButton" disabled={loggingIn||!password}>{loggingIn?"Connexion…":"Ouvrir le tableau de bord →"}</button></form><a className="adminBack" href="/">← Retour au portfolio</a></section></main>;
+  if(auth===null)return <main className="adminShell"><Brand/><p className="adminNotice" role="status">Connexion à votre espace…</p>{historyError&&<><p className="adminNotice adminError" role="alert">{historyError}</p><button className="adminButton" onClick={refresh}>Réessayer</button></>}</main>;
 
   return <main className="adminShell">
-    <header className="adminTop">
-      <div className="adminBrand"><span>Ω</span><div><b>OHMEGA</b><small>Site insights</small></div></div>
-      <div className="adminActions">
-        <a href="/" target="_blank" rel="noreferrer">View site ↗</a>
-        <button onClick={logout}>Log out</button>
-      </div>
-    </header>
-
-    <section className="adminIntro">
-      <div><p>PRIVATE DASHBOARD</p><h1>Traffic overview</h1><span>Aggregated Vercel Web Analytics. No tracking cookies.</span></div>
-      <div className="periodSwitch">{[1,7,30].map(n=><button className={days===n?"active":""} onClick={()=>changePeriod(n)} key={n}>{n===1?"Today":n===7?"7 days":"30 days"}</button>)}</div>
+    <header className="adminTop"><Brand/><nav aria-label="Administration"><a className="adminButton" href="/" target="_blank" rel="noreferrer">Voir le site ↗</a><button className="adminButton" onClick={logout}>Se déconnecter</button></nav></header>
+    <section className="adminIntro"><div><p className="adminEyebrow">ADMINISTRATION DU PORTFOLIO</p><h1>Historique des visites.</h1><p>Un historique des visites, avec le lieu, l’heure et les pages consultées.</p></div><button className="adminButton refreshButton" onClick={refresh} disabled={historyLoading}>↻ {historyLoading?"Actualisation…":"Actualiser"}</button></section>
+    <section className="adminControls" aria-label="Période et heure"><div className="periodSwitch" role="group" aria-label="Période">{periods.map(([n,label])=><button key={n} aria-pressed={days===n} onClick={()=>{setDays(n);setCountry("");}}>{label}</button>)}</div><label className="zoneControl">Heures affichées en<select value={zone} onChange={e=>setZone(e.target.value)}>{TIME_ZONES.map(value=><option key={value} value={value}>{value.replace("Africa/","").replace("America/","").replace("Europe/","").replaceAll("_"," ")}</option>)}</select></label></section>
+    <section className="adminMetrics" aria-label="Résumé"><div><span>Visites dans la liste</span><strong>{number(historyReady?visits.length:null)}</strong><small>Sessions de navigation chargées</small></div><div><span>Visiteurs distincts</span><strong>{number(total?.visitors)}</strong><small>Vercel · {days===0?"30 derniers jours":"période sélectionnée"}</small></div><div><span>Pages vues</span><strong>{number(total?.pageviews)}</strong><small>Vercel · {days===0?"30 derniers jours":"période sélectionnée"}</small></div></section>
+    <section className="adminPanel historyPanel" aria-labelledby="history-title">
+      <div className="panelHead"><div><p className="adminEyebrow">HISTORIQUE INDIVIDUEL</p><h2 id="history-title">Les dernières visites</h2><p>Une ligne par session. Ouvrez une visite pour voir son parcours.</p></div><span className="historyCount">{historyReady?number(visible.length):"—"} {visible.length===1?"visite":"visites"}</span></div>
+      <div className="historyFilters"><label>Rechercher dans les visites chargées<input type="search" placeholder="Pays, ville ou page…" value={search} onChange={e=>setSearch(e.target.value)}/></label><label>Pays<select value={country} onChange={e=>setCountry(e.target.value)}><option value="">Tous les pays chargés</option>{countries.map(name=><option key={name}>{name}</option>)}</select></label></div>
+      <p className="historyPrecision">Localisation approximative du réseau : elle peut correspondre à un VPN ou à l’opérateur. Une ville absente reste « Non disponible ».</p>
+      {historyLoading&&<p className="adminNotice" role="status">Chargement du journal…</p>}
+      {historyError&&<p className="adminNotice adminError" role="alert">{historyError}</p>}
+      {partial&&<p className="adminNotice" role="status">Certaines entrées ne sont pas encore disponibles. Actualisez pour réessayer.</p>}
+      {historyReady&&!historyLoading&&visible.length===0&&<div className="adminEmpty historyEmpty"><span aria-hidden="true">↗</span><h3>{visits.length?"Aucune visite ne correspond à ce filtre.":"Votre historique commence ici."}</h3><p>{visits.length?"Essayez un autre pays, une autre recherche ou chargez la suite.":"Les nouvelles visites apparaîtront avec leur date et leur localisation disponible. Les anciennes statistiques ne permettent pas de reconstituer ce journal."}</p></div>}
+      {visible.length>0&&<><div className="visitColumns" aria-hidden="true"><span>Dernier passage</span><span>Localisation</span><span>Pages consultées</span><span>Provenance</span></div><ol className="visitList">{visible.map(visit=><li key={visit.sessionId}><details className="visitRow"><summary><span className="visitTime"><time dateTime={visit.lastSeen}><b>{stamp(visit.lastSeen,zone,"time")}</b><span>{stamp(visit.lastSeen,zone,"date")}</span></time></span><span className="visitLocation"><b>{visit.country||"Pays non disponible"}</b><span>{visit.city||"Ville non disponible"}{visit.region?` · ${visit.region}`:""}</span></span><span className="visitPages"><b>{visit.pages.length} {visit.pages.length===1?"page":"pages"}</b><span>{titles[visit.pages[0]]||visit.pages[0]}</span></span><span className="visitSource"><b>{visit.referrer||"Direct / inconnu"}</b><span>{visit.device} · {visit.browser}</span><i aria-hidden="true">⌄</i></span></summary><div className="visitDetail"><div><h3>Parcours de cette visite</h3><p>Horaires en {zone}. Session terminée après 30 minutes d’inactivité.</p></div><ol>{[...visit.events].reverse().map(event=><li key={event.id}><time dateTime={event.occurredAt}>{stamp(event.occurredAt,zone,"date")} · {stamp(event.occurredAt,zone,"time")}</time><a href={event.page} target="_blank" rel="noreferrer">{titles[event.page]||event.page} ↗</a></li>)}</ol></div></details></li>)}</ol></>}
+      <div className="historyFoot"><p>Les visites antérieures à l’activation du journal ne sont pas reconstituées. Les parcours se complètent lorsque vous chargez la suite.</p>{cursor&&<button className="adminButton" onClick={loadMore} disabled={moreLoading}>{moreLoading?"Chargement…":"Charger les visites précédentes ↓"}</button>}</div>
     </section>
-
-    {loading && <div className="adminNotice">Refreshing analytics…</div>}
-    {error && <div className="adminNotice error">{error}</div>}
-
-    {data&&<>
-      <section className="metricGrid">
-        <Metric label="Visitors today" value={data.totals?.today?.visitors} sub={`${fmt(data.totals?.today?.pageviews)} page views`}/>
-        <Metric label="Visitors · 7 days" value={data.totals?.week?.visitors} sub={`${fmt(data.totals?.week?.pageviews)} page views`}/>
-        <Metric label="Visitors · 30 days" value={data.totals?.month?.visitors} sub={`${fmt(data.totals?.month?.pageviews)} page views`}/>
-        <Metric label="Current period" value={days===1?data.totals?.today?.pageviews:days===7?data.totals?.week?.pageviews:data.totals?.month?.pageviews} sub="page views"/>
-      </section>
-
-      <section className="adminPanel widePanel">
-        <div className="panelHead"><div><p>TRAFFIC</p><h2>Visits over time</h2></div><small>Last {days} day{days>1?"s":""}</small></div>
-        <Trend items={data.trend}/>
-      </section>
-
-      <section className="adminGrid">
-        <div className="adminPanel">
-          <div className="panelHead"><div><p>CONTENT</p><h2>Top pages</h2></div></div>
-          <Bars items={data.pages}/>
-        </div>
-        <div className="adminPanel">
-          <div className="panelHead"><div><p>ACQUISITION</p><h2>Sources / search engines</h2></div></div>
-          <Bars items={data.referrers}/>
-        </div>
-      </section>
-
-      <section className="adminGrid">
-        <div className="adminPanel">
-          <div className="panelHead"><div><p>TECHNOLOGY</p><h2>Devices</h2></div></div>
-          <Bars items={data.devices}/>
-        </div>
-        <div className="adminPanel">
-          <div className="panelHead"><div><p>TECHNOLOGY</p><h2>Browsers</h2></div></div>
-          <Bars items={data.browsers}/>
-        </div>
-      </section>
-
-      <section className="adminPanel geoPanel">
-        <div className="panelHead"><div><p>GEOGRAPHY</p><h2>Visitor locations</h2></div><small>OpenStreetMap</small></div>
-        <div className="geoGrid">
-          <div className="countryList">
-            {data.countries?.length ? data.countries.map((c,i)=><button key={(c.key||c.name)+i} onClick={()=>setCountry(c)} className={country?.key===c.key?"active":""}>
-              <span><b>{c.name}</b><small>{c.key}</small></span>
-              <span><b>{fmt(c.visitors)}</b><small>visitors</small></span>
-            </button>) : <div className="emptyState">No country data yet.</div>}
-          </div>
-          <div className="mapWrap">
-            <iframe title="Visitor location map" src={map} loading="lazy"/>
-            <a href="https://www.openstreetmap.org/" target="_blank" rel="noreferrer">© OpenStreetMap contributors ↗</a>
-          </div>
-        </div>
-      </section>
-
-      <footer className="adminFoot">Updated {data.generatedAt ? new Date(data.generatedAt).toLocaleString() : "now"} · Analytics are aggregated and privacy-friendly.</footer>
-    </>}
+    <section className="summarySection" aria-labelledby="summary-title"><div className="sectionHeading"><p className="adminEyebrow">VUE D’ENSEMBLE</p><h2 id="summary-title">Ce qui attire les visiteurs</h2><p>Bilan global Vercel · {days===0?"30 derniers jours":periods.find(([n])=>n===days)?.[1].toLowerCase()}. Les comptes du bilan et du nouveau journal peuvent différer.</p></div>{summaryError&&<p className="adminNotice" role="status">{summaryError} Le journal reste indépendant.</p>}{summaryLoading?<p className="adminNotice" role="status">Chargement du bilan global…</p>:<div className="adminGrid"><Ranking title="Pages les plus consultées" items={summary?.pages} pageLinks/><Ranking title="Sites et moteurs d’origine" items={summary?.referrers}/></div>}</section>
+    <footer className="adminFoot"><span>OHMEGA · Birane DIAW</span><span>{updatedAt?`Journal actualisé le ${stamp(updatedAt,zone,"date")} à ${stamp(updatedAt,zone,"time")}`:""} · {zone}</span></footer>
   </main>;
 }
