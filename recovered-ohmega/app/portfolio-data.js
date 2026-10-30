@@ -488,6 +488,16 @@ export const copy = {
       heading: "Engineering internships & field work",
       items: [
         [
+          "Engineering Studies & Tendering Assistant",
+          "S4E SARL · Dakar, Senegal · Hybrid — primarily remote",
+          "Aug — Sep 2026 · 2 months",
+          "Democratic Republic of the Congo — PASEL: contributed to the preparation of an Expression of Interest for an engineering-consulting assignment related to electricity-network extension works.\n\nKolda, Senegal — NEA Kolda: supported technical review, drawing coordination and works monitoring for the Kolda solar power project developed by AXIAN Energy, with S4E acting locally in Senegal.",
+          "Tendering · Power Networks · Solar PV · BESS · AutoCAD · PVsyst · Excel",
+          "s4e",
+          null,
+          "s4e-2026",
+        ],
+        [
           "Final-Year Project Intern — Industrial Automation",
           "Menara Préfa · Marrakech, Morocco",
           "Apr — Jun 2026",
@@ -627,6 +637,16 @@ export const copy = {
     experience: {
       heading: "Stages & expérience terrain",
       items: [
+        [
+          "Assistant études & appels d’offres — Ingénierie électrique",
+          "S4E SARL · Dakar, Sénégal · Hybride — principalement en télétravail",
+          "Août — Sept. 2026 · 2 mois",
+          "République démocratique du Congo — PASEL : contribution à la préparation d’une manifestation d’intérêt pour une mission d’ingénieur-conseil liée à des travaux d’extension de réseaux électriques.\n\nKolda, Sénégal — NEA Kolda : appui à la revue technique, à la coordination des plans et au contrôle-suivi des travaux de la centrale solaire de Kolda portée par AXIAN Energy, avec S4E intervenant localement au Sénégal.",
+          "Appels d’offres · Réseaux électriques · Solaire PV · BESS · AutoCAD · PVsyst · Excel",
+          "s4e",
+          null,
+          "s4e-2026",
+        ],
         [
           "Stagiaire PFE — Maintenance & automatismes industriels",
           "Menara Préfa · Marrakech, Maroc",
