@@ -1,6 +1,6 @@
 # Admin visit history
 
-The admin now prioritizes a chronological session list over country aggregates. A row shows the most recent page-view time in the selected timezone, the network country and city when available, pages viewed, referrer host, device class and browser family. Expand a session to see timestamped page navigation. Searching and country filtering apply to the entries already loaded; loading the next page merges older events into their session rather than duplicating sessions.
+The admin now prioritizes a chronological session list over country aggregates. A row shows the most recent page-view time in the selected timezone, the network country and city when available, pages viewed, referrer host, device class and browser family. Expand a session to see timestamped page navigation. Text search applies to entries already loaded. The country menu always lists all 249 ISO countries/territories, plus any additional hosting-platform region codes observed and an unavailable-location option. Country filtering is applied server-side across history pagination, scanning up to five storage pages per request until a matching page is found; a continuation cursor permits further searching. Loading the next page merges older events into their session rather than duplicating sessions.
 
 ## Collection and persistence
 

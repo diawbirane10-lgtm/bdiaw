@@ -15,9 +15,11 @@ export async function GET(request) {
   const days = [0, 1, 7, 30].includes(value) ? value : 7;
   const zone = validZone(params.get("tz"));
   const cursor = params.get("cursor") || undefined;
+  const country = params.get("country") || "";
+  if (country && country !== "unknown" && !/^[A-Z]{2}$/.test(country)) return NextResponse.json({ ok: false }, { status: 400, headers });
   if (cursor && cursor.length > 4096) return NextResponse.json({ ok: false }, { status: 400, headers });
   try {
-    return NextResponse.json({ ok: true, generatedAt: new Date().toISOString(), ...await readVisitHistory({ since: periodStart(days, zone), cursor }) }, { headers });
+    return NextResponse.json({ ok: true, generatedAt: new Date().toISOString(), ...await readVisitHistory({ since: periodStart(days, zone), cursor, country }) }, { headers });
   } catch {
     console.warn("Visit history read failed.");
     return NextResponse.json({ ok: false, error: "Le journal est temporairement indisponible. Réessayez dans un instant." }, { status: 503, headers });

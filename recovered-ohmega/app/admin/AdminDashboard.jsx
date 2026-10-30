@@ -1,6 +1,7 @@
 "use client";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { groupVisits, TIME_ZONES } from "../../lib/visit-model.mjs";
+import { countryOptions, matchesCountry, UNKNOWN_COUNTRY } from "../../lib/countries.mjs";
 
 const periods = [[1,"Aujourd’hui"],[7,"7 jours"],[30,"30 jours"],[0,"Tout l’historique"]];
 const titles = { "/":"Accueil", "/projects/ufls-smartgrid":"UFLS · Smart grid", "/projects/wave-energy-conversion":"Énergie houlomotrice", "/projects/railway-traction-25kv":"Traction ferroviaire", "/projects/digital-twin-liion-battery":"Jumeau numérique · Batterie", "/projects/digital-twin-electric-drive":"Jumeau numérique · Entraînement", "/research/grid-forming-vsm-hvdc-bess":"Recherche · Grid forming" };
@@ -56,7 +57,7 @@ export default function AdminDashboard() {
       })(),
       (async () => {
         try {
-          const response = await fetch(`/api/admin/visits?${params}`, { cache:"no-store" });
+          const response = await fetch(`/api/admin/visits?${params}&country=${encodeURIComponent(country)}`, { cache:"no-store" });
           const result = await response.json();
           if (current !== generation.current) return;
           if (response.status === 401) { setAuth(false); return; }
@@ -79,7 +80,7 @@ export default function AdminDashboard() {
         finally { if (current === generation.current) setSummaryLoading(false); }
       })(),
     ]);
-  }, [days,zone]);
+  }, [days,zone,country]);
 
   useEffect(() => { refresh(); return () => { generation.current++; }; }, [refresh]);
 
@@ -88,7 +89,7 @@ export default function AdminDashboard() {
     moreInFlight.current=true; setMoreLoading(true); setHistoryError("");
     const current=generation.current;
     try {
-      const response=await fetch(`/api/admin/visits?days=${days}&tz=${encodeURIComponent(zone)}&cursor=${encodeURIComponent(cursor)}`,{cache:"no-store"});
+      const response=await fetch(`/api/admin/visits?days=${days}&tz=${encodeURIComponent(zone)}&cursor=${encodeURIComponent(cursor)}&country=${encodeURIComponent(country)}`,{cache:"no-store"});
       const result=await response.json();
       if(current!==generation.current)return;
       if(response.status===401){setAuth(false);return;}
@@ -117,10 +118,10 @@ export default function AdminDashboard() {
   }
 
   const visits=useMemo(()=>groupVisits(records),[records]);
-  const countries=useMemo(()=>[...new Set(visits.map(v=>v.country).filter(Boolean))].sort(),[visits]);
+  const countries=useMemo(()=>countryOptions(records,country),[records,country]);
   const visible=useMemo(()=>{
     const term=search.trim().toLocaleLowerCase("fr");
-    return visits.filter(visit=>(!country||visit.country===country)&&(!term||[visit.country,visit.city,visit.region,...visit.pages,...visit.downloads.map(x=>x.file)].filter(Boolean).join(" ").toLocaleLowerCase("fr").includes(term)));
+    return visits.filter(visit=>matchesCountry(visit,country)&&(!term||[visit.country,visit.city,visit.region,...visit.pages,...visit.downloads.map(x=>x.file)].filter(Boolean).join(" ").toLocaleLowerCase("fr").includes(term)));
   },[visits,search,country]);
   const total=summary?.totals?.[days===1?"today":days===7?"week":"month"];
 
@@ -134,12 +135,12 @@ export default function AdminDashboard() {
     <section className="adminMetrics" aria-label="Résumé"><div><span>Visites dans la liste</span><strong>{number(historyReady?visits.length:null)}</strong><small>Sessions de navigation chargées</small></div><div><span>Visiteurs distincts</span><strong>{number(total?.visitors)}</strong><small>Vercel · {days===0?"30 derniers jours":"période sélectionnée"}</small></div><div><span>Pages vues</span><strong>{number(total?.pageviews)}</strong><small>Vercel · {days===0?"30 derniers jours":"période sélectionnée"}</small></div></section>
     <section className="adminPanel historyPanel" aria-labelledby="history-title">
       <div className="panelHead"><div><p className="adminEyebrow">HISTORIQUE INDIVIDUEL</p><h2 id="history-title">Les dernières visites</h2><p>Une ligne par session. Ouvrez une visite pour voir les pages et les rapports demandés.</p></div><span className="historyCount">{historyReady?number(visible.length):"—"} {visible.length===1?"visite":"visites"}</span></div>
-      <div className="historyFilters"><label>Rechercher dans les visites chargées<input type="search" placeholder="Pays, ville ou page…" value={search} onChange={e=>setSearch(e.target.value)}/></label><label>Pays<select value={country} onChange={e=>setCountry(e.target.value)}><option value="">Tous les pays chargés</option>{countries.map(name=><option key={name}>{name}</option>)}</select></label></div>
+      <div className="historyFilters"><label>Rechercher dans les visites chargées<input type="search" placeholder="Pays, ville ou page…" value={search} onChange={e=>setSearch(e.target.value)}/></label><label>Pays<select value={country} onChange={e=>setCountry(e.target.value)}><option value="">Tous les pays du monde</option>{countries.map(({code,name})=><option key={code} value={code}>{name}</option>)}<option value={UNKNOWN_COUNTRY}>Pays non renseigné</option></select></label></div>
       <p className="historyPrecision">Localisation approximative du réseau : elle peut correspondre à un VPN ou à l’opérateur. Une ville absente reste « Non disponible ».</p>
       {historyLoading&&<p className="adminNotice" role="status">Chargement du journal…</p>}
       {historyError&&<p className="adminNotice adminError" role="alert">{historyError}</p>}
       {partial&&<p className="adminNotice" role="status">Certaines entrées ne sont pas encore disponibles. Actualisez pour réessayer.</p>}
-      {historyReady&&!historyLoading&&visible.length===0&&<div className="adminEmpty historyEmpty"><span aria-hidden="true">↗</span><h3>{visits.length?"Aucune visite ne correspond à ce filtre.":"Votre historique commence ici."}</h3><p>{visits.length?"Essayez un autre pays, une autre recherche ou chargez la suite.":"Les nouvelles visites apparaîtront avec leur date et leur localisation disponible. Les anciennes statistiques ne permettent pas de reconstituer ce journal."}</p></div>}
+      {historyReady&&!historyLoading&&visible.length===0&&<div className="adminEmpty historyEmpty"><span aria-hidden="true">↗</span><h3>{country||search.trim()||visits.length?"Aucune visite ne correspond à ce filtre.":"Votre historique commence ici."}</h3><p>{country||search.trim()||visits.length?"Aucune entrée correspondante dans l’historique chargé. Essayez une autre période ou chargez la suite si elle est disponible.":"Les nouvelles visites apparaîtront avec leur date et leur localisation disponible. Les anciennes statistiques ne permettent pas de reconstituer ce journal."}</p></div>}
       {visible.length>0&&<><div className="visitColumns" aria-hidden="true"><span>Dernier passage</span><span>Localisation</span><span>Pages consultées</span><span>Provenance</span></div><ol className="visitList">{visible.map(visit=><li key={visit.sessionId}><details className="visitRow"><summary><span className="visitTime"><time dateTime={visit.lastSeen}><b>{stamp(visit.lastSeen,zone,"time")}</b><span>{stamp(visit.lastSeen,zone,"date")}</span></time></span><span className="visitLocation"><b>{visit.country||"Pays non disponible"}</b><span>{visit.city||"Ville non disponible"}{visit.region?` · ${visit.region}`:""}</span></span><span className="visitPages"><b>{visit.pages.length} {visit.pages.length===1?"page":"pages"}{visit.downloads.length?` · ${visit.downloads.length} PDF`:""}</b><span>{titles[visit.pages[0]]||visit.downloads[0]?.file||visit.pages[0]}</span></span><span className="visitSource"><b>{visit.referrer||"Direct / inconnu"}</b><span>{visit.device} · {visit.browser}</span>{visit.automated&&<small className="automationBadge">Automatisation probable</small>}<i aria-hidden="true">⌄</i></span></summary><div className="visitDetail"><div><h3>Parcours de cette visite</h3><p>Horaires en {zone}. Session terminée après 30 minutes d’inactivité.</p></div><ol>{[...visit.events].reverse().map(event=><li key={event.id}><time dateTime={event.occurredAt}>{stamp(event.occurredAt,zone,"date")} · {stamp(event.occurredAt,zone,"time")}</time><span><a href={event.kind==="download"?`/api/reports/${event.reportId}`:event.page} target="_blank" rel="noreferrer">{event.kind==="download"?event.file:titles[event.page]||event.page} ↗</a>{event.kind==="download"&&<small className="downloadEventLabel">PDF demandé · sauvegarde et lecture non vérifiables</small>}</span></li>)}</ol></div></details></li>)}</ol></>}
       <div className="historyFoot"><p>Les visites antérieures à l’activation du journal ne sont pas reconstituées. Les parcours se complètent lorsque vous chargez la suite.</p>{cursor&&<button className="adminButton" onClick={loadMore} disabled={moreLoading}>{moreLoading?"Chargement…":"Charger les visites précédentes ↓"}</button>}</div>
     </section>

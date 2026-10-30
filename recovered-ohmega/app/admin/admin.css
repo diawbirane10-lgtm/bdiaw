@@ -35,3 +35,6 @@ body:has(.adminShell){background:#fff;color:#171717;color-scheme:light}
 @media(prefers-reduced-motion:reduce){.adminShell *{scroll-behavior:auto!important;transition:none!important}}
 
 .downloadPanel{margin-top:26px}.downloadExplanation{padding:0 28px 20px;font-size:12px;color:var(--admin-muted);max-width:980px}.downloadRanking{list-style:none;padding:0 28px!important}.downloadRanking li{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:16px 0;border-top:1px solid var(--admin-line);min-width:0}.downloadRanking li>span{display:grid;gap:4px;min-width:0}.downloadRanking b{font-size:15px;font-weight:600}.downloadRanking small{font-size:12px;color:var(--admin-muted);overflow-wrap:anywhere}.downloadRanking strong{font-size:23px;font-variant-numeric:tabular-nums;flex-shrink:0}.downloadEventLabel{display:block;color:var(--admin-muted);font-size:11px;margin-top:4px}.automationBadge{display:inline-block;width:fit-content;font-size:10px;color:#6b4709;background:#fff4d9;padding:2px 5px;border-radius:2px;margin-top:3px}@media(max-width:760px){.downloadExplanation{padding-inline:20px}.downloadRanking{padding-inline:20px!important}}
+
+/* Long worldwide country names must not enlarge the filter grid. */
+.historyFilters label{min-width:0}.historyFilters select{width:100%;min-width:0}
