@@ -9,10 +9,7 @@ on:
     paths:
       - ".github/workflows/seo-growth.yml"
       - "seo-bot/**"
-      - "recovered-ohmega/app/layout.jsx"
-      - "recovered-ohmega/app/robots.js"
-      - "recovered-ohmega/app/sitemap.js"
-      - "recovered-ohmega/app/[[...slug]]/**"
+      - "recovered-ohmega/app/**"
 
 permissions:
   contents: read

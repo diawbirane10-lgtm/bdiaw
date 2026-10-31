@@ -6,10 +6,12 @@ on:
     branches: [main]
     paths:
       - "recovered-ohmega/**"
+      - ".github/workflows/portfolio-build.yml"
   pull_request:
     branches: [main]
     paths:
       - "recovered-ohmega/**"
+      - ".github/workflows/portfolio-build.yml"
 
 permissions:
   contents: read
@@ -25,7 +27,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install --no-audit --no-fund
+      - run: npm ci --no-audit --no-fund
       - name: Test visit history and browser preferences
         run: node --test scripts/*.test.mjs
       - run: npm run build

@@ -1,5 +1,5 @@
 """Exercise rendered routes, canonical URLs, missing pages and local font bytes."""
-import subprocess, time, urllib.request, urllib.error, re
+import subprocess, time, urllib.request, urllib.error, re, json
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -27,6 +27,11 @@ try:
         assert canonical.rstrip('/') == ('https://b-diaw.com'+path).rstrip('/'), 'canonical '+path
         assert '<h1' in html and 'topbar' in html and 'class="site"' in html, 'layout '+path
         print('PASS',path)
+    # Public content must be ready before the visitor arrives.
+    prerendered = json.loads(Path('.next/prerender-manifest.json').read_text())['routes']
+    for path in routes:
+        assert path in prerendered, 'Public page depends on request-time rendering: '+path
+    print('PASS all public routes are prerendered')
     # Guard the experience lost when the old DOM-injected supplement was replaced.
     home = fetch('/')[1].decode()
     experience = home
