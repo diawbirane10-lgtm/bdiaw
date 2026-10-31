@@ -35,6 +35,16 @@ const projects = {
   },
 };
 
+// Public content is generated once per deployment, without a server invocation
+// on each visit. Analytics continue through their separate, dynamic API routes.
+export const dynamicParams = false;
+export function generateStaticParams() {
+  return [
+    { slug: [] },
+    ...Object.keys(projects).map(slug => ({ slug: ['projects', slug] })),
+  ];
+}
+
 export async function generateMetadata({ params }) {
   const resolved = await params;
   const slugParts = resolved?.slug || [];
