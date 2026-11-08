@@ -372,7 +372,7 @@ function Home({t,lang}){return <>
         {projects.map(p=><article className="workRow motionItem" key={p.slug}>
           <div className="workRowIndex">{p.no}</div>
           <div className="workRowMain">
-            <p className="workField">{p.field[lang]}</p>
+            <p className="workField">{p.field[lang]}{p.stage ? <span className="workProgressLabel">{p.stage[lang]}</span> : null}</p>
             <h3><ExtLink href={`/projects/${p.slug}`} className="titleLink">{p.title}</ExtLink></h3>
           </div>
           <p className="workRowSummary">{p.body[lang]}</p>
@@ -527,5 +527,19 @@ function ResearchDetail({publication,lang}){return <>
     </article>
   </section>
 </>}
-function ProjectDetail({project,t,lang}){return <><header className="projectHero"><ExtLink href="/">{t.detail[0]}</ExtLink><p>{project.no} · {project.field[lang]}</p><h1>{project.title}</h1><h2>{project.body[lang]}</h2>{projectTags[project.slug]?.standards?.length?<div className="caseStudyStandards" aria-label={lang==="fr"?"Normes de référence":"Reference standards"}>{projectTags[project.slug].standards.map(tag=><span className="projectTag standardTag" key={tag}>{tag}</span>)}</div>:null}</header>{project.image?<figure className="projectVisual motionSection"><div className="projectVisualFrame"><img src={project.image} alt={project.title}/></div><figcaption><span>{lang==="fr"?"VUE CONCEPTUELLE DU PROJET":"PROJECT CONCEPT VIEW"}</span><p>{project.visualNote?.[lang]}</p></figcaption></figure>:null}<section className="detailGrid"><article><p>{t.detail[1]}</p><h2>{project.problem[lang]}</h2></article><article><p>{t.detail[2]}</p><h2>{project.solution[lang]}</h2></article><article><p>{t.detail[3]}</p><ol>{project.steps[lang].map(s=><li key={s}>{s}</li>)}</ol></article><article><p>{t.detail[4]}</p><h2>{project.discussion[lang]}</h2></article><article className="wide"><p>{t.detail[5]}</p><nav className="inline">{project.links.map(([label,href])=><ExtLink href={href} key={label}>{resourceLabel(label,lang)}</ExtLink>)}</nav></article></section></>}
+function ProjectDetail({project,t,lang}){return <><header className="projectHero"><ExtLink href="/">{t.detail[0]}</ExtLink><p>{project.no} · {project.field[lang]}{project.stage ? <span className="projectStageLabel">{project.stage[lang]}</span> : null}</p><h1>{project.title}</h1><h2>{project.body[lang]}</h2>{projectTags[project.slug]?.standards?.length?<div className="caseStudyStandards" aria-label={lang==="fr"?"Normes de référence":"Reference standards"}>{projectTags[project.slug].standards.map(tag=><span className="projectTag standardTag" key={tag}>{tag}</span>)}</div>:null}</header>{project.image?<figure className="projectVisual motionSection"><div className="projectVisualFrame"><img src={project.image} alt={project.title}/></div><figcaption><span>{project.stage ? (lang==="fr"?"VUE CAO DU PROTOTYPE — EN COURS":"PROTOTYPE CAD VIEW — IN PROGRESS") : (lang==="fr"?"VUE CONCEPTUELLE DU PROJET":"PROJECT CONCEPT VIEW")}</span><p>{project.visualNote?.[lang]}</p></figcaption></figure>:null}{project.gallery?.length ? <section className="smartSenseGallery motionSection" aria-label={lang==="fr"?"Schémas électroniques et PCB":"Electronics schematics and PCB"}>
+  <div className="smartSenseGalleryHeading">
+    <p className="category">{lang==="fr"?"DOCUMENTATION DE CONCEPTION":"ENGINEERING DESIGN DOCUMENTATION"}</p>
+    <h2>{lang==="fr"?"Schémas électroniques et routage PCB":"Electronic schematics & PCB layout"}</h2>
+    <p>{lang==="fr"?"Vues issues des fichiers CAO KiCad. Elles illustrent la conception en cours et ne constituent pas des photographies du matériel fabriqué.":"Figures derived from KiCad CAD files. These document ongoing design, not photographs of assembled hardware."}</p>
+  </div>
+  <div className="smartSenseGalleryGrid">
+    {project.gallery.map((item,index)=><figure className="smartSenseGalleryItem" key={item.src}>
+      <a href={item.src} target="_blank" rel="noopener noreferrer" aria-label={item.caption[lang]}>
+        <img src={item.src} alt={item.caption[lang]} loading="lazy" decoding="async"/>
+      </a>
+      <figcaption><span>{String(index+1).padStart(2,"0")}</span>{item.caption[lang]}</figcaption>
+    </figure>)}
+  </div>
+</section> : null}<section className="detailGrid"><article><p>{t.detail[1]}</p><h2>{project.problem[lang]}</h2></article><article><p>{t.detail[2]}</p><h2>{project.solution[lang]}</h2></article><article><p>{t.detail[3]}</p><ol>{project.steps[lang].map(s=><li key={s}>{s}</li>)}</ol></article><article><p>{t.detail[4]}</p><h2>{project.discussion[lang]}</h2></article><article className="wide"><p>{t.detail[5]}</p><nav className="inline">{project.links.map(([label,href])=><ExtLink href={href} key={label}>{resourceLabel(label,lang)}</ExtLink>)}</nav></article></section></>}
 export default function Portfolio(){const pathname=usePathname();const[lang,setLang]=useState("en");const[navOpen,setNavOpen]=useState(false);useEffect(()=>{setLang(readLanguage());document.documentElement.dataset.theme="light"},[]);useEffect(()=>{document.documentElement.dataset.theme="light";document.documentElement.lang=lang;saveLanguage(lang)},[lang]);useEffect(()=>{setNavOpen(false)},[pathname]);const t=useMemo(()=>copy[lang],[lang]);const projectSlug=pathname?.startsWith("/projects/")?pathname.split("/projects/")[1]?.split("/")[0]:null;const researchSlug=pathname?.startsWith("/research/")?pathname.split("/research/")[1]?.split("/")[0]:null;const project=projects.find(p=>p.slug===projectSlug);const publication=researchSlug?researchPublications[researchSlug]:null;return <main className="site"><Top t={t} lang={lang} setLang={setLang} navOpen={navOpen} setNavOpen={setNavOpen}/>{project?<ProjectDetail project={project} t={t} lang={lang}/>:publication?<ResearchDetail publication={publication} lang={lang}/>:<Home t={t} lang={lang}/>}</main>}
