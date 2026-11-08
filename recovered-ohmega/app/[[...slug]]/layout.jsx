@@ -1,39 +1,23 @@
 import { notFound } from 'next/navigation';
+import { projects as projectCatalog, projectTags } from '../portfolio-data';
 
 const siteUrl = 'https://b-diaw.com';
 
-const projects = {
-  'ufls-smartgrid': {
-    title: 'Smart-Grid UFLS Relay — ONEE & SENELEC',
-    description:
-      'UFLS smart-grid relay case study for ONEE and SENELEC contexts, using staged frequency shedding, restoration logic and a six-state Stateflow automaton.',
-    keywords: ['UFLS', 'smart grid', 'ONEE', 'SENELEC', 'Stateflow', 'power system protection'],
-  },
-  'wave-energy-conversion': {
-    title: 'Wave-Energy Conversion Chain — FOC & Grid Injection',
-    description:
-      'Wave-energy conversion case study using a PMSG, field-oriented control and grid-side injection for renewable-energy system simulation.',
-    keywords: ['wave energy', 'PMSG', 'FOC', 'renewable energy', 'grid injection'],
-  },
-  'railway-traction-25kv': {
-    title: '25 kV AC Railway Traction System',
-    description:
-      '25 kV AC railway traction case study connecting supply, train dynamics, catenary behaviour, converter control and regenerative braking.',
-    keywords: ['25 kV railway traction', 'regenerative braking', 'power electronics', 'railway electrification'],
-  },
-  'digital-twin-liion-battery': {
-    title: 'Digital Twin — Li-ion Battery Packs',
-    description:
-      'Battery Twin: Li-ion pack simulation, EKF SOC estimation and CSV telemetry diagnostics. Primary Streamlit app, alternative Vercel dashboard and NASA validation evidence.',
-    keywords: ['battery digital twin', 'Li-ion battery', 'Thevenin 2RC', 'SOC', 'SOH', 'RUL'],
-  },
-  'digital-twin-electric-drive': {
-    title: 'Digital Twin — Variable-Speed Electric Drive',
-    description:
-      'Electric-drive digital twin using state-space modelling, H-bridge representation, cascade PI control and signal analysis.',
-    keywords: ['electric drive digital twin', 'state-space', 'H-bridge', 'PI control', 'motor control'],
-  },
-};
+// Routes and SEO metadata use the same catalogue as the visible project list.
+// This prevents newly added projects from returning 404 at their detail URLs.
+const projects = Object.fromEntries(
+  projectCatalog.map(project => [
+    project.slug,
+    {
+      title: project.title,
+      description: project.body.en,
+      keywords: [
+        ...(projectTags[project.slug]?.skills?.en || []),
+        ...(projectTags[project.slug]?.tools || []),
+      ].slice(0, 15),
+    },
+  ])
+);
 
 // Public content is generated once per deployment, without a server invocation
 // on each visit. Analytics continue through their separate, dynamic API routes.
