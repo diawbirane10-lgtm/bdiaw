@@ -395,11 +395,11 @@ function ProjectDetail({project,t,lang}){return <><header className="projectHero
     <p>{lang==="fr"?"Vues issues des fichiers CAO KiCad. Elles illustrent la conception en cours et ne constituent pas des photographies du matériel fabriqué.":"Figures derived from KiCad CAD files. These document ongoing design, not photographs of assembled hardware."}</p>
   </div>
   <div className="smartSenseGalleryGrid">
-    {project.gallery.map((item,index)=><figure className="smartSenseGalleryItem" key={item.src}>
+    {project.gallery.map((item,index)=><figure className={`smartSenseGalleryItem${index < 2 ? " is-diagram" : ""}${index === 1 ? " is-hierarchy" : ""}`} key={item.src}>
       <a href={item.src} target="_blank" rel="noopener noreferrer" aria-label={item.caption[lang]}>
         <img src={item.src} alt={item.caption[lang]} loading="lazy" decoding="async"/>
       </a>
-      <figcaption><span>{String(index+1).padStart(2,"0")}</span>{item.caption[lang]}</figcaption>
+      <figcaption><span>{String(index+1).padStart(2,"0")}</span><span className="smartSenseGalleryCaption">{item.caption[lang]}</span><a href={item.src} target="_blank" rel="noopener noreferrer" className="smartSenseFullsizeLink">{lang==="fr"?"Ouvrir en grand":"View full size"} ↗</a></figcaption>
     </figure>)}
   </div>
 </section> : null}<section className="detailGrid"><article><p>{t.detail[1]}</p><h2>{project.problem[lang]}</h2></article><article><p>{t.detail[2]}</p><h2>{project.solution[lang]}</h2></article><article><p>{t.detail[3]}</p><ol>{project.steps[lang].map(s=><li key={s}>{s}</li>)}</ol></article><article><p>{t.detail[4]}</p><h2>{project.discussion[lang]}</h2></article><article className="wide"><p>{t.detail[5]}</p><nav className="inline">{project.links.map(([label,href])=><ExtLink href={href} key={label}>{resourceLabel(label,lang)}</ExtLink>)}</nav></article></section></>}
