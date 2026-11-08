@@ -11,6 +11,7 @@ type Category = "automation" | "power" | "digital" | "hardware" | "robotics";
 interface ProjectEntry extends ProjectData {
   categories: Category[];
   cardTags?: string[];
+  coverImage?: string;
 }
 
 const ProjectsSection = () => {
@@ -19,6 +20,32 @@ const ProjectsSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const projects: ProjectEntry[] = [
+    {
+      categories: ["hardware", "digital"],
+      cardTags: ["KiCad 10", "STM32G431", "IR / Ultrasound"],
+      coverImage: "/projects/smartsense/pcb-front.svg",
+      titleKey: "proj.smartsense.title",
+      subtitleKey: "proj.smartsense.subtitle",
+      statusType: "progress",
+      date: "November 2026",
+      contexteKey: "proj.smartsense.contexte",
+      objectifKey: "proj.smartsense.objectif",
+      contributionKey: "proj.smartsense.contribution",
+      resultatsKey: "proj.smartsense.resultats",
+      outils: [
+        "KiCad 10", "4-Layer PCB", "STM32G431CB", "Modulated Infrared",
+        "40 kHz Ultrasound", "Analog Filtering", "ADC", "Embedded C", "MATLAB/Simulink",
+      ],
+      galleryLabelKey: "proj.smartsense.galleryLabel",
+      gallery: [
+        { src: "/projects/smartsense/signal-architecture.svg", captionKey: "proj.smartsense.cap.arch" },
+        { src: "/projects/smartsense/pcb-front.svg", captionKey: "proj.smartsense.cap.front" },
+        { src: "/projects/smartsense/pcb-back.svg", captionKey: "proj.smartsense.cap.back" },
+        { src: "https://raw.githubusercontent.com/diawbirane10-lgtm/smart_sense/main/etudes/resultats/COMPARAISON_ESTIMATEURS.png", captionKey: "proj.smartsense.cap.sim" },
+      ],
+      githubLink: "https://github.com/diawbirane10-lgtm/smart_sense",
+      featured: true,
+    },
     {
       categories: ["automation", "power"],
       cardTags: ["Stateflow", "UFLS", "Simulink"],
@@ -453,6 +480,17 @@ const ProjectsSection = () => {
                 onClick={() => setOpenIndex(i)}
                 className="group text-left bg-card border border-border/60 rounded-2xl hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
+                {p.coverImage && (
+                  <div className="h-44 w-full overflow-hidden border-b border-border/50 bg-secondary/30">
+                    <img
+                      src={p.coverImage}
+                      alt={t(p.titleKey)}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.025]"
+                    />
+                  </div>
+                )}
                 <div className="p-6 space-y-4">
                   <div className="flex items-center justify-between gap-2 flex-wrap">
                     <div className="flex flex-wrap gap-1">
@@ -462,6 +500,11 @@ const ProjectsSection = () => {
                         </span>
                       ))}
                     </div>
+                    {p.statusType === "progress" && (
+                      <span className="text-[10px] font-semibold uppercase tracking-wide text-amber-800 dark:text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded px-2 py-1">
+                        {t("proj.status.progress")}
+                      </span>
+                    )}
                     {p.date && (
                       <span className="text-[10px] font-semibold text-muted-foreground">{p.date}</span>
                     )}
