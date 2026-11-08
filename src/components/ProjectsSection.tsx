@@ -39,6 +39,7 @@ const ProjectsSection = () => {
       galleryLabelKey: "proj.smartsense.galleryLabel",
       gallery: [
         { src: "/projects/smartsense/signal-architecture.svg", captionKey: "proj.smartsense.cap.arch" },
+        { src: "/projects/smartsense/schematic-index.svg", captionKey: "proj.smartsense.cap.schematic" },
         { src: "/projects/smartsense/pcb-front.svg", captionKey: "proj.smartsense.cap.front" },
         { src: "/projects/smartsense/pcb-back.svg", captionKey: "proj.smartsense.cap.back" },
         { src: "https://raw.githubusercontent.com/diawbirane10-lgtm/smart_sense/main/etudes/resultats/COMPARAISON_ESTIMATEURS.png", captionKey: "proj.smartsense.cap.sim" },
