@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 315" role="img" aria-labelledby="title desc">
+<title id="title">SmartSense V1 hierarchical schematic overview derived from KiCad</title>
+<desc id="desc">Exact sheet grid geometry and names extracted from native SmartSense_V1.kicad_sch. All 28 hierarchical sheets are represented.</desc>
+<rect width="420" height="315" fill="#fff" />
+<rect x="6" y="6" width="408" height="301" fill="none" stroke="#b3c7ce" stroke-width=".4"/>
+<text x="13" y="15" font-size="7.1" font-family="Arial" font-weight="700" fill="#1b3945">SMARTSENSE V1 — HIERARCHICAL ELECTRONIC SCHEMATICS</text>
+<text x="13" y="23" font-size="4.2" font-family="Arial" fill="#67808c">Source: SmartSense_V1.kicad_sch · 28 sub-sheets · KiCad 10</text>
+<g>
+<rect x="12" y="38" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="12" y="38" width="2.5" height="18" fill="#367987"/>
+<text x="17.7" y="45.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">01 Power Input</text>
+<text x="17.7" y="50.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">01_Power_Input.kicad_sch</text></g><g>
+<rect x="144" y="38" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="144" y="38" width="2.5" height="18" fill="#367987"/>
+<text x="149.7" y="45.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">02 Power Rails 1</text>
+<text x="149.7" y="50.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">02_Power_Rails_1.kicad_sch</text></g><g>
+<rect x="276" y="38" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="276" y="38" width="2.5" height="18" fill="#367987"/>
+<text x="281.7" y="45.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">02 Power Rails 2</text>
+<text x="281.7" y="50.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">02_Power_Rails_2.kicad_sch</text></g><g>
+<rect x="12" y="63" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="12" y="63" width="2.5" height="18" fill="#367987"/>
+<text x="17.7" y="70.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">03 Reference</text>
+<text x="17.7" y="75.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">03_Reference.kicad_sch</text></g><g>
+<rect x="144" y="63" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="144" y="63" width="2.5" height="18" fill="#367987"/>
+<text x="149.7" y="70.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">04 IR Emitter</text>
+<text x="149.7" y="75.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">04_IR_Emitter.kicad_sch</text></g><g>
+<rect x="276" y="63" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="276" y="63" width="2.5" height="18" fill="#367987"/>
+<text x="281.7" y="70.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">05 IR TIA</text>
+<text x="281.7" y="75.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">05_IR_TIA.kicad_sch</text></g><g>
+<rect x="12" y="88" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="12" y="88" width="2.5" height="18" fill="#367987"/>
+<text x="17.7" y="95.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">06 IR Filter</text>
+<text x="17.7" y="100.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">06_IR_Filter.kicad_sch</text></g><g>
+<rect x="144" y="88" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="144" y="88" width="2.5" height="18" fill="#367987"/>
+<text x="149.7" y="95.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">07 IR AntiAlias</text>
+<text x="149.7" y="100.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">07_IR_AntiAlias.kicad_sch</text></g><g>
+<rect x="276" y="88" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="276" y="88" width="2.5" height="18" fill="#367987"/>
+<text x="281.7" y="95.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">08 US Emitter</text>
+<text x="281.7" y="100.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">08_US_Emitter.kicad_sch</text></g><g>
+<rect x="12" y="113" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="12" y="113" width="2.5" height="18" fill="#367987"/>
+<text x="17.7" y="120.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">09 US Input 1</text>
+<text x="17.7" y="125.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">09_US_Input_1.kicad_sch</text></g><g>
+<rect x="144" y="113" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="144" y="113" width="2.5" height="18" fill="#367987"/>
+<text x="149.7" y="120.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">09 US Input 2</text>
+<text x="149.7" y="125.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">09_US_Input_2.kicad_sch</text></g><g>
+<rect x="276" y="113" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="276" y="113" width="2.5" height="18" fill="#367987"/>
+<text x="281.7" y="120.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">10 US GainFilter</text>
+<text x="281.7" y="125.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">10_US_GainFilter.kicad_sch</text></g><g>
+<rect x="12" y="138" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="12" y="138" width="2.5" height="18" fill="#367987"/>
+<text x="17.7" y="145.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">11 US AntiAlias</text>
+<text x="17.7" y="150.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">11_US_AntiAlias.kicad_sch</text></g><g>
+<rect x="144" y="138" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="144" y="138" width="2.5" height="18" fill="#367987"/>
+<text x="149.7" y="145.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">12 MCU Core</text>
+<text x="149.7" y="150.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">12_MCU_Core.kicad_sch</text></g><g>
+<rect x="276" y="138" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="276" y="138" width="2.5" height="18" fill="#367987"/>
+<text x="281.7" y="145.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">12 MCU</text>
+<text x="281.7" y="150.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">12_MCU.kicad_sch</text></g><g>
+<rect x="12" y="163" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="12" y="163" width="2.5" height="18" fill="#367987"/>
+<text x="17.7" y="170.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">13 MCU AnalogClock 1</text>
+<text x="17.7" y="175.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">13_MCU_AnalogClock_1.kicad_sch</text></g><g>
+<rect x="144" y="163" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="144" y="163" width="2.5" height="18" fill="#367987"/>
+<text x="149.7" y="170.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">13 MCU AnalogClock 2</text>
+<text x="149.7" y="175.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">13_MCU_AnalogClock_2.kicad_sch</text></g><g>
+<rect x="276" y="163" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="276" y="163" width="2.5" height="18" fill="#367987"/>
+<text x="281.7" y="170.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">14 Service</text>
+<text x="281.7" y="175.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">14_Service.kicad_sch</text></g><g>
+<rect x="12" y="188" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="12" y="188" width="2.5" height="18" fill="#367987"/>
+<text x="17.7" y="195.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">15 Test 1</text>
+<text x="17.7" y="200.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">15_Test_1.kicad_sch</text></g><g>
+<rect x="144" y="188" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="144" y="188" width="2.5" height="18" fill="#367987"/>
+<text x="149.7" y="195.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">15 Test 2</text>
+<text x="149.7" y="200.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">15_Test_2.kicad_sch</text></g><g>
+<rect x="276" y="188" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="276" y="188" width="2.5" height="18" fill="#367987"/>
+<text x="281.7" y="195.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">15 Test 3</text>
+<text x="281.7" y="200.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">15_Test_3.kicad_sch</text></g><g>
+<rect x="12" y="213" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="12" y="213" width="2.5" height="18" fill="#367987"/>
+<text x="17.7" y="220.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">16_Ground_Probes_1</text>
+<text x="17.7" y="225.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">16_Ground_Probes_1.kicad_sch</text></g><g>
+<rect x="144" y="213" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="144" y="213" width="2.5" height="18" fill="#367987"/>
+<text x="149.7" y="220.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">16_Ground_Probes_2</text>
+<text x="149.7" y="225.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">16_Ground_Probes_2.kicad_sch</text></g><g>
+<rect x="276" y="213" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="276" y="213" width="2.5" height="18" fill="#367987"/>
+<text x="281.7" y="220.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">16_Ground_Probes_3</text>
+<text x="281.7" y="225.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">16_Ground_Probes_3.kicad_sch</text></g><g>
+<rect x="12" y="238" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="12" y="238" width="2.5" height="18" fill="#367987"/>
+<text x="17.7" y="245.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">17_Ground_Probes_1</text>
+<text x="17.7" y="250.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">17_Ground_Probes_1.kicad_sch</text></g><g>
+<rect x="144" y="238" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="144" y="238" width="2.5" height="18" fill="#367987"/>
+<text x="149.7" y="245.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">18_HMI_Power</text>
+<text x="149.7" y="250.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">18_HMI_Power.kicad_sch</text></g><g>
+<rect x="276" y="238" width="121" height="18" fill="#f4f8f9" stroke="#478c96" stroke-width=".4"/>
+<rect x="276" y="238" width="2.5" height="18" fill="#367987"/>
+<text x="281.7" y="245.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">19_HMI_UART</text>
+<text x="281.7" y="250.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">19_HMI_UART.kicad_sch</text></g><g>
+<rect x="12" y="263" width="121" height="18" fill="#e8f3f4" stroke="#478c96" stroke-width=".4"/>
+<rect x="12" y="263" width="2.5" height="18" fill="#367987"/>
+<text x="17.7" y="270.2" font-size="5.0" font-family="Arial,sans-serif" font-weight="700" fill="#1e4250">20_HMI_Connector</text>
+<text x="17.7" y="275.7" font-size="3.3" font-family="Arial,sans-serif" fill="#607984">20_HMI_Connector.kicad_sch</text></g>
+<rect x="11" y="297" width="396" height=".32" fill="#b4cbd1"/>
+<text x="13" y="302" font-size="3.7" font-family="Arial" fill="#607883">Design-stage electronic schematic index · Sheet positions from KiCad V1 · Physical prototype not yet validated.</text>
+</svg>
