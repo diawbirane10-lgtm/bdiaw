@@ -181,6 +181,84 @@ export const projects = [
     "en": "Design files and software evidence exist: the design review reports no ERC/DRC violations, 22 C host tests passed, and the ARM target compilation was checked. Fabrication, firmware integration on target and physical characterization are still outstanding. This is not a certified railway or safety device.",
     "fr": "Les fichiers CAO et preuves logicielles sont disponibles : la revue rapporte zéro violation ERC/DRC, 22 tests C réussis sur hôte et une vérification de compilation ARM. La fabrication, l’intégration du firmware sur cible et la caractérisation physique restent à réaliser. Ce n’est pas un dispositif ferroviaire ou de sécurité qualifié."
   },
+  "hierarchyGroups": [
+    {
+      "title": {
+        "en": "Power & reference",
+        "fr": "Alimentation et références"
+      },
+      "sheets": [
+        "01 Power Input",
+        "02 Power Rails 1",
+        "02 Power Rails 2",
+        "03 Reference"
+      ]
+    },
+    {
+      "title": {
+        "en": "Infrared chain",
+        "fr": "Chaîne infrarouge"
+      },
+      "sheets": [
+        "04 IR Emitter",
+        "05 IR TIA",
+        "06 IR Filter",
+        "07 IR AntiAlias"
+      ]
+    },
+    {
+      "title": {
+        "en": "Ultrasonic chain",
+        "fr": "Chaîne ultrasonore"
+      },
+      "sheets": [
+        "08 US Emitter",
+        "09 US Input 1",
+        "09 US Input 2",
+        "10 US GainFilter",
+        "11 US AntiAlias"
+      ]
+    },
+    {
+      "title": {
+        "en": "MCU & service",
+        "fr": "Microcontrôleur et service"
+      },
+      "sheets": [
+        "12 MCU Core",
+        "12 MCU",
+        "13 MCU AnalogClock 1",
+        "13 MCU AnalogClock 2",
+        "14 Service"
+      ]
+    },
+    {
+      "title": {
+        "en": "Testing & probes",
+        "fr": "Tests et points de mesure"
+      },
+      "sheets": [
+        "15 Test 1",
+        "15 Test 2",
+        "15 Test 3",
+        "16_Ground_Probes_1",
+        "16_Ground_Probes_2",
+        "16_Ground_Probes_3",
+        "17_Ground_Probes_1"
+      ]
+    },
+    {
+      "title": {
+        "en": "HMI & interfaces",
+        "fr": "IHM et interfaces"
+      },
+      "sheets": [
+        "18_HMI_Power",
+        "19_HMI_UART",
+        "20_HMI_Connector"
+      ]
+    }
+  ],
   "gallery": [
     {
       "src": "/project-images/smartsense/signal-architecture.svg",
