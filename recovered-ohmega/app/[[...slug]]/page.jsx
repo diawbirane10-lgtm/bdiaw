@@ -388,7 +388,20 @@ function ResearchDetail({publication,lang}){return <>
     </article>
   </section>
 </>}
-function ProjectDetail({project,t,lang}){return <><header className="projectHero"><ExtLink href="/">{t.detail[0]}</ExtLink><p>{project.no} · {project.field[lang]}{project.stage ? <span className="projectStageLabel">{project.stage[lang]}</span> : null}</p><h1>{project.title}</h1><h2>{project.body[lang]}</h2>{projectTags[project.slug]?.standards?.length?<div className="caseStudyStandards" aria-label={lang==="fr"?"Normes de référence":"Reference standards"}>{projectTags[project.slug].standards.map(tag=><span className="projectTag standardTag" key={tag}>{tag}</span>)}</div>:null}</header>{project.image?<figure className="projectVisual motionSection"><div className="projectVisualFrame"><img src={project.image} alt={project.title}/></div><figcaption><span>{project.stage ? (lang==="fr"?"VUE CAO DU PROTOTYPE — EN COURS":"PROTOTYPE CAD VIEW — IN PROGRESS") : (lang==="fr"?"VUE CONCEPTUELLE DU PROJET":"PROJECT CONCEPT VIEW")}</span><p>{project.visualNote?.[lang]}</p></figcaption></figure>:null}{project.gallery?.length ? <section className="smartSenseGallery motionSection" aria-label={lang==="fr"?"Schémas électroniques et PCB":"Electronics schematics and PCB"}>
+function ProjectDetail({project,t,lang}) {
+  const [activeImage,setActiveImage]=useState(null);
+  useEffect(()=>{
+    if(!activeImage)return;
+    const onEscape=(event)=>{if(event.key==="Escape")setActiveImage(null);};
+    window.addEventListener("keydown",onEscape);
+    return ()=>window.removeEventListener("keydown",onEscape);
+  },[activeImage]);
+  return <><header className="projectHero"><ExtLink href="/">{t.detail[0]}</ExtLink><p>{project.no} · {project.field[lang]}{project.stage ? <span className="projectStageLabel">{project.stage[lang]}</span> : null}</p><h1>{project.title}</h1><h2>{project.body[lang]}</h2>{projectTags[project.slug]?.standards?.length?<div className="caseStudyStandards" aria-label={lang==="fr"?"Normes de référence":"Reference standards"}>{projectTags[project.slug].standards.map(tag=><span className="projectTag standardTag" key={tag}>{tag}</span>)}</div>:null}</header>{project.image?<figure className={project.gallery?.length?"projectVisual smartSenseLeadVisual motionSection":"projectVisual motionSection"}><div className="projectVisualFrame">{project.gallery?.length?
+  <button type="button" className="smartSenseCoverOpen" onClick={()=>setActiveImage({src:project.image,caption:project.visualNote?.[lang]||project.title})} aria-label={lang==="fr"?"Agrandir la vue PCB principale":"Enlarge main PCB view"}>
+    <img src={project.image} alt={project.title}/>
+  </button>:
+  <img src={project.image} alt={project.title}/>
+}</div><figcaption><span>{project.stage ? (lang==="fr"?"VUE CAO DU PROTOTYPE — EN COURS":"PROTOTYPE CAD VIEW — IN PROGRESS") : (lang==="fr"?"VUE CONCEPTUELLE DU PROJET":"PROJECT CONCEPT VIEW")}</span><p>{project.visualNote?.[lang]}</p></figcaption></figure>:null}{project.gallery?.length ? <section className="smartSenseGallery motionSection" aria-label={lang==="fr"?"Schémas électroniques et PCB":"Electronics schematics and PCB"}>
   <div className="smartSenseGalleryHeading">
     <p className="category">{lang==="fr"?"DOCUMENTATION DE CONCEPTION":"ENGINEERING DESIGN DOCUMENTATION"}</p>
     <h2>{lang==="fr"?"Schémas électroniques et routage PCB":"Electronic schematics & PCB layout"}</h2>
@@ -396,10 +409,10 @@ function ProjectDetail({project,t,lang}){return <><header className="projectHero
   </div>
   <div className="smartSenseGalleryGrid">
     {project.gallery.map((item,index)=><figure className={`smartSenseGalleryItem${index < 2 ? " is-diagram" : ""}${index === 1 ? " is-hierarchy" : ""}`} key={item.src}>
-      <a href={item.src} target="_blank" rel="noopener noreferrer" aria-label={item.caption[lang]}>
+      <button type="button" className="smartSenseImageOpen" onClick={()=>setActiveImage({src:item.src,caption:item.caption[lang]})} aria-label={item.caption[lang]}>
         <img src={item.src} alt={item.caption[lang]} loading="lazy" decoding="async"/>
-      </a>
-      <figcaption><span>{String(index+1).padStart(2,"0")}</span><span className="smartSenseGalleryCaption">{item.caption[lang]}</span><a href={item.src} target="_blank" rel="noopener noreferrer" className="smartSenseFullsizeLink">{lang==="fr"?"Ouvrir en grand":"View full size"} ↗</a></figcaption>
+      </button>
+      <figcaption><span>{String(index+1).padStart(2,"0")}</span><span className="smartSenseGalleryCaption">{item.caption[lang]}</span><button type="button" className="smartSenseFullsizeLink" onClick={()=>setActiveImage({src:item.src,caption:item.caption[lang]})}>{lang==="fr"?"Ouvrir en grand":"View full size"} ↗</button></figcaption>
       {index === 1 && project.hierarchyGroups?.length ? (
         <div className="smartSenseMobileHierarchy" aria-label={lang==="fr"?"Liste complète des sous-schémas KiCad":"Full list of KiCad schematic sheets"}>
           <p className="smartSenseMobileIntro">{lang==="fr"
@@ -413,5 +426,14 @@ function ProjectDetail({project,t,lang}){return <><header className="projectHero
       ) : null}
     </figure>)}
   </div>
-</section> : null}<section className="detailGrid"><article><p>{t.detail[1]}</p><h2>{project.problem[lang]}</h2></article><article><p>{t.detail[2]}</p><h2>{project.solution[lang]}</h2></article><article><p>{t.detail[3]}</p><ol>{project.steps[lang].map(s=><li key={s}>{s}</li>)}</ol></article><article><p>{t.detail[4]}</p><h2>{project.discussion[lang]}</h2></article><article className="wide"><p>{t.detail[5]}</p><nav className="inline">{project.links.map(([label,href])=><ExtLink href={href} key={label}>{resourceLabel(label,lang)}</ExtLink>)}</nav></article></section></>}
+</section> : null}{activeImage&&(
+  <div className="smartSenseLightbox" role="dialog" aria-modal="true" aria-label={lang==="fr"?"Aperçu du schéma":"Image preview"}>
+    <button type="button" className="smartSenseLightboxBackdrop" onClick={()=>setActiveImage(null)} aria-label={lang==="fr"?"Fermer l'aperçu":"Close preview"}/>
+    <div className="smartSenseLightboxPanel">
+      <button type="button" className="smartSenseLightboxClose" onClick={()=>setActiveImage(null)} aria-label={lang==="fr"?"Fermer":"Close"}>×</button>
+      <div className="smartSenseLightboxImage"><img src={activeImage.src} alt={activeImage.caption}/></div>
+      <p className="smartSenseLightboxCaption">{activeImage.caption}</p>
+    </div>
+  </div>
+)}<section className="detailGrid"><article><p>{t.detail[1]}</p><h2>{project.problem[lang]}</h2></article><article><p>{t.detail[2]}</p><h2>{project.solution[lang]}</h2></article><article><p>{t.detail[3]}</p><ol>{project.steps[lang].map(s=><li key={s}>{s}</li>)}</ol></article><article><p>{t.detail[4]}</p><h2>{project.discussion[lang]}</h2></article><article className="wide"><p>{t.detail[5]}</p><nav className="inline">{project.links.map(([label,href])=><ExtLink href={href} key={label}>{resourceLabel(label,lang)}</ExtLink>)}</nav></article></section></>}
 export default function Portfolio(){const pathname=usePathname();const[lang,setLang]=useState("en");const[navOpen,setNavOpen]=useState(false);useEffect(()=>{setLang(readLanguage());document.documentElement.dataset.theme="light"},[]);useEffect(()=>{document.documentElement.dataset.theme="light";document.documentElement.lang=lang;saveLanguage(lang)},[lang]);useEffect(()=>{setNavOpen(false)},[pathname]);const t=useMemo(()=>copy[lang],[lang]);const projectSlug=pathname?.startsWith("/projects/")?pathname.split("/projects/")[1]?.split("/")[0]:null;const researchSlug=pathname?.startsWith("/research/")?pathname.split("/research/")[1]?.split("/")[0]:null;const project=projects.find(p=>p.slug===projectSlug);const publication=researchSlug?researchPublications[researchSlug]:null;return <main className="site"><Top t={t} lang={lang} setLang={setLang} navOpen={navOpen} setNavOpen={setNavOpen}/>{project?<ProjectDetail project={project} t={t} lang={lang}/>:publication?<ResearchDetail publication={publication} lang={lang}/>:<Home t={t} lang={lang}/>}</main>}
