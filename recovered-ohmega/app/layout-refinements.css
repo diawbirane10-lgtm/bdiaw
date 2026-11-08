@@ -402,3 +402,18 @@
     min-height:82px;
   }
 }
+
+/* Desktop and tablet: all five cards, including cover 01, use equal total height. */
+@media (min-width:721px) {
+  .site .smartSenseGalleryItem {
+    display:grid;
+    grid-template-rows:auto 108px;
+    align-self:stretch;
+  }
+  .site .smartSenseGalleryItem figcaption {
+    box-sizing:border-box;
+    height:108px;
+    min-height:108px;
+    padding:12px 14px;
+  }
+}
