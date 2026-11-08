@@ -264,3 +264,65 @@
   .site .smartSenseGalleryItem > a { height: auto; aspect-ratio: 4 / 3; }
   .site .workProgressLabel, .site .projectStageLabel { margin: 8px 0 0; display: block; }
 }
+
+
+/* Dense SmartSense engineering diagrams require a readable full-width layout. */
+.site .smartSenseGalleryItem.is-diagram {
+  grid-column: 1 / -1;
+}
+.site .smartSenseGalleryItem.is-diagram > a {
+  display: block;
+  height: auto;
+  aspect-ratio: auto;
+  background: #f5f8fa;
+  overflow: hidden;
+  line-height: 0;
+}
+.site .smartSenseGalleryItem.is-diagram img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  max-height: unset;
+}
+.site .smartSenseGalleryItem.is-diagram figcaption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.site .smartSenseGalleryCaption {
+  flex: 1;
+  min-width: 0;
+}
+.site .smartSenseFullsizeLink {
+  margin-left: auto;
+  font-weight: 700;
+  color: #145b72;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+.site .smartSenseFullsizeLink:hover {
+  color: #09384a;
+}
+@media (max-width: 720px) {
+  .site .smartSenseGalleryItem.is-diagram > a {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  .site .smartSenseGalleryItem.is-diagram img {
+    width: 100%;
+    min-width: 760px;
+    max-width: none;
+    height: auto;
+  }
+  .site .smartSenseGalleryItem.is-diagram figcaption {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .site .smartSenseFullsizeLink {
+    margin-left: 0;
+  }
+}
