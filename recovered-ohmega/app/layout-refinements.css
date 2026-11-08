@@ -171,233 +171,166 @@
 }
 
 
-/* SmartSense design-stage electronics case study — scoped to new project only. */
+
+/* SmartSense project gallery: one consistent visual size, responsive and accessible. */
 .site .workProgressLabel,
 .site .projectStageLabel {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  max-width: 100%;
-  padding: 5px 9px;
-  margin-left: 12px;
-  border: 1px solid #b5cdd1;
-  border-radius: 3px;
-  background: #e9f2f3;
-  color: #2f5661;
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .06em;
-  line-height: 1.4;
-  vertical-align: middle;
+  display:inline-flex; align-items:center; width:fit-content; max-width:100%;
+  padding:5px 9px; margin-left:12px; border:1px solid #b5cdd1;
+  border-radius:3px; background:#e9f2f3; color:#2f5661;
+  font-family:inherit; font-size:11px; font-weight:700; letter-spacing:.06em;
+  line-height:1.4; vertical-align:middle;
 }
 .site .smartSenseGallery {
-  max-width: 1340px;
-  margin: 0 auto 80px;
-  padding: 24px clamp(20px, 5vw, 70px);
+  max-width:1340px;
+  margin:0 auto 72px;
+  padding:24px clamp(20px,5vw,70px);
 }
-.site .smartSenseGalleryHeading { max-width: 760px; margin: 0 0 26px; }
-.site .smartSenseGalleryHeading .category { margin: 0 0 10px; }
+.site .smartSenseGalleryHeading { max-width:760px; margin:0 0 26px; }
+.site .smartSenseGalleryHeading .category { margin:0 0 10px; }
 .site .smartSenseGalleryHeading h2 {
-  color: #132937;
-  font-family: inherit;
-  font-size: clamp(26px, 3vw, 40px);
-  line-height: 1.18;
-  letter-spacing: -.025em;
-  margin: 0 0 12px;
+  margin:0 0 12px; font-family:inherit; font-size:clamp(26px,3vw,40px);
+  line-height:1.2; letter-spacing:-.025em; color:#132937;
 }
 .site .smartSenseGalleryHeading > p:last-child {
-  color: #5e6d77;
-  font-size: 14px;
-  line-height: 1.65;
-  max-width: 65ch;
+  max-width:65ch; color:#5e6d77; font-size:14px; line-height:1.65;
 }
 .site .smartSenseGalleryGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px;
 }
 .site .smartSenseGalleryItem {
-  min-width: 0;
-  margin: 0;
-  border: 1px solid #d6e0e4;
-  background: #fff;
-  overflow: hidden;
+  min-width:0; margin:0; overflow:hidden; border:1px solid #d6e0e4; background:#fff;
 }
-.site .smartSenseGalleryItem > a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 320px;
-  background: #f5f8f8;
-  overflow: hidden;
+.site .smartSenseGalleryItem.is-diagram { grid-column:auto; }
+.site .smartSenseGalleryItem > .smartSenseImageOpen {
+  appearance:none; border:0; border-radius:0; box-shadow:none;
+  padding:12px; margin:0; width:100%; height:auto; aspect-ratio:16 / 10;
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+  background:#f5f8fa; cursor:zoom-in;
 }
-.site .smartSenseGalleryItem img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;
-  transition: transform 200ms ease;
+.site .smartSenseGalleryItem > .smartSenseImageOpen img,
+.site .smartSenseGalleryItem.is-diagram img {
+  display:block; width:100%; height:100%; max-height:100%;
+  max-width:100%; min-width:0; object-fit:contain;
+  transition:transform 180ms ease;
 }
 @media (hover:hover) and (prefers-reduced-motion:no-preference) {
-  .site .smartSenseGalleryItem a:hover img { transform: scale(1.02); }
+  .site .smartSenseGalleryItem > .smartSenseImageOpen:hover img { transform:scale(1.025); }
 }
 .site .smartSenseGalleryItem figcaption {
-  display: flex;
-  gap: 12px;
-  align-items: baseline;
-  padding: 16px;
-  margin: 0;
-  border-top: 1px solid #e0e7eb;
-  color: #425865;
-  font-size: 13px;
-  line-height: 1.55;
+  display:flex; align-items:center; gap:12px; min-height:80px;
+  margin:0; padding:14px 16px; border-top:1px solid #e0e7eb;
+  color:#425865; font-size:13px; line-height:1.5;
 }
-.site .smartSenseGalleryItem figcaption > span {
-  font-size: 11px;
-  font-weight: 700;
-  color: #4e8793;
+.site .smartSenseGalleryItem figcaption > span:first-child {
+  flex:none; font-size:11px; font-weight:700; color:#4e8793;
 }
-@media (max-width: 720px) {
-  .site .smartSenseGallery { margin-bottom: 48px; padding: 12px 16px; }
-  .site .smartSenseGalleryGrid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-  .site .smartSenseGalleryItem > a { height: auto; aspect-ratio: 4 / 3; }
-  .site .workProgressLabel, .site .projectStageLabel { margin: 8px 0 0; display: block; }
-}
-
-
-/* Dense SmartSense engineering diagrams require a readable full-width layout. */
-.site .smartSenseGalleryItem.is-diagram {
-  grid-column: 1 / -1;
-}
-.site .smartSenseGalleryItem.is-diagram > a {
-  display: block;
-  height: auto;
-  aspect-ratio: auto;
-  background: #f5f8fa;
-  overflow: hidden;
-  line-height: 0;
-}
-.site .smartSenseGalleryItem.is-diagram img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  max-height: unset;
-}
-.site .smartSenseGalleryItem.is-diagram figcaption {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.site .smartSenseGalleryCaption {
-  flex: 1;
-  min-width: 0;
-}
+.site .smartSenseGalleryCaption { min-width:0; flex:1; }
 .site .smartSenseFullsizeLink {
-  margin-left: auto;
-  font-weight: 700;
-  color: #145b72;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  white-space: nowrap;
+  appearance:none; border:0; border-radius:0; background:transparent;
+  font:inherit; font-weight:700; font-size:12px; color:#145b72;
+  text-decoration:underline; text-underline-offset:3px; cursor:pointer;
+  padding:6px 0; margin:0 0 0 auto; text-align:left; white-space:nowrap;
 }
-.site .smartSenseFullsizeLink:hover {
-  color: #09384a;
+.site .smartSenseFullsizeLink:hover,
+.site .smartSenseFullsizeLink:focus-visible { color:#08364a; }
+.site .smartSenseCoverOpen {
+  appearance:none; border:0; border-radius:0; box-shadow:none; padding:0;
+  background:transparent; cursor:zoom-in; width:100%; display:flex;
+  justify-content:center; align-items:center;
 }
-@media (max-width: 720px) {
-  .site .smartSenseGalleryItem.is-diagram > a {
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
+.site .smartSenseCoverOpen img { display:block; width:100%; height:auto; object-fit:contain; }
+.site .smartSenseLeadVisual { display:none!important; }
+.site .smartSenseMobileHierarchy { display:none; }
+
+/* In-page "full size" view keeps the complete SVG within the viewport. */
+.smartSenseLightbox {
+  position:fixed; inset:0; z-index:2147483000;
+  display:flex; align-items:center; justify-content:center;
+  padding:clamp(12px,2vw,28px); isolation:isolate;
+}
+.smartSenseLightboxBackdrop {
+  position:absolute; inset:0; width:100%; height:100%; border:0;
+  padding:0; margin:0; background:rgba(8,21,31,.91); cursor:zoom-out;
+}
+.smartSenseLightboxPanel {
+  position:relative; z-index:1;
+  width:min(100%,1460px); height:min(92dvh,960px);
+  min-width:0; min-height:0; padding:clamp(12px,2vw,26px);
+  display:grid; grid-template-rows:minmax(0,1fr) auto;
+  background:#fff; box-shadow:0 20px 64px rgba(0,0,0,.25);
+}
+.smartSenseLightboxImage {
+  display:flex; align-items:center; justify-content:center;
+  min-width:0; min-height:0; overflow:hidden; background:#f5f8fa;
+}
+.smartSenseLightboxImage img {
+  display:block; width:auto!important; height:auto!important;
+  max-width:100%!important; max-height:100%!important; min-width:0;
+  object-fit:contain!important;
+}
+.smartSenseLightboxCaption {
+  margin:0; padding:12px 4px 0; color:#254352; font-size:13px; line-height:1.5;
+  overflow-wrap:anywhere;
+}
+.smartSenseLightboxClose {
+  position:absolute; top:4px; right:4px; z-index:3;
+  display:grid; place-items:center; width:40px; height:40px; border-radius:50%;
+  border:1px solid #c1d2d9; background:#fff; color:#113d4b;
+  font-size:30px; line-height:1; cursor:pointer;
+}
+.smartSenseLightboxClose:focus-visible,
+.site .smartSenseImageOpen:focus-visible { outline:3px solid #167a87; outline-offset:2px; }
+
+@media (max-width:720px) {
+  .site .smartSenseGallery { margin-bottom:48px; padding:12px 16px; }
+  .site .smartSenseGalleryGrid { grid-template-columns:minmax(0,1fr); gap:12px; }
+  .site .smartSenseGalleryItem,
+  .site .smartSenseGalleryItem.is-diagram { grid-column:auto; min-width:0; max-width:100%; }
+  .site .smartSenseCoverCard { display:none; }
+  .site .smartSenseLeadVisual { display:block!important; }
+  .site .smartSenseGalleryItem > .smartSenseImageOpen { aspect-ratio:4 / 3; }
+  .site .smartSenseGalleryItem.is-diagram > .smartSenseImageOpen {
+    height:auto; aspect-ratio:auto; padding:0;
+    overflow:hidden; background:#f5f8fa;
   }
   .site .smartSenseGalleryItem.is-diagram img {
-    width: 100%;
-    min-width: 760px;
-    max-width: none;
-    height: auto;
+    width:100%; min-width:0; max-width:100%;
+    height:auto; max-height:none; transform:none;
   }
-  .site .smartSenseGalleryItem.is-diagram figcaption {
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 8px;
+  .site .smartSenseGalleryItem figcaption {
+    flex-wrap:wrap; gap:8px; padding:12px 14px; min-height:0;
   }
   .site .smartSenseFullsizeLink {
-    margin-left: 0;
+    display:inline-flex; align-items:center; min-height:36px;
+    margin-left:0; font-size:13px;
   }
-}
-
-/* SmartSense mobile-first diagrams: full overview, no forced horizontal pan. */
-.site .smartSenseMobileHierarchy { display: none; }
-@media (max-width: 720px) {
-  .site .smartSenseGallery,
-  .site .smartSenseGalleryGrid,
-  .site .smartSenseGalleryItem,
-  .site .smartSenseGalleryItem.is-diagram { min-width: 0; max-width: 100%; }
-  .site .smartSenseGalleryItem.is-diagram > a {
-    width: 100%;
-    min-width: 0;
-    height: auto;
-    overflow: hidden;
-    aspect-ratio: auto;
-    touch-action: manipulation;
+  .site .workProgressLabel, .site .projectStageLabel {
+    margin:8px 0 0; display:block;
   }
-  .site .smartSenseGalleryItem.is-diagram img {
-    display: block;
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    transform: none;
-  }
-  .site .smartSenseGalleryItem.is-diagram a:hover img { transform: none; }
-  .site .smartSenseGalleryItem.is-diagram figcaption { padding: 12px 14px; }
-  .site .smartSenseFullsizeLink { font-size: 13px; min-height: 36px; display: inline-flex; align-items: center; }
   .site .smartSenseMobileHierarchy {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 10px;
-    padding: 14px;
-    border-top: 1px solid #d6e0e4;
-    background: #f7f9fa;
+    display:grid; grid-template-columns:minmax(0,1fr);
+    gap:10px; padding:14px; border-top:1px solid #d6e0e4; background:#f7f9fa;
   }
   .site .smartSenseMobileIntro {
-    margin: 0 0 3px;
-    color: #4e6570;
-    font-size: 13px;
-    line-height: 1.55;
+    margin:0 0 3px; color:#4e6570; font-size:13px; line-height:1.55;
   }
   .site .smartSenseMobileSheetGroup {
-    min-width: 0;
-    padding: 14px;
-    background: white;
-    border: 1px solid #d7e3e7;
-    border-radius: 6px;
+    min-width:0; padding:14px; background:#fff;
+    border:1px solid #d7e3e7; border-radius:6px;
   }
   .site .smartSenseMobileSheetGroup h3 {
-    margin: 0 0 10px;
-    font-size: 14px;
-    line-height: 1.4;
-    font-weight: 750;
-    color: #155c71;
+    margin:0 0 10px; font-size:14px; line-height:1.4; font-weight:750; color:#155c71;
   }
   .site .smartSenseMobileSheetGroup ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    gap: 7px;
+    margin:0; padding:0; list-style:none; display:grid; gap:7px;
   }
   .site .smartSenseMobileSheetGroup li {
-    margin: 0;
-    overflow-wrap: anywhere;
-    color: #28434f;
-    font-size: 14px;
-    line-height: 1.4;
+    margin:0; overflow-wrap:anywhere; color:#28434f; font-size:14px; line-height:1.4;
   }
+  .smartSenseLightboxPanel { height:min(90dvh,960px); }
 }
-@media (min-width: 520px) and (max-width: 720px) {
-  .site .smartSenseMobileHierarchy { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .site .smartSenseMobileIntro { grid-column: 1 / -1; }
+@media (min-width:520px) and (max-width:720px) {
+  .site .smartSenseMobileHierarchy { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .site .smartSenseMobileIntro { grid-column:1/-1; }
 }
