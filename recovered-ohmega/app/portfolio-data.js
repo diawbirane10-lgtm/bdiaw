@@ -142,8 +142,8 @@ export const projects = [
     "fr": "En cours · conception et validation"
   },
   "field": {
-    "en": "Embedded electronics · intelligent sensing",
-    "fr": "Électronique embarquée · capteurs intelligents"
+    "en": "Industrial sensing · Railway applications (R&D)",
+    "fr": "Capteurs industriels · Applications ferroviaires (R&D)"
   },
   "title": "SmartSense — Intelligent Industrial Sensor System",
   "image": "/project-images/smartsense/pcb-front.svg",
@@ -152,16 +152,16 @@ export const projects = [
     "fr": "Vue CAO générée à partir du fichier PCB KiCad SmartSense V1 original. La carte quatre couches routée n’a pas encore été fabriquée ni testée physiquement."
   },
   "body": {
-    "en": "Laboratory R&D platform combining a modulated infrared barrier, a 40 kHz ultrasonic channel, STM32G431 acquisition and digital signal processing.",
-    "fr": "Plateforme R&D de laboratoire combinant une barrière infrarouge modulée, une chaîne ultrasonore à 40 kHz, une acquisition STM32G431 et du traitement numérique du signal."
+    "en": "SmartSense explores sensor-chain diagnostics for automated industrial equipment, with potential uses in railway facilities (doors, access points and technical areas) and Industry 4.0. This infrared/ultrasonic laboratory prototype studies how to tell real disturbances from sensor faults.",
+    "fr": "SmartSense explore le diagnostic des capteurs d’équipements automatisés, avec des applications envisagées dans les installations ferroviaires (portes, accès et zones techniques) et l’Industrie 4.0. Ce prototype infrarouge/ultrason étudie comment distinguer une perturbation réelle d’un défaut de capteur."
   },
   "problem": {
-    "en": "A weak optical or ultrasonic measurement may result from scene changes, interference or degradation in the measurement chain. Amplitude alone cannot always identify the cause.",
-    "fr": "Une mesure optique ou ultrasonore faible peut provenir de la scène, d’interférences ou d’une dégradation de la chaîne de mesure. L’amplitude seule ne suffit pas toujours à identifier la cause."
+    "en": "In industrial and railway automation, an unexpected sensor signal may indicate an actual obstruction, interference or degradation of the sensing chain. Confusing these causes can produce false alarms or unreliable diagnostics.",
+    "fr": "Dans les automatismes industriels et ferroviaires, un signal anormal peut provenir d’une obstruction réelle, d’interférences ou d’une dégradation de la chaîne de mesure. Confondre ces causes peut entraîner des fausses alertes ou un diagnostic peu fiable."
   },
   "solution": {
-    "en": "Design a test-bench sensing platform with dedicated analog conditioning, a microcontroller-based acquisition chain and reproducible MATLAB/Simulink models. Study the limits of fault identifiability before claiming automated diagnosis.",
-    "fr": "Concevoir un banc de capteurs avec conditionnement analogique dédié, acquisition par microcontrôleur et modèles MATLAB/Simulink reproductibles. Étudier les limites de l’identifiabilité avant toute revendication de diagnostic automatique."
+    "en": "Develop a laboratory test bench combining modulated infrared and 40 kHz ultrasound, analog signal conditioning and STM32G431 processing. Evaluate which disturbances and sensor failures can genuinely be distinguished using controlled reference measurements before considering an industrial or railway application.",
+    "fr": "Développer sur banc une chaîne infrarouge modulée et ultrasonore à 40 kHz, avec conditionnement analogique et traitement STM32G431. Vérifier, avec des mesures de référence contrôlées, les perturbations et défauts réellement identifiables avant d’envisager une application industrielle ou ferroviaire."
   },
   "steps": {
     "en": [
