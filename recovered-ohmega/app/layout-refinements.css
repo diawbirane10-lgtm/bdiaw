@@ -368,3 +368,37 @@
 .smartSenseLightboxCaption {
   max-height:68px; overflow:hidden;
 }
+
+/* Explicit gallery frame geometry: intrinsic SVG proportions never resize a card. */
+@media (min-width:721px) {
+  .site .smartSenseGalleryItem {
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+  }
+  .site .smartSenseGalleryItem > .smartSenseImageOpen {
+    position:relative;
+    display:block;
+    flex:none;
+    height:auto;
+    min-height:0;
+    aspect-ratio:16/10;
+    padding:0;
+  }
+  .site .smartSenseGalleryItem > .smartSenseImageOpen img,
+  .site .smartSenseGalleryItem.is-diagram img {
+    position:absolute;
+    inset:12px;
+    display:block;
+    width:calc(100% - 24px)!important;
+    height:calc(100% - 24px)!important;
+    max-width:calc(100% - 24px)!important;
+    max-height:calc(100% - 24px)!important;
+    min-width:0; min-height:0;
+    object-fit:contain!important;
+  }
+  .site .smartSenseGalleryItem figcaption {
+    flex:1;
+    min-height:82px;
+  }
+}
