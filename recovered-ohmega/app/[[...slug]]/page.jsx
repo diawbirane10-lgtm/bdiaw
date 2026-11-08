@@ -408,11 +408,19 @@ function ProjectDetail({project,t,lang}) {
     <p>{lang==="fr"?"Vues issues des fichiers CAO KiCad. Elles illustrent la conception en cours et ne constituent pas des photographies du matériel fabriqué.":"Figures derived from KiCad CAD files. These document ongoing design, not photographs of assembled hardware."}</p>
   </div>
   <div className="smartSenseGalleryGrid">
+    <figure className="smartSenseGalleryItem smartSenseCoverCard">
+      <button type="button" className="smartSenseImageOpen" onClick={()=>setActiveImage({src:project.image,caption:project.visualNote?.[lang]||project.title})} aria-label={lang==="fr"?"Agrandir l'aperçu PCB principal":"Enlarge main PCB preview"}>
+        <img src={project.image} alt={project.title} loading="lazy" decoding="async"/>
+      </button>
+      <figcaption><span>01</span><span className="smartSenseGalleryCaption">{lang==="fr"?"PCB V1 — vue générale CAO":"PCB V1 — CAD design overview"}</span>
+        <button type="button" className="smartSenseFullsizeLink" onClick={()=>setActiveImage({src:project.image,caption:project.visualNote?.[lang]||project.title})}>{lang==="fr"?"Ouvrir en grand":"View full size"} ↗</button>
+      </figcaption>
+    </figure>
     {project.gallery.map((item,index)=><figure className={`smartSenseGalleryItem${index < 2 ? " is-diagram" : ""}${index === 1 ? " is-hierarchy" : ""}`} key={item.src}>
       <button type="button" className="smartSenseImageOpen" onClick={()=>setActiveImage({src:item.src,caption:item.caption[lang]})} aria-label={item.caption[lang]}>
         <img src={item.src} alt={item.caption[lang]} loading="lazy" decoding="async"/>
       </button>
-      <figcaption><span>{String(index+1).padStart(2,"0")}</span><span className="smartSenseGalleryCaption">{item.caption[lang]}</span><button type="button" className="smartSenseFullsizeLink" onClick={()=>setActiveImage({src:item.src,caption:item.caption[lang]})}>{lang==="fr"?"Ouvrir en grand":"View full size"} ↗</button></figcaption>
+      <figcaption><span>{String(index+2).padStart(2,"0")}</span><span className="smartSenseGalleryCaption">{item.caption[lang]}</span><button type="button" className="smartSenseFullsizeLink" onClick={()=>setActiveImage({src:item.src,caption:item.caption[lang]})}>{lang==="fr"?"Ouvrir en grand":"View full size"} ↗</button></figcaption>
       {index === 1 && project.hierarchyGroups?.length ? (
         <div className="smartSenseMobileHierarchy" aria-label={lang==="fr"?"Liste complète des sous-schémas KiCad":"Full list of KiCad schematic sheets"}>
           <p className="smartSenseMobileIntro">{lang==="fr"
