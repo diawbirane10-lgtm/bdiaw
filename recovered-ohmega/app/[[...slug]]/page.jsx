@@ -400,6 +400,17 @@ function ProjectDetail({project,t,lang}){return <><header className="projectHero
         <img src={item.src} alt={item.caption[lang]} loading="lazy" decoding="async"/>
       </a>
       <figcaption><span>{String(index+1).padStart(2,"0")}</span><span className="smartSenseGalleryCaption">{item.caption[lang]}</span><a href={item.src} target="_blank" rel="noopener noreferrer" className="smartSenseFullsizeLink">{lang==="fr"?"Ouvrir en grand":"View full size"} ↗</a></figcaption>
+      {index === 1 && project.hierarchyGroups?.length ? (
+        <div className="smartSenseMobileHierarchy" aria-label={lang==="fr"?"Liste complète des sous-schémas KiCad":"Full list of KiCad schematic sheets"}>
+          <p className="smartSenseMobileIntro">{lang==="fr"
+            ?"28 feuilles réelles du projet KiCad, regroupées par fonction pour une lecture confortable sur téléphone."
+            :"28 actual KiCad project sheets, grouped by function for mobile readability."}</p>
+          {project.hierarchyGroups.map(group=><section className="smartSenseMobileSheetGroup" key={group.title.en}>
+            <h3>{group.title[lang]}</h3>
+            <ul>{group.sheets.map(sheet=><li key={sheet}>{sheet}</li>)}</ul>
+          </section>)}
+        </div>
+      ) : null}
     </figure>)}
   </div>
 </section> : null}<section className="detailGrid"><article><p>{t.detail[1]}</p><h2>{project.problem[lang]}</h2></article><article><p>{t.detail[2]}</p><h2>{project.solution[lang]}</h2></article><article><p>{t.detail[3]}</p><ol>{project.steps[lang].map(s=><li key={s}>{s}</li>)}</ol></article><article><p>{t.detail[4]}</p><h2>{project.discussion[lang]}</h2></article><article className="wide"><p>{t.detail[5]}</p><nav className="inline">{project.links.map(([label,href])=><ExtLink href={href} key={label}>{resourceLabel(label,lang)}</ExtLink>)}</nav></article></section></>}
