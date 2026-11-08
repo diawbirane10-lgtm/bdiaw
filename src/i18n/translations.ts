@@ -293,6 +293,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.rapport": "Rapport préliminaire",
     "proj.new.fiche": "Fiche technique",
 
+    // SmartSense — laboratory R&D work in progress
+    "proj.smartsense.title": "SmartSense — Système de capteurs industriels intelligents",
+    "proj.smartsense.subtitle": "Prototype R&D : infrarouge modulé, ultrasons 40 kHz, STM32G431 et PCB quatre couches.",
+    "proj.smartsense.contexte": "Projet personnel d'instrumentation industrielle et de diagnostic de chaînes de mesure. La perspective ferroviaire motive l'étude, mais le dispositif actuel est uniquement un prototype de laboratoire.",
+    "proj.smartsense.objectif": "Concevoir une plateforme de mesure infrarouge et ultrasonore, caractériser le traitement analogique et étudier comment distinguer une perturbation de la scène d'une dégradation du capteur.",
+    "proj.smartsense.contribution": "Conception des schémas KiCad et routage d'un PCB 4 couches, architecture STM32G431, traitement numérique C, modèles MATLAB/Simulink et protocole d'essais sur banc.",
+    "proj.smartsense.resultats": "Revue de conception : ERC/DRC sans violation signalée, 22 tests du noyau C réussis sur hôte et compilation ARM. PCB non fabriqué ; aucune mesure physique ni qualification industrielle réalisée à ce stade.",
+    "proj.smartsense.galleryLabel": "Architecture, PCB et simulation",
+    "proj.smartsense.cap.arch": "Architecture fonctionnelle issue des schémas et spécifications KiCad V1.",
+    "proj.smartsense.cap.front": "Aperçu CAO du cuivre avant du PCB V1, reconstitué depuis le fichier KiCad natif.",
+    "proj.smartsense.cap.back": "Aperçu CAO du cuivre arrière du PCB V1, reconstitué depuis le fichier KiCad natif.",
+    "proj.smartsense.cap.sim": "Comparaison d'estimateurs issue de simulations MATLAB, sans mesures physiques.",
+
     // Project UFLS Smart Grid Relay (ONEE / SENELEC)
     "proj.ufls.title": "Relais UFLS Smart Grid — Réseaux ONEE et SENELEC",
     "proj.ufls.subtitle": "MATLAB/Simulink · Stateflow · Délestage fréquence-métrique · Cas d'étude Maroc/Sénégal",
@@ -811,6 +824,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.contribution": "Complete pipeline implementation from signal generation through feature extraction, SVM training, and model evaluation.",
     "proj.new.rapport": "Preliminary Report",
     "proj.new.fiche": "Technical Datasheet",
+
+    // SmartSense — laboratory R&D work in progress
+    "proj.smartsense.title": "SmartSense — Intelligent Industrial Sensor System",
+    "proj.smartsense.subtitle": "R&D prototype: modulated infrared sensing, 40 kHz ultrasound, STM32G431 and four-layer PCB.",
+    "proj.smartsense.contexte": "Personal industrial instrumentation project studying the diagnostics of sensing chains. A railway use case motivates the research, but the current design is strictly a laboratory prototype.",
+    "proj.smartsense.objectif": "Design an infrared and ultrasonic acquisition platform, characterize its analog signal chain, and investigate how to distinguish scene disturbances from sensor-chain degradation.",
+    "proj.smartsense.contribution": "KiCad electronic schematics and four-layer PCB layout, STM32G431 architecture, C signal-processing core, MATLAB/Simulink models and bench validation protocol.",
+    "proj.smartsense.resultats": "Design review reports no ERC/DRC violations; the C processing core passed 22 host tests and an ARM compilation check. The PCB has not been fabricated, and there is no physical measurement or industrial qualification yet.",
+    "proj.smartsense.galleryLabel": "Architecture, PCB & simulation",
+    "proj.smartsense.cap.arch": "System architecture derived from KiCad V1 design documents.",
+    "proj.smartsense.cap.front": "Front-copper PCB CAD preview generated from the original KiCad board geometry.",
+    "proj.smartsense.cap.back": "Back-copper PCB CAD preview generated from the original KiCad board geometry.",
+    "proj.smartsense.cap.sim": "MATLAB simulated estimator comparison; not a physical board measurement.",
 
     // Project UFLS Smart Grid Relay (ONEE / SENELEC)
     "proj.ufls.title": "Smart-Grid UFLS Relay — ONEE and SENELEC Networks",
@@ -1331,6 +1357,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proj.new.contribution": "تنفيذ كامل لخط الأنابيب من توليد الإشارات وحتى تدريب SVM وتقييم النموذج.",
     "proj.new.rapport": "التقرير الأولي",
     "proj.new.fiche": "البطاقة التقنية",
+
+    // SmartSense — laboratory R&D work in progress
+    "proj.smartsense.title": "SmartSense — نظام استشعار صناعي ذكي",
+    "proj.smartsense.subtitle": "نموذج بحثي قيد التطوير: الأشعة تحت الحمراء المعدّلة والموجات فوق الصوتية 40 كيلوهرتز وSTM32G431 ولوحة PCB بأربع طبقات.",
+    "proj.smartsense.contexte": "مشروع شخصي في القياسات الصناعية وتشخيص سلاسل الاستشعار. يُحفّز التطبيق المحتمل في السكك الحديدية البحث، لكن التصميم الحالي نموذج مختبري فقط.",
+    "proj.smartsense.objectif": "تصميم منصة قياس بالأشعة تحت الحمراء والموجات فوق الصوتية، ودراسة تهيئة الإشارات والتمييز بين اضطرابات البيئة وتدهور سلسلة الاستشعار.",
+    "proj.smartsense.contribution": "تصميم المخططات الإلكترونية ولوحة بأربع طبقات في KiCad، وبنية STM32G431، ومعالجة الإشارات بلغة C، ونماذج MATLAB/Simulink وخطة اختبارات مخبرية.",
+    "proj.smartsense.resultats": "تشير مراجعة التصميم إلى عدم تسجيل مخالفات ERC/DRC واجتياز 22 اختباراً برمجياً على الحاسوب والتحقق من الترجمة لمعالج ARM. لم تُصنع اللوحة بعد ولم تُجرَ قياسات فعلية أو اختبارات تأهيل صناعي.",
+    "proj.smartsense.galleryLabel": "البنية الإلكترونية ولوحة PCB والمحاكاة",
+    "proj.smartsense.cap.arch": "مخطط البنية الوظيفية المستند إلى وثائق KiCad V1.",
+    "proj.smartsense.cap.front": "معاينة تصميم طبقة النحاس الأمامية المستخرجة من ملف KiCad الأصلي.",
+    "proj.smartsense.cap.back": "معاينة تصميم طبقة النحاس الخلفية المستخرجة من ملف KiCad الأصلي.",
+    "proj.smartsense.cap.sim": "مقارنة مقدّرات باستخدام بيانات MATLAB محاكاة وليست قياسات فعلية.",
 
     // Project UFLS Smart Grid Relay (ONEE / SENELEC)
     "proj.ufls.title": "مرحل فصل الأحمال عند انخفاض التردد (UFLS) — شبكتا ONEE و SENELEC",
