@@ -326,3 +326,78 @@
     margin-left: 0;
   }
 }
+
+/* SmartSense mobile-first diagrams: full overview, no forced horizontal pan. */
+.site .smartSenseMobileHierarchy { display: none; }
+@media (max-width: 720px) {
+  .site .smartSenseGallery,
+  .site .smartSenseGalleryGrid,
+  .site .smartSenseGalleryItem,
+  .site .smartSenseGalleryItem.is-diagram { min-width: 0; max-width: 100%; }
+  .site .smartSenseGalleryItem.is-diagram > a {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    overflow: hidden;
+    aspect-ratio: auto;
+    touch-action: manipulation;
+  }
+  .site .smartSenseGalleryItem.is-diagram img {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    transform: none;
+  }
+  .site .smartSenseGalleryItem.is-diagram a:hover img { transform: none; }
+  .site .smartSenseGalleryItem.is-diagram figcaption { padding: 12px 14px; }
+  .site .smartSenseFullsizeLink { font-size: 13px; min-height: 36px; display: inline-flex; align-items: center; }
+  .site .smartSenseMobileHierarchy {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    padding: 14px;
+    border-top: 1px solid #d6e0e4;
+    background: #f7f9fa;
+  }
+  .site .smartSenseMobileIntro {
+    margin: 0 0 3px;
+    color: #4e6570;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .site .smartSenseMobileSheetGroup {
+    min-width: 0;
+    padding: 14px;
+    background: white;
+    border: 1px solid #d7e3e7;
+    border-radius: 6px;
+  }
+  .site .smartSenseMobileSheetGroup h3 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 750;
+    color: #155c71;
+  }
+  .site .smartSenseMobileSheetGroup ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 7px;
+  }
+  .site .smartSenseMobileSheetGroup li {
+    margin: 0;
+    overflow-wrap: anywhere;
+    color: #28434f;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+@media (min-width: 520px) and (max-width: 720px) {
+  .site .smartSenseMobileHierarchy { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .site .smartSenseMobileIntro { grid-column: 1 / -1; }
+}
