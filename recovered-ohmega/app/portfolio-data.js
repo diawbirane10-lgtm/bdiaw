@@ -415,9 +415,122 @@ export const projects = [
       ],
     ],
   },
+{
+  "no": "06",
+  "slug": "smartsense",
+  "stage": {
+    "en": "In progress · design and validation",
+    "fr": "En cours · conception et validation"
+  },
+  "field": {
+    "en": "Embedded electronics · intelligent sensing",
+    "fr": "Électronique embarquée · capteurs intelligents"
+  },
+  "title": "SmartSense — Intelligent Industrial Sensor System",
+  "image": "/project-images/smartsense/pcb-front.svg",
+  "visualNote": {
+    "en": "CAD rendering generated from the original SmartSense V1 KiCad PCB file. The routed four-layer board is not yet manufactured or physically tested.",
+    "fr": "Vue CAO générée à partir du fichier PCB KiCad SmartSense V1 original. La carte quatre couches routée n’a pas encore été fabriquée ni testée physiquement."
+  },
+  "body": {
+    "en": "Laboratory R&D platform combining a modulated infrared barrier, a 40 kHz ultrasonic channel, STM32G431 acquisition and digital signal processing.",
+    "fr": "Plateforme R&D de laboratoire combinant une barrière infrarouge modulée, une chaîne ultrasonore à 40 kHz, une acquisition STM32G431 et du traitement numérique du signal."
+  },
+  "problem": {
+    "en": "A weak optical or ultrasonic measurement may result from scene changes, interference or degradation in the measurement chain. Amplitude alone cannot always identify the cause.",
+    "fr": "Une mesure optique ou ultrasonore faible peut provenir de la scène, d’interférences ou d’une dégradation de la chaîne de mesure. L’amplitude seule ne suffit pas toujours à identifier la cause."
+  },
+  "solution": {
+    "en": "Design a test-bench sensing platform with dedicated analog conditioning, a microcontroller-based acquisition chain and reproducible MATLAB/Simulink models. Study the limits of fault identifiability before claiming automated diagnosis.",
+    "fr": "Concevoir un banc de capteurs avec conditionnement analogique dédié, acquisition par microcontrôleur et modèles MATLAB/Simulink reproductibles. Étudier les limites de l’identifiabilité avant toute revendication de diagnostic automatique."
+  },
+  "steps": {
+    "en": [
+      "Specify the laboratory IR and ultrasonic sensing chains.",
+      "Design the KiCad hierarchical schematics and route the four-layer PCB.",
+      "Develop and host-test the C signal-processing core; compare simulated estimators in MATLAB/Simulink.",
+      "Prepare bench measurements for sensor response, disturbances and independent reference checks."
+    ],
+    "fr": [
+      "Spécifier les chaînes de mesure infrarouge et ultrasonore en laboratoire.",
+      "Concevoir les schémas KiCad hiérarchiques et router le PCB quatre couches.",
+      "Développer et tester le noyau C sur hôte ; comparer les estimateurs simulés dans MATLAB/Simulink.",
+      "Préparer les mesures de banc : réponse des capteurs, perturbations et références indépendantes."
+    ]
+  },
+  "discussion": {
+    "en": "Design files and software evidence exist: the design review reports no ERC/DRC violations, 22 C host tests passed, and the ARM target compilation was checked. Fabrication, firmware integration on target and physical characterization are still outstanding. This is not a certified railway or safety device.",
+    "fr": "Les fichiers CAO et preuves logicielles sont disponibles : la revue rapporte zéro violation ERC/DRC, 22 tests C réussis sur hôte et une vérification de compilation ARM. La fabrication, l’intégration du firmware sur cible et la caractérisation physique restent à réaliser. Ce n’est pas un dispositif ferroviaire ou de sécurité qualifié."
+  },
+  "gallery": [
+    {
+      "src": "/project-images/smartsense/signal-architecture.svg",
+      "caption": {
+        "en": "Signal chain — documented functional architecture",
+        "fr": "Chaîne de mesure — architecture fonctionnelle documentée"
+      }
+    },
+    {
+      "src": "/project-images/smartsense/schematic-index.svg",
+      "caption": {
+        "en": "KiCad V1 — overview of 28 hierarchical schematic sheets",
+        "fr": "KiCad V1 — vue des 28 feuilles de schémas hiérarchiques"
+      }
+    },
+    {
+      "src": "/project-images/smartsense/pcb-front.svg",
+      "caption": {
+        "en": "PCB V1 — front copper routing, CAD visualization",
+        "fr": "PCB V1 — routage cuivre avant, visualisation CAO"
+      }
+    },
+    {
+      "src": "/project-images/smartsense/pcb-back.svg",
+      "caption": {
+        "en": "PCB V1 — back copper routing, CAD visualization",
+        "fr": "PCB V1 — routage cuivre arrière, visualisation CAO"
+      }
+    }
+  ],
+  "links": [
+    [
+      "GitHub · SmartSense",
+      "https://github.com/diawbirane10-lgtm/smart_sense"
+    ],
+    [
+      "Technical design review",
+      "https://github.com/diawbirane10-lgtm/smart_sense/blob/main/ingenierie/revue_RD_20261106/DECISION_ET_REVUE.md"
+    ],
+    [
+      "KiCad V1 files",
+      "https://github.com/diawbirane10-lgtm/smart_sense/tree/main/hardware/V1"
+    ]
+  ]
+},
 ];
 
 export const projectTags = {
+  "smartsense": {
+  "skills": {
+    "en": [
+      "Sensor instrumentation",
+      "Analog front-end",
+      "Signal integrity"
+    ],
+    "fr": [
+      "Instrumentation",
+      "Électronique analogique",
+      "Traitement du signal"
+    ]
+  },
+  "tools": [
+    "KiCad 10",
+    "STM32G431",
+    "MATLAB / Simulink",
+    "Embedded C"
+  ],
+  "standards": []
+},
   "ufls-smartgrid": {
     skills: {
       en: ["Power systems", "UFLS", "Protection logic"],
@@ -477,7 +590,7 @@ export const copy = {
     },
     projects: {
       eyebrow: "Selected projects",
-      heading: "Five selected engineering projects",
+      heading: "Engineering projects",
       open: "Open case study",
       more: "More projects",
       moreBody:
@@ -627,7 +740,7 @@ export const copy = {
     },
     projects: {
       eyebrow: "Projets sélectionnés",
-      heading: "Cinq projets d’ingénierie sélectionnés",
+      heading: "Projets d’ingénierie",
       open: "Ouvrir la fiche projet",
       more: "Autres projets",
       moreBody:
