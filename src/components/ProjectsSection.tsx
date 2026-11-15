@@ -21,6 +21,22 @@ const ProjectsSection = () => {
 
   const projects: ProjectEntry[] = [
     {
+      categories: ["power", "digital"],
+      cardTags: ["NASA/JPL Horizons", "LOLA", "PV / Battery", "FastAPI"],
+      titleKey: "proj.polaris.title",
+      subtitleKey: "proj.polaris.subtitle",
+      statusType: "completed",
+      date: "November 2026",
+      contexteKey: "proj.polaris.contexte",
+      objectifKey: "proj.polaris.objectif",
+      contributionKey: "proj.polaris.contribution",
+      resultatsKey: "proj.polaris.resultats",
+      outils: ["Python", "FastAPI", "NASA/JPL Horizons", "NASA GSFC LOLA", "NAIF SPICE", "PV energy model", "Battery SOC", "Engineering Copilot"],
+      liveLink: "https://polaris-spaceapps-2026.vercel.app/",
+      githubLink: "https://github.com/diawbirane10-lgtm/polaris_nasaspaceapps",
+      featured: true,
+    },
+    {
       categories: ["hardware", "digital"],
       cardTags: ["KiCad 10", "STM32G431", "IR / Ultrasound"],
       coverImage: "/projects/smartsense/pcb-front.svg",
