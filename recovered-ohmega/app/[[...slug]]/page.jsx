@@ -306,11 +306,14 @@ function Home({t,lang}){return <>
             </div>
           </article>
         ))}
-        <article className="motionItem" style={{border:"1px dashed #a0a9b3",padding:"22px",background:"#fafafa",display:"flex",flexDirection:"column",gap:12,minHeight:205}}>
-          <span style={{fontSize:11,fontWeight:800,textTransform:"uppercase",letterSpacing:1,color:"#53616f"}}>{lang==="fr"?"En cours · 5 modules":"In progress · 5 modules"}</span>
-          <h3 style={{fontSize:"clamp(18px, 2vw, 23px)",lineHeight:1.2,margin:0}}>Sensors and Sensor Circuit Design</h3>
-          <p style={{fontSize:13,color:"#505c68",margin:0}}>University of Colorado Boulder · Coursera · {lang==="fr"?"Depuis le 19 nov. 2026":"Since 19 Nov 2026"}</p>
-          <p style={{fontSize:13,color:"#5b636d",marginTop:"auto"}}>{lang==="fr"?"Certificat non encore obtenu":"Certificate not yet earned"}</p>
+        <article className="motionItem" style={{border:"1px solid #c8cdd2",padding:"22px",background:"#fff",display:"flex",flexDirection:"column",gap:12,minHeight:205}}>
+          <span style={{fontSize:11,fontWeight:800,textTransform:"uppercase",letterSpacing:1,color:"#b64b10"}}>{lang==="fr"?"Formation terminée":"Completed course"}</span>
+          <h3 style={{fontSize:"clamp(18px, 2vw, 23px)",lineHeight:1.2,margin:0,color:"#171b21"}}>Sensors and Sensor Circuit Design</h3>
+          <p style={{fontSize:13,color:"#505c68",margin:0}}>University of Colorado Boulder · Coursera · {lang==="fr"?"19 nov. 2026":"19 Nov 2026"}</p>
+          <div style={{display:"flex",gap:12,flexWrap:"wrap",marginTop:"auto",fontSize:13,fontWeight:700}}>
+            <a href="/certificates/Colorado_Boulder_Sensors_Circuit_Design_2026.pdf" download style={{color:"#9b3f09",textDecoration:"underline"}}>{lang==="fr"?"Télécharger le PDF":"Download PDF"}</a>
+            <a href="https://coursera.org/verify/C1MTKZR9DOY3" target="_blank" rel="noopener noreferrer" style={{color:"#273b52",textDecoration:"underline"}}>{lang==="fr"?"Vérifier l’attestation":"Verify credential"}</a>
+          </div>
         </article>
       </div>
     </Section>
