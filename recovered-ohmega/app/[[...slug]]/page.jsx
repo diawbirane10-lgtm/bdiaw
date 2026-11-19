@@ -108,10 +108,12 @@ function resourceLabel(label,lang){
 function ExtLink({href,children,className=""}){const external=!href.startsWith("/")&&!href.startsWith("mailto:");return <a className={className} href={reportDownloadHref(href)} target={external?"_blank":undefined} rel={external?"noreferrer":undefined}>{children}{external?<span aria-hidden="true"> ↗</span>:null}</a>}
 function Top({t,lang,setLang,navOpen,setNavOpen}){
   const navTargets=["/#about","/#projects","/#research","/#experience","/#contact"];
+  const certificateLink=<a href="/#certifications">{lang==="fr"?"Certifications":"Certifications"}</a>;
   return <div className="topbar">
     <a className="brand" href="/"><span className="brandMark" aria-hidden="true">Ω</span><span className="brandText">OHMEGA</span></a>
     <nav className="topNavDesktop" aria-label={lang==="fr"?"Navigation du portfolio":"Portfolio navigation"}>
       {t.nav.map((n,i)=><a href={navTargets[i]} key={n}>{n}</a>)}
+      {certificateLink}
     </nav>
     <div className="topbarActions">
       <div className="switches"><button type="button" onClick={()=>setLang(lang==="en"?"fr":"en")}>{t.lang}</button></div>
@@ -122,6 +124,7 @@ function Top({t,lang,setLang,navOpen,setNavOpen}){
     </div>
     <nav id="mobile-portfolio-navigation" className={`topNavMobile${navOpen?" isOpen":""}`} aria-label={lang==="fr"?"Navigation mobile du portfolio":"Mobile portfolio navigation"}>
       {t.nav.map((n,i)=><a href={navTargets[i]} key={n} onClick={()=>setNavOpen(false)}>{n}</a>)}
+      <a href="/#certifications" onClick={()=>setNavOpen(false)}>{lang==="fr"?"Certifications":"Certifications"}</a>
     </nav>
   </div>
 }
@@ -168,6 +171,7 @@ function Home({t,lang}){return <>
         <h1>{t.title}</h1>
         <p className="lead">{t.subtitle}</p>
         <p className="introCopy">{t.intro}</p>
+        <a href="#certifications" className="heroCertificationLink" style={{display:"inline-flex",alignItems:"center",gap:10,marginTop:18,border:"1px solid currentColor",padding:"11px 15px",fontSize:12,fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",textDecoration:"none"}}>{lang==="fr"?"Certifications & formations":"Certifications & Training"} <span aria-hidden="true">↗</span></a>
         <a className="heroScrollCue" href="#about" aria-label={lang==="fr"?"Découvrir le portfolio":"Explore the portfolio"}>
           <span>{lang==="fr"?"Découvrir":"Explore"}</span><span aria-hidden="true">↓</span>
         </a>
@@ -290,7 +294,7 @@ function Home({t,lang}){return <>
           {title:"Explore Electrical Engineering Job Simulation",issuer:"GE Aerospace · Forage",date:"10 Jun 2026",frDate:"10 juin 2026",kind:"simulation",pdf:"/certificates/GE_Aerospace_Forage_2026.pdf"},
           {title:"Engineering for New Energy Job Simulation",issuer:"APA Group · Forage",date:"11 Jun 2026",frDate:"11 juin 2026",kind:"simulation",pdf:"/certificates/APA_Group_Forage_2026.pdf"},
           {title:"EF SET English Certificate · C2 Proficient (71/100)",issuer:"EF SET",date:"29 Mar 2026",frDate:"29 mars 2026",kind:"language",verify:"https://cert.efset.org/gkZ4r8",pdf:"/certificates/EF_SET_C2_2026.pdf"},
-          {title:"Python Programming",issuer:"GoMyCode",date:"Feb 2024",frDate:"févr. 2024",kind:"course",pdf:null},
+          {title:"Python Programming",issuer:"GoMyCode",date:"Feb 2024",frDate:"févr. 2024",kind:"course",pdf:"/certificates/GoMyCode_Python_2024.pdf"},
         ].map((cert)=>(
           <article key={cert.title} className="motionItem" style={{border:"1px solid #c8cdd2",padding:"22px",background:"#fff",display:"flex",flexDirection:"column",gap:12,minHeight:205}}>
             <span style={{fontSize:11,fontWeight:800,textTransform:"uppercase",letterSpacing:1,color:"#b64b10"}}>{cert.kind==="simulation"?(lang==="fr"?"Simulation professionnelle · Terminée":"Job simulation · Completed"):cert.kind==="language"?(lang==="fr"?"Certification linguistique":"Language certificate"):(lang==="fr"?"Formation terminée":"Completed course")}</span>
