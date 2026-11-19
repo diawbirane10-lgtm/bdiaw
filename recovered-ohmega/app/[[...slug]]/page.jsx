@@ -108,12 +108,11 @@ function resourceLabel(label,lang){
 function ExtLink({href,children,className=""}){const external=!href.startsWith("/")&&!href.startsWith("mailto:");return <a className={className} href={reportDownloadHref(href)} target={external?"_blank":undefined} rel={external?"noreferrer":undefined}>{children}{external?<span aria-hidden="true"> ↗</span>:null}</a>}
 function Top({t,lang,setLang,navOpen,setNavOpen}){
   const navTargets=["/#about","/#projects","/#research","/#experience","/#contact"];
-  const certificateLink=<a href="/#certifications">{lang==="fr"?"Certifications":"Certifications"}</a>;
+  const navItems=[...t.nav.slice(0,4).map((label,i)=>({label,href:navTargets[i]})),{label:"Certifications",href:"/#certifications"},{label:t.nav[4],href:navTargets[4]}];
   return <div className="topbar">
     <a className="brand" href="/"><span className="brandMark" aria-hidden="true">Ω</span><span className="brandText">OHMEGA</span></a>
     <nav className="topNavDesktop" aria-label={lang==="fr"?"Navigation du portfolio":"Portfolio navigation"}>
-      {t.nav.map((n,i)=><a href={navTargets[i]} key={n}>{n}</a>)}
-      {certificateLink}
+      {navItems.map(({label,href})=><a href={href} key={href}>{label}</a>)}
     </nav>
     <div className="topbarActions">
       <div className="switches"><button type="button" onClick={()=>setLang(lang==="en"?"fr":"en")}>{t.lang}</button></div>
@@ -123,8 +122,7 @@ function Top({t,lang,setLang,navOpen,setNavOpen}){
       </button>
     </div>
     <nav id="mobile-portfolio-navigation" className={`topNavMobile${navOpen?" isOpen":""}`} aria-label={lang==="fr"?"Navigation mobile du portfolio":"Mobile portfolio navigation"}>
-      {t.nav.map((n,i)=><a href={navTargets[i]} key={n} onClick={()=>setNavOpen(false)}>{n}</a>)}
-      <a href="/#certifications" onClick={()=>setNavOpen(false)}>{lang==="fr"?"Certifications":"Certifications"}</a>
+      {navItems.map(({label,href})=><a href={href} key={href} onClick={()=>setNavOpen(false)}>{label}</a>)}
     </nav>
   </div>
 }
