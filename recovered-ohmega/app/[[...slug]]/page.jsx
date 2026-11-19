@@ -286,7 +286,7 @@ function Home({t,lang}){return <>
     <Section id="certifications" title={lang==="fr"?"Certifications & formations":"Certifications & Training"} subtitle={lang==="fr"?"Attestations, formations validées et apprentissages en cours":"Verified certificates, completed programmes and ongoing learning"}>
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(min(100%, 340px), 1fr))",gap:16}}>
         {[
-          {title:"AI Foundations: How Artificial Intelligence Works",issuer:"IBM · Coursera",date:"19 Nov 2026",frDate:"19 nov. 2026",kind:"course",verify:"https://coursera.org/verify/EVF66W43MKQA",pdf:null},
+          {title:"AI Foundations: How Artificial Intelligence Works",issuer:"IBM · Coursera",date:"19 Nov 2026",frDate:"19 nov. 2026",kind:"course",verify:"https://coursera.org/verify/EVF66W43MKQA",pdf:"/certificates/IBM_AI_Foundations_2026.pdf"},
           {title:"Explore Electrical Engineering Job Simulation",issuer:"GE Aerospace · Forage",date:"10 Jun 2026",frDate:"10 juin 2026",kind:"simulation",pdf:"/certificates/GE_Aerospace_Forage_2026.pdf"},
           {title:"Engineering for New Energy Job Simulation",issuer:"APA Group · Forage",date:"11 Jun 2026",frDate:"11 juin 2026",kind:"simulation",pdf:"/certificates/APA_Group_Forage_2026.pdf"},
           {title:"EF SET English Certificate · C2 Proficient (71/100)",issuer:"EF SET",date:"29 Mar 2026",frDate:"29 mars 2026",kind:"language",verify:"https://cert.efset.org/gkZ4r8",pdf:"/certificates/EF_SET_C2_2026.pdf"},
