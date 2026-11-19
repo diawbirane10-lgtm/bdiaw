@@ -283,6 +283,36 @@ function Home({t,lang}){return <>
     </Section>
 
 
+    <Section id="certifications" title={lang==="fr"?"Certifications & formations":"Certifications & Training"} subtitle={lang==="fr"?"Attestations, formations validées et apprentissages en cours":"Verified certificates, completed programmes and ongoing learning"}>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(min(100%, 340px), 1fr))",gap:16}}>
+        {[
+          {title:"AI Foundations: How Artificial Intelligence Works",issuer:"IBM · Coursera",date:"19 Nov 2026",frDate:"19 nov. 2026",kind:"course",verify:"https://coursera.org/verify/EVF66W43MKQA",pdf:null},
+          {title:"Explore Electrical Engineering Job Simulation",issuer:"GE Aerospace · Forage",date:"10 Jun 2026",frDate:"10 juin 2026",kind:"simulation",pdf:"/certificates/GE_Aerospace_Forage_2026.pdf"},
+          {title:"Engineering for New Energy Job Simulation",issuer:"APA Group · Forage",date:"11 Jun 2026",frDate:"11 juin 2026",kind:"simulation",pdf:"/certificates/APA_Group_Forage_2026.pdf"},
+          {title:"EF SET English Certificate · C2 Proficient (71/100)",issuer:"EF SET",date:"29 Mar 2026",frDate:"29 mars 2026",kind:"language",verify:"https://cert.efset.org/gkZ4r8",pdf:"/certificates/EF_SET_C2_2026.pdf"},
+          {title:"Python Programming",issuer:"GoMyCode",date:"Feb 2024",frDate:"févr. 2024",kind:"course",pdf:null},
+        ].map((cert)=>(
+          <article key={cert.title} className="motionItem" style={{border:"1px solid #c8cdd2",padding:"22px",background:"#fff",display:"flex",flexDirection:"column",gap:12,minHeight:205}}>
+            <span style={{fontSize:11,fontWeight:800,textTransform:"uppercase",letterSpacing:1,color:"#b64b10"}}>{cert.kind==="simulation"?(lang==="fr"?"Simulation professionnelle · Terminée":"Job simulation · Completed"):cert.kind==="language"?(lang==="fr"?"Certification linguistique":"Language certificate"):(lang==="fr"?"Formation terminée":"Completed course")}</span>
+            <h3 style={{fontSize:"clamp(18px, 2vw, 23px)",lineHeight:1.2,margin:0,color:"#171b21"}}>{cert.title}</h3>
+            <p style={{fontSize:13,color:"#505c68",margin:0}}>{cert.issuer} · {lang==="fr"?cert.frDate:cert.date}</p>
+            <div style={{display:"flex",gap:12,flexWrap:"wrap",marginTop:"auto",fontSize:13,fontWeight:700}}>
+              {cert.pdf&&<a href={cert.pdf} download style={{color:"#9b3f09",textDecoration:"underline"}}>{lang==="fr"?"Télécharger le PDF":"Download PDF"}</a>}
+              {cert.verify&&<a href={cert.verify} target="_blank" rel="noopener noreferrer" style={{color:"#273b52",textDecoration:"underline"}}>{lang==="fr"?"Vérifier l’attestation":"Verify credential"}</a>}
+              {!cert.pdf&&!cert.verify&&<span style={{color:"#67717b",fontWeight:500}}>{lang==="fr"?"Justificatif à ajouter":"PDF evidence pending"}</span>}
+              {!cert.pdf&&cert.verify&&<span style={{color:"#67717b",fontWeight:500}}>{lang==="fr"?"PDF à ajouter":"PDF pending"}</span>}
+            </div>
+          </article>
+        ))}
+        <article className="motionItem" style={{border:"1px dashed #a0a9b3",padding:"22px",background:"#fafafa",display:"flex",flexDirection:"column",gap:12,minHeight:205}}>
+          <span style={{fontSize:11,fontWeight:800,textTransform:"uppercase",letterSpacing:1,color:"#53616f"}}>{lang==="fr"?"En cours · 5 modules":"In progress · 5 modules"}</span>
+          <h3 style={{fontSize:"clamp(18px, 2vw, 23px)",lineHeight:1.2,margin:0}}>Sensors and Sensor Circuit Design</h3>
+          <p style={{fontSize:13,color:"#505c68",margin:0}}>University of Colorado Boulder · Coursera · {lang==="fr"?"Depuis le 19 nov. 2026":"Since 19 Nov 2026"}</p>
+          <p style={{fontSize:13,color:"#5b636d",marginTop:"auto"}}>{lang==="fr"?"Certificat non encore obtenu":"Certificate not yet earned"}</p>
+        </article>
+      </div>
+    </Section>
+
     <Section id="software" title={lang==="fr"?"Logiciels d’ingénierie":"Engineering Software"} subtitle={lang==="fr"?"Environnements techniques & outils de travail":"Engineering environments & work tools"}>
       <div className="softwareGroups">
         {softwareGroups.map(group=><article className="softwareGroup motionItem" key={group.key}>
