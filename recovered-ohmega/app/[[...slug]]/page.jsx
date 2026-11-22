@@ -344,6 +344,25 @@ function Home({t,lang}){return <>
           <div className="contactDetail"><span className="contactLabel">Email</span><div className="contactValue"><a href={mail}>diawbirane10@gmail.com</a></div></div>
         </div>
       </div>
+      <section className="jotformContact" aria-labelledby="jotform-contact-title">
+        <div className="jotformContactCopy">
+          <span className="jotformContactEyebrow">{lang==="fr"?"MESSAGE DIRECT":"DIRECT MESSAGE"}</span>
+          <h3 id="jotform-contact-title">{lang==="fr"?"Écrivez-moi.":"Send a message."}</h3>
+          <p>{lang==="fr"?"Pour un projet, un stage ou une collaboration de recherche, laissez-moi quelques mots.":"For a project, internship or research collaboration, feel free to leave a note."}</p>
+          <a href="https://form.jotform.com/263254975530058" target="_blank" rel="noopener noreferrer">
+            {lang==="fr"?"Ouvrir le formulaire séparément":"Open the form in a new tab"}
+            <span aria-hidden="true"> ↗</span>
+          </a>
+        </div>
+        <div className="jotformContactFrame">
+          <iframe
+            src="https://form.jotform.com/263254975530058"
+            title={lang==="fr"?"Formulaire de contact pour Birane Diaw":"Contact form for Birane Diaw"}
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        </div>
+      </section>
       <div className="footerBottom">
         <a className="footerBrand" href="#top" aria-label={lang==="fr"?"Retour en haut":"Back to top"}><span className="footerOmega">Ω</span><span>OHMEGA</span></a>
         <nav className="contactLinks" aria-label="Professional profiles">
