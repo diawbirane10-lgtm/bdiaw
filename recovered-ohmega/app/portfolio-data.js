@@ -137,10 +137,6 @@ export const softwareGroups = [
 export const projects = [
 {
   "slug": "smartsense",
-  "stage": {
-    "en": "In progress · design and validation",
-    "fr": "En cours · conception et validation"
-  },
   "field": {
     "en": "Industrial sensing · Railway applications (R&D)",
     "fr": "Capteurs industriels · Applications ferroviaires (R&D)"
