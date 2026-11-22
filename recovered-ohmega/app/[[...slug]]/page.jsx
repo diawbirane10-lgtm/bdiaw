@@ -436,7 +436,7 @@ function ProjectDetail({project,t,lang}) {
     <img src={project.image} alt={project.title}/>
   </button>:
   <img src={project.image} alt={project.title}/>
-}</div><figcaption><span>{project.stage ? (lang==="fr"?"VUE CAO DU PROTOTYPE — EN COURS":"PROTOTYPE CAD VIEW — IN PROGRESS") : (lang==="fr"?"VUE CONCEPTUELLE DU PROJET":"PROJECT CONCEPT VIEW")}</span><p>{project.visualNote?.[lang]}</p></figcaption></figure>:null}{project.gallery?.length ? <section className="smartSenseGallery motionSection" aria-label={lang==="fr"?"Schémas électroniques et PCB":"Electronics schematics and PCB"}>
+}</div><figcaption><span>{project.slug==="smartsense" ? (lang==="fr"?"VUE CAO DU PCB":"PCB CAD VIEW") : project.stage ? (lang==="fr"?"VUE CAO DU PROTOTYPE":"PROTOTYPE CAD VIEW") : (lang==="fr"?"VUE CONCEPTUELLE DU PROJET":"PROJECT CONCEPT VIEW")}</span><p>{project.visualNote?.[lang]}</p></figcaption></figure>:null}{project.gallery?.length ? <section className="smartSenseGallery motionSection" aria-label={lang==="fr"?"Schémas électroniques et PCB":"Electronics schematics and PCB"}>
   <div className="smartSenseGalleryHeading">
     <p className="category">{lang==="fr"?"DOCUMENTATION DE CONCEPTION":"ENGINEERING DESIGN DOCUMENTATION"}</p>
     <h2>{lang==="fr"?"Schémas électroniques et routage PCB":"Electronic schematics & PCB layout"}</h2>
