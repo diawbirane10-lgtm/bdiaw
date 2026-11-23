@@ -12,9 +12,9 @@ export function attribution(ref, tags = {}) {
   const h=host || '';
   if (match(h,'b-diaw.com')) {s='Internal';m='internal';}
   else if (match(h,'mail.google.com') || ['outlook.com','outlook.office.com','outlook.live.com'].some(d=>match(h,d))) {s='Email';m='email';}
+  else if (['chatgpt.com','chat.openai.com','perplexity.ai','gemini.google.com','claude.ai'].some(d=>match(h,d))) {s=h;m='ai_referral';}
   else if (/^(?:[a-z0-9-]+\.)?google\.(?:com|[a-z]{2}|co\.[a-z]{2}|com\.[a-z]{2})$/.test(h)) {s='Google';m='search_referral';}
   else if (['bing.com','duckduckgo.com','search.yahoo.com','search.brave.com','ecosia.org'].some(d=>match(h,d))) {s=h;m='search_referral';}
-  else if (['chatgpt.com','chat.openai.com','perplexity.ai','gemini.google.com','claude.ai'].some(d=>match(h,d))) {s=h;m='ai_referral';}
   else if (['linkedin.com','lnkd.in','x.com','twitter.com','t.co','instagram.com','facebook.com','reddit.com','whatsapp.com','t.me'].some(d=>match(h,d))) {s=h;m='social_referral';}
   else if(h){s=h;m='referral';}
   return {source:s,medium:m,campaign,campaign_content:content,referrer_host:host};

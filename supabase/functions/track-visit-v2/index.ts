@@ -18,6 +18,8 @@ Deno.serve(async req => {
   if(req.method!=="POST") return reply(405,{ok:false});
   if(req.headers.get("sec-gpc")==="1" || req.headers.get("dnt")==="1") return reply(200,{ok:true});
   try{
+    const contentLength=Number(req.headers.get("content-length")||0);
+    if(contentLength>4096) return reply(413,{ok:false});
     const raw=await req.text();
     if(raw.length>4096) return reply(413,{ok:false});
     const b=JSON.parse(raw);

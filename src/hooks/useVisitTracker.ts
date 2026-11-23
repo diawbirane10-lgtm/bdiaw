@@ -8,7 +8,7 @@ type Session={id:string,last:number,referrer:string|null,tags:Record<string,stri
 let memory:Session|null=null;
 function allowed(){
   const n=navigator as Navigator & {globalPrivacyControl?:boolean};
-  return !n.globalPrivacyControl && n.doNotTrack!=="1" && localStorage.getItem("ohmega_analytics_opt_out")!=="1" && supabase.auth !== undefined;
+  return !n.globalPrivacyControl && n.doNotTrack!=="1" && localStorage.getItem("ohmega_analytics_opt_out")!=="1";
 }
 function session():Session{
   let s=memory;

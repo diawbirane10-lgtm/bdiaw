@@ -62,7 +62,7 @@ export default function Admin(){
    const unit=legacy?pages:[...sessions.values()];
    const signal=(r:Row)=>legacy?(r.traffic_signal||"unknown"):automated.has(r.session_id)?"automation_signal":engaged.has(r.session_id)?"engagement_signal":hosting.has(r.session_id)?"hosting_signal":"unknown";
    const label=(s:string)=>({automation_signal:"Automatisation probable",engagement_signal:"Engagement observé",hosting_signal:"Hébergement / à vérifier",unknown:"Indéterminé"}[s]||s);
-   const visible=unit.filter(r=>filter==="all"||signal(r)===filter);
+   const visible=unit.filter(r=>filter==="all"||signal(r)===filter).sort((a,b)=>b.created_at.localeCompare(a.created_at));
    const idSet=new Set(visible.map(r=>r.session_id));
    const scoped=legacy?visible:events.filter(r=>idSet.has(r.session_id));
    return {pages,unit,visible,scoped,signal,label,geoCoverage:visible.length?Math.round(100*visible.filter(r=>r.country).length/visible.length):0,quality:group(unit,r=>label(signal(r)))};
