@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { attribution, trafficSignal, cleanTag } from '../supabase/functions/_shared/analytics-classify.mjs';
+assert.equal(attribution('https://www.google.com/search?q=private').source,'Google');
+assert.equal(attribution('https://mail.google.com/mail/u/0').medium,'email');
+assert.equal(attribution('https://linkedin.com/feed',{utm_source:'email',utm_medium:'email',utm_content:'caltech'}).source,'email');
+assert.equal(attribution(null).medium,'direct_or_unknown');
+assert.equal(attribution('https://google.com.evil.example').medium,'referral');
+assert.equal(attribution('https://b-diaw.com/projects').medium,'internal');
+assert.equal(attribution('https://chatgpt.com').medium,'ai_referral');
+assert.equal(attribution('https://gemini.google.com').medium,'ai_referral');
+assert.equal(trafficSignal('Mozilla/5.0','Microsoft Azure'),'hosting_signal');
+assert.equal(trafficSignal('Googlebot','Residential ISP'),'automation_signal');
+assert.equal(trafficSignal('Mozilla/5.0','Residential ISP'),'unknown');
+assert.equal(cleanTag('a@example.com'),null);
+console.log('12 analytics classification checks passed');

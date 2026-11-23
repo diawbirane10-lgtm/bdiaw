@@ -1,371 +1,96 @@
-import { useState, useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
+import type { Session, SupabaseClient } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
-import {
-  Eye,
-  Calendar,
-  Monitor,
-  Globe,
-  TrendingUp,
-  Lock,
-  Trash2,
-  MessageSquare,
-  MapPin,
-  Users,
-  ExternalLink,
-  Clock3,
-  Smartphone,
-  Laptop,
-  Route,
-} from "lucide-react";
-import { toast } from "sonner";
+import { attribution, trafficSignal } from "../../supabase/functions/_shared/analytics-classify.mjs";
 
-const ADMIN_PASSWORD = "bdiaw2026";
-
-type Visit = {
-  id: string;
-  created_at: string;
-  page?: string | null;
-  user_agent?: string | null;
-  referrer?: string | null;
-  ip?: string | null;
-  country?: string | null;
-  country_code?: string | null;
-  region?: string | null;
-  city?: string | null;
-  latitude?: number | null;
-  longitude?: number | null;
-  timezone?: string | null;
-  isp?: string | null;
-};
-
-interface Testimonial {
-  id: string;
-  first_name: string;
-  last_name: string;
-  title: string;
-  message: string;
-  created_at: string;
+const db = supabase as unknown as SupabaseClient;
+type Row={id:string;created_at:string;session_id?:string;event_type?:string;page?:string;target?:string;source?:string;medium?:string;campaign?:string;campaign_content?:string;referrer_host?:string;referrer?:string;user_agent?:string;country?:string;region?:string;city?:string;network_org?:string;network_asn?:string;isp?:string;traffic_signal?:string;geo_source?:string;device?:string;browser?:string};
+const owner=(s:Session|null)=>String(s?.user.app_metadata?.portfolio_admin)==="true";
+const group=(rows:Row[],fn:(r:Row)=>string|undefined)=>Object.entries(rows.reduce<Record<string,number>>((a,r)=>{const k=fn(r)||"Inconnu";a[k]=(a[k]||0)+1;return a;},{})).sort((a,b)=>b[1]-a[1]);
+const city=(r:Row)=>[r.city,r.region,r.country].filter(Boolean).join(", ")||"Inconnu";
+const panel="card-elegant p-5";
+const input="w-full border border-border rounded-lg p-3 bg-background text-foreground";
+const btn="bg-primary text-primary-foreground rounded-lg px-4 py-2";
+function Breakdown({title,items}:{title:string;items:[string,number][]}){
+ return <section className={panel}><h2 className="font-semibold mb-4">{title}</h2>{!items.length&&<p>Aucune donnée</p>}<div className="space-y-2">{items.slice(0,20).map(([k,v])=><div key={k}><div className="flex justify-between gap-2 text-sm"><span className="break-all">{k}</span><b>{v}</b></div><div className="h-1.5 bg-secondary rounded"><div className="h-full bg-primary rounded" style={{width:(100*v/items[0][1])+"%"}}/></div></div>)}</div></section>;
 }
-
-const getBrowserName = (ua = "") => {
-  if (ua.includes("Edg")) return "Edge";
-  if (ua.includes("Firefox")) return "Firefox";
-  if (ua.includes("Chrome") && !ua.includes("Edg")) return "Chrome";
-  if (ua.includes("Safari") && !ua.includes("Chrome")) return "Safari";
-  return "Autre";
-};
-
-const getDeviceType = (ua = "") => {
-  if (/Tablet|iPad/i.test(ua)) return "Tablette";
-  if (/Mobile|Android|iPhone/i.test(ua)) return "Mobile";
-  return "Desktop";
-};
-
-const hostFromReferrer = (referrer?: string | null) => {
-  if (!referrer) return "Direct";
-  try {
-    return new URL(referrer).hostname.replace(/^www\./, "");
-  } catch {
-    return referrer;
-  }
-};
-
-const countBy = (visits: Visit[], getKey: (visit: Visit) => string | null | undefined) => {
-  const counts: Record<string, number> = {};
-  visits.forEach((visit) => {
-    const key = getKey(visit);
-    if (!key) return;
-    counts[key] = (counts[key] || 0) + 1;
-  });
-  return Object.entries(counts).sort((a, b) => b[1] - a[1]);
-};
-
-const Breakdown = ({ title, rows, icon: Icon }: { title: string; rows: [string, number][]; icon: any }) => {
-  const max = rows[0]?.[1] || 1;
-  return (
-    <div className="card-elegant p-6">
-      <div className="flex items-center gap-2 mb-5">
-        <Icon className="w-5 h-5 text-primary" />
-        <h2 className="text-lg font-semibold text-foreground">{title}</h2>
-      </div>
-      {rows.length === 0 ? (
-        <p className="text-sm text-muted-foreground">Pas encore de données.</p>
-      ) : (
-        <div className="space-y-3">
-          {rows.slice(0, 10).map(([label, count]) => (
-            <div key={label}>
-              <div className="flex items-center justify-between gap-3 text-sm mb-1">
-                <span className="text-foreground truncate" title={label}>{label}</span>
-                <span className="font-semibold text-primary">{count}</span>
-              </div>
-              <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
-                <div className="h-full bg-primary/75 rounded-full" style={{ width: `${Math.max(4, (count / max) * 100)}%` }} />
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
-
-const Admin = () => {
-  const [authenticated, setAuthenticated] = useState(false);
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [stats, setStats] = useState({ total: 0, today: 0, thisWeek: 0, thisMonth: 0 });
-  const [visits, setVisits] = useState<Visit[]>([]);
-  const [dailyData, setDailyData] = useState<{ date: string; count: number }[]>([]);
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
-      setAuthenticated(true);
-      setError("");
-      sessionStorage.setItem("admin_auth", "true");
-    } else {
-      setError("Mot de passe incorrect");
-    }
-  };
-
-  useEffect(() => {
-    if (sessionStorage.getItem("admin_auth") === "true") setAuthenticated(true);
-  }, []);
-
-  useEffect(() => {
-    if (!authenticated) return;
-
-    const fetchStats = async () => {
-      setLoading(true);
-      const now = new Date();
-      const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
-      const weekStart = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
-      const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
-      const fourteenDaysAgo = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000).toISOString();
-
-      const [totalRes, todayRes, weekRes, monthRes, visitsRes, dailyRes] = await Promise.all([
-        supabase.from("page_visits").select("id", { count: "exact", head: true }),
-        supabase.from("page_visits").select("id", { count: "exact", head: true }).gte("created_at", todayStart),
-        supabase.from("page_visits").select("id", { count: "exact", head: true }).gte("created_at", weekStart),
-        supabase.from("page_visits").select("id", { count: "exact", head: true }).gte("created_at", monthStart),
-        supabase.from("page_visits").select("*").order("created_at", { ascending: false }).limit(2000),
-        supabase.from("page_visits").select("created_at").gte("created_at", fourteenDaysAgo),
-      ]);
-
-      setStats({
-        total: totalRes.count ?? 0,
-        today: todayRes.count ?? 0,
-        thisWeek: weekRes.count ?? 0,
-        thisMonth: monthRes.count ?? 0,
-      });
-      setVisits((visitsRes.data ?? []) as Visit[]);
-
-      const counts: Record<string, number> = {};
-      (dailyRes.data ?? []).forEach((v: any) => {
-        const key = new Date(v.created_at).toISOString().slice(0, 10);
-        counts[key] = (counts[key] || 0) + 1;
-      });
-      setDailyData(Object.entries(counts).sort(([a], [b]) => a.localeCompare(b)).map(([date, count]) => ({ date, count })));
-      setLoading(false);
-    };
-
-    const fetchTestimonials = async () => {
-      const { data } = await supabase.from("testimonials").select("*").order("created_at", { ascending: false });
-      if (data) setTestimonials(data);
-    };
-
-    fetchStats();
-    fetchTestimonials();
-  }, [authenticated]);
-
-  const analytics = useMemo(() => {
-    const countries = countBy(visits, (v) => v.country);
-    const regions = countBy(visits, (v) => [v.region, v.country].filter(Boolean).join(", ") || null);
-    const cities = countBy(visits, (v) => [v.city, v.region, v.country].filter(Boolean).join(", ") || null);
-    const pages = countBy(visits, (v) => v.page || "/");
-    const browsers = countBy(visits, (v) => getBrowserName(v.user_agent || ""));
-    const devices = countBy(visits, (v) => getDeviceType(v.user_agent || ""));
-    const referrers = countBy(visits, (v) => hostFromReferrer(v.referrer));
-    const timezones = countBy(visits, (v) => v.timezone);
-    const isps = countBy(visits, (v) => v.isp);
-    const uniqueIps = new Set(visits.map((v) => v.ip).filter(Boolean)).size;
-    const uniqueCities = new Set(visits.map((v) => [v.city, v.region, v.country].filter(Boolean).join("|")).filter(Boolean)).size;
-    const geoCoverage = visits.length ? Math.round((visits.filter((v) => v.country || v.city).length / visits.length) * 100) : 0;
-    return { countries, regions, cities, pages, browsers, devices, referrers, timezones, isps, uniqueIps, uniqueCities, geoCoverage };
-  }, [visits]);
-
-  const deleteTestimonial = async (id: string) => {
-    const { error } = await supabase.from("testimonials").delete().eq("id", id);
-    if (error) toast.error("Erreur lors de la suppression");
-    else {
-      setTestimonials((prev) => prev.filter((t) => t.id !== id));
-      toast.success("Témoignage supprimé");
-    }
-  };
-
-  if (!authenticated) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-4">
-        <div className="w-full max-w-sm">
-          <div className="card-elegant p-8 text-center">
-            <Lock className="w-10 h-10 text-primary mx-auto mb-4" />
-            <h1 className="text-xl font-bold text-foreground mb-2">Admin Dashboard</h1>
-            <p className="text-muted-foreground text-sm mb-6">Accès réservé au propriétaire</p>
-            <form onSubmit={handleLogin} className="space-y-4">
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Mot de passe" className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors" />
-              {error && <p className="text-red-400 text-sm">{error}</p>}
-              <button type="submit" className="w-full py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors">Accéder</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  const recentVisits = visits.slice(0, 50);
-  const maxDaily = Math.max(1, ...dailyData.map((d) => d.count));
-
-  return (
-    <div className="min-h-screen bg-background p-4 md:p-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-start justify-between gap-4 mb-8">
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">Analytics portfolio</h1>
-            <p className="text-muted-foreground text-sm mt-1">Vue détaillée des visites, origines, appareils et géographie approximative.</p>
-          </div>
-          <a href="/" className="text-sm text-primary hover:underline whitespace-nowrap">← Retour au site</a>
-        </div>
-
-        {loading ? <p className="text-muted-foreground">Chargement...</p> : (
-          <>
-            <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-3 mb-8">
-              {[
-                { label: "Total visites", value: stats.total, icon: Eye },
-                { label: "Aujourd'hui", value: stats.today, icon: Calendar },
-                { label: "7 jours", value: stats.thisWeek, icon: TrendingUp },
-                { label: "Ce mois", value: stats.thisMonth, icon: Globe },
-                { label: "Visiteurs uniques*", value: analytics.uniqueIps, icon: Users },
-                { label: "Villes distinctes", value: analytics.uniqueCities, icon: MapPin },
-                { label: "Couverture géo", value: `${analytics.geoCoverage}%`, icon: Route },
-                { label: "Échantillon analysé", value: visits.length, icon: Monitor },
-              ].map((stat) => (
-                <div key={stat.label} className="card-elegant p-4 min-w-0">
-                  <stat.icon className="w-5 h-5 text-primary mb-2" />
-                  <p className="text-2xl font-bold text-foreground truncate">{stat.value}</p>
-                  <p className="text-[11px] text-muted-foreground mt-1 leading-tight">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-
-            <p className="text-xs text-muted-foreground mb-8">*Estimation à partir des IP distinctes dans les {visits.length} dernières visites chargées. Une IP n'est pas une personne : VPN, réseaux d'entreprise et IP partagées peuvent fausser ce chiffre.</p>
-
-            {dailyData.length > 0 && (
-              <div className="card-elegant p-6 mb-8">
-                <div className="flex items-center gap-2 mb-5">
-                  <Clock3 className="w-5 h-5 text-primary" />
-                  <h2 className="text-lg font-semibold text-foreground">Activité — 14 derniers jours</h2>
-                </div>
-                <div className="flex items-end gap-2 h-40">
-                  {dailyData.map((d) => (
-                    <div key={d.date} className="flex-1 min-w-0 flex flex-col items-center gap-1 h-full justify-end">
-                      <span className="text-[11px] text-muted-foreground">{d.count}</span>
-                      <div className="w-full bg-primary/80 rounded-t-sm" style={{ height: `${Math.max(4, (d.count / maxDaily) * 100)}%` }} />
-                      <span className="text-[9px] text-muted-foreground whitespace-nowrap">{d.date.slice(5)}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 mb-8">
-              <Breakdown title="Pays" rows={analytics.countries} icon={Globe} />
-              <Breakdown title="Régions" rows={analytics.regions} icon={MapPin} />
-              <Breakdown title="Villes" rows={analytics.cities} icon={MapPin} />
-              <Breakdown title="Pages les plus vues" rows={analytics.pages} icon={Eye} />
-              <Breakdown title="Sources de trafic" rows={analytics.referrers} icon={ExternalLink} />
-              <Breakdown title="Navigateurs" rows={analytics.browsers} icon={Monitor} />
-              <Breakdown title="Appareils" rows={analytics.devices} icon={Smartphone} />
-              <Breakdown title="Fuseaux horaires" rows={analytics.timezones} icon={Clock3} />
-              <Breakdown title="Réseaux / FAI" rows={analytics.isps} icon={Laptop} />
-            </div>
-
-            <div className="card-elegant p-6 mb-8">
-              <div className="flex items-center justify-between gap-3 mb-4">
-                <h2 className="text-lg font-semibold text-foreground">50 visites les plus récentes</h2>
-                <span className="text-xs text-muted-foreground">Localisation IP approximative</span>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="text-left text-muted-foreground border-b border-border">
-                      <th className="pb-2 pr-4">Date</th>
-                      <th className="pb-2 pr-4">Localisation</th>
-                      <th className="pb-2 pr-4">Page</th>
-                      <th className="pb-2 pr-4">Appareil</th>
-                      <th className="pb-2 pr-4">Navigateur</th>
-                      <th className="pb-2 pr-4">Fuseau</th>
-                      <th className="pb-2 pr-4">FAI</th>
-                      <th className="pb-2">Source</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recentVisits.map((v) => {
-                      const loc = [v.city, v.region, v.country].filter(Boolean).join(", ");
-                      const coords = typeof v.latitude === "number" && typeof v.longitude === "number"
-                        ? `https://www.openstreetmap.org/?mlat=${v.latitude}&mlon=${v.longitude}#map=10/${v.latitude}/${v.longitude}`
-                        : null;
-                      return (
-                        <tr key={v.id} className="border-b border-border/30 align-top">
-                          <td className="py-3 pr-4 text-foreground whitespace-nowrap">{new Date(v.created_at).toLocaleString("fr-FR")}</td>
-                          <td className="py-3 pr-4 text-foreground min-w-[220px]">
-                            {loc ? coords ? (
-                              <a href={coords} target="_blank" rel="noreferrer" className="hover:text-primary inline-flex items-start gap-1">
-                                <MapPin className="w-3 h-3 mt-1 shrink-0" /> {loc}
-                              </a>
-                            ) : loc : <span className="text-muted-foreground">—</span>}
-                          </td>
-                          <td className="py-3 pr-4 text-foreground">{v.page || "/"}</td>
-                          <td className="py-3 pr-4 text-foreground">{getDeviceType(v.user_agent || "")}</td>
-                          <td className="py-3 pr-4 text-foreground">{getBrowserName(v.user_agent || "")}</td>
-                          <td className="py-3 pr-4 text-muted-foreground whitespace-nowrap">{v.timezone || "—"}</td>
-                          <td className="py-3 pr-4 text-muted-foreground min-w-[160px]">{v.isp || "—"}</td>
-                          <td className="py-3 text-muted-foreground max-w-[180px] truncate" title={v.referrer || "Direct"}>{hostFromReferrer(v.referrer)}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div className="card-elegant p-6 mt-8">
-              <div className="flex items-center gap-2 mb-4">
-                <MessageSquare className="w-5 h-5 text-primary" />
-                <h2 className="text-lg font-semibold text-foreground">Témoignages ({testimonials.length})</h2>
-              </div>
-              {testimonials.length === 0 ? <p className="text-muted-foreground text-sm">Aucun témoignage pour le moment.</p> : (
-                <div className="space-y-3">
-                  {testimonials.map((t) => (
-                    <div key={t.id} className="flex items-start justify-between gap-4 p-4 rounded-lg bg-secondary/30 border border-border">
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-foreground">{t.first_name} {t.last_name}</p>
-                        <p className="text-xs text-muted-foreground">{t.title}</p>
-                        <p className="text-sm text-foreground mt-2 italic">“{t.message}”</p>
-                        <p className="text-xs text-muted-foreground mt-1">{new Date(t.created_at).toLocaleString("fr-FR")}</p>
-                      </div>
-                      <button onClick={() => deleteTestimonial(t.id)} className="p-2 rounded-lg text-destructive hover:bg-destructive/10 transition-colors shrink-0" title="Supprimer"><Trash2 size={16} /></button>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </>
-        )}
-      </div>
-    </div>
-  );
-};
-
-export default Admin;
+async function readRows(table:string,columns:string,from:string|null,until:string){
+ const rows:Row[]=[];const size=500;const max=50000;let total=0;
+ for(let i=0;i<max;i+=size){
+   let q=db.from(table).select(columns,{count:i===0?"exact":undefined}).lt("created_at",until).order("created_at",{ascending:false}).order("id",{ascending:false}).range(i,i+size-1);
+   if(from)q=q.gte("created_at",from);
+   const {data,error,count}=await q;if(error)throw error;
+   if(i===0)total=count??0;
+   rows.push(...(data||[]) as unknown as Row[]);
+   if(!data || data.length<size)break;
+ }
+ return {rows,total,truncated:rows.length<total};
+}
+export default function Admin(){
+ const [session,setSession]=useState<Session|null>(null),[ready,setReady]=useState(false),[email,setEmail]=useState(""),[password,setPassword]=useState(""),[error,setError]=useState(""),[loading,setLoading]=useState(false);
+ const [period,setPeriod]=useState("30"),[mode,setMode]=useState("v2"),[filter,setFilter]=useState("all"),[rows,setRows]=useState<Row[]>([]),[total,setTotal]=useState(0),[truncated,setTruncated]=useState(false),[refresh,setRefresh]=useState(0);
+ const [testimonials,setTestimonials]=useState<{id:string;first_name:string;last_name:string;message:string}[]>([]);
+ const [source,setSource]=useState("email"),[campaign,setCampaign]=useState("internship_2027"),[content,setContent]=useState("");
+ useEffect(()=>{
+   let live=true;
+   supabase.auth.getSession().then(({data})=>{if(live){setSession(data.session);setReady(true);}});
+   const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,s)=>{setSession(s);setReady(true);});
+   return()=>{live=false;subscription.unsubscribe();};
+ },[]);
+ const isOwner=owner(session);
+ useEffect(()=>{
+   if(!isOwner){setRows([]);setTotal(0);setTestimonials([]);return;}
+   let live=true;setLoading(true);setError("");setRows([]);setTotal(0);setTruncated(false);
+   const until=new Date().toISOString(),from=period==="all"?null:new Date(Date.now()-Number(period)*86400000).toISOString();
+   const legacy=mode==="legacy";
+   const cols=legacy?"id,created_at,page,user_agent,referrer,country,region,city,isp":"id,created_at,session_id,event_type,page,target,source,medium,campaign,campaign_content,referrer_host,country,region,city,network_org,network_asn,traffic_signal,geo_source,device,browser";
+   readRows(legacy?"page_visits":"analytics_events",cols,from,until).then(r=>{if(live){setRows(r.rows);setTotal(r.total);setTruncated(r.truncated);}}).catch(e=>{if(live)setError(e.message||"Impossible de charger les statistiques");}).finally(()=>{if(live)setLoading(false);});
+   return()=>{live=false;};
+ },[isOwner,period,mode,refresh]);
+ useEffect(()=>{if(isOwner){let live=true;supabase.from("testimonials").select("id,first_name,last_name,message").order("created_at",{ascending:false}).then(({data,error:e})=>{if(live){if(e)setError(e.message);else setTestimonials(data||[]);}});return()=>{live=false;};}},[isOwner,refresh]);
+ const signIn=async(e:React.FormEvent)=>{e.preventDefault();setError("");setLoading(true);try{const {data,error:e}=await supabase.auth.signInWithPassword({email,password});setPassword("");if(e)throw e;if(!owner(data.session)){await supabase.auth.signOut();setError("Compte non autorisé.");}}catch{setError("Connexion refusée.");}finally{setLoading(false);}};
+ const model=useMemo(()=>{
+   const legacy=mode==="legacy";
+   const events=rows.map(r=>legacy?{...r,...attribution(r.referrer),network_org:r.isp,traffic_signal:trafficSignal(r.user_agent||"",r.isp||"")}:r);
+   const pages=legacy?events:events.filter(r=>r.event_type==="page_view");
+   const sessions=new Map<string,Row>();
+   // oldest observed landing per session in selected window
+   for(const r of [...pages].reverse())if(r.session_id&&!sessions.has(r.session_id))sessions.set(r.session_id,r);
+   const engaged=new Set(events.filter(r=>r.event_type==="engaged"||r.event_type==="project_open").map(r=>r.session_id));
+   const automated=new Set(events.filter(r=>r.traffic_signal==="automation_signal").map(r=>r.session_id));
+   const hosting=new Set(pages.filter(r=>r.traffic_signal==="hosting_signal").map(r=>r.session_id));
+   const unit=legacy?pages:[...sessions.values()];
+   const signal=(r:Row)=>legacy?(r.traffic_signal||"unknown"):automated.has(r.session_id)?"automation_signal":engaged.has(r.session_id)?"engagement_signal":hosting.has(r.session_id)?"hosting_signal":"unknown";
+   const label=(s:string)=>({automation_signal:"Automatisation probable",engagement_signal:"Engagement observé",hosting_signal:"Hébergement / à vérifier",unknown:"Indéterminé"}[s]||s);
+   const visible=unit.filter(r=>filter==="all"||signal(r)===filter);
+   const idSet=new Set(visible.map(r=>r.session_id));
+   const scoped=legacy?visible:events.filter(r=>idSet.has(r.session_id));
+   return {pages,unit,visible,scoped,signal,label,geoCoverage:visible.length?Math.round(100*visible.filter(r=>r.country).length/visible.length):0,quality:group(unit,r=>label(signal(r)))};
+ },[rows,mode,filter]);
+ const link=useMemo(()=>{const q=new URLSearchParams({utm_source:source,utm_medium:source==="email"?"email":source==="cv"?"document":source==="github"?"referral":"social",utm_campaign:campaign});if(content)q.set("utm_content",content);return "https://b-diaw.com/?"+q.toString();},[source,campaign,content]);
+ if(!ready)return <main className="p-8">Chargement…</main>;
+ if(!isOwner)return <main className="min-h-screen flex items-center justify-center p-4"><form className={panel+" w-full max-w-sm space-y-3"} onSubmit={signIn}><h1 className="text-xl font-bold">Administration OHMEGA</h1><label className="block">Email administrateur<input className={input} value={email} onChange={e=>setEmail(e.target.value)} type="email" autoComplete="username" required/></label><label className="block">Mot de passe<input className={input} value={password} onChange={e=>setPassword(e.target.value)} type="password" autoComplete="current-password" required/></label>{error&&<p role="alert">{error}</p>}{session?<button type="button" className={btn} onClick={()=>void supabase.auth.signOut()}>Déconnecter le compte non autorisé</button>:<button className={btn} disabled={loading}>Connexion</button>}</form></main>;
+ return <main className="min-h-screen p-4 md:p-8"><div className="max-w-7xl mx-auto space-y-5">
+  <header className="flex flex-wrap justify-between gap-3"><div><h1 className="text-2xl font-bold">Analytics portfolio</h1><p className="text-sm text-muted-foreground">Sessions, acquisition et qualité du trafic</p></div><div className="flex gap-3 items-center"><a href="/">Retour au site</a><button className={btn} onClick={()=>void supabase.auth.signOut()}>Déconnexion</button></div></header>
+  <div className="flex flex-wrap gap-3 items-end"><label>Période<select className={input} value={period} onChange={e=>setPeriod(e.target.value)}><option value="1">24 h</option><option value="7">7 jours</option><option value="30">30 jours</option><option value="90">90 jours</option><option value="all">Historique complet</option></select></label><label>Collecte<select className={input} value={mode} onChange={e=>{setMode(e.target.value);setFilter("all");}}><option value="v2">V2 — sessions</option><option value="legacy">Historique — chargements</option></select></label><label>Qualité<select className={input} value={filter} onChange={e=>setFilter(e.target.value)}><option value="all">Tout</option><option value="automation_signal">Automatisation probable</option>{mode==="v2"&&<option value="engagement_signal">Engagement observé</option>}<option value="hosting_signal">Hébergement / à vérifier</option><option value="unknown">Indéterminé</option></select></label><button className={btn} onClick={()=>setRefresh(x=>x+1)}>Actualiser</button></div>
+  {error&&<p role="alert" className="border border-destructive p-3">{error}</p>}{loading&&<p>Chargement…</p>}{truncated&&<p role="alert">Échantillon limité : {rows.length} lignes sur {total}. Réduire la période.</p>}
+  <p className="text-sm text-muted-foreground">{mode==="legacy"?"Historique : aucune session, aucun UTM, aucun engagement ne peut être reconstruit avec certitude.":"Une session est estimée par onglet, après 30 minutes d’inactivité. Source et localisation selon les signaux disponibles. Un réseau cloud ne prouve pas un robot."} Les sources portent sur les entrées observées dans la période.</p>
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">{[[mode==="legacy"?"Chargements filtrés":"Sessions filtrées",model.visible.length],["Événements filtrés",model.scoped.length],["Couverture géographique",model.geoCoverage+" %"],["Lignes chargées",rows.length+" / "+total]].map(([k,v])=><div className={panel} key={k}><p className="text-sm">{k}</p><p className="text-2xl font-bold">{v}</p></div>)}</div>
+  <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-3">
+   <Breakdown title="Qualité (avant filtre)" items={model.quality}/>
+   <Breakdown title="Canaux" items={group(model.visible,r=>r.medium)}/>
+   <Breakdown title="Sources" items={group(model.visible,r=>r.source)}/>
+   <Breakdown title="Pays" items={group(model.visible,r=>r.country)}/>
+   <Breakdown title="Villes / régions" items={group(model.visible,city)}/>
+   <Breakdown title="Réseaux / opérateurs" items={group(model.visible,r=>r.network_org)}/>
+   <Breakdown title="Campagnes" items={group(model.visible,r=>r.campaign)}/>
+   <Breakdown title="Détail de campagne" items={group(model.visible,r=>r.campaign_content)}/>
+   <Breakdown title="Pages" items={group(model.scoped.filter(r=>mode==="legacy"||r.event_type==="page_view"),r=>r.page)}/>
+   {mode==="v2"&&<><Breakdown title="Projets ouverts" items={group(model.scoped.filter(r=>r.event_type==="project_open"),r=>r.target)}/><Breakdown title="Documents ouverts (clics)" items={group(model.scoped.filter(r=>r.event_type==="document_open"),r=>r.target)}/><Breakdown title="Liens externes (clics)" items={group(model.scoped.filter(r=>r.event_type==="outbound"),r=>r.target)}/></>}
+  </div>
+  <section className={panel}><h2 className="font-semibold mb-3">Localisations à vérifier — hébergeurs ou signaux de robots</h2><div className="overflow-x-auto"><table className="w-full text-sm"><thead><tr className="text-left"><th>Ville</th><th>Réseau</th><th>ASN</th><th>Signal</th><th>Nombre</th></tr></thead><tbody>{group(model.unit.filter(r=>["hosting_signal","automation_signal"].includes(model.signal(r))),r=>JSON.stringify([city(r),r.network_org||"Inconnu",r.network_asn||"—",model.label(model.signal(r))])).slice(0,30).map(([k,v])=><tr className="border-t" key={k}>{JSON.parse(k).map((x:string,i:number)=><td className="py-2 pr-3" key={i}>{x}</td>)}<td>{v}</td></tr>)}</tbody></table></div></section>
+  <section className={panel}><h2 className="font-semibold mb-3">Entrées récentes — localisation approximative</h2><div className="overflow-x-auto"><table className="w-full text-sm"><thead><tr className="text-left"><th>Date UTC</th><th>Ville</th><th>Source</th><th>Campagne</th><th>Réseau / ASN</th><th>Signal</th></tr></thead><tbody>{model.visible.slice(0,100).map(r=><tr className="border-t" key={r.id}><td className="py-2 pr-3 whitespace-nowrap">{new Date(r.created_at).toISOString().slice(0,16).replace("T"," ")}</td><td>{city(r)}</td><td>{r.source}</td><td>{r.campaign||"—"}</td><td>{r.network_org||"—"} {r.network_asn||""}</td><td>{model.label(model.signal(r))}</td></tr>)}</tbody></table></div></section>
+  <section className={panel+" space-y-3"}><h2 className="font-semibold">Générateur UTM</h2><label>Source<select className={input} value={source} onChange={e=>setSource(e.target.value)}>{["email","linkedin","twitter","instagram","github","cv","whatsapp"].map(s=><option key={s}>{s}</option>)}</select></label><label>Campagne<input className={input} value={campaign} onChange={e=>setCampaign(e.target.value)} pattern="[a-zA-Z0-9_.-]{1,80}"/></label><label>Organisation (pas de nom individuel)<input className={input} value={content} onChange={e=>setContent(e.target.value)}/></label><p className="break-all text-sm">{link}</p><button className={btn} disabled={!/^[a-z0-9_.-]{1,80}$/i.test(campaign)||(!!content&&!/^[a-z0-9_.-]{1,80}$/i.test(content))} onClick={()=>navigator.clipboard.writeText(link).catch(()=>setError("Copie impossible."))}>Copier</button></section>
+  <section className={panel}><h2 className="font-semibold mb-4">Témoignages</h2>{testimonials.map(t=><div key={t.id} className="border-t py-3 flex justify-between gap-3"><div><b>{t.first_name} {t.last_name}</b><p>{t.message}</p></div><button onClick={async()=>{if(!confirm("Supprimer ce témoignage ?"))return;const {error:e}=await supabase.from("testimonials").delete().eq("id",t.id);if(e)setError(e.message);else setTestimonials(x=>x.filter(v=>v.id!==t.id));}}>Supprimer</button></div>)}</section>
+ </div></main>;
+}

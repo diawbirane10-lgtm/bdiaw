@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { trackProjectOpen } from "@/hooks/useVisitTracker";
 import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -494,7 +495,7 @@ const ProjectsSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.25 }}
-                onClick={() => setOpenIndex(i)}
+                onClick={() => { setOpenIndex(i); trackProjectOpen(p.titleKey); }}
                 className="group text-left bg-card border border-border/60 rounded-2xl hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 {p.coverImage && (

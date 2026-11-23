@@ -11,10 +11,8 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FocusLinksSection from "@/components/FocusLinksSection";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import { useVisitTracker } from "@/hooks/useVisitTracker";
 
 const Index = () => {
-  useVisitTracker();
   return (
     <ReactLenis root options={{ lerp: 0.1, duration: 1.2, smoothWheel: true, anchors: true }}>
       <div className="min-h-screen">
