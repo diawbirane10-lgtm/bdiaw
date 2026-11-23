@@ -4,13 +4,16 @@ export const ADMIN_COOKIE = "ohmega_admin";
 const MAX_AGE = 60 * 60 * 12;
 
 function secret() {
-  return process.env.ADMIN_SESSION_SECRET || process.env.VERCEL_ANALYTICS_TOKEN || null;
+  if(process.env.ADMIN_SESSION_SECRET)return process.env.ADMIN_SESSION_SECRET;
+  const token=process.env.VERCEL_ANALYTICS_TOKEN;
+  return token?crypto.createHmac("sha256",token).update("ohmega-admin-session-v2").digest():null;
 }
 
 export function passwordMatches(password) {
-  const expected = "6051fc84a7a0d74c225fb18a496b09952da5642e60723ecae543298edd7d82d6";
+  const expected = process.env.ADMIN_PASSWORD_SHA256 || "6051fc84a7a0d74c225fb18a496b09952da5642e60723ecae543298edd7d82d6";
+  if(!/^[0-9a-f]{64}$/i.test(expected))return false;
   const actual = crypto.createHash("sha256").update(String(password || "")).digest("hex");
-  return crypto.timingSafeEqual(Buffer.from(actual), Buffer.from(expected));
+  return crypto.timingSafeEqual(Buffer.from(actual), Buffer.from(expected.toLowerCase()));
 }
 
 export function createSessionValue() {
@@ -23,7 +26,7 @@ export function createSessionValue() {
 
 export function verifySessionValue(value) {
   if (!secret()) return false;
-  if (!value || !value.includes(".")) return false;
+  if (typeof value!=="string" || !/^\d{1,12}\.[a-f0-9]{64}$/.test(value)) return false;
   const [issuedRaw, sig] = value.split(".");
   const issuedAt = Number(issuedRaw);
   if (!Number.isFinite(issuedAt)) return false;

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "vercel-build": "next build",
-    "build": "next build",
+    "vercel-build": "node --test scripts/privacy.test.mjs && next build",
+    "build": "node --test scripts/privacy.test.mjs && next build",
     "dev": "next dev"
   },
   "dependencies": {

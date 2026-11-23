@@ -1,3 +1,4 @@
+import { classifySource } from "./privacy.mjs";
 export const VISIT_PREFIX = "visit-history/v1/";
 export const HISTORY_PAGE_SIZE = 50;
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -44,6 +45,7 @@ export function makeVisit(body, headers, now = Date.now(), { allowBots = false }
     countryCode, country, city: cleanHeader(headers, "x-vercel-ip-city"), region: cleanHeader(headers, "x-vercel-ip-country-region"),
     timeZone: cleanHeader(headers, "x-vercel-ip-timezone"),
     referrer: referrerHost(body.referrer),
+    ...classifySource(referrerHost(body.referrer),body.tags),
     device: /ipad|tablet/i.test(ua) ? "Tablette" : /mobi|android|iphone/i.test(ua) ? "Mobile" : "Ordinateur",
     browser: /Edg\//.test(ua) ? "Edge" : /Firefox\//.test(ua) ? "Firefox" : /Chrome\//.test(ua) ? "Chrome" : /Safari\//.test(ua) ? "Safari" : "Autre",
   };
@@ -66,7 +68,7 @@ export function groupVisits(events) {
     else if (!visit.pages.includes(event.page)) visit.pages.push(event.page);
     if (event.occurredAt < visit.firstSeen) visit.firstSeen = event.occurredAt;
     // Acquisition belongs to the earliest page loaded for a session.
-    visit.referrer = event.referrer;
+    if(event.kind!=="download" || !visit.pages.length){visit.referrer=event.referrer;Object.assign(visit,event.source?{source:event.source,channel:event.channel,campaign:event.campaign,campaignContent:event.campaignContent}:classifySource(event.referrer));}
   }
   return [...groups.values()];
 }

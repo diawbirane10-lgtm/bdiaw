@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { makeVisit } from "../../../lib/visit-model.mjs";
 import { historyConfigured, storeVisit } from "../../../lib/visit-history.mjs";
 import { ADMIN_COOKIE, verifySessionValue } from "../../../lib/admin-auth";
+import { CONSENT_COOKIE,permitted } from "../../../lib/privacy.mjs";
 import { VISITOR_COOKIE } from "../../../lib/visitor-session.mjs";
 
 export const runtime = "nodejs";
@@ -13,6 +14,7 @@ export async function POST(request) {
   const url = new URL(request.url);
   if (!origin || origin !== url.origin || request.headers.get("sec-fetch-site") === "cross-site") return new Response(null, { status: 403, headers });
   if (verifySessionValue(request.cookies.get(ADMIN_COOKIE)?.value) || process.env.VERCEL_ENV !== "production") return new Response(null, { status: 204, headers });
+  if (!permitted(request.cookies.get(CONSENT_COOKIE)?.value,request.headers)) return new Response(null,{status:204,headers});
   if (!historyConfigured()) return NextResponse.json({ ok: false }, { status: 503, headers });
   if (!request.headers.get("content-type")?.startsWith("application/json") || Number(request.headers.get("content-length") || 0) > 2048) return new Response(null, { status: 400, headers });
   const raw = await request.text();
