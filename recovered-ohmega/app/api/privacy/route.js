@@ -8,7 +8,7 @@ export async function POST(request){
   let body;try{body=JSON.parse(raw);}catch{return new Response(null,{status:400});}
   if(body?.choice!=="declined")return new Response(null,{status:400});
   const r=new NextResponse(null,{status:204,headers:{"Cache-Control":"no-store"}});
-  r.cookies.set(CONSENT_COOKIE,"declined",{path:"/",sameSite:"lax",secure:true,maxAge:CONSENT_AGE});
+  // The client preference is authoritative; do not overwrite a newer choice during a delayed withdrawal response.
   r.cookies.set(VISITOR_COOKIE,"",{path:"/",sameSite:"lax",secure:true,httpOnly:true,maxAge:0});
   return r;
 }

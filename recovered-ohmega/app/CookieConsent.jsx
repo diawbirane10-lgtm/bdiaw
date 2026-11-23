@@ -32,19 +32,20 @@ export function useConsent(){
 }
 export default function CookieConsent({choice}){
   const [open,setOpen]=useState(false);
+  const [details,setDetails]=useState(false);
   if(choice===undefined)return null;
-  const decide=v=>{save(v);setOpen(false);};
+  const decide=v=>{save(v);setOpen(false);setDetails(false);};
   const button={border:"1px solid #183a59",background:"#183a59",color:"white",padding:"10px 16px",borderRadius:6,font:"inherit",fontSize:14,minHeight:44,cursor:"pointer",flex:"1 1 130px"};
   if(choice!==null&&!open)return <button type="button" onClick={()=>setOpen(true)} style={{position:"fixed",bottom:12,left:12,zIndex:90,background:"#fff",color:"#183a59",border:"1px solid #b9c3cc",borderRadius:5,padding:"8px 12px",fontSize:12,cursor:"pointer"}}>Privacy / cookies</button>;
-  return <section aria-label="Privacy and analytics choices" style={{position:"fixed",bottom:12,left:12,right:12,maxWidth:700,margin:"auto",zIndex:10000,background:"#fff",color:"#192a39",border:"1px solid #b9c3cc",borderRadius:9,padding:20,boxShadow:"0 6px 30px #0002",maxHeight:"80vh",overflow:"auto",fontSize:14,lineHeight:1.5}}>
-    <strong style={{fontSize:18}}>Your privacy choices</strong>
-    <p style={{margin:"8px 0"}}>With your permission, OHMEGA uses optional analytics to measure visits, approximate network country and city, referral sources, campaign tags and report requests. The private visit journal does not store raw IP addresses or search queries. Vercel provides hosting and aggregate analytics. No advertising cookies are used by this analytics feature.</p>
-    <p style={{margin:"8px 0"}}>Essential storage remembers your choice for up to six months and supports administration. You may decline without losing access and change your choice at any time. Privacy questions: <a href="/#contact" style={{textDecoration:"underline"}}>contact</a>.</p>
+  return <section aria-label="Privacy and analytics choices" style={{position:"fixed",bottom:12,left:12,right:12,maxWidth:620,margin:"auto",zIndex:10000,background:"#fff",color:"#192a39",border:"1px solid #b9c3cc",borderRadius:9,padding:14,boxShadow:"0 6px 30px #0002",maxHeight:"80vh",overflow:"auto",fontSize:14,lineHeight:1.5}}>
+    <strong style={{fontSize:16}}>Cookies</strong>
+    <p style={{margin:"6px 0"}}>We use optional cookies and analytics to improve your experience. <span style={{whiteSpace:"nowrap"}}><button type="button" onClick={()=>setDetails(v=>!v)} aria-expanded={details} style={{padding:0,border:0,background:"transparent",color:"#183a59",font:"inherit",textDecoration:"underline",cursor:"pointer"}}>Learn more</button></span></p>
+    {details&&<p style={{margin:"8px 0",fontSize:13}}>Optional analytics measure visits, approximate network location, referral and campaign sources, and report requests. Our private Vercel journal does not store raw IP addresses or search queries. Essential storage remembers your choice for up to six months and supports admin sign-in. You can change your choice at any time. No advertising cookies are used by this analytics feature. Privacy questions: <a href="/#contact" style={{textDecoration:"underline"}}>contact</a>.</p>}
     {browserBlocked()&&<p>Your browser privacy preference disables analytics.</p>}
     <div style={{display:"flex",flexWrap:"wrap",gap:8,marginTop:12}}>
-      <button type="button" style={button} disabled={browserBlocked()} onClick={()=>decide("accepted")}>Accept analytics</button>
-      <button type="button" style={button} onClick={()=>decide("declined")}>Decline analytics</button>
-      {choice!==null&&<button type="button" style={{...button,background:"white",color:"#183a59",flex:"0 1 auto"}} onClick={()=>setOpen(false)}>Close</button>}
+      <button type="button" style={button} disabled={browserBlocked()} onClick={()=>decide("accepted")}>Accept</button>
+      <button type="button" style={button} onClick={()=>decide("declined")}>Decline</button>
+      {choice!==null&&<button type="button" style={{...button,background:"white",color:"#183a59",flex:"0 1 auto"}} onClick={()=>{setOpen(false);setDetails(false);}}>Close</button>}
     </div>
   </section>;
 }

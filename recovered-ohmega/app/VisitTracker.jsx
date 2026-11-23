@@ -7,7 +7,7 @@ let memorySession;
 function session(now) {
   let value;
   try { value = JSON.parse(sessionStorage.getItem("ohmega-visit-session") || "null") || memorySession; } catch { value = memorySession; }
-  if (!value?.id || now - value.lastSeen > 30 * 60 * 1000) { const q=new URLSearchParams(location.search);const tags={};for(const k of ["utm_source","utm_medium","utm_campaign","utm_content"]){const v=q.get(k);if(v&&/^[a-z0-9_.-]{1,64}$/i.test(v))tags[k]=v;} value={id:crypto.randomUUID(),referrer:document.referrer,tags}; }
+  if (!value?.id || now - value.lastSeen > 30 * 60 * 1000) { const q=new URLSearchParams(location.search);const tags={};for(const k of ["utm_source","utm_medium","utm_campaign","utm_content"]){const v=q.get(k);if(v&&/^[a-z0-9_.-]{1,64}$/i.test(v))tags[k]=v;} value={id:crypto.randomUUID(),referrer:(()=>{try{return new URL(document.referrer).origin;}catch{return "";}})(),tags}; }
   value.lastSeen = now;
   memorySession = value;
   try { sessionStorage.setItem("ohmega-visit-session", JSON.stringify(value)); } catch { /* Tracking never blocks navigation. */ }
@@ -27,7 +27,7 @@ export default function VisitTracker() {
         fetch("/api/visits", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), keepalive: true }).catch(() => {});
       } catch { /* Browser restrictions must not hide the portfolio. */ }
     }, 150);
-    return () => clearTimeout(timer);
+    return () => {clearTimeout(timer);if(currentChoice()!=="accepted")memorySession=undefined;};
   }, [pathname]);
   return null;
 }

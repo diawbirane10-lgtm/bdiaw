@@ -104,7 +104,7 @@ export default function AdminDashboard() {
     event.preventDefault(); setLoggingIn(true); setLoginError("");
     try {
       const response=await fetch("/api/admin/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({password})});
-      if(!response.ok)throw new Error(response.status===401?"Mot de passe incorrect.":"Connexion indisponible. Réessayez.");
+      if(!response.ok)throw new Error(response.status===401?"Mot de passe incorrect.":response.status===429?"Trop de tentatives. Réessayez plus tard.":"Connexion indisponible. Réessayez.");
       setPassword(""); setAuth(true); await refresh();
     }catch(error){setLoginError(error.message);}
     finally{setLoggingIn(false);}
