@@ -23,7 +23,7 @@ Deno.serve(async req => {
     const raw=await req.text();
     if(raw.length>4096) return reply(413,{ok:false});
     const b=JSON.parse(raw);
-    if(!b || !uuid.test(b.id || "") || !uuid.test(b.session_id || "") || !events.has(b.event_type) || !routes.has(b.page)) return reply(400,{ok:false});
+    if(!b || b.consent_version !== "v1" || !uuid.test(b.id || "") || !uuid.test(b.session_id || "") || !events.has(b.event_type) || !routes.has(b.page)) return reply(400,{ok:false});
     const ua=req.headers.get("user-agent") || "";
     const {count,error:countError}=await db.from("analytics_events").select("id",{count:"exact",head:true}).eq("session_id",b.session_id).gte("created_at",new Date(Date.now()-60000).toISOString());
     if(countError) return reply(503,{ok:false});

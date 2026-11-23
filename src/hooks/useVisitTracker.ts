@@ -1,15 +1,14 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { analyticsAllowed, useAnalyticsChoice, subscribeChoice } from "@/lib/analyticsConsent";
 
 const paths = new Set(["/","/power-systems","/nuclear-energy","/critical-systems","/research"]);
 const key="ohmega_analytics_session_v2";
 type Session={id:string,last:number,referrer:string|null,tags:Record<string,string>};
 let memory:Session|null=null;
-function allowed(){
-  const n=navigator as Navigator & {globalPrivacyControl?:boolean};
-  return !n.globalPrivacyControl && n.doNotTrack!=="1" && localStorage.getItem("ohmega_analytics_opt_out")!=="1";
-}
+function allowed(){return analyticsAllowed();}
+subscribeChoice(()=>{if(!allowed()){memory=null;lastRoute="";lastView=0;try{sessionStorage.removeItem(key);}catch{}}});
 function session():Session{
   let s=memory;
   try{s=JSON.parse(sessionStorage.getItem(key)||"null")||s;}catch{}
@@ -31,8 +30,9 @@ async function send(event_type:string,target?:string){
     if(!paths.has(location.pathname) || !allowed()) return;
     const {data}=await supabase.auth.getSession();
     if(data.session?.user.app_metadata?.portfolio_admin===true || data.session?.user.app_metadata?.portfolio_admin==="true")return;
+    if(!allowed() || !paths.has(location.pathname)) return;
     const s=session();
-    await supabase.functions.invoke("track-visit-v2",{body:{id:crypto.randomUUID(),session_id:s.id,event_type,page:location.pathname,target,referrer:s.referrer,tags:s.tags}});
+    await supabase.functions.invoke("track-visit-v2",{body:{consent_version:"v1",id:crypto.randomUUID(),session_id:s.id,event_type,page:location.pathname,target,referrer:s.referrer,tags:s.tags}});
   }catch{/* analytics must not interrupt the public site */}
 }
 export const trackProjectOpen=(target:string)=>void send("project_open",target);
@@ -40,8 +40,9 @@ let lastRoute="";
 let lastView=0;
 export const useVisitTracker=()=>{
   const {pathname}=useLocation();
+  const consent=useAnalyticsChoice();
   useEffect(()=>{
-    if(!paths.has(pathname))return;
+    if(consent!=="accepted" || !allowed() || !paths.has(pathname))return;
     const now=Date.now();
     if(pathname!==lastRoute || now-lastView>1000){lastRoute=pathname;lastView=now;void send("page_view");}
     let visibleSeconds=0;
@@ -60,6 +61,6 @@ export const useVisitTracker=()=>{
     };
     document.addEventListener("click",click);
     return()=>{clearInterval(timer);document.removeEventListener("click",click);};
-  },[pathname]);
+  },[pathname,consent]);
 };
 export const VisitTracker=()=>{useVisitTracker();return null;};

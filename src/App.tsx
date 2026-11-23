@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import Index from "./pages/Index";
 import { VisitTracker } from "./hooks/useVisitTracker";
+import CookieConsent from "./components/CookieConsent";
 import Admin from "./pages/Admin";
 import FocusPage from "./pages/FocusPage";
 import NotFound from "./pages/NotFound";
@@ -20,6 +21,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <VisitTracker />
+          <CookieConsent />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/power-systems" element={<FocusPage />} />
