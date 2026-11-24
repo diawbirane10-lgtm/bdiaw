@@ -1,0 +1,5 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {audienceAllowed,audiencePath,parseAudiencePath,countryCode} from "../lib/audience-model.mjs";
+test("basic count does not depend on optional cookie consent; respects opt-out and privacy signals",()=>{assert.equal(audienceAllowed(new Headers(),undefined),true);assert.equal(audienceAllowed(new Headers(),"1"),false);assert.equal(audienceAllowed(new Headers({"sec-gpc":"1"}),undefined),false);assert.equal(audienceAllowed(new Headers({dnt:"1"}),undefined),false);assert.equal(audienceAllowed(new Headers({"user-agent":"Googlebot"}),undefined),false);});
+test("event key contains country and hour only, never a visitor identifier or IP",()=>{const now=Date.parse("2026-11-24T20:45:00Z");const path=audiencePath(now,"MA","54274204-3264-4f6a-9b37-89cf60311d08");assert.deepEqual(parseAudiencePath(path),{hour:Date.parse("2026-11-24T20:00:00Z"),country:"MA"});assert.equal(countryCode(new Headers({"x-vercel-ip-country":"fr"})),"FR");assert.equal(countryCode(new Headers()),"ZZ");assert.equal(parseAudiencePath("audience/v1/invalid"),null);});

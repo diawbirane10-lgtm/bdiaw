@@ -2,7 +2,7 @@ import { classifySource } from "./privacy.mjs";
 export const VISIT_PREFIX = "visit-history/v1/";
 export const HISTORY_PAGE_SIZE = 50;
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-const pages = new Set(["/", "/projects/ufls-smartgrid", "/projects/wave-energy-conversion", "/projects/railway-traction-25kv", "/projects/digital-twin-liion-battery", "/projects/digital-twin-electric-drive", "/research/grid-forming-vsm-hvdc-bess"]);
+const pages = new Set(["/", "/projects/smartsense", "/projects/ufls-smartgrid", "/projects/wave-energy-conversion", "/projects/railway-traction-25kv", "/projects/digital-twin-liion-battery", "/projects/digital-twin-electric-drive", "/research/grid-forming-vsm-hvdc-bess"]);
 export const TIME_ZONES = ["Africa/Casablanca", "Africa/Dakar", "UTC", "Europe/Paris", "America/New_York"];
 
 export function validZone(value) { return TIME_ZONES.includes(value) ? value : "Africa/Casablanca"; }

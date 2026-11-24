@@ -163,19 +163,21 @@ export const projects = [
     "en": [
       "Specify the laboratory IR and ultrasonic sensing chains.",
       "Design the KiCad hierarchical schematics and route the four-layer PCB.",
+      "Design the M2 enclosure in Autodesk Fusion 360 and integrate the PCB, display and cable clearances.",
       "Develop and host-test the C signal-processing core; compare simulated estimators in MATLAB/Simulink.",
       "Prepare bench measurements for sensor response, disturbances and independent reference checks."
     ],
     "fr": [
       "Spécifier les chaînes de mesure infrarouge et ultrasonore en laboratoire.",
       "Concevoir les schémas KiCad hiérarchiques et router le PCB quatre couches.",
+      "Concevoir le boîtier M2 sous Autodesk Fusion 360 et intégrer le PCB, l’écran et les réserves de câblage.",
       "Développer et tester le noyau C sur hôte ; comparer les estimateurs simulés dans MATLAB/Simulink.",
       "Préparer les mesures de banc : réponse des capteurs, perturbations et références indépendantes."
     ]
   },
   "discussion": {
-    "en": "Design files and software evidence exist: the design review reports no ERC/DRC violations, 22 C host tests passed, and the ARM target compilation was checked. Fabrication, firmware integration on target and physical characterization are still outstanding. This is not a certified railway or safety device.",
-    "fr": "Les fichiers CAO et preuves logicielles sont disponibles : la revue rapporte zéro violation ERC/DRC, 22 tests C réussis sur hôte et une vérification de compilation ARM. La fabrication, l’intégration du firmware sur cible et la caractérisation physique restent à réaliser. Ce n’est pas un dispositif ferroviaire ou de sécurité qualifié."
+    "en": "Design files and software evidence exist: the design review reports no ERC/DRC violations, 22 C host tests passed, and the ARM target compilation was checked. The M2 mechanical review reported no unexpected CAD interference; physical fit remains untested. Fabrication, firmware integration on target and physical characterization are still outstanding. This is not a certified railway or safety device.",
+    "fr": "Les fichiers CAO et preuves logicielles sont disponibles : la revue rapporte zéro violation ERC/DRC, 22 tests C réussis sur hôte et une vérification de compilation ARM. La revue mécanique M2 ne rapporte aucune interférence CAO imprévue ; les ajustements physiques restent à tester. La fabrication, l’intégration du firmware sur cible et la caractérisation physique restent à réaliser. Ce n’est pas un dispositif ferroviaire ou de sécurité qualifié."
   },
   "hierarchyGroups": [
     {
@@ -283,6 +285,14 @@ export const projects = [
         "en": "PCB V1 — back copper routing, CAD visualization",
         "fr": "PCB V1 — routage cuivre arrière, visualisation CAO"
       }
+    },
+    {
+      "src": "/project-images/smartsense/assembly-closed.webp",
+      "caption": {"en":"M2 enclosure — original Autodesk Fusion 360 CAD view, closed assembly with HMI and cable interfaces", "fr":"Boîtier M2 — vue CAO originale Autodesk Fusion 360, assemblage fermé avec IHM et connectique"}
+    },
+    {
+      "src": "/project-images/smartsense/assembly-open.webp",
+      "caption": {"en":"M2 enclosure — original Autodesk Fusion 360 CAD view showing PCB integration, mounting and cable reserve; physical fit not yet tested", "fr":"Boîtier M2 — vue CAO originale Autodesk Fusion 360 montrant l’intégration du PCB, les fixations et la réserve de câblage ; ajustements physiques non testés"}
     }
   ],
   "links": [
