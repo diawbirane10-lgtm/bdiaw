@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { groupVisits, TIME_ZONES } from "../../lib/visit-model.mjs";
+import { groupVisits, periodStart, TIME_ZONES } from "../../lib/visit-model.mjs";
 import { countryOptions, matchesCountry, UNKNOWN_COUNTRY } from "../../lib/countries.mjs";
 
 const periods = [[1,"Aujourd’hui"],[7,"7 jours"],[30,"30 jours"],[0,"Tout l’historique"]];
@@ -40,11 +40,21 @@ export default function AdminDashboard() {
   const [country,setCountry] = useState("");
   const generation = useRef(0);
   const moreInFlight = useRef(false);
+  const refreshInFlight = useRef(false);
+  const loadedMore = useRef(false);
+  const historySnapshot = useRef({records:[],cursor:null,partial:false});
+  useEffect(() => { historySnapshot.current={records,cursor,partial}; }, [records,cursor,partial]);
 
-  const refresh = useCallback(async () => {
+  const refresh = useCallback(async ({preserve=false}={}) => {
+    if (preserve && (refreshInFlight.current || moreInFlight.current)) return;
     const current = ++generation.current;
-    setHistoryLoading(true); setSummaryLoading(true); setHistoryError(""); setSummaryError(""); setHistoryReady(false);
-    setRecords([]); setCursor(null); setSummary(null); setAudience(null); setAudienceError(""); setDownloadSummary(null); setDownloadError(""); setMoreLoading(false); moreInFlight.current=false;
+    refreshInFlight.current=true;
+    setHistoryLoading(true); setSummaryLoading(true); setHistoryError(""); setSummaryError(""); setAudienceError(""); setDownloadError("");
+    if (!preserve) {
+      setHistoryReady(false); setRecords([]); setCursor(null); setPartial(false); setUpdatedAt(null);
+      setSummary(null); setAudience(null); setDownloadSummary(null);
+      setMoreLoading(false); moreInFlight.current=false; loadedMore.current=false;
+    }
     const params = `days=${days}&tz=${encodeURIComponent(zone)}`;
     await Promise.allSettled([
       (async()=>{try{const response=await fetch(`/api/admin/audience?${params}`,{cache:"no-store"});const result=await response.json();if(current!==generation.current)return;if(response.status===401){setAuth(false);return;}if(!response.ok||!result.ok)throw new Error("Compteur d’audience indisponible.");setAudience(result);}catch(error){if(current===generation.current)setAudienceError(error.message);}})(),
@@ -66,7 +76,20 @@ export default function AdminDashboard() {
           if (response.status === 401) { setAuth(false); return; }
           setAuth(true);
           if (!response.ok || !result.ok) throw new Error(result.error || "Le journal ne peut pas être chargé.");
-          setRecords(result.events); setCursor(result.nextCursor); setPartial(result.partial); setUpdatedAt(result.generatedAt); setHistoryReady(true);
+          const previous=historySnapshot.current;
+          const latest=result.events;
+          const since=periodStart(days,zone);
+          const previousIds=new Set(previous.records.map(row=>row.id));
+          // Keep a contiguous loaded history only when the refreshed head overlaps it.
+          // If >one page arrived, reset the cursor to the refreshed head instead of skipping the gap.
+          if (preserve && loadedMore.current && latest.some(row=>previousIds.has(row.id))) {
+            setRecords([...new Map([...previous.records.filter(row=>Date.parse(row.occurredAt)>=since),...latest].map(row=>[row.id,row])).values()]);
+            setCursor(previous.cursor); setPartial(previous.partial||result.partial);
+          } else {
+            setRecords(latest); setCursor(result.nextCursor); setPartial(result.partial);
+            loadedMore.current=false;
+          }
+          setUpdatedAt(result.generatedAt); setHistoryReady(true);
         } catch(error) { if (current === generation.current) setHistoryError(error.message || "Connexion indisponible."); }
         finally { if (current === generation.current) setHistoryLoading(false); }
       })(),
@@ -83,12 +106,22 @@ export default function AdminDashboard() {
         finally { if (current === generation.current) setSummaryLoading(false); }
       })(),
     ]);
+    if(current===generation.current)refreshInFlight.current=false;
   }, [days,zone,country]);
 
-  useEffect(() => { refresh(); return () => { generation.current++; }; }, [refresh]);
+  useEffect(() => { refresh(); return () => { generation.current++; refreshInFlight.current=false; }; }, [refresh]);
+
+  useEffect(() => {
+    if(auth!==true)return;
+    const sync=()=>{if(document.visibilityState==="visible")refresh({preserve:true});};
+    const timer=window.setInterval(sync,60000);
+    window.addEventListener("focus",sync);
+    document.addEventListener("visibilitychange",sync);
+    return()=>{window.clearInterval(timer);window.removeEventListener("focus",sync);document.removeEventListener("visibilitychange",sync);};
+  }, [auth,refresh]);
 
   async function loadMore() {
-    if (!cursor || moreInFlight.current) return;
+    if (!cursor || moreInFlight.current || refreshInFlight.current) return;
     moreInFlight.current=true; setMoreLoading(true); setHistoryError("");
     const current=generation.current;
     try {
@@ -98,7 +131,7 @@ export default function AdminDashboard() {
       if(response.status===401){setAuth(false);return;}
       if(!response.ok||!result.ok)throw new Error(result.error||"Impossible de charger la suite.");
       setRecords(previous=>[...new Map([...previous,...result.events].map(row=>[row.id,row])).values()]);
-      setCursor(result.nextCursor); setPartial(previous=>previous||result.partial);
+      setCursor(result.nextCursor); setPartial(previous=>previous||result.partial); loadedMore.current=true;
     }catch(error){if(current===generation.current)setHistoryError(error.message);}
     finally{if(current===generation.current){setMoreLoading(false);moreInFlight.current=false;}}
   }
@@ -116,7 +149,7 @@ export default function AdminDashboard() {
     try {
       const response=await fetch("/api/admin/logout",{method:"POST"});
       if(!response.ok)throw new Error();
-      generation.current++; setAuth(false); setRecords([]); setSummary(null); setDownloadSummary(null);
+      generation.current++; refreshInFlight.current=false; moreInFlight.current=false; loadedMore.current=false; setAuth(false); setRecords([]); setSummary(null); setAudience(null); setDownloadSummary(null);
     } catch { setHistoryError("La déconnexion a échoué. Réessayez."); }
   }
 
@@ -133,7 +166,7 @@ export default function AdminDashboard() {
 
   return <main className="adminShell">
     <header className="adminTop"><Brand/><nav aria-label="Administration"><a className="adminButton" href="/" target="_blank" rel="noreferrer">Voir le site ↗</a><button className="adminButton" onClick={logout}>Se déconnecter</button></nav></header>
-    <section className="adminIntro"><div><p className="adminEyebrow">ADMINISTRATION DU PORTFOLIO</p><h1>Historique des visites.</h1><p>Un historique des visites, avec le lieu, l’heure et les pages consultées.</p></div><button className="adminButton refreshButton" onClick={refresh} disabled={historyLoading}>↻ {historyLoading?"Actualisation…":"Actualiser"}</button></section>
+    <section className="adminIntro"><div><p className="adminEyebrow">ADMINISTRATION DU PORTFOLIO</p><h1>Historique des visites.</h1><p>Un historique des visites, avec le lieu, l’heure et les pages consultées. Synchronisation automatique toutes les 60 secondes lorsque cet onglet est visible.</p></div><button className="adminButton refreshButton" onClick={()=>refresh({preserve:true})} disabled={historyLoading||summaryLoading||moreLoading}>↻ {historyLoading?"Actualisation…":"Actualiser"}</button></section>
     <section className="adminControls" aria-label="Période et heure"><div className="periodSwitch" role="group" aria-label="Période">{periods.map(([n,label])=><button key={n} aria-pressed={days===n} onClick={()=>{setDays(n);setCountry("");}}>{label}</button>)}</div><label className="zoneControl">Heures affichées en<select value={zone} onChange={e=>setZone(e.target.value)}>{TIME_ZONES.map(value=><option key={value} value={value}>{value.replace("Africa/","").replace("America/","").replace("Europe/","").replaceAll("_"," ")}</option>)}</select></label></section>
     <section className="adminMetrics" aria-label="Résumé"><div><span>Sessions consenties chargées</span><strong>{number(historyReady?visits.length:null)}</strong><small>Sessions de navigation chargées</small></div><div><span>Visiteurs distincts (consentement)</span><strong>{number(total?.visitors)}</strong><small>Vercel · {days===0?"30 derniers jours":"période sélectionnée"}</small></div><div><span>Pages vues (consentement)</span><strong>{number(total?.pageviews)}</strong><small>Vercel · {days===0?"30 derniers jours":"période sélectionnée"}</small></div></section>
     <section className="adminPanel" aria-labelledby="audience-title"><div className="panelHead"><div><p className="adminEyebrow">AUDIENCE SANS TRACEUR INDIVIDUEL</p><h2 id="audience-title">Pages vues par pays</h2><p>Indépendant des cookies optionnels. Ce sont des pages vues, pas des visiteurs uniques ; les oppositions à la mesure et certains robots sont exclus.</p></div><strong className="historyCount">{audience?`${audience.complete?"":"≥ "}${number(audience.total)} pages vues`:"—"}</strong></div>{audienceError?<p className="adminNotice">{audienceError}</p>:audience?<Ranking title="Pays d’origine approximatif" items={audience.countries}/>:<p className="adminEmpty">Chargement du compteur…</p>}<p className="downloadExplanation">Les compteurs commencent à l’activation de cette fonctionnalité ; aucune donnée passée n’est reconstruite.</p></section>
@@ -146,7 +179,7 @@ export default function AdminDashboard() {
       {partial&&<p className="adminNotice" role="status">Certaines entrées ne sont pas encore disponibles. Actualisez pour réessayer.</p>}
       {historyReady&&!historyLoading&&visible.length===0&&<div className="adminEmpty historyEmpty"><span aria-hidden="true">↗</span><h3>{country||search.trim()||visits.length?"Aucune visite ne correspond à ce filtre.":"Votre historique commence ici."}</h3><p>{country||search.trim()||visits.length?"Aucune entrée correspondante dans l’historique chargé. Essayez une autre période ou chargez la suite si elle est disponible.":"Les nouvelles visites apparaîtront avec leur date et leur localisation disponible. Les anciennes statistiques ne permettent pas de reconstituer ce journal."}</p></div>}
       {visible.length>0&&<><div className="visitColumns" aria-hidden="true"><span>Dernier passage</span><span>Localisation</span><span>Pages consultées</span><span>Provenance</span></div><ol className="visitList">{visible.map(visit=><li key={visit.sessionId}><details className="visitRow"><summary><span className="visitTime"><time dateTime={visit.lastSeen}><b>{stamp(visit.lastSeen,zone,"time")}</b><span>{stamp(visit.lastSeen,zone,"date")}</span></time></span><span className="visitLocation"><b>{visit.country||"Pays non disponible"}</b><span>{visit.city||"Ville non disponible"}{visit.region?` · ${visit.region}`:""}</span></span><span className="visitPages"><b>{visit.pages.length} {visit.pages.length===1?"page":"pages"}{visit.downloads.length?` · ${visit.downloads.length} PDF`:""}</b><span>{titles[visit.pages[0]]||visit.downloads[0]?.file||visit.pages[0]}</span></span><span className="visitSource"><b>{visit.source&&visit.source!=="Unknown"?visit.source:visit.referrer||"Direct / inconnu"}</b>{visit.channel&&<span>{visit.channel}{visit.campaign?` · ${visit.campaign}`:""}{visit.campaignContent?` · ${visit.campaignContent}`:""}</span>}<span>{visit.device} · {visit.browser}</span>{visit.automated&&<small className="automationBadge">Automatisation probable</small>}<i aria-hidden="true">⌄</i></span></summary><div className="visitDetail"><div><h3>Parcours de cette visite</h3><p>Horaires en {zone}. Session terminée après 30 minutes d’inactivité.</p></div><ol>{[...visit.events].reverse().map(event=><li key={event.id}><time dateTime={event.occurredAt}>{stamp(event.occurredAt,zone,"date")} · {stamp(event.occurredAt,zone,"time")}</time><span><a href={event.kind==="download"?`/api/reports/${event.reportId}`:event.page} target="_blank" rel="noreferrer">{event.kind==="download"?event.file:titles[event.page]||event.page} ↗</a>{event.kind==="download"&&<small className="downloadEventLabel">PDF demandé · sauvegarde et lecture non vérifiables</small>}</span></li>)}</ol></div></details></li>)}</ol></>}
-      <div className="historyFoot"><p>Les visites antérieures à l’activation du journal ne sont pas reconstituées. Les parcours se complètent lorsque vous chargez la suite.</p>{cursor&&<button className="adminButton" onClick={loadMore} disabled={moreLoading}>{moreLoading?"Chargement…":"Charger les visites précédentes ↓"}</button>}</div>
+      <div className="historyFoot"><p>Les visites antérieures à l’activation du journal ne sont pas reconstituées. Les parcours se complètent lorsque vous chargez la suite.</p>{cursor&&<button className="adminButton" onClick={loadMore} disabled={moreLoading||historyLoading||summaryLoading}>{moreLoading?"Chargement…":"Charger les visites précédentes ↓"}</button>}</div>
     </section>
     <section className="adminPanel downloadPanel" aria-labelledby="downloads-title"><div className="panelHead"><div><p className="adminEyebrow">RAPPORTS & PDF</p><h2 id="downloads-title">Téléchargements de rapports</h2><p>Demandes de PDF servies par le site · {periods.find(([n])=>n===days)?.[1].toLowerCase()}.</p></div><span className="historyCount">{downloadSummary?`${downloadSummary.complete?"":"Au moins "}${number(downloadSummary.total)} PDF`:"—"}</span></div><p className="downloadExplanation">Les nouvelles demandes ne sont comptées qu’avec consentement aux statistiques. Le compteur confirme la demande de fichier, pas sa sauvegarde ni sa lecture. Les demandes automatiques peuvent être incluses. Les accès directs aux anciennes URL GitHub ne sont pas mesurés.</p>{downloadError?<p className="adminNotice adminError" role="alert">{downloadError}</p>:downloadSummary?<><ul className="downloadRanking">{downloadSummary.reports.map(report=><li key={report.id}><span><b>{report.title}</b><small>{report.file}</small></span><strong>{downloadSummary.complete?"":"≥ "}{number(report.count)}</strong></li>)}</ul>{!downloadSummary.complete&&<p className="adminNotice">Le volume dépasse la fenêtre de calcul. Ces compteurs sont des minimums.</p>}</>:<p className="adminEmpty">Chargement des compteurs PDF…</p>}</section>
     <section className="summarySection" aria-labelledby="summary-title"><div className="sectionHeading"><p className="adminEyebrow">VUE D’ENSEMBLE</p><h2 id="summary-title">Ce qui attire les visiteurs</h2><p>Bilan global Vercel · {days===0?"30 derniers jours":periods.find(([n])=>n===days)?.[1].toLowerCase()}. Les comptes du bilan et du journal peuvent différer. Ce bilan Vercel et le journal individuel restent soumis au consentement. Le compteur de pages vues par pays ci-dessus est indépendant des cookies optionnels.</p></div>{summaryError&&<p className="adminNotice" role="status">{summaryError} Le journal reste indépendant.</p>}{summaryLoading?<p className="adminNotice" role="status">Chargement du bilan global…</p>:<div className="adminGrid"><Ranking title="Pages les plus consultées" items={summary?.pages} pageLinks/><Ranking title="Sites et moteurs d’origine" items={summary?.referrers}/></div>}</section>
