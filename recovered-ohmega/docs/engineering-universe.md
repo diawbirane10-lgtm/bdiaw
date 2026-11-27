@@ -7,3 +7,7 @@ The native React/CSS implementation is inspired by Scroll World. It uses origina
 Review workflow: frontend implementation, independent UX review, independent code/accessibility review, coordinator browser checks and production build. Touch targets and mobile typography were corrected during review. Browser checks cover desktop, 390px phone and 820px tablet composition; captions on tall mobile scenes prompted the normal-scroll fallback.
 
 Validation: `npm run build` includes existing privacy and login rate-limit tests. The sitemap and canonical include `/univers`. No new analytics or remote runtime dependencies are introduced. Security maintenance pins Next.js 16.4.6 and overrides the existing Blob dependency's transitive Zod to its patched 4.6.6 release.
+
+## Interactive 3D
+
+Three.js viewers replace the static illustrations with procedural concept models. The scenes expose enclosure inspection, staged feeder switching and traction/regenerative flow controls. These illustrate operating principles; they are not engineering solvers or replicas of the CAD assembly. Real project CAD remains in its case study.
