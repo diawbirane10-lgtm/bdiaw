@@ -488,3 +488,11 @@
 @media (max-width: 390px) {
   .footer .jotformContactFrame iframe { height: 710px; }
 }
+
+/* Dedicated engineering journey entry point. */
+.hero .heroUniverseLink{display:flex;align-items:center;justify-content:center;gap:12px;width:fit-content;max-width:100%;min-height:52px;margin-top:24px;padding:14px 20px;background:#111;color:#fff;border:1px solid #111;text-decoration:none;font-size:16px;font-weight:650;line-height:1.4;transition:background .18s ease,transform .18s ease}
+.hero .heroUniverseLink:hover{background:#1742ad;border-color:#1742ad;transform:translateY(-2px)}
+.hero .heroUniverseLink:focus-visible{outline:3px solid #2455dc;outline-offset:4px}
+.hero .heroUniverseLink svg{flex-shrink:0}
+@media(max-width:520px){.hero .heroUniverseLink{width:100%;padding:13px 14px;font-size:15px}}
+@media(prefers-reduced-motion:reduce){.hero .heroUniverseLink{transition:none}.hero .heroUniverseLink:hover{transform:none}}

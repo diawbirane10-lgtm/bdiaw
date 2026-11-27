@@ -169,6 +169,10 @@ function Home({t,lang}){return <>
         <h1>{t.title}</h1>
         <p className="lead">{t.subtitle}</p>
         <p className="introCopy">{t.intro}</p>
+        <a href="/univers" className="heroUniverseLink">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7l9-5Z"/><path d="m3 7 9 5 9-5M12 12v10M7.5 4.5l9 5v5"/></svg>
+          <span>{lang==="fr"?"Explorer mon univers d’ingénierie":"Explore my engineering world"}</span>
+        </a>
         <a href="#certifications" className="heroCertificationLink" style={{display:"inline-flex",alignItems:"center",gap:10,marginTop:18,border:"1px solid currentColor",padding:"11px 15px",fontSize:12,fontWeight:800,letterSpacing:".04em",textTransform:"uppercase",textDecoration:"none"}}>{lang==="fr"?"Certifications & formations":"Certifications & Training"} <span aria-hidden="true">↗</span></a>
         <a className="heroScrollCue" href="#about" aria-label={lang==="fr"?"Découvrir le portfolio":"Explore the portfolio"}>
           <span>{lang==="fr"?"Découvrir":"Explore"}</span><span aria-hidden="true">↓</span>

@@ -11,8 +11,11 @@
     "@vercel/analytics": "latest",
     "@vercel/blob": "2.8.2",
     "geist": "latest",
-    "next": "latest",
+    "next": "16.4.6",
     "react": "latest",
     "react-dom": "latest"
+  },
+  "overrides": {
+    "zod": "4.6.6"
   }
 }

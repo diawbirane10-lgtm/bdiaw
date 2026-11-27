@@ -3,6 +3,7 @@ import { projects } from './portfolio-data';
 // Keep the public sitemap synchronized with the single portfolio catalogue.
 const pages = [
   { path: '/', changeFrequency: 'weekly', priority: 1 },
+  { path: '/univers', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/research/grid-forming-vsm-hvdc-bess', changeFrequency: 'monthly', priority: 0.8 },
   ...projects.map(project => ({
     path: `/projects/${project.slug}`,
