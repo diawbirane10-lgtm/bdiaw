@@ -1,6 +1,7 @@
 "use client";
 import {useEffect,useMemo,useState} from "react";
 import {usePathname} from "next/navigation";
+import { sceneForProject } from "../univers/catalog.mjs";
 import EventsSection from "../EventsSection";
 import {copy as sharedCopy, projects as sharedProjects, projectTags as sharedProjectTags} from "../portfolio-data";
 import {readLanguage,saveLanguage} from "../browser-preferences.mjs";
@@ -248,6 +249,7 @@ function Home({t,lang}){return <>
               {projectTags[p.slug]?.skills[lang].slice(0,2).map(tag=><span className="projectTag" key={`skill-${tag}`}>{tag}</span>)}
               {projectTags[p.slug]?.tools.slice(0,1).map(tag=><span className="projectTag toolTag" key={`tool-${tag}`}>{tag}</span>)}
             </div>
+            {sceneForProject(p.slug) && <a className="workAnimationLink" href={`/univers#${sceneForProject(p.slug).id}`} aria-label={`${lang==="fr"?"Animation 3D":"3D animation"} — ${p.title}`}>{lang==="fr"?"Animation 3D interactive":"Interactive 3D animation"}</a>}
             <ExtLink href={`/projects/${p.slug}`} className="workRowLink">{lang==="fr"?"Ouvrir l’étude de cas":"Open case study"} <span aria-hidden="true">↗</span></ExtLink>
           </div>
         </article>)}
@@ -454,7 +456,7 @@ function ProjectDetail({project,t,lang}) {
     window.addEventListener("keydown",onEscape);
     return ()=>window.removeEventListener("keydown",onEscape);
   },[activeImage]);
-  return <><header className="projectHero"><ExtLink href="/">{t.detail[0]}</ExtLink><p>{project.no} · {project.field[lang]}{project.stage ? <span className="projectStageLabel">{project.stage[lang]}</span> : null}</p><h1>{project.title}</h1><h2>{project.body[lang]}</h2>{projectTags[project.slug]?.standards?.length?<div className="caseStudyStandards" aria-label={lang==="fr"?"Normes de référence":"Reference standards"}>{projectTags[project.slug].standards.map(tag=><span className="projectTag standardTag" key={tag}>{tag}</span>)}</div>:null}</header>{project.image?<figure className={project.gallery?.length?"projectVisual smartSenseLeadVisual motionSection":"projectVisual motionSection"}><div className="projectVisualFrame">{project.gallery?.length?
+  return <><header className="projectHero"><ExtLink href="/">{t.detail[0]}</ExtLink><p>{project.no} · {project.field[lang]}{project.stage ? <span className="projectStageLabel">{project.stage[lang]}</span> : null}</p><h1>{project.title}</h1><h2>{project.body[lang]}</h2>{sceneForProject(project.slug) && <a className="projectAnimationLink" href={`/univers#${sceneForProject(project.slug).id}`}>{lang==="fr"?"Explorer l’animation 3D":"Explore the 3D animation"}</a>}{projectTags[project.slug]?.standards?.length?<div className="caseStudyStandards" aria-label={lang==="fr"?"Normes de référence":"Reference standards"}>{projectTags[project.slug].standards.map(tag=><span className="projectTag standardTag" key={tag}>{tag}</span>)}</div>:null}</header>{project.image?<figure className={project.gallery?.length?"projectVisual smartSenseLeadVisual motionSection":"projectVisual motionSection"}><div className="projectVisualFrame">{project.gallery?.length?
   <button type="button" className="smartSenseCoverOpen" onClick={()=>setActiveImage({src:project.image,caption:project.visualNote?.[lang]||project.title})} aria-label={lang==="fr"?"Agrandir la vue PCB principale":"Enlarge main PCB view"}>
     <img src={project.image} alt={project.title}/>
   </button>:

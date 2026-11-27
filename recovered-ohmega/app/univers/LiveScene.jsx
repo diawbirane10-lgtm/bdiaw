@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import { waveWorld, batteryWorld, driveWorld } from './additional-scenes';
 import { SVGRenderer } from 'three/addons/renderers/SVGRenderer.js';
 
 // These procedural scenes illustrate a principle, rather than live measurements.
-const fallbackImages = ['/project-images/smartsense/assembly-open.webp', '/project-images/ufls-smartgrid.svg', '/project-images/railway-traction-25kv.svg'];
+const fallbackImages = ['/project-images/smartsense/assembly-open.webp', '/project-images/ufls-smartgrid.svg', '/project-images/railway-traction-25kv.svg', '/project-images/wave-energy-conversion.svg', '/project-images/digital-twin-liion-battery.svg', '/project-images/digital-twin-electric-drive.svg'];
 const palette = { navy: 0x143954, blue: 0x297eb2, pale: 0xdcebf5, white: 0xf8fcff, metal: 0x829cb0, green: 0x257469, amber: 0xdc943b };
 
 function material(color, options = {}) { return new THREE.MeshStandardMaterial({ color, roughness: .54, metalness: .13, ...options }); }
@@ -179,7 +180,7 @@ function trainWorld(world) {
   };
 }
 
-export default function LiveScene({ index = 0, lang = 'en' }) {
+export default function LiveScene({ index = 0, lang = 'en', onReady }) {
   const mount = useRef(null), runtime = useRef(null), configuration = useRef({ paused: false, action: false });
   const [paused, setPaused] = useState(false), [action, setAction] = useState(false), [failed, setFailed] = useState(false);
   const fr = lang === 'fr';
@@ -211,7 +212,7 @@ export default function LiveScene({ index = 0, lang = 'en' }) {
     scene.add(new THREE.AmbientLight(0xffffff, .6));
     const light = new THREE.DirectionalLight(0xffffff, 3.2); light.position.set(4, 9, 6); light.castShadow = true;
     light.shadow.mapSize.set(1024, 1024); light.shadow.camera.left = -7; light.shadow.camera.right = 7; light.shadow.camera.top = 7; light.shadow.camera.bottom = -7; light.shadow.normalBias = .04; if (renderer.domElement.tagName.toLowerCase() === 'svg') light.intensity = .65; scene.add(light);
-    const animate = [sensorWorld, gridWorld, trainWorld][index](world);
+    const animate = [sensorWorld, gridWorld, trainWorld, waveWorld, batteryWorld, driveWorld][index](world);
     let yaw = .68, elevation = .53, elapsed = 0, last = 0, frame = 0, visible = false, disposed = false;
     const target = new THREE.Vector3(0, index === 0 ? 1.35 : 1.45, 0);
     function updateCamera() {
@@ -255,6 +256,7 @@ export default function LiveScene({ index = 0, lang = 'en' }) {
     document.addEventListener('visibilitychange', sync); preference.addEventListener('change', onPreference);
     runtime.current = { sync, reset() { yaw = .68; elevation = .53; sync(); }, rotate(direction) { yaw += direction * .24; paint(0, configuration.current.paused); } };
     sync();
+    onReady?.();
     return () => {
       disposed = true; cancelAnimationFrame(frame); observer.disconnect(); size.disconnect(); document.removeEventListener('visibilitychange', sync); preference.removeEventListener('change', onPreference);
       const canvas = renderer.domElement;
@@ -266,9 +268,9 @@ export default function LiveScene({ index = 0, lang = 'en' }) {
   }, [index, failed]);
 
   useEffect(() => { runtime.current?.sync(); }, [paused, action]);
-  const labels = fr ? ['Ouvrir le boîtier', 'Déclencher un incident', 'Passer en freinage'] : ['Open the enclosure', 'Trigger an incident', 'Switch to braking'];
-  const activeLabels = fr ? ['Fermer le boîtier', 'Restaurer les départs', 'Reprendre la traction'] : ['Close the enclosure', 'Restore the feeders', 'Resume traction'];
-  const states = fr ? [action ? 'Boîtier ouvert · chaîne de mesure visible' : 'Boîtier fermé · scan du capteur', action ? 'Incident illustratif · délestage par étapes' : 'Réseau alimenté · départs disponibles', action ? 'Freinage · retour d’énergie illustratif' : 'Traction · énergie vers le train'] : [action ? 'Enclosure open · measurement chain exposed' : 'Enclosure closed · sensor scan', action ? 'Illustrative incident · staged shedding' : 'Grid supplied · feeders available', action ? 'Braking · illustrative energy return' : 'Traction · energy to the train'];
+  const labels = fr ? ['Ouvrir le boîtier', 'Déclencher un incident', 'Passer en freinage', 'Couper l’injection réseau', 'Passer en charge', 'Inverser la rotation'] : ['Open the enclosure', 'Trigger an incident', 'Switch to braking', 'Disconnect grid injection', 'Switch to charging', 'Reverse rotation'];
+  const activeLabels = fr ? ['Fermer le boîtier', 'Restaurer les départs', 'Reprendre la traction', 'Rétablir l’injection réseau', 'Passer en décharge', 'Rétablir la rotation'] : ['Close the enclosure', 'Restore the feeders', 'Resume traction', 'Reconnect grid injection', 'Switch to discharging', 'Restore rotation'];
+  const states = fr ? [action ? 'Boîtier ouvert · chaîne de mesure visible' : 'Boîtier fermé · scan du capteur', action ? 'Incident illustratif · délestage par étapes' : 'Réseau alimenté · départs disponibles', action ? 'Freinage · retour d’énergie illustratif' : 'Traction · énergie vers le train', action ? 'Houle active · injection réseau coupée' : 'Houle active · conversion et injection réseau', action ? 'Charge · énergie vers les cellules' : 'Décharge · énergie vers la charge', action ? 'Commande inversée · rotation inverse' : 'Commande directe · rotation du rotor'] : [action ? 'Enclosure open · measurement chain exposed' : 'Enclosure closed · sensor scan', action ? 'Illustrative incident · staged shedding' : 'Grid supplied · feeders available', action ? 'Braking · illustrative energy return' : 'Traction · energy to the train', action ? 'Waves active · grid injection disconnected' : 'Waves active · conversion and grid injection', action ? 'Charging · energy into cells' : 'Discharging · energy to load', action ? 'Reversed control · reverse rotation' : 'Forward control · rotor rotation'];
   return <div className="u-live-scene">
     {failed ? <div className="u-live-fallback"><img src={fallbackImages[index]} alt={fr ? 'Illustration du projet' : 'Project illustration'}/><p role="status">{fr ? 'La vue 3D est indisponible sur cet appareil. L’illustration et l’étude restent accessibles.' : 'The 3D view is unavailable on this device. The illustration and case study remain available.'}</p></div> : <>
       <div className="u-live-canvas" ref={mount} role="img" aria-label={fr ? `Vue 3D conceptuelle interactive. ${states[index]}.` : `Interactive conceptual 3D view. ${states[index]}.`}/>

@@ -496,3 +496,5 @@
 .hero .heroUniverseLink svg{flex-shrink:0}
 @media(max-width:520px){.hero .heroUniverseLink{width:100%;padding:13px 14px;font-size:15px}}
 @media(prefers-reduced-motion:reduce){.hero .heroUniverseLink{transition:none}.hero .heroUniverseLink:hover{transform:none}}
+.projectHero .projectAnimationLink{display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;margin-top:24px;background:#102f4c;color:#fff;font-size:16px;text-decoration:none;line-height:1.4}.projectHero .projectAnimationLink:hover{background:#155da0}.projectHero .projectAnimationLink:focus-visible{outline:3px solid #155da0;outline-offset:4px}
+.workRowMeta .workAnimationLink{display:inline-flex;align-items:center;min-height:44px;color:#155da0;font-size:14px;font-weight:650;text-decoration:underline;text-underline-offset:4px}.workRowMeta .workAnimationLink:focus-visible{outline:3px solid #155da0;outline-offset:3px}

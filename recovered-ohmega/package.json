@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "vercel-build": "node --test scripts/privacy.test.mjs scripts/login-limit.test.mjs && next build",
-    "build": "node --test scripts/privacy.test.mjs scripts/login-limit.test.mjs && next build",
+    "vercel-build": "node --test scripts/privacy.test.mjs scripts/login-limit.test.mjs scripts/universe.test.mjs && next build",
+    "build": "node --test scripts/privacy.test.mjs scripts/login-limit.test.mjs scripts/universe.test.mjs && next build",
     "dev": "next dev"
   },
   "dependencies": {
